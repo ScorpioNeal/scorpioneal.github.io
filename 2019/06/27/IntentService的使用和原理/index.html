@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Android,Optimize,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Teaching is the best way to learn.">
+<meta name="description" content="首先要知道IntentService本质上是一个Service, 目的是可以像线程一样执行一些异步操作.  既然目的是为了执行异步操作，为什么不直接通过Thread或者AsyncTask这种来实现，而是继承自Service呢?  因为Android在面对使用IntentService的应用优先级会高些， 主动杀掉的可能性会降低点。 所以， IntentService就是结合了Service与线程的">
+<meta name="keywords" content="Android,Optimize">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IntentService的使用和原理">
 <meta property="og:url" content="http://blog.scions.cn/2019/06/27/IntentService的使用和原理/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="Teaching is the best way to learn.">
+<meta property="og:description" content="首先要知道IntentService本质上是一个Service, 目的是可以像线程一样执行一些异步操作.  既然目的是为了执行异步操作，为什么不直接通过Thread或者AsyncTask这种来实现，而是继承自Service呢?  因为Android在面对使用IntentService的应用优先级会高些， 主动杀掉的可能性会降低点。 所以， IntentService就是结合了Service与线程的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T11:11:36.123Z">
+<meta property="og:updated_time" content="2019-07-01T08:32:32.757Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IntentService的使用和原理">
-<meta name="twitter:description" content="Teaching is the best way to learn.">
+<meta name="twitter:description" content="首先要知道IntentService本质上是一个Service, 目的是可以像线程一样执行一些异步操作.  既然目的是为了执行异步操作，为什么不直接通过Thread或者AsyncTask这种来实现，而是继承自Service呢?  因为Android在面对使用IntentService的应用优先级会高些， 主动杀掉的可能性会降低点。 所以， IntentService就是结合了Service与线程的">
 
 
 
@@ -313,6 +314,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,7 +363,25 @@
       
 
       
-        
+        <p>首先要知道<code>IntentService</code>本质上是一个<code>Service</code>, 目的是可以像线程一样执行一些异步操作. </p>
+<p>既然目的是为了执行异步操作，为什么不直接通过Thread或者AsyncTask这种来实现，而是继承自Service呢? </p>
+<p>因为<code>Android</code>在面对使用<code>IntentService</code>的应用优先级会高些， 主动杀掉的可能性会降低点。</p>
+<p>所以， <code>IntentService</code>就是结合了<code>Service</code>与线程的好处而来的一个工具类，分析代码可以很容易的看到:</p>
+<p>首先从构造函数来看, 只是传了一个名字</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> String mName;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">IntentService</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    mName = name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后看Service的第一个回调方法. <code>onCreate</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HandlerThread里面的Looper</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> Looper mServiceLooper;</span><br><span class="line"></span><br><span class="line"><span class="comment">//线程中的Handler</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> ServiceHandler mServiceHandler;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ServiceHandler</span><span class="params">(Looper looper)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(looper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//抽象方法，也是经常需要在次回调里做工作的地方</span></span><br><span class="line">        onHandleIntent((Intent)msg.obj);</span><br><span class="line">        <span class="comment">//执行完之后主动关闭自己</span></span><br><span class="line">        stopSelf(msg.arg1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate();</span><br><span class="line">    </span><br><span class="line">    HandlerThread thread = <span class="keyword">new</span> HandlerThread(<span class="string">"IntentService["</span> + mName + <span class="string">"]"</span>);</span><br><span class="line">    thread.start();</span><br><span class="line"></span><br><span class="line">    mServiceLooper = thread.getLooper();</span><br><span class="line">    mServiceHandler = <span class="keyword">new</span> ServiceHandler(mServiceLooper);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里新建了一个<code>HandlerThread</code>, 以及一个子线程的<code>Handler</code>, <code>mServiceHandler</code>. 也就是这个<code>mServiceHandler</code>的回调也是在子线程. 也就是<code>IntentService</code>的原理就是<code>HandlerThread</code>.</p>
+<p>然后不管是onStart或者onStartCommand， 都会执行这些方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">(Intent intent, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">    Message msg = mServiceHandler.obtainMessage();</span><br><span class="line">    msg.arg1 = startId;</span><br><span class="line">    msg.obj = intent;</span><br><span class="line">    mServiceHandler.sendMessage(msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">    onStart(intent, startId);</span><br><span class="line">    <span class="keyword">return</span> mRedelivery ? START_REDELIVER_INTENT : START_NOT_STICKY;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以我们启动<code>IntentService</code>最好是通过<code>start</code>方法，而不是<code>bind</code>方法启动，就是为了触发<code>onStart()</code>回调. 这里就是把消息发送给<code>mServiceHandler</code>.</p>
+<p>也就是，我们使用<code>startService</code>会触发<code>onStart</code> -&gt; <code>handle</code>收到消息 -&gt; 子线程里的<code>onHandleIntent</code>回调。 我们只要在这个回调里处理需要的逻辑就可以了。</p>
+<p>这里补充下<code>startService</code>和<code>bindService</code>的区别:</p>
+<p>TODO: <a href="https://www.jianshu.com/p/d870f99b675c" target="_blank" rel="noopener">https://www.jianshu.com/p/d870f99b675c</a></p>
+
       
     </div>
     
@@ -354,6 +395,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Optimize/" rel="tag"># Optimize</a>
+          
+        </div>
       
 
       
