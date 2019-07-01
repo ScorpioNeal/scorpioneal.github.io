@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android,Optimize,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,17 @@
 
 
 
-<meta name="description" content="直接看代码 1234567891011121314   /**   * Callback interface for discovering when a thread is going to block   * waiting for more messages.   */   public static interface IdleHandler &amp;#123;   /**   * Called">
-<meta name="keywords" content="Android,Optimize">
+<meta name="description" content="Teaching is the best way to learn.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IdleHandler的使用">
-<meta property="og:url" content="http://blog.scions.cn/2019/06/27/IdleHandler的使用/index.html">
+<meta property="og:title" content="Displaying Bitmaps">
+<meta property="og:url" content="http://blog.scions.cn/2019/07/01/Displaying-Bitmaps/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="直接看代码 1234567891011121314   /**   * Callback interface for discovering when a thread is going to block   * waiting for more messages.   */   public static interface IdleHandler &amp;#123;   /**   * Called">
+<meta property="og:description" content="Teaching is the best way to learn.">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-27T08:41:02.060Z">
+<meta property="og:updated_time" content="2019-07-01T13:03:01.380Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="IdleHandler的使用">
-<meta name="twitter:description" content="直接看代码 1234567891011121314   /**   * Callback interface for discovering when a thread is going to block   * waiting for more messages.   */   public static interface IdleHandler &amp;#123;   /**   * Called">
+<meta name="twitter:title" content="Displaying Bitmaps">
+<meta name="twitter:description" content="Teaching is the best way to learn.">
 
 
 
@@ -120,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.scions.cn/2019/06/27/IdleHandler的使用/">
+  <link rel="canonical" href="http://blog.scions.cn/2019/07/01/Displaying-Bitmaps/">
 
 
 
 
 
-  <title>IdleHandler的使用 | ScorpioNeal's Blog</title>
+  <title>Displaying Bitmaps | ScorpioNeal's Blog</title>
   
 
 
@@ -274,7 +273,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/27/IdleHandler的使用/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/01/Displaying-Bitmaps/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -291,7 +290,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">IdleHandler的使用</h1>
+          <h1 class="post-title" itemprop="name headline">Displaying Bitmaps</h1>
         
 
         <div class="post-meta">
@@ -303,8 +302,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-27T15:43:25+08:00">
-                2019-06-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T21:03:01+08:00">
+                2019-07-01
               </time>
             
 
@@ -313,28 +312,6 @@
             
           </span>
 
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -363,17 +340,7 @@
       
 
       
-        <p>直接看代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Callback interface for discovering when a thread is going to block</span></span><br><span class="line"><span class="comment">   * waiting for more messages.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">IdleHandler</span> </span>&#123;</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Called when the message queue has run out of messages and will now</span></span><br><span class="line"><span class="comment">   * wait for more. Return true to keep your idle handler active, false</span></span><br><span class="line"><span class="comment">   * to have it removed. This may be called if there are still messages</span></span><br><span class="line"><span class="comment">   * pending in the queue, but they are all scheduled to be dispatched</span></span><br><span class="line"><span class="comment">   * after the current time.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="function"><span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从注释可以知道，这个IdleHandler就是当前消息队列中，如果没有消息需要分发的时候，处于空闲状态，这时会回调这个接口，然后返回值表示，true-&gt;回调完后销毁，不再回调，false-&gt;回调完后会继续存在，继续等待下次MessageQueu空闲时候回调.</p>
-<p>比如，我们对于一些不需要立即初始化的操作，可以放在主线程这个回调里去实现, 这样不会阻塞主消息队列的执行，优化启动速度。<br>e.g</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Looper.myQueue().addIdleHandler(<span class="keyword">new</span> MessageQueue.IdleHandler() &#123;</span><br><span class="line">       <span class="meta">@Override</span></span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">           Debug.i(TAG, <span class="string">"queueIdle .... "</span>);</span><br><span class="line">           <span class="comment">// 做些不需要立即执行的事情</span></span><br><span class="line">           Debug.i(TAG, <span class="string">"queueIdle done..."</span>);</span><br><span class="line">           <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>它的实现原理也很简单，就是在MessageQueue里，如果消息队列里没有msg，就去执行这个回调</p>
-<p>但是在调试的时候发现, 如果当前存在一个动画，那么主消息队列会一直存在，直到动画结束才会回调，因此这种回调机制可能会存在些问题，需要特别注意会不会出现NPE。</p>
-<p><a href="https://blog.csdn.net/tencent_bugly/article/details/78395717" target="_blank" rel="noopener">https://blog.csdn.net/tencent_bugly/article/details/78395717</a></p>
-
+        
       
     </div>
     
@@ -388,14 +355,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/Optimize/" rel="tag"># Optimize</a>
-          
-        </div>
-      
 
       
       
@@ -405,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/06/27/EventBus2-EventBus3对比/" rel="next" title="EventBus2 & EventBus3对比">
-                <i class="fa fa-chevron-left"></i> EventBus2 & EventBus3对比
+              <a href="/2019/07/01/对象池的使用/" rel="next" title="对象池的使用">
+                <i class="fa fa-chevron-left"></i> 对象池的使用
               </a>
             
           </div>
@@ -415,8 +374,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/27/Handler原理/" rel="prev" title="Handler原理">
-                Handler原理 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/07/01/HashMap-HashTable-HashMap-ConcurrentHashMap/" rel="prev" title="HashMap & HashTable, HashMap & ConcurrentHashMap">
+                HashMap & HashTable, HashMap & ConcurrentHashMap <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
