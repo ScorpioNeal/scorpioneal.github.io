@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Android,Optimize,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Teaching is the best way to learn.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ScorpioNeal&#39;s Blog">
-<meta property="og:url" content="http://blog.scions.cn/tags/Optimize/page/2/index.html">
+<meta name="description" content="https://www.jianshu.com/p/b49a111147ee">
+<meta name="keywords" content="Android,Optimize">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LruCache原理">
+<meta property="og:url" content="http://blog.scions.cn/2019/07/02/LruCache原理/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="Teaching is the best way to learn.">
+<meta property="og:description" content="https://www.jianshu.com/p/b49a111147ee">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-02T07:41:16.069Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ScorpioNeal&#39;s Blog">
-<meta name="twitter:description" content="Teaching is the best way to learn.">
+<meta name="twitter:title" content="LruCache原理">
+<meta name="twitter:description" content="https://www.jianshu.com/p/b49a111147ee">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.scions.cn/tags/Optimize/page/2/">
+  <link rel="canonical" href="http://blog.scions.cn/2019/07/02/LruCache原理/">
 
 
 
 
 
-  <title>Tag: Optimize | ScorpioNeal's Blog</title>
+  <title>LruCache原理 | ScorpioNeal's Blog</title>
   
 
 
@@ -144,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,212 +260,171 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Optimize<small>Tag</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/02/LruCache原理/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/06/25/Analyze-with-Profile-GPU-Rendering/" itemprop="url">
-              
-                <span itemprop="name">Analyze with Profile GPU Rendering</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">LruCache原理</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-25T14:54:18+08:00" content="2019-06-25">
-          06-25
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T15:40:44+08:00">
+                2019-07-02
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/25/UI优化常用工具/" itemprop="url">
-              
-                <span itemprop="name">UI优化常用工具</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-25T13:45:36+08:00" content="2019-06-25">
-          06-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/24/AsyncLayoutInflator原理/" itemprop="url">
-              
-                <span itemprop="name">AsyncLayoutInflator原理</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-24T10:50:01+08:00" content="2019-06-24">
-          06-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/24/抽象布局的使用/" itemprop="url">
-              
-                <span itemprop="name">抽象布局的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-24T09:41:49+08:00" content="2019-06-24">
-          06-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/06/dumpsys工具/" itemprop="url">
-              
-                <span itemprop="name">dumpsys工具</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-06T08:59:01+08:00" content="2019-06-06">
-          06-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/06/05/Fragment懒加载/" itemprop="url">
-              
-                <span itemprop="name">Fragment懒加载</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-05T11:06:06+08:00" content="2019-06-05">
-          06-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/04/Android性能优化/" itemprop="url">
-              
-                <span itemprop="name">Android优化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-04T16:32:21+08:00" content="2019-05-04">
-          05-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p><a href="https://www.jianshu.com/p/b49a111147ee" target="_blank" rel="noopener">https://www.jianshu.com/p/b49a111147ee</a></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Optimize/" rel="tag"># Optimize</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/02/Managing-Bitmap-Memory/" rel="next" title="Managing Bitmap Memory">
+                <i class="fa fa-chevron-left"></i> Managing Bitmap Memory
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/Optimize/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/Optimize/">1</a><span class="page-number current">2</span>
-  </nav>
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -471,6 +432,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -685,6 +650,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

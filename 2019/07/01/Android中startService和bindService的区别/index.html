@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Android,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Teaching is the best way to learn.">
+<meta name="description" content="12345678910111213141516171819202122232425262728    public class SampleService extends Service &amp;#123;    private static final String TAG = &quot;SampleService&quot;;    @Override    public void onCreate() &amp;#123;">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android中startService和bindService的区别">
 <meta property="og:url" content="http://blog.scions.cn/2019/07/01/Android中startService和bindService的区别/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="Teaching is the best way to learn.">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728    public class SampleService extends Service &amp;#123;    private static final String TAG = &quot;SampleService&quot;;    @Override    public void onCreate() &amp;#123;">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-07-01T15:36:07.196Z">
+<meta property="og:updated_time" content="2019-07-02T07:14:36.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android中startService和bindService的区别">
-<meta name="twitter:description" content="Teaching is the best way to learn.">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728    public class SampleService extends Service &amp;#123;    private static final String TAG = &quot;SampleService&quot;;    @Override    public void onCreate() &amp;#123;">
 
 
 
@@ -313,6 +314,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -340,7 +363,16 @@
       
 
       
-        
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"SampleService"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onCreate..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onStartCommand"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onDestroy..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>startService</code></p>
+<p>第一次会走<code>onCreate</code>, <code>onStartCommand</code> (<code>onStart</code>已经<code>deprecated</code>了, 取而代之的是<code>onStartComand</code>), 之后每次在<code>start</code> 都只会走<code>onStartCommand</code>. 推出Activity, Service的<code>onDestroy</code>不会走到, 会一直在后台运行</p>
+<p><code>bindService</code><br>第一次会走<code>onCreate</code>, <code>onBind</code>, 之后每次<code>bind</code>都只不触发<code>onBind</code>和<code>onCreate</code>， Activity推出后, 会执行<code>onDestroy</code></p>
+<p><code>start()</code>方式，很难在Activity中对<code>Service</code>进行控制， 因此，会有<code>bindService</code>方式, 在Service里创建一个类继承Binder, 然后会回调会bindService的地方</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> Service.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> LocalBinder binder = <span class="keyword">new</span> LocalBinder();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         Debug.i(TAG, <span class="string">"test..."</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">     Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">     <span class="keyword">return</span> binder;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> Activity.java</span><br><span class="line"> </span><br><span class="line"> bindService(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, SampleService.class), <span class="keyword">new</span> ServiceConnection() &#123;</span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</span><br><span class="line">                     Debug.i(TAG, <span class="string">"onServiceConnected "</span>);</span><br><span class="line">                     SampleService.LocalBinder binder = (SampleService.LocalBinder)service;</span><br><span class="line">                     binder.test();</span><br><span class="line">                 &#125;</span><br><span class="line"></span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</span><br><span class="line">                     Debug.i(TAG, <span class="string">"onServiceDisconnected "</span>);</span><br><span class="line"></span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;, Context.BIND_AUTO_CREATE);</span><br></pre></td></tr></table></figure>
+
+<h1 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h1><p>Android Interface Definition Language. 可以让某个Service与多个应用程序组件之间进行跨进程通讯, 从而实现多个应用程序共享一个Service的功能. 也是通过bindService来实现，流程与上述差不多。 具体细节有待分析.</p>
+
       
     </div>
     
@@ -354,6 +386,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
       
 
       
@@ -428,8 +466,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -444,7 +491,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -489,6 +536,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#AIDL"><span class="nav-number">1.</span> <span class="nav-text">AIDL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
