@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
 <meta property="og:description" content="在使用method tracing工具时，发现SharedPreference在初次使用的时候，占用的时间比较长。 因此，这里研究下SharedPreference源码， 了解下是什么消耗了的时间 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-26T15:27:37.440Z">
+<meta property="og:updated_time" content="2019-07-10T08:16:37.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SharedPreference原理">
 <meta name="twitter:description" content="在使用method tracing工具时，发现SharedPreference在初次使用的时候，占用的时间比较长。 因此，这里研究下SharedPreference源码， 了解下是什么消耗了的时间 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455">
@@ -411,6 +411,9 @@
 <p>通过前文分析，SharedPreference代码里使用了大量的同步机制。<br>因此，使用不恰当，很容易出现耗时甚至ANR:</p>
 <p>1.第一次读取时，造成主线程阻塞(文件过大，主线程等待时间过长)，引起ANR<br>2.文件太大，加载到内存中一直存在，占用大量内存<br>3.直接在主线程进行commit操作，造成阻塞，引发ANR<br>4.多次apply，造成锁竞争，浪费系统资源<br>5.Sp文件过大，每次更新都更新整个文件</p>
 <p>优化建议:<br>1.对Sp进行合适的拆分<br>2.在合适的时机进行异步初始化<br>3.批量修改一次提交<br>4.在主线程谨慎使用commit</p>
+<p>SharedPreferences每次写入时是增量写入吗？</p>
+<pre><code>答：不是，每次都是重新写入，说一下那个mBackupFile，SharedPreferences在写入时会先把之前的xml文件改成名成一个备份文件，然后再将要写入的数据写到一个新的文件中，如果这个过程执行成功的话，就会把备份文件删除。由此可见每次即使只是添加一个键值对，也会重新写入整个文件的数据，这也说明SharedPreferences只适合保存少量数据，文件太大会有性能问题。SharedPreferences每次写入都是整个文件重新写入，不是增量写入。</code></pre><hr>
+<p>作者：qq_773961852<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/dream_caoyun/article/details/81668849" target="_blank" rel="noopener">https://blog.csdn.net/dream_caoyun/article/details/81668849</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
 
       
     </div>
@@ -532,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

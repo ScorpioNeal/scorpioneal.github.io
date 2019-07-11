@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
 <meta property="og:description" content="Handler是Android中最常用的类之一，我们今天来分析下他的源码结构. 先从构造函数来看. 1234567891011121314151617181920212223242526272829303132333435363738394041Handler.javapublic Handler() &amp;#123;    this(null, false);&amp;#125;public Handler">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-28T06:20:02.717Z">
+<meta property="og:updated_time" content="2019-07-10T02:33:47.327Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Handler原理">
 <meta name="twitter:description" content="Handler是Android中最常用的类之一，我们今天来分析下他的源码结构. 先从构造函数来看. 1234567891011121314151617181920212223242526272829303132333435363738394041Handler.javapublic Handler() &amp;#123;    this(null, false);&amp;#125;public Handler">
@@ -423,6 +423,8 @@
 <li><code>HandlerThread</code>出现原因: <code>Thread</code>是个一次性消费品，完成任务后就被销毁，如果此时再有一个任务需要，就需要再开一个线程处理，导致多次的创建和销毁线程很耗时。因此我们创建一个循环线程，有任务投进来，执行完就等待。<code>HandlerThread</code>是一个线程，里面实现了<code>Looper</code>机制，也就是说当线程执行完任务后不会马上销毁，除非主动调用<code>HandlerThread</code>的<code>quit</code>方法退出。<code>HandlerThread</code>要在调用<code>run()</code>之后<code>handler</code>才可以使用它来创建。</li>
 <li><code>ThreadLocal</code>，<code>ThreadLocal</code>为变量在每个线程中都创建了一个副本，那么每个线程可以访问自己内部的副本变量。 首先每个线程内部有一个<code>ThreadLocal.ThreadLocalMap</code>类型的成员变量<code>threadLocals</code>. 这个<code>threadLocals</code>就是用来存储实际的变量副本的，<code>key</code>为当前<code>Thread</code>, <code>value</code>为变量副本.每个线程可以有多个<code>ThreadLocal</code>变量</li>
 </ol>
+<p>// TODO<br>MessageQueue.next()方法</p>
+<p><a href="https://blog.csdn.net/qq_21586317/article/details/88780077" target="_blank" rel="noopener">https://blog.csdn.net/qq_21586317/article/details/88780077</a></p>
 
       
     </div>
@@ -533,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
