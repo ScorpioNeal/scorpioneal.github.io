@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Build your app from the command lineReference You can execute all the build tasks available to your Android project using the Gradle wrapper command line tool. It’s available as a batch file for Windo">
+<meta name="keywords" content="Android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Build your app from the command line">
+<meta property="og:url" content="http://blog.scions.cn/2019/09/16/Build-your-app-from-the-command-line/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="Build your app from the command lineReference You can execute all the build tasks available to your Android project using the Gradle wrapper command line tool. It’s available as a batch file for Windo">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-16T12:53:28.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Build your app from the command line">
+<meta name="twitter:description" content="Build your app from the command lineReference You can execute all the build tasks available to your Android project using the Gradle wrapper command line tool. It’s available as a batch file for Windo">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/2019/09/16/Build-your-app-from-the-command-line/">
+
+
+
+
+
+  <title>Build your app from the command line | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/16/Build-your-app-from-the-command-line/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Build your app from the command line</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:52:49+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/16/Build-your-app-from-the-command-line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/Build-your-app-from-the-command-line/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Build-your-app-from-the-command-line"><a href="#Build-your-app-from-the-command-line" class="headerlink" title="Build your app from the command line"></a>Build your app from the command line</h2><p><a href="https://developer.android.com/studio/build/building-cmdline" target="_blank" rel="noopener">Reference</a></p>
+<p>You can execute all the build tasks available to your Android project using the <a href>Gradle wrapper</a> command line tool. It’s available as a batch file for Windows(<code>gradlew.bat</code>) and a shell script for Linux and Mac(<code>gradlew.sh</code>), and it’s accessible from the root of each project you create with Android Studio.</p>
+<p>To run a task with the wrapper, use one of the following commands from a Terminal window(from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code>):</p>
+<ul>
+<li><p>On Windows:</p>
+<p>  gradlew task-name</p>
+</li>
+<li><p>on Mac or Linux:</p>
+<p>  ./gradlew task-name</p>
+</li>
+</ul>
+<p>To see a list of all available build tasks for your project, execute <code>tasks</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew tasks</span><br></pre></td></tr></table></figure>
+
+<p>The rest of this page describes the basics to build and run your app with the Gradle wrapper. For more information about how to set up your Android build, see <a href="https://developer.android.com/studio/build/index.html" target="_blank" rel="noopener">Configure your build</a>.</p>
+<p>If you’d prefer to use the Android Studio tools instead of the command line tools, see <a href="https://developer.android.com/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a></p>
+<h3 id="About-build-types"><a href="#About-build-types" class="headerlink" title="About build types"></a>About build types</h3><p>By default, there are two build types avaiable for every Android app: one for debugging your app-the <code>debug</code> build - and one for releasing your app to users-the <code>release</code> build. The resulting output from each build must be signed with a certificate before you can deploy your app to a device. The debug build is automatically signed with a debug key provided by the SDK tools(it’s insecure and you connot publish with it into the Google Play Store), and the release build must be signed with your own private key.</p>
+<p>If you want to build your app for release, it’s important that you also <a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">sign your app</a> with the appropriate signing key. If you’re just getting started, however, you can quickly run your apps on an emulator or a connected device by <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">building a debug APK</a>.</p>
+<p>You can also define a custom build type in your <code>build.gradle</code> file and configure it to be signed as a debug build by including <code>debuggable true</code>. For more information, see <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">Configure Build Variants</a>.</p>
+<h3 id="Build-and-deploy-an-APK"><a href="#Build-and-deploy-an-APK" class="headerlink" title="Build and deploy an APK"></a>Build and deploy an APK</h3><p>Although <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundles</a> is the best way to package your app and upload it to the Play Console, building an APK is better suited for when you want to quickly test a debug build or share your app as a deployable artifact with others.</p>
+<h4 id="Build-a-debug-APK"><a href="#Build-a-debug-APK" class="headerlink" title="Build a debug APK"></a>Build a debug APK</h4><p>For immediate app testing and debugging, you can build a debug APK. The debug APK is signed with a debug key provided by the SDK tools and allows debugging throught <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a>.</p>
+<p>To build a debug APK, open a command line and navigate to the root of your project directory. To initiate a debug build, invoke the <code>assembleDebug</code> task:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew assembleDebug</span><br></pre></td></tr></table></figure>
+
+<p>This creates an APK named <code>module_name-debug.apk</code> in <code>project_name/module_name/build/outputs/apk/</code>. The file is already signed with the debug key and aligned with <a href="https://developer.android.com/tools/help/zipalign.html" target="_blank" rel="noopener">zipalign</a> so you can immediately install it on a device.</p>
+<p>Or to build the APK and immediately install it on a running emulator or connected device, instead invoke <code>installDebug</code>: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew installDebug</span><br></pre></td></tr></table></figure>
+
+<p>The “Debug” part in the above task names is just a camel-case version of the <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">build variant</a> name, so it can be replaced with whichever build type or vairant you want to assemble or install. For example, if you have a “demo” product flavor, then you can build the debug version with the <code>assembleDemoDebug</code> task.</p>
+<p>To see all the build and install tasks available for each variant(including uninstall tasks), run the <code>tasks</code> task.</p>
+<p>Also see the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnEmulator" target="_blank" rel="noopener">run your app on the emulator</a> and <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnDevice" target="_blank" rel="noopener">run your app on a device</a>.</p>
+<h4 id="Build-a-release-APK"><a href="#Build-a-release-APK" class="headerlink" title="Build a release APK"></a>Build a release APK</h4><p>When you’re ready to release and distribute your app, you must build a release APK that is signed with your private key. For more information, go to section about how to [sign your app from the command line].(<a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">https://developer.android.com/studio/build/building-cmdline#sign_cmdline</a>)</p>
+<h4 id="Deploy-your-app-to-the-emulator"><a href="#Deploy-your-app-to-the-emulator" class="headerlink" title="Deploy your app to the emulator"></a>Deploy your app to the emulator</h4><p>To use the Android Emulator, you must <a href="https://developer.android.com/studio/run/managing-avds.html#createavd" target="_blank" rel="noopener">create an Android Virtual Device (AVD)</a> using Android Studio.</p>
+<p>Once you have an AVD, start the Android Emulator and install your app as follows:</p>
+<ol>
+<li>In a command line, navigate to <code>android_sdk/tools/</code> and start the emulator by specifying your AVD:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -avd avd_name</span><br></pre></td></tr></table></figure>
+
+<p>If you’re unsure of the AVD name, execute `emulator -list-avds’</p>
+<ol start="2">
+<li>Now you can install your app using either one of the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool.</li>
+</ol>
+<p>If the APK is built using a developer preview SDK (if the <code>targetSdkVersion</code> is letter instead of a number), you must include the <a href="https://developer.android.com/studio/command-line/adb.html#-t-option" target="_blank" rel="noopener">-t option</a> with the <code>install</code> command to install a test APK.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
+
+<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code>.</p>
+<p>For more information, see <a href="https://developer.android.com/studio/run/emulator.html" target="_blank" rel="noopener">Run Apps on the Android Emulator</a>.</p>
+<h4 id="Deploy-your-app-to-a-physical-device"><a href="#Deploy-your-app-to-a-physical-device" class="headerlink" title="Deploy your app to a physical device"></a>Deploy your app to a physical device</h4><p>Before you can run your app on a device, you must enable <code>USB debugging</code> on your device. You can find the option under <code>Settings &gt; Developer options</code>.</p>
+<p>Once your device is set up and connected via USB, you can install your app using either the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -d install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
+
+<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code></p>
+<p>For more information, see <a href="https://developer.android.com/studio/run/device.html" target="_blank" rel="noopener">Run Apps on a Hardware Device</a>.</p>
+<h3 id="Build-an-app-bundle"><a href="#Build-an-app-bundle" class="headerlink" title="Build an app bundle"></a>Build an app bundle</h3><p><a href>Android App Bundles</a> include all your app’s compiled code and resources, but defer APK generation and signing to Google Play. Unlike an APK, you can’t deploy an app bundle directly to a device. So, if you want to quickly test or share an APK with someone else, you should instead <a href="https://developer.android.com/studio/build/building-cmdline#build_apk" target="_blank" rel="noopener">build an APK</a>.</p>
+<p>The easiest way to build an app bundle is by <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">using Android Studio</a>. However, if you need to build an app bundle from the command line, you can do so by using either Gradle or <code>bundletool</code>, as described in the section below.</p>
+<h4 id="Build-an-app-bundle-with-Gradle"><a href="#Build-an-app-bundle-with-Gradle" class="headerlink" title="Build an app bundle with Gradle"></a>Build an app bundle with Gradle</h4><p>If you’d rather generate an app bundle from the command line, run the <code>buildVariant</code> Gradle task on your app’s base module. For example, the following command builds an app bundle for the debug version of the base module:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew :base:bundleDebug</span><br></pre></td></tr></table></figure>
+
+<p>If you want to build a signed bundle for upload to the Play Console, you need to first configure the base module’s <code>build.gradle</code> file with your app’s signing information. To learn more, go to the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#gradle_signing" target="_blank" rel="noopener">Configure Gradle to sign your app</a>. You can then, for example, build the release version of your app, and Gradle automatically generates an app bundle and signs it with the signing information you provide in the <code>build.gradle</code> file.</p>
+<p>If you instead want to sign an app bundle as a separate step, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a> to sign your app bundle from the command line.</p>
+<h4 id="Build-an-app-bundle-using-bundletool"><a href="#Build-an-app-bundle-using-bundletool" class="headerlink" title="Build an app bundle using bundletool"></a>Build an app bundle using bundletool</h4><p><code>bundletool</code> is a command line tool that Android Studio, the Android Gradle plugin, and Google Play use to convert your app’s compiled code and resources into app bundles, and generate deployable APKs from those bundles.</p>
+<p>So, while it’s useful to <a href>test app bundles with bundletool</a> and locally recreate how Google Play generates APKs, you typically won’t need to invoke <code>bundletool</code> to build the app bundle itself-you should instead use Android Studio or Gradle tasks, as described in previous sections.</p>
+<p>However, if you don’t want to use Android Studio or Gradle tasks to build bundles-for example, if you use a custom build toolchain-you can use <code>bundletool</code> from the command line to build an app bundle from pre-compiled code and resources. If you haven’t already done so, download <a href="https://github.com/google/bundletool/releases" target="_blank" rel="noopener">bundletool</a> from the GitHub repository.</p>
+<p>This section describes how to package your app’s compiled code and resources, and how to use <code>bundletool</code> from the command line to convert them into an Android App Bundle.</p>
+<ul>
+<li>Generate the manifest and resources in proto format</li>
+</ul>
+<p><code>bundletool</code> requries certain information about your app project, such as the app’s manifest and resources, to be in <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">Google’s Protocal Buffer format</a>-which is also known as “protobuf” and uses the <code>*.pb</code> file extendsion. Protobufs provides a language-neutral, platform-neutral, and extensible mechanism for serializing structured data-it’s similiar to XML, but smaller, faster, and simpler.</p>
+<ul>
+<li>Download AAPT2</li>
+</ul>
+<p>You can generate your app’s manifest file and resource table in protobuf format using the latest version of AAPT2 from the <a href="https://developer.android.com/studio/build/dependencies#google-maven" target="_blank" rel="noopener">Google Maven Repository</a></p>
+<p>To download AAPT2 from Google’s Maven repository, proceed as follows:</p>
+<ol>
+<li>Navigate to <code>com.android.tools.build &gt; aapt2</code> in the <a href="https://maven.google.com/" target="_blank" rel="noopener">repository index</a>.</li>
+<li>Copy the name of the latest version of AAPT2.</li>
+<li>Insert the version name you copied into the following URL and specify your target operating system: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows</a> | linux | osx].jar  </li>
+</ol>
+<p>For example, to download version 3.2.0-alpha18-4804415 for Windows, you would use: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar</a></p>
+<ol start="4">
+<li>Navigate to the URL in a browser—AAPT2 should begin downloading shortly.</li>
+<li>Unpackage the JAR file you just downloaded.</li>
+</ol>
+<ul>
+<li>Compile and link your app’s resources</li>
+</ul>
+<p>Use AAPT2 to compile your app’s resources with the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aapt2 compile \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image1.png \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image2.png \</span><br><span class="line">-o compiled_resources/</span><br></pre></td></tr></table></figure>
+
+<p>During the link phase, where AAPT2 links your various compiled resources into a single APK, instruct AAPT2 to convert your app’s manifest and compiled resources into the protobuf format by including the <code>--proto-format</code> flag, as shown below:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aapt2 link --proto-format -o output.apk \</span><br><span class="line">-I android_sdk/platforms/android_version/android.jar \</span><br><span class="line">--manifest project_root/module_root/src/main/AndroidManifest.xml \</span><br><span class="line">-R compiled_resources/*.flat \</span><br><span class="line">--auto-add-overlay</span><br></pre></td></tr></table></figure>
+
+<p>You can then extract content from the output APK, such as your app’s AndroidManifest.xml, resources.pb, and other resource files—now in the protobuf format. You need these files when preparing the input bundletool requires to build your app bundle, as described in the following section.</p>
+<ul>
+<li>Package pre-compiled code and resources</li>
+</ul>
+<p>Before you use <code>bundletool</code> to generate an app bundle for your app, you must first provide ZIP files that each contain the compiled code and resources for a given app module. The content and organization of each module’s ZIP file is very similar to that of <a href="https://developer.android.com/guide/app-bundle#aab_format" target="_blank" rel="noopener">the Android App Bundle format</a>. For example, you should create a <code>base.zip</code> file for your app’s base module and organize its contents as follows:</p>
+<p>// TODO table</p>
+<p>After you prepare the ZIP file for each module of your app, you can pass them to <code>bundletool</code> to build your app bundle, as described in the following section.</p>
+<ul>
+<li>Build your app bundle using bundletool</li>
+</ul>
+<p>To build your app bundle, you use the <code>bundletool build-bundle</code> command, as shown below:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundletool build-bundle --modules=base.zip --output=mybundle.aab</span><br></pre></td></tr></table></figure>
+
+<p>The following table describes flag for the <code>build-bundle</code> command in more detail:</p>
+<p>//TODO table</p>
+<ul>
+<li>Customize downstream APK generation </li>
+</ul>
+<p>App bundles include a <code>BundleConfig.pb</code> file that provides metadata that app stores, such as Google Play, require when generating APKs from the bundle. Although <code>bundletool</code> create this file for you, you can configure some aspects of the metadata in a <code>BundleConfig.json</code> file and pass it to the <code>buldtool build-bundle</code> command -<code>buildtool</code> later converts and merges this file with the protobuf version included in each app bundle.</p>
+<p>For example, you can control which categories of configuration APKs to enable or disable. The following example of an <code>BundleConfig.json</code> file disables configuration APKs that each target a different langauge(that is, resources for all languages are included in their respective base or dynamic feature APKs):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "optimizations": &#123;</span><br><span class="line">    "splitsConfig": &#123;</span><br><span class="line">      "splitDimension": [&#123;</span><br><span class="line">        "value": "LANGUAGE",</span><br><span class="line">        "negate": true</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In your <code>BundleConfig.json</code> file, you can also specify which file types to leave uncompressed when packaging APKs using <a href="https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob" target="_blank" rel="noopener">glob patterns</a>, as follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "compression": &#123;</span><br><span class="line">    "uncompressedGlob": ["res/raw/**", "assets/**.uncompressed"]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Keep in mind, by default, bundletool does not compress your app’s native libraries (on Android 6.0 or higher) and resource table (resources.arsc). For a full description of what you can configure in your BundleConfig.json, inspect the <a href="https://github.com/google/bundletool/blob/master/src/main/proto/config.proto" target="_blank" rel="noopener">bundletool config.proto file</a>, which is written using <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Proto3</a> syntax.</p>
+<h4 id="Deploy-your-app-from-an-app-bundle"><a href="#Deploy-your-app-from-an-app-bundle" class="headerlink" title="Deploy your app from an app bundle"></a>Deploy your app from an app bundle</h4><p>If you’ve built and signed an app bundle, <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">use bundletool</a> to generate APKs and deploy them to a device.</p>
+<h3 id="Sign-your-app-from-command-line"><a href="#Sign-your-app-from-command-line" class="headerlink" title="Sign your app from command line"></a>Sign your app from command line</h3><p>You do not need Android Studio to sign your app. You can sign your app from  the command line, using <code>apksigner</code> for APKs or <code>jarsigner</code> for app undles, or configure Gradle to sign it for you during the build. Either way, you need to first generate a private key using <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html" target="_blank" rel="noopener">keytool</a> as shown below:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.jks</span><br><span class="line">-keyalg RSA -keysize 2048 -validity 10000 -alias my-alias</span><br></pre></td></tr></table></figure>
+
+<p>The example above prompts you for passwords for the keystore and key, and for the “Distinguished Name” field for your key. It then generates the keystore as a file called <code>my-release-key.jks</code>, saving it in the current directory(you can move it wherever you’d like). The keystore contains a single key that is valid for 10000 days.</p>
+<p>Now you can sign your APK or app bundle manually, or configure Gradle to sign your app during the build process, as described in the sections below.</p>
+<h4 id="Sign-your-app-manually-from-the-command-line"><a href="#Sign-your-app-manually-from-the-command-line" class="headerlink" title="Sign your app manually from the command line"></a>Sign your app manually from the command line</h4><p>If you want to sign an app bundle from the command line, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a>. If instead you want to sign an APK, you need to use <code>zipalign</code> and <code>apksigner</code> as described below.</p>
+<ol>
+<li>Open a command line-from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code> - and navigate to the directory where your unsigned APK is located.</li>
+<li>Align the unsigned APK using <a href="https://developer.android.com/studio/command-line/zipalign.html" target="_blank" rel="noopener">zipalign</a>:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zipalign -v -p 4 my-app-unsigned.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
+
+<p><code>zipalign</code> ensures that all uncompressed data starts with a particular byte alignment relative to the start of the file, which may reduce the amount of RAM consumed by an app.</p>
+<ol start="3">
+<li>Sign your APK with your private key using <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a>:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner sign --ks my-release-key.jks --out my-app-release.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
+
+<p>This example outputs the signed APK at <code>my-app-release.apk</code> after signing it with a private key and certificate that are stored in a single KeyStore file: <code>my-release-key.jks</code>.</p>
+<p>The <code>apksigner</code> tool supports other signing options, including signing an APK file using separate private key and certificate files, and signing an APK using multiple signers. For more details, see the <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a> reference.</p>
+<ol start="4">
+<li>Verify that your APK is signed:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner verify my-app-release.apk</span><br></pre></td></tr></table></figure>
+
+<h4 id="Configure-Gradle-to-sign-your-app"><a href="#Configure-Gradle-to-sign-your-app" class="headerlink" title="Configure Gradle to sign your app"></a>Configure Gradle to sign your app</h4><p>Open the module-level <code>build.gradle</code> file and add the <code>signingConfigs {}</code> block with entries for <code>storeFile</code>, <code>storePassword</code>, <code>keyAlias</code> and <code>keyPassword</code>, and then pass that object to the <code>signingConfig</code> property in your build type. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123; ... &#125;</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            // You need to specify either an absolute path or include the</span><br><span class="line">            // keystore file in the same directory as the build.gradle file.</span><br><span class="line">            storeFile file("my-release-key.jks")</span><br><span class="line">            storePassword "password"</span><br><span class="line">            keyAlias "my-alias"</span><br><span class="line">            keyPassword "password"</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, when you build your app by invoking a Gradle task, Gradle signs your app (and runs zipalign) for you.</p>
+<p>Additionally, because you’ve configured the release build with your signing key, the “install” task is available for that build type. So you can build, align, sign, and install the release APK on an emulator or device all with the <code>installRelease</code> task.</p>
+<p>An app signed with your private key is ready for distribution, but you should first read more about how to <a href="https://developer.android.com/studio/publish/index.html" target="_blank" rel="noopener">publish your app</a> and review the <a href="https://developer.android.com/distribute/tools/launch-checklist.html" target="_blank" rel="noopener">Google Play launch checklist</a>.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/16/About-Android-App-Bundles/" rel="next" title="About Android App Bundles">
+                <i class="fa fa-chevron-left"></i> About Android App Bundles
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/16/Getting-Started-with-the-NDK/" rel="prev" title="Getting Started with the NDK">
+                Getting Started with the NDK <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">Teaching is the best way to learn.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-your-app-from-the-command-line"><span class="nav-number">1.</span> <span class="nav-text">Build your app from the command line</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#About-build-types"><span class="nav-number">1.1.</span> <span class="nav-text">About build types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-and-deploy-an-APK"><span class="nav-number">1.2.</span> <span class="nav-text">Build and deploy an APK</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-a-debug-APK"><span class="nav-number">1.2.1.</span> <span class="nav-text">Build a debug APK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-a-release-APK"><span class="nav-number">1.2.2.</span> <span class="nav-text">Build a release APK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deploy-your-app-to-the-emulator"><span class="nav-number">1.2.3.</span> <span class="nav-text">Deploy your app to the emulator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deploy-your-app-to-a-physical-device"><span class="nav-number">1.2.4.</span> <span class="nav-text">Deploy your app to a physical device</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Build-an-app-bundle"><span class="nav-number">1.3.</span> <span class="nav-text">Build an app bundle</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-an-app-bundle-with-Gradle"><span class="nav-number">1.3.1.</span> <span class="nav-text">Build an app bundle with Gradle</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-an-app-bundle-using-bundletool"><span class="nav-number">1.3.2.</span> <span class="nav-text">Build an app bundle using bundletool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deploy-your-app-from-an-app-bundle"><span class="nav-number">1.3.3.</span> <span class="nav-text">Deploy your app from an app bundle</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sign-your-app-from-command-line"><span class="nav-number">1.4.</span> <span class="nav-text">Sign your app from command line</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Sign-your-app-manually-from-the-command-line"><span class="nav-number">1.4.1.</span> <span class="nav-text">Sign your app manually from the command line</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Configure-Gradle-to-sign-your-app"><span class="nav-number">1.4.2.</span> <span class="nav-text">Configure Gradle to sign your app</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

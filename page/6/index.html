@@ -273,6 +273,490 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/24/AsyncLayoutInflator原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/24/AsyncLayoutInflator原理/" itemprop="url">AsyncLayoutInflator原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-24T10:50:01+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/24/AsyncLayoutInflator原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/AsyncLayoutInflator原理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>AsyncInflatInflator源码其实很简单。 </p>
+<p>总结来说，就是开启一个线程，进行inflate操作，如果inflate失败，会调用原有线程的inflate操作. inflate成功后返回view, 没有attachToRoot, 需要自己去处理.<br>内部原理需要注意的地方，都以注释方式加上了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncLayoutInflater</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"AsyncLayoutInflater"</span>;</span><br><span class="line"></span><br><span class="line">    LayoutInflater mInflater;</span><br><span class="line">    Handler mHandler;</span><br><span class="line">    InflateThread mInflateThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AsyncLayoutInflater</span><span class="params">(@NonNull Context context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 原来的inflater</span></span><br><span class="line">        mInflater = <span class="keyword">new</span> BasicInflater(context);</span><br><span class="line">        mHandler = <span class="keyword">new</span> Handler(mhandlerCallback);</span><br><span class="line">        <span class="comment">// 单线程</span></span><br><span class="line">        mInflateThread = InflateThread.getInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@UiThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inflate</span><span class="params">(@LayoutRes <span class="keyword">int</span> resid, @Nullable ViewGroup parent, @NonNull OnInflateFinishedListener callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == callback) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"callback argument may not be null!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        InflateRequest request = mInflateThread.obtainRequest();</span><br><span class="line">        request.inflater = <span class="keyword">this</span>;</span><br><span class="line">        request.resid = resid;</span><br><span class="line">        request.parent = parent;</span><br><span class="line">        request.callback = callback;</span><br><span class="line">        mInflateThread.enqueue(request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnInflateFinishedListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onInflateFinished</span><span class="params">(@NonNull View view, @LayoutRes <span class="keyword">int</span> resid,</span></span></span><br><span class="line"><span class="function"><span class="params">                               @Nullable ViewGroup parent)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InflateRequest</span> </span>&#123;</span><br><span class="line">        AsyncLayoutInflater inflater;</span><br><span class="line">        ViewGroup parent;</span><br><span class="line">        <span class="keyword">int</span> resid;</span><br><span class="line">        View view;</span><br><span class="line">        OnInflateFinishedListener callback;</span><br><span class="line"></span><br><span class="line">        InflateRequest() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Handler.Callback mhandlerCallback = <span class="keyword">new</span> Handler.Callback() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            InflateRequest request = (InflateRequest)msg.obj;</span><br><span class="line">            <span class="keyword">if</span>(request.view == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// 如果inflate失败，会调用原来的inflater去inflate布局</span></span><br><span class="line">                <span class="comment">// 而且没有attachToRoot, 需要自己去处理返回的request.view</span></span><br><span class="line">                request.view = mInflater.inflate(request.resid, request.parent, <span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            request.callback.onInflateFinished(request.view, request.resid, request.parent);</span><br><span class="line">            mInflateThread.releaseRequest(request);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicInflater</span> <span class="keyword">extends</span> <span class="title">LayoutInflater</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] sClassPrefixList = &#123;</span><br><span class="line">                <span class="string">"android.widget."</span>,</span><br><span class="line">                <span class="string">"android.webkit."</span>,</span><br><span class="line">                <span class="string">"android.app."</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        BasicInflater(Context context) &#123;</span><br><span class="line">            <span class="keyword">super</span>(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> LayoutInflater <span class="title">cloneInContext</span><span class="params">(Context newContext)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BasicInflater(newContext);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> View <span class="title">onCreateView</span><span class="params">(String name, AttributeSet attrs)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(String prefix : sClassPrefixList) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">// 不是很清楚这里</span></span><br><span class="line">                    View view = createView(name, prefix, attrs);</span><br><span class="line">                    <span class="keyword">if</span>(view != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        <span class="keyword">return</span> view;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InflateThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> InflateThread sInstance;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            sInstance = <span class="keyword">new</span> InflateThread();</span><br><span class="line">            sInstance.start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InflateThread <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> sInstance;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//阻塞队列， 如果inflate request超过10个会阻塞</span></span><br><span class="line">        <span class="keyword">private</span> ArrayBlockingQueue&lt;InflateRequest&gt; mQueue = <span class="keyword">new</span> ArrayBlockingQueue&lt;InflateRequest&gt;(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对象池， 不用多次创建对象，内存优化</span></span><br><span class="line">        <span class="keyword">private</span> Pools.SynchronizedPool&lt;InflateRequest&gt; mRequestPool = <span class="keyword">new</span> Pools.SynchronizedPool&lt;InflateRequest&gt;(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">                runInner();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            InflateRequest request;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                request = mQueue.take();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                request.view = request.inflater.mInflater.inflate(request.resid, request.parent, <span class="keyword">false</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RuntimeException e) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 发送给调用处的handler</span></span><br><span class="line">            Message.obtain(request.inflater.mHandler, <span class="number">0</span>, request).sendToTarget();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> InflateRequest <span class="title">obtainRequest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            InflateRequest obj = mRequestPool.acquire();</span><br><span class="line">            <span class="keyword">if</span>(obj == <span class="keyword">null</span>) &#123;</span><br><span class="line">                obj = <span class="keyword">new</span> InflateRequest();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> obj;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(InflateRequest request)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mQueue.put(request);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                        <span class="string">"Failed to enqueue async inflate request"</span>, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">releaseRequest</span><span class="params">(InflateRequest obj)</span> </span>&#123;</span><br><span class="line">            obj.callback = <span class="keyword">null</span>;</span><br><span class="line">            obj.inflater = <span class="keyword">null</span>;</span><br><span class="line">            obj.parent = <span class="keyword">null</span>;</span><br><span class="line">            obj.resid = <span class="number">0</span>;</span><br><span class="line">            obj.view = <span class="keyword">null</span>;</span><br><span class="line">            mRequestPool.release(obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/24/读书笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/24/读书笔记/" itemprop="url">读书笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-24T10:10:04+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Reading/" itemprop="url" rel="index">
+                    <span itemprop="name">Reading</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/24/读书笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/读书笔记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>《Java编程的逻辑》<ul>
+<li><a href>容器类</a></li>
+<li><a href>并发</a></li>
+<li><a href>其他</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/24/抽象布局的使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/24/抽象布局的使用/" itemprop="url">抽象布局的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-24T09:41:49+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/24/抽象布局的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/24/抽象布局的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><ul>
+<li>include</li>
+<li>merge</li>
+<li>viewstub</li>
+</ul>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p>重用布局文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/layout_file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在<code>include</code>中指定<code>id</code>， 如果这样，会覆盖<code>layout_file</code>中的<code>id</code></p>
+<h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>减少视图层级, 多用于替换<code>FramenLayout</code>或者当一个布局包含另一个时</p>
+<p>Since the <code>FrameLayout</code> has the same dimension as its parent, by the virtue of using the <code>match_parent</code> constraints, and does not define any background, extra padding or a gravity, it is totally useless, we can use merge tag to replace it. (也就是说，当前布局根布局如果使用的是<code>Framelayout</code>而且与父布局完全一致，那么当前这层布局的根布局就可以省略，使用<code>merge</code>代替)</p>
+<p>When the <code>LayoutInflater</code> encounters this tag, it skips it and adds the <code>&lt;merge/&gt;</code> children to the <code>&lt;merge/&gt;</code> parent. (当<code>LayoutInflater</code>解析<code>xml</code>时，如果遇到了<code>merge</code>标签，那么他会忽略这个标签，而是把他的子布局添加到他的父布局里，具体参见<a href>setContentView与LayoutInflater加载解析机制源码解析</a>)</p>
+<p>You can’t use this trick if your layout was using a <code>LinearLayout</code> as its root tag. (根布局使用<code>LinearLayout</code>的时候不能用merge替代)</p>
+<p><code>&lt;merge&gt;</code> can only be used as the root tag of an XML layout.(<code>merge</code>标签只能用于根布局)</p>
+<p>When inflating a layout starting with a <code>&lt;merge/&gt;</code>, you must specify a parent ViewGroup and you must set attachToRoot to true.(使用<code>LayoutInflater</code>解析<code>xml</code>时，如果<code>xml</code>以<code>merge</code>开始，你必须在解析时指定<code>parent viewgroup</code>和<code>attachToRoot = true</code>)</p>
+<h2 id="viewstub"><a href="#viewstub" class="headerlink" title="viewstub"></a>viewstub</h2><p>需要的时候才加载</p>
+<p>It has no dimension, it does not draw anything and does not participate in the layout in any way.</p>
+<p><code>ViewStub</code>只能<code>inflate</code>一次，之后<code>ViewStub</code>对象就会被置为空, 换句话说，某个被<code>ViewStub</code>指定的布局被<code>inflate</code>后，就不能再通过<code>ViewStub</code>来控制它了.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ViewStub</span>&gt;</span></span><br><span class="line">  android:id=""</span><br><span class="line">  android:layout="to refreence what layout file to include and inflate"</span><br><span class="line">  android:inflatedId="can be used to override the id of the root of the included file"</span><br><span class="line"><span class="tag">&lt;/<span class="name">ViewStub</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>When you are ready to inflate the stub, simply invoke the inflate() method. you can also simply change the visiblity of the stub to VISIBLE or INVISIBLE and the stub will inflate.(使用的时候，你可以通过<code>inflate()</code>方法来加载这个布局，也可以简单的通过设置 <code>VISIBLE</code>和<code>INVISIBLE</code>来控制)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/21/《Java编程的逻辑》-容器类/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2105,221 +2589,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/05/04/Android性能优化/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/04/Android性能优化/" itemprop="url">Android优化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T16:32:21+08:00">
-                2019-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/04/Android性能优化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/04/Android性能优化/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Android-性能优化"><a href="#Android-性能优化" class="headerlink" title="Android 性能优化"></a>Android 性能优化</h2><p><a href="https://www.jianshu.com/p/797395731747" target="_blank" rel="noopener">https://www.jianshu.com/p/797395731747</a></p>
-<ul>
-<li>UI优化</li>
-<li>启动优化</li>
-<li>内存优化</li>
-<li>包体积优化</li>
-<li>线程优化</li>
-<li>内存优化</li>
-</ul>
-<h3 id="UI优化"><a href="#UI优化" class="headerlink" title="UI优化"></a>UI优化</h3><ul>
-<li><a href="http://blog.scions.cn/2019/06/04/setContentView%E4%B8%8ELayoutInflater%E5%8A%A0%E8%BD%BD%E8%A7%A3%E6%9E%90%E6%9C%BA%E5%88%B6%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">setContentView与LayoutInflater加载解析机制源码分析</a></li>
-<li><a href="done...">AsyncLayoutInflator原理</a></li>
-<li><a href="done...">抽象布局的使用</a></li>
-<li><a href="done........">动画原理分析</a></li>
-<li><a href="done......">View的绘制流程</a></li>
-<li><a href="done...">Fragment懒加载</a></li>
-<li><a href="progressing....">UI优化常用工具</a></li>
-<li><a href="progressing...">ANR原理分析与解决</a></li>
-<li><a href="progressing...">ReclerView与ListView的区别</a></li>
-<li>ViewPager &amp; ViewPager2源码分析</li>
-<li>[TextView优化](<a href="https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0</a>   不着急)</li>
-<li>[X2C框架原理分析](<a href="https://github.com/iReaderAndroid/X2C" target="_blank" rel="noopener">https://github.com/iReaderAndroid/X2C</a> 不着急. 原理是new 替代 反射)</li>
-</ul>
-<h3 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h3><ul>
-<li><a href="progressing...">App启动过程和Activity启动过程</a></li>
-<li><a href="done...">Activity栈和LaunchMode</a></li>
-<li><a href="progressing...">SharedPreferene原理</a></li>
-<li><a href="done...">EventBus2 &amp; EventBus3对比</a></li>
-</ul>
-<h3 id="包体积优化"><a href="#包体积优化" class="headerlink" title="包体积优化"></a>包体积优化</h3><ul>
-<li><a href="done...">Reduce your app size</a></li>
-<li><a href="done...">Configure your build-Overview</a></li>
-<li><a href="done...">Shrink, obfuscate, and optimize your app</a></li>
-<li>Redex的使用</li>
-<li>Lint的使用</li>
-</ul>
-<h3 id="线程优化"><a href="#线程优化" class="headerlink" title="线程优化"></a>线程优化</h3><ul>
-<li><a href="done...">Handler原理</a></li>
-<li><a href="done...">IdleHandler的使用</a></li>
-<li><a href="done...">AsyncTask原理</a></li>
-<li><a href="done...">HandlerThread原理</a></li>
-<li><a href="done...">IntentService的使用和原理</a></li>
-<li><a href="progressing...">Android中startService和bindService的区别</a></li>
-<li><a href="progressing...">线程池相关</a></li>
-</ul>
-<h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><ul>
-<li><a href="done...">对象池的使用</a></li>
-<li><a href="done...">Loading Large Bitmaps Efficiently</a></li>
-<li><a href="done...">Caching Bitmaps</a></li>
-<li><a href="progressing...">Managing Bitmap Memory</a></li>
-<li><a href="progressing...">Android常见内存泄漏</a></li>
-<li><a href="progressing...">图片的内存计算</a></li>
-<li><a href="progressing...">LruCache原理</a></li>
-<li><a href="progressing...">LeakCanary源码分析</a></li>
-<li><a href="done...">BlockCanary源码分析</a></li>
-<li>Java GC内存回收机制</li>
-<li>开源图片加载库源码分析</li>
-<li>内存分析工具的使用, MAT, TraceView, SystemTrace, HeapViewer, Heap SnapShot</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2365,7 +2639,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2376,7 +2650,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>

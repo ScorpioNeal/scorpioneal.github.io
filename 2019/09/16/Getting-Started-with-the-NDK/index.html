@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android,Optimize,">
+  <meta name="keywords" content="Android,">
 
 
 
@@ -79,15 +79,18 @@
 
 
 
-<meta name="keywords" content="Android,Optimize">
+<meta name="description" content="Getting Started with the NDKReference The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides platform libraries you can use to manage native">
+<meta name="keywords" content="Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Fragment懒加载实现">
-<meta property="og:url" content="http://blog.scions.cn/2019/06/04/Fragment懒加载实现/index.html">
+<meta property="og:title" content="Getting Started with the NDK">
+<meta property="og:url" content="http://blog.scions.cn/2019/09/16/Getting-Started-with-the-NDK/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="Getting Started with the NDKReference The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides platform libraries you can use to manage native">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-06-04T14:11:53.253Z">
+<meta property="og:updated_time" content="2019-09-16T12:54:33.213Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Fragment懒加载实现">
+<meta name="twitter:title" content="Getting Started with the NDK">
+<meta name="twitter:description" content="Getting Started with the NDKReference The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides platform libraries you can use to manage native">
 
 
 
@@ -117,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.scions.cn/2019/06/04/Fragment懒加载实现/">
+  <link rel="canonical" href="http://blog.scions.cn/2019/09/16/Getting-Started-with-the-NDK/">
 
 
 
 
 
-  <title>Fragment懒加载实现 | ScorpioNeal's Blog</title>
+  <title>Getting Started with the NDK | ScorpioNeal's Blog</title>
   
 
 
@@ -209,6 +212,26 @@
         </li>
       
         
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
@@ -251,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/04/Fragment懒加载实现/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/16/Getting-Started-with-the-NDK/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -268,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Fragment懒加载实现</h1>
+          <h1 class="post-title" itemprop="name headline">Getting Started with the NDK</h1>
         
 
         <div class="post-meta">
@@ -280,8 +303,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-04T22:11:25+08:00">
-                2019-06-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:53:53+08:00">
+                2019-09-16
               </time>
             
 
@@ -303,8 +326,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
                   </a>
                 </span>
 
@@ -316,11 +339,26 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/16/Getting-Started-with-the-NDK/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/Getting-Started-with-the-NDK/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
           
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
           
 
           
@@ -340,7 +378,14 @@
       
 
       
-        
+        <h2 id="Getting-Started-with-the-NDK"><a href="#Getting-Started-with-the-NDK" class="headerlink" title="Getting Started with the NDK"></a>Getting Started with the NDK</h2><p><a href="https://developer.android.google.cn/ndk/guides" target="_blank" rel="noopener">Reference</a></p>
+<p>The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">platform libraries</a> you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps. However, the NDK can be useful for cases in which you need to do one or more of the following:</p>
+<ul>
+<li>Squeeze extra performance out of a device to archive low latency or run computationally intensive applications, such as games or physics simulations.</li>
+<li>Reuse your own or other developers’ C or C++ libraries</li>
+</ul>
+<p>Using <a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">Android Studio 2.2 and higher</a>, you can use the NDK to compile C and C++ code into a native library and package it into your APK using Gradle, the IDE’s integrated build system</p>
+
       
     </div>
     
@@ -350,6 +395,35 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -358,8 +432,6 @@
         <div class="post-tags">
           
             <a href="/tags/Android/" rel="tag"># Android</a>
-          
-            <a href="/tags/Optimize/" rel="tag"># Optimize</a>
           
         </div>
       
@@ -372,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/04/Android性能优化/" rel="next" title="Android优化">
-                <i class="fa fa-chevron-left"></i> Android优化
+              <a href="/2019/09/16/Build-your-app-from-the-command-line/" rel="next" title="Build your app from the command line">
+                <i class="fa fa-chevron-left"></i> Build your app from the command line
               </a>
             
           </div>
@@ -410,6 +482,9 @@
           
 
   
+    <div class="comments" id="comments">
+    </div>
+  
 
 
 
@@ -432,13 +507,22 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">ScorpioNeal</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-description motion-element" itemprop="description">Teaching is the best way to learn.</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -448,7 +532,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -458,10 +542,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">1</span>
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
-                
+                </a>
               </div>
             
 
@@ -469,10 +553,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">2</span>
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
-                
+                </a>
               </div>
             
 
@@ -494,6 +578,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started-with-the-NDK"><span class="nav-number">1.</span> <span class="nav-text">Getting Started with the NDK</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -512,7 +612,7 @@
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
-
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
   
 </div>
 
@@ -529,8 +629,27 @@
 
 
 
-
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
 
 
 
@@ -668,6 +787,28 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
