@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android-NDK,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="ndk-buildReference The ndk-build script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the Android.mk and Application.mk configuration used by ndk">
+<meta name="keywords" content="Android-NDK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android-ndk-build">
+<meta property="og:url" content="http://blog.scions.cn/2019/09/17/Android-ndk-build/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="ndk-buildReference The ndk-build script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the Android.mk and Application.mk configuration used by ndk">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-05T07:53:12.705Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android-ndk-build">
+<meta name="twitter:description" content="ndk-buildReference The ndk-build script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the Android.mk and Application.mk configuration used by ndk">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/2019/09/17/Android-ndk-build/">
+
+
+
+
+
+  <title>Android-ndk-build | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/17/Android-ndk-build/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android-ndk-build</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T08:55:28+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/17/Android-ndk-build/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/17/Android-ndk-build/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="ndk-build"><a href="#ndk-build" class="headerlink" title="ndk-build"></a>ndk-build</h2><p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank" rel="noopener">Reference</a></p>
+<p>The <code>ndk-build</code> script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> and <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> configuration used by <code>ndk-build</code>.</p>
+<h3 id="Internals"><a href="#Internals" class="headerlink" title="Internals"></a>Internals</h3><p>Running the <code>ndk-build</code> script is equivalent to running the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>$GNUMAKE</code> points to GNU Make 3.81 or later, and <code>&lt;ndk&gt;</code> points to your NDK installation directory. You can use this information to invoke ndk-build from other shell scripts, or even your own make files.</p>
+<h3 id="Invoking-from-the-Command-Line"><a href="#Invoking-from-the-Command-Line" class="headerlink" title="Invoking from the Command Line"></a>Invoking from the Command Line</h3><p>The <code>ndk-build</code> script lives in the top level NDK install directory. To run it from the command line, invoke it while in or under your application project directory. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd &lt;project&gt;</span><br><span class="line"><span class="meta">$</span> &lt;ndk&gt;/ndk-build</span><br></pre></td></tr></table></figure>
+
+<p>In this example, <code>&lt;project&gt;</code> points to your project’s root directory, and <code>&lt;ndk&gt;</code> is the directory where you installed the NDK.</p>
+<h4 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h4><p>All parameters to ndk-build are passed directly to the underlying GNU <code>make</code> command that runs the NDK build scripts. Combine <code>ndk-build</code> and options in the form <code>ndk-build</code> <code>&lt;option&gt;</code>. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ndk-build clean</span><br></pre></td></tr></table></figure>
+
+<p>The following options are available:</p>
+<ul>
+<li>clean<br>  Remove any previously generated binaries. (On Mac OS X, running ndk-build clean with a high number of parallel executions may result in a build error that includes the following message: “rm: fts_read: No such file or directory” To avoid this issue, consider not using the -jN modifier or selecting a smaller value for N, such as 2.)</li>
+<li>V=1<br>  Launch build, and display build commands.</li>
+<li>-B<br>  Force a complete rebuild</li>
+<li>-B V=1<br>  Force a complete rebuild, and display build commands</li>
+<li>NDK_LOG=1<br>  Display internal NDK log messages(used for debugging the NDK iteself)</li>
+<li>NDK_DEBUG=1<br>  Force a debuggable build(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#dvr" target="_blank" rel="noopener">table1</a>)</li>
+<li>NDK_DEBUG=0<br>  Force a release build(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#dvr" target="_blank" rel="noopener">table1</a>)</li>
+<li>NDK_HOST_32BIT=1<br>  Always use the toolchain in 32-bit mode(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#6432" target="_blank" rel="noopener">64-bit and 32-bit Toolchains</a>)</li>
+<li>NDK_APPLICATION_MK=<file><br>  Build, using a specific <code>Application.mk</code> file pointed to by the <code>NDK_APPLICATION_MK</code> variable</file></li>
+<li>-C <project><br>  Build the native code for the project path located at <project>. Useful if you don’t want to <code>cd</code> to it in your terminal</project></project></li>
+</ul>
+<h4 id="Debuggable-versus-Release-builds"><a href="#Debuggable-versus-Release-builds" class="headerlink" title="Debuggable versus Release builds"></a>Debuggable versus Release builds</h4><p>//TODO</p>
+<h3 id="64-Bit-and-32-Bit-Toolchains"><a href="#64-Bit-and-32-Bit-Toolchains" class="headerlink" title="64-Bit and 32-Bit Toolchains"></a>64-Bit and 32-Bit Toolchains</h3><p>Some toolchains come with both 64-bit and 32-bit versions. For example, directories <code>&lt;ndk&gt;/toolchain/&lt;name&gt;/prebuilt/</code> and <code>&lt;ndk&gt;/prebuilt/</code> may contain both <code>linux-x86</code> and <code>linux-x86_64</code> folders for Linux tools in 32-bit and 64-bit modes, respectively. The ndk-build script automatically chooses a 64-bit version of the toolchain if the host OS supports. You can force the use of a 32-bit toolchain by using <code>NDK_HOST_32BIT=1</code> either in your environment or on the ndk-build command line.</p>
+<p>Note that 64-bit tools utilize host resources better (for instance, they are faster, and handle larger programs), and they can still generate 32-bit binaries for Android.</p>
+<h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3><p>You need GNU Make 3.81 or later to use ndk-build or the NDK in general. The build scripts will detect a non-compliant Make tool, and generate an error message.</p>
+<p>If you have GNU Make 3.81 installed, but the default <code>make</code> command doesn’t launch it, define <code>GNUMAKE</code> in your environment to point to it before launching ndk-build. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> export GNUMAKE=/usr/local/bin/gmake</span><br><span class="line"><span class="meta">$</span> ndk-build</span><br></pre></td></tr></table></figure>
+
+<p>You can override other host prebuilt tools in <code>$NDK/prebuilt/&lt;OS&gt;/bin/</code> with the following environment variables:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> export NDK_HOST_AWK=&lt;path-to-awk&gt;</span><br><span class="line"><span class="meta">$</span> export NDK_HOST_ECHO=&lt;path-to-echo&gt;</span><br><span class="line"><span class="meta">$</span> export NDK_HOST_CMP=&lt;path-to-cmp&gt;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android-NDK/" rel="tag"># Android-NDK</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/16/Android-Concepts/" rel="next" title="Android-Concepts">
+                <i class="fa fa-chevron-left"></i> Android-Concepts
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/17/Android-ndk-build-Application-mk/" rel="prev" title="Android-ndk-build Application.mk">
+                Android-ndk-build Application.mk <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">Teaching is the best way to learn.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ndk-build"><span class="nav-number">1.</span> <span class="nav-text">ndk-build</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Internals"><span class="nav-number">1.1.</span> <span class="nav-text">Internals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Invoking-from-the-Command-Line"><span class="nav-number">1.2.</span> <span class="nav-text">Invoking from the Command Line</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Options"><span class="nav-number">1.2.1.</span> <span class="nav-text">Options</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Debuggable-versus-Release-builds"><span class="nav-number">1.2.2.</span> <span class="nav-text">Debuggable versus Release builds</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#64-Bit-and-32-Bit-Toolchains"><span class="nav-number">1.3.</span> <span class="nav-text">64-Bit and 32-Bit Toolchains</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Requirement"><span class="nav-number">1.4.</span> <span class="nav-text">Requirement</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
