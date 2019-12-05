@@ -88,7 +88,8 @@
 <meta property="og:description" content="Fragments OverviewReference A Fragment represents a behavior or a portion of user interface in a FragmentActivity. You can combine multiple fragments in a single activity to build a multi-pane UI and">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://developer.android.com/images/fundamentals/fragments.png">
-<meta property="og:updated_time" content="2019-10-11T08:33:11.990Z">
+<meta property="og:image" content="https://developer.android.com/images/activity_fragment_lifecycle.png">
+<meta property="og:updated_time" content="2019-10-11T10:53:55.929Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Fragments-Overview">
 <meta name="twitter:description" content="Fragments OverviewReference A Fragment represents a behavior or a portion of user interface in a FragmentActivity. You can combine multiple fragments in a single activity to build a multi-pane UI and">
@@ -547,6 +548,8 @@
 <p>The flow of a fragment’s lifecycle, as it is affect by its host activity, is illustrated by figure 3. In this figure, you can see how each successive state of the activity determines which callback methods a fragment may receive. For example, when the activity has received its <code>onCreate()</code> callback, a fragment in the activity receives no more than the <code>onActivityCreated()</code> callback.</p>
 <p>Once the activity reaches the resume state, you can freely add and remove fragments to the activity. Thus, only while the activity is in the resumed state can the lifecycle of a fragment change independently.</p>
 <p>However, when the activity leaves the resumed state, the fragment again is pushed through its lifecycle by the activity.</p>
+<p>The effect of the activity lifecycle on the fragment lifecycle.</p>
+<p><img src="https://developer.android.com/images/activity_fragment_lifecycle.png" alt="Figure 3. The effect of the activity lifecycle on the fragment lifecycle."></p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>To bring everything discussed in this document together, here’s an example of an activity using two fragments to create a two-pane layout. The activity below includes one fragment to show a list of Shakespeare play titles and another to show a summary of the play when selected from the list. It also demonstrates how to provide different configurations of the fragments, based on the screen configuration.</p>
 <p>The main activity applies a layout in the usual way, during <code>onCreate()</code>:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line"></span><br><span class="line">    setContentView(R.layout.fragment_layout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -723,7 +726,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">82</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -734,7 +737,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
