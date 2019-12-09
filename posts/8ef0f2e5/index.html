@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AndroidBuild,AndroidTranslation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="About Android App BundlesReference An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play. Google P">
+<meta name="keywords" content="AndroidBuild,AndroidTranslation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Translation-About Android App Bundles">
+<meta property="og:url" content="http://blog.scions.cn/posts/8ef0f2e5/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="About Android App BundlesReference An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play. Google P">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://developer.android.com/images/app-bundle/aab_format-2x.png">
+<meta property="og:updated_time" content="2019-12-09T13:01:07.158Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Translation-About Android App Bundles">
+<meta name="twitter:description" content="About Android App BundlesReference An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play. Google P">
+<meta name="twitter:image" content="https://developer.android.com/images/app-bundle/aab_format-2x.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/posts/8ef0f2e5/">
+
+
+
+
+
+  <title>Translation-About Android App Bundles | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<div class="bg_content">
+<canvas id="canvas"></canvas>
+</div>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8ef0f2e5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Translation-About Android App Bundles</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:51:04+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/8ef0f2e5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8ef0f2e5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="About-Android-App-Bundles"><a href="#About-Android-App-Bundles" class="headerlink" title="About Android App Bundles"></a>About Android App Bundles</h2><p><a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Reference</a></p>
+<p>An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
+<p>Google Play’s new app serving model, called Dynamic Delivery, then uses your app bundle to generate and serve optimized APKs for each user’s device configuration, so they download only the code and resources they need to run your app. You no longer have to build , sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads.</p>
+<p>Additionally, you can add dynamic feature modules to your app project and include them in your app bundle. These modules contain features and assets that you can decide not to include when users first download and install your app. <a href="https://developer.android.com/guide/app-bundle#playcore" target="_blank" rel="noopener">Using the Play Core Library</a>, your app can later request to download those modules as dynamic feature APKs, and, through Dynamic Delivery, Google Play serves only the code and resources for that module to the device.</p>
+<p>Publishing with Android App Bundles also increases the app size limit to 150MB without having to use APK expansion files. Keep in mind, this limit applies only to the actual download size, not the publishing size. So, users can download apps as large as 150MB and , with dynamic delivery, all of that storage is used for only the code and resourcecs they need to run the app. When you combine this with support for <a href="https://developer.android.com/topic/performance/reduce-apk-size#reduce-binaries" target="_blank" rel="noopener">uncompressed native libraries</a>, larger apps ,such as games, can reduce disk usage and increase user retention.</p>
+<p>If you are using Android Studio 3.2 or higher , most app projects require little effort to support Dynamic Delivery, and you can build an Android App Bundle in just a few clicks. However, adding dynamic feature modules requires a little more effort and possibly refactoring your app.</p>
+<p>This page describes the steps to get started building Android App Bundles and describes some important concepts related to app bundles and Dynamic Delivery.</p>
+<h3 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h3><p>To build app bundles and support Dynamic Delivery, follow these steps: </p>
+<ol>
+<li><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Download Android Studio 3.2 or higher</a> - it’s the easiest way to add dyanmic feature modules and build app bundles.</li>
+<li><a href="https://developer.android.com/studio/projects/dynamic-delivery" target="_blank" rel="noopener">Add support for Dynamic Delivery</a> by including a base module, organizing code and resources for configuration APKs, and, optionally, adding dynamic feature modules.</li>
+<li><a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">Build an Android App Bundle</a> using Android. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundle from the command line</a>.</li>
+<li><a href="https://developer.android.com/guide/app-bundle#bundletool" target="_blank" rel="noopener">Test your Android App Bundle</a> by using it to generate APKs that you deploy to a device.</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/7384423" target="_blank" rel="noopener">Enroll into app signing by Google Play</a>. Otherwise, you can’t upload your app bundle to the Play Console.</li>
+<li><a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">Publishing your app bundle to Google Play</a>.</li>
+</ol>
+<h3 id="The-Android-App-Bundle-format"><a href="#The-Android-App-Bundle-format" class="headerlink" title="The Android App Bundle format"></a>The Android App Bundle format</h3><p>An Android APP Bundle is a file(with the <code>.aab</code> file extension) that you upload to Google Play to support Dynamic Delivery.</p>
+<p>App bundles are signed binaries that organize your app’s code and resources into modules, as illustrated in figure 1.Code and resources for each module are organized similarly to what you would find in an APK-and that makes sense because each of these modules may be generated as separate APKs. Google Play then uses the app bundle to generate the various APKs that are served to users, such as the base APK, dynamic feature APKs, configuration APKs, and (for devices that do not support split APKs) multi-APKs. The directories that are colored in blue-such as the <code>drawable/</code>, <code>values/</code>, and <code>lib</code> directories-represent code and resources that Google Play uses to create configuration APKs for each module.</p>
+<p><img src="https://developer.android.com/images/app-bundle/aab_format-2x.png" alt="The contents of an Android App Bundle with one base module and two dynamic feature modules."></p>
+<p>The following list describes some of the app bundle’s files and directories in more detail:</p>
+<ul>
+<li>base/, feature1/, and feature2/: Each of these top-level directories represents a different module of your app. The base module for your app is always contained in a <code>base</code> directory of the app bundle. However, the directory for each dynamic feature module is given the name specified by the <code>split</code> attribute in the module’s manifest. To learn more, read about the <a href="https://developer.android.com/guide/app-bundle/configure#dynamic_feature_manifest" target="_blank" rel="noopener">Dynamic feature module manifest</a>.</li>
+<li>BUNDLE-METADATA/: This directory includes metadata files that contain information useful for tools or app stores. Such metadata files may include ProGuard mappings and the complete list of your app’s DEX files. Files in this directory are not packaged into your app’s APKs.</li>
+<li>Module Protocal Buffer(*.pb) files: These files provide metadata that helps describe the contents of each app module to app stores, such as Google Play. For example, <code>BundleConfig.pb</code> provides information about the bundle itself, such as which version of the build tools were used to build the app bundle, and <code>native.pb</code> and <code>resources.pb</code> describe the code and resources in each module, which is useful when Google Play optimizes APKs for different device configurations.</li>
+<li>manifest/: Unlike APKs, app bundles store the <code>AndroidManifest.xml</code> file of each module in this separate directory.</li>
+<li>dex/ : Unlike APKs, app bundles store the DEX files for each module in this separate directory</li>
+<li>res/, lib/ and assets/: These directories are dientical to those in a typical APK. When you upload your app bundle, Google Play inspects these directories and packages only the files that satisfy the target device configuration, while preserving file paths.</li>
+<li>root/: This directory stores files that are later relocated to the root of any APK that includes the module that this directory is located in. For example, the <code>base/root</code> directory of an app bundle may include Java-based resources that your app loads using <a href="https://developer.android.com/reference/java/lang/Class.html#getResource(java.lang.String)" target="_blank" rel="noopener">Class.getResource()</a>. Those files are later relocated to the root directory of your app’s base APK and every multi-APK that Google Play generates. Paths within this directory are also preserved. That is, directories(and their subdirectories) are also relocated to the root of the APk.</li>
+</ul>
+<h4 id="Build-and-deploy-Android-App-Bundles"><a href="#Build-and-deploy-Android-App-Bundles" class="headerlink" title="Build and deploy Android App Bundles"></a>Build and deploy Android App Bundles</h4><p>An app bundle is different from an APK in that you can’t deploy one to a device. Rather, it’s a upload format that includes all your app’s compiled code and resources in a single build artifact. So, after you upload your signed app bundle , Google Play has everything it needs to build and sign your app’s APKs, and serve them to users through Dynamic Delivery.</p>
+<p>If you’re using Android Studio, you can <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">build your project</a> as a signed app bundle in just a few clicks. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app from the command line.</a> Then, simply <a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">upload your app bundle</a> to the Play Console to test or publish your app with Dynamic Delivery.</p>
+<h3 id="Test-your-app-bundle"><a href="#Test-your-app-bundle" class="headerlink" title="Test your app bundle"></a>Test your app bundle</h3><p>After you build your Android App Bundle, you should test how Google Play will use it to generate APKs and how those APKs will behave when deployed to a device.</p>
+<p>To test your app bundle, use any of the following methods:</p>
+<ul>
+<li><a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">Test your Android App Bundle locally using bundletool</a> to generate APKs from your app bundle and deploy them to a connected device.</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/9303479" target="_blank" rel="noopener">Share your app with a URL</a>. This is the fastest way to upload your app bundle and share your app as a Google Play Store link with trusted tester. Additionally, this is the fastest way to test custom delivery options, such as dowloading features on demand.</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/3131213" target="_blank" rel="noopener">Set up an open, closed, or internal test.</a>. This is another method to test custom delivery options, such as dowloading features on demand.</li>
+</ul>
+<h3 id="Download-dynamic-feature-modules-with-the-Play-Core-Library"><a href="#Download-dynamic-feature-modules-with-the-Play-Core-Library" class="headerlink" title="Download dynamic feature modules with the Play Core Library"></a>Download dynamic feature modules with the Play Core Library</h3><p>If your app includes dynamic features, it needs to use the Play Core Library to request, monitor, and manage dynamic feature module downloads. To learn more, go to [Download modules with the Play Core Library].(<a href="https://developer.android.com/guide/app-bundle/playcore" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore</a>)</p>
+<p>If you want to see the library in action, try the <a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">Play Core Library sample app</a>.</p>
+<h3 id="A-note-about-instant-Apps"><a href="#A-note-about-instant-Apps" class="headerlink" title="A note about instant Apps"></a>A note about instant Apps</h3><p>In Android Studio 3.2 or higher, you can <a href="https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle" target="_blank" rel="noopener">add an instant experience</a> to an app bundle , as long as your app’s size is smaller enough. For details on the size limits for the different types of instant experiences that you can create, see <a href="https://developer.android.com/topic/google-play-instant/overview#reduce-size" target="_blank" rel="noopener">Overview of Google Play Instant</a>.</p>
+<h3 id="Compressed-download-size-restriction"><a href="#Compressed-download-size-restriction" class="headerlink" title="Compressed download size restriction"></a>Compressed download size restriction</h3><p>While publishing with Android App Bundles helps your users install your app with the smallest download possible, <code>compressed downloads are limited to 150MB</code>. That is , when a user downloads your app, the total size of the compressed APKs required to install your app(for example, the base APK + configuration APK(s)) must be no more than 150MB. Any subsequent downloads, such as downloading a dynamic feature (and its configuration APK(s)) on demand, must also meet this compressed download size restriction.</p>
+<p>When you upload your app bundle, if the Play Console finds any of the possible downloads of your app or its on demand features to be more than 150MB, you get an error.</p>
+<p>Keep in mind, <code>Android App Bundles do not support APK expansion(.obb) files</code>. So, if you encounter this error when publishing your app bundle, use one of the following resources to reduce compressed APK download size:</p>
+<ul>
+<li>Make sure you <a href="https://developer.android.com/studio/projects/dynamic-delivery#disable_config_apks" target="_blank" rel="noopener">enable all configuration APKs </a> by setting <code>enableSplit = true</code> for each type of configuration APK. This makes sure that users download only the code and resources they need to run your app on their device.</li>
+<li>Make sure you <a href="https://developer.android.com/studio/build/shrink-code" target="_blank" rel="noopener">shrink your app</a> by removing unused code and resources.</li>
+<li>Follow best practices to further [reduce app size].(<a href="https://developer.android.com/topic/performance/reduce-apk-size" target="_blank" rel="noopener">https://developer.android.com/topic/performance/reduce-apk-size</a>)</li>
+<li>Consider converting features that are used by only some of your users into <a href="https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules" target="_blank" rel="noopener">dynamic feature modules</a> that your app can download later, on demand. Keep in mind ,this may require some refactoring of your app, so make sure to first try the other suggestions described above.</li>
+</ul>
+<h3 id="Known-issues"><a href="#Known-issues" class="headerlink" title="Known issues"></a>Known issues</h3><p>The following are the currently known issues when building Android App Bundles or serving your app using Dynamic Delivery. If you experience issues that are not described below, please <a href="https://issuetracker.google.com/issues/new?component=398856&template=1084213" target="_blank" rel="noopener">report a bug</a>.</p>
+<ul>
+<li>If you use tools that dynamically modify resource tables, APKs generated from app bundles might behave unexpectedly. So, when building an app bundle, it is recommended taht you disable such tools.</li>
+<li>In a dynamic feature module’s manifest, you should not reference resources that don’t exist in the base module. That’s because , when Google Play generates your app’s base APK, it merges manifests for all modules into that of the base APK. So, resource linking breaks if the base APK’s manifest references resources taht don’t exist in the base APK.</li>
+<li>As of Android Studio 3.2 Canary 14, when your <a href>change the build variant</a> for your app’s base module, the same build variant is not automatically selected for dynamic feature modules that depand on the base module. So, you might receive an error when building your app. Simply make sure that you select the same build variant for the base module and other modules that depend on it.</li>
+<li>It is currently possible to configure properties in a dynamic feature module’s build coniguration that conflict with those from the base(or other) modules. For example, you can set <code>buildTypes.release.debuggable = true</code> in the base module and set it to <code>false</code> in a dynamic feature module. Such conflicts might cause build and runtime issues. Keep in mind, by default, dynamic feature modules inherit some build configurations from the base module. So, make sure you understand which configurations you should keep, and which ones you should omit, in your <a href="https://developer.android.com/guide/app-bundle/configure#feature_build_config" target="_blank" rel="noopener">Dynamic feature module build configuration</a>.</li>
+<li>Because app installs may require downloading more than onre APK(such the base APK and a few of its configuration APKs), you should be careful when manually transferring your app’s APKs onto a device(also known as sideloading). Otherwise, your app may experience runtime issues due to missing code and resources.</li>
+<li>Currently, Google Play inclues all the code and resources for a dynamic feature module in a single APK. In the near future, for devices running Android 5.0 (API level 21) and higher, serving will be optimized to use configuration APKs.</li>
+<li>Downloading dynamic feature modules requires devices to have a recent version of the Play Store app installed. So, if your app includes dynamic feature modules, downloads for a very small percentage of users may fall back to a single optimized multi-APK, which is the same download experience for devices running Android 4.4 (API level 20) and lower.</li>
+</ul>
+<h3 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h3><p>To learn more about Android App Bundles, consult the following resources.</p>
+<ul>
+<li>Samples  <ul>
+<li><a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">PlayCore API sample</a>, which demonstrates usage of the PlayCore API to request and download dynamic features.</li>
+<li><a href="https://github.com/googlesamples/android-dynamic-code-loading" target="_blank" rel="noopener">Dynamic code loading sample</a>, which demonstrates three different approaches to safely access code from an installed dynamic feature module.</li>
+</ul>
+</li>
+<li>Codelabs<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/your-first-dynamic-app/index.html" target="_blank" rel="noopener">Your First Android App Bundle</a>, a codelab that explores the basic principles of Android App Bundles and shows you how to quickly get started with building your own using Android Stuio. This codelab also explores how to test your app bundles <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">using bundletool</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery/index.html" target="_blank" rel="noopener">On demand modules</a>, which helps you create an app that downloads and installs dynamic features on demand.</li>
+</ul>
+</li>
+<li>Blog posts<ul>
+<li><a href="https://medium.com/googleplaydev/what-a-new-publishing-format-means-for-the-future-of-android-2e34981793a" target="_blank" rel="noopener">What a new publishing format means for the future of Android</a></li>
+<li><a href="https://android-developers.googleblog.com/2019/05/whats-new-in-play.html" target="_blank" rel="noopener">New features to help you develop, release, and grow your business on Google Play</a></li>
+<li><a href="https://android-developers.googleblog.com/2019/03/the-latest-android-app-bundle-updates.html" target="_blank" rel="noopener">The latest Android App Bundle updates including the additional languages API</a></li>
+<li><a href="https://medium.com/androiddevelopers/a-patchwork-plaid-monolith-to-modularized-app-60235d9f212e" target="_blank" rel="noopener">Patchwork Plaid — A modularization story</a></li>
+<li><a href="https://medium.com/androiddevelopers/google-santa-tracker-moving-to-an-android-app-bundle-dde180716096" target="_blank" rel="noopener">Google Santa Tracker — Moving to an Android App Bundle</a></li>
+</ul>
+</li>
+<li>Videos<ul>
+<li><a href="https://www.youtube.com/watch?v=flhib2krW7U" target="_blank" rel="noopener">Customizable Delivery with the App Bundle and Easy Sharing of Test Builds</a></li>
+<li><a href="https://www.youtube.com/watch?v=rEuwVWpYBOY" target="_blank" rel="noopener">New Tools to Optimize Your App’s Size and Boost Installs on Google Play</a></li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AndroidBuild/" rel="tag"># AndroidBuild</a>
+          
+            <a href="/tags/AndroidTranslation/" rel="tag"># AndroidTranslation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/5f3606d7/" rel="next" title="Algorithm-LeetCode-206 Reverse Linked List">
+                <i class="fa fa-chevron-left"></i> Algorithm-LeetCode-206 Reverse Linked List
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/70d0c793/" rel="prev" title="Translation-Build your app from the command line">
+                Translation-Build your app from the command line <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">体系(点 - 线 - 面)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#About-Android-App-Bundles"><span class="nav-number">1.</span> <span class="nav-text">About Android App Bundles</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Get-started"><span class="nav-number">1.1.</span> <span class="nav-text">Get started</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Android-App-Bundle-format"><span class="nav-number">1.2.</span> <span class="nav-text">The Android App Bundle format</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Build-and-deploy-Android-App-Bundles"><span class="nav-number">1.2.1.</span> <span class="nav-text">Build and deploy Android App Bundles</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-your-app-bundle"><span class="nav-number">1.3.</span> <span class="nav-text">Test your app bundle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Download-dynamic-feature-modules-with-the-Play-Core-Library"><span class="nav-number">1.4.</span> <span class="nav-text">Download dynamic feature modules with the Play Core Library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A-note-about-instant-Apps"><span class="nav-number">1.5.</span> <span class="nav-text">A note about instant Apps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compressed-download-size-restriction"><span class="nav-number">1.6.</span> <span class="nav-text">Compressed download size restriction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Known-issues"><span class="nav-number">1.7.</span> <span class="nav-text">Known issues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Additional-resources"><span class="nav-number">1.8.</span> <span class="nav-text">Additional resources</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+  <script type="text/javascript" src="/js/src/love-click.js"></script>
+</body>
+</html>
