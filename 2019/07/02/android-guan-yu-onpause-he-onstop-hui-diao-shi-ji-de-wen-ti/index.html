@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="https://blog.csdn.net/u014630987/article/details/82056501">
+<meta name="description" content="问题我们知道一个Activity的启动会执行onCreate -&amp;gt; onStart -&amp;gt;  onResume 一个Activity的停止会执行 onPause -&amp;gt; onStop -&amp;gt; onDestroy 那么，ActivityA启动ActivityB的时候，ActivityB的onCreate与ActivityA的onPause还是onStop哪个在前呢? 区别先看下on">
 <meta name="keywords" content="AndroidActivity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android-关于onPause和onStop回调时机的问题">
+<meta property="og:title" content="Android 关于onPause和onStop回调时机的问题">
 <meta property="og:url" content="http://blog.scions.cn/2019/07/02/android-guan-yu-onpause-he-onstop-hui-diao-shi-ji-de-wen-ti/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="https://blog.csdn.net/u014630987/article/details/82056501">
+<meta property="og:description" content="问题我们知道一个Activity的启动会执行onCreate -&amp;gt; onStart -&amp;gt;  onResume 一个Activity的停止会执行 onPause -&amp;gt; onStop -&amp;gt; onDestroy 那么，ActivityA启动ActivityB的时候，ActivityB的onCreate与ActivityA的onPause还是onStop哪个在前呢? 区别先看下on">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T08:11:03.587Z">
+<meta property="og:updated_time" content="2019-12-09T11:59:16.760Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android-关于onPause和onStop回调时机的问题">
-<meta name="twitter:description" content="https://blog.csdn.net/u014630987/article/details/82056501">
+<meta name="twitter:title" content="Android 关于onPause和onStop回调时机的问题">
+<meta name="twitter:description" content="问题我们知道一个Activity的启动会执行onCreate -&amp;gt; onStart -&amp;gt;  onResume 一个Activity的停止会执行 onPause -&amp;gt; onStop -&amp;gt; onDestroy 那么，ActivityA启动ActivityB的时候，ActivityB的onCreate与ActivityA的onPause还是onStop哪个在前呢? 区别先看下on">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Android-关于onPause和onStop回调时机的问题 | ScorpioNeal's Blog</title>
+  <title>Android 关于onPause和onStop回调时机的问题 | ScorpioNeal's Blog</title>
   
 
 
@@ -293,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android-关于onPause和onStop回调时机的问题</h1>
+          <h1 class="post-title" itemprop="name headline">Android 关于onPause和onStop回调时机的问题</h1>
         
 
         <div class="post-meta">
@@ -380,7 +380,25 @@
       
 
       
-        <p><a href="https://blog.csdn.net/u014630987/article/details/82056501" target="_blank" rel="noopener">https://blog.csdn.net/u014630987/article/details/82056501</a></p>
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我们知道一个<code>Activity</code>的启动会执行<code>onCreate</code> -&gt; <code>onStart</code> -&gt;  <code>onResume</code></p>
+<p>一个<code>Activity</code>的停止会执行 <code>onPause</code> -&gt; <code>onStop</code> -&gt; <code>onDestroy</code></p>
+<p>那么，<code>ActivityA</code>启动<code>ActivityB</code>的时候，<code>ActivityB</code>的<code>onCreate</code>与<code>ActivityA</code>的<code>onPause</code>还是<code>onStop</code>哪个在前呢?</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>先看下onPause和onStop官方文档的解释</p>
+<ul>
+<li><p>onPause</p>
+<p>  Called when the activity loses foreground state, is no longer focusable or before transition to stopped/hidden or destroyed state. The activity is still visible to user, so it’s recommended to keep it visually active and continue updating the UI. <code>Implementations of this method must be very quick because the next activity will not be resumed until this method returns.</code> 也就是说这个onPause方法里不能执行太复杂的方法，因为另一个Activity的onResume要等这个Activity的onPause执行完才会执行，也就是如果这里做了大量的操作，启动下一个Activity就会被卡住</p>
+</li>
+<li><p>onStop</p>
+<p>  Called when the activity is no longer visible to the user. This may happen either because a new activity is being started on top, an existing one is being brought in front of this one, or this one is being destroyed. <code>This is typically used to stop animations and refreshing the UI, etc.</code> 常在这里来停止动画和停止刷新UI.</p>
+</li>
+</ul>
+<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>代码很简单.</p>
+<p>结论是</p>
+<p><code>ActivityA onPause</code> -&gt; <code>ActivityB onCreate</code> -&gt; <code>ActivityB onStart</code> -&gt; <code>ActivityB onResume</code> -&gt; <code>ActivityA onStop</code></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>其实从官方文档就可以看出, <code>ActivityB</code>会在<code>ActivityA</code>的<code>onPause</code>执行之后才会执行，所以文档里建议不要再<code>onPause</code>里做耗时操作，不然会影响<code>Activity</code>启动速度. 那为什么<code>onStop</code>会在<code>ActivityA</code>执行完<code>create, start, resume</code>之后才会执行呢？也是为了让画面更流畅，用户可以点击跳转后可以快速的切换到下一个<code>Activity</code>，体验更流畅些，在<code>ActivityA</code>看不到的时候，才去做一些A中的<code>onStop</code>里执行的方法.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://blog.csdn.net/u014630987/article/details/82056501" target="_blank" rel="noopener">https://blog.csdn.net/u014630987/article/details/82056501</a></li>
+</ul>
 
       
     </div>
@@ -507,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -568,6 +595,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">2.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证"><span class="nav-number">3.</span> <span class="nav-text">验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

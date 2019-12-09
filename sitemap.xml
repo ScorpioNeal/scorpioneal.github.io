@@ -2,9 +2,205 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.scions.cn/2019/07/08/java-sleep-he-wait-de-qu-bie/</loc>
+    
+    <lastmod>2019-12-09T12:45:49.057Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/12/06/java-jvm-xiang-guan/</loc>
+    
+    <lastmod>2019-12-09T12:45:35.424Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/12/java-java-nei-bu-lei/</loc>
+    
+    <lastmod>2019-12-09T12:45:02.810Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/16/java-java-zhong-de-ji-chong-yin-yong/</loc>
+    
+    <lastmod>2019-12-09T12:44:56.345Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/09/23/java-java-zhong-exception-error-de-qu-bie/</loc>
+    
+    <lastmod>2019-12-09T12:44:03.291Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/12/java-java-finally-final-finalize/</loc>
+    
+    <lastmod>2019-12-09T12:37:39.732Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/01/java-hashmap-hashtable-hashmap-concurrenthashmap/</loc>
+    
+    <lastmod>2019-12-09T12:37:29.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/16/java-gc-yuan-li/</loc>
+    
+    <lastmod>2019-12-09T12:37:22.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/12/android-jin-cheng-jian-tong-xin/</loc>
+    
+    <lastmod>2019-12-09T12:37:08.892Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/10/android-jie-mian-gua-pei/</loc>
+    
+    <lastmod>2019-12-09T12:37:04.730Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/12/08/android-shen-ru-li-jie-scroller-yuan-li/</loc>
+    
+    <lastmod>2019-12-09T12:36:50.541Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/12/android-wu-mai-dian-jian-kong/</loc>
+    
+    <lastmod>2019-12-09T12:36:44.914Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/16/android-cha-jian-hua/</loc>
+    
+    <lastmod>2019-12-09T12:36:40.908Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/24/android-chou-xiang-bu-ju-de-shi-yong/</loc>
+    
+    <lastmod>2019-12-09T12:36:35.535Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/05/04/android-xing-neng-you-hua/</loc>
+    
+    <lastmod>2019-12-09T12:36:29.488Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/01/android-chang-jian-nei-cun-xie-lou/</loc>
+    
+    <lastmod>2019-12-09T12:36:24.183Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/12/android-dong-hua-yuan-li-fen-xi/</loc>
+    
+    <lastmod>2019-12-09T12:36:20.445Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/04/android-setcontentview-yu-layoutinflater-jia-zai-jie-xi-ji-zhi-yuan-ma-fen-xi/</loc>
+    
+    <lastmod>2019-12-09T12:34:42.301Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/13/android-serializable-he-parcelable-xing-neng-chai-yi/</loc>
+    
+    <lastmod>2019-12-09T12:34:38.232Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.scions.cn/2019/10/12/android-retrofit/</loc>
     
-    <lastmod>2019-12-09T09:33:21.810Z</lastmod>
+    <lastmod>2019-12-09T12:34:33.359Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/16/android-requestlayout-he-invalidate-yuan-li/</loc>
+    
+    <lastmod>2019-12-09T12:34:28.850Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/16/android-art-he-dalvik-de-qu-bie/</loc>
+    
+    <lastmod>2019-12-09T12:02:06.846Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/01/android-app-qi-dong-guo-cheng-he-activity-qi-dong-guo-cheng/</loc>
+    
+    <lastmod>2019-12-09T12:02:02.552Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/25/android-ui-you-hua-chang-yong-gong-ju/</loc>
+    
+    <lastmod>2019-12-09T12:01:28.856Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/01/android-startservice-he-bindservice-de-qu-bie/</loc>
+    
+    <lastmod>2019-12-09T12:01:24.155Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/26/android-sharedpreference-yuan-li/</loc>
+    
+    <lastmod>2019-12-09T12:01:15.619Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/26/android-activity-zhan-he-qi-dong-mo-shi/</loc>
+    
+    <lastmod>2019-12-09T12:00:02.622Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/06/27/android-handlerthread-yuan-li/</loc>
+    
+    <lastmod>2019-12-09T11:59:56.088Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.scions.cn/2019/07/02/android-guan-yu-onpause-he-onstop-hui-diao-shi-ji-de-wen-ti/</loc>
+    
+    <lastmod>2019-12-09T11:59:16.760Z</lastmod>
     
   </url>
   
@@ -23,30 +219,9 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/12/08/android-shen-ru-li-jie-scroller-yuan-li/</loc>
-    
-    <lastmod>2019-12-08T02:01:45.602Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/12/06/java-jvm-xiang-guan/</loc>
-    
-    <lastmod>2019-12-06T06:40:46.590Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/12/06/android-data-binding-xiang-guan/</loc>
     
     <lastmod>2019-12-06T05:29:59.545Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/05/04/android-xing-neng-you-hua/</loc>
-    
-    <lastmod>2019-12-06T05:25:44.169Z</lastmod>
     
   </url>
   
@@ -61,13 +236,6 @@
     <loc>http://blog.scions.cn/2019/09/16/translation-nkd-concepts/</loc>
     
     <lastmod>2019-12-06T05:22:10.535Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/12/android-wu-mai-dian-jian-kong/</loc>
-    
-    <lastmod>2019-12-06T02:37:00.408Z</lastmod>
     
   </url>
   
@@ -149,13 +317,6 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/07/02/android-guan-yu-onpause-he-onstop-hui-diao-shi-ji-de-wen-ti/</loc>
-    
-    <lastmod>2019-12-05T08:11:03.587Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/07/08/android-shi-jian-fen-fa-ji-zhi/</loc>
     
     <lastmod>2019-12-05T08:11:01.508Z</lastmod>
@@ -170,65 +331,9 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/06/25/android-ui-you-hua-chang-yong-gong-ju/</loc>
-    
-    <lastmod>2019-12-05T08:11:00.186Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/07/01/android-dui-xiang-chi-de-shi-yong/</loc>
     
     <lastmod>2019-12-05T08:10:59.367Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/16/android-cha-jian-hua/</loc>
-    
-    <lastmod>2019-12-05T08:10:58.735Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/12/android-jin-cheng-jian-tong-xin/</loc>
-    
-    <lastmod>2019-12-05T08:10:57.619Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/10/android-jie-mian-gua-pei/</loc>
-    
-    <lastmod>2019-12-05T08:10:56.950Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/06/12/android-dong-hua-yuan-li-fen-xi/</loc>
-    
-    <lastmod>2019-12-05T08:10:55.585Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/01/android-startservice-he-bindservice-de-qu-bie/</loc>
-    
-    <lastmod>2019-12-05T08:10:53.734Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/06/26/android-sharedpreference-yuan-li/</loc>
-    
-    <lastmod>2019-12-05T08:10:53.052Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/06/04/android-setcontentview-yu-layoutinflater-jia-zai-jie-xi-ji-zhi-yuan-ma-fen-xi/</loc>
-    
-    <lastmod>2019-12-05T08:10:52.321Z</lastmod>
     
   </url>
   
@@ -345,34 +450,6 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/06/24/android-chou-xiang-bu-ju-de-shi-yong/</loc>
-    
-    <lastmod>2019-12-05T08:10:38.603Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/01/android-chang-jian-nei-cun-xie-lou/</loc>
-    
-    <lastmod>2019-12-05T08:10:37.238Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/13/android-serializable-he-parcelable-xing-neng-chai-yi/</loc>
-    
-    <lastmod>2019-12-05T08:10:36.569Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/16/android-requestlayout-he-invalidate-yuan-li/</loc>
-    
-    <lastmod>2019-12-05T08:10:34.486Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/07/01/android-recyclerview-yu-listview-de-qu-bie/</loc>
     
     <lastmod>2019-12-05T08:10:33.786Z</lastmod>
@@ -383,13 +460,6 @@
     <loc>http://blog.scions.cn/2019/06/27/android-handler-yuan-li/</loc>
     
     <lastmod>2019-12-05T08:10:32.469Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/06/27/android-handlerthread-yuan-li/</loc>
-    
-    <lastmod>2019-12-05T08:10:31.755Z</lastmod>
     
   </url>
   
@@ -408,13 +478,6 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/06/26/android-activity-zhan-he-qi-dong-mo-shi/</loc>
-    
-    <lastmod>2019-12-05T08:10:27.905Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/07/10/android-blockcanary-yuan-ma-fen-xi/</loc>
     
     <lastmod>2019-12-05T08:10:26.588Z</lastmod>
@@ -425,20 +488,6 @@
     <loc>http://blog.scions.cn/2019/06/27/android-asynctask-yuan-li/</loc>
     
     <lastmod>2019-12-05T08:10:25.272Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/01/android-app-qi-dong-guo-cheng-he-activity-qi-dong-guo-cheng/</loc>
-    
-    <lastmod>2019-12-05T08:10:24.619Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/16/android-art-he-dalvik-de-qu-bie/</loc>
-    
-    <lastmod>2019-12-05T08:10:23.987Z</lastmod>
     
   </url>
   
@@ -506,13 +555,6 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/07/01/java-hashmap-hashtable-hashmap-concurrenthashmap/</loc>
-    
-    <lastmod>2019-12-05T08:02:51.387Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/07/31/algorithm-leetcode-206-reverse-linked-list/</loc>
     
     <lastmod>2019-12-05T07:52:02.624Z</lastmod>
@@ -534,51 +576,9 @@
   </url>
   
   <url>
-    <loc>http://blog.scions.cn/2019/07/08/java-sleep-he-wait-de-qu-bie/</loc>
-    
-    <lastmod>2019-12-05T07:50:26.041Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://blog.scions.cn/2019/07/21/java-java-jing-tai-dai-li-dong-tai-dai-li/</loc>
     
     <lastmod>2019-12-05T07:50:25.339Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/12/java-java-nei-bu-lei/</loc>
-    
-    <lastmod>2019-12-05T07:50:23.557Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/16/java-java-zhong-de-ji-chong-yin-yong/</loc>
-    
-    <lastmod>2019-12-05T07:50:22.909Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/09/23/java-java-zhong-exception-error-de-qu-bie/</loc>
-    
-    <lastmod>2019-12-05T07:50:19.691Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/12/java-java-finally-final-finalize/</loc>
-    
-    <lastmod>2019-12-05T07:50:19.025Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/07/16/java-gc-yuan-li/</loc>
-    
-    <lastmod>2019-12-05T07:50:17.706Z</lastmod>
     
   </url>
   
