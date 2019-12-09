@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
 <meta property="og:description" content="直接看代码 1234567891011121314   /**   * Callback interface for discovering when a thread is going to block   * waiting for more messages.   */   public static interface IdleHandler &amp;#123;   /**   * Called">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T08:10:33.118Z">
+<meta property="og:updated_time" content="2019-12-06T02:30:11.809Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-IdleHandler的使用">
 <meta name="twitter:description" content="直接看代码 1234567891011121314   /**   * Callback interface for discovering when a thread is going to block   * waiting for more messages.   */   public static interface IdleHandler &amp;#123;   /**   * Called">
@@ -390,6 +390,7 @@
 <p>它的实现原理也很简单，就是在MessageQueue里，如果消息队列里没有msg，就去执行这个回调</p>
 <p>但是在调试的时候发现, 如果当前存在一个动画，那么主消息队列会一直存在，直到动画结束才会回调，因此这种回调机制可能会存在些问题，需要特别注意会不会出现NPE。</p>
 <p><a href="https://blog.csdn.net/tencent_bugly/article/details/78395717" target="_blank" rel="noopener">https://blog.csdn.net/tencent_bugly/article/details/78395717</a></p>
+<p><a href="https://juejin.im/post/5d55779b518825168e6a0430" target="_blank" rel="noopener">https://juejin.im/post/5d55779b518825168e6a0430</a></p>
 
       
     </div>
@@ -524,7 +525,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">ScorpioNeal</p>
-              <p class="site-description motion-element" itemprop="description">Teaching is the best way to learn.</p>
+              <p class="site-description motion-element" itemprop="description">体系(点 - 线 - 面)</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -534,7 +535,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">82</span>
+                  <span class="site-state-item-count">86</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
