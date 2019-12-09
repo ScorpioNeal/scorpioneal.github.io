@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Java,Reading,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="编程基础补码表示法: 在原码表示的基础上取反然后加1.给定一个负数的二进制，想知道他的10进制可以采用相同的补码运算，先取反，再加1e.g-2: 原码 00000010, 取反11111101， 加1 11111110 位运算  左移 &amp;lt;&amp;lt;  右边低位补0， 高位舍弃, 左移一位相当于* 2 无符号右移 &amp;gt;&amp;gt;&amp;gt; 向右移动，右边的舍弃，左边补0 有符号右移 &amp;gt;&amp;g">
+<meta name="keywords" content="Java,Reading">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-《Java编程的逻辑》读书笔记">
+<meta property="og:url" content="http://blog.scions.cn/2019/06/11/java-java-bian-cheng-de-luo-ji-du-shu-bi-ji/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="编程基础补码表示法: 在原码表示的基础上取反然后加1.给定一个负数的二进制，想知道他的10进制可以采用相同的补码运算，先取反，再加1e.g-2: 原码 00000010, 取反11111101， 加1 11111110 位运算  左移 &amp;lt;&amp;lt;  右边低位补0， 高位舍弃, 左移一位相当于* 2 无符号右移 &amp;gt;&amp;gt;&amp;gt; 向右移动，右边的舍弃，左边补0 有符号右移 &amp;gt;&amp;g">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-05T07:50:17.041Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java-《Java编程的逻辑》读书笔记">
+<meta name="twitter:description" content="编程基础补码表示法: 在原码表示的基础上取反然后加1.给定一个负数的二进制，想知道他的10进制可以采用相同的补码运算，先取反，再加1e.g-2: 原码 00000010, 取反11111101， 加1 11111110 位运算  左移 &amp;lt;&amp;lt;  右边低位补0， 高位舍弃, 左移一位相当于* 2 无符号右移 &amp;gt;&amp;gt;&amp;gt; 向右移动，右边的舍弃，左边补0 有符号右移 &amp;gt;&amp;g">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/2019/06/11/java-java-bian-cheng-de-luo-ji-du-shu-bi-ji/">
+
+
+
+
+
+  <title>Java-《Java编程的逻辑》读书笔记 | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<div class="bg_content">
+<canvas id="canvas"></canvas>
+</div>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/11/java-java-bian-cheng-de-luo-ji-du-shu-bi-ji/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java-《Java编程的逻辑》读书笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-11T16:16:16+08:00">
+                2019-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/11/java-java-bian-cheng-de-luo-ji-du-shu-bi-ji/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/11/java-java-bian-cheng-de-luo-ji-du-shu-bi-ji/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="编程基础"><a href="#编程基础" class="headerlink" title="编程基础"></a>编程基础</h2><p>补码表示法: 在原码表示的基础上取反然后加1.<br>给定一个负数的二进制，想知道他的10进制可以采用相同的补码运算，先取反，再加1<br>e.g<br>-2: 原码 00000010, 取反11111101， 加1 11111110</p>
+<p>位运算</p>
+<ol>
+<li>左移 &lt;&lt;  右边低位补0， 高位舍弃, 左移一位相当于* 2</li>
+<li>无符号右移 &gt;&gt;&gt; 向右移动，右边的舍弃，左边补0</li>
+<li>有符号右移 &gt;&gt; 向右移动, 右边的舍弃, 左边补的内容取决于原来的最高位. 右移一位相当于除以2</li>
+</ol>
+<p>字符的编码</p>
+<ul>
+<li>Unicode Unicode主要做了一件事，就是给所有的字符分配唯一的数字编号，它并没有规定这个编号怎么对应二进制表示， 这个编号与二进制的对应关系通过UTF-8, UTF-16, UTF-32来决定</li>
+<li>非Unicode，包括ASCII, ISO 8859-1 GB2313 GBK等</li>
+</ul>
+<p>类加载进内存后，一般不会释放，知道程序结束，一般情况下，类只会加载一次，所以静态变量在内存中只有一份<br>堆中的内存是被垃圾回收机制管理的，当没有活跃变量指向对象的时候，对应的堆空间就会被释放 </p>
+<p>子类对象赋值给父类引用变量，这叫向上转型。 变量Shape可以饮用任何Shape子类类型的对象， 这叫多态，即一种类型的变量，可饮用多种实际类型对象。 这样， 对于变量shape来说，它就有2个类型： 类型Shape， 我们称为shape的静态类型， 类型Circle/Line 称为Shape的动态类型。shapes[i].draw()调用的是其对应的动态类型的draw方法，称为方法的动态绑定</p>
+<p>静态绑定:<br>当通过b访问，访问的是Base的变量和方法， 当通过c访问，访问的是Child的变量和方法。 称为静态绑定。 静态绑定在程序编译阶段即可决定， 而动态绑定要等到运行时。 实例变量， 静态变量，静态方法， private方法, 都是静态绑定</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String s = <span class="string">"static_base"</span>;</span><br><span class="line">    <span class="keyword">public</span> String m = <span class="string">"base"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"base static "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonStatic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"base non static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">Base</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String s=  <span class="string">"child_base"</span>;</span><br><span class="line">    <span class="keyword">public</span> String m = <span class="string">"child"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"child static "</span> + s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nonStatic</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Child non static"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Child c = <span class="keyword">new</span> Child();</span><br><span class="line">    Base b = c;</span><br><span class="line">    System.out.println(b.s);</span><br><span class="line">    System.out.println(b.m);</span><br><span class="line">    b.staticTest();</span><br><span class="line">    System.out.println(c.s);</span><br><span class="line">    System.out.println(c.m);</span><br><span class="line">    c.staticTest();</span><br><span class="line">    b.nonStatic();</span><br><span class="line">    c.nonStatic();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static_base</span><br><span class="line">base</span><br><span class="line">base <span class="keyword">static</span> static_base</span><br><span class="line">child_base</span><br><span class="line">child</span><br><span class="line">child <span class="keyword">static</span> child_base</span><br><span class="line">Child non <span class="keyword">static</span></span><br><span class="line">Child non <span class="keyword">static</span></span><br></pre></td></tr></table></figure>
+
+<p>类加载过程: </p>
+<p>基类静态代码块<br>子类静态代码块<br>基类实例代码块<br>基类构造函数<br>子类实例代码块<br>子类构造方法</p>
+<p>内部类:</p>
+<p>静态内部类<br>成员内部类<br>方法内部类<br>匿名内部类</p>
+<p>Question:<br>为什么局部内部类和匿名内部类只能访问final的局部变量?<br>Ans:<br>追究其根本原因就是作用域中变量的生命周期导致的;</p>
+<p>首先需要知道的一点是:内部类和外部类是处于同一个级别的,内部类不会因为定义在方法中就会随着方法的执行完毕就被销毁.</p>
+<p>这里就会产生问题：当外部类的方法结束时，局部变量就会被销毁了，但是内部类对象可能还存在(只有没有人再引用它时，才会死亡)。这里就出现了一个矛盾：内部类对象访问了一个不存在的变量。为了解决这个问题，就将局部变量复制了一份作为内部类的成员变量，这样当局部变量死亡后，内部类仍可以访问它，实际访问的是局部变量的”copy”。这样就好像延长了局部变量的生命周期<br>       问题又出现了：将局部变量复制为内部类的成员变量时，必须保证这两个变量是一样的，也就是如果我们在内部类中修改了成员变量，方法中的局部变量也得跟着改变，怎么解决问题呢？</p>
+<p>就将局部变量设置为final，对它初始化后，我就不让你再去修改这个变量，就保证了内部类的成员变量和方法的局部变量的一致性。这实际上也是一种妥协。</p>
+<p>若变量是final时：</p>
+<p>若是基本类型，其值是不能改变的，就保证了copy与原始的局部变量的值是一样的；</p>
+<p>若是引用类型，其引用是不能改变的，保证了copy与原始的变量引用的是同一个对象。</p>
+<p>这就使得局部变量与内部类内建立的拷贝保持一致。</p>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><p>泛型的内部原理：<br>我们知道，Java有Java编译器和Java虚拟机，编译器讲Java源代码转换为.class文件。虚拟机加载并运行.class文件，对于泛型类，Java编译器会将泛型代码转换为普通的非泛型代码，将参数类型T擦除，替换为Object,插入必要的强制类型转换。Java虚拟机执行的时候，并不知道泛型，只知道普通的类及代码。</p>
+<p>对于类型参数，我们都把它当成Object, 但是Java支持extends关键字来限定这个参数的一个上界。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NumberPair</span>&lt;<span class="title">U</span> <span class="keyword">extends</span> <span class="title">Number</span>, <span class="title">V</span> <span class="keyword">extends</span> <span class="title">Number</span>&gt; </span>&#123;</span><br><span class="line">	<span class="comment">///</span></span><br><span class="line">	...</span><br><span class="line">	<span class="comment">///</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>指定边界后，类型擦除时就不会转换为Object, 而是转换为它的边界类型。</p>
+<p>虽然Integer是Number的子类，但是DynamicArray<integer>不是DynamicArray<number>的子类.</number></integer></p>
+<ul>
+<li>&lt;? extends E&gt; -&gt; 有限定通配符</li>
+<li>&lt;?&gt; 无限定通配符</li>
+</ul>
+<p>这两种通配符有一个重要的限制，只能读，不能写</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DynamicArray&lt;Integer&gt; integers = <span class="keyword">new</span> DynamicArray&lt;&gt;();</span><br><span class="line">   DynamicArray&lt;? extends Number&gt; numbers = integers;</span><br><span class="line">   numbers.add(<span class="number">1</span>); <span class="comment">//错误</span></span><br><span class="line">   numbers.add((Integer)<span class="number">1</span>); <span class="comment">//错误</span></span><br><span class="line">   numbers.add((Number)<span class="number">1</span>); <span class="comment">//错误</span></span><br></pre></td></tr></table></figure>
+
+<p>因为<code>? extends Number</code>表示是Number的一个子类型，但是不知道具体类型，如果允许写入<br>numbers里面的值就可能会存入Integer, Float等不同类型，无法保证类型安全。</p>
+<p>总结: 泛型方法到底应该用通配符形式还是加类型参数</p>
+<ol>
+<li>通配符形式都可以用类型参数的形式替代，通配符能做的，类型参数都能做</li>
+<li>通配符形式可以减少类型参数，形式上往往更简单，可读性好，所以能用通配符就用通配符</li>
+<li>如果类型参数有依赖关系，或者返回值依赖类型参数，或者需要写操作，则只能用类型参数</li>
+<li>通配符形式和类型参数往往配合使用。</li>
+</ol>
+<p>超类型通配符 &lt;? super E&gt;</p>
+<p><code>&lt;? super E&gt;</code>用于灵活<code>写入</code>, <code>&lt;? extends E&gt;</code>用于灵活<code>读取</code></p>
+<p>泛型的限制：</p>
+<ul>
+<li>不能通过类型参数创建对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e.g</span><br><span class="line">T t = <span class="keyword">new</span> T(); <span class="comment">// illegal</span></span><br></pre></td></tr></table></figure>
+
+<p>如果一定要创建，可以调用Class.newInstance方法来创建</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">create</span><span class="params">(Class&lt;T&gt; type)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> type.newInstance();</span><br><span class="line">	&#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Java支持多个上界，以 &amp; 分隔</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">T extends Base &amp; Coparable &amp; Serializable</span><br></pre></td></tr></table></figure>
+
+<h2 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h2><p>每个已加载的类在内存都有一份类信息，每个对象都有指向它所属类信息的引用.  这里的类信息对应的类就是java.lang.Class. 且</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Object.java </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> Class&lt;?&gt; getClass();</span><br></pre></td></tr></table></figure>
+
+<p>可以通过object.getClass()获取，也可以通过类名直接.class获取 // tips, 基本类型没有.getClass()方法，但是通过int.class，也可以获得对应的Class对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e.g</span><br><span class="line">Class&lt;Date&gt; cls = Date.class;</span><br><span class="line">Class&lt;Integer&gt; cls = <span class="keyword">int</span>.class;</span><br><span class="line">Class&lt;Void&gt; cls = <span class="keyword">void</span>.class;</span><br></pre></td></tr></table></figure>
+
+<p>也可以通过Class的静态方法.forName获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">e.g</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    Class&lt;?&gt; cls = Class.forName(<span class="string">"java.util.HashMap"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Class方法:</p>
+<h3 id="名称信息"><a href="#名称信息" class="headerlink" title="名称信息"></a>名称信息</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> <span class="comment">//获取全称</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getSimpleName</span><span class="params">()</span> <span class="comment">//获取不带包名的名称</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getCanonicalName</span><span class="params">()</span> <span class="comment">//获取有好的名称</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Package <span class="title">getPackage</span><span class="params">()</span> <span class="comment">//获取包名</span></span></span><br></pre></td></tr></table></figure>
+
+<p>e.g</p>
+<table>
+<thead>
+<tr>
+<th align="left">Class对象</th>
+<th align="right">getName</th>
+<th align="center">getSimpleName</th>
+<th>getCanonicalName</th>
+<th>getPackage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">int.class</td>
+<td align="right">int</td>
+<td align="center">int</td>
+<td>int</td>
+<td>null</td>
+</tr>
+<tr>
+<td align="left">int[].calss</td>
+<td align="right">[I</td>
+<td align="center">int[]</td>
+<td>int[]</td>
+<td>null</td>
+</tr>
+<tr>
+<td align="left">String.class</td>
+<td align="right">java.lang.String</td>
+<td align="center">String</td>
+<td>java.lang.String</td>
+<td>java.lang</td>
+</tr>
+</tbody></table>
+<p>数组类型的getName返回值使用[表示数组，几个[表示几个数组.<br>数组的通用类型用一个字符表示, I -&gt; int, L -&gt; 表示类或接口, Z -&gt; boolean, B -&gt; byte, C -&gt; Char, D -&gt; double, F -&gt; float, J -&gt; long, S -&gt; short</p>
+<h3 id="字段信息"><a href="#字段信息" class="headerlink" title="字段信息"></a>字段信息</h3><p>类中定义的静态和实例变量都被称为字段, 用Field表示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Field[] getFields() <span class="comment">//返回所有的public字段, 包括其父类的, 如果没有字段，返回空数组</span></span><br><span class="line"><span class="keyword">public</span> Field[] getDeclaredFields() <span class="comment">//返回本类声明的所有字段，包含非public，但不包括父类</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Field <span class="title">getField</span><span class="params">(String name)</span> <span class="comment">//返回本类或者父类中指定名称的public字段，找不到抛异常NoSuchFieldException</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Field <span class="title">getDeclaredField</span><span class="params">(String name)</span> <span class="comment">//返回本类声明中指定名称的字段，找不到抛NoSuchFieldException</span></span></span><br></pre></td></tr></table></figure>
+
+<p>对与Field类中的方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> <span class="comment">//获取字段名称</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAccessible</span><span class="params">()</span> <span class="comment">//当前程序是否有该字段的访问权限</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAccessible</span><span class="params">(<span class="keyword">boolean</span> flag)</span> <span class="comment">//flag为true, 表示忽略java访问检查机制, 以允许读写非public字段</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">get</span><span class="params">(Object obj)</span> <span class="comment">//获取知道对象obj中的该字段的值</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(Object obj, Object value)</span> <span class="comment">//讲指定obj对象中的该字段设为value</span></span></span><br></pre></td></tr></table></figure>
+
+<p>类中定义的静态和实例方法都被称为方法，用Method表示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Method[] getMethods() <span class="comment">//返回所有的public方法，包括其父类, 如果没有方法，返回空数组</span></span><br><span class="line"><span class="keyword">public</span> Method[] getDeclaredMethods() <span class="comment">//返回本类声明的所有方法，包括非public的，但不包括父类的</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Method <span class="title">getMethod</span><span class="params">(String name, Class&lt;?&gt;... parameterType)</span> <span class="comment">//返回本类或父类指定名称和参数类型的public方法，找不到抛NoSuchException异常</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Method <span class="title">getDeclaredMethod</span><span class="params">(String name, Class&lt;?&gt;... parameterType)</span> <span class="comment">//返回本类声明的指定名称和参数类型的方法，找不到抛NoSuchException异常</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法信息"><a href="#方法信息" class="headerlink" title="方法信息"></a>方法信息</h3><p>对于Method中的方法:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">publci String <span class="title">getName</span><span class="params">()</span> <span class="comment">//获取方法名称</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAccessible</span><span class="params">(<span class="keyword">boolean</span> flag)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object obj, Object... args)</span> <span class="keyword">throws</span> .... <span class="comment">// 在指定对象obj上调用Method代表的方法, 传递args参数列表</span></span></span><br><span class="line"><span class="function"><span class="comment">// 如果Method为静态方法，obj可以被忽略，可以为null</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建对象和构造方法"><a href="#创建对象和构造方法" class="headerlink" title="创建对象和构造方法"></a>创建对象和构造方法</h3><p>可以用newInstance() 调用类的默认构造函数，即无参构造函数的构造方法，来创建对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">newInstance</span><span class="params">()</span> <span class="keyword">throws</span> ....</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="类型检查和转换"><a href="#类型检查和转换" class="headerlink" title="类型检查和转换"></a>类型检查和转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">boolean</span> <span class="title">isInstance</span><span class="params">(Object obj)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">if</span><span class="params">(list <span class="keyword">instanceof</span> ArrayList)</span> 与 下面代码时一样的</span></span><br><span class="line"><span class="function">Class cls </span>= Class.forName(<span class="string">"java.util.ArrayList"</span>);</span><br><span class="line"><span class="keyword">if</span>(cls.isInstance(list))</span><br></pre></td></tr></table></figure>
+
+<p>//….其他方法</p>
+<p>总结:<br>反射虽然是灵活的，但一般情况下，不优先建议:</p>
+<ol>
+<li>反射容易出现运行时错误</li>
+<li>反射性能低一点</li>
+</ol>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><p>注解是给程序添加一些信息，用字符@开头， 这些信息用于修饰它后面紧挨着的其他代码元素，比如，类，接口，字段, 方法，方法中的参数，构造方法等。 注解可以被编译器，程序运行时和其他工具使用，用于增强和修改程序行为</p>
+<p>依赖注入 TODO</p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>动态代理是实现面向切片编程的基础AOP(Aspect Oriented Programming) TODO</p>
+<h3 id="静态代理。"><a href="#静态代理。" class="headerlink" title="静态代理。"></a>静态代理。</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">IService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RealService</span> <span class="keyword">implements</span> <span class="title">IService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TraceProxy</span> <span class="keyword">implements</span> <span class="title">IService</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IService realService;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TraceProxy</span><span class="params">(IService service)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.realService = service;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"entering sayHello"</span>);</span><br><span class="line">        <span class="keyword">this</span>.realService.sayHello();</span><br><span class="line">        System.out.println(<span class="string">"leaving sayHello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    IService realService = <span class="keyword">new</span> RealService();</span><br><span class="line">    IService proxyService = <span class="keyword">new</span> TraceProxy(realService);</span><br><span class="line">    proxyService.sayHello();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>代理和实际对象一般有相同接口</p>
+<h3 id="动态代理-1"><a href="#动态代理-1" class="headerlink" title="动态代理"></a>动态代理</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">IService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">RealService</span> <span class="keyword">implements</span> <span class="title">IService</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"hello"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Object realObject;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SimpleInvocationHandler</span><span class="params">(Object realObject)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.realObject = realObject;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"entering "</span> + method.getName());</span><br><span class="line">        Object result = method.invoke(realObject, args);</span><br><span class="line">        System.out.println(<span class="string">"leaving "</span> + method.getName());</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    IService realService = <span class="keyword">new</span> RealService();</span><br><span class="line">    IService proxyService = (IService) Proxy.newProxyInstance(IService.class.getClassLoader(), <span class="keyword">new</span> Class&lt;?&gt;[] &#123;IService.class&#125;, <span class="keyword">new</span> SimpleInvocationHandler((realService)));</span><br><span class="line">    proxyService.sayHello();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解析</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">newProxyInstance</span><span class="params">(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h)</span></span></span><br><span class="line"><span class="function"><span class="comment">// loader表示类加载器</span></span></span><br><span class="line"><span class="function"><span class="comment">// interfaces表示代理类要实现的接口列表</span></span></span><br><span class="line"><span class="function"><span class="comment">// INvocationHandler 只定义了一个方法invoke, 对代理接口所有方法的调用都会转到这里</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="comment">// TODO.....</span></span></span><br></pre></td></tr></table></figure>
+
+<p>AOP… TODO</p>
+<h2 id="类加载机制"><a href="#类加载机制" class="headerlink" title="类加载机制"></a>类加载机制</h2><p>类加载器ClassLoader就是加载其他类的类, 负责将字节码文件加载到内存，创建Class对象。 ClassLoader一般系统提供，不需要自己实现，但是，通过创建自定义的ClassLoader可以实现一些强大灵活的功能</p>
+<ul>
+<li>热部署 在不重启Java程序的情况下，动态替换类的实现</li>
+<li>应用的模块化和相互隔离 不同的ClassLoader可以加载相同的类，但互相隔离，互不影响</li>
+<li>不同的地方灵活加载 系统默认的ClassLoader一般从本地.class文件或者jar文件中加载字节码文件， 自定义的可以从共享的Web服务器等等地方加载</li>
+</ul>
+<p>一般程序运行，会有3个类加载器(Java9之前)</p>
+<ol>
+<li>启动加载器(Bootstrap ClassLoader)<br> 这个加载器是Java虚拟机实现的一部分，不是Java实现，一般是C++ 负责加载Java的基础类，主要是<java_home>/lib/rt.jar</java_home></li>
+<li>拓展类加载器(Extension ClassLoader)<br> 这个类加载器的实现类是sun.misc.Launcher$ExtClassLoader, 负责加载Java的一些拓展类，主要是<java_home>/lib/ext.jar</java_home></li>
+<li>应用程序类加载器(ApplicationClassLoader)<br> 这个加载器的实现类是sun.misc.Launcher$AppClassLoader, 负责加载应用程序的类，包括自己写的和第三方引用的</li>
+</ol>
+<p>加载一个类的过程是:</p>
+<ol>
+<li>判断是否已经加载过了，加载过了直接返回 Class对象，一个类只会被一个ClassLoader加载一次</li>
+<li>如果没有加载，先让父ClassLoader去加载，如果成功，返回得到的Class对象</li>
+<li>父ClassLoader没有成功的前提下，自己尝试加载类</li>
+</ol>
+<p>这个过程一般被称为双亲委派模型，即优先让父ClassLoader去加载，因为这样可以避免Java类库被覆盖的问题</p>
+<p>TODO</p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>TODO</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Reading/" rel="tag"># Reading</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/06/translation-dumpsys-gong-ju/" rel="next" title="Translation-Dumpsys工具">
+                <i class="fa fa-chevron-left"></i> Translation-Dumpsys工具
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/12/android-dong-hua-yuan-li-fen-xi/" rel="prev" title="Android-动画原理分析">
+                Android-动画原理分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">体系(点 - 线 - 面)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#编程基础"><span class="nav-number">1.</span> <span class="nav-text">编程基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#泛型"><span class="nav-number">2.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反射"><span class="nav-number">3.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#名称信息"><span class="nav-number">3.1.</span> <span class="nav-text">名称信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字段信息"><span class="nav-number">3.2.</span> <span class="nav-text">字段信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法信息"><span class="nav-number">3.3.</span> <span class="nav-text">方法信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建对象和构造方法"><span class="nav-number">3.4.</span> <span class="nav-text">创建对象和构造方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型检查和转换"><span class="nav-number">3.5.</span> <span class="nav-text">类型检查和转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注解"><span class="nav-number">4.</span> <span class="nav-text">注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态代理"><span class="nav-number">5.</span> <span class="nav-text">动态代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#静态代理。"><span class="nav-number">5.1.</span> <span class="nav-text">静态代理。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态代理-1"><span class="nav-number">5.2.</span> <span class="nav-text">动态代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类加载机制"><span class="nav-number">6.</span> <span class="nav-text">类加载机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">7.</span> <span class="nav-text">函数式编程</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+  <script type="text/javascript" src="/js/src/love-click.js"></script>
+</body>
+</html>
