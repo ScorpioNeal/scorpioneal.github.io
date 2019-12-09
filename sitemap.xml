@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.scions.cn/2019/06/24/android-asynclayoutinflator-yuan-li/</loc>
+    
+    <lastmod>2019-12-09T12:46:44.271Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.scions.cn/2019/07/08/java-sleep-he-wait-de-qu-bie/</loc>
     
     <lastmod>2019-12-09T12:45:49.057Z</lastmod>
@@ -285,13 +292,6 @@
     <loc>http://blog.scions.cn/2019/09/17/translation-ndk-build-android-mk/</loc>
     
     <lastmod>2019-12-05T08:18:21.489Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.scions.cn/2019/06/24/android-asynclayoutinflator-yuan-li/</loc>
-    
-    <lastmod>2019-12-05T08:17:54.406Z</lastmod>
     
   </url>
   
