@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -383,15 +383,15 @@
         <h2 id="ndk-build"><a href="#ndk-build" class="headerlink" title="ndk-build"></a>ndk-build</h2><p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank" rel="noopener">Reference</a></p>
 <p>The <code>ndk-build</code> script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> and <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> configuration used by <code>ndk-build</code>.</p>
 <h3 id="Internals"><a href="#Internals" class="headerlink" title="Internals"></a>Internals</h3><p>Running the <code>ndk-build</code> script is equivalent to running the following command:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span></span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
 
 <p><code>$GNUMAKE</code> points to GNU Make 3.81 or later, and <code>&lt;ndk&gt;</code> points to your NDK installation directory. You can use this information to invoke ndk-build from other shell scripts, or even your own make files.</p>
 <h3 id="Invoking-from-the-Command-Line"><a href="#Invoking-from-the-Command-Line" class="headerlink" title="Invoking from the Command Line"></a>Invoking from the Command Line</h3><p>The <code>ndk-build</code> script lives in the top level NDK install directory. To run it from the command line, invoke it while in or under your application project directory. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd &lt;project&gt;</span><br><span class="line"><span class="meta">$</span> &lt;ndk&gt;/ndk-build</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;project&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> &lt;ndk&gt;/ndk-build</span></span><br></pre></td></tr></table></figure>
 
 <p>In this example, <code>&lt;project&gt;</code> points to your project’s root directory, and <code>&lt;ndk&gt;</code> is the directory where you installed the NDK.</p>
 <h4 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h4><p>All parameters to ndk-build are passed directly to the underlying GNU <code>make</code> command that runs the NDK build scripts. Combine <code>ndk-build</code> and options in the form <code>ndk-build</code> <code>&lt;option&gt;</code>. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ndk-build clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ndk-build clean</span></span><br></pre></td></tr></table></figure>
 
 <p>The following options are available:</p>
 <ul>
@@ -411,10 +411,10 @@
 <p>Note that 64-bit tools utilize host resources better (for instance, they are faster, and handle larger programs), and they can still generate 32-bit binaries for Android.</p>
 <h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3><p>You need GNU Make 3.81 or later to use ndk-build or the NDK in general. The build scripts will detect a non-compliant Make tool, and generate an error message.</p>
 <p>If you have GNU Make 3.81 installed, but the default <code>make</code> command doesn’t launch it, define <code>GNUMAKE</code> in your environment to point to it before launching ndk-build. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> export GNUMAKE=/usr/local/bin/gmake</span><br><span class="line"><span class="meta">$</span> ndk-build</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> GNUMAKE=/usr/<span class="built_in">local</span>/bin/gmake</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ndk-build</span></span><br></pre></td></tr></table></figure>
 
 <p>You can override other host prebuilt tools in <code>$NDK/prebuilt/&lt;OS&gt;/bin/</code> with the following environment variables:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> export NDK_HOST_AWK=&lt;path-to-awk&gt;</span><br><span class="line"><span class="meta">$</span> export NDK_HOST_ECHO=&lt;path-to-echo&gt;</span><br><span class="line"><span class="meta">$</span> export NDK_HOST_CMP=&lt;path-to-cmp&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_AWK=&lt;path-to-awk&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_ECHO=&lt;path-to-echo&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_CMP=&lt;path-to-cmp&gt;</span></span><br></pre></td></tr></table></figure>
 
 
       

@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -378,7 +378,57 @@
       
         
           
-            <p><a href="https://blog.csdn.net/hongsheng6353328/article/details/80463434" target="_blank" rel="noopener">https://blog.csdn.net/hongsheng6353328/article/details/80463434</a><br>file:///Users/scorpioneal/Desktop/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/pages/6845.html</p>
+            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码</p>
+<ul>
+<li><p>编译执行: </p>
+<p>  先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码</p>
+</li>
+<li><p>解释执行</p>
+<p>  需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件</p>
+</li>
+</ul>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>编译执行</th>
+<th>解释执行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>次数</td>
+<td>编译一次，多次运行</td>
+<td>每运行一次，都要经过解释器</td>
+</tr>
+<tr>
+<td>启动效率</td>
+<td>需要编译过程，慢</td>
+<td>速度更快</td>
+</tr>
+<tr>
+<td>运行效率</td>
+<td>编译一次后续无需编译，效率高</td>
+<td>每次都要解释，效率低</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>生成编译后的机器码文件</td>
+<td>不会生成中间文件，内存占用少</td>
+</tr>
+<tr>
+<td>跨平台</td>
+<td>在windows下编译的代码只能在windows下用</td>
+<td>根据不同平台解释，可以跨平台, e.g js在linux和window下都可以运行</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>大型项目注重效率，核心使用编译执行</td>
+<td>简单操作可以混合解释执行</td>
+</tr>
+</tbody></table>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://blog.csdn.net/hongsheng6353328/article/details/80463434" target="_blank" rel="noopener">https://blog.csdn.net/hongsheng6353328/article/details/80463434</a></li>
+</ul>
 
           
         
@@ -591,18 +641,18 @@
 <h3 id="Target-information-variables"><a href="#Target-information-variables" class="headerlink" title="Target information variables"></a>Target information variables</h3><p>The build system parses <code>Android.mk</code> once per ABI specified by the <code>APP_ABI</code> variable, which is typically defined in your <code>Application.mk</code> file. If <code>APP_ABI</code> is <code>all</code>, then the build system parses <code>Android.mk</code> once per ABI the NDK supports. This section describes variable the build system defines each time it parses <code>Android.mk</code>.</p>
 <h4 id="TARGET-ARCH"><a href="#TARGET-ARCH" class="headerlink" title="TARGET_ARCH"></a>TARGET_ARCH</h4><p>The CPU family the build system is targeting as it parses this <code>Android.mk</code> file. This variable will be one of: <code>arm</code>, <code>arm64</code>, <code>x86</code>, or <code>x86_64</code>.</p>
 <h4 id="TARGET-PLATFORM"><a href="#TARGET-PLATFORM" class="headerlink" title="TARGET_PLATFORM"></a>TARGET_PLATFORM</h4><p>The Android API level number the build system is targeting as it parses this <code>Android.mk</code> file. For example, the Android 5.1 system images correspond to Android API level 22: <code>android-22</code>. For a complete list of platform names and corresponding Android system images, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>. The following example shows the syntax for using this variable:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">ifeq($</span>(TARGET_PLATFORM), android-22)</span><br><span class="line">    # ... do something ....</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">ifeq($</span><span class="bash">(TARGET_PLATFORM), android-22)</span></span><br><span class="line">    # ... do something ....</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 
 <h4 id="TARGET-ARCH-ABI"><a href="#TARGET-ARCH-ABI" class="headerlink" title="TARGET_ARCH_ABI"></a>TARGET_ARCH_ABI</h4><p>The ABI the build system is targeting as it parses this <code>Android.mk</code> file. Table 1 shows the ABI setting used for each supported CPU and architecture.</p>
 <p>Table 1. ABI settings for different CPUs and architectures.</p>
 <p>//TODO table</p>
 <p>The following example shows how to check for ARMv8 AArch64 as the target CPU-and-ABI combination:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ARCH_ABI),arm64-v8a)</span><br><span class="line"><span class="meta">#</span> ... do something ...</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ARCH_ABI),arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 
 <p>For more details about architecture ABIs and associated compatibility issues, refer to <a href="https://developer.android.google.cn/ndk/guides/abis.html" target="_blank" rel="noopener">ABI Management</a>.</p>
 <p>New target ABIs in the future will have differrnt values.</p>
 <h4 id="TARGET-ABI"><a href="#TARGET-ABI" class="headerlink" title="TARGET_ABI"></a>TARGET_ABI</h4><p>A concatenation of target Android API level and ABI. It is especially useful when you want to test against a specific target system image for a real device. For example, to check for a 64-bit ARM device running on Android API level 22:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ABI),android-22-arm64-v8a)</span><br><span class="line"><span class="meta">#</span> ... do something ...</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ABI),android-22-arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
 
 <h3 id="Module-Description-Variables"><a href="#Module-Description-Variables" class="headerlink" title="Module-Description Variables"></a>Module-Description Variables</h3><p>The variables in this section describe your module to the build system. Each module description should follow this basic flow:</p>
 <ol>
@@ -690,14 +740,14 @@
 
 <p>Due to the way GNU Make works, what this macro really returns is the path of the last makefile that the build system included when parsing the build scripts. For this reason, you should not call <code>my-dir</code> after including another file.</p>
 <p>For example, consider the following example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ... declare one module</span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ... declare another module</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
 
 <p>The problem here is that the second call to <code>my-dir</code> defines <code>LOCAL_PATH</code> as <code>$PATH/foo</code> instead of <code>$PATH</code>, because that was where its most recent include pointed.</p>
 <p>You can avoid this problem by putting additional includes after everything else in the <code>Android.mk</code> file. For example: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ... declare one module</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ... declare another module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> extra includes at the end of the Android.mk file</span><br><span class="line">include $(LOCAL_PATH)/foo/Android.mk</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> extra includes at the end of the Android.mk file</span></span><br><span class="line">include $(LOCAL_PATH)/foo/Android.mk</span><br></pre></td></tr></table></figure>
 
 <p>If it is not feasible to structure the file in this way, save the value of the first <code>my-dir</code> call into another variable. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MY_LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ... declare one module</span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> ... declare another module</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MY_LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="all-subdir-makefiles"><a href="#all-subdir-makefiles" class="headerlink" title="all-subdir-makefiles"></a>all-subdir-makefiles</h4><p>Returns the list of <code>Android.mk</code> files located in all subdirectories of the current <code>my-dir</code> path.</p>
 <p>You can use this fuction to provide deep-nested source directory hierarchies to the build system. By default, the NDK only looks for files in the directory containing the <code>Android.mk</code> file.</p>
@@ -705,7 +755,7 @@
 <h4 id="parent-makefile"><a href="#parent-makefile" class="headerlink" title="parent-makefile"></a>parent-makefile</h4><p>Returns the path of the parent makefile in the inclusion tree(the path of the makefile that included the current one)</p>
 <h4 id="grand-parent-makefile"><a href="#grand-parent-makefile" class="headerlink" title="grand-parent-makefile"></a>grand-parent-makefile</h4><p>Returns the path of the grandparent makefile in the inclusion tree (the path of the makefile that included the current one).</p>
 <h4 id="import-module"><a href="#import-module" class="headerlink" title="import-module"></a>import-module</h4><p>A function that allows you to find and include a module’s <code>Android.mk</code> file by the name of the module. A typical example is as follows:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>(call import-module,&lt;name&gt;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(call import-module,&lt;name&gt;)</span></span><br></pre></td></tr></table></figure>
 
 <p>In this example, the build system looks for the module tagged <code>&lt;name&gt;</code> in the list of directories referenced that your <code>NDK_MODULE_PATH</code> environment variable references, and includes its <code>Android.mk</code> file automatically for you.</p>
 
@@ -1120,15 +1170,15 @@
             <h2 id="ndk-build"><a href="#ndk-build" class="headerlink" title="ndk-build"></a>ndk-build</h2><p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank" rel="noopener">Reference</a></p>
 <p>The <code>ndk-build</code> script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> and <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> configuration used by <code>ndk-build</code>.</p>
 <h3 id="Internals"><a href="#Internals" class="headerlink" title="Internals"></a>Internals</h3><p>Running the <code>ndk-build</code> script is equivalent to running the following command:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span>GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span></span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
 
 <p><code>$GNUMAKE</code> points to GNU Make 3.81 or later, and <code>&lt;ndk&gt;</code> points to your NDK installation directory. You can use this information to invoke ndk-build from other shell scripts, or even your own make files.</p>
 <h3 id="Invoking-from-the-Command-Line"><a href="#Invoking-from-the-Command-Line" class="headerlink" title="Invoking from the Command Line"></a>Invoking from the Command Line</h3><p>The <code>ndk-build</code> script lives in the top level NDK install directory. To run it from the command line, invoke it while in or under your application project directory. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd &lt;project&gt;</span><br><span class="line"><span class="meta">$</span> &lt;ndk&gt;/ndk-build</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;project&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> &lt;ndk&gt;/ndk-build</span></span><br></pre></td></tr></table></figure>
 
 <p>In this example, <code>&lt;project&gt;</code> points to your project’s root directory, and <code>&lt;ndk&gt;</code> is the directory where you installed the NDK.</p>
 <h4 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h4><p>All parameters to ndk-build are passed directly to the underlying GNU <code>make</code> command that runs the NDK build scripts. Combine <code>ndk-build</code> and options in the form <code>ndk-build</code> <code>&lt;option&gt;</code>. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ndk-build clean</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ndk-build clean</span></span><br></pre></td></tr></table></figure>
 
 <p>The following options are available:</p>
 <ul>
@@ -1148,10 +1198,10 @@
 <p>Note that 64-bit tools utilize host resources better (for instance, they are faster, and handle larger programs), and they can still generate 32-bit binaries for Android.</p>
 <h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3><p>You need GNU Make 3.81 or later to use ndk-build or the NDK in general. The build scripts will detect a non-compliant Make tool, and generate an error message.</p>
 <p>If you have GNU Make 3.81 installed, but the default <code>make</code> command doesn’t launch it, define <code>GNUMAKE</code> in your environment to point to it before launching ndk-build. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> export GNUMAKE=/usr/local/bin/gmake</span><br><span class="line"><span class="meta">$</span> ndk-build</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> GNUMAKE=/usr/<span class="built_in">local</span>/bin/gmake</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ndk-build</span></span><br></pre></td></tr></table></figure>
 
 <p>You can override other host prebuilt tools in <code>$NDK/prebuilt/&lt;OS&gt;/bin/</code> with the following environment variables:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> export NDK_HOST_AWK=&lt;path-to-awk&gt;</span><br><span class="line"><span class="meta">$</span> export NDK_HOST_ECHO=&lt;path-to-echo&gt;</span><br><span class="line"><span class="meta">$</span> export NDK_HOST_CMP=&lt;path-to-cmp&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_AWK=&lt;path-to-awk&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_ECHO=&lt;path-to-echo&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_CMP=&lt;path-to-cmp&gt;</span></span><br></pre></td></tr></table></figure>
 
 
           

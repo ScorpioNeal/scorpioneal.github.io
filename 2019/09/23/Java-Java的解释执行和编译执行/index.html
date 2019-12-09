@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="https://blog.csdn.net/hongsheng6353328/article/details/80463434file:///Users/scorpioneal/Desktop/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/pages/6845.htm">
+<meta name="description" content="概述我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码  编译执行:    先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码  解释执行   需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件   对比   方式 编译执行 解释执行    次">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-Java的解释执行和编译执行">
 <meta property="og:url" content="http://blog.scions.cn/2019/09/23/Java-Java的解释执行和编译执行/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="https://blog.csdn.net/hongsheng6353328/article/details/80463434file:///Users/scorpioneal/Desktop/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/pages/6845.htm">
+<meta property="og:description" content="概述我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码  编译执行:    先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码  解释执行   需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件   对比   方式 编译执行 解释执行    次">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-05T07:50:24.691Z">
+<meta property="og:updated_time" content="2019-12-09T09:12:41.881Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-Java的解释执行和编译执行">
-<meta name="twitter:description" content="https://blog.csdn.net/hongsheng6353328/article/details/80463434file:///Users/scorpioneal/Desktop/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/pages/6845.htm">
+<meta name="twitter:description" content="概述我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码  编译执行:    先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码  解释执行   需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件   对比   方式 编译执行 解释执行    次">
 
 
 
@@ -380,7 +380,57 @@
       
 
       
-        <p><a href="https://blog.csdn.net/hongsheng6353328/article/details/80463434" target="_blank" rel="noopener">https://blog.csdn.net/hongsheng6353328/article/details/80463434</a><br>file:///Users/scorpioneal/Desktop/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4/Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF36%E8%AE%B2/pages/6845.html</p>
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码</p>
+<ul>
+<li><p>编译执行: </p>
+<p>  先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码</p>
+</li>
+<li><p>解释执行</p>
+<p>  需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件</p>
+</li>
+</ul>
+<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table>
+<thead>
+<tr>
+<th>方式</th>
+<th>编译执行</th>
+<th>解释执行</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>次数</td>
+<td>编译一次，多次运行</td>
+<td>每运行一次，都要经过解释器</td>
+</tr>
+<tr>
+<td>启动效率</td>
+<td>需要编译过程，慢</td>
+<td>速度更快</td>
+</tr>
+<tr>
+<td>运行效率</td>
+<td>编译一次后续无需编译，效率高</td>
+<td>每次都要解释，效率低</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>生成编译后的机器码文件</td>
+<td>不会生成中间文件，内存占用少</td>
+</tr>
+<tr>
+<td>跨平台</td>
+<td>在windows下编译的代码只能在windows下用</td>
+<td>根据不同平台解释，可以跨平台, e.g js在linux和window下都可以运行</td>
+</tr>
+<tr>
+<td>其他</td>
+<td>大型项目注重效率，核心使用编译执行</td>
+<td>简单操作可以混合解释执行</td>
+</tr>
+</tbody></table>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://blog.csdn.net/hongsheng6353328/article/details/80463434" target="_blank" rel="noopener">https://blog.csdn.net/hongsheng6353328/article/details/80463434</a></li>
+</ul>
 
       
     </div>
@@ -507,8 +557,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -568,6 +627,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对比"><span class="nav-number">2.</span> <span class="nav-text">对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

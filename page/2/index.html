@@ -6,7 +6,7 @@
 
 
 <html class="theme-next mist use-motion" lang>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -1811,7 +1811,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;person&gt;</span><br><span class="line">    &lt;name&gt; John Doe &lt;/name&gt;</span><br><span class="line">    &lt;email&gt;jdoe@example.com&lt;/email&gt;</span><br><span class="line">&lt;/person&gt;</span><br></pre></td></tr></table></figure>
 
 <p>while the corresponding protocol buffer message (in protocol buffer <a href="https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.text_format" target="_blank" rel="noopener">text format</a>) is :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> Textual representation of a protocol buffer.</span><br><span class="line"><span class="meta">#</span> This is *not* the binary format used on the wire.</span><br><span class="line">person &#123;</span><br><span class="line">    name: "John Doe"</span><br><span class="line">    email: "jode@example.com"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Textual representation of a protocol buffer.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> This is *not* the binary format used on the wire.</span></span><br><span class="line">person &#123;</span><br><span class="line">    name: "John Doe"</span><br><span class="line">    email: "jode@example.com"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>When this message is encoded to the protocol buffer <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener">binary format</a>(the text format above is just a convenient human-readable representation for debugging and editing), it would probably be 28 bytes long and take around 100-200 nanoseconds to parse. The XML version is at least 69 bytes if you remove whitespace, and would take around 5000-10000 nanoseconds to parse.</p>
 <p>Also, manipulating a protocol buffer is much easier:</p>
