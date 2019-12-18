@@ -1,6 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Algorithm LeetCode 949 Largest Time for Given Digits</title>
+    <url>/posts/31c696da/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 970 Powerful Integers</title>
+    <url>/posts/3485dad9/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 922 Sort Array By Parity 2</title>
+    <url>/posts/aeee22f2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 836 Rectangle Overlap</title>
+    <url>/posts/7b4a97c1/</url>
+    <content><![CDATA[<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blog.csdn.net/fuxuemingzhu/article/details/80472764" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/80472764</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 1122 Relative Sort Array</title>
+    <url>/posts/503af792/</url>
+    <content><![CDATA[<p>遇到数字的问题, 考虑把数字作为bucket<br>与map效果一样，但是数组[数字]++ 这样也可以</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 844 Backspace String Compare</title>
+    <url>/posts/9715d017/</url>
+    <content><![CDATA[<ol>
+<li>可以使用Stack</li>
+<li>注意StringBuilder的deleteCharAt的用法</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 665 Non-decreasing Array</title>
+    <url>/posts/da9f9e6/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 925 Pressed Name</title>
+    <url>/posts/fbb3e6/</url>
+    <content><![CDATA[<p>坑很多，思路比较容易</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 404 Sum Of Left Leaves</title>
+    <url>/posts/fa243c55/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 153 Min Stack</title>
+    <url>/posts/a6096449/</url>
+    <content><![CDATA[<p>注意是 x &lt;= min, 否则pop时候判断会有问题</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= min) &#123;</span><br><span class="line">        stack.push(min);</span><br><span class="line">        min = x;</span><br><span class="line">    &#125;</span><br><span class="line">    stack.push(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 160 Intersection of Two LinkedList</title>
+    <url>/posts/4d5b7367/</url>
+    <content><![CDATA[<p>三种思路</p>
+<ol>
+<li>Stack</li>
+<li>找到长短直接的差距n, 然后长链表先走n步后，与短链表一起走</li>
+<li>巧妙的解法</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 66 Plus One</title>
+    <url>/posts/5ac11b38/</url>
+    <content><![CDATA[<p>坑:  int型溢出</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="keyword">int</span> dig = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; digits.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> ten = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = digits.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            ten = ten * <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dig += (digits[i] * ten );</span><br><span class="line">    &#125;</span><br><span class="line">    String s = (dig + <span class="number">1</span>) + <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span>[] ret = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">        ret[i] = Integer.parseInt(s.charAt(i) + <span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 914 X of a Kind in a Deck of Cards</title>
+    <url>/posts/e7c78f66/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 374 Guess Number Higher or Lower</title>
+    <url>/posts/b5448e67/</url>
+    <content><![CDATA[<p>坑:</p>
+<p>注意审题 My Number</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 242 valid-anagram</title>
+    <url>/posts/b6f1cce9/</url>
+    <content><![CDATA[<p>最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</title>
+    <url>/posts/72ef869e/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</title>
+    <url>/posts/100ad818/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 28 Implement strStr()</title>
+    <url>/posts/2198e368/</url>
+    <content><![CDATA[<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a href="https://blog.csdn.net/f1033774377/article/details/82556438" target="_blank" rel="noopener">https://blog.csdn.net/f1033774377/article/details/82556438</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 367 Valid Perfect Square</title>
+    <url>/posts/b6a37ecd/</url>
+    <content><![CDATA[<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a href="https://www.cnblogs.com/grandyang/p/5619296.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/5619296.html</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 234 Palindrome Linked List</title>
+    <url>/posts/6d34e4e/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm-LeetCode-119-Pascal&#39;s Triangle 2</title>
+    <url>/posts/3885d3ad/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Algorithm-LeetCode-290-Word Pattern</title>
     <url>/posts/afd7ba5c/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a <code>pattern</code> and a string <code>str</code>, find if str follows the same pattern.</p>

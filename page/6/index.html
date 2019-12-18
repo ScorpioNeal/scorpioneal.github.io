@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6e3e565/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a4209768/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -326,7 +326,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/b6e3e565/" itemprop="url">Translation-Bluetooth overview</a></h1>
+                <a class="post-title-link" href="/posts/a4209768/" itemprop="url">Java-Java静态代理&动态代理</a></h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-04T14:52:03+08:00">
-                2019-07-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T15:20:37+08:00">
+                2019-07-21
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/b6e3e565/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6e3e565/" itemprop="commentCount"></span>
+                <a href="/posts/a4209768/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a4209768/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,44 +410,7 @@
       
         
           
-            <h1 id="Bluetooth-overview"><a href="#Bluetooth-overview" class="headerlink" title="Bluetooth overview"></a>Bluetooth overview</h1><p>The Android platform includes support for the Bluetooth network stack, which allows a device to wirelessly exchange data with other Bluetooth devices. The application framework provides access to the Bluetooth functionality through the Android Bluetooth APIs. These APIs let applications wirelessly connect to other Bluetooth devices, enabling point-to-point and multipoint wireless features.</p>
-<p>Using the Bluetooth APIs, an Android application can perform the following:</p>
-<ul>
-<li>Scan for other Bluetooth devices</li>
-<li>Query the local Bluetooth adapter for paired Bluetooth devices</li>
-<li>Establish RFCOMM channels</li>
-<li>Connect to other devices through service discovery</li>
-<li>Transfer data to and from other devices</li>
-<li>Manage multiple connections</li>
-</ul>
-<p>This page focuses on Classic Bluetooth. Classic Bluetooth is the right choice for more battery-intensive operations, which include streaming and communicating between Android devices. For Bluetooth devices with low power requirements, Android 4.3(API level 18) introduces API support for Bluetooth Low Energy. To learn more, see <a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le.html" target="_blank" rel="noopener">Bluetooth Low Energy</a></p>
-<p>This document describes different Bluetooth profiles, including the Health Device Profile. It then explains how to use the Android Bluetooth APIs to accomplish the four major tasks necessary to communicate using Bluetooth: setting up Bluetooth, finding devices that are either paired or available in the local area, connecting devices, and transferring data between devices.</p>
-<h2 id="The-basics"><a href="#The-basics" class="headerlink" title="The basics"></a>The basics</h2><p>In order for Bluetooth-enabled devices to transmit data between each other, they must first from a channel of communication using a pairing process. One device, a discoverable device, makes itself available for incoming connection requests. Another device finds the discoverable device using a service discovery process. After the discoverable device accepts the paring request, the two devices complete a bonding process where they exchange security keys. The devices cache these keys for later use. After the pairing and bonding processes are complete, the two device exchange information. When the session is complete, the device that initiated the paring request releases the channel that had linked it to the discoverable device. The two devices remain bonded, however, so they can reconnect automatically during a future session as long as they’re in range of each other and neither device has removed the bond.</p>
-<h3 id="Bluetooth-Permission"><a href="#Bluetooth-Permission" class="headerlink" title="Bluetooth Permission"></a>Bluetooth Permission</h3><p>In order to use Bluetooth features in your application, you must declare two permissions. The first of these is <code>BLUETOOTH</code>. You need this permission to perform any Bluetooth communication, such as requesting a connection, accepting a connection, and transferring data.</p>
-<p>The other permission that you must declare is either <code>ACCESS_COARSE_LOCATION</code> or <code>ACCESS_FINE_LOCATION</code>. A location permission is required because Bluetooth scans can be used to gather infomation about the location of the user. This information may come from the user’s own devices, as well as Bluetooth beacons in use at locations such as shops and transit facilities.</p>
-<p>If you want your app to initiate device discovery or manipulate Bluetooth settings, you must declare the <code>BLUETOOTH_ADMIN</code> permission in addition to the <code>BLUETOOTH</code> permission. Most applications need this permission solely for the ability to discover local Bluetooth devices. The other abilities granted by this permission should not be used, unless the application is a “power manager” that modifies Bluetooth settings upon user request.</p>
-<p>Declare the Bluetooth permission(s) in your application manifest file. For example:</p>
-<p>See the <uses-permission> reference for more information about declaring application permissions.</uses-permission></p>
-<h2 id="Work-with-profiles"><a href="#Work-with-profiles" class="headerlink" title="Work with profiles"></a>Work with profiles</h2><p>Starting in Android 3.0, the Bluetooth API includes support for working with Bluetooth profiles. A Bluetooth profile is a wireless interface specification for Bluetooth-based communication between devices. An example is the Hands-Free profile. For a mobile phone to connect to a wireless headset, both devices must support the Hands-Free profile.</p>
-<p>The Android Bluetooth API provides implementations for the following Bluetooth profiles:</p>
-<ul>
-<li>Headset. The Headset profile provides support for Bluetooth headsets to be used with mobile phones. Android provides the <code>BluetoothHeadset</code> class, which is a proxy for controlling the Bluetooth Headset Service. This includes both Bluetooth Headset and Hands-Free(v1.5) profiles. The <code>BluetoothHeadset</code> class includes support for AT command. For more discussion of this topic, see <a href="https://developer.android.com/guide/topics/connectivity/bluetooth#AT-Commands" target="_blank" rel="noopener">Vendor-specific AT commands</a>.</li>
-<li>A2DP. The Advanced Audio Distribution Profile(A2DP) profile defines how high quality audio can be streamed from one device to another over a Bluetooth connection. Android provides the <code>BluetoothA2dp</code> class, which is a proxy for controlling the Bluetooth A2DP Service.</li>
-<li>Health Device. Android 4.0(API level 14) introduces support for the Bluetooth Health Device Profile(HDP). This lets you create applications that use Bluetooth to communicates with health devices that support Bluetooth, such as heart-rate monitors, blood meters, thermometers, scales, and so on. For a list of supported devices and their corresponding device data specilization codes, refer to Bluetooth’s <a href="https://www.bluetooth.com/specifications/assigned-numbers/health-device-profile" target="_blank" rel="noopener">HDP Device Specializations</a>. These values are also referenced in the ISO/IEEE 11073-20601 specification as MDC_DEV_SPEC_PROFILE_* in the Nomenclature Codes Annex. For more discussion of HDP, see <a href="https://developer.android.com/guide/topics/connectivity/bluetooth#HDP" target="_blank" rel="noopener">Health Device Profile</a>.</li>
-</ul>
-<p>Here are the basic steps for working with a profile:</p>
-<ol>
-<li>Get the default adapter , as described in <a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html#SettingUp" target="_blank" rel="noopener">Setting Up Bluetooth</a></li>
-<li>Set up a <code>BluetoothProfile.ServiceListener</code>. This listener notifies <code>BluetoothProfile</code> clients when they have been connected to or disconnected from the service.</li>
-<li>Use <code>getProfileProxy()</code> to establish a connection to the profile proxy object associated with the profile. In the example below ,the profile proxy object is an instance of <code>BluetoothHeadset</code></li>
-<li>In <code>onServiceConnected()</code>, get a handle to the profile proxy object.</li>
-<li>Once you have the profile proxy object, you can use it to monitor the state of the connection and perform other operations that are  relevant to that profile.</li>
-</ol>
-<p>For example, this code snippet shows how to connect to a <code>BluetoothHeadset</code> proxy object so that you can control the Headset profile: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">BluetoothHeadset bluetoothHeadset;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get the default adapter</span></span><br><span class="line">BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> BluetoothProfile.ServiceListener profileListener = <span class="keyword">new</span> BluetoothProfile.ServiceListener() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(<span class="keyword">int</span> profile, BluetoothProfile proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (profile == BluetoothProfile.HEADSET) &#123;</span><br><span class="line">            bluetoothHeadset = (BluetoothHeadset) proxy;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(<span class="keyword">int</span> profile)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (profile == BluetoothProfile.HEADSET) &#123;</span><br><span class="line">            bluetoothHeadset = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Establish connection to the proxy.</span></span><br><span class="line">bluetoothAdapter.getProfileProxy(context, profileListener, BluetoothProfile.HEADSET);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... call functions on bluetoothHeadset</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Close proxy connection after use.</span></span><br><span class="line">bluetoothAdapter.closeProfileProxy(bluetoothHeadset);</span><br></pre></td></tr></table></figure>
-
-<h3 id="Vendor-specific-AT-commands"><a href="#Vendor-specific-AT-commands" class="headerlink" title="Vendor-specific AT commands"></a>Vendor-specific AT commands</h3><p>Starting in Android 3.0 (API level 11), applications can register to receive system broadcasts of predefined vendor-specific AT commands sent by headsets (such as a Plantronics +XEVENT command). For example, an application could receive broadcasts that indicate a connected device’s battery level and could notify the user or take other action as needed. Create a broadcast receiver for the <code>ACTION_VENDOR_SPECIFIC_HEADSET_EVENT</code> intent to handle vendor-specific AT commands for the headset.</p>
-<h2 id="Health-device-profile"><a href="#Health-device-profile" class="headerlink" title="Health device profile"></a>Health device profile</h2><p>Android 4.0 (API level 14) introduces support for the Bluetooth Health</p>
+            <p><a href="https://www.cnblogs.com/maohuidong/p/7992894.html" target="_blank" rel="noopener">https://www.cnblogs.com/maohuidong/p/7992894.html</a></p>
 
           
         
@@ -496,7 +459,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/eeb5a1cb/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b26f467e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -515,7 +478,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/eeb5a1cb/" itemprop="url">Android 关于onPause和onStop回调时机的问题</a></h1>
+                <a class="post-title-link" href="/posts/b26f467e/" itemprop="url">Android 插件化</a></h1>
         
 
         <div class="post-meta">
@@ -527,8 +490,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T20:16:21+08:00">
-                2019-07-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:36+08:00">
+                2019-07-16
               </time>
             
 
@@ -568,8 +531,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/eeb5a1cb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/eeb5a1cb/" itemprop="commentCount"></span>
+                <a href="/posts/b26f467e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b26f467e/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -599,24 +562,628 @@
       
         
           
-            <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我们知道一个<code>Activity</code>的启动会执行<code>onCreate</code> -&gt; <code>onStart</code> -&gt;  <code>onResume</code></p>
-<p>一个<code>Activity</code>的停止会执行 <code>onPause</code> -&gt; <code>onStop</code> -&gt; <code>onDestroy</code></p>
-<p>那么，<code>ActivityA</code>启动<code>ActivityB</code>的时候，<code>ActivityB</code>的<code>onCreate</code>与<code>ActivityA</code>的<code>onPause</code>还是<code>onStop</code>哪个在前呢?</p>
-<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>先看下onPause和onStop官方文档的解释</p>
-<ul>
-<li><p>onPause</p>
-<p>  Called when the activity loses foreground state, is no longer focusable or before transition to stopped/hidden or destroyed state. The activity is still visible to user, so it’s recommended to keep it visually active and continue updating the UI. <code>Implementations of this method must be very quick because the next activity will not be resumed until this method returns.</code> 也就是说这个onPause方法里不能执行太复杂的方法，因为另一个Activity的onResume要等这个Activity的onPause执行完才会执行，也就是如果这里做了大量的操作，启动下一个Activity就会被卡住</p>
-</li>
-<li><p>onStop</p>
-<p>  Called when the activity is no longer visible to the user. This may happen either because a new activity is being started on top, an existing one is being brought in front of this one, or this one is being destroyed. <code>This is typically used to stop animations and refreshing the UI, etc.</code> 常在这里来停止动画和停止刷新UI.</p>
-</li>
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b3e25f3f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b3e25f3f/" itemprop="url">Java GC原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:26+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b3e25f3f/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b3e25f3f/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Reference:<br><a href="https://blog.csdn.net/future234/article/details/80677140" target="_blank" rel="noopener">https://blog.csdn.net/future234/article/details/80677140</a><br><a href="https://blog.csdn.net/mdxdjhpkpk/article/details/60141257" target="_blank" rel="noopener">https://blog.csdn.net/mdxdjhpkpk/article/details/60141257</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/2776dc8a/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/2776dc8a/" itemprop="url">Java-类加载机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:18+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/2776dc8a/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2776dc8a/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.csdn.net/m0_38075425/article/details/81627349" target="_blank" rel="noopener">https://blog.csdn.net/m0_38075425/article/details/81627349</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a540e7e6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/a540e7e6/" itemprop="url">Android ART和DALVIK的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:44:09+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/a540e7e6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a540e7e6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Dalvik与Art的区别：</p>
+<p>Dalvik每次都要编译再运行，Art只会首次启动编译<br>Art占用空间比Dalvik大（原生代码占用的存储空间更大），就是用“空间换时间”<br>Art减少编译，减少了CPU使用频率，使用明显改善电池续航<br>Art应用启动更快、运行更快、体验更流畅、触感反馈更及时</p>
+<p>在Dalvik下，应用每次运行的时候，字节码都需要通过即时编译器（just in time ，JIT）转换为机器码，这会拖慢应用的运行效率，而在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，使其成为真正的本地应用。这个过程叫做预编译（AOT,Ahead-Of-Time）。这样的话，应用的启动(首次)和执行都会变得更加快速。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/8669504-2ea1a7935df54a10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/338/format/webp" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/48979ded/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/48979ded/" itemprop="url">Java-Java中的几种引用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:43:30+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/48979ded/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/48979ded/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>强引用(Strong Reference)</li>
+<li>软引用(Soft Reference)</li>
+<li>弱引用(Weak Reference)</li>
+<li>虚引用(Phantom Reference)</li>
 </ul>
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>代码很简单.</p>
-<p>结论是</p>
-<p><code>ActivityA onPause</code> -&gt; <code>ActivityB onCreate</code> -&gt; <code>ActivityB onStart</code> -&gt; <code>ActivityB onResume</code> -&gt; <code>ActivityA onStop</code></p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>其实从官方文档就可以看出, <code>ActivityB</code>会在<code>ActivityA</code>的<code>onPause</code>执行之后才会执行，所以文档里建议不要再<code>onPause</code>里做耗时操作，不然会影响<code>Activity</code>启动速度. 那为什么<code>onStop</code>会在<code>ActivityA</code>执行完<code>create, start, resume</code>之后才会执行呢？也是为了让画面更流畅，用户可以点击跳转后可以快速的切换到下一个<code>Activity</code>，体验更流畅些，在<code>ActivityA</code>看不到的时候，才去做一些A中的<code>onStop</code>里执行的方法.</p>
+<p>强引用:<br>    代码中普遍存在的, 类似<code>Object obj = new Object()</code>这类引用，只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象</p>
+<p>软引用:<br>    软引用是用来描述一些还有用但并非必须的对象。对于软引用关联着的对象, 在系统将要发生内存溢出之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常.</p>
+<p>弱引用:<br>    用来描述非必须的对象， 但是它的强度比软引用更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集之前。 当垃圾收集器工作的时候，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。</p>
+<p>虚引用:<br>    最弱的一种引用关系，一个对象是否有虚引用存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。唯一目的就是能在这个对象被收集器回收时收到一个系统通知.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://blog.csdn.net/u014630987/article/details/82056501" target="_blank" rel="noopener">https://blog.csdn.net/u014630987/article/details/82056501</a></li>
+<li>《深入理解Java虚拟机》</li>
 </ul>
 
           
@@ -666,7 +1233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/85c12fe4/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d718012c/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -685,7 +1252,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/85c12fe4/" itemprop="url">Android-LruCache原理</a></h1>
+                <a class="post-title-link" href="/posts/d718012c/" itemprop="url">Android requestLayout()和invalidate()原理</a></h1>
         
 
         <div class="post-meta">
@@ -697,8 +1264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T15:40:44+08:00">
-                2019-07-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:42:09+08:00">
+                2019-07-16
               </time>
             
 
@@ -738,8 +1305,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/85c12fe4/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/85c12fe4/" itemprop="commentCount"></span>
+                <a href="/posts/d718012c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d718012c/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -769,25 +1336,7 @@
       
         
           
-            <p><a href="https://www.jianshu.com/p/b49a111147ee" target="_blank" rel="noopener">https://www.jianshu.com/p/b49a111147ee</a></p>
-<p>首先来看下构造函数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LruCache</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(maxSize &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"maxSize &lt;= 0"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">    <span class="keyword">this</span>.map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(<span class="number">0</span>, <span class="number">0.75f</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里构造了一个<code>LinkedHashMap</code>，也就是<code>LruCache</code>是通过<code>LinkedHashMap</code>实现的. </p>
-<p>再看下类里的一些变量:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> LinkedHashMap&lt;K, V&gt; map; <span class="comment">//存放数据的主体</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> size;   <span class="comment">//当前节点数 </span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> maxSize; <span class="comment">//最大支持节点数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> putCount; <span class="comment">//put次数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> createCount; <span class="comment">//create次数?</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> evictionCount; <span class="comment">//被删除的次数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> hitCount; <span class="comment">//命中的次数</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> missCount; <span class="comment">//没命中的次数</span></span><br></pre></td></tr></table></figure>
-
-<p>先有个大概印象，不理解没关系. 接着来看下常用的一些方法: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//不支持key or value 为null</span></span><br><span class="line">    <span class="keyword">if</span>(key == <span class="keyword">null</span> || value == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"key == null || value == null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    V previous;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        putCount++;</span><br><span class="line">        size += safeSizeOf(key, value);</span><br><span class="line">        <span class="comment">// 插入的key不为空, 也就是previous不为null, </span></span><br><span class="line">        <span class="comment">// 会插入后把原有key的位置删除, 所以size 先加后减不变, </span></span><br><span class="line">        <span class="comment">// 当前的key, value放在最上面</span></span><br><span class="line">        previous = map.put(key, value);</span><br><span class="line">        <span class="keyword">if</span>(previous != <span class="keyword">null</span>) &#123;</span><br><span class="line">            size -= safeSizeOf(key, previous);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(previous != <span class="keyword">null</span>) &#123;</span><br><span class="line">        entryRemoved(<span class="keyword">false</span>, key, previous, value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果插入key时没有相同的key, 那么会增加一个K,V , 要判断跟maxSize大小关系，超过了会trim, 删除最后一个</span></span><br><span class="line">    trimToSize(maxSize);</span><br><span class="line">    <span class="keyword">return</span> previous;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 回调，是因为size删除的，还是因为put相同key删除的</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">entryRemoved</span><span class="params">(<span class="keyword">boolean</span> evicted, K key, V oldValue, V newValue)</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 还不是很理解, 正常都是返回1</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">safeSizeOf</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result = sizeOf(keysafeSizeOf, value);</span><br><span class="line">    <span class="keyword">if</span>(result &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Negative size: "</span> + key + <span class="string">"="</span> + value);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//遍历链表，删除最后一个节点</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">trimToSize</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">        K key;</span><br><span class="line">        V value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(size &lt; <span class="number">0</span> || (map.isEmpty() &amp;&amp; size != <span class="number">0</span>)) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(getClass().getName()</span><br><span class="line">                        + <span class="string">".sizeOf() is reporting inconsistent results!"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(size &lt;= maxSize) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//遍历，找到最后一个节点, 删除</span></span><br><span class="line">            Map.Entry&lt;K, V&gt; toEvict = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">for</span>(Map.Entry&lt;K, V&gt; entry : map.entrySet()) &#123;</span><br><span class="line">                toEvict = entry;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(toEvict == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            key = toEvict.getKey();</span><br><span class="line">            value = toEvict.getValue();</span><br><span class="line">            map.remove(key);</span><br><span class="line">            size -= (key, value);</span><br><span class="line">            evictionCount ++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        entryRemoved(<span class="keyword">true</span>, key, value, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接下来看下<code>get</code>方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns the value for &#123;<span class="doctag">@code</span> key&#125; if it exists in the cache or can be</span></span><br><span class="line"><span class="comment"> * created by &#123;<span class="doctag">@code</span> #create&#125;. If a value was returned, it is moved to the</span></span><br><span class="line"><span class="comment"> * head of the queue. This returns null if a value is not cached and cannot</span></span><br><span class="line"><span class="comment"> * be created.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">get</span><span class="params">(K key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(key == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"key == null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    V mapValue;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        mapValue = map.get(key);</span><br><span class="line">        <span class="comment">//找到了(K, V)对</span></span><br><span class="line">        <span class="keyword">if</span>(mapValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            hitCount++;</span><br><span class="line">            <span class="keyword">return</span> mapValue;</span><br><span class="line">        &#125;</span><br><span class="line">        missCount++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//没找到， 但是create方法我不太理解</span></span><br><span class="line">    V createdValue = create(key);</span><br><span class="line">    <span class="keyword">if</span>(createdValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        createCount++;</span><br><span class="line">        mapValue = map.put(key, createdValue);</span><br><span class="line">        <span class="comment">//与put类似, 但我不太理解create方法</span></span><br><span class="line">        <span class="keyword">if</span>(mapValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            map.put(key, mapValue);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            size += safeSizeOf(key, createdValue);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mapValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">        entryRemoved(<span class="keyword">false</span>, key, createdValue, mapValue);</span><br><span class="line">        <span class="keyword">return</span> mapValue;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        trimToSize(maxSize);</span><br><span class="line">        <span class="keyword">return</span> createdValue;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Called after a cache miss to compute a value for the corresponding key.</span></span><br><span class="line"><span class="comment"> * Returns the computed value or null if no value can be computed. The</span></span><br><span class="line"><span class="comment"> * default implementation returns null.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;The method is called without synchronization: other threads may</span></span><br><span class="line"><span class="comment"> * access the cache while this method is executing.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &lt;p&gt;If a value for &#123;<span class="doctag">@code</span> key&#125; exists in the cache when this method</span></span><br><span class="line"><span class="comment"> * returns, the created value will be released with &#123;<span class="doctag">@link</span> #entryRemoved&#125;</span></span><br><span class="line"><span class="comment"> * and discarded. This can occur when multiple threads request the same key</span></span><br><span class="line"><span class="comment"> * at the same time (causing multiple values to be created), or when one</span></span><br><span class="line"><span class="comment"> * thread calls &#123;<span class="doctag">@link</span> #put&#125; while another is creating a value for the same</span></span><br><span class="line"><span class="comment"> * key.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> V <span class="title">create</span><span class="params">(K key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>剩下的就是一些简单的函数了:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> V <span class="title">remove</span><span class="params">(K key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (key == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"key == null"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    V previous;</span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        previous = map.remove(key);</span><br><span class="line">        <span class="keyword">if</span> (previous != <span class="keyword">null</span>) &#123;</span><br><span class="line">            size -= safeSizeOf(key, previous);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (previous != <span class="keyword">null</span>) &#123;</span><br><span class="line">        entryRemoved(<span class="keyword">false</span>, key, previous, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> previous;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (maxSize &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"maxSize &lt;= 0"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">    &#125;</span><br><span class="line">    trimToSize(maxSize);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">evictAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    trimToSize(-<span class="number">1</span>); <span class="comment">// -1 will evict 0-sized elements</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> Map&lt;K, V&gt; <span class="title">snapshot</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> LinkedHashMap&lt;K, V&gt;(map);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> accesses = hitCount + missCount;</span><br><span class="line">    <span class="keyword">int</span> hitPercent = accesses != <span class="number">0</span> ? (<span class="number">100</span> * hitCount / accesses) : <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> String.format(<span class="string">"LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]"</span>,</span><br><span class="line">            maxSize, hitCount, missCount, hitPercent);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> size;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">maxSize</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> maxSize;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hitCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> hitCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">missCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> missCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">createCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> createCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">putCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putCount;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">evictionCount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> evictionCount;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>整个原理就是LinkedHashMap如果命中，就把原有位置的KV删除，重新的放在最上方，如果没命中就会在最上方增加一个，然后判断size是否超过，超过了会把最后的KV删除</p>
-
+            
           
         
       
@@ -835,7 +1384,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/77852a81/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4dd850/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -854,7 +1403,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/77852a81/" itemprop="url">Translation-Managing Bitmap Memory</a></h1>
+                <a class="post-title-link" href="/posts/4dd850/" itemprop="url">Android-Fragment原理</a></h1>
         
 
         <div class="post-meta">
@@ -866,542 +1415,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T11:01:18+08:00">
-                2019-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/77852a81/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/77852a81/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Managing-Bitmap-Memory"><a href="#Managing-Bitmap-Memory" class="headerlink" title="Managing Bitmap Memory"></a>Managing Bitmap Memory</h1><p>In addition to the steps described in <a href="https://developer.android.com/topic/performance/graphics/cache-bitmap.html" target="_blank" rel="noopener">Caching Bitmaps</a>, there are specific things you can do to facilitate garbage collection and bitmap reuse. The recommended strategy depends on which version(s) of Android you are targeting. The <code>BitmapFun</code> sample app included with this class shows you how to design your app to work efficiently across different versions of Android.</p>
-<p>To set the stage of this lesson, here is how Android’s management of bitmap memory has evolved:</p>
-<ul>
-<li>On Android Android 2.2(API level 8) and lower, when garbage collection occurs, your app’s threads get stopped. This causes a lag that can degrade  performance. Android 2.3 adds concurrent garbage collection, which means that the memory is reclaimed soon after a bitmap is no longer referenced.</li>
-<li>On Android 2.3.3(API level 10) and lower, the backing pixel data for a bitmap is stored in native memory. It is separate from the bitmap itself, which is stored in the Dalvik heap. The pixel data in native memory is not released in predictable manner,  potentially causing an application to briefly exceed its memory limits and crash. From Android 3.0(API level 11) through Android 7.1 (API level 25), the pixel data is stored on the Dalvik heap along with the associated bitmap. In Android 8.0 (API level 26), and higher , the bitmap pixel data is stored in the native heap.</li>
-</ul>
-<p>The following sections describe how to optimize bitmap memory management for different Android versions.</p>
-<h2 id="Manage-Memory-on-Android-2-3-3-and-Lower"><a href="#Manage-Memory-on-Android-2-3-3-and-Lower" class="headerlink" title="Manage Memory on Android 2.3.3 and Lower"></a>Manage Memory on Android 2.3.3 and Lower</h2><p>On Android 2.3.3(API level 10) and lower, using <code>recycler()</code> is recommended. If you’re displaying large amounts of bitmap data in your app, you’re likely to run into <code>outOfMemoryError</code> erros. The <code>recycler()</code> method allows an app to reclaim memory as soon as possible.</p>
-<p>// TODO……</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a176b35b/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/a176b35b/" itemprop="url">Translation-Caching Bitmaps</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T09:45:13+08:00">
-                2019-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/a176b35b/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a176b35b/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Caching-Bitmaps"><a href="#Caching-Bitmaps" class="headerlink" title="Caching Bitmaps"></a>Caching Bitmaps</h1><p>Loading a single bitmap into your user interface(UI) is straightforward, however things get more complicated if you need to load a larger set of images at once. In many cases(such as with components like <code>ListView</code>, <code>GridView</code> or <code>ViewPager</code>), the total number of images on-screen combined with images that might soon scroll onto the screen are essentially unlimited.</p>
-<p>(直接把图片加载进UI可能还比较容易，但是，如果一下加载很多图片到listview, gridview或viewpager里，可能就会出现问题.)</p>
-<p>Memory usage is kept down with components like this by recycling the child views as they move off-screen. The garbage collector also frees up your loaded bitmaps, assuming you don’t keep any long lived references. This is all good and well but in order to keep a fluid and fast-loading UI you want to avoid continually processing these images each time they come back on-screen. A memory and disk cache can often help here, allowing componnets to quickly reload processed images.</p>
-<p>(上述的一些控件，会把看不到的view移除来减少内存占用。 垃圾回收器会释放你加载进来的图片。 但是，为了视图的流畅，你不能每次都释放然后重新加载进来。 你应该使用内存和磁盘缓存来帮助控件快速的获取到需要加载的图片)</p>
-<p>This lesson walks you through using a memory and disk bitmap cache to improve the responsiveness and fluidity of your UI when loading multiple bitmaps.<br>(本节课将带你走进如何使用内存和磁盘缓存来优化UI在加载很多图片时候的流畅性)</p>
-<h2 id="Use-a-Memory-Cache"><a href="#Use-a-Memory-Cache" class="headerlink" title="Use a Memory Cache"></a>Use a Memory Cache</h2><p>A memory cache offers fast access to bitmaps as the cost of taking up valueable application memory. The <a href="https://developer.android.com/reference/android/util/LruCache.html" target="_blank" rel="noopener">LruCache</a> class(also available in the <code>Support Library</code> for use back to API Level 4) is particularly well suited to the task of caching bitmaps, keeping recently referenced objects in a strong referenced <a href="https://developer.android.com/reference/java/util/LinkedHashMap.html" target="_blank" rel="noopener">LinkedHashMap</a> and evicting the least recently used member before the cache exceeds its designated size.</p>
-<p>(LruCache适合做内存缓存的工具, 把常用的对象存起来，把不常用的删掉,(不准确))</p>
-<p>In order to choose a suitable size for a <code>LruCache</code>, a number of factors should be taken into consideration, for example:</p>
-<p>(你需要考虑以下几点来选择合适的LruCache的大小)</p>
-<ul>
-<li>How memory f is the rest of your activity and/or application</li>
-<li>How many images will be on-screen at once? How many need to be available ready to come on-screen?</li>
-<li>What is the screen size and density of the device? An extra high density screen(xhdpi) device like <code>Galaxy Nexus</code> will need a larger cache to hold the same number of imagesin memory compared to a device like <code>Nexus S</code>(hdpi).</li>
-<li>What dimensions and configuration are the bitmaps and therefore how much memory will each take up?</li>
-<li>How frequently will the images be accessed? Will some be accessed more frequently than others? If so, perhaps you may want to keep certain items always in memory or even have multiple <code>LruCache</code> objects for different groups of bitmaps.</li>
-<li>Can you balance quality against quantity? Sometims it can be more useful to store a larger number of lower quality bitmpas, potentially loading a higher quality version in another background task.</li>
-</ul>
-<p>There is no specific size or formula that suits all applications, it’s up to you to analyze your usage and come up with a suitable solution. A cache that is too small causes additional overhead with no benefit, a cache that is too large can once again cause <code>java.lang.OutOfMemory</code> exceptions and leaves the reset of your app little memory to work with.</p>
-<p>(没有一个固定的缓存大小适配所有的程序， 这取决于你。 太小的缓存没有意义，太大的缓存可能自己会导致OOM。)</p>
-<p>Here’s an example of setting up a <code>LruCache</code> for bitmaps.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> LruCache&lt;String, Bitmap&gt; memoryCache;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Get max available VM memory, exceeding this amount will throw an</span></span><br><span class="line">    <span class="comment">// OutOfMemory exception. Stored in kilobytes as LruCache takes an</span></span><br><span class="line">    <span class="comment">// int in its constructor.</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> maxMemory = (<span class="keyword">int</span>) (Runtime.getRuntime().maxMemory() / <span class="number">1024</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Use 1/8th of the available memory for this memory cache.</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> cacheSize = maxMemory / <span class="number">8</span>;</span><br><span class="line"></span><br><span class="line">    memoryCache = <span class="keyword">new</span> LruCache&lt;String, Bitmap&gt;(cacheSize) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// The cache size will be measured in kilobytes rather than</span></span><br><span class="line">            <span class="comment">// number of items.</span></span><br><span class="line">            <span class="keyword">return</span> bitmap.getByteCount() / <span class="number">1024</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addBitmapToMemoryCache</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (getBitmapFromMemCache(key) == <span class="keyword">null</span>) &#123;</span><br><span class="line">        memoryCache.put(key, bitmap);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmapFromMemCache</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> memoryCache.get(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>When loading a bitmap into an <code>ImageView</code>, the <code>LruCache</code> is checked first. If an entry is found, it is used immediately to update the <code>ImageView</code>, otherwise a background thread is spawned to process the image.</p>
-<p>(加载图片时，先从LruCache里去找，找到后就直接展示，找不到再另起处理图片的线程)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadBitmap</span><span class="params">(<span class="keyword">int</span> resId, ImageView imageView)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> String imageKey = String.valueOf(resId);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">final</span> Bitmap bitmap = getBitmapFromMemCache(imageKey);</span><br><span class="line">    <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">        mImageView.setImageBitmap(bitmap);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        mImageView.setImageResource(R.drawable.image_placeholder);</span><br><span class="line">        BitmapWorkerTask task = <span class="keyword">new</span> BitmapWorkerTask(mImageView);</span><br><span class="line">        task.execute(resId);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The <code>BitmapWorkerTask</code> also needs to be updated to add entries to the memory cache:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">BitmapWorkerTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Integer</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Decode image in background.</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(Integer... params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Bitmap bitmap = decodeSampledBitmapFromResource(</span><br><span class="line">                getResources(), params[<span class="number">0</span>], <span class="number">100</span>, <span class="number">100</span>));</span><br><span class="line">        addBitmapToMemoryCache(String.valueOf(params[<span class="number">0</span>]), bitmap);</span><br><span class="line">        <span class="keyword">return</span> bitmap;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Use-a-Disk-Cache"><a href="#Use-a-Disk-Cache" class="headerlink" title="Use a Disk Cache"></a>Use a Disk Cache</h2><p>A memory cache is useful in speeding up access to recently viewed bitmaps, however you cannot rely on images being available in this cache. components like <code>GridView</code> with larger datasets can easily fill up a memory cache. Your application could be interrupted by another task like a phone call, and while in the background it might be killed and the memory cache destroyed.  Once the user resumes, your application has to process each image again.</p>
-<p>(内存缓存在快速的加载近期查看的图片很有用，但是你不能依赖内存缓存，因为比如像GridView这样，一次可能会需要加载多个，然后很容易会把缓存填满。 而且你的程序可能会被其他任务打断，比如来电话，这时程序在后台，可能内存会被回收， 用户重新进来的时候，你的程序需要重新处理这个过程一次)</p>
-<p>A disk cache can be used in these cases to persist processed bitmaps and help decrease loading times where images are no longer avaibale in a memory cache. Of course, fetching images from disk is slower than loading from memory and should be done in a background thread, as disk read times can be unpredictable.</p>
-<p>(磁盘缓存可以持久化图片。当然从磁盘加载图片比内存慢得多，而且不可预期，所以最好在后台加载.)</p>
-<p>The sample code of this class uses a <code>DiskLruCache</code> implementation that is pulled from the <code>Android source</code>. Here’s updated example code that adds a disk cache in addition to the existing memory cache.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> DiskLruCache diskLruCache;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Object diskCacheLock = <span class="keyword">new</span> Object();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> diskCacheStarting = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DISK_CACHE_SIZE = <span class="number">1024</span> * <span class="number">1024</span> * <span class="number">10</span>; <span class="comment">// 10MB</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String DISK_CACHE_SUBDIR = <span class="string">"thumbnails"</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Initialize memory cache</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Initialize disk cache on background thread</span></span><br><span class="line">    File cacheDir = getDiskCacheDir(<span class="keyword">this</span>, DISK_CACHE_SUBDIR);</span><br><span class="line">    <span class="keyword">new</span> InitDiskCacheTask().execute(cacheDir);</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InitDiskCacheTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">File</span>, <span class="title">Void</span>, <span class="title">Void</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Void <span class="title">doInBackground</span><span class="params">(File... params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (diskCacheLock) &#123;</span><br><span class="line">            File cacheDir = params[<span class="number">0</span>];</span><br><span class="line">            diskLruCache = DiskLruCache.open(cacheDir, DISK_CACHE_SIZE);</span><br><span class="line">            diskCacheStarting = <span class="keyword">false</span>; <span class="comment">// Finished initialization</span></span><br><span class="line">            diskCacheLock.notifyAll(); <span class="comment">// Wake any waiting threads</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BitmapWorkerTask</span> <span class="keyword">extends</span> <span class="title">AsyncTask</span>&lt;<span class="title">Integer</span>, <span class="title">Void</span>, <span class="title">Bitmap</span>&gt; </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// Decode image in background.</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Bitmap <span class="title">doInBackground</span><span class="params">(Integer... params)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String imageKey = String.valueOf(params[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Check disk cache in background thread</span></span><br><span class="line">        Bitmap bitmap = getBitmapFromDiskCache(imageKey);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (bitmap == <span class="keyword">null</span>) &#123; <span class="comment">// Not found in disk cache</span></span><br><span class="line">            <span class="comment">// Process as normal</span></span><br><span class="line">            <span class="keyword">final</span> Bitmap bitmap = decodeSampledBitmapFromResource(</span><br><span class="line">                    getResources(), params[<span class="number">0</span>], <span class="number">100</span>, <span class="number">100</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Add final bitmap to caches</span></span><br><span class="line">        addBitmapToCache(imageKey, bitmap);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> bitmap;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addBitmapToCache</span><span class="params">(String key, Bitmap bitmap)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Add to memory cache as before</span></span><br><span class="line">    <span class="keyword">if</span> (getBitmapFromMemCache(key) == <span class="keyword">null</span>) &#123;</span><br><span class="line">        memoryCache.put(key, bitmap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Also add to disk cache</span></span><br><span class="line">    <span class="keyword">synchronized</span> (diskCacheLock) &#123;</span><br><span class="line">        <span class="keyword">if</span> (diskLruCache != <span class="keyword">null</span> &amp;&amp; diskLruCache.get(key) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            diskLruCache.put(key, bitmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Bitmap <span class="title">getBitmapFromDiskCache</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (diskCacheLock) &#123;</span><br><span class="line">        <span class="comment">// Wait while disk cache is started from background thread</span></span><br><span class="line">        <span class="keyword">while</span> (diskCacheStarting) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                diskCacheLock.wait();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (diskLruCache != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> diskLruCache.get(key);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Creates a unique subdirectory of the designated app cache directory. Tries to use external</span></span><br><span class="line"><span class="comment">// but if not mounted, falls back on internal storage.</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> File <span class="title">getDiskCacheDir</span><span class="params">(Context context, String uniqueName)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Check if media is mounted or storage is built-in, if so, try and use external cache dir</span></span><br><span class="line">    <span class="comment">// otherwise use internal cache dir</span></span><br><span class="line">    <span class="keyword">final</span> String cachePath =</span><br><span class="line">            Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState()) ||</span><br><span class="line">                    !isExternalStorageRemovable() ? getExternalCacheDir(context).getPath() :</span><br><span class="line">                            context.getCacheDir().getPath();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> File(cachePath + File.separator + uniqueName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>While the memory cache is checked in the UI thread, the disk cache is checked in the background thread. Disk operations should never take place on the UI thread. When image processing is complete, the final bitmap is added to both the memory and disk cache for future use.</p>
-<h2 id="Handle-Configuration-Changes"><a href="#Handle-Configuration-Changes" class="headerlink" title="Handle Configuration Changes"></a>Handle Configuration Changes</h2><p>Runtime configuration changes, such as a screen orientation change, cause Android to destroy and restart the running activity with the new configuration (For more information about this behavior, see <a href="https://developer.android.com/guide/topics/resources/runtime-changes.html" target="_blank" rel="noopener">Handling Runtime Changes</a>). You want to avoid having to process all your images again so the user has a smooth and fast experience when a configuration change occurs.</p>
-<p>Luckily, you have a nice memory cache of bitmaps that you built in the Use a Memory Cache section. This cache can be passed through to the new activity instance using a Fragment which is preserved by calling setRetainInstance(true). After the activity has been recreated, this retained Fragment is reattached and you gain access to the existing cache object, allowing images to be quickly fetched and re-populated into the ImageView objects.</p>
-<p>Here’s an example of retaining a LruCache object across configuration changes using a Fragment:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> LruCache&lt;String, Bitmap&gt; memoryCache;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    RetainFragment retainFragment =</span><br><span class="line">            RetainFragment.findOrCreateRetainFragment(getFragmentManager());</span><br><span class="line">    memoryCache = retainFragment.retainedCache;</span><br><span class="line">    <span class="keyword">if</span> (memoryCache == <span class="keyword">null</span>) &#123;</span><br><span class="line">        memoryCache = <span class="keyword">new</span> LruCache&lt;String, Bitmap&gt;(cacheSize) &#123;</span><br><span class="line">            ... <span class="comment">// Initialize cache here as usual</span></span><br><span class="line">        &#125;</span><br><span class="line">        retainFragment.retainedCache = memoryCache;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RetainFragment</span> <span class="keyword">extends</span> <span class="title">Fragment</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"RetainFragment"</span>;</span><br><span class="line">    <span class="keyword">public</span> LruCache&lt;String, Bitmap&gt; retainedCache;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RetainFragment</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> RetainFragment <span class="title">findOrCreateRetainFragment</span><span class="params">(FragmentManager fm)</span> </span>&#123;</span><br><span class="line">        RetainFragment fragment = (RetainFragment) fm.findFragmentByTag(TAG);</span><br><span class="line">        <span class="keyword">if</span> (fragment == <span class="keyword">null</span>) &#123;</span><br><span class="line">            fragment = <span class="keyword">new</span> RetainFragment();</span><br><span class="line">            fm.beginTransaction().add(fragment, TAG).commit();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> fragment;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">        setRetainInstance(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>To test this out, try rotating a device both with and without retaining the Fragment. You should notice little to no lag as the images populate the activity almost instantly from memory when you retain the cache. Any images not found in the memory cache are hopefully available in the disk cache, if not, they are processed as usual.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/74f024ac/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/74f024ac/" itemprop="url">Translation-Loading Large Bitmaps Efficiently</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T09:15:48+08:00">
-                2019-07-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/74f024ac/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/74f024ac/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Loading-Large-Bitmaps-Efficiently"><a href="#Loading-Large-Bitmaps-Efficiently" class="headerlink" title="Loading Large Bitmaps Efficiently"></a>Loading Large Bitmaps Efficiently</h1><p>Images come in all shapes and sizes. In many cases they are larger than required for a typical application user interface (UI). For example, the system Gallery application displays photos taken using your Android devices’s camera which are typically much higher resolution than the screen density of your device.</p>
-<p>Given that you are working with limited memory, ideally you only want to load a lower resolution version in memory. The lower resolution version should match the size of the UI component that displays it. An image with a higher resolution does not provide any visible benefit, but still takes up precious memory and incurs additional performance overhead due to additional on the flying scale.</p>
-<p>This leason walks you through decoding large bitmaps without exceeding the per application memory limit by loading a smaller subsampled version in memory.</p>
-<p>(图片有可能比你屏幕还大，比如拍照，拍出很大尺寸的照片，但是你可能不需要这么大尺寸的图片来展示， 因为这意味着占用更大的内存，而且可能会带来OOM, 本节课将带你了解如何解决这样的情况.)</p>
-<h2 id="Reading-Bitmap-Dimensions-and-Type"><a href="#Reading-Bitmap-Dimensions-and-Type" class="headerlink" title="Reading Bitmap Dimensions and Type"></a>Reading Bitmap Dimensions and Type</h2><p>The <code>BitmapFactory</code> class provides serveral decoding methods (<code>decodeByteArray</code>, <code>decodeFile</code>, <code>decodeResource</code>, etc.) for creating a <code>Bitmap</code> from various soures. Choose the most appropriate decode method based on your image data source. These methods attempt to allocate memory for the constructed bitmap and therefore can easily result in an <code>OutOfMemory</code> exception. Each type of decode method has additional signatures that let you specify decoding options via the <code>BitmapFactory.Options</code> class. Setting the <code>inJustDecodeBounds</code> property to true while decoding avoid memory allocation, returning <code>null</code> for the bitmap object but setting <code>outWidth</code>, <code>outHeight</code> and <code>outMimeType</code>. This technique allows you to read the dimensions and type of the image data prior to construction(and memory allocation) of the bitmap.</p>
-<p>(BitmapFactory提供了几种获取图片的方法， 你可以根据图片所在的位置来选择其中一种方法， 但是直接使用这样的方法可能会导致OOM。 因此，你可以在使用方法的时候通过传入<code>BitmapFaction.Options</code>这个属性, 把其<code>inJustDecodeBounds</code>设置为true, 这样，你虽然获取不到bitmap图片，但是可以获取到<code>outWidht</code>, <code>outHeight</code>, <code>outMimeType</code>这些属性。也就是说，这个参数就是假的加载图片，真的获取图片属性。)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">options.inJustDecodeBounds = <span class="keyword">true</span>;</span><br><span class="line">BitmapFactory.decodeResource(getResources(), R.id.myimage, options);</span><br><span class="line"><span class="keyword">int</span> imageHeight = options.outHeight;</span><br><span class="line"><span class="keyword">int</span> imageWidth = options.outWidth;</span><br><span class="line">String imageType = options.outMimeType;</span><br></pre></td></tr></table></figure>
-
-<p>To avoid <code>java.lang.OutOfMemory</code> exceptions, check the dimensions of a bitmap before decoding it ,unless you absolutely trust the source to provide you with predictably sized image data that comfortablly fits within the available memory.<br>(为了避免OOM问题，你最好在decode图片的时候，检查图片的尺寸, 除非你能确定提供的图片尺寸不会导致OOM)</p>
-<h2 id="Load-a-Scaled-Down-Version-into-Memory"><a href="#Load-a-Scaled-Down-Version-into-Memory" class="headerlink" title="Load a Scaled Down Version into Memory"></a>Load a Scaled Down Version into Memory</h2><p>Now that the image dimensions are known, they can be used to decide if the full image should be loaded into memory or if a subsampled version should be loaded instead. Here are some factors to consider:</p>
-<p>(你知道图片尺寸后，你需要决定是把图片整个加载进来，还是加载采样图片, 你需要考虑以下几点)</p>
-<ul>
-<li>Estimated memory usage of loading the full image in memory. (是否有足够内存来加载整个图片)</li>
-<li>Amount of memory you are willing to commit to loading this image given any other memory requirements of your application (你愿意用多少内存为了图片加载)</li>
-<li>Dimensions of the target <code>ImageView</code> or UI component that the images is to be loaded into (ImageView或者其他放置图片的控件的大小)</li>
-<li>Screen size and density of the current device (当前设备的屏幕尺寸)</li>
-</ul>
-<p>For example, it’s not worth loading a 1024 * 768 pixel image into memory if it will eventually be displayed in a 128<em>96 pixel thumbnail in an `ImageView.  (比如就不值得把1024</em>768的图片全加进来放到128*96大小的ImageView里)</p>
-<p>To tell the decoder to subsample the image, loading a smaller version into memory , set <code>inSampleSize</code> to <code>true</code> in your <code>BitmapFactory.Options</code> object. For example, an image with resolution 2048 * 1536 that is decoded with an <code>inSampleSize</code> of 4 produces a bitmap of approximately 512 * 384. Loading this into memory uses 0.75MB rather than 12MB for the full image(assuming a bitmap configuration of ARGB_8888). Here’s a method to calculate a sample size value that is a power of two based on a target width and height:</p>
-<p>(告诉decoder如何来获取采样图片， 设置<code>BitmapFactory.Options</code>里的<code>inSampleSize</code>. 比如一个2048*1536大小的图片，使用<code>inSampleSize=4</code>, 那么将获得<code>512 * 384</code>的采样图片，内存从12Mb变为0.75MB).</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateInSampleSize</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">            BitmapFactory.Options options, <span class="keyword">int</span> reqWidth, <span class="keyword">int</span> reqHeight)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// Raw height and width of image</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> height = options.outHeight;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> width = options.outWidth;</span><br><span class="line">    <span class="keyword">int</span> inSampleSize = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (height &gt; reqHeight || width &gt; reqWidth) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> halfHeight = height / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> halfWidth = width / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Calculate the largest inSampleSize value that is a power of 2 and keeps both</span></span><br><span class="line">        <span class="comment">// height and width larger than the requested height and width.</span></span><br><span class="line">        <span class="keyword">while</span> ((halfHeight / inSampleSize) &gt;= reqHeight</span><br><span class="line">                &amp;&amp; (halfWidth / inSampleSize) &gt;= reqWidth) &#123;</span><br><span class="line">            inSampleSize *= <span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> inSampleSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>To use this method, first decode with <code>inJustDecodeBounds</code> set to <code>true</code>, pass the options through and then decode again using the new <code>inSampleSize</code> value value and <code>inJustDecodeBounds</code> set to <code>false</code>:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Bitmap <span class="title">decodeSampledBitmapFromResource</span><span class="params">(Resources res, <span class="keyword">int</span> resId,</span></span></span><br><span class="line"><span class="function"><span class="params">        <span class="keyword">int</span> reqWidth, <span class="keyword">int</span> reqHeight)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// First decode with inJustDecodeBounds=true to check dimensions</span></span><br><span class="line">    <span class="keyword">final</span> BitmapFactory.Options options = <span class="keyword">new</span> BitmapFactory.Options();</span><br><span class="line">    options.inJustDecodeBounds = <span class="keyword">true</span>;</span><br><span class="line">    BitmapFactory.decodeResource(res, resId, options);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Calculate inSampleSize</span></span><br><span class="line">    options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Decode bitmap with inSampleSize set</span></span><br><span class="line">    options.inJustDecodeBounds = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> BitmapFactory.decodeResource(res, resId, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This methods makes it easy to load a bitmap of arbitrarily large size into an <code>ImageView</code> that displays a 100*100 pixel thumbnail, asshown in the following example code:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">imageView.setImageBitmap(</span><br><span class="line">decodeSampledBitmapFromResource(getResources(), R.id.myimage, <span class="number">100</span>, <span class="number">100</span>));</span><br></pre></td></tr></table></figure>
-
-<p>You can follow a similar process to decode bitmap from other sources, by substituting the appropriate <code>BitmapFactory.decode*</code> method as needed.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a6157931/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/a6157931/" itemprop="url">Android 常见内存泄漏</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:43:24+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:41:55+08:00">
+                2019-07-16
               </time>
             
 
@@ -1441,8 +1456,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/a6157931/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a6157931/" itemprop="commentCount"></span>
+                <a href="/posts/4dd850/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4dd850/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1472,7 +1487,14 @@
       
         
           
-            <p><a href="https://www.toptal.com/java/hunting-memory-leaks-in-java" target="_blank" rel="noopener">https://www.toptal.com/java/hunting-memory-leaks-in-java</a></p>
+            <p><a href="https://www.jianshu.com/p/d0c7ed3d05e9" target="_blank" rel="noopener">https://www.jianshu.com/p/d0c7ed3d05e9</a><br><a href="https://www.jianshu.com/p/78136d0d3501" target="_blank" rel="noopener">https://www.jianshu.com/p/78136d0d3501</a><br><a href="https://www.jianshu.com/p/f50a1d7ab161" target="_blank" rel="noopener">https://www.jianshu.com/p/f50a1d7ab161</a><br><a href="https://blog.csdn.net/gaugamela/article/details/56280384" target="_blank" rel="noopener">https://blog.csdn.net/gaugamela/article/details/56280384</a></p>
+<p>每次beginTransaction都是新建了一个回退栈记录</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FragmentTransaction <span class="title">beginTransaction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> BackStackRecord(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从这里也可以知道 <code>BackStackRecord</code> 跟 <code>FragmentTransaction</code>是继承关系.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * Entry of an operation on the fragment back stack.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">BackStackRecord</span> <span class="keyword">extends</span> <span class="title">FragmentTransaction</span> <span class="keyword">implements</span></span></span><br><span class="line"><span class="class">      <span class="title">FragmentManager</span>.<span class="title">BackStackEntry</span>, <span class="title">FragmentManagerImpl</span>.<span class="title">OpGenerator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以，使用过程中通过<code>FragmentTransaction</code>操作的<code>add</code>, <code>replace</code>, <code>hide</code>, <code>commit</code>等本质都是执行<code>BackStackRecord</code>中的方法</p>
 
           
         
@@ -1521,7 +1543,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b5608f0f/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/6d7fb02e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1540,7 +1562,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/b5608f0f/" itemprop="url">Android App启动过程和Activity启动过程</a></h1>
+                <a class="post-title-link" href="/posts/6d7fb02e/" itemprop="url">Android Serializable和Parcelable性能差异</a></h1>
         
 
         <div class="post-meta">
@@ -1552,8 +1574,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:39:34+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T21:38:20+08:00">
+                2019-07-13
               </time>
             
 
@@ -1593,8 +1615,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/b5608f0f/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b5608f0f/" itemprop="commentCount"></span>
+                <a href="/posts/6d7fb02e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6d7fb02e/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1624,7 +1646,7 @@
       
         
           
-            <p><a href="https://blog.csdn.net/qian520ao/article/details/78156214" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78156214</a></p>
+            <p><a href="https://www.cnblogs.com/yezhennan/p/5527506.html" target="_blank" rel="noopener">https://www.cnblogs.com/yezhennan/p/5527506.html</a></p>
 
           
         
@@ -1673,7 +1695,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d2b4a3fc/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b7f694e6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1692,7 +1714,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/d2b4a3fc/" itemprop="url">Android-RecyclerView与ListView的区别</a></h1>
+                <a class="post-title-link" href="/posts/b7f694e6/" itemprop="url">Android-Fragment生命周期</a></h1>
         
 
         <div class="post-meta">
@@ -1704,8 +1726,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:38:45+08:00">
-                2019-07-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T17:31:49+08:00">
+                2019-07-13
               </time>
             
 
@@ -1745,8 +1767,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/d2b4a3fc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d2b4a3fc/" itemprop="commentCount"></span>
+                <a href="/posts/b7f694e6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b7f694e6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1776,167 +1798,28 @@
       
         
           
-            <p><a href="https://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">https://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/72e1c46d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/72e1c46d/" itemprop="url">Android StartService和bindService的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:36:07+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/72e1c46d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/72e1c46d/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"SampleService"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onCreate..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onStartCommand"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onDestroy..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>startService</code></p>
-<p>第一次会走<code>onCreate</code>, <code>onStartCommand</code> (<code>onStart</code>已经<code>deprecated</code>了, 取而代之的是<code>onStartComand</code>), 之后每次在<code>start</code> 都只会走<code>onStartCommand</code>. 推出Activity, Service的<code>onDestroy</code>不会走到, 会一直在后台运行</p>
-<p><code>bindService</code><br>第一次会走<code>onCreate</code>, <code>onBind</code>, 之后每次<code>bind</code>都只不触发<code>onBind</code>和<code>onCreate</code>， Activity推出后, 会执行<code>onDestroy</code></p>
-<p><code>start()</code>方式，很难在Activity中对<code>Service</code>进行控制， 因此，会有<code>bindService</code>方式, 在Service里创建一个类继承Binder, 然后会回调会bindService的地方</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> Service.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> LocalBinder binder = <span class="keyword">new</span> LocalBinder();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         Debug.i(TAG, <span class="string">"test..."</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">     Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">     <span class="keyword">return</span> binder;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> Activity.java</span><br><span class="line"> </span><br><span class="line"> bindService(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, SampleService.class), <span class="keyword">new</span> ServiceConnection() &#123;</span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</span><br><span class="line">                     Debug.i(TAG, <span class="string">"onServiceConnected "</span>);</span><br><span class="line">                     SampleService.LocalBinder binder = (SampleService.LocalBinder)service;</span><br><span class="line">                     binder.test();</span><br><span class="line">                 &#125;</span><br><span class="line"></span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</span><br><span class="line">                     Debug.i(TAG, <span class="string">"onServiceDisconnected "</span>);</span><br><span class="line"></span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;, Context.BIND_AUTO_CREATE);</span><br></pre></td></tr></table></figure>
-
-<h1 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h1><p>Android Interface Definition Language. 可以让某个Service与多个应用程序组件之间进行跨进程通讯, 从而实现多个应用程序共享一个Service的功能. 也是通过bindService来实现，流程与上述差不多。 具体细节有待分析.</p>
+            <p><img src="https://upload-images.jianshu.io/upload_images/6433394-2905902a1331235f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/317/format/webp" alt></p>
+<p>Fragment1切换到Fragment2时的生命周期变化</p>
+<ol>
+<li>add, hide, show方式切换<ol>
+<li>Fragment1 : onCreate, onCreateView, onStart, onResume</li>
+<li>Fragment2 : onCreate, onCreateView, onStart, onResume<br>返回到Fragment1</li>
+<li>不走任何生命周期方法</li>
+</ol>
+</li>
+</ol>
+<p>所有的Fragment都保存在内存，Fragment的隐藏不走onDestroyView, 所有的显示也不走onCreateView</p>
+<ol start="2">
+<li>replace方式切换<ol>
+<li>Fragment1: onCreate, onCreateView, onStart, onResume<br>切换到Fragment2</li>
+<li>Fragment1: onPause(), onStop, onDestroyView, onDestroy</li>
+<li>Fragment2: onCreate, onCreateView, onStart, onResume<br>返回到Fragment1</li>
+<li>Fragment2: onPause, onStop, onDestroyView, onDestroy</li>
+<li>Fragment1: onCreate, onCreateView, onStart, onResume</li>
+</ol>
+</li>
+</ol>
+<p>所有的Fragment都进行了销毁，会重新走一套生命周期</p>
 
           
         
@@ -1976,7 +1859,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2022,7 +1905,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">86</span>
+                  <span class="site-state-item-count">107</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
