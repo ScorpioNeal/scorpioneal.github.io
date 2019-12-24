@@ -1,9 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Algorithm Leetcode 455 Assign Cookies</title>
+    <url>/posts/76b09fa2/</url>
+    <content><![CDATA[<p>Greedy</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 437 Path Sum 3</title>
+    <url>/posts/a898cbda/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 563 Binary Tree Tilt</title>
+    <url>/posts/c40d9066/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 538 Convert BST to Greater Tree</title>
+    <url>/posts/4738d6df/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 475 Heaters</title>
+    <url>/posts/f1454c2d/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 429 N-ary Tree Level Order Traversal</title>
+    <url>/posts/8dcf895b/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 257 Binary Tree Paths</title>
+    <url>/posts/544be13c/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 235 Lowest Common Ancestor of a Binary Search Tree</title>
+    <url>/posts/68a60d10/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 637 Average of levels in binary tree</title>
+    <url>/posts/42adb360/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 669 Trim a Binary Search Tree</title>
+    <url>/posts/76424700/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 707 Design LinkedList</title>
+    <url>/posts/c510d6d2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 706 Design HashMap</title>
+    <url>/posts/9c9897b1/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 705 Design HashSet</title>
+    <url>/posts/c0e9ac24/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 443 String Compression</title>
+    <url>/posts/e660b369/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 232 Implement Queue using Stacks</title>
+    <url>/posts/b4a58c2a/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 225 Implement Stack using Queues</title>
+    <url>/posts/8dc2d219/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 107 Binary tree level order traversal 2</title>
+    <url>/posts/c93fd58a/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm 二叉树前中后序遍历 递归与非递归的实现</title>
+    <url>/posts/52f5d09b/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 897 Increasing order search tree</title>
+    <url>/posts/21b94842/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 994 Rotting Oranges</title>
+    <url>/posts/7727a6f3/</url>
+    <content><![CDATA[<p>广度优先搜索</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 993 Cousins in binary tree</title>
+    <url>/posts/89a53fa/</url>
+    <content><![CDATA[<p>递归思路最清晰</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 1022 Sum of root to leaf binary numbers</title>
+    <url>/posts/2b2429b0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 784 Letter Case Permutation</title>
+    <url>/posts/e1ef6796/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 1184 Distance Between Bus Stops</title>
+    <url>/posts/2d8ecbe2/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 849 Maximize Distance to Closest Person</title>
+    <url>/posts/49bede3d/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 532 K-diff Pairs in an Array</title>
+    <url>/posts/eabd76d6/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 849 Maximize distance to closest person</title>
+    <url>/posts/ca31362/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 754 Reach a Number</title>
+    <url>/posts/3cad5a96/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 746 Min Cost Climbing Stairs</title>
+    <url>/posts/61d54b2b/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 496 Next Greater Element 1</title>
+    <url>/posts/df3044a3/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 1009 Complement of Base 10 Integer</title>
+    <url>/posts/dc26ed78/</url>
+    <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bitwiseComplement2</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    String str = Integer.toBinaryString(N);</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str.length(); i++) &#123;</span><br><span class="line">        sb.append(str.charAt(i) == <span class="string">'0'</span> ? <span class="string">'1'</span> : <span class="string">'0'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Integer.valueOf(sb.toString(), <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意Integer.valueOf(str, 2); 的使用<br>注意Integer.toBinaryString()的使用</p>
+<p>其他解法:  位运算，不熟悉</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 453 Minimum Moves to Equal Array Elements</title>
+    <url>/posts/ea9f0311/</url>
+    <content><![CDATA[<p>直观思路如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minMoves</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> get(nums);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> max = nums[nums.length -<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> val = max - nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(val == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            nums[i] += val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val + get(nums);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是会造成Time Limit Exceeded ， 通过不了。</p>
+<p>巧妙思路</p>
+<p><a href="https://www.cnblogs.com/grandyang/p/6053827.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/6053827.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 434 Number of segments in a string</title>
+    <url>/posts/afc442a4/</url>
+    <content><![CDATA[<p>思路很好。 当前为空且下一个index不为空</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 1128 Number of equivalent domino pairs</title>
+    <url>/posts/17786f6d/</url>
+    <content><![CDATA[<p>计算出来num[i] 有多少个数之后<br>通过Cn2 = (n * (n - 1))/2 来获得最终多少种排列</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 204 Count Primes</title>
+    <url>/posts/c25081df/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 219 Contains Dulplicate 2</title>
+    <url>/posts/6c30c346/</url>
+    <content><![CDATA[<p>笨方法，遍历一遍<br>使用hashmap可以优化</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 1071 Greatest Common Divisor of Strings</title>
+    <url>/posts/301dd35e/</url>
+    <content><![CDATA[<p>辗转相除法</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm Leetcode 1051 Height Checker</title>
+    <url>/posts/6206342c/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 812 Largest Triangle Area</title>
+    <url>/posts/9520d35b/</url>
+    <content><![CDATA[<p>注意 三角形根据三顶点求面积的计算公式</p>
+<p>S=1/2 * [(x1y2-x2y1)+(x2y3-x3y2)+(x3y1-x1y3)]</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 1010 Pairs of songs with total duration divisible by 60</title>
+    <url>/posts/6fa4d6a/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 1002 Find Common Characters</title>
+    <url>/posts/fb8c3633/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 594 Longest harmonious Subsequence</title>
+    <url>/posts/b58ba739/</url>
+    <content><![CDATA[<p>注意，对于这样的非正整数，不可以用数组来村数据</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 942 DI String Match</title>
+    <url>/posts/a4f6abd9/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 989 Add To Array Form Of Integer</title>
+    <url>/posts/346cd301/</url>
+    <content><![CDATA[<p>考虑溢出问题，所以不可以直接转为int/long去计算</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Algorithm LeetCode 949 Largest Time for Given Digits</title>
     <url>/posts/31c696da/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>思路很好。</p>
+<ol>
+<li>选择所有时间对应的数字</li>
+<li>排序给定数字</li>
+<li>找到对应数字</li>
+</ol>
+]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 970 Powerful Integers</title>

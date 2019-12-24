@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/789b713f/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/fb8c3633/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -326,7 +326,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/789b713f/" itemprop="url">Java Java中Exception, Error的区别</a></h1>
+                <a class="post-title-link" href="/posts/fb8c3633/" itemprop="url">Algorithm LeetCode 1002 Find Common Characters</a></h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T19:27:11+08:00">
-                2019-09-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:14+08:00">
+                2019-12-19
               </time>
             
 
@@ -349,28 +349,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -379,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/789b713f/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/789b713f/" itemprop="commentCount"></span>
+                <a href="/posts/fb8c3633/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/fb8c3633/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,17 +388,136 @@
       
         
           
-            <p><code>Throwable</code>类是整个异常体系类的父级类。<code>Throwable</code>类实现了<code>Serializable</code>接口，表示<code>Throwable</code>可以进行序列化，继承自Object类，他的子类主要是<code>Error</code>和<code>Exception</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exception</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Error</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+            
+          
+        
+      
+    </div>
+    
+    
+    
 
-<p>在Java中只有<code>Throwable</code>类的实例才可以被抛出（<code>throw</code>）或者捕获（<code>catch</code>），它是异常处理机子的基本组成类型</p>
-<p><code>Exception</code>和<code>Error</code>提现了Java平台对于不同未知情况的分类。</p>
-<p><code>Exception</code>是程序正常运行中，<code>可以预料到的意外情况</code>，可能并且应该被捕获，进行相应处理。</p>
-<p><code>Exception</code>分为两类，可检查（<code>checked</code>）异常和不检查（<code>unchecked</code>）异常，可检查异常是在源代码中必须显示地进行捕获处理，这<code>是编译期检查的一部分</code>。<code>不检查异常就是所谓的运行时异常</code>（<code>RuntimeException</code>），类似<code>NullPointerException</code>、ArrayIndexOutOfBoundsException等、通常是可以避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译期强制要求。</p>
-<p><code>Error</code>是程序正常运行中，不大可能出现的情况，绝大部分的<code>Error</code>都会导致程序（比如JVM）处于非正常、不可恢复状态。<code>既然是非正常情况，所以不便于也不需要捕获</code>，常见的比如<code>OutOfMemoryError</code>之类，都是<code>Error</code>的子类。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://blog.csdn.net/foreveyking/article/details/85683662" target="_blank" rel="noopener">https://blog.csdn.net/foreveyking/article/details/85683662</a></li>
-</ul>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b58ba739/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b58ba739/" itemprop="url">Algorithm LeetCode 594 Longest harmonious Subsequence</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T17:18:22+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b58ba739/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b58ba739/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>注意，对于这样的非正整数，不可以用数组来村数据</p>
 
           
         
@@ -469,7 +566,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8f460aa2/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a4f6abd9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -488,7 +585,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/8f460aa2/" itemprop="url">Java-Java的解释执行和编译执行</a></h1>
+                <a class="post-title-link" href="/posts/a4f6abd9/" itemprop="url">Algorithm LeetCode 942 DI String Match</a></h1>
         
 
         <div class="post-meta">
@@ -500,8 +597,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T19:22:39+08:00">
-                2019-09-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T16:02:53+08:00">
+                2019-12-18
               </time>
             
 
@@ -511,28 +608,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -541,8 +616,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/8f460aa2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8f460aa2/" itemprop="commentCount"></span>
+                <a href="/posts/a4f6abd9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a4f6abd9/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -572,57 +647,136 @@
       
         
           
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码</p>
-<ul>
-<li><p>编译执行: </p>
-<p>  先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码</p>
-</li>
-<li><p>解释执行</p>
-<p>  需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件</p>
-</li>
-</ul>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>编译执行</th>
-<th>解释执行</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>次数</td>
-<td>编译一次，多次运行</td>
-<td>每运行一次，都要经过解释器</td>
-</tr>
-<tr>
-<td>启动效率</td>
-<td>需要编译过程，慢</td>
-<td>速度更快</td>
-</tr>
-<tr>
-<td>运行效率</td>
-<td>编译一次后续无需编译，效率高</td>
-<td>每次都要解释，效率低</td>
-</tr>
-<tr>
-<td>内存</td>
-<td>生成编译后的机器码文件</td>
-<td>不会生成中间文件，内存占用少</td>
-</tr>
-<tr>
-<td>跨平台</td>
-<td>在windows下编译的代码只能在windows下用</td>
-<td>根据不同平台解释，可以跨平台, e.g js在linux和window下都可以运行</td>
-</tr>
-<tr>
-<td>其他</td>
-<td>大型项目注重效率，核心使用编译执行</td>
-<td>简单操作可以混合解释执行</td>
-</tr>
-</tbody></table>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://blog.csdn.net/hongsheng6353328/article/details/80463434" target="_blank" rel="noopener">https://blog.csdn.net/hongsheng6353328/article/details/80463434</a></li>
-</ul>
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/346cd301/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/346cd301/" itemprop="url">Algorithm LeetCode 989 Add To Array Form Of Integer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T13:36:32+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/346cd301/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/346cd301/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>考虑溢出问题，所以不可以直接转为int/long去计算</p>
 
           
         
@@ -671,7 +825,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4c0a9dae/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/31c696da/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -690,7 +844,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/4c0a9dae/" itemprop="url">Translation-NDK build Android.mk</a></h1>
+                <a class="post-title-link" href="/posts/31c696da/" itemprop="url">Algorithm LeetCode 949 Largest Time for Given Digits</a></h1>
         
 
         <div class="post-meta">
@@ -702,8 +856,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T10:26:19+08:00">
-                2019-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T10:59:26+08:00">
+                2019-12-18
               </time>
             
 
@@ -713,28 +867,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -743,8 +875,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/4c0a9dae/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4c0a9dae/" itemprop="commentCount"></span>
+                <a href="/posts/31c696da/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/31c696da/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -774,184 +906,12 @@
       
         
           
-            <h2 id="Android-mk"><a href="#Android-mk" class="headerlink" title="Android.mk"></a>Android.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/android_mk" target="_blank" rel="noopener">Reference</a></p>
-<p>This page descriebs the syntax of the <code>Android.mk</code> build file used by <code>ndk-build</code>.</p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The <code>Android.mk</code> file resides in a subdirectory of your project’s <code>jni/</code> directory, and describes your sources and shared libraries to the build system. It is really a tiny GNU makefile fragment that the build system parses once or more. The <code>Android.mk</code> file is useful for defining project-wide settings that <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a>, the build system, and your environment variables leave undefined. It can also override project-wide settings for specific modules.</p>
-<p>The syntax of the <code>Android.mk</code> allows you to group your sources into modules. A module is either a static library , a shared library, or a standalone executable. You can define one or more modules in each <code>Android.mk</code> file, and you can use the same source file in multiple modules. The build system only places shared libraries into your application package. In additional, static libraries can generate shared libraries.</p>
-<p>In addition to packaging libraries, the build system handles a variety of other details for you. For example, you don’t need to list header files or explict dependencies between generated files in your <code>Android.mk</code> file. The NDK build system computes these relationships automatically for you. As a result, you should be able to benefit from new toolchain/platform support in future NDK release without having to touch your <code>Android.mk</code> file.</p>
-<p>The syntax of this file is very close to that used in the <code>Android.mk</code> files distributed with the full <a href="https://source.android.google.cn/" target="_blank" rel="noopener">Android Open Source Project</a>. While the build system implementation that uses them is different, their similarity is an intentional design desicion aimed at making it  eaiser for application developers to reuse source code for external libraries.</p>
-<h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><p>Before exploring the syntax in detail, it is useful to start by understanding the basics of what a <code>Android.mk</code> file contains. This section uses the <code>Android.mk</code> file in the Hello-JNI sample towards that end, explaining the role that each line in the file plays.</p>
-<p>An <code>Android.mk</code> file must begin by defining the <code>LOCAL_PATH</code> variable:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
-
-<p>This variable indicates the location of the source files in the development tree. Here, the macro function <code>my-dir</code>, provided by the build system, returns the path of the current directory(the directory containing the <code>Android.mk</code> file itself).</p>
-<p>The next line declares the <code>CLEAR_VARS</code> variable, whose value the build system provides.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)</span><br></pre></td></tr></table></figure>
-
-<p>The <code>CLEAR_VARGS</code> variable points to a special GNU Makefile that clears many <code>LOCAL_XXX</code> variables for you, such as <code>LOCAL_MODULE</code>, <code>LOCAL_SRC_FILES</code>, and <code>LOCAL_STATIC_LIBRARIES</code>. Note that it does not clear <code>LOCAL_PATH</code>. This variable must retain its value because the system parses all build control files in a single GNU Make execution context where all variables are global. You must (re-)declare this variable before describing each module.</p>
-<p>Next, the <code>LOCAL_MODULE</code> variable stores the name of the module that you wish to build. Use this variable once per module in your application.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := hello-jni</span><br></pre></td></tr></table></figure>
-
-<p>Each module name must be unique and not certain any spaces. The build system, when it generates the final shared library file, automatically adds the proper prefix and suffix to the name that you assign to <code>LOCAL_MODULE</code>. For example, the example that appears above results in generation of a library called <code>libhello-jni.so</code>.</p>
-<p>The next line enumerates the source files, with space delimiting multiple files:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := hello-jni.c</span><br></pre></td></tr></table></figure>
-
-<p>The <code>LOCAL_SRC_FILES</code> variable must contain a list of C and/or C++ source files to build into a module.</p>
-<p>The last line helps the system tie everything together:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>The <code>BUILD_SHARED_LIBRARY</code> variable points to a GNU Makefile script that collects all the information you defined in <code>LOCAL_XXX</code> variable since the most recent <code>include</code>. This script determines what to build, and how to do it.</p>
-<p>There are more complex examples in the sample directories, with commented <code>Android.mk</code> files that you can look at. In addition, <a href="https://developer.android.google.cn/ndk/samples/sample_na.html" target="_blank" rel="noopener">Sample: native-activity</a> provides a detailed explanation of that sample’s <code>Android.mk</code> file. Finally, <a href="https://developer.android.google.cn/ndk/guides/android_mk#var" target="_blank" rel="noopener">Variables and Macros</a> provides further information on the variables from this section.</p>
-<h3 id="Variable-and-Macros"><a href="#Variable-and-Macros" class="headerlink" title="Variable and Macros"></a>Variable and Macros</h3><p>The build system provides many possible variables for use in the <code>Android.mk</code> file. Many of these variable come with preassigned values. Others, you assign.</p>
-<p>In additional to these variables, you can also define your own arbitrary ones. If you do so, keep in mind that the ND build system reserves the following variable names:</p>
-<ul>
-<li>Names that begin with <code>LOCAL_</code>, such as <code>LOCAL_MODULE</code></li>
-<li>Names that begin with <code>PRIVATE_</code>, <code>NDK_</code> or <code>APP</code>. The build system uses these internally</li>
-<li>Lower-case names, such as <code>my-dir</code>. The build system uses these internally, as well</li>
-</ul>
-<p>If you need to define your own convenience variable in an <code>Android.mk</code> file, we recommend prepending <code>MY_</code> to their names.</p>
-<h3 id="NDK-defined-include-variables"><a href="#NDK-defined-include-variables" class="headerlink" title="NDK-defined include variables"></a>NDK-defined include variables</h3><p>This section discusses the GNU Make variables that the build system defines before parsing your <code>Android.mk</code> file. Under certain circumstances, the NDK might parse your <code>Android.mk</code> file several times, using a different definition for some of these variables each time.</p>
-<h4 id="CLEAR-VARS"><a href="#CLEAR-VARS" class="headerlink" title="CLEAR_VARS"></a>CLEAR_VARS</h4><p>This variable points to a build script that undefines nearly all <code>LOCAL_XXX</code> variables listed in the “Developer-defined variables” section below. Use this variable to include this script before describing a new module. The syntax for using it is:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)</span><br></pre></td></tr></table></figure>
-
-<h4 id="BUILD-EXECUTABLE"><a href="#BUILD-EXECUTABLE" class="headerlink" title="BUILD_EXECUTABLE"></a>BUILD_EXECUTABLE</h4><p>This variable points to a build script that collects all the information about the module you provided in your <code>LOCAL_XXX</code> variables, and determines how to build a target executable from the sources you listed. Note that using this script requires that you have already assigned values to <code>LOCAL_MODULE</code> and <code>LOCAL_SRC_FILES</code>, at a minimum(for more information about these variables, see <a href="https://developer.android.google.cn/ndk/guides/android_mk#mdv" target="_blank" rel="noopener">Module-Description Variables</a>)</p>
-<p>The syntax for using this variable is :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_EXECUTABLE)</span><br></pre></td></tr></table></figure>
-
-<h4 id="BUILD-SHARED-LIBRARY"><a href="#BUILD-SHARED-LIBRARY" class="headerlink" title="BUILD_SHARED_LIBRARY"></a>BUILD_SHARED_LIBRARY</h4><p>This variable points to a build script that collects all the information about the module  you provided in your <code>LOCAL_XXX</code> variables, and determines how to build a target shared library from the sources you listed. Note that using this script requires that you have already assigned values to <code>LOCAL_MODULE</code> and <code>LOCAL_SRC_FILES</code>, at a minimum(for more information about these variables, see <a href="https://developer.android.google.cn/ndk/guides/android_mk#mdv" target="_blank" rel="noopener">Module-Description Variables</a>).</p>
-<p>The syntax for using this variable is:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>A shared-library variable causes the build system to generate a library file with a <code>.so</code> extension.</p>
-<h4 id="BUILD-STATIC-LIBRARY"><a href="#BUILD-STATIC-LIBRARY" class="headerlink" title="BUILD_STATIC_LIBRARY"></a>BUILD_STATIC_LIBRARY</h4><p>A variant of <code>BUILD_SHARED_LIBRARY</code> that is used to build a static library. The build system does not copy static libraries into your <code>project/packages</code>, but it can use them to build shared libraries (see <code>LOCAL_STATIC_LIBRARIES</code> and <code>LOCAL_WHOLE_STATIC_LIBRARIES</code>, below). The syntax for using this variable is:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_STATIC_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>A static-library variable causes the build system to generate a library with a <code>.a</code> extension.</p>
-<h4 id="PREBUILT-SHARED-LIBRARY"><a href="#PREBUILT-SHARED-LIBRARY" class="headerlink" title="PREBUILT_SHARED_LIBRARY"></a>PREBUILT_SHARED_LIBRARY</h4><p>Points to a build script used to specify a prebuilt shared library. Unlike in the case of <code>BUILD_SHARED_LIBRARY</code> and <code>BUILD_STATIC_LIBRARY</code>, here the value of <code>LOCAL_SRC_FILES</code> cannot be a source file. Instead, it must be a single path to a prebuilt shared library, such as `foo/libfoo.so’. The syntax for using this variable is :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(PREBUILT_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>You can also reference a prebuilt library in another module by using the <code>LOCAL_PREBUILTS</code> variable. For more information about using prebuilts, see <a href="https://developer.android.google.cn/ndk/guides/prebuilts.html" target="_blank" rel="noopener">Using Prebuilt Libraries</a>.</p>
-<h4 id="PREBUILT-STATIC-LIBRARY"><a href="#PREBUILT-STATIC-LIBRARY" class="headerlink" title="PREBUILT_STATIC_LIBRARY"></a>PREBUILT_STATIC_LIBRARY</h4><p>The same as <code>PREBUILT_SHARED_LIBRARY</code>, but for a prebuilt static library. For more information about using prebuilts, see <a href="https://developer.android.google.cn/ndk/guides/prebuilts.html" target="_blank" rel="noopener">Using Prebuilt Libraries</a>.</p>
-<h3 id="Target-information-variables"><a href="#Target-information-variables" class="headerlink" title="Target information variables"></a>Target information variables</h3><p>The build system parses <code>Android.mk</code> once per ABI specified by the <code>APP_ABI</code> variable, which is typically defined in your <code>Application.mk</code> file. If <code>APP_ABI</code> is <code>all</code>, then the build system parses <code>Android.mk</code> once per ABI the NDK supports. This section describes variable the build system defines each time it parses <code>Android.mk</code>.</p>
-<h4 id="TARGET-ARCH"><a href="#TARGET-ARCH" class="headerlink" title="TARGET_ARCH"></a>TARGET_ARCH</h4><p>The CPU family the build system is targeting as it parses this <code>Android.mk</code> file. This variable will be one of: <code>arm</code>, <code>arm64</code>, <code>x86</code>, or <code>x86_64</code>.</p>
-<h4 id="TARGET-PLATFORM"><a href="#TARGET-PLATFORM" class="headerlink" title="TARGET_PLATFORM"></a>TARGET_PLATFORM</h4><p>The Android API level number the build system is targeting as it parses this <code>Android.mk</code> file. For example, the Android 5.1 system images correspond to Android API level 22: <code>android-22</code>. For a complete list of platform names and corresponding Android system images, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>. The following example shows the syntax for using this variable:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">ifeq($</span><span class="bash">(TARGET_PLATFORM), android-22)</span></span><br><span class="line">    # ... do something ....</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<h4 id="TARGET-ARCH-ABI"><a href="#TARGET-ARCH-ABI" class="headerlink" title="TARGET_ARCH_ABI"></a>TARGET_ARCH_ABI</h4><p>The ABI the build system is targeting as it parses this <code>Android.mk</code> file. Table 1 shows the ABI setting used for each supported CPU and architecture.</p>
-<p>Table 1. ABI settings for different CPUs and architectures.</p>
-<p>//TODO table</p>
-<p>The following example shows how to check for ARMv8 AArch64 as the target CPU-and-ABI combination:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ARCH_ABI),arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<p>For more details about architecture ABIs and associated compatibility issues, refer to <a href="https://developer.android.google.cn/ndk/guides/abis.html" target="_blank" rel="noopener">ABI Management</a>.</p>
-<p>New target ABIs in the future will have differrnt values.</p>
-<h4 id="TARGET-ABI"><a href="#TARGET-ABI" class="headerlink" title="TARGET_ABI"></a>TARGET_ABI</h4><p>A concatenation of target Android API level and ABI. It is especially useful when you want to test against a specific target system image for a real device. For example, to check for a 64-bit ARM device running on Android API level 22:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ABI),android-22-arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<h3 id="Module-Description-Variables"><a href="#Module-Description-Variables" class="headerlink" title="Module-Description Variables"></a>Module-Description Variables</h3><p>The variables in this section describe your module to the build system. Each module description should follow this basic flow:</p>
+            <p>思路很好。</p>
 <ol>
-<li>Initialize or undefine the variables associated with the module, using the <code>CLEAR_VARS</code> variable</li>
-<li>Assign values to the variables used to describe the module</li>
-<li>Set the NDK build system to use the appropriate build script for the module, using the <code>BUILD_XXX</code> variable.</li>
+<li>选择所有时间对应的数字</li>
+<li>排序给定数字</li>
+<li>找到对应数字</li>
 </ol>
-<h4 id="LOCAL-PATH"><a href="#LOCAL-PATH" class="headerlink" title="LOCAL_PATH"></a>LOCAL_PATH</h4><p>This variable is used to give the path to the current file. You must define it at the start of your <code>Android.mk</code> file. The following example shows how to do so: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
-
-<p>The script to which <code>CLEAR_VARS</code> points does not clear this variable. Therefore, you only need to define it a single time, even if your <code>Android.mk</code> file describes multiple modules.</p>
-<h4 id="LOCAL-MODULE"><a href="#LOCAL-MODULE" class="headerlink" title="LOCAL_MODULE"></a>LOCAL_MODULE</h4><p>This variable stores the name of your module. It must be unique among all modules names, and must not contain any spaces. You must define it before including any scripts(other than the one for <code>CLEAR_VARS</code>). You need not add either the <code>lib</code> prefix or the <code>.so</code> or <code>.a</code> file extension; the build system makes these modification automatically. Throughout your <code>Android.mk</code> and <a href>Application.mk</a> files, refer to your module by its unmodified name. For example, the following line results in the generation of a shared library module called <code>libfoo.so</code>.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := "foo"</span><br></pre></td></tr></table></figure>
-
-<p>If you want the generated module to have a name other than <code>lib</code> + the value of <code>LOCAL_MODULE</code>, you can use the <code>LOCAL_MODULE_FILENAME</code> variable to give the generated module a name of your own choosing, instead.</p>
-<h4 id="LOCAL-MODULE-FILENAME"><a href="#LOCAL-MODULE-FILENAME" class="headerlink" title="LOCAL_MODULE_FILENAME"></a>LOCAL_MODULE_FILENAME</h4><p>This optional variable allows you to override the names that the build system uses by default for files that it generates. For example, if the name of your <code>LOCAL_MODULE</code> is <code>foo</code>, you can force the system to call the file it generates <code>libnewfoo</code>. The following example shows how to accomplish this:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := foo</span><br><span class="line">LOCAL_MODULE_FILENAME := libnewfoo</span><br></pre></td></tr></table></figure>
-
-<p>For a shared library module, this example would generate a file called <code>libnewfoo.so</code>.</p>
-<h4 id="LOCAL-SRC-FILES"><a href="#LOCAL-SRC-FILES" class="headerlink" title="LOCAL_SRC_FILES"></a>LOCAL_SRC_FILES</h4><p>This variable contains the list of source files that the build system uses to generate the module. Only list the files that the build system actually passes to the compiler, since the build system automatically computes any associated depencies. Note that you can use both relative(to <code>LOCAL_PATH</code>) and absolute file paths.</p>
-<p>We recommend avoiding absolute file paths; relative paths make your <code>Android.mk</code> file more portable.</p>
-<h4 id="LOCAL-CPP-EXTENSION"><a href="#LOCAL-CPP-EXTENSION" class="headerlink" title="LOCAL_CPP_EXTENSION"></a>LOCAL_CPP_EXTENSION</h4><p>You can use this optional variable to indicate a file extension other than <code>.cpp</code> for your C++ source files. For example, the following line changes the extension to <code>.cxx</code> (The setting must include the dot)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_EXTENSION := .cxx</span><br></pre></td></tr></table></figure>
-
-<p>You can use this variable to specify multiple extensions. For instance:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_EXTENSION := .cxx .cpp .cc</span><br></pre></td></tr></table></figure>
-
-<h4 id="LOCAL-CPP-FEATURES"><a href="#LOCAL-CPP-FEATURES" class="headerlink" title="LOCAL_CPP_FEATURES"></a>LOCAL_CPP_FEATURES</h4><p>You can use this optional variable to indicate that your code relies on specific C++ features. It enables the right compiler and linker flags during the build process. For prebuilt binaries, this variable also declares which features the binary depends on, thus helping ensure the final linking works correctly. We recommend that you use this variable instead of enabling <code>-frtti</code> and <code>-fexceptions</code> directly in your <code>LOCAL_CPPFLAGS</code> definition.</p>
-<p>Using this variable allows the build system to use the appropriate flags for each module. Using <code>LOCAL_CPPFLAGS</code> causes the compiler to use all  specified flag for all module, regardless of actual need.</p>
-<p>For example, to indicate that your code uses RTTI(RunTime Type Information), write: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := rtti</span><br></pre></td></tr></table></figure>
-
-<p>To indicate that your code uses C++ exceptions, write:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := exceptions</span><br></pre></td></tr></table></figure>
-
-<p>You can also specify multiple values for this variable. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := rtti features</span><br></pre></td></tr></table></figure>
-
-<p>The order in which you describe the values does not matter.</p>
-<h4 id="LOCAL-C-INCLUDES"><a href="#LOCAL-C-INCLUDES" class="headerlink" title="LOCAL_C_INCLUDES"></a>LOCAL_C_INCLUDES</h4><p>You can use this optional variable to specifya list of paths, relative to the NDK <code>root</code> directory, to add to the include search path when compiling all sources (C, C++ and Assembly). For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_C_INCLUDES := sources/foo</span><br></pre></td></tr></table></figure>
-
-<p>Or even: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_C_INCLUDES := $(LOCAL_PATH)/&lt;subdirectory&gt;/foo</span><br></pre></td></tr></table></figure>
-
-<p>Define this variable before setting any corresponding inclusion flags via <code>LOCAL_CFLAGS</code> or <code>LOCAL_CPPFLAGS</code>.</p>
-<p>The build system also uses <code>LOCAL_C_INCLUDES</code> paths automatically when launching native debugging with ndk-gdb.</p>
-<h4 id="LOCAL-CFLAGS"><a href="#LOCAL-CFLAGS" class="headerlink" title="LOCAL_CFLAGS"></a>LOCAL_CFLAGS</h4><p>This optional variable sets compiler flags for the build system to pass when building C and C++ source files. The ability to do so can be useful for specifying additional macro definitions or compile options. Use <code>LOCAL_CPP_FLAGS</code> to specify flags for C++ only.</p>
-<p>Try not to change the optimization/debugging level in your <code>Android.mk</code> file. The build system can handle this setting automatically for you, using the relevant information in the <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> file. Doing it this way allows the build system to generate useful data files used during debugging.</p>
-<p>It is possible to specify additional include paths by writing: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CFLAGS += -I&lt;path&gt;,</span><br></pre></td></tr></table></figure>
-
-<p>It is better, however, to use <code>LOCAL_C_INCLUDES</code> for this purpose, since doing so also makes it possible to use the paths available for native debugging with ndk-gdb.</p>
-<h4 id="LOCAL-CPPFLAGS"><a href="#LOCAL-CPPFLAGS" class="headerlink" title="LOCAL_CPPFLAGS"></a>LOCAL_CPPFLAGS</h4><p>An optional set of compiler flags that will be passed when building C++ source files only. They will appear after the <code>LOCAL_CFLAGS</code> on the compiler’s command-line. Use <code>LOCAL_CFLAGS</code> to specify flags for both C and C++.</p>
-<h4 id="LOCAL-STATIC-LIBRARIES"><a href="#LOCAL-STATIC-LIBRARIES" class="headerlink" title="LOCAL_STATIC_LIBRARIES"></a>LOCAL_STATIC_LIBRARIES</h4><p>This variable stores the list of static libraries modules on which the current module depends.</p>
-<p>If the current module is a shared library or an executable, this variable will force these libraries to be linked into the resulting binary.</p>
-<p>If the current module is a static library, this variable simply indicates that other module depending on the current one will also depend on the listed libraries.</p>
-<h4 id="LOCAL-SHARED-LIBRARIES"><a href="#LOCAL-SHARED-LIBRARIES" class="headerlink" title="LOCAL_SHARED_LIBRARIES"></a>LOCAL_SHARED_LIBRARIES</h4><p>This variable is the list of shared libraries modules on which this module depends at runtime. This information is necessary at link time, and to embed the corresponding information in the generated file.</p>
-<h4 id="LOCAL-WHOLE-STATIC-LIBRARIES"><a href="#LOCAL-WHOLE-STATIC-LIBRARIES" class="headerlink" title="LOCAL_WHOLE_STATIC_LIBRARIES"></a>LOCAL_WHOLE_STATIC_LIBRARIES</h4><p>This variable is a variant of <code>LOCAL_STATIC_LIBRARIES</code>, and expresses that the linker should treat the associated library modules as whole archives. For more information on whole archives, see the <a href="http://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html" target="_blank" rel="noopener">GNU Id Documentation</a> for the <code>--whole-archive</code> flag</p>
-<p>This variable is useful when there are circular dependencies among several static libraries. When you use this variable to build a shared library, it will force the build system to add all object files from your static libraries to the final binary. The same is not true, however, when generating executables.</p>
-<h4 id="LOCAL-LDLIBS"><a href="#LOCAL-LDLIBS" class="headerlink" title="LOCAL_LDLIBS"></a>LOCAL_LDLIBS</h4><p>This variable contains the list of additional linker flags for use in building your shared library or executable. It enables you to use the <code>-l</code> prefix to pass the name of specifyc system libraries. For example, the following example tells the linker to generate a module that links to <code>/system/lib/libz.so</code> at load time:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_LDLIB := -lz</span><br></pre></td></tr></table></figure>
-
-<p>For the list of exposed system libraries against which you can link in this NDK release, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>.</p>
-<h4 id="LOCAL-LDFLAGS"><a href="#LOCAL-LDFLAGS" class="headerlink" title="LOCAL_LDFLAGS"></a>LOCAL_LDFLAGS</h4><p>The list of other linker flags for the build system to use when building your shared library or executable. For example, to use the <code>ld.bfd</code> linker on ARM/X86:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_LDFLAGS += -fuse-ld=bfd</span><br></pre></td></tr></table></figure>
-
-<h4 id="LOCAL-ALLOW-UNDEFINED-SYMBOLS"><a href="#LOCAL-ALLOW-UNDEFINED-SYMBOLS" class="headerlink" title="LOCAL_ALLOW_UNDEFINED_SYMBOLS"></a>LOCAL_ALLOW_UNDEFINED_SYMBOLS</h4><p>By default, when the build system encounters an undefined reference encountered while trying to build a shared, it will throw an undefined symbol error. This error can help you catch bugs in your source code.</p>
-<p>To disable this check, set this variable to <code>true</code>. Note that this setting may cause the shared library to load at runtime.</p>
-<h4 id="LOCAL-ARM-MODE"><a href="#LOCAL-ARM-MODE" class="headerlink" title="LOCAL_ARM_MODE"></a>LOCAL_ARM_MODE</h4><p>// TODO</p>
-<h4 id="LOCAL-ARM-NEON"><a href="#LOCAL-ARM-NEON" class="headerlink" title="LOCAL_ARM_NEON"></a>LOCAL_ARM_NEON</h4><p>//TODO</p>
-<h4 id="LOCAL-DISABLE-FORMAT-STRING-CHECKS"><a href="#LOCAL-DISABLE-FORMAT-STRING-CHECKS" class="headerlink" title="LOCAL_DISABLE_FORMAT_STRING_CHECKS"></a>LOCAL_DISABLE_FORMAT_STRING_CHECKS</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-CFLAGS"><a href="#LOCAL-EXPORT-CFLAGS" class="headerlink" title="LOCAL_EXPORT_CFLAGS"></a>LOCAL_EXPORT_CFLAGS</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-CPPFLAGS"><a href="#LOCAL-EXPORT-CPPFLAGS" class="headerlink" title="LOCAL_EXPORT_CPPFLAGS"></a>LOCAL_EXPORT_CPPFLAGS</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-C-INCLUDES"><a href="#LOCAL-EXPORT-C-INCLUDES" class="headerlink" title="LOCAL_EXPORT_C_INCLUDES"></a>LOCAL_EXPORT_C_INCLUDES</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-C-INCLUDES-1"><a href="#LOCAL-EXPORT-C-INCLUDES-1" class="headerlink" title="LOCAL_EXPORT_C_INCLUDES"></a>LOCAL_EXPORT_C_INCLUDES</h4><p>//TODO</p>
-<h4 id="LOCAL-EXPORT-LDFLAGS"><a href="#LOCAL-EXPORT-LDFLAGS" class="headerlink" title="LOCAL_EXPORT_LDFLAGS"></a>LOCAL_EXPORT_LDFLAGS</h4><p>//TODO</p>
-<h4 id="LOCAL-EXPORT-LDLIBS"><a href="#LOCAL-EXPORT-LDLIBS" class="headerlink" title="LOCAL_EXPORT_LDLIBS"></a>LOCAL_EXPORT_LDLIBS</h4><p>// TODO</p>
-<h4 id="LOCAL-SHORT-COMMANDS"><a href="#LOCAL-SHORT-COMMANDS" class="headerlink" title="LOCAL_SHORT_COMMANDS"></a>LOCAL_SHORT_COMMANDS</h4><p>// TODO</p>
-<h4 id="LOCAL-THIN-ARCHIVE"><a href="#LOCAL-THIN-ARCHIVE" class="headerlink" title="LOCAL_THIN_ARCHIVE"></a>LOCAL_THIN_ARCHIVE</h4><p>// TODO</p>
-<h4 id="LOCAL-FILTER-ASM"><a href="#LOCAL-FILTER-ASM" class="headerlink" title="LOCAL_FILTER_ASM"></a>LOCAL_FILTER_ASM</h4><p>// TODO</p>
-<h3 id="NDK-provided-function-macros"><a href="#NDK-provided-function-macros" class="headerlink" title="NDK-provided function macros"></a>NDK-provided function macros</h3><p>This section explains GNU Make function macros that the NDK provides. Use <code>$(call &lt;function&gt;)</code> to evaluate them; they return textural information.</p>
-<h4 id="my-dir"><a href="#my-dir" class="headerlink" title="my-dir"></a>my-dir</h4><p>This macro returns the path of the last included makefile, which typically is the current <code>Android.mk</code>‘s directory. <code>my-dir</code> is useful for defining <code>LOCAL_PATH</code> at the start of your <code>Android.mk</code> file. For example: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
-
-<p>Due to the way GNU Make works, what this macro really returns is the path of the last makefile that the build system included when parsing the build scripts. For this reason, you should not call <code>my-dir</code> after including another file.</p>
-<p>For example, consider the following example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
-
-<p>The problem here is that the second call to <code>my-dir</code> defines <code>LOCAL_PATH</code> as <code>$PATH/foo</code> instead of <code>$PATH</code>, because that was where its most recent include pointed.</p>
-<p>You can avoid this problem by putting additional includes after everything else in the <code>Android.mk</code> file. For example: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> extra includes at the end of the Android.mk file</span></span><br><span class="line">include $(LOCAL_PATH)/foo/Android.mk</span><br></pre></td></tr></table></figure>
-
-<p>If it is not feasible to structure the file in this way, save the value of the first <code>my-dir</code> call into another variable. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MY_LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="all-subdir-makefiles"><a href="#all-subdir-makefiles" class="headerlink" title="all-subdir-makefiles"></a>all-subdir-makefiles</h4><p>Returns the list of <code>Android.mk</code> files located in all subdirectories of the current <code>my-dir</code> path.</p>
-<p>You can use this fuction to provide deep-nested source directory hierarchies to the build system. By default, the NDK only looks for files in the directory containing the <code>Android.mk</code> file.</p>
-<h4 id="this-makefile"><a href="#this-makefile" class="headerlink" title="this-makefile"></a>this-makefile</h4><p>Returns the path of the current makefile(from which the build system called the function)</p>
-<h4 id="parent-makefile"><a href="#parent-makefile" class="headerlink" title="parent-makefile"></a>parent-makefile</h4><p>Returns the path of the parent makefile in the inclusion tree(the path of the makefile that included the current one)</p>
-<h4 id="grand-parent-makefile"><a href="#grand-parent-makefile" class="headerlink" title="grand-parent-makefile"></a>grand-parent-makefile</h4><p>Returns the path of the grandparent makefile in the inclusion tree (the path of the makefile that included the current one).</p>
-<h4 id="import-module"><a href="#import-module" class="headerlink" title="import-module"></a>import-module</h4><p>A function that allows you to find and include a module’s <code>Android.mk</code> file by the name of the module. A typical example is as follows:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(call import-module,&lt;name&gt;)</span></span><br></pre></td></tr></table></figure>
-
-<p>In this example, the build system looks for the module tagged <code>&lt;name&gt;</code> in the list of directories referenced that your <code>NDK_MODULE_PATH</code> environment variable references, and includes its <code>Android.mk</code> file automatically for you.</p>
 
           
         
@@ -1000,7 +960,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9bbc0cee/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/3485dad9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1019,7 +979,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/9bbc0cee/" itemprop="url">Translation-NDK build Application.mk</a></h1>
+                <a class="post-title-link" href="/posts/3485dad9/" itemprop="url">Algorithm LeetCode 970 Powerful Integers</a></h1>
         
 
         <div class="post-meta">
@@ -1031,8 +991,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T09:20:01+08:00">
-                2019-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T10:47:17+08:00">
+                2019-12-18
               </time>
             
 
@@ -1042,28 +1002,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1072,8 +1010,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/9bbc0cee/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9bbc0cee/" itemprop="commentCount"></span>
+                <a href="/posts/3485dad9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/3485dad9/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1103,113 +1041,265 @@
       
         
           
-            <h2 id="Application-mk"><a href="#Application-mk" class="headerlink" title="Application.mk"></a>Application.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/application_mk" target="_blank" rel="noopener">Reference</a></p>
-<p>This document explains the <code>Application.mk</code> build file used by the <code>ndk-build</code></p>
-<p>We recommend that you read the <a href="https://developer.android.google.cn/ndk/guides/concepts" target="_blank" rel="noopener">Concepts</a> page before this one.</p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The <code>Application.mk</code> specifies project-wide settings for ndk-build. By default, it is located at <code>jni/Application.mk</code> in your application’s project directory.</p>
-<h3 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h3><ul>
-<li><p>APP_ABI</p>
-<p>  By default, the NDK build system generates code for all non-deprecated ABIs. You can use the <code>APP_ABI</code> settings to generate code for specific ABIs. Table 1 shows the <code>APP_ABI</code> settings for different instruction sets.</p>
-<p>  Table 1. <code>APP_ABI</code> settinsg for different instruction sets.</p>
-<p>  // TODO table</p>
-<p>  You can also specify multiple values by placing them on the same line, delimited by spaces. For example: </p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">APP_ABI := armeabi-v7a arm64-v8a x86</span><br></pre></td></tr></table></figure>
+            
+          
+        
+      
+    </div>
+    
+    
+    
 
-<p>  For the list of all supported ABIs and details about their usage and limitations, refer to <a href="https://developer.android.google.cn/ndk/guides/abis" target="_blank" rel="noopener">ABI Management</a></p>
-</li>
-<li><p>APP_ASFLAGS</p>
-<p>  Flags to be passed to the assmebler for every assembly source file(<code>.a</code> and <code>.S</code> files) in the project</p>
-</li>
-<li><p>APP_ASMFLAGS</p>
-<p>  Flags to be passed to YASM when for all YASM source files(<code>.asm</code>, x86/x86_64 only)</p>
-</li>
-<li><p>APP_BUILD_SCRIPT</p>
-<p>  By default, ndk-build assumes that the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> file is located at <code>jni/Android.mk</code> relative to the project root. </p>
-<p>  To load an <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> file from a different location, set <code>APP_BUILD_SCRIPT</code> to the absolute path of the Android.mk file</p>
-</li>
-<li><p>APP_CFLAGS</p>
-<p>  Flags to be passed for all C/C++ compiles in the project.</p>
-<p>  See also: <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-conlyflags" target="_blank" rel="noopener">APP_CONLYFLAGS</a>, <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cppflags" target="_blank" rel="noopener">APP_CPPFLAGS</a>.</p>
-</li>
-<li><p>APP_CLANG_TIDY</p>
-<p>  Set to true to enable clang-tidy for all modules in the project. Disabled by default.</p>
-</li>
-<li><p>APP_CLANG_TIDY_FLAGS</p>
-<p>  Flags to pass for all clang-tidy executions in the project.</p>
-</li>
-<li><p>APP_CONLYFLAGS</p>
-<p>  Flags to be passed for all C compiles in the project. These flags will not be used for C++ code.</p>
-<p>  See also: <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cflags" target="_blank" rel="noopener">APP_CFLAGS</a>, <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cppflags" target="_blank" rel="noopener">APP_CPPFLAGS</a>.</p>
-</li>
-<li><p>APP_CPPFLAGS</p>
-<p>  Flags to be passed for all C++ compiles in the project. These flags will not be used for C code.</p>
-<p>  See also: <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cflags" target="_blank" rel="noopener">APP_CFLAGS</a>, <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-conlyflags" target="_blank" rel="noopener">APP_CONLYFLAGS</a>.</p>
-</li>
-<li><p>APP_CXXFLAGS</p>
-<p>  Identical to <code>APP_CPPFLAGS</code>, but will appear after <code>APP_CPPFLAGS</code> in the compile command. For example:</p>
-  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">APP_CPPFLAGS := -DFOO</span><br><span class="line">APP_CXXFLAGS := -DBAR</span><br></pre></td></tr></table></figure>
+    
 
-<p>  The above configuration will result in a compilation command similar to <code>clang++ -DFOO -DBAR</code> rather than <code>clang++ -DBAR -DFOO</code>.</p>
-</li>
-<li><p>APP_DEBUG</p>
-<p>  Set to true to build a debuggable application.</p>
-</li>
-<li><p>APP_LDFLAGS</p>
-<p>  Flags to be passed when linking executables and shared libraries.</p>
-</li>
-<li><p>APP_MANIFEST</p>
-<p>  Absolute path to an AndroidManifest.xml file.</p>
-<p>  By default, <code>$(APP_PROJECT_PATH)/AndroidManifest.xml)</code> will be used if it exists.</p>
-</li>
-<li><p>APP_MODULES</p>
-<p>  An explicit list of modules to build. The elements of this list are the names of the modules as they appear in <code>LOCAL_MODULE</code> within the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> file.</p>
-<p>  By default, ndk-build will build all shared libraires, executables, and their dependencies. Static libraries will be built only if they are used by the project, the project contains only static libraries, or they are named in <code>APP_MODULE</code>. (Note: Imported modules (those defined in build scripts imported with $(call import-module) will not be built unless depended on by a module to be built or listed in APP_MODULES)</p>
-</li>
-<li><p>APP_OPTIM</p>
-<p>  Define this optional variable as either <code>release</code> or <code>debug</code>. Release binaries will be built by default.</p>
-<p>  Release mode enables optimizations and may produce binaries that are not usable with a debugger. Debug mode disables optimizations so that debuggers may be used.</p>
-<p>  Note that you can debug either release or debug binaries. Releasee binaries, however, provide less information during debugging. For example, variables may be optimized out, preventing inspection. Also, code re-ordering can make it more difficult to step through the code; stack traces may not be reliable.</p>
-<p>  Declaring <code>android:debuggable</code> in your application manifest’s <code>&lt;application&gt;</code> tag will cause this variable to default to <code>debug</code> instead of <code>release</code>. Override this default value by setting <code>APP_OPTIM</code> to <code>release</code>.</p>
-</li>
-<li><p>APP_PLATFORM</p>
-<p>  <code>APP_PLATFORM</code> declares the Android API level this application is built against and corresponds to the application’s <code>minSdkVersion</code>.</p>
-<p>  If not specified, ndk-build will target the minimumAPI level supported by the NDK. The minimum API level supported by the latest NDK will always be low enough to support nearly all active devices.</p>
-<p>  For example, a value of `android-16’ specifies that your library uses APIs that are not available below Android 4.1 (API level 16) and can’t be used on devices running a lower platform version. For a complete list of platform names and corresponding Android system images, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>.</p>
-<p>  When using Gradle and <code>externalNativeBuild</code>, this parameter should not be set directly. Instead, set the <code>minSdkVersion</code> property in the <code>defaultConfig</code> or <code>productFlavors</code> blocks of your <a href="https://developer.android.google.cn/studio/build/index.html#module-level" target="_blank" rel="noopener">module-level</a> <code>build.gradle</code> file. This makes sure your library is used only by apps installed on devices running an adequate version of Android.</p>
-<p>  Note that the NDK does not contain libraries for every API level of Android. Versions that did not include new native APIs are omitted to save space in the NDK. ndk-build uses, in descending order of preference:</p>
-<ol>
-<li>The platform version matching <code>APP_PLATFORM</code>.</li>
-<li>The next available API level below <code>APP_PLATFORM</code>. For example, <code>android-19</code> will be used when <code>APP_PLATFORM</code> is <code>android-20</code>, since there were no new native APIs in <code>android-20</code>.</li>
-<li>The minimum API level supported by the NDK.</li>
-</ol>
-</li>
-<li><p>APP_PROJECT_PATH</p>
-<p>  The absolute path of the project’s root directory</p>
-</li>
-<li><p>APP_SHORT_COMMANDS<br>  The project-wide equivalent of <code>LOCAL_SHORT_COMMANDS</code>. For more information, see the documentation for <code>LOCAL_SHORT_COMMANDS</code> in <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a>.</p>
-</li>
-<li><p>APP_STL</p>
-<p>  The C++ standard library to use fo this application.</p>
-<p>  The <code>system</code> STL is used by default. Other choices are <code>c++_shared</code>, <code>c++_static</code>, and <code>none</code>. See <a href="https://developer.android.google.cn/ndk/guides/cpp-support.html#runtimes" target="_blank" rel="noopener">NDK Runtimes and Features</a>.</p>
-</li>
-<li><p>APP_STRIP_MODE</p>
-<p>  The argument to be passed to <code>strip</code> for modules in this application. Defaults to <code>--strip-unneeded</code>. To avoid stripping all binaries in the module, set to <code>none</code>. For other strip modes, see the <a href="https://sourceware.org/binutils/docs/binutils/strip.html" target="_blank" rel="noopener">strip documentation</a>.</p>
-</li>
-<li><p>APP_THIN_ARCHIVE</p>
-<p>  Set to true to use thin archives for all static libraries in the project. For more information, see the documentation for <code>LOCAL_THIN_ARCHIVE</code> in <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a>.</p>
-</li>
-<li><p>APP_WRAP_SH</p>
-<p>  Path to the <a href="https://developer.android.google.cn/ndk/guides/wrap-script" target="_blank" rel="noopener">wrap.sh</a> file to be included with this application.</p>
-<p>  A variant of this variable exists for each ABI, as does an ABI-generic variant:</p>
-<ul>
-<li>APP_WRAP_SH</li>
-<li>APP_WRAP_SH_armeabi-v7a</li>
-<li>APP_WRAP_SH_arm64-v8a</li>
-<li>APP_WRAP_SH_x86</li>
-<li>APP_WRAP_SH_x86_64</li>
-</ul>
-</li>
-</ul>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/aeee22f2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/aeee22f2/" itemprop="url">Algorithm LeetCode 922 Sort Array By Parity 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T10:33:26+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/aeee22f2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/aeee22f2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/7b4a97c1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/7b4a97c1/" itemprop="url">Algorithm LeetCode 836 Rectangle Overlap</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-17T09:44:53+08:00">
+                2019-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/7b4a97c1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7b4a97c1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blog.csdn.net/fuxuemingzhu/article/details/80472764" target="_blank" rel="noopener">https://blog.csdn.net/fuxuemingzhu/article/details/80472764</a></p>
 
           
         
@@ -1258,7 +1348,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/e03339a9/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/503af792/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1277,7 +1367,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/e03339a9/" itemprop="url">Translation-NDK build</a></h1>
+                <a class="post-title-link" href="/posts/503af792/" itemprop="url">Algorithm LeetCode 1122 Relative Sort Array</a></h1>
         
 
         <div class="post-meta">
@@ -1289,8 +1379,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T08:55:28+08:00">
-                2019-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-16T20:52:38+08:00">
+                2019-12-16
               </time>
             
 
@@ -1300,28 +1390,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1330,8 +1398,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/e03339a9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e03339a9/" itemprop="commentCount"></span>
+                <a href="/posts/503af792/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/503af792/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1361,42 +1429,7 @@
       
         
           
-            <h2 id="ndk-build"><a href="#ndk-build" class="headerlink" title="ndk-build"></a>ndk-build</h2><p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank" rel="noopener">Reference</a></p>
-<p>The <code>ndk-build</code> script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> and <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> configuration used by <code>ndk-build</code>.</p>
-<h3 id="Internals"><a href="#Internals" class="headerlink" title="Internals"></a>Internals</h3><p>Running the <code>ndk-build</code> script is equivalent to running the following command:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span></span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
-
-<p><code>$GNUMAKE</code> points to GNU Make 3.81 or later, and <code>&lt;ndk&gt;</code> points to your NDK installation directory. You can use this information to invoke ndk-build from other shell scripts, or even your own make files.</p>
-<h3 id="Invoking-from-the-Command-Line"><a href="#Invoking-from-the-Command-Line" class="headerlink" title="Invoking from the Command Line"></a>Invoking from the Command Line</h3><p>The <code>ndk-build</code> script lives in the top level NDK install directory. To run it from the command line, invoke it while in or under your application project directory. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;project&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> &lt;ndk&gt;/ndk-build</span></span><br></pre></td></tr></table></figure>
-
-<p>In this example, <code>&lt;project&gt;</code> points to your project’s root directory, and <code>&lt;ndk&gt;</code> is the directory where you installed the NDK.</p>
-<h4 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h4><p>All parameters to ndk-build are passed directly to the underlying GNU <code>make</code> command that runs the NDK build scripts. Combine <code>ndk-build</code> and options in the form <code>ndk-build</code> <code>&lt;option&gt;</code>. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ndk-build clean</span></span><br></pre></td></tr></table></figure>
-
-<p>The following options are available:</p>
-<ul>
-<li>clean<br>  Remove any previously generated binaries. (On Mac OS X, running ndk-build clean with a high number of parallel executions may result in a build error that includes the following message: “rm: fts_read: No such file or directory” To avoid this issue, consider not using the -jN modifier or selecting a smaller value for N, such as 2.)</li>
-<li>V=1<br>  Launch build, and display build commands.</li>
-<li>-B<br>  Force a complete rebuild</li>
-<li>-B V=1<br>  Force a complete rebuild, and display build commands</li>
-<li>NDK_LOG=1<br>  Display internal NDK log messages(used for debugging the NDK iteself)</li>
-<li>NDK_DEBUG=1<br>  Force a debuggable build(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#dvr" target="_blank" rel="noopener">table1</a>)</li>
-<li>NDK_DEBUG=0<br>  Force a release build(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#dvr" target="_blank" rel="noopener">table1</a>)</li>
-<li>NDK_HOST_32BIT=1<br>  Always use the toolchain in 32-bit mode(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#6432" target="_blank" rel="noopener">64-bit and 32-bit Toolchains</a>)</li>
-<li>NDK_APPLICATION_MK=<file><br>  Build, using a specific <code>Application.mk</code> file pointed to by the <code>NDK_APPLICATION_MK</code> variable</file></li>
-<li>-C <project><br>  Build the native code for the project path located at <project>. Useful if you don’t want to <code>cd</code> to it in your terminal</project></project></li>
-</ul>
-<h4 id="Debuggable-versus-Release-builds"><a href="#Debuggable-versus-Release-builds" class="headerlink" title="Debuggable versus Release builds"></a>Debuggable versus Release builds</h4><p>//TODO</p>
-<h3 id="64-Bit-and-32-Bit-Toolchains"><a href="#64-Bit-and-32-Bit-Toolchains" class="headerlink" title="64-Bit and 32-Bit Toolchains"></a>64-Bit and 32-Bit Toolchains</h3><p>Some toolchains come with both 64-bit and 32-bit versions. For example, directories <code>&lt;ndk&gt;/toolchain/&lt;name&gt;/prebuilt/</code> and <code>&lt;ndk&gt;/prebuilt/</code> may contain both <code>linux-x86</code> and <code>linux-x86_64</code> folders for Linux tools in 32-bit and 64-bit modes, respectively. The ndk-build script automatically chooses a 64-bit version of the toolchain if the host OS supports. You can force the use of a 32-bit toolchain by using <code>NDK_HOST_32BIT=1</code> either in your environment or on the ndk-build command line.</p>
-<p>Note that 64-bit tools utilize host resources better (for instance, they are faster, and handle larger programs), and they can still generate 32-bit binaries for Android.</p>
-<h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3><p>You need GNU Make 3.81 or later to use ndk-build or the NDK in general. The build scripts will detect a non-compliant Make tool, and generate an error message.</p>
-<p>If you have GNU Make 3.81 installed, but the default <code>make</code> command doesn’t launch it, define <code>GNUMAKE</code> in your environment to point to it before launching ndk-build. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> GNUMAKE=/usr/<span class="built_in">local</span>/bin/gmake</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ndk-build</span></span><br></pre></td></tr></table></figure>
-
-<p>You can override other host prebuilt tools in <code>$NDK/prebuilt/&lt;OS&gt;/bin/</code> with the following environment variables:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_AWK=&lt;path-to-awk&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_ECHO=&lt;path-to-echo&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_CMP=&lt;path-to-cmp&gt;</span></span><br></pre></td></tr></table></figure>
-
+            <p>遇到数字的问题, 考虑把数字作为bucket<br>与map效果一样，但是数组[数字]++ 这样也可以</p>
 
           
         
@@ -1445,7 +1478,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9f89c6d1/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9715d017/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1464,7 +1497,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/9f89c6d1/" itemprop="url">Translation-NDK Concepts</a></h1>
+                <a class="post-title-link" href="/posts/9715d017/" itemprop="url">Algorithm LeetCode 844 Backspace String Compare</a></h1>
         
 
         <div class="post-meta">
@@ -1476,8 +1509,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T22:25:19+08:00">
-                2019-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-16T20:18:58+08:00">
+                2019-12-16
               </time>
             
 
@@ -1487,28 +1520,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1517,8 +1528,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/9f89c6d1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9f89c6d1/" itemprop="commentCount"></span>
+                <a href="/posts/9715d017/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9715d017/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1548,915 +1559,11 @@
       
         
           
-            <h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p><a href="https://developer.android.google.cn/ndk/guides/concepts" target="_blank" rel="noopener">Reference</a></p>
-<h3 id="Before-Beginning"><a href="#Before-Beginning" class="headerlink" title="Before Beginning"></a>Before Beginning</h3><p>This guide assumes that you are already familiar with concepts inherent in native programming and in <a href="https://developer.android.google.cn/develop/index.html" target="_blank" rel="noopener">Android development</a>.</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>This section provides a high-level explanation of how the NDK works. The Android NDK is a set of tools allowing you to embed C or C++(“native code”) into your Android apps. The ability to use native code in Android apps can be particularly useful to developers who wish to do one or more of the following: </p>
-<ul>
-<li>Port their apps between platforms.</li>
-<li>Reuse existing libraries, or provide their own libraries for reuse.</li>
-<li>Increase performance in certain cases, particularly computationally intensive onses like games</li>
-</ul>
-<h3 id="How-it-Works"><a href="#How-it-Works" class="headerlink" title="How it Works"></a>How it Works</h3><p>This section introduces the main components used in building a native application for Android, and goes on to describe the process of building and packaging.</p>
-<h4 id="Main-components"><a href="#Main-components" class="headerlink" title="Main components"></a>Main components</h4><p>You should have an understanding of the following components as you build your app: </p>
-<ul>
-<li>Native shared libraries: The NDK builds these libraries, or <code>.so</code> files, from the your C/C++ source code.</li>
-<li>Native static libraries: The NDK can also build static libraries, or <code>.a</code> files, which you can link into other libraries</li>
-<li>Java Native Interface(JNI): The JNI is the interface via which the Java and C++ components talk to on another. This guide assumes knowledge of the JNI; for information about it , consult the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html" target="_blank" rel="noopener">Java Native Interface Specification</a></li>
-<li>Application Binary Interface(ABI): The ABI defines exactly how your app’s machine code is expected to interact with the system at runtime. The NDK build <code>.so</code> files against these definitions. Different ABIs correspond to different architectures: The NDK includes ABI support for 32-bit ARM, AARch64, x86 and x86-64. For more information, see <a href="https://developer.android.google.cn/ndk/guides/abis.html" target="_blank" rel="noopener">ABI Management</a>.</li>
-<li>Manifest: If you are writing an app with no Java component to it, you must declare the <a href="https://developer.android.google.cn/reference/android/app/NativeActivity.html" target="_blank" rel="noopener">NativeActivity</a> class in the <a href="https://developer.android.google.cn/guide/topics/manifest/manifest-intro.html" target="_blank" rel="noopener">manifest</a>. <a href="https://developer.android.google.cn/ndk/guides/concepts#naa" target="_blank" rel="noopener">Native Activities and Applications</a> provides more detail on how to do this, under “Using the <code>native_activity.h</code> interface.”</li>
-</ul>
-<h4 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h4><p>The general flow for devleoping a native app for Android is as follows:</p>
-<ol>
-<li>Design your app, deciding which parts to implement in Java, and which parts to implement as native code.</li>
-<li>Create an Android app Project as you would for any other Android project.</li>
-<li>If you are writing a native-only app, declare the <a href="https://developer.android.google.cn/reference/android/app/NativeActivity.html" target="_blank" rel="noopener">NativeActivity</a> class in <code>AndroidManifest.xml</code>. For more information, see the <a href="https://developer.android.google.cn/ndk/guides/concepts#naa" target="_blank" rel="noopener">Native Activities and Applications</a>.</li>
-<li>Create an <code>Android.mk</code> file describing the native library, including name, flags, linked libraires, and source files to be compiled in the “JNI” directory.</li>
-<li>Optionally, you can create an <code>Application.mk</code> file configuring the target ABIs, toolchain, release/debug mode, and STL. For any for these that you do not specify, the following default values are used, respectively:<ul>
-<li>ABI: all non-deprecated ABIs</li>
-<li>Toolchain: Clang</li>
-<li>Mode: Release</li>
-<li>STL: system</li>
-</ul>
-</li>
-<li>Place your native source under the project’s <code>jni</code> directory</li>
-<li>Use nd-build to compile the native(<code>.so</code>, <code>.a</code>) libraires</li>
-<li>Build the Java component, producing the executable <code>.dex</code> file.</li>
-<li>Package everything into an APK file, containing <code>.so</code>, <code>.dex</code> and other files needed for your app to run</li>
+            <ol>
+<li>可以使用Stack</li>
+<li>注意StringBuilder的deleteCharAt的用法</li>
 </ol>
-<h3 id="Native-Activities-and-Applications"><a href="#Native-Activities-and-Applications" class="headerlink" title="Native Activities and Applications"></a>Native Activities and Applications</h3><p>// TODO not needed now </p>
-<h3 id="Additional-sample-code"><a href="#Additional-sample-code" class="headerlink" title="Additional sample code"></a>Additional sample code</h3><p>To download NDK samples, see <a href="https://github.com/googlesamples/android-ndk/" target="_blank" rel="noopener">NDK Samples</a>.</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/516f7653/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/516f7653/" itemprop="url">Translation-Getting Started with the NDK</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:53:53+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/516f7653/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/516f7653/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Getting-Started-with-the-NDK"><a href="#Getting-Started-with-the-NDK" class="headerlink" title="Getting Started with the NDK"></a>Getting Started with the NDK</h2><p><a href="https://developer.android.google.cn/ndk/guides" target="_blank" rel="noopener">Reference</a></p>
-<p>The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">platform libraries</a> you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps. However, the NDK can be useful for cases in which you need to do one or more of the following:</p>
-<ul>
-<li>Squeeze extra performance out of a device to archive low latency or run computationally intensive applications, such as games or physics simulations.</li>
-<li>Reuse your own or other developers’ C or C++ libraries</li>
-</ul>
-<p>Using <a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">Android Studio 2.2 and higher</a>, you can use the NDK to compile C and C++ code into a native library and package it into your APK using Gradle, the IDE’s integrated build system. Your Java code can then call functions in your native library through the <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html" target="_blank" rel="noopener">Java Native Interface (JNI)</a> framework. To learn more about Gradle and the Android build system, read <a href="https://developer.android.google.cn/studio/build/index.html" target="_blank" rel="noopener">Configure Your Build</a>.</p>
-<p>Android Studio’s default build tool to compile native library is <a href="https://cmake.org/" target="_blank" rel="noopener">CMake</a>. Android Studio also supports <a href="https://developer.android.google.cn/ndk/guides/ndk-build.html" target="_blank" rel="noopener">ndk-build</a> due to the large number of existing projects that use the build toolkit. However, if you are creating a new native library, you should use CMake.</p>
-<p>This guide gives you the information you need to get up and running with the NDK on Android Studio. If you don’t have the latest version of Android Studio, <a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">download and install it now</a>.</p>
-<h3 id="Download-the-NDK-and-Tools"><a href="#Download-the-NDK-and-Tools" class="headerlink" title="Download the NDK and Tools"></a>Download the NDK and Tools</h3><p>To complile and debug native code for your app, you need the following components:</p>
-<ul>
-<li>The Android Native Development Kit(NDK): a set of tools that allows you to use C and C++ code with Android.</li>
-<li>CMake: an external build tool that works alongside Gradle to build your native library. You do not need this component if you only plan to use ndk-build.</li>
-<li>LLDB: the debugger Android Studio uses to debug native code.</li>
-</ul>
-<p>For information on installing these components, see <a href="https://developer.android.google.cn/studio/projects/install-ndk.md" target="_blank" rel="noopener">install and configure the NDK, CMake, and LLDB</a>.</p>
-<h3 id="Create-or-import-a-Native-Project"><a href="#Create-or-import-a-Native-Project" class="headerlink" title="Create or import a Native Project"></a>Create or import a Native Project</h3><p>Once you set up Android Studio, you can simply <a href="https://developer.android.google.cn/studio/projects/add-native-code.html#new-project" target="_blank" rel="noopener">Create a New Project with C/C++ Support</a>. However , if you want to add or import native code to an existing Android Studio project, you need to follow this basic process: </p>
-<ol>
-<li><a href>Create new native source files</a> and add them to your Android Studio project.<ul>
-<li>You can skip this step if you already have native code or want to import a prebuilt native library</li>
-</ul>
-</li>
-<li><a href="https://developer.android.google.cn/studio/projects/add-native-code.html#create-cmake-script" target="_blank" rel="noopener">Create a CMake build script</a> to tell CMake how to build your native sources into a library. You also require this build script if you are importing and linking against prebuilt or platform libraries.<ul>
-<li>You can skip this step if you existing native library already has a <code>CMakeList.txt</code> build script, or uses ndk-build and includes an <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> build script.</li>
-</ul>
-</li>
-<li><a href="https://developer.android.google.cn/studio/projects/add-native-code.html#link-gradle" target="_blank" rel="noopener">Link Gradle to your native library</a> by providing a path to your CMake or ndk-build script file. Gradle uses the build script to import source code into your Android Studio project and package your native library(the SO file) into the APK.</li>
-<li><a href="https://developer.android.google.cn/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a> by clicking <code>Run</code>. Gradle adds your CMake or ndk-build process as a dependency to compile, build, and package your native library with your APK.</li>
-</ol>
-<p>Once your app is running on a physical device or the emulator, you can use Android Studio to <a href="https://developer.android.google.cn/studio/debug/index.html" target="_blank" rel="noopener">Debug Your App</a>. Otherwise, to learn more about the NDK and its components, read the <a href="https://developer.android.google.cn/ndk/guides/concepts.html" target="_blank" rel="noopener">Concetps</a> page.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/70d0c793/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/70d0c793/" itemprop="url">Translation-Build your app from the command line</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:52:49+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/70d0c793/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/70d0c793/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Build-your-app-from-the-command-line"><a href="#Build-your-app-from-the-command-line" class="headerlink" title="Build your app from the command line"></a>Build your app from the command line</h2><p><a href="https://developer.android.com/studio/build/building-cmdline" target="_blank" rel="noopener">Reference</a></p>
-<p>You can execute all the build tasks available to your Android project using the <a href>Gradle wrapper</a> command line tool. It’s available as a batch file for Windows(<code>gradlew.bat</code>) and a shell script for Linux and Mac(<code>gradlew.sh</code>), and it’s accessible from the root of each project you create with Android Studio.</p>
-<p>To run a task with the wrapper, use one of the following commands from a Terminal window(from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code>):</p>
-<ul>
-<li><p>On Windows:</p>
-<p>  gradlew task-name</p>
-</li>
-<li><p>on Mac or Linux:</p>
-<p>  ./gradlew task-name</p>
-</li>
-</ul>
-<p>To see a list of all available build tasks for your project, execute <code>tasks</code>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew tasks</span><br></pre></td></tr></table></figure>
-
-<p>The rest of this page describes the basics to build and run your app with the Gradle wrapper. For more information about how to set up your Android build, see <a href="https://developer.android.com/studio/build/index.html" target="_blank" rel="noopener">Configure your build</a>.</p>
-<p>If you’d prefer to use the Android Studio tools instead of the command line tools, see <a href="https://developer.android.com/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a></p>
-<h3 id="About-build-types"><a href="#About-build-types" class="headerlink" title="About build types"></a>About build types</h3><p>By default, there are two build types avaiable for every Android app: one for debugging your app-the <code>debug</code> build - and one for releasing your app to users-the <code>release</code> build. The resulting output from each build must be signed with a certificate before you can deploy your app to a device. The debug build is automatically signed with a debug key provided by the SDK tools(it’s insecure and you connot publish with it into the Google Play Store), and the release build must be signed with your own private key.</p>
-<p>If you want to build your app for release, it’s important that you also <a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">sign your app</a> with the appropriate signing key. If you’re just getting started, however, you can quickly run your apps on an emulator or a connected device by <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">building a debug APK</a>.</p>
-<p>You can also define a custom build type in your <code>build.gradle</code> file and configure it to be signed as a debug build by including <code>debuggable true</code>. For more information, see <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">Configure Build Variants</a>.</p>
-<h3 id="Build-and-deploy-an-APK"><a href="#Build-and-deploy-an-APK" class="headerlink" title="Build and deploy an APK"></a>Build and deploy an APK</h3><p>Although <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundles</a> is the best way to package your app and upload it to the Play Console, building an APK is better suited for when you want to quickly test a debug build or share your app as a deployable artifact with others.</p>
-<h4 id="Build-a-debug-APK"><a href="#Build-a-debug-APK" class="headerlink" title="Build a debug APK"></a>Build a debug APK</h4><p>For immediate app testing and debugging, you can build a debug APK. The debug APK is signed with a debug key provided by the SDK tools and allows debugging throught <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a>.</p>
-<p>To build a debug APK, open a command line and navigate to the root of your project directory. To initiate a debug build, invoke the <code>assembleDebug</code> task:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew assembleDebug</span><br></pre></td></tr></table></figure>
-
-<p>This creates an APK named <code>module_name-debug.apk</code> in <code>project_name/module_name/build/outputs/apk/</code>. The file is already signed with the debug key and aligned with <a href="https://developer.android.com/tools/help/zipalign.html" target="_blank" rel="noopener">zipalign</a> so you can immediately install it on a device.</p>
-<p>Or to build the APK and immediately install it on a running emulator or connected device, instead invoke <code>installDebug</code>: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew installDebug</span><br></pre></td></tr></table></figure>
-
-<p>The “Debug” part in the above task names is just a camel-case version of the <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">build variant</a> name, so it can be replaced with whichever build type or vairant you want to assemble or install. For example, if you have a “demo” product flavor, then you can build the debug version with the <code>assembleDemoDebug</code> task.</p>
-<p>To see all the build and install tasks available for each variant(including uninstall tasks), run the <code>tasks</code> task.</p>
-<p>Also see the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnEmulator" target="_blank" rel="noopener">run your app on the emulator</a> and <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnDevice" target="_blank" rel="noopener">run your app on a device</a>.</p>
-<h4 id="Build-a-release-APK"><a href="#Build-a-release-APK" class="headerlink" title="Build a release APK"></a>Build a release APK</h4><p>When you’re ready to release and distribute your app, you must build a release APK that is signed with your private key. For more information, go to section about how to [sign your app from the command line].(<a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">https://developer.android.com/studio/build/building-cmdline#sign_cmdline</a>)</p>
-<h4 id="Deploy-your-app-to-the-emulator"><a href="#Deploy-your-app-to-the-emulator" class="headerlink" title="Deploy your app to the emulator"></a>Deploy your app to the emulator</h4><p>To use the Android Emulator, you must <a href="https://developer.android.com/studio/run/managing-avds.html#createavd" target="_blank" rel="noopener">create an Android Virtual Device (AVD)</a> using Android Studio.</p>
-<p>Once you have an AVD, start the Android Emulator and install your app as follows:</p>
-<ol>
-<li>In a command line, navigate to <code>android_sdk/tools/</code> and start the emulator by specifying your AVD:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -avd avd_name</span><br></pre></td></tr></table></figure>
-
-<p>If you’re unsure of the AVD name, execute `emulator -list-avds’</p>
-<ol start="2">
-<li>Now you can install your app using either one of the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool.</li>
-</ol>
-<p>If the APK is built using a developer preview SDK (if the <code>targetSdkVersion</code> is letter instead of a number), you must include the <a href="https://developer.android.com/studio/command-line/adb.html#-t-option" target="_blank" rel="noopener">-t option</a> with the <code>install</code> command to install a test APK.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
-
-<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code>.</p>
-<p>For more information, see <a href="https://developer.android.com/studio/run/emulator.html" target="_blank" rel="noopener">Run Apps on the Android Emulator</a>.</p>
-<h4 id="Deploy-your-app-to-a-physical-device"><a href="#Deploy-your-app-to-a-physical-device" class="headerlink" title="Deploy your app to a physical device"></a>Deploy your app to a physical device</h4><p>Before you can run your app on a device, you must enable <code>USB debugging</code> on your device. You can find the option under <code>Settings &gt; Developer options</code>.</p>
-<p>Once your device is set up and connected via USB, you can install your app using either the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -d install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
-
-<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code></p>
-<p>For more information, see <a href="https://developer.android.com/studio/run/device.html" target="_blank" rel="noopener">Run Apps on a Hardware Device</a>.</p>
-<h3 id="Build-an-app-bundle"><a href="#Build-an-app-bundle" class="headerlink" title="Build an app bundle"></a>Build an app bundle</h3><p><a href>Android App Bundles</a> include all your app’s compiled code and resources, but defer APK generation and signing to Google Play. Unlike an APK, you can’t deploy an app bundle directly to a device. So, if you want to quickly test or share an APK with someone else, you should instead <a href="https://developer.android.com/studio/build/building-cmdline#build_apk" target="_blank" rel="noopener">build an APK</a>.</p>
-<p>The easiest way to build an app bundle is by <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">using Android Studio</a>. However, if you need to build an app bundle from the command line, you can do so by using either Gradle or <code>bundletool</code>, as described in the section below.</p>
-<h4 id="Build-an-app-bundle-with-Gradle"><a href="#Build-an-app-bundle-with-Gradle" class="headerlink" title="Build an app bundle with Gradle"></a>Build an app bundle with Gradle</h4><p>If you’d rather generate an app bundle from the command line, run the <code>buildVariant</code> Gradle task on your app’s base module. For example, the following command builds an app bundle for the debug version of the base module:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew :base:bundleDebug</span><br></pre></td></tr></table></figure>
-
-<p>If you want to build a signed bundle for upload to the Play Console, you need to first configure the base module’s <code>build.gradle</code> file with your app’s signing information. To learn more, go to the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#gradle_signing" target="_blank" rel="noopener">Configure Gradle to sign your app</a>. You can then, for example, build the release version of your app, and Gradle automatically generates an app bundle and signs it with the signing information you provide in the <code>build.gradle</code> file.</p>
-<p>If you instead want to sign an app bundle as a separate step, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a> to sign your app bundle from the command line.</p>
-<h4 id="Build-an-app-bundle-using-bundletool"><a href="#Build-an-app-bundle-using-bundletool" class="headerlink" title="Build an app bundle using bundletool"></a>Build an app bundle using bundletool</h4><p><code>bundletool</code> is a command line tool that Android Studio, the Android Gradle plugin, and Google Play use to convert your app’s compiled code and resources into app bundles, and generate deployable APKs from those bundles.</p>
-<p>So, while it’s useful to <a href>test app bundles with bundletool</a> and locally recreate how Google Play generates APKs, you typically won’t need to invoke <code>bundletool</code> to build the app bundle itself-you should instead use Android Studio or Gradle tasks, as described in previous sections.</p>
-<p>However, if you don’t want to use Android Studio or Gradle tasks to build bundles-for example, if you use a custom build toolchain-you can use <code>bundletool</code> from the command line to build an app bundle from pre-compiled code and resources. If you haven’t already done so, download <a href="https://github.com/google/bundletool/releases" target="_blank" rel="noopener">bundletool</a> from the GitHub repository.</p>
-<p>This section describes how to package your app’s compiled code and resources, and how to use <code>bundletool</code> from the command line to convert them into an Android App Bundle.</p>
-<ul>
-<li>Generate the manifest and resources in proto format</li>
-</ul>
-<p><code>bundletool</code> requries certain information about your app project, such as the app’s manifest and resources, to be in <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">Google’s Protocal Buffer format</a>-which is also known as “protobuf” and uses the <code>*.pb</code> file extendsion. Protobufs provides a language-neutral, platform-neutral, and extensible mechanism for serializing structured data-it’s similiar to XML, but smaller, faster, and simpler.</p>
-<ul>
-<li>Download AAPT2</li>
-</ul>
-<p>You can generate your app’s manifest file and resource table in protobuf format using the latest version of AAPT2 from the <a href="https://developer.android.com/studio/build/dependencies#google-maven" target="_blank" rel="noopener">Google Maven Repository</a></p>
-<p>To download AAPT2 from Google’s Maven repository, proceed as follows:</p>
-<ol>
-<li>Navigate to <code>com.android.tools.build &gt; aapt2</code> in the <a href="https://maven.google.com/" target="_blank" rel="noopener">repository index</a>.</li>
-<li>Copy the name of the latest version of AAPT2.</li>
-<li>Insert the version name you copied into the following URL and specify your target operating system: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows</a> | linux | osx].jar  </li>
-</ol>
-<p>For example, to download version 3.2.0-alpha18-4804415 for Windows, you would use: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar</a></p>
-<ol start="4">
-<li>Navigate to the URL in a browser—AAPT2 should begin downloading shortly.</li>
-<li>Unpackage the JAR file you just downloaded.</li>
-</ol>
-<ul>
-<li>Compile and link your app’s resources</li>
-</ul>
-<p>Use AAPT2 to compile your app’s resources with the following command:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aapt2 compile \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image1.png \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image2.png \</span><br><span class="line">-o compiled_resources/</span><br></pre></td></tr></table></figure>
-
-<p>During the link phase, where AAPT2 links your various compiled resources into a single APK, instruct AAPT2 to convert your app’s manifest and compiled resources into the protobuf format by including the <code>--proto-format</code> flag, as shown below:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aapt2 link --proto-format -o output.apk \</span><br><span class="line">-I android_sdk/platforms/android_version/android.jar \</span><br><span class="line">--manifest project_root/module_root/src/main/AndroidManifest.xml \</span><br><span class="line">-R compiled_resources/*.flat \</span><br><span class="line">--auto-add-overlay</span><br></pre></td></tr></table></figure>
-
-<p>You can then extract content from the output APK, such as your app’s AndroidManifest.xml, resources.pb, and other resource files—now in the protobuf format. You need these files when preparing the input bundletool requires to build your app bundle, as described in the following section.</p>
-<ul>
-<li>Package pre-compiled code and resources</li>
-</ul>
-<p>Before you use <code>bundletool</code> to generate an app bundle for your app, you must first provide ZIP files that each contain the compiled code and resources for a given app module. The content and organization of each module’s ZIP file is very similar to that of <a href="https://developer.android.com/guide/app-bundle#aab_format" target="_blank" rel="noopener">the Android App Bundle format</a>. For example, you should create a <code>base.zip</code> file for your app’s base module and organize its contents as follows:</p>
-<p>// TODO table</p>
-<p>After you prepare the ZIP file for each module of your app, you can pass them to <code>bundletool</code> to build your app bundle, as described in the following section.</p>
-<ul>
-<li>Build your app bundle using bundletool</li>
-</ul>
-<p>To build your app bundle, you use the <code>bundletool build-bundle</code> command, as shown below:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundletool build-bundle --modules=base.zip --output=mybundle.aab</span><br></pre></td></tr></table></figure>
-
-<p>The following table describes flag for the <code>build-bundle</code> command in more detail:</p>
-<p>//TODO table</p>
-<ul>
-<li>Customize downstream APK generation </li>
-</ul>
-<p>App bundles include a <code>BundleConfig.pb</code> file that provides metadata that app stores, such as Google Play, require when generating APKs from the bundle. Although <code>bundletool</code> create this file for you, you can configure some aspects of the metadata in a <code>BundleConfig.json</code> file and pass it to the <code>buldtool build-bundle</code> command -<code>buildtool</code> later converts and merges this file with the protobuf version included in each app bundle.</p>
-<p>For example, you can control which categories of configuration APKs to enable or disable. The following example of an <code>BundleConfig.json</code> file disables configuration APKs that each target a different langauge(that is, resources for all languages are included in their respective base or dynamic feature APKs):</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "optimizations": &#123;</span><br><span class="line">    "splitsConfig": &#123;</span><br><span class="line">      "splitDimension": [&#123;</span><br><span class="line">        "value": "LANGUAGE",</span><br><span class="line">        "negate": true</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>In your <code>BundleConfig.json</code> file, you can also specify which file types to leave uncompressed when packaging APKs using <a href="https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob" target="_blank" rel="noopener">glob patterns</a>, as follows:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "compression": &#123;</span><br><span class="line">    "uncompressedGlob": ["res/raw/**", "assets/**.uncompressed"]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Keep in mind, by default, bundletool does not compress your app’s native libraries (on Android 6.0 or higher) and resource table (resources.arsc). For a full description of what you can configure in your BundleConfig.json, inspect the <a href="https://github.com/google/bundletool/blob/master/src/main/proto/config.proto" target="_blank" rel="noopener">bundletool config.proto file</a>, which is written using <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Proto3</a> syntax.</p>
-<h4 id="Deploy-your-app-from-an-app-bundle"><a href="#Deploy-your-app-from-an-app-bundle" class="headerlink" title="Deploy your app from an app bundle"></a>Deploy your app from an app bundle</h4><p>If you’ve built and signed an app bundle, <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">use bundletool</a> to generate APKs and deploy them to a device.</p>
-<h3 id="Sign-your-app-from-command-line"><a href="#Sign-your-app-from-command-line" class="headerlink" title="Sign your app from command line"></a>Sign your app from command line</h3><p>You do not need Android Studio to sign your app. You can sign your app from  the command line, using <code>apksigner</code> for APKs or <code>jarsigner</code> for app undles, or configure Gradle to sign it for you during the build. Either way, you need to first generate a private key using <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html" target="_blank" rel="noopener">keytool</a> as shown below:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.jks</span><br><span class="line">-keyalg RSA -keysize 2048 -validity 10000 -alias my-alias</span><br></pre></td></tr></table></figure>
-
-<p>The example above prompts you for passwords for the keystore and key, and for the “Distinguished Name” field for your key. It then generates the keystore as a file called <code>my-release-key.jks</code>, saving it in the current directory(you can move it wherever you’d like). The keystore contains a single key that is valid for 10000 days.</p>
-<p>Now you can sign your APK or app bundle manually, or configure Gradle to sign your app during the build process, as described in the sections below.</p>
-<h4 id="Sign-your-app-manually-from-the-command-line"><a href="#Sign-your-app-manually-from-the-command-line" class="headerlink" title="Sign your app manually from the command line"></a>Sign your app manually from the command line</h4><p>If you want to sign an app bundle from the command line, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a>. If instead you want to sign an APK, you need to use <code>zipalign</code> and <code>apksigner</code> as described below.</p>
-<ol>
-<li>Open a command line-from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code> - and navigate to the directory where your unsigned APK is located.</li>
-<li>Align the unsigned APK using <a href="https://developer.android.com/studio/command-line/zipalign.html" target="_blank" rel="noopener">zipalign</a>:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zipalign -v -p 4 my-app-unsigned.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
-
-<p><code>zipalign</code> ensures that all uncompressed data starts with a particular byte alignment relative to the start of the file, which may reduce the amount of RAM consumed by an app.</p>
-<ol start="3">
-<li>Sign your APK with your private key using <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a>:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner sign --ks my-release-key.jks --out my-app-release.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
-
-<p>This example outputs the signed APK at <code>my-app-release.apk</code> after signing it with a private key and certificate that are stored in a single KeyStore file: <code>my-release-key.jks</code>.</p>
-<p>The <code>apksigner</code> tool supports other signing options, including signing an APK file using separate private key and certificate files, and signing an APK using multiple signers. For more details, see the <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a> reference.</p>
-<ol start="4">
-<li>Verify that your APK is signed:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner verify my-app-release.apk</span><br></pre></td></tr></table></figure>
-
-<h4 id="Configure-Gradle-to-sign-your-app"><a href="#Configure-Gradle-to-sign-your-app" class="headerlink" title="Configure Gradle to sign your app"></a>Configure Gradle to sign your app</h4><p>Open the module-level <code>build.gradle</code> file and add the <code>signingConfigs {}</code> block with entries for <code>storeFile</code>, <code>storePassword</code>, <code>keyAlias</code> and <code>keyPassword</code>, and then pass that object to the <code>signingConfig</code> property in your build type. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123; ... &#125;</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            // You need to specify either an absolute path or include the</span><br><span class="line">            // keystore file in the same directory as the build.gradle file.</span><br><span class="line">            storeFile file("my-release-key.jks")</span><br><span class="line">            storePassword "password"</span><br><span class="line">            keyAlias "my-alias"</span><br><span class="line">            keyPassword "password"</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Now, when you build your app by invoking a Gradle task, Gradle signs your app (and runs zipalign) for you.</p>
-<p>Additionally, because you’ve configured the release build with your signing key, the “install” task is available for that build type. So you can build, align, sign, and install the release APK on an emulator or device all with the <code>installRelease</code> task.</p>
-<p>An app signed with your private key is ready for distribution, but you should first read more about how to <a href="https://developer.android.com/studio/publish/index.html" target="_blank" rel="noopener">publish your app</a> and review the <a href="https://developer.android.com/distribute/tools/launch-checklist.html" target="_blank" rel="noopener">Google Play launch checklist</a>.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8ef0f2e5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/8ef0f2e5/" itemprop="url">Translation-About Android App Bundles</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:51:04+08:00">
-                2019-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/8ef0f2e5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8ef0f2e5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="About-Android-App-Bundles"><a href="#About-Android-App-Bundles" class="headerlink" title="About Android App Bundles"></a>About Android App Bundles</h2><p><a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Reference</a></p>
-<p>An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
-<p>Google Play’s new app serving model, called Dynamic Delivery, then uses your app bundle to generate and serve optimized APKs for each user’s device configuration, so they download only the code and resources they need to run your app. You no longer have to build , sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads.</p>
-<p>Additionally, you can add dynamic feature modules to your app project and include them in your app bundle. These modules contain features and assets that you can decide not to include when users first download and install your app. <a href="https://developer.android.com/guide/app-bundle#playcore" target="_blank" rel="noopener">Using the Play Core Library</a>, your app can later request to download those modules as dynamic feature APKs, and, through Dynamic Delivery, Google Play serves only the code and resources for that module to the device.</p>
-<p>Publishing with Android App Bundles also increases the app size limit to 150MB without having to use APK expansion files. Keep in mind, this limit applies only to the actual download size, not the publishing size. So, users can download apps as large as 150MB and , with dynamic delivery, all of that storage is used for only the code and resourcecs they need to run the app. When you combine this with support for <a href="https://developer.android.com/topic/performance/reduce-apk-size#reduce-binaries" target="_blank" rel="noopener">uncompressed native libraries</a>, larger apps ,such as games, can reduce disk usage and increase user retention.</p>
-<p>If you are using Android Studio 3.2 or higher , most app projects require little effort to support Dynamic Delivery, and you can build an Android App Bundle in just a few clicks. However, adding dynamic feature modules requires a little more effort and possibly refactoring your app.</p>
-<p>This page describes the steps to get started building Android App Bundles and describes some important concepts related to app bundles and Dynamic Delivery.</p>
-<h3 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h3><p>To build app bundles and support Dynamic Delivery, follow these steps: </p>
-<ol>
-<li><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Download Android Studio 3.2 or higher</a> - it’s the easiest way to add dyanmic feature modules and build app bundles.</li>
-<li><a href="https://developer.android.com/studio/projects/dynamic-delivery" target="_blank" rel="noopener">Add support for Dynamic Delivery</a> by including a base module, organizing code and resources for configuration APKs, and, optionally, adding dynamic feature modules.</li>
-<li><a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">Build an Android App Bundle</a> using Android. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundle from the command line</a>.</li>
-<li><a href="https://developer.android.com/guide/app-bundle#bundletool" target="_blank" rel="noopener">Test your Android App Bundle</a> by using it to generate APKs that you deploy to a device.</li>
-<li><a href="https://support.google.com/googleplay/android-developer/answer/7384423" target="_blank" rel="noopener">Enroll into app signing by Google Play</a>. Otherwise, you can’t upload your app bundle to the Play Console.</li>
-<li><a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">Publishing your app bundle to Google Play</a>.</li>
-</ol>
-<h3 id="The-Android-App-Bundle-format"><a href="#The-Android-App-Bundle-format" class="headerlink" title="The Android App Bundle format"></a>The Android App Bundle format</h3><p>An Android APP Bundle is a file(with the <code>.aab</code> file extension) that you upload to Google Play to support Dynamic Delivery.</p>
-<p>App bundles are signed binaries that organize your app’s code and resources into modules, as illustrated in figure 1.Code and resources for each module are organized similarly to what you would find in an APK-and that makes sense because each of these modules may be generated as separate APKs. Google Play then uses the app bundle to generate the various APKs that are served to users, such as the base APK, dynamic feature APKs, configuration APKs, and (for devices that do not support split APKs) multi-APKs. The directories that are colored in blue-such as the <code>drawable/</code>, <code>values/</code>, and <code>lib</code> directories-represent code and resources that Google Play uses to create configuration APKs for each module.</p>
-<p><img src="https://developer.android.com/images/app-bundle/aab_format-2x.png" alt="The contents of an Android App Bundle with one base module and two dynamic feature modules."></p>
-<p>The following list describes some of the app bundle’s files and directories in more detail:</p>
-<ul>
-<li>base/, feature1/, and feature2/: Each of these top-level directories represents a different module of your app. The base module for your app is always contained in a <code>base</code> directory of the app bundle. However, the directory for each dynamic feature module is given the name specified by the <code>split</code> attribute in the module’s manifest. To learn more, read about the <a href="https://developer.android.com/guide/app-bundle/configure#dynamic_feature_manifest" target="_blank" rel="noopener">Dynamic feature module manifest</a>.</li>
-<li>BUNDLE-METADATA/: This directory includes metadata files that contain information useful for tools or app stores. Such metadata files may include ProGuard mappings and the complete list of your app’s DEX files. Files in this directory are not packaged into your app’s APKs.</li>
-<li>Module Protocal Buffer(*.pb) files: These files provide metadata that helps describe the contents of each app module to app stores, such as Google Play. For example, <code>BundleConfig.pb</code> provides information about the bundle itself, such as which version of the build tools were used to build the app bundle, and <code>native.pb</code> and <code>resources.pb</code> describe the code and resources in each module, which is useful when Google Play optimizes APKs for different device configurations.</li>
-<li>manifest/: Unlike APKs, app bundles store the <code>AndroidManifest.xml</code> file of each module in this separate directory.</li>
-<li>dex/ : Unlike APKs, app bundles store the DEX files for each module in this separate directory</li>
-<li>res/, lib/ and assets/: These directories are dientical to those in a typical APK. When you upload your app bundle, Google Play inspects these directories and packages only the files that satisfy the target device configuration, while preserving file paths.</li>
-<li>root/: This directory stores files that are later relocated to the root of any APK that includes the module that this directory is located in. For example, the <code>base/root</code> directory of an app bundle may include Java-based resources that your app loads using <a href="https://developer.android.com/reference/java/lang/Class.html#getResource(java.lang.String)" target="_blank" rel="noopener">Class.getResource()</a>. Those files are later relocated to the root directory of your app’s base APK and every multi-APK that Google Play generates. Paths within this directory are also preserved. That is, directories(and their subdirectories) are also relocated to the root of the APk.</li>
-</ul>
-<h4 id="Build-and-deploy-Android-App-Bundles"><a href="#Build-and-deploy-Android-App-Bundles" class="headerlink" title="Build and deploy Android App Bundles"></a>Build and deploy Android App Bundles</h4><p>An app bundle is different from an APK in that you can’t deploy one to a device. Rather, it’s a upload format that includes all your app’s compiled code and resources in a single build artifact. So, after you upload your signed app bundle , Google Play has everything it needs to build and sign your app’s APKs, and serve them to users through Dynamic Delivery.</p>
-<p>If you’re using Android Studio, you can <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">build your project</a> as a signed app bundle in just a few clicks. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app from the command line.</a> Then, simply <a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">upload your app bundle</a> to the Play Console to test or publish your app with Dynamic Delivery.</p>
-<h3 id="Test-your-app-bundle"><a href="#Test-your-app-bundle" class="headerlink" title="Test your app bundle"></a>Test your app bundle</h3><p>After you build your Android App Bundle, you should test how Google Play will use it to generate APKs and how those APKs will behave when deployed to a device.</p>
-<p>To test your app bundle, use any of the following methods:</p>
-<ul>
-<li><a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">Test your Android App Bundle locally using bundletool</a> to generate APKs from your app bundle and deploy them to a connected device.</li>
-<li><a href="https://support.google.com/googleplay/android-developer/answer/9303479" target="_blank" rel="noopener">Share your app with a URL</a>. This is the fastest way to upload your app bundle and share your app as a Google Play Store link with trusted tester. Additionally, this is the fastest way to test custom delivery options, such as dowloading features on demand.</li>
-<li><a href="https://support.google.com/googleplay/android-developer/answer/3131213" target="_blank" rel="noopener">Set up an open, closed, or internal test.</a>. This is another method to test custom delivery options, such as dowloading features on demand.</li>
-</ul>
-<h3 id="Download-dynamic-feature-modules-with-the-Play-Core-Library"><a href="#Download-dynamic-feature-modules-with-the-Play-Core-Library" class="headerlink" title="Download dynamic feature modules with the Play Core Library"></a>Download dynamic feature modules with the Play Core Library</h3><p>If your app includes dynamic features, it needs to use the Play Core Library to request, monitor, and manage dynamic feature module downloads. To learn more, go to [Download modules with the Play Core Library].(<a href="https://developer.android.com/guide/app-bundle/playcore" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore</a>)</p>
-<p>If you want to see the library in action, try the <a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">Play Core Library sample app</a>.</p>
-<h3 id="A-note-about-instant-Apps"><a href="#A-note-about-instant-Apps" class="headerlink" title="A note about instant Apps"></a>A note about instant Apps</h3><p>In Android Studio 3.2 or higher, you can <a href="https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle" target="_blank" rel="noopener">add an instant experience</a> to an app bundle , as long as your app’s size is smaller enough. For details on the size limits for the different types of instant experiences that you can create, see <a href="https://developer.android.com/topic/google-play-instant/overview#reduce-size" target="_blank" rel="noopener">Overview of Google Play Instant</a>.</p>
-<h3 id="Compressed-download-size-restriction"><a href="#Compressed-download-size-restriction" class="headerlink" title="Compressed download size restriction"></a>Compressed download size restriction</h3><p>While publishing with Android App Bundles helps your users install your app with the smallest download possible, <code>compressed downloads are limited to 150MB</code>. That is , when a user downloads your app, the total size of the compressed APKs required to install your app(for example, the base APK + configuration APK(s)) must be no more than 150MB. Any subsequent downloads, such as downloading a dynamic feature (and its configuration APK(s)) on demand, must also meet this compressed download size restriction.</p>
-<p>When you upload your app bundle, if the Play Console finds any of the possible downloads of your app or its on demand features to be more than 150MB, you get an error.</p>
-<p>Keep in mind, <code>Android App Bundles do not support APK expansion(.obb) files</code>. So, if you encounter this error when publishing your app bundle, use one of the following resources to reduce compressed APK download size:</p>
-<ul>
-<li>Make sure you <a href="https://developer.android.com/studio/projects/dynamic-delivery#disable_config_apks" target="_blank" rel="noopener">enable all configuration APKs </a> by setting <code>enableSplit = true</code> for each type of configuration APK. This makes sure that users download only the code and resources they need to run your app on their device.</li>
-<li>Make sure you <a href="https://developer.android.com/studio/build/shrink-code" target="_blank" rel="noopener">shrink your app</a> by removing unused code and resources.</li>
-<li>Follow best practices to further [reduce app size].(<a href="https://developer.android.com/topic/performance/reduce-apk-size" target="_blank" rel="noopener">https://developer.android.com/topic/performance/reduce-apk-size</a>)</li>
-<li>Consider converting features that are used by only some of your users into <a href="https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules" target="_blank" rel="noopener">dynamic feature modules</a> that your app can download later, on demand. Keep in mind ,this may require some refactoring of your app, so make sure to first try the other suggestions described above.</li>
-</ul>
-<h3 id="Known-issues"><a href="#Known-issues" class="headerlink" title="Known issues"></a>Known issues</h3><p>The following are the currently known issues when building Android App Bundles or serving your app using Dynamic Delivery. If you experience issues that are not described below, please <a href="https://issuetracker.google.com/issues/new?component=398856&template=1084213" target="_blank" rel="noopener">report a bug</a>.</p>
-<ul>
-<li>If you use tools that dynamically modify resource tables, APKs generated from app bundles might behave unexpectedly. So, when building an app bundle, it is recommended taht you disable such tools.</li>
-<li>In a dynamic feature module’s manifest, you should not reference resources that don’t exist in the base module. That’s because , when Google Play generates your app’s base APK, it merges manifests for all modules into that of the base APK. So, resource linking breaks if the base APK’s manifest references resources taht don’t exist in the base APK.</li>
-<li>As of Android Studio 3.2 Canary 14, when your <a href>change the build variant</a> for your app’s base module, the same build variant is not automatically selected for dynamic feature modules that depand on the base module. So, you might receive an error when building your app. Simply make sure that you select the same build variant for the base module and other modules that depend on it.</li>
-<li>It is currently possible to configure properties in a dynamic feature module’s build coniguration that conflict with those from the base(or other) modules. For example, you can set <code>buildTypes.release.debuggable = true</code> in the base module and set it to <code>false</code> in a dynamic feature module. Such conflicts might cause build and runtime issues. Keep in mind, by default, dynamic feature modules inherit some build configurations from the base module. So, make sure you understand which configurations you should keep, and which ones you should omit, in your <a href="https://developer.android.com/guide/app-bundle/configure#feature_build_config" target="_blank" rel="noopener">Dynamic feature module build configuration</a>.</li>
-<li>Because app installs may require downloading more than onre APK(such the base APK and a few of its configuration APKs), you should be careful when manually transferring your app’s APKs onto a device(also known as sideloading). Otherwise, your app may experience runtime issues due to missing code and resources.</li>
-<li>Currently, Google Play inclues all the code and resources for a dynamic feature module in a single APK. In the near future, for devices running Android 5.0 (API level 21) and higher, serving will be optimized to use configuration APKs.</li>
-<li>Downloading dynamic feature modules requires devices to have a recent version of the Play Store app installed. So, if your app includes dynamic feature modules, downloads for a very small percentage of users may fall back to a single optimized multi-APK, which is the same download experience for devices running Android 4.4 (API level 20) and lower.</li>
-</ul>
-<h3 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h3><p>To learn more about Android App Bundles, consult the following resources.</p>
-<ul>
-<li>Samples  <ul>
-<li><a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">PlayCore API sample</a>, which demonstrates usage of the PlayCore API to request and download dynamic features.</li>
-<li><a href="https://github.com/googlesamples/android-dynamic-code-loading" target="_blank" rel="noopener">Dynamic code loading sample</a>, which demonstrates three different approaches to safely access code from an installed dynamic feature module.</li>
-</ul>
-</li>
-<li>Codelabs<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/your-first-dynamic-app/index.html" target="_blank" rel="noopener">Your First Android App Bundle</a>, a codelab that explores the basic principles of Android App Bundles and shows you how to quickly get started with building your own using Android Stuio. This codelab also explores how to test your app bundles <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">using bundletool</a></li>
-<li><a href="https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery/index.html" target="_blank" rel="noopener">On demand modules</a>, which helps you create an app that downloads and installs dynamic features on demand.</li>
-</ul>
-</li>
-<li>Blog posts<ul>
-<li><a href="https://medium.com/googleplaydev/what-a-new-publishing-format-means-for-the-future-of-android-2e34981793a" target="_blank" rel="noopener">What a new publishing format means for the future of Android</a></li>
-<li><a href="https://android-developers.googleblog.com/2019/05/whats-new-in-play.html" target="_blank" rel="noopener">New features to help you develop, release, and grow your business on Google Play</a></li>
-<li><a href="https://android-developers.googleblog.com/2019/03/the-latest-android-app-bundle-updates.html" target="_blank" rel="noopener">The latest Android App Bundle updates including the additional languages API</a></li>
-<li><a href="https://medium.com/androiddevelopers/a-patchwork-plaid-monolith-to-modularized-app-60235d9f212e" target="_blank" rel="noopener">Patchwork Plaid — A modularization story</a></li>
-<li><a href="https://medium.com/androiddevelopers/google-santa-tracker-moving-to-an-android-app-bundle-dde180716096" target="_blank" rel="noopener">Google Santa Tracker — Moving to an Android App Bundle</a></li>
-</ul>
-</li>
-<li>Videos<ul>
-<li><a href="https://www.youtube.com/watch?v=flhib2krW7U" target="_blank" rel="noopener">Customizable Delivery with the App Bundle and Easy Sharing of Test Builds</a></li>
-<li><a href="https://www.youtube.com/watch?v=rEuwVWpYBOY" target="_blank" rel="noopener">New Tools to Optimize Your App’s Size and Boost Installs on Google Play</a></li>
-</ul>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5f3606d7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/5f3606d7/" itemprop="url">Algorithm-LeetCode-206 Reverse Linked List</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T14:06:56+08:00">
-                2019-07-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/5f3606d7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5f3606d7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -2495,7 +1602,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2541,7 +1648,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">151</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

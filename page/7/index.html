@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4f81d6fa/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/100ad818/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -326,7 +326,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/4f81d6fa/" itemprop="url">Android 进程间通信</a></h1>
+                <a class="post-title-link" href="/posts/100ad818/" itemprop="url">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a></h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T21:15:39+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T15:54:49+08:00">
+                2019-12-13
               </time>
             
 
@@ -349,28 +349,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -379,8 +357,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/4f81d6fa/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4f81d6fa/" itemprop="commentCount"></span>
+                <a href="/posts/100ad818/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/100ad818/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,155 +388,159 @@
       
         
           
-            <p>Reference: </p>
-<ul>
-<li><a href="https://blog.csdn.net/qian520ao/article/details/78089877" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78089877</a></li>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81275438" target="_blank" rel="noopener">https://blog.csdn.net/hzw2017/article/details/81275438</a></li>
-<li><a href="https://juejin.im/post/5acccf845188255c3201100f" target="_blank" rel="noopener">https://juejin.im/post/5acccf845188255c3201100f</a></li>
-</ul>
-<h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><p><code>RPC(Remote Porcedure Call)</code> 远程过程调用, 是一种通过网络从远程计算机程序上请求服务，在不需要了解底层网络技术协议下，即可获取计算机进程中的数据。 RPC使得开发包括网络分布式多程序在内的应用程序更加容易。</p>
-<p>RPC在OSI网络通信7层模型中，位于<code>会话层</code>: </p>
-<p><img src="https://img-blog.csdn.net/2018072918504362?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-<p>RPC的实现模式, 也就是常说的C/S结构: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RPC采用客户机/服务器模式。请求程序就是一个客户机，而服务提供程序就是一个服务器。首先，客户机调用进程发送一个有进程参数的调用信息到服务进程，然后等待应答信息。在服务器端，进程保持睡眠状态直到调用信息到达为止。当一个调用信息到达，服务器获得进程参数，计算结果，发送答复信息，然后等待下一个调用信息，最后，客户端调用进程接收答复信息，获得进程结果，然后调用执行继续进行。</span><br></pre></td></tr></table></figure>
+            
+          
+        
+      
+    </div>
+    
+    
+    
 
-<p><img src="https://img-blog.csdn.net/20180729185637282?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-<p>简而言之：客户端能向服务端发送若干个进程请求，服务端根据发送的进程参数依次返回对应的计算结果。RPC可以说客户端调用服务端的接口的过程，是面向接口的编程。</p>
-<p>RPC在Android中的体现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android 利用远程过程调用 (RPC) 提供了一种进程间通信 (IPC) 机制，通过这种机制，由 Activity 或其他应用组件调用的方法将（在其他进程中）远程执行，而所有结果将返回给调用方。 这就要求把方法调用及其数据分解至操作系统可以识别的程度，并将其从本地进程和地址空间传输至远程进程和地址空间，然后在远程进程中重新组装并执行该调用。 然后，返回值将沿相反方向传输回来。 Android 提供了执行这些 IPC 事务所需的全部代码，因此您只需集中精力定义和实现 RPC 编程接口即可。 </span><br><span class="line">要执行 IPC，必须使用 bindService() 将应用绑定到服务上。</span><br></pre></td></tr></table></figure>
+    
 
-<p>也就是说，RPC在的Android具体体现，是依赖 bindService()的方式，在onBind方法将服务端的计算结果返回给客户端（Activity等组件）的过程。</p>
-<h2 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h2><p><code>IPC</code>是<code>Inter-Process communication</code> 进程间通信, 是指进程间数据交互的过程<br>Android底层是基于Linux, 而Linux基于安全考虑，是不允许两个进程直接操作对方数据, 这就是<code>进程隔离</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在Linux系统中，虚拟内存机制为每个进程分配了线性连续的内存空间，操作系统将这种虚拟内存空间映射到物理内存空间，每个进程有自己的虚拟内存空间，进而不能操作其他进程的内存空间，每个进程只能操作自己的虚拟内存空间，只有操作系统才有权限操作物理内存空间.进程隔离保证了每个进程的内存安全，但是在大多数情形下，不同进程间的数据通讯是不可避免的，因此操作系统必须提供跨进程通信机制。</span><br></pre></td></tr></table></figure>
+    
 
-<p>虽然Android是基于Linux，但并不能继承Linux中的进程通信的方式，Android有着自己进程间通信方式。常用有如下几种：</p>
-<ul>
-<li>Bundle(四大组件之间)</li>
-<li>文件共享<ul>
-<li>可参考<a href="https://blog.csdn.net/hzw2017/article/details/80978663" target="_blank" rel="noopener">Android进程通信 - 序列化Serialzable与Parcelable</a>中的示例</li>
-</ul>
-</li>
-<li>AIDL(基于Binder)<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81048650" target="_blank" rel="noopener">Android进程通信-AIDL的使用方法</a></li>
-</ul>
-</li>
-<li>Messenger(基于Binder)<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81090319" target="_blank" rel="noopener">Android进程间通信-Messenger的使用和理解</a></li>
-</ul>
-</li>
-<li>ContentProvider(基于Binder)<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81123791" target="_blank" rel="noopener">Android进程间通信-ContentProvider内容提供者</a></li>
-</ul>
-</li>
-<li>Socket<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81210979" target="_blank" rel="noopener">Android进程间通信-Socket的使用</a></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://img-blog.csdn.net/20180729210742229?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-<p>既然AIDL, Messenger, ContentProvider都是基于Binder的, 我们就首先来看下Binder的原理</p>
-<h2 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h2><p>Binder 是一种进程间通信机制，基于开源的 OpenBinder 实现. Android 应用程序是由 Activity、Service、Broadcast Receiver 和 Content Provide 四大组件中的一个或者多个组成的。有时这些组件运行在同一进程，有时运行在不同的进程。这些进程间的通信就依赖于 Binder IPC 机制。不仅如此，Android 系统对应用层提供的各种服务如：ActivityManagerService、PackageManagerService 等都是基于 Binder IPC 机制来实现的。Binder 机制在 Android 中的位置非常重要. </p>
-<h3 id="Why-Binder"><a href="#Why-Binder" class="headerlink" title="Why Binder"></a>Why Binder</h3><p>Android 系统是基于 Linux 内核的，Linux 已经提供了管道、消息队列、共享内存和 Socket 等 IPC 机制。那为什么 Android 还要提供 Binder 来实现 IPC 呢？主要是基于性能、稳定性和安全性几方面的原因。</p>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>Socket 作为一款通用接口，其传输效率低，开销大，主要用在跨网络的进程间通信和本机上进程间的低速通信。消息队列和管道采用存储-转发方式，即数据先从发送方缓存区拷贝到内核开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。共享内存虽然无需拷贝，但控制复杂，难以使用。Binder 只需要一次数据拷贝，性能上仅次于共享内存。</p>
-<p>注：各种IPC方式数据拷贝次数，此表来源于<a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Funiversus%2Farticle%2Fdetails%2F6211589" target="_blank" rel="noopener">Android Binder 设计与实现 - 设计篇</a></p>
-<table>
-<thead>
-<tr>
-<th>IPC方式</th>
-<th>数据拷贝次数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>共享内存</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Binder</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Socket/管道/消息队列</td>
-<td>2</td>
-</tr>
-</tbody></table>
-<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>Binder 基于 C/S 架构，客户端（Client）有什么需求就丢给服务端（Server）去完成，架构清晰、职责明确又相互独立，自然稳定性更好。共享内存虽然无需拷贝，但是控制复杂，难以使用。从稳定性的角度讲，Binder 机制是优于内存共享的。</p>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>另一方面就是安全性。Android 作为一个开放性的平台，市场上有各类海量的应用供用户选择安装，因此安全性对于 Android 平台而言极其重要。作为用户当然不希望我们下载的 APP 偷偷读取我的通信录，上传我的隐私数据，后台偷跑流量、消耗手机电量。传统的 IPC 没有任何安全措施，完全依赖上层协议来确保。首先传统的 IPC 接收方无法获得对方可靠的进程用户ID/进程ID（UID/PID），从而无法鉴别对方身份。Android 为每个安装好的 APP 分配了自己的 UID，故而进程的 UID 是鉴别进程身份的重要标志。传统的 IPC 只能由用户在数据包中填入 UID/PID，但这样不可靠，容易被恶意程序利用。可靠的身份标识只有由 IPC 机制在内核中添加。其次传统的 IPC 访问接入点是开放的，只要知道这些接入点的程序都可以和对端建立连接，不管怎样都无法阻止恶意程序通过猜测接收方地址获得连接。同时 Binder 既支持实名 Binder，又支持匿名 Binder，安全性高。<br>基于上述原因，Android 需要建立一套新的 IPC 机制来满足系统对稳定性、传输性能和安全性方面的要求，这就是 Binder。</p>
-<h2 id="Linux下传统的进程间通信的原理"><a href="#Linux下传统的进程间通信的原理" class="headerlink" title="Linux下传统的进程间通信的原理"></a>Linux下传统的进程间通信的原理</h2><p>了解 Linux IPC 相关的概念和原理有助于我们理解 Binder 通信原理。因此，在介绍 Binder 跨进程通信原理之前，我们先聊聊 Linux 系统下传统的进程间通信是如何实现。</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a94f6af409?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>上图展示了Linux中跨进程通信涉及到的一些基本概念</p>
-<h4 id="进程隔离"><a href="#进程隔离" class="headerlink" title="进程隔离"></a>进程隔离</h4><p>简单的说就是操作系统中，进程与进程间内存是不共享的。两个进程就像两个平行的世界，A 进程没法直接访问 B 进程的数据，这就是进程隔离的通俗解释。A 进程和 B 进程之间要进行数据交互就得采用特殊的通信机制：进程间通信（IPC）。</p>
-<h4 id="进程空间划分-用户空间-UserSpace-内核空间-Kernel-Space"><a href="#进程空间划分-用户空间-UserSpace-内核空间-Kernel-Space" class="headerlink" title="进程空间划分: 用户空间(UserSpace)/内核空间(Kernel Space)"></a>进程空间划分: 用户空间(UserSpace)/内核空间(Kernel Space)</h4><p>现在操作系统都是采用的虚拟存储器，对于 32 位系统而言，它的寻址空间（虚拟存储空间）就是 2 的 32 次方，也就是 4GB。操作系统的核心是内核，独立于普通的应用程序，可以访问受保护的内存空间，也可以访问底层硬件设备的权限。为了保护用户进程不能直接操作内核，保证内核的安全，操作系统从逻辑上将虚拟空间划分为用户空间（User Space）和内核空间（Kernel Space）。针对 Linux 操作系统而言，将最高的 1GB 字节供内核使用，称为内核空间；较低的 3GB 字节供各进程使用，称为用户空间。</p>
-<p>简单的说就是，内核空间（Kernel）是系统内核运行的空间，用户空间（User Space）是用户程序运行的空间。为了保证安全性，它们之间是隔离的。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a94fa38f32?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="系统调用-用户态-内核态"><a href="#系统调用-用户态-内核态" class="headerlink" title="系统调用: 用户态/内核态"></a>系统调用: 用户态/内核态</h4><p>虽然从逻辑上进行了用户空间和内核空间的划分，但不可避免的用户空间需要访问内核资源，比如文件操作、访问网络等等。为了突破隔离限制，就需要借助系统调用来实现。系统调用是用户空间访问内核空间的唯一方式，保证了所有的资源访问都是在内核的控制下进行的，避免了用户程序对系统资源的越权访问，提升了系统安全性和稳定性。</p>
-<p>Linux 使用两级保护机制：0 级供系统内核使用，3 级供用户程序使用。</p>
-<p>当一个任务（进程）执行系统调用而陷入内核代码中执行时，称进程处于内核运行态（内核态）。此时处理器处于特权级最高的（0级）内核代码中执行。当进程处于内核态时，执行的内核代码会使用当前进程的内核栈。每个进程都有自己的内核栈。<br>当进程在执行用户自己的代码的时候，我们称其处于用户运行态（用户态）。此时处理器在特权级最低的（3级）用户代码中运行。<br>系统调用主要通过如下两个函数来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">copy_from_user() //将数据从用户空间拷贝到内核空间</span><br><span class="line">copy_to_user() //将数据从内核空间拷贝到用户空间</span><br></pre></td></tr></table></figure>
+    
 
-<h3 id="Linux下传统IPC通信原理"><a href="#Linux下传统IPC通信原理" class="headerlink" title="Linux下传统IPC通信原理"></a>Linux下传统IPC通信原理</h3><p>理解了上面的几个概念，我们再来看看传统的 IPC 方式中，进程之间是如何实现通信的。</p>
-<p>通常的做法是消息发送方将要发送的数据存放在内存缓存区中，通过系统调用进入内核态。然后内核程序在内核空间分配内存，开辟一块内核缓存区，调用 copy_from_user() 函数将数据从用户空间的内存缓存区拷贝到内核空间的内核缓存区中。同样的，接收方进程在接收数据时在自己的用户空间开辟一块内存缓存区，然后内核程序调用 copy_to_user() 函数将数据从内核缓存区拷贝到接收进程的内存缓存区。这样数据发送方进程和数据接收方进程就完成了一次数据传输，我们称完成了一次进程间通信。如下图：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a954b2c791?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>传统的IPC通信方式有2个问题:</p>
-<ol>
-<li>性能地下, 一次数据传输需要经历: 内存缓存区 -&gt; 内核缓存区 -&gt; 内存缓存区, 需要2次数据拷贝</li>
-<li>接受数据的缓存区由数据接收进程提供, 但是接收进程并不知道需要多大的空间来存放将要传递过来的数据，因此只能开辟尽可能大的内存空间或者先调用 API 接收消息头来获取消息体的大小，这两种做法不是浪费空间就是浪费时间。</li>
-</ol>
-<h3 id="Binder跨进程通信原理"><a href="#Binder跨进程通信原理" class="headerlink" title="Binder跨进程通信原理"></a>Binder跨进程通信原理</h3><p>理解了 Linux IPC 相关概念和通信原理，接下来我们正式介绍下 Binder IPC 的原理。</p>
-<h4 id="动态内核可加载模块-amp-amp-内存映射"><a href="#动态内核可加载模块-amp-amp-内存映射" class="headerlink" title="动态内核可加载模块 &amp;&amp; 内存映射"></a>动态内核可加载模块 &amp;&amp; 内存映射</h4><p>正如前文所说，跨进程通信需要内核空间做支持的。传统的IPC机制如管道, Socket都是内核的一部分，因此通过内核支持来实现进程间通信自然是没问题的。但是Binder并不是内核的一部分， 这就需要Linux的<code>动态内核可加载模块(Loadable Kernel Module, LKM)</code>机制，模块是具有独立功能的程序，可以单独编译，但不能独立运行。他在运行时被链接到内核作为内核的一部分运行. 这样，Android系统就可以通过动态添加一个内核模块运行在内核空间，用户进程之间通过这个内核模块作为桥梁来实现通信.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 Android 系统中，这个运行在内核空间，负责各个用户进程通过 Binder 实现通信的内核模块就叫 Binder 驱动（Binder Dirver）。</span><br></pre></td></tr></table></figure>
+    <footer class="post-footer">
+      
 
-<p>那么在 Android 系统中用户进程之间是如何通过这个内核模块（Binder 驱动）来实现通信的呢？难道是和前面说的传统 IPC 机制一样，先将数据从发送方进程拷贝到内核缓存区，然后再将数据从内核缓存区拷贝到接收方进程，通过两次拷贝来实现吗？显然不是，否则也不会有开篇所说的 Binder 在性能方面的优势了。</p>
-<p>这就不得不通道 Linux 下的另一个概念：<code>内存映射</code>:</p>
-<p>Binder IPC 机制中涉及到的内存映射通过 <code>mmap()</code> 来实现，mmap() 是操作系统中一种内存映射的方法。内存映射简单的讲就是将用户空间的一块内存区域映射到内核空间。映射关系建立后，用户对这块内存区域的修改可以直接反应到内核空间；反之内核空间对这段区域的修改也能直接反应到用户空间。</p>
-<p>内存映射能减少数据拷贝次数，实现用户空间和内核空间的高效互动。两个空间各自的修改能直接反映在映射的内存区域，从而被对方空间及时感知。也正因为如此，内存映射能够提供对进程间通信的支持。</p>
-<h4 id="Binder-IPC实现原理"><a href="#Binder-IPC实现原理" class="headerlink" title="Binder IPC实现原理"></a>Binder IPC实现原理</h4><p>Binder IPC 正是基于内存映射（mmap）来实现的，但是 mmap() 通常是用在有物理介质的文件系统上的。</p>
-<p>比如进程中的用户区域是不能直接和物理设备打交道的，如果想要把磁盘上的数据读取到进程的用户区域，需要两次拷贝（磁盘–&gt;内核空间–&gt;用户空间）；通常在这种场景下 mmap() 就能发挥作用，通过在物理介质和用户空间之间建立映射，减少数据的拷贝次数，用内存读写取代I/O读写，提高文件读取效率。</p>
-<p>而 Binder 并不存在物理介质，因此 Binder 驱动使用 mmap() 并不是为了在物理介质和用户空间之间建立映射，而是用来在内核空间创建数据接收的缓存空间。</p>
-<p>一次完整的 Binder IPC 通信过程通常是这样：</p>
-<ol>
-<li>首先Binder驱动在内核空间创建一个数据接收缓存区</li>
-<li>接着在内核空间开辟一块内核缓存区, 建立内核缓存区和内核中数据接收缓存区之间的映射关系，以及内核中数据接收缓存区和接受进程用户空间地址的映射关系</li>
-<li>发送方进程通过系统调用<code>copy_from_user()</code>将数据<code>copy</code>到内核中的内核缓存区, 由于内核缓存区和接收进程的用户空间存在内存映射, 因此也就相当于把数据发送到了接收进程的用户空间，这样便完成了一次进程间通信. </li>
-</ol>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a9557158d0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h3 id="Binder通信模型"><a href="#Binder通信模型" class="headerlink" title="Binder通信模型"></a>Binder通信模型</h3><p>介绍完 Binder IPC 的底层通信原理，接下来我们看看实现层面是如何设计的。</p>
-<p>一次完整的进程间通信必然至少包含两个进程，通常我们称通信的双方分别为客户端进程（Client）和服务端进程（Server），由于进程隔离机制的存在，通信双方必然需要借助 Binder 来实现。</p>
-<h4 id="Client-Server-ServiceManager-驱动"><a href="#Client-Server-ServiceManager-驱动" class="headerlink" title="Client/Server/ServiceManager/驱动"></a>Client/Server/ServiceManager/驱动</h4><p>前面我们介绍过，Binder 是基于 <code>C/S 架构</code>的。由一系列的组件组成，包括 Client、Server、ServiceManager、Binder 驱动。其中 Client、Server、Service Manager 运行在用户空间，Binder 驱动运行在内核空间。其中 Service Manager 和 Binder 驱动由系统提供，而 Client、Server 由应用程序来实现。Client、Server 和 ServiceManager 均是通过系统调用 open、mmap 和 ioctl 来访问设备文件 /dev/binder，从而实现与 Binder 驱动的交互来间接的实现跨进程通信。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a955f25e1c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>Client、Server、ServiceManager、Binder 驱动这几个组件在通信过程中扮演的角色就如同互联网中服务器（Server）、客户端（Client）、DNS域名服务器（ServiceManager）以及路由器（Binder 驱动）之前的关系。</p>
-<p>通常我们访问一个网页的步骤是这样的：首先在浏览器输入一个地址，如 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 然后按下回车键。但是并没有办法通过域名地址直接找到我们要访问的服务器，因此需要首先访问 DNS 域名服务器，域名服务器中保存了 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 对应的 ip 地址 10.249.23.13，然后通过这个 ip 地址才能放到到 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 对应的服务器。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a979646aee?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p><a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Funiversus%2Farticle%2Fdetails%2F6211589" target="_blank" rel="noopener">Android Binder 设计与实现</a>一文中对 Client、Server、ServiceManager、Binder 驱动有很详细的描述，以下是部分摘录：</p>
-<p>Binder驱动:</p>
-<p>Binder驱动就如同路由器一样，使整个通信的核心; 驱动负责进程之间Binder通信的建立， Binder在进程之间的传递, Binder引用计数管理，数据包在进程之间的传递和交互等一系列底层支持。</p>
-<p>ServiceManager 与实名 Binder</p>
-<p>ServiceManager 和 DNS 类似，作用是将字符形式的 Binder 名字转化成 Client 中对该 Binder 的引用，使得 Client 能够通过 Binder 的名字获得对 Binder 实体的引用。注册了名字的 Binder 叫实名 Binder，就像网站一样除了除了有 IP 地址意外还有自己的网址。Server 创建了 Binder，并为它起一个字符形式，可读易记得名字，将这个 Binder 实体连同名字一起以数据包的形式通过 Binder 驱动发送给 ServiceManager ，通知 ServiceManager 注册一个名为“张三”的 Binder，它位于某个 Server 中。驱动为这个穿越进程边界的 Binder 创建位于内核中的实体节点以及 ServiceManager 对实体的引用，将名字以及新建的引用打包传给 ServiceManager。ServiceManger 收到数据后从中取出名字和引用填入查找表。</p>
-<p>细心的读者可能会发现，ServierManager 是一个进程，Server 是另一个进程，Server 向 ServiceManager 中注册 Binder 必然涉及到进程间通信。当前实现进程间通信又要用到进程间通信，这就好像蛋可以孵出鸡的前提却是要先找只鸡下蛋！Binder 的实现比较巧妙，就是预先创造一只鸡来下蛋。ServiceManager 和其他进程同样采用 Binder 通信，ServiceManager 是 Server 端，有自己的 Binder 实体，其他进程都是 Client，需要通过这个 Binder 的引用来实现 Binder 的注册，查询和获取。ServiceManager 提供的 Binder 比较特殊，它没有名字也不需要注册。当一个进程使用 BINDER_SET_CONTEXT_MGR 命令将自己注册成 ServiceManager 时 Binder 驱动会自动为它创建 Binder 实体（这就是那只预先造好的那只鸡）。其次这个 Binder 实体的引用在所有 Client 中都固定为 0 而无需通过其它手段获得。也就是说，一个 Server 想要向 ServiceManager 注册自己的 Binder 就必须通过这个 0 号引用和 ServiceManager 的 Binder 通信。类比互联网，0 号引用就好比是域名服务器的地址，你必须预先动态或者手工配置好。要注意的是，这里说的 Client 是相对于 ServiceManager 而言的，一个进程或者应用程序可能是提供服务的 Server，但对于 ServiceManager 来说它仍然是个 Client。</p>
-<p>Client 获得实名 Binder 的引用</p>
-<p>Server 向 ServiceManager 中注册了 Binder 以后， Client 就能通过名字获得 Binder 的引用了。Client 也利用保留的 0 号引用向 ServiceManager 请求访问某个 Binder: 我申请访问名字叫张三的 Binder 引用。ServiceManager 收到这个请求后从请求数据包中取出 Binder 名称，在查找表里找到对应的条目，取出对应的 Binder 引用作为回复发送给发起请求的 Client。从面向对象的角度看，Server 中的 Binder 实体现在有两个引用：一个位于 ServiceManager 中，一个位于发起请求的 Client 中。如果接下来有更多的 Client 请求该 Binder，系统中就会有更多的引用指向该 Binder ，就像 Java 中一个对象有多个引用一样。</p>
-<h4 id="Binder通信过程"><a href="#Binder通信过程" class="headerlink" title="Binder通信过程"></a>Binder通信过程</h4><ol>
-<li>首先，一个进程使用BINDER_SET_CONTEXT_MGR命令通过Binder驱动将自己注册为ServiceManager</li>
-<li>Server通过驱动向ServiceManager中注册Binder(Server中的Binder实体), 表明可以对外提供服务. 驱动为这个Binder创建位于内核中的实体节点以及ServiceManager对实体的引用, 将名字以及新建的引用打包传给 ServiceManager，ServiceManger 将其填入查找表。</li>
-<li>Client 通过名字，在 Binder 驱动的帮助下从 ServiceManager 中获取到对 Binder 实体的引用，通过这个引用就能实现和 Server 进程的通信。</li>
-</ol>
-<p>我们看到整个通信过程都需要 Binder 驱动的接入。下图能更加直观的展现整个通信过程(为了进一步抽象通信过程以及呈现上的方便，下图我们忽略了 Binder 实体及其引用的概念)：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a98173c4c4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="Binder通信中的代理模式"><a href="#Binder通信中的代理模式" class="headerlink" title="Binder通信中的代理模式"></a>Binder通信中的代理模式</h4><p>我们已经解释清楚 Client、Server 借助 Binder 驱动完成跨进程通信的实现机制了，但是还有个问题会让我们困惑。A 进程想要 B 进程中某个对象（object）是如何实现的呢？毕竟它们分属不同的进程，A 进程 没法直接使用 B 进程中的 object。</p>
-<p>前面我们介绍过跨进程通信的过程都有 Binder 驱动的参与，因此在数据流经 Binder 驱动的时候驱动会对数据做一层转换。当 A 进程想要获取 B 进程中的 object 时，驱动并不会真的把 object 返回给 A，而是返回了一个跟 object 看起来一模一样的代理对象 objectProxy，这个 objectProxy 具有和 object 一摸一样的方法，但是这些方法并没有 B 进程中 object 对象那些方法的能力，这些方法只需要把把请求参数交给驱动即可。对于 A 进程来说和直接调用 object 中的方法是一样的。</p>
-<p>当 Binder 驱动接收到 A 进程的消息后，发现这是个 objectProxy 就去查询自己维护的表单，一查发现这是 B 进程 object 的代理对象。于是就会去通知 B 进程调用 object 的方法，并要求 B 进程把返回结果发给自己。当驱动拿到 B 进程的返回结果后就会转发给 A 进程，一次通信就完成了。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a98198b306?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="Binder的完整定义"><a href="#Binder的完整定义" class="headerlink" title="Binder的完整定义"></a>Binder的完整定义</h4><p>现在我们可以对 Binder 做个更加全面的定义了：</p>
-<ul>
-<li>从进程间通信的角度来看, Binder是一种进程间通信的机制</li>
-<li>从Server进程的角度看, Binder指的是Server中的Binder实体对象</li>
-<li>从Server进程的角度看,  Binder指的是Binder代理对象，是Binder实体对象的一个远程代理</li>
-<li>从传输过程的角度来看, Binder是一个可以跨进程传输的对象; Binder 驱动会对这个跨越进程边界的对象对一点点特殊处理，自动完成代理对象和本地对象之间的转换。</li>
-</ul>
-<h3 id="手动编码实现跨进程调用"><a href="#手动编码实现跨进程调用" class="headerlink" title="手动编码实现跨进程调用"></a>手动编码实现跨进程调用</h3><ul>
-<li>IBinder : IBinder 是一个接口，代表了一种跨进程通信的能力。只要实现了这个借口，这个对象就能跨进程传输。</li>
-<li>IInterface : IInterface 代表的就是 Server 进程对象具备什么样的能力（能提供哪些方法，其实对应的就是 AIDL 文件中定义的接口）</li>
-<li>Binder : Java 层的 Binder 类，代表的其实就是 Binder 本地对象。BinderProxy 类是 Binder 类的一个内部类，它代表远程进程的 Binder 对象的本地代理；这两个类都继承自 IBinder, 因而都具有跨进程传输的能力；实际上，在跨越进程的时候，Binder 驱动会自动完成这两个对象的转换。</li>
-<li>Stub : AIDL 的时候，编译工具会给我们生成一个名为 Stub 的静态内部类；这个类继承了 Binder, 说明它是一个 Binder 本地对象，它实现了 IInterface 接口，表明它具有 Server 承诺给 Client 的能力；Stub 是一个抽象类，具体的 IInterface 的相关实现需要开发者自己实现。</li>
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/2198e368/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/2198e368/" itemprop="url">Algorithm LeetCode 28 Implement strStr()</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T13:36:25+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/2198e368/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2198e368/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a href="https://blog.csdn.net/f1033774377/article/details/82556438" target="_blank" rel="noopener">https://blog.csdn.net/f1033774377/article/details/82556438</a></li>
 </ul>
 
           
@@ -608,7 +590,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/1ada89fb/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6a37ecd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -627,7 +609,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/1ada89fb/" itemprop="url">Android 无埋点监控</a></h1>
+                <a class="post-title-link" href="/posts/b6a37ecd/" itemprop="url">Algorithm LeetCode 367 Valid Perfect Square</a></h1>
         
 
         <div class="post-meta">
@@ -639,8 +621,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T21:02:57+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T10:57:20+08:00">
+                2019-12-13
               </time>
             
 
@@ -662,8 +644,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -680,8 +662,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/1ada89fb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1ada89fb/" itemprop="commentCount"></span>
+                <a href="/posts/b6a37ecd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6a37ecd/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -711,7 +693,9 @@
       
         
           
-            <p><a href="https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0" target="_blank" rel="noopener">https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0</a><br><a href="https://blog.csdn.net/jhyshenyu/article/details/87633652" target="_blank" rel="noopener">https://blog.csdn.net/jhyshenyu/article/details/87633652</a><br><a href="https://blog.csdn.net/wangkai0681080/article/details/82659516" target="_blank" rel="noopener">https://blog.csdn.net/wangkai0681080/article/details/82659516</a><br><a href="https://blog.csdn.net/qian520ao/article/details/85308948" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/85308948</a><br><a href="https://juejin.im/post/5da6d99b6fb9a04e0855bfe3" target="_blank" rel="noopener">https://juejin.im/post/5da6d99b6fb9a04e0855bfe3</a></p>
+            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a href="https://www.cnblogs.com/grandyang/p/5619296.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/5619296.html</a></li>
+</ul>
 
           
         
@@ -760,7 +744,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/e058f543/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/6d34e4e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -779,7 +763,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/e058f543/" itemprop="url">Java Java内部类</a></h1>
+                <a class="post-title-link" href="/posts/6d34e4e/" itemprop="url">Algorithm LeetCode 234 Palindrome Linked List</a></h1>
         
 
         <div class="post-meta">
@@ -791,8 +775,602 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T20:49:40+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T10:13:33+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/6d34e4e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6d34e4e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/3885d3ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/3885d3ad/" itemprop="url">Algorithm-LeetCode-119-Pascal's Triangle 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T21:58:38+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/3885d3ad/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/3885d3ad/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/afd7ba5c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/afd7ba5c/" itemprop="url">Algorithm-LeetCode-290-Word Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-09T13:56:12+08:00">
+                2019-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/afd7ba5c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/afd7ba5c/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a <code>pattern</code> and a string <code>str</code>, find if str follows the same pattern.</p>
+<p>Here follow means a full match, such that there is a bijection between a letter in <code>pattern</code> and a non-empty word in <code>str</code>.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "abba", str = "dog cat cat dog"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:pattern = "abba", str = "dog cat cat fish"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "aaaa", str = "dog cat cat dog"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Example 4:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "abba", str = "dog dog dog dog"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Notes:<br>You may assume <code>pattern</code> contains only lowercase letters, and <code>str</code> contains lowercase letters that may be separated by a single space.</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这题主要考察了 map.put(K, V)方法返回值的问题。</p>
+<p>对于一个map来说，<br>第一次put成功, map.put(k1, v1), 返回值是上次k1位置对应的value, 这儿因为是首次，所以返回null<br>第二次put成功, map.put(k1, v2), 返回值是上次k1位置对应的value, 这儿就会返回v1</p>
+<p>因此，设计一个map, key是patter中的char, 也是str中的strs[index]. 所以用Map<object>, value用index</object></p>
+<p>e.g </p>
+<p>这样对于pattern来说, e.g pattern 为 ‘aabb’</p>
+<p>map.put(a, 0); 返回null<br>map.put(a, 1); 返回0<br>map.put(b, 2); 返回null<br>map.put(b, 3); 返回2</p>
+<p>对于str来说, e.g str 为 “dog dog cat cat”<br>map.put(dog, 0); 返回null<br>map.put(dog, 1); 返回0<br>map.put(cat, 2); 返回null<br>map.put(cat, 3); 返回2</p>
+<p>发现他们返回值对得上，就可以认为是pattern的</p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>在写代码的时候发现如果开始把Map设计为Map&lt;Object, Integer&gt;的时候跑case会在这样的情况下失败</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String pattern = <span class="string">"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd"</span>;</span><br><span class="line">String str = <span class="string">"s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>也就是<br>pattern: map.put(d, 128) 返回Integer 128<br>str    : map.put(t, 128) 返回Integer 128<br>然后 Integer(128) != Integer(128)</p>
+<p>整理下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer a = <span class="number">18</span>;</span><br><span class="line">Integer b = <span class="number">18</span>;</span><br><span class="line">a == b <span class="comment">// true</span></span><br><span class="line">Integer a1 = <span class="number">128</span>;</span><br><span class="line">Integer b1 = <span class="number">128</span>;</span><br><span class="line">a1 == b1 <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer类内部 通过静态内部类提供了一个缓存池，范围在-128~127之间，如果超过这个范围 Integer 值都是new出来的对象 所以使用 == 比较会出错</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原因Integer缓存了-128~127之间的数，这是在类加载期间就完成的。以后需要的时候直接指向它就可以了，省去了构造对象的开支，提高了效率。</span></span><br><span class="line"><span class="comment">//同理, Long也一样, 所以在Map中使用Integer或者Long作为Value的时候需要注意</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerCache</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> low = -<span class="number">128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> high;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// high value may be configured by property</span></span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">127</span>;</span><br><span class="line">        String integerCacheHighPropValue =</span><br><span class="line">            sun.misc.VM.getSavedProperty(<span class="string">"java.lang.Integer.IntegerCache.high"</span>);</span><br><span class="line">        <span class="keyword">if</span> (integerCacheHighPropValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> i = parseInt(integerCacheHighPropValue);</span><br><span class="line">                i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                <span class="comment">// If the property cannot be parsed into an int, ignore it.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        high = h;</span><br><span class="line"></span><br><span class="line">        cache = <span class="keyword">new</span> Integer[(high - low) + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> j = low;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">            cache[k] = <span class="keyword">new</span> Integer(j++);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">        <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">IntegerCache</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordPattern</span><span class="params">(String pattern, String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == pattern || str == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String[] strs = str.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">if</span>(strs.length != pattern.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = pattern.charAt(i);</span><br><span class="line">            String s = strs[i];</span><br><span class="line"></span><br><span class="line">            Object l = map.put(c, i);</span><br><span class="line">            Object r = map.put(s, i);</span><br><span class="line">            <span class="keyword">int</span> left = <span class="keyword">null</span> == l ? -<span class="number">1</span> : (<span class="keyword">int</span>)l;</span><br><span class="line">            <span class="keyword">int</span> right = <span class="keyword">null</span> == r ? -<span class="number">1</span> : (<span class="keyword">int</span>)r;</span><br><span class="line">            <span class="keyword">if</span>(left != right) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/31ea19a6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/31ea19a6/" itemprop="url">Android 深入理解Scroller原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T10:01:25+08:00">
+                2019-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/31ea19a6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/31ea19a6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.jianshu.com/p/5629bee7718d" target="_blank" rel="noopener">https://www.jianshu.com/p/5629bee7718d</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/421312a6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/421312a6/" itemprop="url">Java-JVM相关</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T14:35:53+08:00">
+                2019-12-06
               </time>
             
 
@@ -832,8 +1410,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/e058f543/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e058f543/" itemprop="commentCount"></span>
+                <a href="/posts/421312a6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/421312a6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -863,1210 +1441,336 @@
       
         
           
-            <p><a href="https://blog.csdn.net/u011240877/article/details/78682097" target="_blank" rel="noopener">https://blog.csdn.net/u011240877/article/details/78682097</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/cc9d9ab/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/cc9d9ab/" itemprop="url">Java finally, final, finalize</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T14:25:07+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/cc9d9ab/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/cc9d9ab/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/smart-hwt/p/8257330.html" target="_blank" rel="noopener">https://www.cnblogs.com/smart-hwt/p/8257330.html</a></p>
-<p>final: </p>
-<p><code>final</code>修饰的类不能被继承<br><code>final</code>修饰的方法不能被重写<br><code>final</code>修饰的变量叫常量，常量必须初始化, 初始化之后值就不能更改</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/2c4d5f81/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/2c4d5f81/" itemprop="url">Android-ANR原理分析与解决</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T17:09:59+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/2c4d5f81/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2c4d5f81/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>ANR: Application Not Responding</p>
-<ul>
-<li>KeyDispatchTimeout(5s)</li>
-<li>BroadcastTimeout(10s) BroadcastReceiver特定时间内无法完成</li>
-<li>ServiceTimeout(20s) Service特定时间内无法处理完成</li>
+            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html</a> </li>
 </ul>
-<p><a href="https://mp.weixin.qq.com/s/4w202K0WnNrazmEHd6grQA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/4w202K0WnNrazmEHd6grQA</a></p>
-<p><a href="https://juejin.im/post/5cb45bb35188251b2c3982bf" target="_blank" rel="noopener">https://juejin.im/post/5cb45bb35188251b2c3982bf</a></p>
-<h2 id="ANR概述"><a href="#ANR概述" class="headerlink" title="ANR概述"></a>ANR概述</h2><p>首先，ANR(Application Not responding)是指应用程序未响应，Android系统对于一些事件需要在一定的时间范围内完成，如果超过预定时间能未能得到有效响应或者响应时间过长，都会造成ANR。ANR由消息处理机制保证，Android在系统层实现了一套精密的机制来发现ANR，核心原理是<code>消息调度</code>和<code>超时处理</code>。</p>
-<p>其次，ANR机制主体实现在系统层。所有与ANR相关的消息，都会经过系统进程(system_server)调度，然后派发到应用进程完成对消息的实际处理，同时，系统进程设计了不同的超时限制来跟踪消息的处理。 一旦应用程序处理消息不当，超时限制就起作用了，它收集一些系统状态，譬如CPU/IO使用情况、进程函数调用栈，并且报告用户有进程无响应了(ANR对话框)。</p>
-<p>然后，ANR问题本质是一个性能问题。ANR机制实际上对应用程序主线程的限制，要求主线程在限定的时间内处理完一些最常见的操作(启动服务、处理广播、处理输入)， 如果处理超时，则认为主线程已经失去了响应其他操作的能力。主线程中的耗时操作，譬如密集CPU运算、大量IO、复杂界面布局等，都会降低应用程序的响应能力。</p>
-<h2 id="哪些场景会导致ANR"><a href="#哪些场景会导致ANR" class="headerlink" title="哪些场景会导致ANR"></a>哪些场景会导致ANR</h2><ol>
-<li>发生ANR时会调用<code>AppNotRespondingDialog.show()</code>方法弹出对话框提示用户，该对话框的依次调用关系如下图所示：</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">AppErrors.java</span><br><span class="line"></span><br><span class="line"><span class="comment">// Bring up the infamous App Not Responding dialog</span></span><br><span class="line">Message msg = Message.obtain();</span><br><span class="line">msg.what = ActivityManagerService.SHOW_NOT_RESPONDING_UI_MSG;</span><br><span class="line">msg.obj = <span class="keyword">new</span> AppNotRespondingDialog.Data(app, activity, aboveSystem);</span><br><span class="line"></span><br><span class="line">mService.mUiHandler.sendMessage(msg);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">handleShowAnrUi</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">    Dialog dialogToShow = <span class="keyword">null</span>;</span><br><span class="line">    ....        </span><br><span class="line">    <span class="comment">// If we've created a crash dialog, show it without the lock held</span></span><br><span class="line">    <span class="keyword">if</span> (dialogToShow != <span class="keyword">null</span>) &#123;</span><br><span class="line">        dialogToShow.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>AppErrors.appNotResponding()，该方法是最终弹出ANR对话框的唯一入口，调用该方法的场景才会有ANR提示，也可以认为在主线程中执行无论再耗时的任务，只要最终不调用该方法，都不会有ANR提示，也不会有ANR相关日志及报告；通过调用关系可以看出哪些场景会导致ANR，有以下四种场景：<br> a. Service Timeout: Service在特定时间内没处理完成<br> b. BoradcastQueue Timeout: BroadcastReceiver在特定时间内无法处理完成<br> c. ContentProvider Timeout: 内容提供者执行超时<br> d. inputDispatching Timeout: 按键或触摸事件在特定时间内无响应</li>
-</ol>
-<h2 id="ANR机制"><a href="#ANR机制" class="headerlink" title="ANR机制"></a>ANR机制</h2><p>ANR机制可以分为两部分：</p>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d27340ce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/d27340ce/" itemprop="url">Android-Data Binding相关</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T13:27:29+08:00">
+                2019-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/d27340ce/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d27340ce/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.jianshu.com/p/b9af64c9fa04" target="_blank" rel="noopener">https://www.jianshu.com/p/b9af64c9fa04</a><br><a href="https://www.jianshu.com/p/e4c4a9aece40" target="_blank" rel="noopener">https://www.jianshu.com/p/e4c4a9aece40</a><br><a href="https://juejin.im/post/5b02cf8c6fb9a07aa632146d" target="_blank" rel="noopener">https://juejin.im/post/5b02cf8c6fb9a07aa632146d</a><br><a href="https://www.jianshu.com/p/2c4ac24761f5" target="_blank" rel="noopener">https://www.jianshu.com/p/2c4ac24761f5</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/7ff436d6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/7ff436d6/" itemprop="url">Translation-Data Binding Library-Work with observable data objects</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T11:26:23+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/7ff436d6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7ff436d6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Work-with-observable-data-objects"><a href="#Work-with-observable-data-objects" class="headerlink" title="Work with observable data objects"></a>Work with observable data objects</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">Reference</a></p>
+<p>Observability refers to the capability of an object to notify others about changes in its data. The Data Binding Library allows you to make objects, fields, or collections observable.</p>
+<p>Any plain-old object can be used for data binding, but modifying the object doesn’t automatically cause the UI to update. Data binding can be used to give your data objects the ability to notify other objects, known as listener, when its data changes. There are three different types of observable classes: <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">objects</a>, <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_fields" target="_blank" rel="noopener">fields</a>, and <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_collections" target="_blank" rel="noopener">collections</a>.</p>
+<p>When one of these observable data objects is bound to the UI and a property of the data object changes, the UI is updated automatically.</p>
+<h2 id="Observable-fields"><a href="#Observable-fields" class="headerlink" title="Observable fields"></a>Observable fields</h2><p>Some work is involved in creating classes that implement the <a href="https://developer.android.com/reference/androidx/databinding/Observable.html" target="_blank" rel="noopener">Observable</a> interface, which could not be worth the effort if your classes only have a few properties. In this case, you can use the generic <a href="https://developer.android.com/reference/androidx/databinding/Observable.html" target="_blank" rel="noopener">Observable</a> class and the following primitive-specific classes to make fields observable:</p>
 <ul>
-<li>ANR监测机制：Android对于不同的ANR类型(Broadcast, Service, InputEvent)都有一套监测机制。</li>
-<li>ANR报告机制：在监测到ANR以后，需要显示ANR对话框、输出日志(发生ANR时的进程函数调用栈、CPU使用情况等)。</li>
+<li>ObservableBoolean</li>
+<li>ObservableByte</li>
+<li>ObservableChar</li>
+<li>ObservableShort</li>
+<li>ObservableInt</li>
+<li>ObservableLong</li>
+<li>ObservableFloat</li>
+<li>ObservableDouble</li>
+<li>ObservableParcelable</li>
 </ul>
-<p>整个ANR机制的代码也是横跨了Android的几个层：</p>
-<ul>
-<li>App层：应用主线程的处理逻辑；</li>
-<li>Framework层：ANR机制的核心，主要有AMS、BroadcastQueue、ActiveServices、InputmanagerService、InputMonitor、InputChannel、ProcessCpuTracker等；</li>
-<li>Native层：InputDispatcher.cpp；</li>
-</ul>
-<h2 id="Service超时监测机制"><a href="#Service超时监测机制" class="headerlink" title="Service超时监测机制"></a>Service超时监测机制</h2><p>Service运行在应用程序的主线程，如果Service的执行时间超过20秒，则会引发ANR。</p>
-<p>当发生Service ANR时，一般可以先排查一下在Service的生命周期函数中(onCreate(), onStartCommand()等)有没有做耗时的操作，譬如复杂的运算、IO操作等。 如果应用程序的代码逻辑查不出问题，就需要深入检查当前系统的状态：CPU的使用情况、系统服务的状态等，判断当时发生ANR进程是否受到系统运行异常的影响。</p>
-<p>如何检测Service超时呢？Android是通过设置定时消息实现的。定时消息是由AMS的消息队列处理的(system_server的ActivityManager线程)。 AMS有Service运行的上下文信息，所以在AMS中设置一套超时检测机制也是合情合理的。<br>我们先抛出两个问题</p>
-<p>问题一：Service启动流程？<br>问题一：如何监测Service超时？</p>
-<p>主要通过以上两个问题来说明Service监测机制，在知道Service启动流程之后，通过Service启动流程可以更容易分析Service超时监测机制。</p>
-<ol>
-<li>Service启动流程如下:</li>
-</ol>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zKFJDM5V3WwSgQpdYibHPDEAF1AmWbpMOKW1B6jrhBxTT9OS5LfOqbn96PaIicaHm5WezLaOw23SqDypq1zpsttQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>a. ActiveServices.realStartServiceLocked()在通过app.thread的scheduleCreateService()来创建Service对象并调用Service.onCreate()后，接着又调用sendServiceArgsLocked()方法来调用Service的其他方法，如onStartCommand。以上两步均是进程间通信，应用与AMS之间跨进程通信可以参考应用进程与系统进程通信<br>b. 以上只是列出Service启动流程的关键步骤，具体每个方法主要做哪些工作还需要查看具体的代码，暂时先忽略这些，感兴趣的可以参考Android开发艺术探索等其他相关资料</p>
-<ol start="2">
-<li>Service超时监测机制<br>// TODO……</li>
-</ol>
-<p>Service是由AMS调度，利用Handler和Looper，设计了一个TIMEOUT消息交由AMS线程来处理，整个超时机制的实现都是在Java层；以上就是Service超时监测的整体流程。</p>
-<h2 id="输入事件超时监测"><a href="#输入事件超时监测" class="headerlink" title="输入事件超时监测"></a>输入事件超时监测</h2><p>应用程序可以接收输入事件(按键、触屏、轨迹球等)，当5秒内没有处理完毕时，则会引发ANR。</p>
-<p>这里先把问题抛出来了：<br>输入事件经历了一些什么工序才能被派发到应用的界面？<br>如何检测到输入时间处理超时？</p>
-<ol>
-<li>Android 输入系统简介</li>
-</ol>
-<p>Android输入系统总体流程与参与者如下图所示。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zKFJDM5V3WwSgQpdYibHPDEAF1AmWbpMOtrM4NPTqqgBTibicpWfccd6wBgFhdcExNRdVZa1MyQiat8iaK2tRuaMshw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>简单来说，内核将原始事件写入到设备节点中，InputReader在其线程循环中不断地从EventHub中抽取原始输入事件，进行加工处理后将加工所得的事件放入InputDispatcher的派发发队列中。InputDispatcher则在其线程循环中将派发队列中的事件取出，查找合适的窗口，将事件写入到窗口的事件接收管道中。窗口事件接收线程的Looper从管道中将事件取出，交由窗口事件处理函数进行事件响应。关键流程有：原始输入事件的读取与加工；输入事件的派发；输入事件的发送、接收与反馈。其中输入事件派发是指InputDispatcher不断的从派发队列取出事件、寻找合适的窗口进行发送的过程，输入事件的发送是InputDispatcher通过Connection对象将事件发送给窗口的过程。</p>
-<p>InputDispatcher与窗口之间的跨进程通信主要通过InputChannel来完成。在InputDispatcher与窗口通过InputChannel建立连接之后，就可以进行事件的发送、接收与反馈；输入事件的发送和接收主要流程如图所示：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zKFJDM5V3WwSgQpdYibHPDEAF1AmWbpMOSkMp3HibHkSTRQm7Hza8XYpPJpGFC6B4PibboL7JiabCkc2YamDgkyZvQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
-<p>其中，将输入事件注入派发队列后，会唤醒派发线程，派发线程循环由InputDispatcher.dispatchOnce函数完成；InputDispatcher将事件以InputMessage写入InputChannel之后，窗口端的looper被唤醒，进而执行NativeInputReceiver::handleEvent()开始输入事件的接收，从InputEventReceiver开始输入事件被派发到用户界面；以上只是输入事件的大致流程，更详细的流程可以参考相关资料；在了解输入系统的大致流程之后，我们来分析输入事件的超时监测机制。</p>
-<ol start="2">
-<li>输入事件超时监测</li>
-</ol>
-<p>按键事件超时监测整体流程如下图所示</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/zKFJDM5V3WwSgQpdYibHPDEAF1AmWbpMOvBTj1XwhT2q6p0wngUdZiaCCmpErHNCoUic0FMib2LJAichFjqtqRoKibnw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt></p>
+<p>Observable fields are self-contained observable objects that have a single field. The primaitive versions avoid boxing and unboxing during access operations. To use this mechanism, create a <code>public final</code> property in the Java programming language or a read-only property in Kotlin, as shown in the following example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; firstName = <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; lastName = <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableInt age = <span class="keyword">new</span> ObservableInt();</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
+<p>To access the field value, use the <code>set()</code> and <code>get()</code> accessor methods, as follows:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user.firstName.set(<span class="string">"Google"</span>);</span><br><span class="line"><span class="keyword">int</span> age = user.age.get();</span><br></pre></td></tr></table></figure>
 
-    
+<p>// TODO</p>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/ba081c48/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/ba081c48/" itemprop="url">Android-BlockCanary源码分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T17:02:29+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/ba081c48/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/ba081c48/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>首先来看下<code>BlockCanary</code>的使用方法，一般是在程序<code>Application</code>里的<code>onCreate</code>方法中调用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">BlockCanary.install(<span class="keyword">this</span>, <span class="keyword">new</span> AppBlockCanaryContext()).start();</span><br></pre></td></tr></table></figure>
-
-<p>这里有3点， 首先<code>install</code>方法，然后<code>start</code>方法， 传入的参数除了<code>this</code> 也就是ApplicationContext外，还有个<code>AppBlockCanaryContext</code> 这个类是继承<code>BlockCanaryContext</code>然后重写部分方法，也就是不同的配置。我们一步步看.</p>
-<p>首先来看<code>install</code>方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BlockCanary <span class="title">install</span><span class="params">(Context context, BlockCanaryContext blockCanaryContext)</span> </span>&#123;</span><br><span class="line">    BlockCanaryContext.init(context, blockCanaryContext);</span><br><span class="line">    setEnabled(context, DisplayActivity.class, BlockCanaryContext.get().displayNotification());</span><br><span class="line">    <span class="keyword">return</span> get();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里首先初始化了<code>BlockCanaryContext</code>里的<code>applicationContext</code>, 并把<code>blockCanaryContext</code>对象指向外界传入的，也就是调用<code>install</code>方法传入的自定义的<code>BlockCanaryContext</code>对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(Context context, BlockCanaryContext blockCanaryContext)</span> </span>&#123;</span><br><span class="line">    sApplicationContext = context;</span><br><span class="line">    sInstance = blockCanaryContext;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后<code>setEnabled()</code>, 开启一个线程去执行<code>setEnabled</code>操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setEnabled</span><span class="params">(Context context, <span class="keyword">final</span> Class&lt;?&gt; componentClass, <span class="keyword">final</span> <span class="keyword">boolean</span> enabled)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Context appContext = context.getApplicationContext();</span><br><span class="line">    executeOnFileIoThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            setEnabledBlocking(appContext, componentClass, enabled);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Executor fileIoExecutor = newSingleThreadExecutor(<span class="string">"File-IO"</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Executor <span class="title">newSingleThreadExecutor</span><span class="params">(String threadName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Executors.newSingleThreadExecutor(<span class="keyword">new</span> SingleThreadFactory(threadName));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">executeOnFileIoThread</span><span class="params">(Runnable runnable)</span> </span>&#123;</span><br><span class="line">    fileIoExecutor.execute(runnable);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ?? 不知道这里是干啥的</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setEnabledBlocking</span><span class="params">(Context appContext, Class&lt;?&gt; componentClass, <span class="keyword">boolean</span> enabled)</span> </span>&#123;</span><br><span class="line">    ComponentName component = <span class="keyword">new</span> ComponentName(appContext, componentClass);</span><br><span class="line">    PackageManager packageManager = appContext.getPackageManager();</span><br><span class="line">    <span class="keyword">int</span> newStat = enabled ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED;</span><br><span class="line">    packageManager.setComponentEnabledSetting(component, newStat, PackageManager.DONT_KILL_APP);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后返回<code>get()</code> 也就是返回<code>BlockCanary</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BlockCanary <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (BlockCanary.class) &#123;</span><br><span class="line">            <span class="keyword">if</span>(sInstance == <span class="keyword">null</span>) &#123;</span><br><span class="line">                sInstance = <span class="keyword">new</span> BlockCanary();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sInstance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>来看<code>BlockCanary</code>构造函数 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">BlockCanary</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    BlockCanaryInternals.setContext(BlockCanaryContext.get());</span><br><span class="line">    mBlockCanaryCore = BlockCanaryInternals.getInstance();</span><br><span class="line">    mBlockCanaryCore.addBlockInterceptor(BlockCanaryContext.get());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!BlockCanaryContext.get().displayNotification()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mBlockCanaryCore.addBlockInterceptor(<span class="keyword">new</span> DisplayService());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里初始化了<code>BlockCanaryInternals</code>这个对象，并给它传了<code>BlockCanaryContext</code>这个对象, 进入<code>BlockCanaryContext</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">BlockCanaryContext.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> BlockCanaryContext sInstance = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> Context sApplicationContext;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BlockCanaryContext <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"BlockCanaryContext null"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sInstance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BlockCanaryContext</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以知道，这个<code>BlockCanaryContext</code>里面只是持有了一个<code>ApplicationContext</code>，而且提供了很多配置类型的方法，结合上文的<code>BlockCanary的使用方法</code>, 我们可以把它理解为一个持有<code>ApplicationContext</code>的配置类。</p>
-<p>回到<code>BlockCanary</code>构造函数, 这里初始化<code>BlockCanaryInternals</code> 而且，给它增加了2个回调<code>BlockCanaryContext</code>以及<code>DisplayService</code>，不过我没看出<code>BlockCanaryContext</code>增加的意义何在。 这个回调内容是</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BlockInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">onBlock</span><span class="params">(Context context, BlockInfo blockInfo)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>也就是，收到<code>blockInfo</code>的时候会触发.</p>
-<p>最后是<code>start</code>方法, 也是<code>BlockCanary</code>的核心</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!mMonitorStarted) &#123;</span><br><span class="line">        mMonitorStarted = <span class="keyword">true</span>;</span><br><span class="line">        Looper.getMainLooper().setMessageLogging(mBlockCanaryCore.monitor);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的<code>Looper.getMainLooper().setMessageLogging</code>是SDK中提供的方法，传入的是一个<code>Printer</code>, 这里的<code>mBlockCanaryCore.monitor</code>就是这个<code>Printer</code>. </p>
-<p>参考下官方提供的<code>BlockCanary</code>文章, 这个的核心原理就是在<code>Looper.java</code>中</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Looper sMainLooper;  <span class="comment">// guarded by Looper.class</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Initialize the current thread as a looper, marking it as an</span></span><br><span class="line"><span class="comment"> * application's main looper. The main looper for your application</span></span><br><span class="line"><span class="comment"> * is created by the Android environment, so you should never need</span></span><br><span class="line"><span class="comment"> * to call this function yourself.  See also: &#123;<span class="doctag">@link</span> #prepare()&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">prepareMainLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    prepare(<span class="keyword">false</span>);</span><br><span class="line">    <span class="keyword">synchronized</span> (Looper.class) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sMainLooper != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"The main Looper has already been prepared."</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        sMainLooper = myLooper();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Returns the application's main looper, which lives in the main thread of the application.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Looper <span class="title">getMainLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span> (Looper.class) &#123;</span><br><span class="line">        <span class="keyword">return</span> sMainLooper;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>即整个应用的主线程，只有这一个looper，不管有多少handler，最后都会回到这里。</p>
-<p>如果再细心一点会发现在Looper的loop方法中有这么一段</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        ...</span><br><span class="line"></span><br><span class="line">        <span class="comment">// This must be in a local variable, in case a UI event sets the logger</span></span><br><span class="line">        Printer logging = me.mLogging;</span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&gt;&gt;&gt;&gt;&gt; Dispatching to "</span> + msg.target + <span class="string">" "</span> +</span><br><span class="line">                    msg.callback + <span class="string">": "</span> + msg.what);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        msg.target.dispatchMessage(msg);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (logging != <span class="keyword">null</span>) &#123;</span><br><span class="line">            logging.println(<span class="string">"&lt;&lt;&lt;&lt;&lt; Finished to "</span> + msg.target + <span class="string">" "</span> + msg.callback);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>是的，就是这个Printer - mLogging，它在每个message处理的前后被调用，而如果主线程卡住了，不就是在dispatchMessage里卡住了吗？ </p>
-<p>(<a href="http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/" target="_blank" rel="noopener">http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/</a>)</p>
-<p>因此这个的主要核心原理就是自定义这个<code>Printer</code>， 在卡住的时候把更多的信息打印出来供分析</p>
-<p><img src="http://blog.zhaiyifan.cn/images/blockcanary_flow.png" alt></p>
-<p>我们接下来看下自定义的<code>Printer</code>里也就是<code>mBlockCanaryCore.monitor</code>究竟做了什么</p>
-<p>我们记得在<code>BlockCanary</code>中初始化了<code>BlockCanaryInternals</code>， 而这个<code>BlockCanaryInternals</code>也就是<code>mBlockCanaryCore</code>，它的构造函数如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> BlockCanaryInternals <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (BlockCanaryInternals.class) &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> == sInstance) &#123;</span><br><span class="line">                sInstance = <span class="keyword">new</span> BlockCanaryInternals();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sInstance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">BlockCanaryInternals</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    stackSampler = <span class="keyword">new</span> StackSampler(Looper.getMainLooper().getThread(), sContext.provideDumpInterval());</span><br><span class="line">    cpuSampler = <span class="keyword">new</span> CpuSampler(sContext.provideDumpInterval());</span><br><span class="line">    setMonitor(<span class="keyword">new</span> LooperMonitor(<span class="keyword">new</span> LooperMonitor.BlockListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBlockEvent</span><span class="params">(<span class="keyword">long</span> realTimeStart, <span class="keyword">long</span> realTimeEnd, <span class="keyword">long</span> threadTimeStart, <span class="keyword">long</span> threadTimeEnd)</span> </span>&#123;</span><br><span class="line">            ArrayList&lt;String&gt; threadStackEntries = stackSampler.getThreadStackEntries(realTimeStart, realTimeEnd);</span><br><span class="line">            <span class="keyword">if</span>(!threadStackEntries.isEmpty()) &#123;</span><br><span class="line">                BlockInfo blockInfo = BlockInfo.newInstance()</span><br><span class="line">                        .setMainThreadTimeCost(realTimeStart, realTimeEnd, threadTimeStart, threadTimeEnd)</span><br><span class="line">                        .setCpuBusyFlag(cpuSampler.isCpuBusy(realTimeStart, realTimeEnd))</span><br><span class="line">                        .setRecentCpuRate(cpuSampler.getCpuRateInfo())</span><br><span class="line">                        .setThreadStackEntries(threadStackEntries)</span><br><span class="line">                        .flushString();</span><br><span class="line"></span><br><span class="line">                LogWriter.save(blockInfo.toString());</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (mInterceptorChain.size() != <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (BlockInterceptor interceptor : mInterceptorChain) &#123;</span><br><span class="line">                        interceptor.onBlock(getContext().provideContext(), blockInfo);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, getContext().provideBlockThreshold(), getContext().stopWhenDebugging()));</span><br><span class="line"></span><br><span class="line">    LogWriter.cleanObsolete();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里首先创建了<code>StackSampler</code>和<code>CpuSampler</code></p>
-<p><code>StackSampler</code>是获取当前线程的栈的信息, 以时间戳/string 方式存入Map里</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder stringBuilder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (StackTraceElement stackTraceElement : mCurrentThread.getStackTrace()) &#123;</span><br><span class="line">        stringBuilder</span><br><span class="line">                .append(stackTraceElement.toString())</span><br><span class="line">                .append(BlockInfo.SEPARATOR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">synchronized</span> (sStackMap) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sStackMap.size() == mMaxEntryCount &amp;&amp; mMaxEntryCount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            sStackMap.remove(sStackMap.keySet().iterator().next());</span><br><span class="line">        &#125;</span><br><span class="line">        sStackMap.put(System.currentTimeMillis(), stringBuilder.toString());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>CpuSampler</code>是获取当前CPU相关信息, 主要通过读取系统文件获取</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">cpuReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line">              <span class="keyword">new</span> FileInputStream(<span class="string">"/proc/stat"</span>)), BUFFER_SIZE);</span><br><span class="line">      String cpuRate = cpuReader.readLine();</span><br><span class="line">      <span class="keyword">if</span> (cpuRate == <span class="keyword">null</span>) &#123;</span><br><span class="line">          cpuRate = <span class="string">""</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (mPid == <span class="number">0</span>) &#123;</span><br><span class="line">          mPid = android.os.Process.myPid();</span><br><span class="line">      &#125;</span><br><span class="line">      pidReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</span><br><span class="line">              <span class="keyword">new</span> FileInputStream(<span class="string">"/proc/"</span> + mPid + <span class="string">"/stat"</span>)), BUFFER_SIZE);</span><br><span class="line">      String pidCpuRate = pidReader.readLine();</span><br><span class="line">      <span class="keyword">if</span> (pidCpuRate == <span class="keyword">null</span>) &#123;</span><br><span class="line">          pidCpuRate = <span class="string">""</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      parse(cpuRate, pidCpuRate);</span><br></pre></td></tr></table></figure>
-
-<p>写入<code>private final LinkedHashMap&lt;Long, String&gt; mCpuInfoEntries = new LinkedHashMap&lt;&gt;();</code>里</p>
-<p>他们的核心都是通过<code>HandlerThread</code>启动一个线程来执行这些信息抓取工作的</p>
-<p>回到<code>BlockCanaryInternals</code>, 设置了一个<code>monitor</code>, 也就是<code>LoopMonitor</code>, 这里就是最核心的地方,<code>LooperMonitor implements Printer</code></p>
-<p>进入<code>LooperMonitor</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">println</span><span class="params">(String x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mStopWhenDebugging &amp;&amp; Debug.isDebuggerConnected()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!mPrintingStarted) &#123;</span><br><span class="line">        mStartTimestamp = System.currentTimeMillis();</span><br><span class="line">        mStartThreadTimestamp = SystemClock.currentThreadTimeMillis();</span><br><span class="line">        mPrintingStarted = <span class="keyword">true</span>;</span><br><span class="line">        startDump();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        mPrintingStarted = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">if</span> (isBlock(endTime)) &#123;</span><br><span class="line">            notifyBlockEvent(endTime);</span><br><span class="line">        &#125;</span><br><span class="line">        stopDump();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>前文可以知道，核心原理就是自定义printer, 系统Looper在dispatchMessage前后会用<code>printer.println</code>来打印，也就是最终会通过这个<code>LooperMonitor</code>的<code>println</code>来打印，也就是在这里在前和后分别执行了<code>startDump()</code>和<code>stopDump()</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startDump</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != BlockCanaryInternals.getInstance().stackSampler) &#123;</span><br><span class="line">        BlockCanaryInternals.getInstance().stackSampler.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != BlockCanaryInternals.getInstance().cpuSampler) &#123;</span><br><span class="line">        BlockCanaryInternals.getInstance().cpuSampler.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">stopDump</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != BlockCanaryInternals.getInstance().stackSampler) &#123;</span><br><span class="line">        BlockCanaryInternals.getInstance().stackSampler.stop();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">null</span> != BlockCanaryInternals.getInstance().cpuSampler) &#123;</span><br><span class="line">        BlockCanaryInternals.getInstance().cpuSampler.stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>也就是在前后之间过程中抓取<code>stackSampler</code>和<code>cpuSampler</code>.</p>
-<p>这里还要注意一点，<code>isBlock</code>方法判断了，当前的过程是否被认定为block的, 如果是<code>block</code>的，那么就回调出来，写入文件以供后续的UI上的操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isBlock</span><span class="params">(<span class="keyword">long</span> endTime)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> endTime - mStartTimestamp &gt; mBlockThresholdMillis;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">notifyBlockEvent</span><span class="params">(<span class="keyword">final</span> <span class="keyword">long</span> endTime)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">long</span> startTime = mStartTimestamp;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">long</span> startThreadTime = mStartThreadTimestamp;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">long</span> endThreadTime = SystemClock.currentThreadTimeMillis();</span><br><span class="line">    HandlerThreadFactory.getWriteLogThreadHandler().post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            mBlockListener.onBlockEvent(startTime, endTime, startThreadTime, endThreadTime);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里的源码还是很简单的，但是提供了很好的思路， 我们也可以进一步的对这个机制做一些深入处理，比如做一套监控系统，后台上传用户的trace&amp;cpu和耗时过长的事件等等。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/91222177/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/91222177/" itemprop="url">Android-LeakCanary源码分析</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T16:59:15+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/91222177/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/91222177/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://square.github.io/leakcanary/" target="_blank" rel="noopener">https://square.github.io/leakcanary/</a><br><a href="https://mp.weixin.qq.com/s/idjFaJsLpVLw52RSYHA_Vg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/idjFaJsLpVLw52RSYHA_Vg</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a254a370/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/a254a370/" itemprop="url">Java-线程池相关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T16:25:51+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/a254a370/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a254a370/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/dolphin0520/p/3932921.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3932921.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/77dbc89e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/77dbc89e/" itemprop="url">Android 界面适配</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T09:07:32+08:00">
-                2019-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/77dbc89e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/77dbc89e/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://juejin.im/post/5b7a29736fb9a019d53e7ee2" target="_blank" rel="noopener">https://juejin.im/post/5b7a29736fb9a019d53e7ee2</a></p>
-<ol>
-<li>dpi (dots per inch)<br> 根据屏幕的真实尺寸和分辨率计算出来, 每个设备都不一样<br> <img src="http://img-scions.test.upcdn.net/dpi.png" alt="sf"></li>
-<li>density = dpi / 160</li>
-<li>px = density * dp</li>
-</ol>
-<p>e.g 1920 * 1080屏幕尺寸为5寸，那么dpi大约为440</p>
-<p>因为每个屏幕的dpi不同，所以会导致适配的问题。</p>
-<p>比如UI设计图按照屏幕宽度为360dp的设计，但是在上述屏幕上, 宽度实际为1080/(440/160) = 392.7dp. 从而导致显示的效果与设计图的不一致</p>
-<p>解决方法:<br>由于px = dp * density. 设计图为360dp, 要保证所有设备计算出来的px相同，我们更改density来保证. </p>
-<p>density 是 DisplayMetrics中的成员变量<br>DisplayMetrics#density为上述的density<br>DisplayMetrics#densityDpi为上述dpi<br>DisplayMetrics#scaledDensity字体的缩放因子，正常情况下和density相同，但是调节系统字体大小会更改此值</p>
-<p>更改后的density为 设备真实宽度(px) / 360</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> sNoncompatDensity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> sNoncompatScaledDensity;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCustomDensity</span><span class="params">(@NonNull Activity activity, @NonNull <span class="keyword">final</span> Application application)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> DisplayMetrics appDisplayMetrics = application.getResources().getDisplayMetrics();</span><br><span class="line">        <span class="keyword">if</span>(sNoncompatDensity == <span class="number">0</span>) &#123;</span><br><span class="line">            sNoncompatDensity = appDisplayMetrics.density;</span><br><span class="line">            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity;</span><br><span class="line">            application.registerComponentCallbacks(<span class="keyword">new</span> ComponentCallbacks() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(newConfig != <span class="keyword">null</span> &amp;&amp; newConfig.fontScale &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        sNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLowMemory</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> targetDensity = appDisplayMetrics.widthPixels / <span class="number">360</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> targetScaledDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> targetDensityDpi = (<span class="keyword">int</span>)(<span class="number">160</span> * targetDensity);</span><br><span class="line"></span><br><span class="line">        appDisplayMetrics.density = targetDensity;</span><br><span class="line">        appDisplayMetrics.scaledDensity = targetScaledDensity;</span><br><span class="line">        appDisplayMetrics.densityDpi = targetDensityDpi;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> DisplayMetrics activityDisplayMetric = activity.getResources().getDisplayMetrics();</span><br><span class="line">        activityDisplayMetric.density = targetDensity;</span><br><span class="line">        activityDisplayMetric.scaledDensity = targetScaledDensity;</span><br><span class="line">        activityDisplayMetric.densityDpi = targetDensityDpi;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/23be93f7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/23be93f7/" itemprop="url">Android-事件分发机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-08T13:43:57+08:00">
-                2019-07-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/23be93f7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/23be93f7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://tryenough.com/android-motionevent" target="_blank" rel="noopener">https://tryenough.com/android-motionevent</a><br><a href="https://blog.csdn.net/carson_ho/article/details/54136311" target="_blank" rel="noopener">https://blog.csdn.net/carson_ho/article/details/54136311</a><br><a href="https://www.jianshu.com/p/d3758eef1f72" target="_blank" rel="noopener">https://www.jianshu.com/p/d3758eef1f72</a></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//伪代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Activity.java</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">        onUserInteraction();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这里实际是调用的viewgroup的dispatchTouchEvent进行分发事件</span></span><br><span class="line">    <span class="keyword">if</span> (getWindow().superDispatchTouchEvent(ev)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> onTouchEvent(ev);        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ViewGroup.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(!onInterruptedTouchEvent(ev)) &#123;</span><br><span class="line">        result = child.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果child的dispatchTouchEvent没有消耗这个事件, 就会viewgroup去onTouchEvent消耗</span></span><br><span class="line">    <span class="keyword">if</span>(!result) &#123;</span><br><span class="line">        result = onTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是不是可以理解为如果被onTouch消耗了，就不会走到onTouchEvent进行消耗</span></span><br><span class="line">    <span class="keyword">if</span>(onTouch(<span class="keyword">this</span>, ev)) &#123;</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!result &amp;&amp; onTouchEvent(ev)) &#123;</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -2105,7 +1809,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2151,7 +1855,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">107</span>
+                  <span class="site-state-item-count">151</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
