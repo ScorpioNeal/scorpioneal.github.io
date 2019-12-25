@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="体系(点 - 线 - 面)">
+<meta name="description" content="题目Reverse a singly linked list. Example: Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULLOutput: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 思路2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接 AC代码123456789101112public Li">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm-LeetCode-206 Reverse Linked List">
+<meta property="og:title" content="Algorithm LeetCode 206 Reverse Linked List">
 <meta property="og:url" content="http://blog.scions.cn/posts/5f3606d7/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="体系(点 - 线 - 面)">
+<meta property="og:description" content="题目Reverse a singly linked list. Example: Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULLOutput: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 思路2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接 AC代码123456789101112public Li">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-09T13:01:07.135Z">
+<meta property="og:updated_time" content="2019-12-25T05:27:06.390Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm-LeetCode-206 Reverse Linked List">
-<meta name="twitter:description" content="体系(点 - 线 - 面)">
+<meta name="twitter:title" content="Algorithm LeetCode 206 Reverse Linked List">
+<meta name="twitter:description" content="题目Reverse a singly linked list. Example: Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULLOutput: 5-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;1-&amp;gt;NULL 思路2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接 AC代码123456789101112public Li">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Algorithm-LeetCode-206 Reverse Linked List | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 206 Reverse Linked List | ScorpioNeal's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm-LeetCode-206 Reverse Linked List</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 206 Reverse Linked List</h1>
         
 
         <div class="post-meta">
@@ -412,7 +412,11 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Reverse a singly linked list.</p>
+<p>Example:</p>
+<p>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">      ListNode cur = head;</span><br><span class="line">      ListNode tail = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span>(head != <span class="keyword">null</span>) &#123;</span><br><span class="line">          head = head.next;</span><br><span class="line">          cur.next = tail;</span><br><span class="line">          tail = cur;</span><br><span class="line">          cur = head;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> tail;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -538,8 +542,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -554,7 +567,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">151</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -599,6 +612,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

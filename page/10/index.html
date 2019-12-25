@@ -307,6 +307,639 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9bbc0cee/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/9bbc0cee/" itemprop="url">Translation-NDK build Application.mk</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T09:20:01+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/9bbc0cee/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9bbc0cee/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Application-mk"><a href="#Application-mk" class="headerlink" title="Application.mk"></a>Application.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/application_mk" target="_blank" rel="noopener">Reference</a></p>
+<p>This document explains the <code>Application.mk</code> build file used by the <code>ndk-build</code></p>
+<p>We recommend that you read the <a href="https://developer.android.google.cn/ndk/guides/concepts" target="_blank" rel="noopener">Concepts</a> page before this one.</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The <code>Application.mk</code> specifies project-wide settings for ndk-build. By default, it is located at <code>jni/Application.mk</code> in your application’s project directory.</p>
+<h3 id="Variables"><a href="#Variables" class="headerlink" title="Variables"></a>Variables</h3><ul>
+<li><p>APP_ABI</p>
+<p>  By default, the NDK build system generates code for all non-deprecated ABIs. You can use the <code>APP_ABI</code> settings to generate code for specific ABIs. Table 1 shows the <code>APP_ABI</code> settings for different instruction sets.</p>
+<p>  Table 1. <code>APP_ABI</code> settinsg for different instruction sets.</p>
+<p>  // TODO table</p>
+<p>  You can also specify multiple values by placing them on the same line, delimited by spaces. For example: </p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">APP_ABI := armeabi-v7a arm64-v8a x86</span><br></pre></td></tr></table></figure>
+
+<p>  For the list of all supported ABIs and details about their usage and limitations, refer to <a href="https://developer.android.google.cn/ndk/guides/abis" target="_blank" rel="noopener">ABI Management</a></p>
+</li>
+<li><p>APP_ASFLAGS</p>
+<p>  Flags to be passed to the assmebler for every assembly source file(<code>.a</code> and <code>.S</code> files) in the project</p>
+</li>
+<li><p>APP_ASMFLAGS</p>
+<p>  Flags to be passed to YASM when for all YASM source files(<code>.asm</code>, x86/x86_64 only)</p>
+</li>
+<li><p>APP_BUILD_SCRIPT</p>
+<p>  By default, ndk-build assumes that the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> file is located at <code>jni/Android.mk</code> relative to the project root. </p>
+<p>  To load an <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> file from a different location, set <code>APP_BUILD_SCRIPT</code> to the absolute path of the Android.mk file</p>
+</li>
+<li><p>APP_CFLAGS</p>
+<p>  Flags to be passed for all C/C++ compiles in the project.</p>
+<p>  See also: <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-conlyflags" target="_blank" rel="noopener">APP_CONLYFLAGS</a>, <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cppflags" target="_blank" rel="noopener">APP_CPPFLAGS</a>.</p>
+</li>
+<li><p>APP_CLANG_TIDY</p>
+<p>  Set to true to enable clang-tidy for all modules in the project. Disabled by default.</p>
+</li>
+<li><p>APP_CLANG_TIDY_FLAGS</p>
+<p>  Flags to pass for all clang-tidy executions in the project.</p>
+</li>
+<li><p>APP_CONLYFLAGS</p>
+<p>  Flags to be passed for all C compiles in the project. These flags will not be used for C++ code.</p>
+<p>  See also: <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cflags" target="_blank" rel="noopener">APP_CFLAGS</a>, <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cppflags" target="_blank" rel="noopener">APP_CPPFLAGS</a>.</p>
+</li>
+<li><p>APP_CPPFLAGS</p>
+<p>  Flags to be passed for all C++ compiles in the project. These flags will not be used for C code.</p>
+<p>  See also: <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-cflags" target="_blank" rel="noopener">APP_CFLAGS</a>, <a href="https://developer.android.google.cn/ndk/guides/application_mk#app-conlyflags" target="_blank" rel="noopener">APP_CONLYFLAGS</a>.</p>
+</li>
+<li><p>APP_CXXFLAGS</p>
+<p>  Identical to <code>APP_CPPFLAGS</code>, but will appear after <code>APP_CPPFLAGS</code> in the compile command. For example:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">APP_CPPFLAGS := -DFOO</span><br><span class="line">APP_CXXFLAGS := -DBAR</span><br></pre></td></tr></table></figure>
+
+<p>  The above configuration will result in a compilation command similar to <code>clang++ -DFOO -DBAR</code> rather than <code>clang++ -DBAR -DFOO</code>.</p>
+</li>
+<li><p>APP_DEBUG</p>
+<p>  Set to true to build a debuggable application.</p>
+</li>
+<li><p>APP_LDFLAGS</p>
+<p>  Flags to be passed when linking executables and shared libraries.</p>
+</li>
+<li><p>APP_MANIFEST</p>
+<p>  Absolute path to an AndroidManifest.xml file.</p>
+<p>  By default, <code>$(APP_PROJECT_PATH)/AndroidManifest.xml)</code> will be used if it exists.</p>
+</li>
+<li><p>APP_MODULES</p>
+<p>  An explicit list of modules to build. The elements of this list are the names of the modules as they appear in <code>LOCAL_MODULE</code> within the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> file.</p>
+<p>  By default, ndk-build will build all shared libraires, executables, and their dependencies. Static libraries will be built only if they are used by the project, the project contains only static libraries, or they are named in <code>APP_MODULE</code>. (Note: Imported modules (those defined in build scripts imported with $(call import-module) will not be built unless depended on by a module to be built or listed in APP_MODULES)</p>
+</li>
+<li><p>APP_OPTIM</p>
+<p>  Define this optional variable as either <code>release</code> or <code>debug</code>. Release binaries will be built by default.</p>
+<p>  Release mode enables optimizations and may produce binaries that are not usable with a debugger. Debug mode disables optimizations so that debuggers may be used.</p>
+<p>  Note that you can debug either release or debug binaries. Releasee binaries, however, provide less information during debugging. For example, variables may be optimized out, preventing inspection. Also, code re-ordering can make it more difficult to step through the code; stack traces may not be reliable.</p>
+<p>  Declaring <code>android:debuggable</code> in your application manifest’s <code>&lt;application&gt;</code> tag will cause this variable to default to <code>debug</code> instead of <code>release</code>. Override this default value by setting <code>APP_OPTIM</code> to <code>release</code>.</p>
+</li>
+<li><p>APP_PLATFORM</p>
+<p>  <code>APP_PLATFORM</code> declares the Android API level this application is built against and corresponds to the application’s <code>minSdkVersion</code>.</p>
+<p>  If not specified, ndk-build will target the minimumAPI level supported by the NDK. The minimum API level supported by the latest NDK will always be low enough to support nearly all active devices.</p>
+<p>  For example, a value of `android-16’ specifies that your library uses APIs that are not available below Android 4.1 (API level 16) and can’t be used on devices running a lower platform version. For a complete list of platform names and corresponding Android system images, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>.</p>
+<p>  When using Gradle and <code>externalNativeBuild</code>, this parameter should not be set directly. Instead, set the <code>minSdkVersion</code> property in the <code>defaultConfig</code> or <code>productFlavors</code> blocks of your <a href="https://developer.android.google.cn/studio/build/index.html#module-level" target="_blank" rel="noopener">module-level</a> <code>build.gradle</code> file. This makes sure your library is used only by apps installed on devices running an adequate version of Android.</p>
+<p>  Note that the NDK does not contain libraries for every API level of Android. Versions that did not include new native APIs are omitted to save space in the NDK. ndk-build uses, in descending order of preference:</p>
+<ol>
+<li>The platform version matching <code>APP_PLATFORM</code>.</li>
+<li>The next available API level below <code>APP_PLATFORM</code>. For example, <code>android-19</code> will be used when <code>APP_PLATFORM</code> is <code>android-20</code>, since there were no new native APIs in <code>android-20</code>.</li>
+<li>The minimum API level supported by the NDK.</li>
+</ol>
+</li>
+<li><p>APP_PROJECT_PATH</p>
+<p>  The absolute path of the project’s root directory</p>
+</li>
+<li><p>APP_SHORT_COMMANDS<br>  The project-wide equivalent of <code>LOCAL_SHORT_COMMANDS</code>. For more information, see the documentation for <code>LOCAL_SHORT_COMMANDS</code> in <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a>.</p>
+</li>
+<li><p>APP_STL</p>
+<p>  The C++ standard library to use fo this application.</p>
+<p>  The <code>system</code> STL is used by default. Other choices are <code>c++_shared</code>, <code>c++_static</code>, and <code>none</code>. See <a href="https://developer.android.google.cn/ndk/guides/cpp-support.html#runtimes" target="_blank" rel="noopener">NDK Runtimes and Features</a>.</p>
+</li>
+<li><p>APP_STRIP_MODE</p>
+<p>  The argument to be passed to <code>strip</code> for modules in this application. Defaults to <code>--strip-unneeded</code>. To avoid stripping all binaries in the module, set to <code>none</code>. For other strip modes, see the <a href="https://sourceware.org/binutils/docs/binutils/strip.html" target="_blank" rel="noopener">strip documentation</a>.</p>
+</li>
+<li><p>APP_THIN_ARCHIVE</p>
+<p>  Set to true to use thin archives for all static libraries in the project. For more information, see the documentation for <code>LOCAL_THIN_ARCHIVE</code> in <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a>.</p>
+</li>
+<li><p>APP_WRAP_SH</p>
+<p>  Path to the <a href="https://developer.android.google.cn/ndk/guides/wrap-script" target="_blank" rel="noopener">wrap.sh</a> file to be included with this application.</p>
+<p>  A variant of this variable exists for each ABI, as does an ABI-generic variant:</p>
+<ul>
+<li>APP_WRAP_SH</li>
+<li>APP_WRAP_SH_armeabi-v7a</li>
+<li>APP_WRAP_SH_arm64-v8a</li>
+<li>APP_WRAP_SH_x86</li>
+<li>APP_WRAP_SH_x86_64</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/e03339a9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/e03339a9/" itemprop="url">Translation-NDK build</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T08:55:28+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/e03339a9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e03339a9/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="ndk-build"><a href="#ndk-build" class="headerlink" title="ndk-build"></a>ndk-build</h2><p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank" rel="noopener">Reference</a></p>
+<p>The <code>ndk-build</code> script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> and <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> configuration used by <code>ndk-build</code>.</p>
+<h3 id="Internals"><a href="#Internals" class="headerlink" title="Internals"></a>Internals</h3><p>Running the <code>ndk-build</code> script is equivalent to running the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">GNUMAKE -f &lt;ndk&gt;/build/core/build-local.mk</span></span><br><span class="line">&lt;parameters&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>$GNUMAKE</code> points to GNU Make 3.81 or later, and <code>&lt;ndk&gt;</code> points to your NDK installation directory. You can use this information to invoke ndk-build from other shell scripts, or even your own make files.</p>
+<h3 id="Invoking-from-the-Command-Line"><a href="#Invoking-from-the-Command-Line" class="headerlink" title="Invoking from the Command Line"></a>Invoking from the Command Line</h3><p>The <code>ndk-build</code> script lives in the top level NDK install directory. To run it from the command line, invoke it while in or under your application project directory. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> &lt;project&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> &lt;ndk&gt;/ndk-build</span></span><br></pre></td></tr></table></figure>
+
+<p>In this example, <code>&lt;project&gt;</code> points to your project’s root directory, and <code>&lt;ndk&gt;</code> is the directory where you installed the NDK.</p>
+<h4 id="Options"><a href="#Options" class="headerlink" title="Options"></a>Options</h4><p>All parameters to ndk-build are passed directly to the underlying GNU <code>make</code> command that runs the NDK build scripts. Combine <code>ndk-build</code> and options in the form <code>ndk-build</code> <code>&lt;option&gt;</code>. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ndk-build clean</span></span><br></pre></td></tr></table></figure>
+
+<p>The following options are available:</p>
+<ul>
+<li>clean<br>  Remove any previously generated binaries. (On Mac OS X, running ndk-build clean with a high number of parallel executions may result in a build error that includes the following message: “rm: fts_read: No such file or directory” To avoid this issue, consider not using the -jN modifier or selecting a smaller value for N, such as 2.)</li>
+<li>V=1<br>  Launch build, and display build commands.</li>
+<li>-B<br>  Force a complete rebuild</li>
+<li>-B V=1<br>  Force a complete rebuild, and display build commands</li>
+<li>NDK_LOG=1<br>  Display internal NDK log messages(used for debugging the NDK iteself)</li>
+<li>NDK_DEBUG=1<br>  Force a debuggable build(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#dvr" target="_blank" rel="noopener">table1</a>)</li>
+<li>NDK_DEBUG=0<br>  Force a release build(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#dvr" target="_blank" rel="noopener">table1</a>)</li>
+<li>NDK_HOST_32BIT=1<br>  Always use the toolchain in 32-bit mode(see <a href="https://developer.android.google.cn/ndk/guides/ndk-build#6432" target="_blank" rel="noopener">64-bit and 32-bit Toolchains</a>)</li>
+<li>NDK_APPLICATION_MK=<file><br>  Build, using a specific <code>Application.mk</code> file pointed to by the <code>NDK_APPLICATION_MK</code> variable</file></li>
+<li>-C <project><br>  Build the native code for the project path located at <project>. Useful if you don’t want to <code>cd</code> to it in your terminal</project></project></li>
+</ul>
+<h4 id="Debuggable-versus-Release-builds"><a href="#Debuggable-versus-Release-builds" class="headerlink" title="Debuggable versus Release builds"></a>Debuggable versus Release builds</h4><p>//TODO</p>
+<h3 id="64-Bit-and-32-Bit-Toolchains"><a href="#64-Bit-and-32-Bit-Toolchains" class="headerlink" title="64-Bit and 32-Bit Toolchains"></a>64-Bit and 32-Bit Toolchains</h3><p>Some toolchains come with both 64-bit and 32-bit versions. For example, directories <code>&lt;ndk&gt;/toolchain/&lt;name&gt;/prebuilt/</code> and <code>&lt;ndk&gt;/prebuilt/</code> may contain both <code>linux-x86</code> and <code>linux-x86_64</code> folders for Linux tools in 32-bit and 64-bit modes, respectively. The ndk-build script automatically chooses a 64-bit version of the toolchain if the host OS supports. You can force the use of a 32-bit toolchain by using <code>NDK_HOST_32BIT=1</code> either in your environment or on the ndk-build command line.</p>
+<p>Note that 64-bit tools utilize host resources better (for instance, they are faster, and handle larger programs), and they can still generate 32-bit binaries for Android.</p>
+<h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3><p>You need GNU Make 3.81 or later to use ndk-build or the NDK in general. The build scripts will detect a non-compliant Make tool, and generate an error message.</p>
+<p>If you have GNU Make 3.81 installed, but the default <code>make</code> command doesn’t launch it, define <code>GNUMAKE</code> in your environment to point to it before launching ndk-build. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> GNUMAKE=/usr/<span class="built_in">local</span>/bin/gmake</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ndk-build</span></span><br></pre></td></tr></table></figure>
+
+<p>You can override other host prebuilt tools in <code>$NDK/prebuilt/&lt;OS&gt;/bin/</code> with the following environment variables:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_AWK=&lt;path-to-awk&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_ECHO=&lt;path-to-echo&gt;</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">export</span> NDK_HOST_CMP=&lt;path-to-cmp&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9f89c6d1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/9f89c6d1/" itemprop="url">Translation-NDK Concepts</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T22:25:19+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/9f89c6d1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9f89c6d1/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p><a href="https://developer.android.google.cn/ndk/guides/concepts" target="_blank" rel="noopener">Reference</a></p>
+<h3 id="Before-Beginning"><a href="#Before-Beginning" class="headerlink" title="Before Beginning"></a>Before Beginning</h3><p>This guide assumes that you are already familiar with concepts inherent in native programming and in <a href="https://developer.android.google.cn/develop/index.html" target="_blank" rel="noopener">Android development</a>.</p>
+<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>This section provides a high-level explanation of how the NDK works. The Android NDK is a set of tools allowing you to embed C or C++(“native code”) into your Android apps. The ability to use native code in Android apps can be particularly useful to developers who wish to do one or more of the following: </p>
+<ul>
+<li>Port their apps between platforms.</li>
+<li>Reuse existing libraries, or provide their own libraries for reuse.</li>
+<li>Increase performance in certain cases, particularly computationally intensive onses like games</li>
+</ul>
+<h3 id="How-it-Works"><a href="#How-it-Works" class="headerlink" title="How it Works"></a>How it Works</h3><p>This section introduces the main components used in building a native application for Android, and goes on to describe the process of building and packaging.</p>
+<h4 id="Main-components"><a href="#Main-components" class="headerlink" title="Main components"></a>Main components</h4><p>You should have an understanding of the following components as you build your app: </p>
+<ul>
+<li>Native shared libraries: The NDK builds these libraries, or <code>.so</code> files, from the your C/C++ source code.</li>
+<li>Native static libraries: The NDK can also build static libraries, or <code>.a</code> files, which you can link into other libraries</li>
+<li>Java Native Interface(JNI): The JNI is the interface via which the Java and C++ components talk to on another. This guide assumes knowledge of the JNI; for information about it , consult the <a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html" target="_blank" rel="noopener">Java Native Interface Specification</a></li>
+<li>Application Binary Interface(ABI): The ABI defines exactly how your app’s machine code is expected to interact with the system at runtime. The NDK build <code>.so</code> files against these definitions. Different ABIs correspond to different architectures: The NDK includes ABI support for 32-bit ARM, AARch64, x86 and x86-64. For more information, see <a href="https://developer.android.google.cn/ndk/guides/abis.html" target="_blank" rel="noopener">ABI Management</a>.</li>
+<li>Manifest: If you are writing an app with no Java component to it, you must declare the <a href="https://developer.android.google.cn/reference/android/app/NativeActivity.html" target="_blank" rel="noopener">NativeActivity</a> class in the <a href="https://developer.android.google.cn/guide/topics/manifest/manifest-intro.html" target="_blank" rel="noopener">manifest</a>. <a href="https://developer.android.google.cn/ndk/guides/concepts#naa" target="_blank" rel="noopener">Native Activities and Applications</a> provides more detail on how to do this, under “Using the <code>native_activity.h</code> interface.”</li>
+</ul>
+<h4 id="Flow"><a href="#Flow" class="headerlink" title="Flow"></a>Flow</h4><p>The general flow for devleoping a native app for Android is as follows:</p>
+<ol>
+<li>Design your app, deciding which parts to implement in Java, and which parts to implement as native code.</li>
+<li>Create an Android app Project as you would for any other Android project.</li>
+<li>If you are writing a native-only app, declare the <a href="https://developer.android.google.cn/reference/android/app/NativeActivity.html" target="_blank" rel="noopener">NativeActivity</a> class in <code>AndroidManifest.xml</code>. For more information, see the <a href="https://developer.android.google.cn/ndk/guides/concepts#naa" target="_blank" rel="noopener">Native Activities and Applications</a>.</li>
+<li>Create an <code>Android.mk</code> file describing the native library, including name, flags, linked libraires, and source files to be compiled in the “JNI” directory.</li>
+<li>Optionally, you can create an <code>Application.mk</code> file configuring the target ABIs, toolchain, release/debug mode, and STL. For any for these that you do not specify, the following default values are used, respectively:<ul>
+<li>ABI: all non-deprecated ABIs</li>
+<li>Toolchain: Clang</li>
+<li>Mode: Release</li>
+<li>STL: system</li>
+</ul>
+</li>
+<li>Place your native source under the project’s <code>jni</code> directory</li>
+<li>Use nd-build to compile the native(<code>.so</code>, <code>.a</code>) libraires</li>
+<li>Build the Java component, producing the executable <code>.dex</code> file.</li>
+<li>Package everything into an APK file, containing <code>.so</code>, <code>.dex</code> and other files needed for your app to run</li>
+</ol>
+<h3 id="Native-Activities-and-Applications"><a href="#Native-Activities-and-Applications" class="headerlink" title="Native Activities and Applications"></a>Native Activities and Applications</h3><p>// TODO not needed now </p>
+<h3 id="Additional-sample-code"><a href="#Additional-sample-code" class="headerlink" title="Additional sample code"></a>Additional sample code</h3><p>To download NDK samples, see <a href="https://github.com/googlesamples/android-ndk/" target="_blank" rel="noopener">NDK Samples</a>.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/516f7653/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1046,7 +1679,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/5f3606d7/" itemprop="url">Algorithm-LeetCode-206 Reverse Linked List</a></h1>
+                <a class="post-title-link" href="/posts/5f3606d7/" itemprop="url">Algorithm LeetCode 206 Reverse Linked List</a></h1>
         
 
         <div class="post-meta">
@@ -1130,7 +1763,11 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Reverse a singly linked list.</p>
+<p>Example:</p>
+<p>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">      ListNode cur = head;</span><br><span class="line">      ListNode tail = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span>(head != <span class="keyword">null</span>) &#123;</span><br><span class="line">          head = head.next;</span><br><span class="line">          cur.next = tail;</span><br><span class="line">          tail = cur;</span><br><span class="line">          cur = head;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> tail;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1620,477 +2257,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/2776dc8a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/2776dc8a/" itemprop="url">Java-类加载机制</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:18+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/2776dc8a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2776dc8a/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://blog.csdn.net/m0_38075425/article/details/81627349" target="_blank" rel="noopener">https://blog.csdn.net/m0_38075425/article/details/81627349</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a540e7e6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/a540e7e6/" itemprop="url">Android ART和DALVIK的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:44:09+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/a540e7e6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a540e7e6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Dalvik与Art的区别：</p>
-<p>Dalvik每次都要编译再运行，Art只会首次启动编译<br>Art占用空间比Dalvik大（原生代码占用的存储空间更大），就是用“空间换时间”<br>Art减少编译，减少了CPU使用频率，使用明显改善电池续航<br>Art应用启动更快、运行更快、体验更流畅、触感反馈更及时</p>
-<p>在Dalvik下，应用每次运行的时候，字节码都需要通过即时编译器（just in time ，JIT）转换为机器码，这会拖慢应用的运行效率，而在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，使其成为真正的本地应用。这个过程叫做预编译（AOT,Ahead-Of-Time）。这样的话，应用的启动(首次)和执行都会变得更加快速。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8669504-2ea1a7935df54a10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/338/format/webp" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/48979ded/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/48979ded/" itemprop="url">Java-Java中的几种引用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:43:30+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/48979ded/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/48979ded/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>强引用(Strong Reference)</li>
-<li>软引用(Soft Reference)</li>
-<li>弱引用(Weak Reference)</li>
-<li>虚引用(Phantom Reference)</li>
-</ul>
-<p>强引用:<br>    代码中普遍存在的, 类似<code>Object obj = new Object()</code>这类引用，只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象</p>
-<p>软引用:<br>    软引用是用来描述一些还有用但并非必须的对象。对于软引用关联着的对象, 在系统将要发生内存溢出之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常.</p>
-<p>弱引用:<br>    用来描述非必须的对象， 但是它的强度比软引用更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集之前。 当垃圾收集器工作的时候，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。</p>
-<p>虚引用:<br>    最弱的一种引用关系，一个对象是否有虚引用存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。唯一目的就是能在这个对象被收集器回收时收到一个系统通知.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>《深入理解Java虚拟机》</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2141,7 +2307,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">151</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

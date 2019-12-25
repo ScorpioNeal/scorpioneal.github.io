@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="注意是 x &amp;lt;= min, 否则pop时候判断会有问题 1234567public void push(int x) &amp;#123;    if(x &amp;lt;= min) &amp;#123;        stack.push(min);        min = x;    &amp;#125;    stack.push(x);&amp;#125;">
+<meta name="description" content="题目Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. push(x) – Push element x onto stack.pop() – Removes the element on top of the stack.top() – Get the">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm LeetCode 153 Min Stack">
+<meta property="og:title" content="Algorithm LeetCode 155 Min Stack">
 <meta property="og:url" content="http://blog.scions.cn/posts/a6096449/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="注意是 x &amp;lt;= min, 否则pop时候判断会有问题 1234567public void push(int x) &amp;#123;    if(x &amp;lt;= min) &amp;#123;        stack.push(min);        min = x;    &amp;#125;    stack.push(x);&amp;#125;">
+<meta property="og:description" content="题目Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. push(x) – Push element x onto stack.pop() – Removes the element on top of the stack.top() – Get the">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:37:08.354Z">
+<meta property="og:updated_time" content="2019-12-25T02:42:06.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm LeetCode 153 Min Stack">
-<meta name="twitter:description" content="注意是 x &amp;lt;= min, 否则pop时候判断会有问题 1234567public void push(int x) &amp;#123;    if(x &amp;lt;= min) &amp;#123;        stack.push(min);        min = x;    &amp;#125;    stack.push(x);&amp;#125;">
+<meta name="twitter:title" content="Algorithm LeetCode 155 Min Stack">
+<meta name="twitter:description" content="题目Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. push(x) – Push element x onto stack.pop() – Removes the element on top of the stack.top() – Get the">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Algorithm LeetCode 153 Min Stack | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 155 Min Stack | ScorpioNeal's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 153 Min Stack</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 155 Min Stack</h1>
         
 
         <div class="post-meta">
@@ -412,8 +412,15 @@
       
 
       
-        <p>注意是 x &lt;= min, 否则pop时候判断会有问题</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt;= min) &#123;</span><br><span class="line">        stack.push(min);</span><br><span class="line">        min = x;</span><br><span class="line">    &#125;</span><br><span class="line">    stack.push(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+<p>push(x) – Push element x onto stack.<br>pop() – Removes the element on top of the stack.<br>top() – Get the top element.<br>getMin() – Retrieve the minimum element in the stack.</p>
+<p>Example:</p>
+<p>MinStack minStack = new MinStack();<br>minStack.push(-2);<br>minStack.push(0);<br>minStack.push(-3);<br>minStack.getMin();   –&gt; Returns -3.<br>minStack.pop();<br>minStack.top();      –&gt; Returns 0.<br>minStack.getMin();   –&gt; Returns -2.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每次push的时候, 如果当前是最小值, 则把之前的min值放进去也就是把倒数第二min的值放进去<br>每次pop的时候，如果pop是最小值，min则指向之前记录的倒数第二值作为pop后的最小值<br>如果pop的时候，不是最小值，就直接pop</p>
+<p>也就是如果push的时候是最小值，就push 2次，push一个最小值，push一个倒数第二, 如果不是就push一次<br>pop的时候，如果是最小值，就pop 2次 min记录第二次pop的值作为后面的最小值, 如果不是,就pop一次</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 注意是 x &lt;= min, 否则pop时候判断会有问题</span></span><br><span class="line">        <span class="keyword">if</span>(x &lt;= min) &#123;</span><br><span class="line">            stack.push(min);</span><br><span class="line">            min = x;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(min == stack.pop()) &#123;</span><br><span class="line">            min = stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
     
@@ -539,8 +546,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">151</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -600,6 +616,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

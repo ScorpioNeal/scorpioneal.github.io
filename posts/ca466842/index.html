@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="体系(点 - 线 - 面)">
+<meta name="description" content="题目Given a linked list, determine if it has a cycle in it. To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail c">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm Leetcode 107 Binary tree level order traversal 2">
-<meta property="og:url" content="http://blog.scions.cn/posts/c93fd58a/index.html">
+<meta property="og:title" content="Algorithm LeetCode 141 Linked List Cycle">
+<meta property="og:url" content="http://blog.scions.cn/posts/ca466842/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="体系(点 - 线 - 面)">
+<meta property="og:description" content="题目Given a linked list, determine if it has a cycle in it. To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:36:56.506Z">
+<meta property="og:updated_time" content="2019-12-25T02:58:38.309Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm Leetcode 107 Binary tree level order traversal 2">
-<meta name="twitter:description" content="体系(点 - 线 - 面)">
+<meta name="twitter:title" content="Algorithm LeetCode 141 Linked List Cycle">
+<meta name="twitter:description" content="题目Given a linked list, determine if it has a cycle in it. To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail c">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://blog.scions.cn/posts/c93fd58a/">
+  <link rel="canonical" href="http://blog.scions.cn/posts/ca466842/">
 
 
 
 
 
-  <title>Algorithm Leetcode 107 Binary tree level order traversal 2 | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 141 Linked List Cycle | ScorpioNeal's Blog</title>
   
 
 
@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c93fd58a/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/ca466842/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm Leetcode 107 Binary tree level order traversal 2</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 141 Linked List Cycle</h1>
         
 
         <div class="post-meta">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T19:52:33+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-25T10:44:04+08:00">
+                2019-12-25
               </time>
             
 
@@ -378,8 +378,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/c93fd58a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c93fd58a/" itemprop="commentCount"></span>
+                <a href="/posts/ca466842/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/ca466842/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -412,7 +412,18 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a linked list, determine if it has a cycle in it.</p>
+<p>To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.</p>
+<p>Example 1:</p>
+<p>Input: head = [3,2,0,-4], pos = 1<br>Output: true<br>Explanation: There is a cycle in the linked list, where tail connects to the second node.</p>
+<p>Example 2:</p>
+<p>Input: head = [1,2], pos = 0<br>Output: true<br>Explanation: There is a cycle in the linked list, where tail connects to the first node.</p>
+<p>Example 3:</p>
+<p>Input: head = [1], pos = -1<br>Output: false<br>Explanation: There is no cycle in the linked list.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断链表是否有环，使用快慢指针。</p>
+<p>如果快指针到链表结尾处还没有与慢指针相同则说明没有环，否则有环</p>
+<p>因为，假如有环，则在环内，因为快慢指针速度不同，总会有相遇的时刻 </p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        <span class="comment">// 注意这里不可以使用slow.val == fast.val这样判断</span></span><br><span class="line">        <span class="comment">// 因为fast / slow 可能为空</span></span><br><span class="line">        <span class="keyword">if</span>(slow == fast) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -471,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/52f5d09b/" rel="next" title="Algorithm 二叉树前中后序遍历 递归与非递归的实现">
-                <i class="fa fa-chevron-left"></i> Algorithm 二叉树前中后序遍历 递归与非递归的实现
+              <a href="/posts/4164a485/" rel="next" title="LeetCode EASY 目录">
+                <i class="fa fa-chevron-left"></i> LeetCode EASY 目录
               </a>
             
           </div>
@@ -481,8 +492,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/8dc2d219/" rel="prev" title="Algorithm Leetcode 225 Implement Stack using Queues">
-                Algorithm Leetcode 225 Implement Stack using Queues <i class="fa fa-chevron-right"></i>
+              <a href="/posts/ba9c4c03/" rel="prev" title="Algorithm LeetCode 111 Minimum Depth Of Binary Tree">
+                Algorithm LeetCode 111 Minimum Depth Of Binary Tree <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -538,8 +549,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -554,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">151</span>
+                  <span class="site-state-item-count">154</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -599,6 +619,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
