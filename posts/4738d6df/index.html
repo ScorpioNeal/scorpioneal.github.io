@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="体系(点 - 线 - 面)">
+<meta name="description" content="题目Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST. Examp">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm Leetcode 538 Convert BST to Greater Tree">
+<meta property="og:title" content="Algorithm LeetCode 538 Convert BST to Greater Tree">
 <meta property="og:url" content="http://blog.scions.cn/posts/4738d6df/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="体系(点 - 线 - 面)">
+<meta property="og:description" content="题目Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST. Examp">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:39:00.117Z">
+<meta property="og:updated_time" content="2019-12-26T07:06:31.925Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm Leetcode 538 Convert BST to Greater Tree">
-<meta name="twitter:description" content="体系(点 - 线 - 面)">
+<meta name="twitter:title" content="Algorithm LeetCode 538 Convert BST to Greater Tree">
+<meta name="twitter:description" content="题目Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST. Examp">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Algorithm Leetcode 538 Convert BST to Greater Tree | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 538 Convert BST to Greater Tree | ScorpioNeal's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm Leetcode 538 Convert BST to Greater Tree</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 538 Convert BST to Greater Tree</h1>
         
 
         <div class="post-meta">
@@ -412,7 +412,12 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: The root of a Binary Search Tree like this:</span><br><span class="line">            5</span><br><span class="line">          /   \</span><br><span class="line">         2     13</span><br><span class="line"></span><br><span class="line">Output: The root of a Greater Tree like this:</span><br><span class="line">           18</span><br><span class="line">          /   \</span><br><span class="line">        20     13</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>右-&gt;中-&gt;左顺序遍历, 记录sum为之前的和 然后当前node.val = node.val + sum</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        get(root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        get(node.right);</span><br><span class="line">        node.val += sum;</span><br><span class="line">        sum = node.val;</span><br><span class="line">        get(node.left);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -481,8 +486,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/c40d9066/" rel="prev" title="Algorithm Leetcode 563 Binary Tree Tilt">
-                Algorithm Leetcode 563 Binary Tree Tilt <i class="fa fa-chevron-right"></i>
+              <a href="/posts/c40d9066/" rel="prev" title="Algorithm LeetCode 563 Binary Tree Tilt">
+                Algorithm LeetCode 563 Binary Tree Tilt <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -538,8 +543,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

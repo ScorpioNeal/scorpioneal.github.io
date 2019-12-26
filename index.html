@@ -418,12 +418,12 @@
 <li><a href="Algorithm-Leetcode-257-Binary-Tree-Paths">Algorithm Leetcode 257 Binary Tree Paths</a></li>
 <li><a href="Algorithm-LeetCode-404-Sum-Of-Left-Leaves">Algorithm LeetCode 404 Sum Of Left Leaves</a></li>
 <li><a href="Algorithm-Leetcode-429-N-ary-Tree-Level-Order-Traversal">Algorithm Leetcode 429 N-ary Tree Level Order Traversal</a></li>
-<li><a href="Algorithm-Leetcode-437-Path-Sum-3">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-538-Convert-BST-to-Greater-Tree">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-563-Binary-Tree-Tilt">Not Finished Yet</a></li>
+<li><a href="Algorithm-Leetcode-437-Path-Sum-3">Algorithm Leetcode 437 Path Sum 3</a></li>
+<li><a href="Algorithm-Leetcode-538-Convert-BST-to-Greater-Tree">Algorithm LeetCode 538 Convert BST to Greater Tree</a></li>
+<li><a href="Algorithm-Leetcode-563-Binary-Tree-Tilt">Algorithm LeetCode 563 Binary Tree Tilt</a></li>
 <li><a href="Algorithm-Leetcode-637-Average-of-levels-in-binary-tree">Algorithm Leetcode 637 Average of levels in binary tree</a></li>
-<li><a href="Algorithm-Leetcode-669-Trim-a-Binary-Search-Tree">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-897-Increasing-order-search-tree">Not Finished Yet</a></li>
+<li><a href="Algorithm-Leetcode-669-Trim-a-Binary-Search-Tree">Algorithm LeetCode 669 Trim a Binary Search Tree</a></li>
+<li><a href="Algorithm-Leetcode-897-Increasing-order-search-tree">Algorithm LeetCode 897 Increasing order search tree</a></li>
 <li><a href="Algorithm-Leetcode-993-Cousins-in-binary-tree">Algorithm Leetcode 993 Cousins in binary tree</a></li>
 <li><a href="Algorithm-Leetcode-1022-Sum-of-root-to-leaf-binary-numbers">Algorithm Leetcode 1022 Sum of root to leaf binary numbers</a></li>
 </ul>
@@ -1268,7 +1268,16 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You are given a binary tree in which each node contains an integer value.</p>
+<p>Find the number of paths that sum to a given value.</p>
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8</span><br><span class="line"></span><br><span class="line">      10</span><br><span class="line">     /  \</span><br><span class="line">    5   -3</span><br><span class="line">   / \    \</span><br><span class="line">  3   2   11</span><br><span class="line"> / \   \</span><br><span class="line">3  -2   1</span><br><span class="line"></span><br><span class="line">Return 3. The paths that sum to 8 are:</span><br><span class="line"></span><br><span class="line">1.  5 -&gt; 3</span><br><span class="line">2.  5 -&gt; 2 -&gt; 1</span><br><span class="line">3. -3 -&gt; 11</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题目划分为2块内容</p>
+<p>第一部分: 求从root开始到叶子节点，总和是否等于给定的sum<br>第二部分: 从每一个节点开始, 到叶子节点，总和是否等于给定的sum</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> r = sum(root, sum);</span><br><span class="line">    <span class="comment">// 遍历每一个节点</span></span><br><span class="line">    <span class="keyword">return</span> r + pathSum(root.left, sum) + pathSum(root.right, sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(TreeNode node, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 从node节点到叶子节点，找出是否总和等于sum</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == node) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(node.val == sum) &#123;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count + sum(node.left, sum - node.val) + sum(node.right, sum - node.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1335,7 +1344,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/c40d9066/" itemprop="url">Algorithm Leetcode 563 Binary Tree Tilt</a></h1>
+                <a class="post-title-link" href="/posts/c40d9066/" itemprop="url">Algorithm LeetCode 563 Binary Tree Tilt</a></h1>
         
 
         <div class="post-meta">
@@ -1419,7 +1428,22 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return the tilt of the whole tree.</p>
+<p>The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtree node values. Null node has tilt 0.</p>
+<p>The tilt of the whole tree is defined as the sum of all nodes’ tilt.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  Input: </span><br><span class="line">         1</span><br><span class="line">       /   \</span><br><span class="line">      2     3</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: </span><br><span class="line">Tilt of node 2 : 0</span><br><span class="line">Tilt of node 3 : 0</span><br><span class="line">Tilt of node 1 : |2-3| = 1</span><br><span class="line">Tilt of binary tree : 0 + 0 + 1 = 1</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>The sum of node values in any subtree won’t exceed the range of 32-bit integer.</li>
+<li>All the tilt values won’t exceed the range of 32-bit integer.</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>tilt = 左子树和 - 右子树和  的绝对值</p>
+<p>因此我们需要一个计算给定节点的子节点和的方法. 然后顺带着计算tilt</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findTilt</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">         sum(root);</span><br><span class="line">         <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left =  sum(node.left);</span><br><span class="line">        <span class="keyword">int</span> right = sum(node.right);</span><br><span class="line">        res += Math.abs(left - right);</span><br><span class="line">        <span class="keyword">return</span> left + right + node.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
           
         
       
@@ -1486,7 +1510,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/4738d6df/" itemprop="url">Algorithm Leetcode 538 Convert BST to Greater Tree</a></h1>
+                <a class="post-title-link" href="/posts/4738d6df/" itemprop="url">Algorithm LeetCode 538 Convert BST to Greater Tree</a></h1>
         
 
         <div class="post-meta">
@@ -1570,7 +1594,12 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: The root of a Binary Search Tree like this:</span><br><span class="line">            5</span><br><span class="line">          /   \</span><br><span class="line">         2     13</span><br><span class="line"></span><br><span class="line">Output: The root of a Greater Tree like this:</span><br><span class="line">           18</span><br><span class="line">          /   \</span><br><span class="line">        20     13</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>右-&gt;中-&gt;左顺序遍历, 记录sum为之前的和 然后当前node.val = node.val + sum</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        get(root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        get(node.right);</span><br><span class="line">        node.val += sum;</span><br><span class="line">        sum = node.val;</span><br><span class="line">        get(node.left);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
