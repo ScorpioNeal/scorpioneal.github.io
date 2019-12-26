@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="体系(点 - 线 - 面)">
+<meta name="description" content="题目Find the sum of all left leaves in a given binary tree. Example: 3   /   9  20    /     15   7 There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24. 思路root的左叶子节">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 404 Sum Of Left Leaves">
 <meta property="og:url" content="http://blog.scions.cn/posts/fa243c55/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="体系(点 - 线 - 面)">
+<meta property="og:description" content="题目Find the sum of all left leaves in a given binary tree. Example: 3   /   9  20    /     15   7 There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24. 思路root的左叶子节">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-25T08:23:53.767Z">
+<meta property="og:updated_time" content="2019-12-26T01:54:36.797Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 404 Sum Of Left Leaves">
-<meta name="twitter:description" content="体系(点 - 线 - 面)">
+<meta name="twitter:description" content="题目Find the sum of all left leaves in a given binary tree. Example: 3   /   9  20    /     15   7 There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24. 思路root的左叶子节">
 
 
 
@@ -412,7 +412,12 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Find the sum of all left leaves in a given binary tree.</p>
+<p>Example:</p>
+<pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7</p>
+<p>There are two left leaves in the binary tree, with values 9 and 15 respectively. Return 24.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>root的左叶子节点就是, root.left != null 而且 root.left没有子节点</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumOfLeftLeaves</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(root.left != <span class="keyword">null</span> &amp;&amp; root.left.left == <span class="keyword">null</span> &amp;&amp; root.left.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">        val = root.left.val;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val + sumOfLeftLeaves(root.left) + sumOfLeftLeaves(root.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -481,8 +486,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/fbb3e6/" rel="prev" title="Algorithm LeetCode 925 Pressed Name">
-                Algorithm LeetCode 925 Pressed Name <i class="fa fa-chevron-right"></i>
+              <a href="/posts/fbb3e6/" rel="prev" title="Algorithm LeetCode 925 Long Pressed Name">
+                Algorithm LeetCode 925 Long Pressed Name <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -538,8 +543,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -554,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">154</span>
+                  <span class="site-state-item-count">153</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -599,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

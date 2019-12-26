@@ -864,8 +864,23 @@
       
         
           
-            <p>递归思路最清晰</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.</p>
+<p>Two nodes of a binary tree are cousins if they have the same depth, but have different parents.</p>
+<p>We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.</p>
+<p>Return true if and only if the nodes corresponding to the values x and y are cousins.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,4], x = 4, y = 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
 
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,null,4,null,5], x = 5, y = 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,null,4], x = 2, y = 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<p>The number of nodes in the tree will be between 2 and 100.<br>Each node has a unique integer value from 1 to 100.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断cousin, 就是判断他俩是否相同深度但是parent节点不同</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> xDepth = getDepth(root, x, <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">int</span> yDepth = getDepth(root, y, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> xParent = getParent(root, x);</span><br><span class="line">      <span class="keyword">int</span> yParent = getParent(root, y);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(xDepth == yDepth &amp;&amp; xParent != yParent) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getDepth</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.val == x) &#123;</span><br><span class="line">          <span class="keyword">return</span> depth;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> left = getDepth(root.left, x, depth + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">int</span> right = getDepth(root.right, x, depth + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">return</span> Math.max(left, right);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getParent</span><span class="params">(TreeNode root, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.left != <span class="keyword">null</span> &amp;&amp; root.left.val == num) &#123;</span><br><span class="line">          <span class="keyword">return</span> root.val;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.right != <span class="keyword">null</span> &amp;&amp; root.right.val == num) &#123;</span><br><span class="line">          <span class="keyword">return</span> root.val;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> left = getParent(root.left, num);</span><br><span class="line">      <span class="keyword">int</span> right = getParent(root.right, num);</span><br><span class="line">      <span class="keyword">if</span>(left == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> right;</span><br><span class="line">      &#125; </span><br><span class="line">      <span class="keyword">return</span> left;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1016,7 +1031,20 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.</p>
+<p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.</p>
+<p>Return the sum of these numbers.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,0,1,0,1,0,1]</span><br><span class="line">Output: 22</span><br><span class="line">Explanation: (100) + (101) + (110) + (111) = 4 + 5 + 6 + 7 = 22</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ol>
+<li>The number of nodes in the tree is between 1 and 1000.</li>
+<li>node.val is 0 or 1.</li>
+<li>The answer will not exceed 2^31 - 1.</li>
+</ol>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>递归获取每条路径的数字，然后求和，或者用下述比较巧妙的方法</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sumRootToLeaf</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(root, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(TreeNode root, <span class="keyword">int</span> parentVal)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    parentVal = parentVal * <span class="number">2</span> + root.val;</span><br><span class="line">    <span class="keyword">if</span>(root.left == <span class="keyword">null</span> &amp;&amp; root.right == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> parentVal;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> get(root.left, parentVal) + get(root.right, parentVal);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1668,7 +1696,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/ca31362/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/3cad5a96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1687,7 +1715,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/ca31362/" itemprop="url">Algorithm Leetcode 849 Maximize distance to closest person</a></h1>
+                <a class="post-title-link" href="/posts/3cad5a96/" itemprop="url">Algorithm LeetCode 754 Reach a Number</a></h1>
         
 
         <div class="post-meta">
@@ -1699,7 +1727,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-21T21:46:18+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-21T17:28:29+08:00">
                 2019-12-21
               </time>
             
@@ -1740,8 +1768,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/ca31362/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/ca31362/" itemprop="commentCount"></span>
+                <a href="/posts/3cad5a96/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/3cad5a96/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1856,7 +1884,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">154</span>
+                  <span class="site-state-item-count">153</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

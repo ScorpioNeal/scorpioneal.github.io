@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="递归思路最清晰">
+<meta name="description" content="题目In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1. Two nodes of a binary tree are cousins if they have the same depth, but have different parents. We">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm Leetcode 993 Cousins in binary tree">
 <meta property="og:url" content="http://blog.scions.cn/posts/89a53fa/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="递归思路最清晰">
+<meta property="og:description" content="题目In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1. Two nodes of a binary tree are cousins if they have the same depth, but have different parents. We">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:40:24.293Z">
+<meta property="og:updated_time" content="2019-12-26T02:45:19.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm Leetcode 993 Cousins in binary tree">
-<meta name="twitter:description" content="递归思路最清晰">
+<meta name="twitter:description" content="题目In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1. Two nodes of a binary tree are cousins if they have the same depth, but have different parents. We">
 
 
 
@@ -412,8 +412,23 @@
       
 
       
-        <p>递归思路最清晰</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.</p>
+<p>Two nodes of a binary tree are cousins if they have the same depth, but have different parents.</p>
+<p>We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.</p>
+<p>Return true if and only if the nodes corresponding to the values x and y are cousins.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,4], x = 4, y = 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
 
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,null,4,null,5], x = 5, y = 4</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,null,4], x = 2, y = 3</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<p>The number of nodes in the tree will be between 2 and 100.<br>Each node has a unique integer value from 1 to 100.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断cousin, 就是判断他俩是否相同深度但是parent节点不同</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isCousins</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> xDepth = getDepth(root, x, <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">int</span> yDepth = getDepth(root, y, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">int</span> xParent = getParent(root, x);</span><br><span class="line">      <span class="keyword">int</span> yParent = getParent(root, y);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(xDepth == yDepth &amp;&amp; xParent != yParent) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getDepth</span><span class="params">(TreeNode root, <span class="keyword">int</span> x, <span class="keyword">int</span> depth)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.val == x) &#123;</span><br><span class="line">          <span class="keyword">return</span> depth;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> left = getDepth(root.left, x, depth + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">int</span> right = getDepth(root.right, x, depth + <span class="number">1</span>);</span><br><span class="line">      <span class="keyword">return</span> Math.max(left, right);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getParent</span><span class="params">(TreeNode root, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.left != <span class="keyword">null</span> &amp;&amp; root.left.val == num) &#123;</span><br><span class="line">          <span class="keyword">return</span> root.val;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.right != <span class="keyword">null</span> &amp;&amp; root.right.val == num) &#123;</span><br><span class="line">          <span class="keyword">return</span> root.val;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">int</span> left = getParent(root.left, num);</span><br><span class="line">      <span class="keyword">int</span> right = getParent(root.right, num);</span><br><span class="line">      <span class="keyword">if</span>(left == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> right;</span><br><span class="line">      &#125; </span><br><span class="line">      <span class="keyword">return</span> left;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -539,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,7 +579,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">154</span>
+                  <span class="site-state-item-count">153</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -600,6 +624,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
