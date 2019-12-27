@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”">
+<meta name="description" content="题目Given two strings s and t , write a function to determine if t is an anagram of s. Example 1: 12Input: s = &quot;anagram&quot;, t = &quot;nagaram&quot;Output: true  Example 2: 12Input: s = &quot;rat&quot;, t = &quot;car&quot;Output: false">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 242 valid-anagram">
 <meta property="og:url" content="http://blog.scions.cn/posts/b6f1cce9/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”">
+<meta property="og:description" content="题目Given two strings s and t , write a function to determine if t is an anagram of s. Example 1: 12Input: s = &quot;anagram&quot;, t = &quot;nagaram&quot;Output: true  Example 2: 12Input: s = &quot;rat&quot;, t = &quot;car&quot;Output: false">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:37:37.049Z">
+<meta property="og:updated_time" content="2019-12-27T07:50:54.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 242 valid-anagram">
-<meta name="twitter:description" content="最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”">
+<meta name="twitter:description" content="题目Given two strings s and t , write a function to determine if t is an anagram of s. Example 1: 12Input: s = &quot;anagram&quot;, t = &quot;nagaram&quot;Output: true  Example 2: 12Input: s = &quot;rat&quot;, t = &quot;car&quot;Output: false">
 
 
 
@@ -412,7 +412,20 @@
       
 
       
-        <p>最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings s and t , write a function to determine if t is an anagram of s.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = "anagram", t = "nagaram"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = "rat", t = "car"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<p>You may assume the string contains only lowercase alphabets.</p>
+<p>Follow up:</p>
+<p>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”<br>所以考虑hashmap， 记录每个字符的出现的次数，看他们是否相同<br>Top Voted Solution 思路更好, 如下: </p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            arr[c - <span class="string">'a'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = t.charAt(i);</span><br><span class="line">            arr[c - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -539,8 +552,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -600,6 +622,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

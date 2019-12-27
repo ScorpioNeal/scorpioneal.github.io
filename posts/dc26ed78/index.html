@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="12345678    public int bitwiseComplement2(int N) &amp;#123;    String str = Integer.toBinaryString(N);    StringBuilder sb = new StringBuilder();    for (int i=0; i&amp;lt;str.length(); i++) &amp;#123;        sb.">
+<meta name="description" content="题目Every non-negative integer N has a binary representation.  For example, 5 can be represented as “101” in binary, 11 as “1011” in binary, and so on.  Note that except for N = 0, there are no leading">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm Leetcode 1009 Complement of Base 10 Integer">
+<meta property="og:title" content="Algorithm LeetCode 1009 Complement of Base 10 Integer">
 <meta property="og:url" content="http://blog.scions.cn/posts/dc26ed78/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="12345678    public int bitwiseComplement2(int N) &amp;#123;    String str = Integer.toBinaryString(N);    StringBuilder sb = new StringBuilder();    for (int i=0; i&amp;lt;str.length(); i++) &amp;#123;        sb.">
+<meta property="og:description" content="题目Every non-negative integer N has a binary representation.  For example, 5 can be represented as “101” in binary, 11 as “1011” in binary, and so on.  Note that except for N = 0, there are no leading">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:40:32.754Z">
+<meta property="og:updated_time" content="2019-12-27T08:22:58.290Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm Leetcode 1009 Complement of Base 10 Integer">
-<meta name="twitter:description" content="12345678    public int bitwiseComplement2(int N) &amp;#123;    String str = Integer.toBinaryString(N);    StringBuilder sb = new StringBuilder();    for (int i=0; i&amp;lt;str.length(); i++) &amp;#123;        sb.">
+<meta name="twitter:title" content="Algorithm LeetCode 1009 Complement of Base 10 Integer">
+<meta name="twitter:description" content="题目Every non-negative integer N has a binary representation.  For example, 5 can be represented as “101” in binary, 11 as “1011” in binary, and so on.  Note that except for N = 0, there are no leading">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Algorithm Leetcode 1009 Complement of Base 10 Integer | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 1009 Complement of Base 10 Integer | ScorpioNeal's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm Leetcode 1009 Complement of Base 10 Integer</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 1009 Complement of Base 10 Integer</h1>
         
 
         <div class="post-meta">
@@ -412,10 +412,29 @@
       
 
       
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bitwiseComplement2</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    String str = Integer.toBinaryString(N);</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str.length(); i++) &#123;</span><br><span class="line">        sb.append(str.charAt(i) == <span class="string">'0'</span> ? <span class="string">'1'</span> : <span class="string">'0'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Integer.valueOf(sb.toString(), <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Every non-negative integer N has a binary representation.  For example, 5 can be represented as “101” in binary, 11 as “1011” in binary, and so on.  Note that except for N = 0, there are no leading zeroes in any binary representation.</p>
+<p>The complement of a binary representation is the number in binary you get when changing every 1 to a 0 and 0 to a 1.  For example, the complement of “101” in binary is “010” in binary.</p>
+<p>For a given number N in base-10, return the complement of it’s binary representation as a base-10 integer.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: 5</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: 5 is "101" in binary, with complement "010" in binary, which is 2 in base-10.</span><br></pre></td></tr></table></figure>
 
-<p>注意Integer.valueOf(str, 2); 的使用<br>注意Integer.toBinaryString()的使用</p>
-<p>其他解法:  位运算，不熟悉</p>
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 7</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: 7 is "111" in binary, with complement "000" in binary, which is 0 in base-10.</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: 10</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: 10 is "1010" in binary, with complement "0101" in binary, which is 5 in base-10.</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>0 &lt;= N &lt; 10^9</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">bitwiseComplement2</span><span class="params">(<span class="keyword">int</span> N)</span> </span>&#123;</span><br><span class="line">    String str = Integer.toBinaryString(N);</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;str.length(); i++) &#123;</span><br><span class="line">        sb.append(str.charAt(i) == <span class="string">'0'</span> ? <span class="string">'1'</span> : <span class="string">'0'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Integer.valueOf(sb.toString(), <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意Integer.valueOf(str, 2);的使用</li>
+<li>注意Integer.toBinaryString()的使用</li>
+</ul>
+<h2 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h2><p>位运算，不熟悉</p>
 
       
     </div>
@@ -485,8 +504,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/df3044a3/" rel="prev" title="Algorithm Leetcode 496 Next Greater Element 1">
-                Algorithm Leetcode 496 Next Greater Element 1 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/df3044a3/" rel="prev" title="Algorithm LeetCode 496 Next Greater Element 1">
+                Algorithm LeetCode 496 Next Greater Element 1 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -542,8 +561,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -603,6 +631,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他解法"><span class="nav-number">4.</span> <span class="nav-text">其他解法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
