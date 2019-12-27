@@ -90,7 +90,7 @@
 <li><a href="Algorithm-Leetcode-225-Implement-Stack-using-Queues">Algorithm Leetcode 225 Implement Stack using Queues</a></li>
 <li><a href="Algorithm-Leetcode-232-Implement-Queue-using-Stacks">Algorithm Leetcode 232 Implement Queue using Stacks</a></li>
 </ul>
-<h2 id="array-string-10-29"><a href="#array-string-10-29" class="headerlink" title="array/string(10/29)"></a>array/string(10/29)</h2><ul>
+<h2 id="array-string-14-29"><a href="#array-string-14-29" class="headerlink" title="array/string(14/29)"></a>array/string(14/29)</h2><ul>
 <li><a href="Algorithm-LeetCode-28-Implement-strStr">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-66-Plus-One">Algorithm LeetCode 66 Plus One</a></li>
 <li><a href="Algorithm-LeetCode-119-Pascal-s-Triangle-2">Not Finished Yet</a></li>
@@ -107,17 +107,17 @@
 <li><a href="Algorithm-LeetCode-665-Non-decreasing-Array">Algorithm LeetCode 665 Non-decreasing Array</a></li>
 <li><a href="Algorithm-Leetcode-746-Min-Cost-Climbing-Stairs">Not Finished Yet</a></li>
 <li><a href="Algorithm-Leetcode-784-Letter-Case-Permutation">Algorithm LeetCode 784 Letter Case Permutation</a></li>
-<li><a href="Algorithm-LeetCode-844-Backspace-String-Compare">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-844-Backspace-String-Compare">Algorithm LeetCode 844 Backspace String Compare</a></li>
 <li><a href="Algorithm-Leetcode-849-Maximize-Distance-to-Closest-Person-0">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-914-X-of-a-Kind-in-a-Deck-of-Cards">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-922-Sort-Array-By-Parity-2">Algorithm LeetCode 922 Sort Array By Parity 2</a></li>
 <li><a href="Algorithm-LeetCode-925-Long-Pressed-Name">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-942-DI-String-Match">Algorithm LeetCode 942 DI String Match</a></li>
-<li><a href="Algorithm-LeetCode-949-Largest-Time-for-Given-Digits">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-989-Add-To-Array-Form-Of-Integer">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-949-Largest-Time-for-Given-Digits">Algorithm LeetCode 949 Largest Time for Given Digits</a></li>
+<li><a href="Algorithm-LeetCode-989-Add-To-Array-Form-Of-Integer">Algorithm LeetCode 989 Add To Array Form Of Integer</a></li>
 <li><a href="Algorithm-LeetCode-1002-Find-Common-Characters">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-1010-Pairs-of-songs-with-total-duration-divisible-by-60">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-1051-Height-Checker">Not Finished Yet</a></li>
+<li><a href="Algorithm-Leetcode-1051-Height-Checker">Algorithm LeetCode 1051 Height Checker</a></li>
 <li><a href="Algorithm-Leetcode-1071-Greatest-Common-Divisor-of-Strings">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-1122-Relative-Sort-Array">Not Finished Yet</a></li>
 </ul>
@@ -743,9 +743,20 @@
       </tags>
   </entry>
   <entry>
-    <title>Algorithm Leetcode 1051 Height Checker</title>
+    <title>Algorithm LeetCode 1051 Height Checker</title>
     <url>/posts/6206342c/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Students are asked to stand in non-decreasing order of heights for an annual photo.</p>
+<p>Return the minimum number of students not standing in the right positions.  (This is the number of students that must move in order for all students to be standing in non-decreasing order of height.)</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: [1,1,4,2,1,3]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: </span><br><span class="line">Students with heights 4, 3 and the last 1 are not standing in the right positions.</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>1 &lt;= heights.length &lt;= 100</li>
+<li>1 &lt;= heights[i] &lt;= 100</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>重新拍一次序，不在位置的就是之前顺序错乱的. 思路很好。</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">heightChecker</span><span class="params">(<span class="keyword">int</span>[] heights)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] copy = heights.clone();</span><br><span class="line">        Arrays.sort(copy);</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; copy.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(heights[i] != copy[i]) &#123;</span><br><span class="line">                count++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Algorithm</category>
       </categories>
@@ -831,8 +842,29 @@
   <entry>
     <title>Algorithm LeetCode 989 Add To Array Form Of Integer</title>
     <url>/posts/346cd301/</url>
-    <content><![CDATA[<p>考虑溢出问题，所以不可以直接转为int/long去计算</p>
-]]></content>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  For example, if X = 1231, then the array form is [1,2,3,1].</p>
+<p>Given the array-form A of a non-negative integer X, return the array-form of the integer X+K.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: A = [1,2,0,0], K = 34</span><br><span class="line">Output: [1,2,3,4]</span><br><span class="line">Explanation: 1200 + 34 = 1234</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: A = [2,7,4], K = 181</span><br><span class="line">Output: [4,5,5]</span><br><span class="line">Explanation: 274 + 181 = 455</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: A = [2,1,5], K = 806</span><br><span class="line">Output: [1,0,2,1]</span><br><span class="line">Explanation: 215 + 806 = 1021</span><br></pre></td></tr></table></figure>
+
+<p>Example 4:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: A = [9,9,9,9,9,9,9,9,9,9], K = 1</span><br><span class="line">Output: [1,0,0,0,0,0,0,0,0,0,0]</span><br><span class="line">Explanation: 9999999999 + 1 = 10000000000</span><br></pre></td></tr></table></figure>
+
+<p>Note：</p>
+<ul>
+<li>1 &lt;= A.length &lt;= 10000</li>
+<li>0 &lt;= A[i] &lt;= 9</li>
+<li>0 &lt;= K &lt;= 10000</li>
+<li>If A.length &gt; 1, then A[0] != 0</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>与前面某题类似(TODO), 考虑溢出问题，所以不可以直接转为int/long去计算, 其他思路都差不多</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">addToArrayForm</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">if</span>(K == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">                list.add(A[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(K &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = K  % <span class="number">10</span>;</span><br><span class="line">            K = K / <span class="number">10</span>;</span><br><span class="line">            list.add(num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> arrIndex = A.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">        List&lt;Integer&gt; returnList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> listVal = index &gt; list.size() - <span class="number">1</span> ? <span class="number">0</span> : list.get(index++);</span><br><span class="line">            <span class="keyword">int</span> arrVal = arrIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : A[arrIndex--];</span><br><span class="line">            <span class="keyword">int</span> count = listVal +  m + arrVal;</span><br><span class="line">            <span class="keyword">if</span>(count &gt; <span class="number">9</span>)&#123;</span><br><span class="line">                returnList.add(count - <span class="number">10</span>);</span><br><span class="line">                m = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                returnList.add(count);</span><br><span class="line">                m = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(returnList.size() == Math.max(A.length, list.size())) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">1</span>) &#123;</span><br><span class="line">            returnList.add(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//其实这里可以每次returnList.add(0, val);来reverse，不用再reverse一次</span></span><br><span class="line">        </span><br><span class="line">        Collections.reverse(returnList);</span><br><span class="line">        <span class="keyword">return</span> returnList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Algorithm</category>
       </categories>
@@ -843,13 +875,23 @@
   <entry>
     <title>Algorithm LeetCode 949 Largest Time for Given Digits</title>
     <url>/posts/31c696da/</url>
-    <content><![CDATA[<p>思路很好。</p>
-<ol>
-<li>选择所有时间对应的数字</li>
-<li>排序给定数字</li>
-<li>找到对应数字</li>
-</ol>
-]]></content>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of 4 digits, return the largest 24 hour time that can be made.</p>
+<p>The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has elapsed since midnight.</p>
+<p>Return the answer as a string of length 5.  If no valid time can be made, return an empty string.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Input: [1,2,3,4]</span><br><span class="line">Output: "23:41"</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: [5,5,5,5]</span><br><span class="line">Output: ""</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>A.length == 4</li>
+<li>0 &lt;= A[i] &lt;= 9</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>因为4个数字的组合为0 - 9999. 大于 时间可能的组合 0 - 24 * 60 或者 0 - 2400<br>所以我们先遍历可能的时间，然后再查这个时间是否由给定的数字组成</p>
+<p>这个思路值得借鉴。在范围小的里面做循环，这样可以节省内存空间</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">largestTimeFromDigits</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2399</span>; i &gt;=<span class="number">0</span> ; i--) &#123;</span><br><span class="line">          <span class="comment">// 先遍历时间有哪些可能</span></span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">100</span> &lt; <span class="number">60</span>) &#123;</span><br><span class="line">              <span class="comment">//再判断时间是否由A组成</span></span><br><span class="line">                <span class="keyword">if</span>(isMadeOf(A, i)) &#123;</span><br><span class="line">                    <span class="keyword">int</span> hour = i / <span class="number">100</span>;</span><br><span class="line">                    <span class="keyword">int</span> min = i % <span class="number">100</span>;</span><br><span class="line">                    String h = hour+<span class="string">""</span>;</span><br><span class="line">                    String m = min+<span class="string">""</span>;</span><br><span class="line">                    <span class="keyword">if</span>(hour &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                        h = <span class="string">"0"</span>+hour;</span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="keyword">if</span>(min &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                        m = <span class="string">"0"</span> + min;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> h + <span class="string">":"</span> + m;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isMadeOf</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> n  = num - (num / <span class="number">10</span>) * <span class="number">10</span>;</span><br><span class="line">            num = num / <span class="number">10</span>;</span><br><span class="line">            B[i] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(A);</span><br><span class="line">        Arrays.sort(B);</span><br><span class="line">        <span class="keyword">if</span>(A.length != B.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i] != B[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Algorithm</category>
       </categories>
@@ -919,11 +961,28 @@
   <entry>
     <title>Algorithm LeetCode 844 Backspace String Compare</title>
     <url>/posts/9715d017/</url>
-    <content><![CDATA[<ol>
-<li>可以使用Stack</li>
-<li>注意StringBuilder的deleteCharAt的用法</li>
-</ol>
-]]></content>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: S = "ab#c", T = "ad#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "ac".</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: S = "ab##", T = "c#d#"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "".</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: S = "a##c", T = "#a#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "c".</span><br></pre></td></tr></table></figure>
+
+<p>Example 4:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: S = "a#c", T = "b"</span><br><span class="line">Output: false</span><br><span class="line">Explanation: S becomes "c" while T becomes "b".</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>1 &lt;= S.length &lt;= 200</li>
+<li>1 &lt;= T.length &lt;= 200</li>
+<li>S and T only contain lowercase letters and ‘#’ characters.</li>
+</ul>
+<p>Follow up:</p>
+<p>Can you solve it in O(N) time and O(1) space?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>这种弹栈的题最容易想到的就是stack来做。 Top Voted Solution这里介绍了StringBuilder的deleteCharAt()这个方法，也很好用。可以记一下</code></pre><h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">backspaceCompare</span><span class="params">(String S, String T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getStr(S).equals(getStr(T));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getStr</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StringBuilder build = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : str.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'#'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(build.length() &gt; <span class="number">0</span>) build.deleteCharAt(build.length() - <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                build.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> build.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Algorithm</category>
       </categories>

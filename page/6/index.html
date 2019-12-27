@@ -562,11 +562,28 @@
       
         
           
-            <ol>
-<li>可以使用Stack</li>
-<li>注意StringBuilder的deleteCharAt的用法</li>
-</ol>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "ab#c", T = "ad#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "ac".</span><br></pre></td></tr></table></figure>
 
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "ab##", T = "c#d#"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "".</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "a##c", T = "#a#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "c".</span><br></pre></td></tr></table></figure>
+
+<p>Example 4:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "a#c", T = "b"</span><br><span class="line">Output: false</span><br><span class="line">Explanation: S becomes "c" while T becomes "b".</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>1 &lt;= S.length &lt;= 200</li>
+<li>1 &lt;= T.length &lt;= 200</li>
+<li>S and T only contain lowercase letters and ‘#’ characters.</li>
+</ul>
+<p>Follow up:</p>
+<p>Can you solve it in O(N) time and O(1) space?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>这种弹栈的题最容易想到的就是stack来做。 Top Voted Solution这里介绍了StringBuilder的deleteCharAt()这个方法，也很好用。可以记一下</code></pre><h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">backspaceCompare</span><span class="params">(String S, String T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getStr(S).equals(getStr(T));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getStr</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StringBuilder build = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : str.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'#'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(build.length() &gt; <span class="number">0</span>) build.deleteCharAt(build.length() - <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                build.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> build.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       

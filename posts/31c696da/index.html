@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="思路很好。  选择所有时间对应的数字 排序给定数字 找到对应数字">
+<meta name="description" content="题目Given an array of 4 digits, return the largest 24 hour time that can be made. The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has el">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 949 Largest Time for Given Digits">
 <meta property="og:url" content="http://blog.scions.cn/posts/31c696da/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="思路很好。  选择所有时间对应的数字 排序给定数字 找到对应数字">
+<meta property="og:description" content="题目Given an array of 4 digits, return the largest 24 hour time that can be made. The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has el">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:40:17.893Z">
+<meta property="og:updated_time" content="2019-12-27T07:33:35.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 949 Largest Time for Given Digits">
-<meta name="twitter:description" content="思路很好。  选择所有时间对应的数字 排序给定数字 找到对应数字">
+<meta name="twitter:description" content="题目Given an array of 4 digits, return the largest 24 hour time that can be made. The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has el">
 
 
 
@@ -412,13 +412,23 @@
       
 
       
-        <p>思路很好。</p>
-<ol>
-<li>选择所有时间对应的数字</li>
-<li>排序给定数字</li>
-<li>找到对应数字</li>
-</ol>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of 4 digits, return the largest 24 hour time that can be made.</p>
+<p>The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has elapsed since midnight.</p>
+<p>Return the answer as a string of length 5.  If no valid time can be made, return an empty string.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [1,2,3,4]</span><br><span class="line">Output: "23:41"</span><br></pre></td></tr></table></figure>
 
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,5,5,5]</span><br><span class="line">Output: ""</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>A.length == 4</li>
+<li>0 &lt;= A[i] &lt;= 9</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>因为4个数字的组合为0 - 9999. 大于 时间可能的组合 0 - 24 * 60 或者 0 - 2400<br>所以我们先遍历可能的时间，然后再查这个时间是否由给定的数字组成</p>
+<p>这个思路值得借鉴。在范围小的里面做循环，这样可以节省内存空间</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">largestTimeFromDigits</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2399</span>; i &gt;=<span class="number">0</span> ; i--) &#123;</span><br><span class="line">          <span class="comment">// 先遍历时间有哪些可能</span></span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">100</span> &lt; <span class="number">60</span>) &#123;</span><br><span class="line">              <span class="comment">//再判断时间是否由A组成</span></span><br><span class="line">                <span class="keyword">if</span>(isMadeOf(A, i)) &#123;</span><br><span class="line">                    <span class="keyword">int</span> hour = i / <span class="number">100</span>;</span><br><span class="line">                    <span class="keyword">int</span> min = i % <span class="number">100</span>;</span><br><span class="line">                    String h = hour+<span class="string">""</span>;</span><br><span class="line">                    String m = min+<span class="string">""</span>;</span><br><span class="line">                    <span class="keyword">if</span>(hour &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                        h = <span class="string">"0"</span>+hour;</span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="keyword">if</span>(min &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                        m = <span class="string">"0"</span> + min;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> h + <span class="string">":"</span> + m;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isMadeOf</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> n  = num - (num / <span class="number">10</span>) * <span class="number">10</span>;</span><br><span class="line">            num = num / <span class="number">10</span>;</span><br><span class="line">            B[i] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(A);</span><br><span class="line">        Arrays.sort(B);</span><br><span class="line">        <span class="keyword">if</span>(A.length != B.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i] != B[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -544,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -605,6 +624,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
