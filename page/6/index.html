@@ -717,7 +717,23 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array with n integers, your task is to check if it could become non-decreasing by modifying at most 1 element.</p>
+<p>We define an array is non-decreasing if array[i] &lt;= array[i + 1] holds for every i (1 &lt;= i &lt; n).</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Input: [4,2,3]</span><br><span class="line">Output: True</span><br><span class="line">Explanation: You could modify the first 4 to 1 to get a non-decreasing array.</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Input: [4,2,1]</span><br><span class="line">Output: False</span><br><span class="line">Explanation: You can't get a non-decreasing array by modify at most one element.</span><br></pre></td></tr></table></figure>
+
+<p>Note: The n belongs to [1, 10,000].</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>有些情况，需要后面的数字变成前面的数字，有些情况需要前面的数字变成后面的数字</p>
+<p>e.g </p>
+<p>2, 3, 3, 2, 4 这里需要把2变成3才行，如果是3变成2就不满足</p>
+<p>1, 4, 2, 3 这里的4需要变成2才行，如果是2变成4，也不满足</p>
+<p>找规律，就是index &lt; index - 1的数字</p>
+<p>如果index &lt; index - 2 那么把index 变为index - 1<br>如果index &gt; index -2 则把index - 1变为index</p>
+<p>还是挺难想的</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">checkPossibility</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i - <span class="number">1</span>] &gt; nums[i]) &#123;</span><br><span class="line">            <span class="keyword">if</span>(flag) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">1</span> || nums[i] &gt; nums[i - <span class="number">2</span>]) &#123;</span><br><span class="line">                nums[i - <span class="number">1</span>] = nums[i];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums[i] = nums[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            flag = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1431,6 +1447,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -1470,8 +1508,20 @@
       
         
           
-            <p>坑:  int型溢出</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [1,2,3]</span><br><span class="line">Output: [1,2,4]</span><br><span class="line">Explanation: The array represents the integer 123.</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [4,3,2,1]</span><br><span class="line">Output: [4,3,2,2]</span><br><span class="line">Explanation: The array represents the integer 4321.</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>直观思路就是变成int 然后+1后转为array, 但是这里有个坑就是int溢出的问题</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="keyword">int</span> dig = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; digits.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> ten = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = digits.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            ten = ten * <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dig += (digits[i] * ten );</span><br><span class="line">    &#125;</span><br><span class="line">    String s = (dig + <span class="number">1</span>) + <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span>[] ret = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">        ret[i] = Integer.parseInt(s.charAt(i) + <span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以这种方式不能采用，而是只用array, 然后记录进位</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">int</span> tail = digits.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(digits[i]  + num &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">                digits[i] = digits[i] + num;</span><br><span class="line">                num = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                num = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(num != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] newCopy = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; newCopy.length; i++) &#123;</span><br><span class="line">                newCopy[i] = digits[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            newCopy[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> newCopy;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       

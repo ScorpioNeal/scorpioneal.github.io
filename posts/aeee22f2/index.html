@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="体系(点 - 线 - 面)">
+<meta name="description" content="题目Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even. Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i i">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 922 Sort Array By Parity 2">
 <meta property="og:url" content="http://blog.scions.cn/posts/aeee22f2/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="体系(点 - 线 - 面)">
+<meta property="og:description" content="题目Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even. Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:40:10.799Z">
+<meta property="og:updated_time" content="2019-12-27T06:04:18.263Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 922 Sort Array By Parity 2">
-<meta name="twitter:description" content="体系(点 - 线 - 面)">
+<meta name="twitter:description" content="题目Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even. Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i i">
 
 
 
@@ -412,7 +412,20 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even.</p>
+<p>Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i is even.</p>
+<p>You may return any answer array that satisfies this condition.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [4,2,5,7]</span><br><span class="line">Output: [4,5,2,7]</span><br><span class="line">Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>2 &lt;= A.length &lt;= 20000</li>
+<li>A.length % 2 == 0</li>
+<li>0 &lt;= A[i] &lt;= 1000</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>2个指针，一个走偶数路，一个走奇数路，如果偶数index上的数不是偶数，记住index i, 如果奇数index上的数不是奇数，记住index j<br>然后swap</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortArrayByParityII(<span class="keyword">int</span>[] A) &#123;</span><br><span class="line">       <span class="keyword">int</span> even = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> odd = <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">          <span class="keyword">while</span>(even &lt; A.length &amp;&amp; A[even] % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">              even += <span class="number">2</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">while</span>(odd &lt; A.length &amp;&amp; A[odd] % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">              odd += <span class="number">2</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(even &gt;= A.length || odd &gt;= A.length) &#123;</span><br><span class="line">              <span class="keyword">return</span> A;</span><br><span class="line">          &#125;</span><br><span class="line">          swap(A, even, odd);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A[start];</span><br><span class="line">        A[start] = A[end];</span><br><span class="line">        A[end] = n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -538,8 +551,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -599,6 +621,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

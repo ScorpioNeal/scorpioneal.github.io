@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="直观思路如下 123456789101112131415161718class Solution &amp;#123;    public int minMoves(int[] nums) &amp;#123;        return get(nums);    &amp;#125;    private int get(int[] nums) &amp;#123;        Arrays.sort(nums);">
+<meta name="description" content="题目Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1. Example: 1234567891011Input:[">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 453 Minimum Moves to Equal Array Elements">
 <meta property="og:url" content="http://blog.scions.cn/posts/ea9f0311/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="直观思路如下 123456789101112131415161718class Solution &amp;#123;    public int minMoves(int[] nums) &amp;#123;        return get(nums);    &amp;#125;    private int get(int[] nums) &amp;#123;        Arrays.sort(nums);">
+<meta property="og:description" content="题目Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1. Example: 1234567891011Input:[">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-26T01:56:54.500Z">
+<meta property="og:updated_time" content="2019-12-27T07:10:03.800Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 453 Minimum Moves to Equal Array Elements">
-<meta name="twitter:description" content="直观思路如下 123456789101112131415161718class Solution &amp;#123;    public int minMoves(int[] nums) &amp;#123;        return get(nums);    &amp;#125;    private int get(int[] nums) &amp;#123;        Arrays.sort(nums);">
+<meta name="twitter:description" content="题目Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1. Example: 1234567891011Input:[">
 
 
 
@@ -412,13 +412,18 @@
       
 
       
-        <p>直观思路如下</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[1,2,3]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">Only three moves are needed (remember each move increments two elements):</span><br><span class="line"></span><br><span class="line">[1,2,3]  =&gt;  [2,3,3]  =&gt;  [3,4,3]  =&gt;  [4,4,4]</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>直观思路如下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minMoves</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> get(nums);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> max = nums[nums.length -<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> val = max - nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(val == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            nums[i] += val;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> val + get(nums);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>但是会造成Time Limit Exceeded ， 通过不了。</p>
-<p>巧妙思路</p>
-<p><a href="https://www.cnblogs.com/grandyang/p/6053827.html" target="_blank" rel="noopener">https://www.cnblogs.com/grandyang/p/6053827.html</a></p>
-
+<p>巧妙思路:</p>
+<p>比如1, 2, 3<br>第一步 -&gt; 2, 3, 3 index0和index1 + 1相当于变相的index2 - 1</p>
+<p>所以这题可以转化为每次一个数字-1，多少次三个数相同</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minMoves</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> min = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            count += (nums[i] - min);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -477,8 +482,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/afc442a4/" rel="next" title="Algorithm Leetcode 434 Number of segments in a string">
-                <i class="fa fa-chevron-left"></i> Algorithm Leetcode 434 Number of segments in a string
+              <a href="/posts/afc442a4/" rel="next" title="Algorithm LeetCode 434 Number of segments in a string">
+                <i class="fa fa-chevron-left"></i> Algorithm LeetCode 434 Number of segments in a string
               </a>
             
           </div>
@@ -544,8 +549,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -605,6 +619,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
