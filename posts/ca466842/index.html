@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
 <meta property="og:description" content="题目Given a linked list, determine if it has a cycle in it. To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail c">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-25T08:27:10.511Z">
+<meta property="og:updated_time" content="2019-12-27T08:32:28.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 141 Linked List Cycle">
 <meta name="twitter:description" content="题目Given a linked list, determine if it has a cycle in it. To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail c">
@@ -415,11 +415,14 @@
         <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a linked list, determine if it has a cycle in it.</p>
 <p>To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.</p>
 <p>Example 1:</p>
-<p>Input: head = [3,2,0,-4], pos = 1<br>Output: true<br>Explanation: There is a cycle in the linked list, where tail connects to the second node.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [3,2,0,-4], pos = 1</span><br><span class="line">Output: true</span><br><span class="line">Explanation: There is a cycle in the linked list, where tail connects to the second node.</span><br></pre></td></tr></table></figure>
+
 <p>Example 2:</p>
-<p>Input: head = [1,2], pos = 0<br>Output: true<br>Explanation: There is a cycle in the linked list, where tail connects to the first node.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2], pos = 0</span><br><span class="line">Output: true</span><br><span class="line">Explanation: There is a cycle in the linked list, where tail connects to the first node.</span><br></pre></td></tr></table></figure>
+
 <p>Example 3:</p>
-<p>Input: head = [1], pos = -1<br>Output: false<br>Explanation: There is no cycle in the linked list.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1], pos = -1</span><br><span class="line">Output: false</span><br><span class="line">Explanation: There is no cycle in the linked list.</span><br></pre></td></tr></table></figure>
+
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断链表是否有环，使用快慢指针。</p>
 <p>如果快指针到链表结尾处还没有与慢指针相同则说明没有环，否则有环</p>
 <p>因为，假如有环，则在环内，因为快慢指针速度不同，总会有相遇的时刻 </p>
