@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="体系(点 - 线 - 面)">
+<meta name="description" content="题目In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty.  There is at least one empty seat, and at least one person sitting. Alex wants to sit in the s">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm Leetcode 849 Maximize Distance to Closest Person">
+<meta property="og:title" content="Algorithm LeetCode 849 Maximize Distance to Closest Person">
 <meta property="og:url" content="http://blog.scions.cn/posts/49bede3d/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="体系(点 - 线 - 面)">
+<meta property="og:description" content="题目In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty.  There is at least one empty seat, and at least one person sitting. Alex wants to sit in the s">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:39:38.377Z">
+<meta property="og:updated_time" content="2019-12-30T03:19:40.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm Leetcode 849 Maximize Distance to Closest Person">
-<meta name="twitter:description" content="体系(点 - 线 - 面)">
+<meta name="twitter:title" content="Algorithm LeetCode 849 Maximize Distance to Closest Person">
+<meta name="twitter:description" content="题目In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty.  There is at least one empty seat, and at least one person sitting. Alex wants to sit in the s">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Algorithm Leetcode 849 Maximize Distance to Closest Person | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 849 Maximize Distance to Closest Person | ScorpioNeal's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm Leetcode 849 Maximize Distance to Closest Person</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 849 Maximize Distance to Closest Person</h1>
         
 
         <div class="post-meta">
@@ -412,7 +412,23 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty. </p>
+<p>There is at least one empty seat, and at least one person sitting.</p>
+<p>Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized. </p>
+<p>Return that maximum distance to closest person.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,0,0,0,1,0,1]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">If Alex sits in the second open seat (seats[2]), then the closest person has distance 2.</span><br><span class="line">If Alex sits in any other open seat, the closest person has distance 1.</span><br><span class="line">Thus, the maximum distance to the closest person is 2.</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,0,0,0]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: </span><br><span class="line">If Alex sits in the last seat, the closest person is 3 seats away.</span><br><span class="line">This is the maximum distance possible, so the answer is 3.</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>1 &lt;= seats.length &lt;= 20000</li>
+<li>seats contains only 0s or 1s, at least one 0, and at least one 1.</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>实际上就是求最大连续的0的个数，特殊考虑连续的0在最左边，最右边和中间部分</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxDistToClosest</span><span class="params">(<span class="keyword">int</span>[] seats)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> left = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> len = seats.length;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(seats[i] == <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(left == -<span class="number">1</span>) &#123;</span><br><span class="line">                    max = Math.max(i, max);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    max = Math.max(max, (i - left) / <span class="number">2</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                left = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(seats[len - <span class="number">1</span>] == <span class="number">0</span>) max = Math.max(max, len - <span class="number">1</span> - left);</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -538,8 +554,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -554,7 +579,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -599,6 +624,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

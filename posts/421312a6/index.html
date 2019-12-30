@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="Reference https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html">
+<meta name="description" content="总览 步骤.java file -&amp;gt; .class通过javac 把java文件编译为.class文件 .class -&amp;gt; JVM通过类加载器把.class文件加载进运行时数据区 类加载器 AppClassLoader ExtClassLoader RootClassLoader  双亲委派机制, 主要是从安全角度考虑 JVM运行时数据区程序计数器 Program Counter Re">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-JVM相关">
 <meta property="og:url" content="http://blog.scions.cn/posts/421312a6/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="Reference https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html">
+<meta property="og:description" content="总览 步骤.java file -&amp;gt; .class通过javac 把java文件编译为.class文件 .class -&amp;gt; JVM通过类加载器把.class文件加载进运行时数据区 类加载器 AppClassLoader ExtClassLoader RootClassLoader  双亲委派机制, 主要是从安全角度考虑 JVM运行时数据区程序计数器 Program Counter Re">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-25T05:20:45.801Z">
+<meta property="og:image" content="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png">
+<meta property="og:updated_time" content="2019-12-30T05:55:13.572Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java-JVM相关">
-<meta name="twitter:description" content="Reference https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html">
+<meta name="twitter:description" content="总览 步骤.java file -&amp;gt; .class通过javac 把java文件编译为.class文件 .class -&amp;gt; JVM通过类加载器把.class文件加载进运行时数据区 类加载器 AppClassLoader ExtClassLoader RootClassLoader  双亲委派机制, 主要是从安全角度考虑 JVM运行时数据区程序计数器 Program Counter Re">
+<meta name="twitter:image" content="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png">
 
 
 
@@ -412,7 +414,49 @@
       
 
       
-        <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+        <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p><img src="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png" alt="JVM Architecture"></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="java-file-gt-class"><a href="#java-file-gt-class" class="headerlink" title=".java file -&gt; .class"></a>.java file -&gt; .class</h3><p>通过<code>javac</code> 把<code>java</code>文件编译为<code>.class</code>文件</p>
+<h3 id="class-gt-JVM"><a href="#class-gt-JVM" class="headerlink" title=".class -&gt; JVM"></a>.class -&gt; JVM</h3><p>通过<code>类加载器</code>把<code>.class</code>文件加载进<code>运行时数据区</code></p>
+<h4 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h4><ul>
+<li>AppClassLoader</li>
+<li>ExtClassLoader</li>
+<li>RootClassLoader</li>
+</ul>
+<p>双亲委派机制, 主要是从安全角度考虑</p>
+<h3 id="JVM运行时数据区"><a href="#JVM运行时数据区" class="headerlink" title="JVM运行时数据区"></a>JVM运行时数据区</h3><h4 id="程序计数器-Program-Counter-Register"><a href="#程序计数器-Program-Counter-Register" class="headerlink" title="程序计数器 Program Counter Register"></a>程序计数器 Program Counter Register</h4><p>线程私有</p>
+<h4 id="本地方法栈-Native-Method-Stack"><a href="#本地方法栈-Native-Method-Stack" class="headerlink" title="本地方法栈 Native Method Stack"></a>本地方法栈 Native Method Stack</h4><p> 本地方法接口(JNI) -&gt; 本地方法库  本地方法栈里放的是 native方法</p>
+<h4 id="虚拟机栈-VM-Stack"><a href="#虚拟机栈-VM-Stack" class="headerlink" title="虚拟机栈 VM Stack"></a>虚拟机栈 VM Stack</h4><p>栈中存放 8大基本类型， 对象的引用，实例方法</p>
+<p>弹栈</p>
+<p>栈的生命周期与线程同步，线程结束，栈结束</p>
+<p>e.g </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Student s = <span class="keyword">new</span> Student();</span><br><span class="line"><span class="comment">// s在栈中，指向heap里的实际的对象</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>所有线程共享</p>
+<p>静态变量, 常量， 类信息(构造方法， 接口定义) 运行时常量池</p>
+<p>JDK 1.6  常量池在方法区中<br>JDK 1.7 常量池在堆中<br>JDK 1.8 常量池在 metaspace里</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>Heap 线程共享</p>
+<p>一般说方法区也是在堆里。 垃圾回收只会发生在堆里</p>
+<p>一个JVM只有一个heap, 大小可以调节</p>
+<p>分为:</p>
+<ul>
+<li>新生区   ——&gt; 轻GC<ul>
+<li>Eden 区</li>
+<li>Suvivor 0 区</li>
+<li>Survivor 1区</li>
+</ul>
+</li>
+<li>养老区 —–&gt; 满了触发Full GC</li>
+<li>永久区(1.8后叫metaspace) // 方法区也在这里</li>
+</ul>
+<p>永久区一般存储JDK自带的对象，不存在垃圾回收<br>其他2个区的垃圾回收算法:</p>
+<ul>
+<li>标记清除</li>
+<li>标记压缩</li>
+<li>复制算法</li>
+<li>引用计数算法</li>
+</ul>
+<h3 id="执行引擎"><a href="#执行引擎" class="headerlink" title="执行引擎"></a>执行引擎</h3><p>//TODO JIT<br>一些操作可以在这里处理, </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html</a> </li>
 </ul>
 
@@ -566,7 +610,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -621,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总览"><span class="nav-number">1.</span> <span class="nav-text">总览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java-file-gt-class"><span class="nav-number">2.1.</span> <span class="nav-text">.java file -&gt; .class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#class-gt-JVM"><span class="nav-number">2.2.</span> <span class="nav-text">.class -&gt; JVM</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#类加载器"><span class="nav-number">2.2.1.</span> <span class="nav-text">类加载器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM运行时数据区"><span class="nav-number">2.3.</span> <span class="nav-text">JVM运行时数据区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#程序计数器-Program-Counter-Register"><span class="nav-number">2.3.1.</span> <span class="nav-text">程序计数器 Program Counter Register</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本地方法栈-Native-Method-Stack"><span class="nav-number">2.3.2.</span> <span class="nav-text">本地方法栈 Native Method Stack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#虚拟机栈-VM-Stack"><span class="nav-number">2.3.3.</span> <span class="nav-text">虚拟机栈 VM Stack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区"><span class="nav-number">2.3.4.</span> <span class="nav-text">方法区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#堆"><span class="nav-number">2.3.5.</span> <span class="nav-text">堆</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行引擎"><span class="nav-number">2.4.</span> <span class="nav-text">执行引擎</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">3.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

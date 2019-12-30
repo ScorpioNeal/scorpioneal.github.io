@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="辗转相除法">
+<meta name="description" content="题目For strings S and T, we say “T divides S” if and only if S = T + … + T  (T concatenated with itself 1 or more times) Return the largest string X such that X divides str1 and X divides str2. Example">
 <meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm Leetcode 1071 Greatest Common Divisor of Strings">
+<meta property="og:title" content="Algorithm LeetCode 1071 Greatest Common Divisor of Strings">
 <meta property="og:url" content="http://blog.scions.cn/posts/301dd35e/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="辗转相除法">
+<meta property="og:description" content="题目For strings S and T, we say “T divides S” if and only if S = T + … + T  (T concatenated with itself 1 or more times) Return the largest string X such that X divides str1 and X divides str2. Example">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-24T06:40:42.183Z">
+<meta property="og:updated_time" content="2019-12-27T08:55:56.339Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Algorithm Leetcode 1071 Greatest Common Divisor of Strings">
-<meta name="twitter:description" content="辗转相除法">
+<meta name="twitter:title" content="Algorithm LeetCode 1071 Greatest Common Divisor of Strings">
+<meta name="twitter:description" content="题目For strings S and T, we say “T divides S” if and only if S = T + … + T  (T concatenated with itself 1 or more times) Return the largest string X such that X divides str1 and X divides str2. Example">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>Algorithm Leetcode 1071 Greatest Common Divisor of Strings | ScorpioNeal's Blog</title>
+  <title>Algorithm LeetCode 1071 Greatest Common Divisor of Strings | ScorpioNeal's Blog</title>
   
 
 
@@ -325,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithm Leetcode 1071 Greatest Common Divisor of Strings</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithm LeetCode 1071 Greatest Common Divisor of Strings</h1>
         
 
         <div class="post-meta">
@@ -412,8 +412,25 @@
       
 
       
-        <p>辗转相除法</p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>For strings S and T, we say “T divides S” if and only if S = T + … + T  (T concatenated with itself 1 or more times)</p>
+<p>Return the largest string X such that X divides str1 and X divides str2.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: str1 = "ABCABC", str2 = "ABC"</span><br><span class="line">Output: "ABC"</span><br></pre></td></tr></table></figure>
 
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: str1 = "ABABAB", str2 = "ABAB"</span><br><span class="line">Output: "AB"</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: str1 = "LEET", str2 = "CODE"</span><br><span class="line">Output: ""</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>1 &lt;= str1.length &lt;= 1000</li>
+<li>1 &lt;= str2.length &lt;= 1000</li>
+<li>str1[i] and str2[i] are English uppercase letters.</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>辗转相除法 先求2个字符串的最大公约数, 然后比较</p>
+<h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">gcdOfStrings</span><span class="params">(String str1, String str2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> length1 = str1.length();</span><br><span class="line">        <span class="keyword">int</span> length2 = str2.length();</span><br><span class="line">        <span class="keyword">int</span> coun = get(length1, length2);</span><br><span class="line">        String st = str1.substring(<span class="number">0</span>, coun);</span><br><span class="line">        <span class="keyword">int</span> coun1 = str1.length() / coun;</span><br><span class="line">        <span class="keyword">int</span> coun2 = str2.length() / coun;</span><br><span class="line"></span><br><span class="line">        String s1 = <span class="string">""</span>;</span><br><span class="line">        String s2 = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; coun1; i++) &#123;</span><br><span class="line">            s1 += st;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; coun2; i++) &#123;</span><br><span class="line">            s2 += st;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(s1.equals(str1) &amp;&amp; s2.equals(str2)) &#123;</span><br><span class="line">            <span class="keyword">return</span> st;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> larger;</span><br><span class="line">        <span class="keyword">int</span> smaller;</span><br><span class="line">        <span class="keyword">if</span>(a &gt; b) &#123;</span><br><span class="line">            larger = a;</span><br><span class="line">            smaller = b;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            larger = b;</span><br><span class="line">            smaller = a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(larger % smaller == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> smaller;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> rt = larger % smaller;</span><br><span class="line">            <span class="keyword">return</span> get(smaller, rt);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -539,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -555,7 +581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -600,6 +626,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC-代码"><span class="nav-number">3.</span> <span class="nav-text">AC 代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

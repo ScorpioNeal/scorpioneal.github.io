@@ -307,6 +307,1025 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6a37ecd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b6a37ecd/" itemprop="url">Algorithm LeetCode 367 Valid Perfect Square</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T10:57:20+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b6a37ecd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6a37ecd/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
+<p>Note: Do not use any built-in library function such as sqrt.</p>
+<p>Example 1:</p>
+<p>``shell</p>
+<p>Input: 16<br>Output: true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">Input: 14</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断某个数是否是n^2, 遍历呗</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num / i; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * i == num) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/6d34e4e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/6d34e4e/" itemprop="url">Algorithm LeetCode 234 Palindrome Linked List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T10:13:33+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/6d34e4e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6d34e4e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a singly linked list, determine if it is a palindrome.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;2-&gt;1</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Follow up:<br>Could you do it in O(n) time and O(1) space?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><ol>
+<li>快慢指针找到最中间节点</li>
+<li>链表的反转</li>
+<li>比较start -&gt; mid  &amp; mid -&gt; end 节点 是否相同</li>
+</ol>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><p>代码比较难写</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/3885d3ad/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/3885d3ad/" itemprop="url">Algorithm LeetCode 119 Pascal's Triangle 2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-12T21:58:38+08:00">
+                2019-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/3885d3ad/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/3885d3ad/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle.</p>
+<p>Note that the row index starts from 0.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: [1,3,3,1]</span><br></pre></td></tr></table></figure>
+
+<p>Follow up:</p>
+<p>Could you optimize your algorithm to use only O(k) extra space?</p>
+<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>换成左对齐的数组可能更好找规律</p>
+<p>1
+1 1<br>1 2 1<br>1 3 3 1<br>1 4 6 4 1</p>
+<p>可以看出A[j] = A[j] + A[j - 1]; A[0] = 1</p>
+<p>然后就很好写代码了 </p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">getRow</span><span class="params">(<span class="keyword">int</span> rowIndex)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Integer[] nums = <span class="keyword">new</span> Integer[rowIndex + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span> ; i &lt; nums.length; i++) &#123;</span><br><span class="line">            nums[i] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        nums[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; rowIndex+<span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">                nums[j] = nums[j] + nums[j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Arrays.asList(nums);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/afd7ba5c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/afd7ba5c/" itemprop="url">Algorithm LeetCode 290 Word Pattern</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-09T13:56:12+08:00">
+                2019-12-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/afd7ba5c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/afd7ba5c/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a <code>pattern</code> and a string <code>str</code>, find if str follows the same pattern.</p>
+<p>Here follow means a full match, such that there is a bijection between a letter in <code>pattern</code> and a non-empty word in <code>str</code>.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "abba", str = "dog cat cat dog"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:pattern = "abba", str = "dog cat cat fish"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "aaaa", str = "dog cat cat dog"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Example 4:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "abba", str = "dog dog dog dog"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Notes:<br>You may assume <code>pattern</code> contains only lowercase letters, and <code>str</code> contains lowercase letters that may be separated by a single space.</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这题主要考察了 map.put(K, V)方法返回值的问题。</p>
+<p>对于一个map来说，<br>第一次put成功, map.put(k1, v1), 返回值是上次k1位置对应的value, 这儿因为是首次，所以返回null<br>第二次put成功, map.put(k1, v2), 返回值是上次k1位置对应的value, 这儿就会返回v1</p>
+<p>因此，设计一个map, key是patter中的char, 也是str中的strs[index]. 所以用Map<object>, value用index</object></p>
+<p>e.g </p>
+<p>这样对于pattern来说, e.g pattern 为 ‘aabb’</p>
+<p>map.put(a, 0); 返回null<br>map.put(a, 1); 返回0<br>map.put(b, 2); 返回null<br>map.put(b, 3); 返回2</p>
+<p>对于str来说, e.g str 为 “dog dog cat cat”<br>map.put(dog, 0); 返回null<br>map.put(dog, 1); 返回0<br>map.put(cat, 2); 返回null<br>map.put(cat, 3); 返回2</p>
+<p>发现他们返回值对得上，就可以认为是pattern的</p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>在写代码的时候发现如果开始把Map设计为Map&lt;Object, Integer&gt;的时候跑case会在这样的情况下失败</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String pattern = <span class="string">"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd"</span>;</span><br><span class="line">String str = <span class="string">"s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>也就是<br>pattern: map.put(d, 128) 返回Integer 128<br>str    : map.put(t, 128) 返回Integer 128<br>然后 Integer(128) != Integer(128)</p>
+<p>整理下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer a = <span class="number">18</span>;</span><br><span class="line">Integer b = <span class="number">18</span>;</span><br><span class="line">a == b <span class="comment">// true</span></span><br><span class="line">Integer a1 = <span class="number">128</span>;</span><br><span class="line">Integer b1 = <span class="number">128</span>;</span><br><span class="line">a1 == b1 <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+
+<p>原因是:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer类内部 通过静态内部类提供了一个缓存池，范围在-128~127之间，如果超过这个范围 Integer 值都是new出来的对象 所以使用 == 比较会出错</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原因Integer缓存了-128~127之间的数，这是在类加载期间就完成的。以后需要的时候直接指向它就可以了，省去了构造对象的开支，提高了效率。</span></span><br><span class="line"><span class="comment">//同理, Long也一样, 所以在Map中使用Integer或者Long作为Value的时候需要注意</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerCache</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> low = -<span class="number">128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> high;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// high value may be configured by property</span></span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">127</span>;</span><br><span class="line">        String integerCacheHighPropValue =</span><br><span class="line">            sun.misc.VM.getSavedProperty(<span class="string">"java.lang.Integer.IntegerCache.high"</span>);</span><br><span class="line">        <span class="keyword">if</span> (integerCacheHighPropValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> i = parseInt(integerCacheHighPropValue);</span><br><span class="line">                i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                <span class="comment">// If the property cannot be parsed into an int, ignore it.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        high = h;</span><br><span class="line"></span><br><span class="line">        cache = <span class="keyword">new</span> Integer[(high - low) + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> j = low;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">            cache[k] = <span class="keyword">new</span> Integer(j++);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">        <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">IntegerCache</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordPattern</span><span class="params">(String pattern, String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == pattern || str == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String[] strs = str.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">if</span>(strs.length != pattern.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = pattern.charAt(i);</span><br><span class="line">            String s = strs[i];</span><br><span class="line"></span><br><span class="line">            Object l = map.put(c, i);</span><br><span class="line">            Object r = map.put(s, i);</span><br><span class="line">            <span class="keyword">int</span> left = <span class="keyword">null</span> == l ? -<span class="number">1</span> : (<span class="keyword">int</span>)l;</span><br><span class="line">            <span class="keyword">int</span> right = <span class="keyword">null</span> == r ? -<span class="number">1</span> : (<span class="keyword">int</span>)r;</span><br><span class="line">            <span class="keyword">if</span>(left != right) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/31ea19a6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/31ea19a6/" itemprop="url">Android 深入理解Scroller原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T10:01:25+08:00">
+                2019-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/31ea19a6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/31ea19a6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.jianshu.com/p/5629bee7718d" target="_blank" rel="noopener">https://www.jianshu.com/p/5629bee7718d</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/421312a6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/421312a6/" itemprop="url">Java-JVM相关</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T14:35:53+08:00">
+                2019-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/421312a6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/421312a6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p><img src="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png" alt="JVM Architecture"></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="java-file-gt-class"><a href="#java-file-gt-class" class="headerlink" title=".java file -&gt; .class"></a>.java file -&gt; .class</h3><p>通过<code>javac</code> 把<code>java</code>文件编译为<code>.class</code>文件</p>
+<h3 id="class-gt-JVM"><a href="#class-gt-JVM" class="headerlink" title=".class -&gt; JVM"></a>.class -&gt; JVM</h3><p>通过<code>类加载器</code>把<code>.class</code>文件加载进<code>运行时数据区</code></p>
+<h4 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h4><ul>
+<li>AppClassLoader</li>
+<li>ExtClassLoader</li>
+<li>RootClassLoader</li>
+</ul>
+<p>双亲委派机制, 主要是从安全角度考虑</p>
+<h3 id="JVM运行时数据区"><a href="#JVM运行时数据区" class="headerlink" title="JVM运行时数据区"></a>JVM运行时数据区</h3><h4 id="程序计数器-Program-Counter-Register"><a href="#程序计数器-Program-Counter-Register" class="headerlink" title="程序计数器 Program Counter Register"></a>程序计数器 Program Counter Register</h4><p>线程私有</p>
+<h4 id="本地方法栈-Native-Method-Stack"><a href="#本地方法栈-Native-Method-Stack" class="headerlink" title="本地方法栈 Native Method Stack"></a>本地方法栈 Native Method Stack</h4><p> 本地方法接口(JNI) -&gt; 本地方法库  本地方法栈里放的是 native方法</p>
+<h4 id="虚拟机栈-VM-Stack"><a href="#虚拟机栈-VM-Stack" class="headerlink" title="虚拟机栈 VM Stack"></a>虚拟机栈 VM Stack</h4><p>栈中存放 8大基本类型， 对象的引用，实例方法</p>
+<p>弹栈</p>
+<p>栈的生命周期与线程同步，线程结束，栈结束</p>
+<p>e.g </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Student s = <span class="keyword">new</span> Student();</span><br><span class="line"><span class="comment">// s在栈中，指向heap里的实际的对象</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>所有线程共享</p>
+<p>静态变量, 常量， 类信息(构造方法， 接口定义) 运行时常量池</p>
+<p>JDK 1.6  常量池在方法区中<br>JDK 1.7 常量池在堆中<br>JDK 1.8 常量池在 metaspace里</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>Heap 线程共享</p>
+<p>一般说方法区也是在堆里。 垃圾回收只会发生在堆里</p>
+<p>一个JVM只有一个heap, 大小可以调节</p>
+<p>分为:</p>
+<ul>
+<li>新生区   ——&gt; 轻GC<ul>
+<li>Eden 区</li>
+<li>Suvivor 0 区</li>
+<li>Survivor 1区</li>
+</ul>
+</li>
+<li>养老区 —–&gt; 满了触发Full GC</li>
+<li>永久区(1.8后叫metaspace) // 方法区也在这里</li>
+</ul>
+<p>永久区一般存储JDK自带的对象，不存在垃圾回收<br>其他2个区的垃圾回收算法:</p>
+<ul>
+<li>标记清除</li>
+<li>标记压缩</li>
+<li>复制算法</li>
+<li>引用计数算法</li>
+</ul>
+<h3 id="执行引擎"><a href="#执行引擎" class="headerlink" title="执行引擎"></a>执行引擎</h3><p>//TODO JIT<br>一些操作可以在这里处理, </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html</a> </li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d27340ce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -984,1267 +2003,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/1d9e584e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/1d9e584e/" itemprop="url">Translation-Data Binding Library-Overview</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T09:27:35+08:00">
-                2019-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/1d9e584e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1d9e584e/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Data-Binding-Library"><a href="#Data-Binding-Library" class="headerlink" title="Data Binding Library"></a>Data Binding Library</h1><p><a href="https://developer.android.com/topic/libraries/data-binding" target="_blank" rel="noopener">Reference</a></p>
-<p>The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.</p>
-<p>Layouts are often defined in activities with code that calls UI framework methods. For example, the code below calls <code>findViewById()</code> to find a <code>TextView</code> widget and bind it to the <code>username</code> property of the <code>viewModel</code> variable:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TextView textView = findViewById(R.id.sample_text);</span><br><span class="line">textView.setText(viewModel.getUserName());</span><br></pre></td></tr></table></figure>
-
-<p>The following examples shows how to use the Data Binding Library to assign text to the widget directly in the layout file. This removes the need to call any of the Java code shown above. Note the use of <code>@{}</code> syntax in the assignment expression:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">android:text=<span class="string">"@&#123;viewmodel.userName&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Binding components in the layout file lets you remove many UI framework calls in your activities, making them simpler and easier to maintain. This can also improve your app’s performance and help prevent memory leaks and null pointer exceptions.</p>
-<h2 id="Using-the-Data-Binding-Library"><a href="#Using-the-Data-Binding-Library" class="headerlink" title="Using the Data Binding Library"></a>Using the Data Binding Library</h2><p>Use the following pages to learn how to use the Data Binding Library in your Android apps.</p>
-<p><a href="https://developer.android.com/topic/libraries/data-binding/start.html" target="_blank" rel="noopener">Get started</a></p>
-<pre><code>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions.html" target="_blank" rel="noopener">Layouts and binding expressions</a></p>
-<pre><code>The expression language allows you to write expressions that connecct variable to the views in the layout. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects. The library provides features such as imports, variable, and includes that you can use in your layout.
-
-These features of the library coexist seamlessly with your existing layouts. For example, the binding variables that can be used in expressions are defined inside a `data` element that is a sibling of the UI layout&apos;s root element. Both elements are wrapped in a `layout` tag, as shown in the following example:
-
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"viewmodel"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"com.myapp.data.ViewModel"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ConstraintLayout...</span> /&gt;</span> <span class="comment">&lt;!-- UI layout's root element --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/observability.html" target="_blank" rel="noopener">Work with observable data objects</a></p>
-<pre><code>The Data Binding Library provides classes and methods to easily observe data for changes. You don&apos;t have to worry about refreshing the UI when the underlying data source changes. You can make your variables or their properties observable. The library allows you to make objects, fields, or collections observable.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/generated-binding.html" target="_blank" rel="noopener">Generated binding classes</a></p>
-<pre><code>The Data Binding Library generates binding classes that are used to access the layout&apos;s variable and views. This page shows you how to use and customize generated binding classes.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/binding-adapters.html" target="_blank" rel="noopener">Binding adapters</a></p>
-<pre><code>For every layout expression, there is a binding adapter that makes the framework calls required to set the corresponding properties or listeners. For example, the binding adapter can take care of calling the `setText()` method to set the text property or call the `setOnClickListener()` method to add a listener to the click event. The most common binding adapters, such as the adapters for the `android:text` property used in the examples in this page, are available for you to use in the `android.databinding.adapters` pakage. For a list of the common binding adapters, see [adapters](https://android.googlesource.com/platform/frameworks/data-binding/+/refs/heads/studio-master-dev/extensions/baseAdapters/src/main/java/androidx/databinding/adapters). You can also create custom adapters, as shown in the following example:
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BindingAdapter</span>(<span class="string">"app:goneUnless"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">goneUnless</span><span class="params">(View view, Boolean visible)</span> </span>&#123;</span><br><span class="line">    view.visibility = visible ? View.VISIBLE : View.GONE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/architecture.html" target="_blank" rel="noopener">Bind layout views to Architecture components</a></p>
-<pre><code>The Android Support Library includes the [Architecture Components](), which you can use to design rbust, testable, and maintainable apps. You can use the Architecture Components with the Data Binding Library to further simplify the development of your UI.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/two-way" target="_blank" rel="noopener">Two-way data binding</a></p>
-<pre><code>The Data Binding Library supports two-way data binding. The notation used for this type of binding supports the ability to receive data changes to a property and listen to user updates to that property at the same time.</code></pre><h2 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h2><p>To learn more about data binding, consult the following additional resources.</p>
-<ul>
-<li><p>Samples</p>
-<p>  <a href="https://github.com/googlesamples/android-databinding" target="_blank" rel="noopener">Android Data Binding Library saples</a></p>
-</li>
-<li><p>Codelabs</p>
-<p>  <a href="https://codelabs.developers.google.com/codelabs/android-databinding" target="_blank" rel="noopener">Android Data Binding codelab</a></p>
-</li>
-<li><p>Blog posts</p>
-<p>  <a href="https://medium.com/androiddevelopers/android-data-binding-library-from-observable-fields-to-livedata-in-two-steps-690a384218f2" target="_blank" rel="noopener">Android Data Binding Library — From Observable Fields to LiveData in two steps</a><br>  <a href="https://medium.com/androiddevelopers/data-binding-lessons-learnt-4fd16576b719" target="_blank" rel="noopener">Data Binding - Lessons learnt</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5cbb013a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/5cbb013a/" itemprop="url">Translation-Manage your app's memory</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-17T20:33:14+08:00">
-                2019-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/5cbb013a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5cbb013a/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developer.android.com/topic/performance/memory" target="_blank" rel="noopener">Reference</a></p>
-<p>Random-access memory (RAM) is a valuable resource in any software development environment, but it’s even more valuable on a mobile operating system where physical memory is often constrained. Although both the Android Runtime (ART) and Dalvik virtual machine perform routine garbage collection, this doesn’t  mean you can ignore when and where your app allocates and release memory. You still need to avoid introducing memory leaks, usually caused by holding onto object references in static member variables, and release any <a href="https://developer.android.com/reference/java/lang/ref/Reference.html" target="_blank" rel="noopener">Reference</a> objects at the appropriate time as defined by lifecycle callbacks.</p>
-<p>This page explains how you can proactively reduce memory usage within your app. For information about how the Android operating system manages memory, see the <a href="https://developer.android.com/topic/performance/memory-overview.html" target="_blank" rel="noopener">Overview of Android Memeory Management</a>.</p>
-<h2 id="Monitor-available-memory-and-memory-usage"><a href="#Monitor-available-memory-and-memory-usage" class="headerlink" title="Monitor available memory and memory usage"></a>Monitor available memory and memory usage</h2><p>Before you can fix the memory usage problems in your app, you first need to find them. The <a href="https://developer.android.com/studio/profile/memory-profiler.html" target="_blank" rel="noopener">Memory Profiler</a> in Android Studio helps you find and diagnose memory issues in the following ways.</p>
-<ol>
-<li>See how your app allocates memory over time. The Memory Profiler shows a realtime graph of how much memory your app is using, the number of allocated Java objects, and when garbage collection occurs.</li>
-<li>Initiate garbage $</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5fec0e43/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/5fec0e43/" itemprop="url">Android-Build a Responsive UI with ConstraintLayout</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-14T20:43:32+08:00">
-                2019-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/5fec0e43/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5fec0e43/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developer.android.com/training/constraint-layout" target="_blank" rel="noopener">Reference</a></p>
-<p><a href="https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout.html" target="_blank" rel="noopener">ConstriaintLayout</a> allows you to create large and complex  layouts with a flat view hierarchy(no nested view groups). It’s similar to <code>RelativeLayout</code> in that all views are laid out according to relationships between sibling views and the parent layout, but it’s more flexible than <code>RelativeLayout</code> and easier to use with Android Studio’s Layout Editor.</p>
-<p>All the power of <code>ConstraintLayout</code> is available directly from the Layout Editor’s visual tools, because the layout API and the Layout Editor were specially built for each other. So you can build your layout with <code>ConstraintLayout</code> entirely by drag-and-dropping instead of editing the XML.</p>
-<p>This page provides a guide to build a layout with <code>ConstraintLayout</code> in Android Studio 3.0 or higher. If you’d like more information about the Layout Editor itself, see the Android Studio guide to <a href="https://developer.android.com/studio/write/layout-editor.html" target="_blank" rel="noopener">Build a UI with Layout Editor</a>.</p>
-<p>To see a variety of layouts you can create with <code>ConstraintLayout</code>, check out the <a href="https://github.com/android/views-widgets-samples/tree/master/ConstraintLayoutExamples" target="_blank" rel="noopener">Constraint Layout Examples project on Github</a>.</p>
-<h2 id="Constraints-overview"><a href="#Constraints-overview" class="headerlink" title="Constraints overview"></a>Constraints overview</h2><p>To define a view’s position in <code>ConstraintLayout</code>, you must add at least one horizontal and one vertical constraint for the view. Each constraint represents a connection or alignment to another view, the parent layout, or an invisible guideline. Each constraint defines the view’s position along either the vertical or horizontal axis; so each view must have a minimum of one constraint for each axis, but often more are necessary.</p>
-<p>When you drop a view into the Layout Editor, it stays where you leave it even if it has no constraints. However, this is only to make editing easier; if a view has no constraints when you run your layout on a device, it is drawn at position [0, 0] (the top-left corner).</p>
-<p>In figure 1, the layout looks good in the editor, but there’s no vertical constraint on view C. When this layout draws on a device, view C horizontally aligns with the left and right edges of view A, but appears at the top of the screen because it has no vertical constraint.</p>
-<p>Figure 1. The editor shows view C below A, but it has no vertical constraint<br><img src="https://developer.android.com/training/constraint-layout/images/constraint-fail_2x.png" alt></p>
-<p>Although a missing constraint won’t cause a compilation error, the Layout Editor indicates missing constraints as an error in the toolbar. To view the errors and other warnings, click <code>Show Warnings and Errors</code>. The help you avoid missing constraints, the Layout Editro can automatially add constraints for you with the <a href="https://developer.android.com/training/constraint-layout#use-autoconnect-and-infer-constraints" target="_blank" rel="noopener">Autoconnect and infer constraints</a> feature.</p>
-<h2 id="Add-ConstraintLayout-to-your-project"><a href="#Add-ConstraintLayout-to-your-project" class="headerlink" title="Add ConstraintLayout to your project"></a>Add ConstraintLayout to your project</h2><p>To use <code>ConstraintLayout</code> in your project, procceed as follows:</p>
-<ol>
-<li>Ensure you have the <code>maven.google.com</code> repository declared in your module-level <code>build.gradle</code> file:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repository &#123;</span><br><span class="line">    google()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Add the library as a dependency in the same <code>build.gradle</code> file, as shown in the following example. Note that the latest version might be different than what is shown in the example:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    dependencies &#123;</span><br><span class="line">    implementation 'com.android.support.constraint:constraint-layout:1.1.2'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>In the toolbar or sync notification, click <code>Sync Project with Gradle Files</code>.</li>
-</ol>
-<p>Now you’re ready to build your layout with <code>ConstraintLayout</code>.</p>
-<h3 id="Convert-a-layout"><a href="#Convert-a-layout" class="headerlink" title="Convert a layout"></a>Convert a layout</h3><p>To convert an existing layout to a constraint layout, follow these steps:</p>
-<ol>
-<li>Open your layout in Android Studio and click the <code>Design</code> tab at the bottom of the editor window.</li>
-<li>In the <code>Component Tree</code> window, right-click the layout and click <code>Convert layout to ConstraintLayout</code>.</li>
-</ol>
-<h3 id="Create-a-new-layout"><a href="#Create-a-new-layout" class="headerlink" title="Create a new layout"></a>Create a new layout</h3><p>To start a new constraint layout file, follow these steps:</p>
-<ol>
-<li>In the <code>Project</code> window, click the module folder and then select <code>File &gt; New &gt; XML &gt; Layout XML</code>.</li>
-<li>Enter a name for the layout file and enter “android.support.constraint.ConstraintLayout” for the <code>Root Tag</code>.</li>
-<li>Click <code>Finish</code>.</li>
-</ol>
-<h2 id="Add-or-remove-a-constraint"><a href="#Add-or-remove-a-constraint" class="headerlink" title="Add or remove a constraint"></a>Add or remove a constraint</h2><p>To add a constraint, do the following:</p>
-<ol>
-<li>Drag a view from the <code>Palette</code> window into the editor.</li>
-</ol>
-<p>When you add a view in a <code>ConstraintLayout</code>, it displays a bounding box with square resizing handles on each corner and circular constraint handles on each side.</p>
-<ol start="2">
-<li><p>Click the view to select it.</p>
-</li>
-<li><p>Do one of the following</p>
-<ul>
-<li><p>Click a constraint handle and drag it to an available anchor point. This point can be the edge of another view, the edge of the layout, or a guideline. NOtice that as you drag the constraint handle, the Layout Editor shows potential connection anchors and blue overlays.</p>
-</li>
-<li><p>Click one of the <code>Create a connection</code> buttons in the <code>Layout</code> section of the <code>Attributes</code> window, as shown in figure 4.</p>
-<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-create-constraint-2x.png" alt="Figure 4"></p>
-</li>
-</ul>
-</li>
-</ol>
-<p>When the constraint is created, the editor gives it a <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-margins" target="_blank" rel="noopener">default margin</a> to separate the two views.</p>
-<p>When creating constraints, remember the following rules:</p>
-<ul>
-<li>Every view must have at least two constraints: one horizontal and one vertical</li>
-<li>You can create constraints only between a constraint handle and an anchor point that share the same plane. So a vertical plane(the left and right sides) of a view can be constrainted only to another vertical plane; and baselines can constraint only to other baselines.(不太理解啥意思)</li>
-<li>Each constraint handle can be used for just one constraint, but you can create multiple constraints(from different views) to the same anchor point.</li>
-</ul>
-<p>You can delete a constraint by doing any of the following:</p>
-<ul>
-<li>Click on a constraint to select it, and then press <code>Delete</code></li>
-<li>Press and hold <code>Control</code>(<code>Command</code> on macOS), and then click on a constraint anchor. Noteh that the constraint turns red to indicate that you can click to delte it , as shown in figure 5.</li>
-</ul>
-<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-delete-1-2x.png" alt="Figure 5"></p>
-<ul>
-<li>In the <code>Layout</code> section of the <code>Attributes</code> window, click on a constraint anchor, as shown in figure 6.</li>
-</ul>
-<p>If you add opposing constraints on a view, the constraint lines become squiggly like a spring to indicate the opposing force, as shown in video 2. The effect is most visible when the view size is set to “fixed” or “wrap content”, in which case the view is centered between the constraints. If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switching the size to “match constraints”</a>; or if you want to keep the current size but move the view so that it is not centered, <a href="https://developer.android.com/training/constraint-layout#adjust-the-constraint-bias" target="_blank" rel="noopener">adjust the constraints bias</a>.</p>
-<p>You can use constraints to achieve different types of layout behavior, as described in the following sections.</p>
-<h3 id="Parent-position"><a href="#Parent-position" class="headerlink" title="Parent position"></a>Parent position</h3><p>Constrain the side of a view to the corresponding edge of the layout.</p>
-<p>In figure 7, the left side of the view is connected to the left edge of the parent layout. You can define the distance from the edge with margin.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/parent-constraint_2x.png" alt="Figure 7"></p>
-<h3 id="Order-position"><a href="#Order-position" class="headerlink" title="Order position"></a>Order position</h3><p>Define the order of appearance for two views, either vertically or horizontally.</p>
-<p>In figure 8, B is constrained to alwasys be to the right of A, and C is constrained below A. However, these constraints do not imply alignment, so B can still move up and down.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/position-constraint_2x.png" alt="Figure 8"></p>
-<h3 id="Alignment"><a href="#Alignment" class="headerlink" title="Alignment"></a>Alignment</h3><p>Align the edge of a view to the same edge of another view.</p>
-<p>In figure 9, the left side of B is aligned to the left side of A. If you want to align the view centers, create a constraint on both sides.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint_2x.png" alt="figure 9"></p>
-<p>You can offset the alignment by dragging the view inward from the constraint. For example, figure 10 shows B with a 24dp offset alignment. The offset is defined by the constrained view’s margin.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint-offset_2x.png" alt="figure 10"></p>
-<p>You can also select all the views you want to align, and then click <code>Align</code> in the toolbar to select the alignment type.</p>
-<h3 id="Baseline-alignment"><a href="#Baseline-alignment" class="headerlink" title="Baseline alignment"></a>Baseline alignment</h3><p>Align the text baseline of a view to the text baseline of another view.</p>
-<p>In figure 11, the first line of B is aligned with the text in A.</p>
-<p>To create a baseline constraint, right-click the text view you want to constrain and then click <code>Show Baseline</code>. Then click on the text baseline and drag the line to another line.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/baseline-constraint_2x.png" alt="Figure 11"></p>
-<h3 id="Constrain-to-a-guideline"><a href="#Constrain-to-a-guideline" class="headerlink" title="Constrain to a guideline"></a>Constrain to a guideline</h3><p>You can add a vertical or horizontal guideline to which you can constrain views, and the guideline will be invisible to app users. You can position the guideline with the layout based on either up units or percent, relative to the layout’s edge.</p>
-<p>To create a guideline, click <code>Guidelines</code> in the toolbar, and then click either <code>Add Vertical Guideline</code> or <code>Add Horizontal Guideline</code>.</p>
-<p>Drag the dotted line to reposition it and click the circle at the edge of the guideline to toggle the measurement mode.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/guideline-constraint_2x.png" alt="Figure 12"></p>
-<h3 id="Constrain-to-a-barrier"><a href="#Constrain-to-a-barrier" class="headerlink" title="Constrain to a barrier"></a>Constrain to a barrier</h3><p>Similar to a guideline, a barrier is an invisible line that you can constrain views to. Except a barrier does not define its own position; instead, the barrier position moves based on the position of views constrained within it.This is useful when you want to constrain a view to the a set of views rather than to one specific view.</p>
-<p>For example, figure 13 shows view C is constrained to the right side of a barrier. The barrier is set to the “end”(or the right side in a left-to-right layout) of both view A and view B. So the barrier moves depending on whether the right side of view A or View B is is farthest right.</p>
-<p>To create a barrier, follow these steps:</p>
-<ol>
-<li>Click <code>Guidelines</code> in the toolbar, and then click <code>Add Vertical Barrier</code> or <code>Add Horizontal Barrier</code></li>
-<li>In the <code>Component Tree</code> window, select the views you want inside the barrier and drag them into the barrier compoent</li>
-<li>Select the barrier from the <code>Component Tree</code>, open the <code>Attributes</code> window, and then set the <code>barrierDirection</code></li>
-</ol>
-<p>Now you can create a constraint from another view to the barrier.</p>
-<p>You can also constrain views that are inside the barrier to the barrier. This way, you can ensure that all views in the barrier always align to each other, even if you don’t know which view will be the longest or tallest.</p>
-<p>You can also include a guideline inside a barrier to ensure a “minimum” position for the barrier.</p>
-<h2 id="Adjust-the-constraint-bias"><a href="#Adjust-the-constraint-bias" class="headerlink" title="Adjust the constraint bias"></a>Adjust the constraint bias</h2><p>When you add a constraint to both side of a view( and the view size for the same dimension is either “fixed” or “wrap content”), the view becomes centered between the two constraints with a bias of 50% by default. You can adjust the bias by dragging the bias slider in the <code>Attributes</code> window or by dragging the view, as shown in video 3.</p>
-<p>If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switch the size to “match constratins”</a>.</p>
-<h2 id="Adjust-the-view-size"><a href="#Adjust-the-view-size" class="headerlink" title="Adjust the view size"></a>Adjust the view size</h2><p>You can use the corner handles to resize a view, but this hard codes the size so the view will not resize for different content or screen sizes. To select a different sizing mode, click a view and open the <code>Attributes</code> window on the right side of the editor.</p>
-<p>Near the top of the <code>Attributes</code> window is the view inspector, which includes controls for several layout attributes, as shown in figure 14(this is available only for views in a constraint layout).</p>
-<p>You can change the way the height and width are calculated by clicking the symbols indicated with callout 3 in figure 14. These symbols represent the size mode as follows(click the symbol to toggle between these settings):</p>
-<ul>
-<li><img src="https://developer.android.com/studio/images/buttons/layout-width-fixed.png" alt> Fixed: You specify a specific dimension in the text box below or by resizing the view in the editor.</li>
-<li><img src="https://developer.android.com/studio/images/buttons/layout-width-wrap.png" alt> Wrap Content: The view expands only as much as needed to fit its contents.</li>
-<li><img src="https://developer.android.com/studio/images/buttons/layout-width-match.png" alt> Match Constraints: The view expands as much as possible to meet the constraints on each side(after accounting for the view’s margins). However, you can modify that behavior with the following attributes and values(these attributes take effect only when you set the view width to match constraints):</li>
-</ul>
-<p>//// TODO….</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6ff9bb5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/b6ff9bb5/" itemprop="url">Android Retrofit</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T13:57:25+08:00">
-                2019-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/b6ff9bb5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6ff9bb5/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://juejin.im/post/59a4db0c518825242861181b" target="_blank" rel="noopener">https://juejin.im/post/59a4db0c518825242861181b</a></p>
-<p><a href="https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d41965e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/d41965e/" itemprop="url">Android-Dagger2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T13:55:01+08:00">
-                2019-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/d41965e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d41965e/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://juejin.im/post/5b45bd715188251b3a1db54f" target="_blank" rel="noopener">https://juejin.im/post/5b45bd715188251b3a1db54f</a><br><a href="https://juejin.im/post/5ccd496de51d453b573ee29d" target="_blank" rel="noopener">https://juejin.im/post/5ccd496de51d453b573ee29d</a><br><a href="https://juejin.im/post/5bcc7151f265da0ab41e8f6e" target="_blank" rel="noopener">https://juejin.im/post/5bcc7151f265da0ab41e8f6e</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9fb3b143/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/9fb3b143/" itemprop="url">Translation-View the heap and memory allocations with Memory Profile</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T09:30:29+08:00">
-                2019-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/9fb3b143/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9fb3b143/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developer.android.com/studio/profile/memory-profiler" target="_blank" rel="noopener">Reference</a></p>
-<h1 id="View-the-Java-heap-and-memory-allocations-with-Memory-Profile"><a href="#View-the-Java-heap-and-memory-allocations-with-Memory-Profile" class="headerlink" title="View the Java heap and memory allocations with Memory Profile"></a>View the Java heap and memory allocations with Memory Profile</h1><p>The Memory Profile is a component in the <a href="https://developer.android.com/studio/preview/features/android-profiler.html" target="_blank" rel="noopener">Android Profile</a> that helps you identify memory leaks and memory churn that can lead to a stutter, freezes, and even app crashes. It shows a realtime graph of your app’s memory use and lets you capture a heap dump, force garbage collecctions, and track memory allocations.</p>
-<p>To open the Memory Profile, follow these steps:</p>
-<ol>
-<li>Click <code>View &gt; Tool Windows &gt; Profiler</code>(you can also click <code>Profile</code> in the toolbar).</li>
-<li>Select the device and app process you want to profile from the Android Profile toolbar. If you’ve connected a device over USB but don’t see it listed, ensure that you have <a href="https://developer.android.com/studio/debug/dev-options.html#enable" target="_blank" rel="noopener">enable USB debugging</a></li>
-<li>Click anywhere in the <code>MEMORY</code> timeline to open the Memory Profile.</li>
-</ol>
-<p>Alternatively, you can inspect your app memory from the command line with <a href="https://developer.android.com/studio/command-line/dumpsys.html" target="_blank" rel="noopener">dumpsys</a>, and also <a href="https://developer.android.com/studio/debug/am-logcat.html#memory-logs" target="_blank" rel="noopener">see GC events in logcat</a>.</p>
-<h2 id="Why-you-should-profile-your-app-memory"><a href="#Why-you-should-profile-your-app-memory" class="headerlink" title="Why you should profile your app memory"></a>Why you should profile your app memory</h2><p>Android provides a <a href="https://developer.android.com/topic/performance/memory-overview.html" target="_blank" rel="noopener">managed memory environment</a>-when it determines that your app is no longer using some objects, the garbage collector release the unused memory back to the heap. How Android goes about finding unused memory constantly being improved, but at some point on all Android versions, the system must briefly pause your code. Most of the time, the pauses are imperceptible. However, if your app allocates memory faster than the system can collect it, your app might be delayed while the collector frees enough memory to satisfy your allocations. The delay could cause your app to skip frames and cause visible slowness.</p>
-<p>Even if your app doesn’t exhibit slowness, you should use the Memory Profiler to do the following:</p>
-<ul>
-<li>Look for undesirable memory allocation patterns in the timeline that might be causing performance problems</li>
-<li>Dump the Java heap to see which objects are using up memory at any given time. Several heap dumps over an extended period of time can help identify memory leaks.</li>
-<li>Record memory allocations during normal and extreme user interaction to identify exactly where your code is either allocating too many objects in a short time or allocating objects that become leaked.</li>
-</ul>
-<p>For information about programming practices that can reduce your app’s memory to use, read <a href="https://developer.android.com/topic/performance/memory.html" target="_blank" rel="noopener">Manage your app’s memory</a>.</p>
-<h2 id="Memory-Profiler-overview"><a href="#Memory-Profiler-overview" class="headerlink" title="Memory Profiler overview"></a>Memory Profiler overview</h2><p>When you first open the Memory Profiler, you’ll see a detailed timeline of your app’s memory use and access tools to force garbage collection, capture a heap dump, and record memory allocations.</p>
-<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-callouts_2x.png" alt></p>
-<p>As indicated in figure 1, the default view for the Memory Profiler includes the following:</p>
-<ol>
-<li>A button to force a garbage collection event.</li>
-<li>A button to <a href="https://developer.android.com/studio/profile/memory-profiler#capture-heap-dump" target="_blank" rel="noopener">capture a heap dump</a>.</li>
-<li>A dropdown menu to specify how frequently the profiler captures memory allocations. Selecting the appropriate option may help you <a href="https://developer.android.com/studio/profile/memory-profiler#performance" target="_blank" rel="noopener">improve app performance while profiling</a></li>
-<li>Button to zoom in/out of the timeline.</li>
-<li>A button to jump forward to the live memory data.</li>
-<li>The event timeline, which shows the activity states, user input events, and screen rotation events.</li>
-<li>The memory use timeline, which includes the following:<ul>
-<li>A stacked graph of how much memory is being used by each memory category, as indicated by the y-axis on the left and the color key at the top.</li>
-<li>A dashed line indicates the number of allocated objects, as indicated by the y-axis on the right.</li>
-<li>An icon for each garbage collection event.</li>
-</ul>
-</li>
-</ol>
-<p>However, if you’re using a device running Android 7.1 or lower, not all profiling data is visible by default. If you see a message that says, “Advanced profiling is unavailable for the selected process,” you need to <a href="https://developer.android.com/studio/preview/features/android-profiler.html#advanced-profiling" target="_blank" rel="noopener">enable advanced profiling</a> to see the following:</p>
-<ul>
-<li>Event timeline</li>
-<li>Number of allocated objects</li>
-<li>Garbage collection events</li>
-<li>On Android 8.0 and higher, advanced profiling is always enabled for debuggable apps.</li>
-</ul>
-<h3 id="How-memory-is-counted"><a href="#How-memory-is-counted" class="headerlink" title="How memory is counted"></a>How memory is counted</h3><p>The numbers you see at the top of the Memory Profiler are based on all the private memory pages that your app has committed, according to the Android system. This count does not include pages shared with the system or other apps.</p>
-<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-counts_2x.png" alt></p>
-<p>The categories in the memory count are as follows:</p>
-<ul>
-<li><p>Java: Memory from objects allocated from Java or Kotlin code.</p>
-</li>
-<li><p>Native: Memory from objects allocated from C or C++ code.</p>
-<p>  Even if you’re not using C++ in your app, you might see some native memory used here because the Android framework uses native memory to handle various tasks on your behalf, such as when handling image assets and other graphics-even though the code you’ve written is in Java or Kotlin.</p>
-</li>
-<li><p>Graphics: Memory used for graphics buffer queues to display pixels to the screen,including GL surfaces, GL textures, and so on. (Note that this is memory shared with the CPU, not dedicated GPU memory).</p>
-</li>
-<li><p>Stack: Memory used by both native and Java stacks in your app. This usually relates to how many threads your app is running.</p>
-</li>
-<li><p>Code: Memory that your app uses for code and resources, such as dex bytecode, optimized or compiled dex code, .so libraries, and  fonts.</p>
-</li>
-<li><p>Other: Memory used by your app that the system isn’t sure how to categorize.</p>
-</li>
-<li><p>Allocated: The number of Java/Kotlin objects allocated by your app. This does not count objects allocated in C or C++.</p>
-<p>  When connected to a device running Android 7.1 and lower, this allocation count starts only at the time the Memory Profiler connected to your running app. So any objects allocated before you start profiling are not accounted for. However, Android 8.0 and higher includes an on-device profiling tool that keeps track of all allocations, so this number always represents the total number of Java objects outstanding in your app on Android 8.0 and higher.</p>
-</li>
-</ul>
-<p>When compared to memory counts from the previous Android Monitor tool, the new Memory Profiler records your memory differently, so it might seem like your memory use is now higher. The Memory Profiler monitors some extra categories that increase the total, but if you only care about the Java heap memory, then the “Java” number should be similar to the value from the previous tool. Although the Java number probably doesn’t exactly match what you saw in Android Monitor, the new number accounts for all physical memory pages that have been allocated to your app’s Java heap since it was forked from Zygote. So this provides an accurate representation of how much physical memory your app is actually using.</p>
-<h2 id="View-memory-allocations"><a href="#View-memory-allocations" class="headerlink" title="View memory allocations"></a>View memory allocations</h2><p>Memory allocations show you how each Java object and JNI reference in your memory was allocated. Specifically, the Memory Profiler can show you the following about object allocations:</p>
-<ul>
-<li>What types of objects were allocated and how much space they use.</li>
-<li>The stack trace of each allocation, including in which thread</li>
-<li>When the objects were deallocated(only when using a device with Android 8.0 or higher)</li>
-</ul>
-<p>If your device is running Android 8.0 or higher, you can view your object allocations at any time as follows: Drag in the timeline to select the region for which you want to view the allocations (as shown in video 1). There’s no need to begin a recording session, because Android 8.0 and higher includes an on-device profiling tool that constantly tracks your app’s allocations.</p>
-<p>// Vieo</p>
-<p>If your device is running Android 7.1 or lower, click Record memory allocations  in the Memory Profiler toolbar. While recording, the Memory Profiler tracks all allocations that occur in your app. When you’re done, click Stop recording  (the same button; see video 2) to view the allocations.</p>
-<p>// Video</p>
-<p>After you select a region of the timeline (or when you finish a recording session with a device running Android 7.1 or lower), the list of allocated objects appears below the timeline, grouped by class name and sorted by their heap count.</p>
-<p>To inspect the allocation record, follow these steps:</p>
-<ol>
-<li>Browser the list to find objects that have unusually large heap counts and that might be leaked. To help find known classes, click the <code>Class Name</code> column header to sort alphabetically. Then click a class name. The <code>Instant View</code> pane appears on the right, showing each instance of that class, as shown in figure 3.<ul>
-<li>Alternatively, you can locate objects quickly by clicking Filter, or by pressing Control+F(Command + F on Mac), and entering a class or package name in the search field. You can also search by method name if you select <code>Arrange by callstack</code> from the dropdown menu. If you want to use regular expressions, check the box next to <code>Regex</code>. Check the box next to <code>Match case</code> if your search query in case-sensitive.</li>
-</ul>
-</li>
-<li>In the <code>Instance View</code> pane, click an instance. The <code>Call Stack</code> tab appears below , showing where that instance was allocated and in which thread.</li>
-<li>In the <code>Call Stack</code> tab, right-click any line and choose <code>Jump to Source</code> to open that code in the editor.</li>
-</ol>
-<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-allocations-detail_2x.png" alt></p>
-<p>You can use the two menus above the list of allocated objects to choose which heap to inspect and how to organize the data.</p>
-<p>From the menu on the left, choose which heap to inspect:</p>
-<ul>
-<li>default heap: When no heap is specified by the system.</li>
-<li>image heap: The system boot image, containing classes that are preloaded during boot time. Allocations here are guarateed to never move or go away.</li>
-<li>zygote heap: The copy-on-write heap where an app process is forked from in the Android system</li>
-<li>app heap: The primary heap on which your app allocates memory</li>
-<li>JNI heap: The heap that shows where Java Native Interface(JNI) references are allocated and released.</li>
-</ul>
-<p>From the menu on the right, choose how to arrange the allocations:</p>
-<ul>
-<li>Arrange by class: Groups all allocations based on class name. This is the default.</li>
-<li>Arrange by package: Groups all allocations based on package name</li>
-<li>Arrange by callstack: Groups all allocations into their corresponding call stack.</li>
-</ul>
-<h3 id="Improve-app-performance-while-profiling"><a href="#Improve-app-performance-while-profiling" class="headerlink" title="Improve app performance while profiling"></a>Improve app performance while profiling</h3><p>To improve app performance while profiling, the memory profile samples  memory allocations periodically by default. When testing on devices running API level 26 or higher, you can change this behavior by using the <code>Allocation Tracking</code> dropdown. The options available are as follows:</p>
-<ul>
-<li>Full: Captures all object allocations in memory. This is the default behavior in Android Studio 3.2 and earlier. If you have an app that allocates a lot of objects, you might observe visible slowdowns with your app while profiling.</li>
-<li>Sampled: Samples object allocations in memory at regular intervals. This is the default option and has less impact on app performance while profiling. Apps that allocate a lot of objects over a short span of time may still exhibit visible slowdowns.</li>
-<li>Off: Stops tracking your app’s memory allocation.</li>
-</ul>
-<h3 id="View-global-JNI-references"><a href="#View-global-JNI-references" class="headerlink" title="View global JNI references"></a>View global JNI references</h3><p>Java Native Interface(JNI) is a framework that allows Java code and native code to call one another.</p>
-<p>JNI references are managed manually by the native code, so it is possible for Java objects used by native code to be kept alive for too long. Some objects on the Java heap may become unreachable if a JNI reference is discarded without first being explicitly deleted. Also , it is possible to exhaust the global JNI reference limit.</p>
-<p>To troubleshoot such issues, use the <code>JNI heap</code> view in the Memory Profiler to browser all global JNI refrences and filter them by Java types and native call stacks. With this information, you can find when and where global JNI references are created and deleted.</p>
-<p>While your app is running, select a portion of the timeline that you want to inspect and select <code>JNI heap</code> from the drop-down menu above the class list. You can then inspect objects in the heap as you normally would and double-click objects in the <code>Allocation Call Stack</code> tab to see where the JNI references are allocated and released in your code, as shown in figure 4.</p>
-<p><img src="https://developer.android.com/studio/images/memory-profiler-jni-heap_2x.png" alt="figure 4"></p>
-<p>To inspect memory allocations for your app’s JNI code, you must deploy your app to a device running Android 8.0 or higher.</p>
-<p>For more information on JNI, see <a href="https://developer.android.com/training/articles/perf-jni" target="_blank" rel="noopener">JNI tips</a>.</p>
-<h2 id="Capture-a-heap-dump"><a href="#Capture-a-heap-dump" class="headerlink" title="Capture a heap dump"></a>Capture a heap dump</h2><p>A heap dump shows which objects in your app are using memory at the time you capture the heap dump. Especially after an extended user session, a heap dump can help identify memory leaks by showing objects still in memory that you believe should no longer be there.</p>
-<p>After you capture a heap dump, you can view the following:</p>
-<ul>
-<li>What types of objects your app has allocated, and how many of each</li>
-<li>How much memory each object is using</li>
-<li>Where references to each object are being held in your code.</li>
-<li>The call stack for where an object was allocated. (Call stacks are currently available with a heap dump only with Android 7.1 and lower when you capture the heap dump while recording allocations.)</li>
-</ul>
-<p>To capture a heap dump, click <code>Dump Java heap</code> in the Memory Profile toolbar. While dumping the heap, the amount of Java memory might increase temporarily. This is normal because the heap dump occurs in the same process as your app and requires some memory to collect the data.</p>
-<p>The heap dump appears below the memory timeline, showing all class types in the heap, as shown in figure 5.</p>
-<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-dump_2x.png" alt="figure 5"></p>
-<p>If you need to be more precise about when the dump is created, you can create a heap dump at the critical point in your app code by calling <a href="https://developer.android.com/reference/android/os/Debug.html#dumpHprofData(java.lang.String)" target="_blank" rel="noopener">dumpHprofData()</a>.</p>
-<p>In the list of classes, you can see the following information:</p>
-<ul>
-<li><p>Allocations: Number of allocations in the heap.</p>
-</li>
-<li><p>Native Size: Total amount of native memory used by this object type(in bytes). This column is visible only for Android 7.0 and higher.</p>
-<p>  You will see memory here for some objects allocated in Java because Android uses native memory for some framework classes, such as Bitmap.</p>
-</li>
-<li><p>Shallow Size: Total amount of Java memory used by this object type(in types)</p>
-</li>
-<li><p>Retained Size: Total size of memory being retained due to all instances of this class (in bytes).</p>
-</li>
-</ul>
-<p>You can use the two menus above the list of allocated objects to choose which heap dumps to inspect and how to organize the data.</p>
-<p>From the menu on the left, choose which heap to inspect:</p>
-<ul>
-<li><p>default heap: When no heap is specified by the system.</p>
-</li>
-<li><p>app heap: The primary heap on which your app allocates memory.</p>
-</li>
-<li><p>image heap: The system boot image, containing classes that are preloaded during boot time.                      Allocations here are guaranteed to never move or go away.</p>
-</li>
-<li><p>zygote heap: The copy-on-write heap where an app process is forked from in the Android system.</p>
-</li>
-</ul>
-<p>From the menu on the right, choose how to arrange the allocations:</p>
-<ul>
-<li><p>Arrange by class: Groups all allocations based on class name. This is the default.</p>
-</li>
-<li><p>Arrange by package: Groups all allocations based on package name.</p>
-</li>
-<li><p>Arrange by callstack: Groups all allocations into their corresponding call stack. This option works only if you capture the heap dump while recording allocations. Even so, there are likely to be objects in the heap that were allocated before you started recording, so those allocations appear first, simply listed by class name.</p>
-</li>
-</ul>
-<p>The list is sorted by the <code>Retained Size</code> column by default. To sort by the values in a different column, click the column’s heading.</p>
-<p>Click a class name to open the <code>Instance View</code> window on the right(shown in figure 6). Each listed instance includes the following:</p>
-<ul>
-<li>Depth: The shortest number of hops from any GC root to the selected instance.</li>
-<li>Native Size: Size of this instance in native memory. This column is visible only for Android 7.0 and higher.</li>
-<li>Shallow Size: Size of this instance in Java memory.</li>
-<li>Retained Size: Size of memory that this instance dominates (as per the <a href="https://en.wikipedia.org/wiki/Dominator_(graph_theory)" target="_blank" rel="noopener">dominator tree</a>). </li>
-</ul>
-<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-dump-stacktrace_2x.png" alt="figure 8"></p>
-<p>To inspect your heap, follow these steps:</p>
-<ol>
-<li>Browse the list to find objects that have unusually large heap counts and that might be leaked. To help find known classes, click the <code>Class Name</code> column header to sort alphabetically. Then click a class name. The <code>Instance View</code> pane appears on the right, showing each instance of that class, as shown in figure 6.<ol>
-<li>Alternatively, you can locate objects quickly by clicking <code>Filter</code> , or by pressing Control+F (Command+F on Mac), and entering a class or package name in the search field. You can also search by method name if you select <code>Arrange by callstack</code> from the dropdown menu. If you want to use regular expressions, check the box next to <code>Regex</code>. Check the box next to <code>Match case</code> if your search query is case-sensitive.</li>
-</ol>
-</li>
-<li>In the <code>Instance View</code> pane, click an instance. The <code>References</code> tab appears below, showing every reference to that object.<br>Or, click the arrow next to the instance name to view all its fields, and then click a field name to view all its references. If you want to view the instance details for a field, right-click on the field and select <code>Go to Instance</code>.</li>
-<li>In the <code>References</code> tab, if you identify a reference that might be leaking memory, right-click it and select <code>Go to Instance</code>. This selects the corresponding instance from the heap dump, showing you its own instance data.</li>
-</ol>
-<p>In your heap dump, look for memory leaks caused by any of the following:</p>
-<ul>
-<li>Long-lived references to <code>Activity</code>, <code>Context</code>, <code>View</code>, <code>Drawable</code>, and other objects that might hold a reference to the <code>Activity</code> or <code>Context</code> container.</li>
-<li>Non-static inner classes, such as a <code>Runnable</code>, that can hold an <code>Activity</code> instance.</li>
-<li>Caches that hold objects longer than necessary.</li>
-</ul>
-<h3 id="Save-a-heap-dump-as-an-HPROF-file"><a href="#Save-a-heap-dump-as-an-HPROF-file" class="headerlink" title="Save a heap dump as an HPROF file"></a>Save a heap dump as an HPROF file</h3><p>After you capture a heap dump, the data is viewable in the Memory Profiler only while the profiler is running. When you exit the profiling session, you lose the heap dump. So, if you want to save it for review later, export the heap dump to an HPROF file. In Android Studio 3.1 and lower, the <code>Export capture to file</code>  button is on the left side of the toolbar below the timeline; in Android Studio 3.2 and higher, there is an <code>Export Heap Dump</code> button at the right of each <code>Heap Dump</code> entry in the <code>Sessions</code> pane. In the <code>Export As</code> dialog that appears, save the file with the <code>.hprof</code> file-name extension.</p>
-<p>To use a different HPROF analyzer like <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jhat.html" target="_blank" rel="noopener">jhat</a>, you need to convert the HPROF file from Android format to the Java SE HPROF format. You can do so with the <code>hprof-conv</code> tool provided in the <code>android_sdk/platform-tools/</code> directory. Run the <code>hprof-conv</code> command with two arguments: the original HPROF file and the location to write the converted HPROF file. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hprof-conv heap-original.hprof heap-converted.hprof</span><br></pre></td></tr></table></figure>
-
-<h3 id="Import-a-heap-dump-file"><a href="#Import-a-heap-dump-file" class="headerlink" title="Import a heap dump file"></a>Import a heap dump file</h3><p>To import an HPROF (<code>.hprof</code>) file, click <code>Start a new profiling session</code>  in the Sessions pane, select <code>Load from file</code>, and choose the file from the file browser.</p>
-<p>You can also import an HPROF file by dragging it from the file browser into an editor window.</p>
-<h2 id="Techniques-for-profiling-your-memory"><a href="#Techniques-for-profiling-your-memory" class="headerlink" title="Techniques for profiling your memory"></a>Techniques for profiling your memory</h2><p>While using the Memory Profiler, you should stress your app code and try forcing memory leaks. One way to provoke memory leaks in your app is to let it run for a while before inspecting the heap. Leaks might trickle up to the top of the allocations in the heap. However, the smaller the leak, the longer you need to run the app in order to see it.</p>
-<p>You can also trigger a memory leak in one of the following ways:</p>
-<ul>
-<li><p>Rotate the device from portrait to landscape and back again multiple times while in different activity states. Rotating the device can often cause an app to leak an <code>Activity</code>, <code>Context</code>, or <code>View</code> object because the system recreates the <code>Activity</code> and if your app holds a reference to one of those objects somewhere else, the system can’t garbage collect it.</p>
-</li>
-<li><p>Switch between your app and another app while in different activity states (navigate to the Home screen, then return to your app).</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2295,7 +2053,7 @@ These features of the library coexist seamlessly with your existing layouts. For
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
 <meta property="og:description" content="观察Activity栈的脚本: 1adb shell dumpsys activity | sed -n -e &apos;/Stack #/p&apos; -e &apos;/Running activities/,/Run #0/p&apos;   Standard模式 SingleTop模式 栈顶复用 SingleTask模式 栈内复用 SingleInstance模式  Standard模式标准模式, 启动Activity的默认">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-25T13:15:16.356Z">
+<meta property="og:updated_time" content="2019-12-30T07:54:10.756Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Activity栈和启动模式">
 <meta name="twitter:description" content="观察Activity栈的脚本: 1adb shell dumpsys activity | sed -n -e &apos;/Stack #/p&apos; -e &apos;/Running activities/,/Run #0/p&apos;   Standard模式 SingleTop模式 栈顶复用 SingleTask模式 栈内复用 SingleInstance模式  Standard模式标准模式, 启动Activity的默认">
@@ -460,7 +460,7 @@
 <li><code>FLAG_ACTIVITY_NEW_TASK</code> 同 <code>singleTask</code>模式</li>
 <li><code>FLAG_ACTIVITY_SINGLE_TOP</code> 同 <code>singleTop</code>模式</li>
 <li><code>FLAG_ACTIVITY_CLEAR_TOP</code> 一般和<code>singleTask</code>启动模式一起出现<ul>
-<li>如果是<code>singleTask</code>启动模式，会清楚栈上其他实例，复用实例，调用<code>onNewIntent()</code></li>
+<li>如果是<code>singleTask</code>启动模式，会清除栈上其他实例，复用实例，调用<code>onNewIntent()</code></li>
 <li>如果是<code>standard</code>启动模式，则会清除自己和其他实例并重新创建，调用<code>onCreate</code></li>
 </ul>
 </li>
@@ -616,7 +616,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">153</span>
+                  <span class="site-state-item-count">159</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
