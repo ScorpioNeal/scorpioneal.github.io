@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AndroidOptimization,AndroidTranslation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Reduce your app sizeUsers often avoid downloading apps that seem too large, particularly in emerging markets where devices connect to often-spotty 2G and 3G networks or work on pay-by-the-byte plans.">
+<meta name="keywords" content="AndroidOptimization,AndroidTranslation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Translation-Reduce your app size">
+<meta property="og:url" content="http://blog.scions.cn/2019/06/28/Translation-Reduce-your-app-size/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="Reduce your app sizeUsers often avoid downloading apps that seem too large, particularly in emerging markets where devices connect to often-spotty 2G and 3G networks or work on pay-by-the-byte plans.">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://developer.android.com/topic/performance/images/plugin-marketplace.png">
+<meta property="og:image" content="https://developer.android.com/topic/performance/images/plugin-recommendations.png">
+<meta property="og:updated_time" content="2019-12-09T13:01:07.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Translation-Reduce your app size">
+<meta name="twitter:description" content="Reduce your app sizeUsers often avoid downloading apps that seem too large, particularly in emerging markets where devices connect to often-spotty 2G and 3G networks or work on pay-by-the-byte plans.">
+<meta name="twitter:image" content="https://developer.android.com/topic/performance/images/plugin-marketplace.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/2019/06/28/Translation-Reduce-your-app-size/">
+
+
+
+
+
+  <title>Translation-Reduce your app size | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<div class="bg_content">
+<canvas id="canvas"></canvas>
+</div>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/06/28/Translation-Reduce-your-app-size/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Translation-Reduce your app size</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-28T15:09:48+08:00">
+                2019-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/06/28/Translation-Reduce-your-app-size/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/06/28/Translation-Reduce-your-app-size/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Reduce-your-app-size"><a href="#Reduce-your-app-size" class="headerlink" title="Reduce your app size"></a>Reduce your app size</h1><p>Users often avoid downloading apps that seem too large, particularly in emerging markets where devices connect to often-spotty 2G and 3G networks or work on pay-by-the-byte plans. This page describes how to reduce yoru app’s download size, which enables more users to download your app.</p>
+<p>(有些地方使用2G/3G或者需要按流量付费的地方，会不愿意去下载太大的程序。 本文讲告诉你如何减少app大小.)</p>
+<h2 id="Upload-yoru-app-with-Android-App-Bundles"><a href="#Upload-yoru-app-with-Android-App-Bundles" class="headerlink" title="Upload yoru app with Android App Bundles"></a>Upload yoru app with Android App Bundles</h2><p>The easiest way to gain immediate app size savings when publishing to Google Play is by uploading your app as an <a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Android App Bundle</a>, which is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
+<p>Google Play’s new app serving model, called Dynamic Delivery, then uses your app bundle to generate and serve optimized APKs for each user’s device configuration, so they download only the code and resources they need to run your app. You no longer have to build, sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads</p>
+<p>Keep in mind, because Google Play enforces a <a href="https://developer.android.com/guide/app-bundle#size_restrictions" target="_blank" rel="noopener">compressed downloaded size restriction</a> of 150MB or less for apps published with app bundles, it’s still a good idea to apply the guidelines described on this to reduce your app’s download size as much as possible.</p>
+<p>(这里介绍了使用Android App Bundles方式，是最简单快速的压缩体积的方式，具体实现细节需要参考<a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Android App Bundle</a>)</p>
+<h2 id="Use-the-Android-Size-Analyzer"><a href="#Use-the-Android-Size-Analyzer" class="headerlink" title="Use the Android Size Analyzer"></a>Use the Android Size Analyzer</h2><p>The Android Size Analyzer tool is an easy way to identify and implement many strategies for reducing the size of your app. It is available as both an Android Studio plugin as well as a standalone JAR.</p>
+<p>(Android Size Analyzer，这个工具里面包含了很多减少App体积的方法，你可以通过Android Studio或jar来使用它。)</p>
+<h3 id="Use-the-analyzer-in-Android-Studio"><a href="#Use-the-analyzer-in-Android-Studio" class="headerlink" title="Use the analyzer in Android Studio"></a>Use the analyzer in Android Studio</h3><p>You can download the Android Size Analyzer plugin using the plugin marketplace in Android Studio, as shown in figure 1. To open the plugin marketplace and install the plugin, proceed as follows:</p>
+<ol>
+<li>Select File &gt; Settings (or on Mac, Android Studio &gt; Preferences.)</li>
+<li>Select the Plugins section in the left panel</li>
+<li>Click the marketplace tab</li>
+<li>Search for the “Android Size Analyzer” plugin.</li>
+<li>Click the Install button for the analyzer plugin.</li>
+</ol>
+<p><img src="https://developer.android.com/topic/performance/images/plugin-marketplace.png" alt="img"></p>
+<p>After you install the plugin, run a app size analysis on your current project by selecting Analyze &gt; Analyze App Size from the menu bar. After analyzing your project, a tool window appears with recommendations on how to reduce the size of your app, as shown in figure 2.</p>
+<p><img src="https://developer.android.com/topic/performance/images/plugin-recommendations.png" alt="img"></p>
+<p>(安装Android Size Analyzer插件, Mac下Android Studio &gt; Preferenes &gt; Plugin &gt; marketplace &gt; Android Size Analyzer, 安装完后Android Studio可能会重启, 然后在当前工程下选择 Analyze &gt; Analyze App Size执行分析…但是我试了几次，都会报错，不知道为什么)</p>
+<h3 id="Use-the-analyzer-from-the-command-line"><a href="#Use-the-analyzer-from-the-command-line" class="headerlink" title="Use the analyzer from the command line"></a>Use the analyzer from the command line</h3><p>You can download the latest version of the Android Size Analyzer, either as a TAR or ZIP file, from <a href="https://github.com/android/size-analyzer/releases/latest" target="_blank" rel="noopener">Github</a>. After extracting the archive, run the size-analyzer script(on Linux or MacOS) or the size-analyzer.bat script(on Windows) on your Android project or Android App Bundle using one of the following commands:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./size-analyzer check-bundle &lt;path-to-aab&gt;</span><br><span class="line">./size-analyzer check-project &lt;path-to-project-directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>(在<a href="https://github.com/android/size-analyzer/releases/latest" target="_blank" rel="noopener">Github</a>上下载Android Size Analyzer脚本，然后执行上述命令也是可以的)</p>
+<h2 id="Understand-the-APK-structure"><a href="#Understand-the-APK-structure" class="headerlink" title="Understand the APK structure"></a>Understand the APK structure</h2><p>Before discussing how to reduce the size of your app, it’s helpful to understand the structure of an app’s APK. An APK file consists of a ZIP archive that contains all hte files that comprise your app. These files include Java class files, resource files, and a file containing compiled resources.</p>
+<p>An APK contains the following directories:</p>
+<p>(APK就是一个压缩包，下面介绍下它的组成: )</p>
+<ul>
+<li>META-INFO /: Contains the CERF.SF and CERT.RSA signature iles, as well as the MANIFEST.MF manifest file. (包含CERF.SF, CERT.RSA签名文件和MANIFEST.MF文件)</li>
+<li>assets/ : Contains the app’s assets, which the app can retrieve using an [AssetManager][<a href="https://developer.android.com/reference/android/content/res/AssetManager.html]" target="_blank" rel="noopener">https://developer.android.com/reference/android/content/res/AssetManager.html]</a> object. (包含app的资源，也就是AssetManager可以获取到的资源)</li>
+<li>res/ : Contains resources that aren’t compiled into resources.arsc (编译不进resources.arsc里的剩余res)</li>
+<li>lib/ : contains the compiled code that is specific to the software layer of a processor. This directory contains a subdirectory for each platform type, like armeabi, armeabi-v7a, arm64-v8a, x86, x86_64 and mips. (编译的.so这些文件，里面的子文件夹分各个架构)</li>
+</ul>
+<p>An Apk also contains the following files. Among them, only <code>AndroidManifest.xml</code> is mandatory. (APK还包含以下文件，除了AndroidManifest.xml之外，其他都不是必须的。)</p>
+<ul>
+<li>resoures.arsc: Contains compiled resources. This file contains the XML content from all configurations of the res/value/ folder. The packaging tool extracts this XML content, compiles it to binary form, and archives the content. This content includes language strings and styles, as well as paths to content that is not included directly in the resources.arsc file, such as layout files and images. (编译后的资源文件, 包含res/value/文件夹下所有配置的xml内容。packaging tool把这些内容编译为二进制格式， 还包含language strings, styles, 和没有编译进resources.arsc文件的布局和图片文件的路径)</li>
+<li>classes.dex: Contains the classes compiled in the DEX file format understood by the Dalvik/ART virtual machine. (包含编译进DEX文件的类文件，DEX文件是可以被Dalvik/ART虚拟机识别的文件类型)</li>
+<li>AndroidManifest.xml: Contains the core Android manifest file. This file lists the name, version, access rights, and referenced library files of the app. The file uses Android’s binary XML format. (包含AndroidManifest.xml文件)</li>
+</ul>
+<h2 id="Reduce-resource-count-and-size"><a href="#Reduce-resource-count-and-size" class="headerlink" title="Reduce resource count and size"></a>Reduce resource count and size</h2><p>The size of your APK has an impact on how fast your app loads, how much memory it uses, and how much power it consumes. One of thesimple ways to make your APK smaller is to reduce the number and size of the resources it contains. In particular, you can remove resources that your app no longer uses, and you can use scalable <code>Drawable</code> objects in place of image files. This section discusses these methods as well as several other ways that you can reduce the resources in your app to decrease the overall size of your APK.<br>(APK体积越大， 启动速度越慢，内存占用越大，电量消耗越多. 一个简单的办法就是减少app里使用到的资源，尤其是不再使用到的，或者使用drawable替代图片文件等。 这章将会讨论为了减少app的大小还可以通过哪些方法来减少资源的大小.)</p>
+<h3 id="Remove-unused-resources"><a href="#Remove-unused-resources" class="headerlink" title="Remove unused resources"></a>Remove unused resources</h3><p>The <a href="https://developer.android.com/studio/write/lint.html" target="_blank" rel="noopener">lint</a> tool, a static code analyzer included in Android Studio, detects resources in your res/ folder that your code doesn’t reference. When the <code>lint</code> tool discovers a potentially unused resource in your project, it prints a message like the following example. (<a href="https://developer.android.com/studio/write/lint.html" target="_blank" rel="noopener">lint</a>静态代码分析工具，可以检测res/文件夹下所有代码没有引用到的资源。)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res/layout/preferences.xml: Warning: The resource R.layout.preferences appears</span><br><span class="line">to be unused [UnusedResources]</span><br></pre></td></tr></table></figure>
+
+<p>Libraries that you add to your code may include unused resources. Gradle can automatically remove resources on your behalf if you enable <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="noopener">shrinkResources</a> in your app’s <code>build.gradle</code> file. (gradle可以通过在<code>build.gradle</code>里设置<a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="noopener">shrinkResources</a>来自动移除无用的资源文件).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    <span class="comment">// Other settings</span></span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            minifyEnabled <span class="keyword">true</span></span><br><span class="line">            shrinkResources <span class="keyword">true</span></span><br><span class="line">            <span class="function">proguardFiles <span class="title">getDefaultProguardFile</span><span class="params">(<span class="string">'proguard-android.txt'</span>)</span>, 'proguard-rules.pro'</span></span><br><span class="line"><span class="function">        &#125;</span></span><br><span class="line"><span class="function">    &#125;</span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>To use <code>shrinkResources</code>, you must enable code shrinking. During the build process, first <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="noopener">ProGuard</a> removes unused code but leaves unused resources. Then Gradle removes the unused resources.  (为了使用<code>shrinkResources</code>, 你必须先要允许code shrinking. 在编译期， <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="noopener">ProGuard</a> 会把未用到的code给移除，但是resource没有移除，而是留给Gradle去移除没用到的资源)</p>
+<p>For more information about ProGuard and other way Android Studio helps you reduce APK size, see <a href="https://developer.android.com/studio/build/shrink-code.html" target="_blank" rel="noopener">Shrink Your Code and Resources</a> </p>
+<p>In Android Gradle Plugin 0.7 and higher, you can declare the configurations that your app supports. Gradle passes this information to the build system using the <code>resConfig</code> and <code>resConfigs</code> flavors and the <code>defaultConfig</code> option. The build system then prevents resources from other, unsupported configurations from appearing in the APK, reducing the APK’s size. For more information about this feature, see <a href="https://developer.android.com/studio/build/shrink-code.html#unused-alt-resources" target="_blank" rel="noopener">Remove unused alternative resources</a>  (在Android Gradle Plugin 0.7及以上，你可以定义app支持的配置, 通过<code>resConfig</code>和<code>resConfigs</code>以及<code>defaultConfig</code>。 编译系统会把这配置里以外的资源去掉，不参与编译, 从而减少size)</p>
+<h3 id="Minimize-resource-use-from-libraries"><a href="#Minimize-resource-use-from-libraries" class="headerlink" title="Minimize resource use from libraries"></a>Minimize resource use from libraries</h3><p>When developing an Android app, you usually use external libraries to improve your app’s usability and versatility. For example, you might reference the <a href="https://developer.android.com/topic/libraries/support-library/index.html" target="_blank" rel="noopener">Android Support Library</a> to improve the user experience on older devices, or you could use <a href="https://developers.google.com/android/guides/overview" target="_blank" rel="noopener">Google Play Services</a> to retrieve automatic translations for text within your app.</p>
+<p>If a library was designed for a server or desktop, it can include many objects and methods that your app doesn’t need. To include only the parts of the library that your app needs, you can edit the library’s files if the license allows you to modify the library. You can also use an alternative, mobile-friendly library to add specific functionality to your app.</p>
+<p>(如果你的app引用了其他三方库，你可以要么自己修改源码来减少些没用的代码， 或者可以使用三方库的mobile版本)</p>
+<h3 id="Support-only-specific-densities"><a href="#Support-only-specific-densities" class="headerlink" title="Support only specific densities"></a>Support only specific densities</h3><p>Android supports a very large set of devices, encompassing a variety of screen densities. In Android 4.4 and higher, the framework supports various densities: ldpi, mdpi, tvdpi, hdpi, xhdpi, xxhdpi, and xxxhdpi. Although Android supports all these densities, you don’t need to export your rasterized assets to each density. </p>
+<p>If you know that only a small percentage of your users have devices with specific densities, consider whether you need to bundle those densities into your app. If you don’t include resources for a specific screen density, Android automatically scales existing resources originally designed for other screen densities.</p>
+<p>If your app needs only scaled images, you can save even more space by having a single variant of an image in drawable-nodpi/. We recommend that every app include at least an xxhdpi image variant.</p>
+<p>For more information screen densities, see <a href="https://developer.android.com/about/dashboards/index.html#Screens" target="_blank" rel="noopener">Screen Sizes and Densities</a></p>
+<p>(没必要适配所有density的设备, 如果只有很少部分的用户有某一种density的设备，那么就可以考虑不去适配这个density.)</p>
+<h3 id="Use-drawable-objects"><a href="#Use-drawable-objects" class="headerlink" title="Use drawable objects"></a>Use drawable objects</h3><p>Some iamge don’t require a static image resource; the framework can dynamically draw the image at runtime instead. <code>Drawable</code> object(<shape> in xml) can take up a tiny amount of space in your APK. In addition, XML <code>Drawable</code> objects produce monochromatic images compliant with material design guideline. (不知道啥意思，大概就是能用drawable就不要用图片)</shape></p>
+<h3 id="Reuse-resources"><a href="#Reuse-resources" class="headerlink" title="Reuse resources"></a>Reuse resources</h3><p>You can include a separate resource for variations of an image, such as tinted, shaded, or rotated version of the same image. We recommend, however, that you reuse the same set of resources, customizing them as needed at runtime.</p>
+<p>Android provides several utilities to change the color of an asset, either using the <code>android:tint</code> and <code>tintMode</code> attributes on Android 5.0 and higher. For lower versions of the platform, use the <code>ColorFilter</code> class.</p>
+<p>You can also omit resources that are only a rotated equivalent of another resource. The following code snippet provides an example of turning a “tumb up” into a “thumb down” by pivoting at the middle of the image and rotating it 180 degrees:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">rotate</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:drawable</span>=<span class="string">"@drawable/ic_thumb_up"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:fromDegrees</span>=<span class="string">"180"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>(重用resource, 能通过tint, 旋转解决的，就不要新的资源)</p>
+<h3 id="Render-from-code"><a href="#Render-from-code" class="headerlink" title="Render from code"></a>Render from code</h3><p>You can also reduce your APK size by procedurally rendering your images. Procedural rendering frees up space because you no longer store an image file in your APK.<br>(程序绘图，不用图片)</p>
+<h3 id="Crunch-PNG-files"><a href="#Crunch-PNG-files" class="headerlink" title="Crunch PNG files"></a>Crunch PNG files</h3><p>The <code>aapt</code> tool can optimize the image resources placed in <code>res/drawable</code> with lossless compression during the build process. For example, the <code>aapt</code> tool can convert a true-color PNG that does not require more than 256 colors to a 8-bit PNG with a color palette. Doing so results in an image of equal quality but a smaller memory footprint.</p>
+<p>Keep in mind that the <code>aapt</code> has the following limitations: </p>
+<ul>
+<li>The <code>aapt</code> tool does not shrink PNG files contained in the <code>asset/</code> folder</li>
+<li>Image files need to use 256 or fewer colors for the <code>aapt</code> tool to optimize them</li>
+<li>The <code>aapt</code> tool may inflate PNG files that have already been compressed. To prevent this, you can use the <code>cruncherEnabled</code> flag in Gradle to disable this process for PNG files;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aaptOptions &#123;</span><br><span class="line">    cruncherEnabled = <span class="keyword">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Compress-PNG-and-JPEG-files"><a href="#Compress-PNG-and-JPEG-files" class="headerlink" title="Compress PNG and JPEG files"></a>Compress PNG and JPEG files</h3><p>You can reduce PNG file sizes without losing image quality using tools like <a href="http://pmt.sourceforge.net/pngcrush/" target="_blank" rel="noopener">pngcrush</a>, <a href="https://pngquant.org/" target="_blank" rel="noopener">pngquant</a>, or <a href="https://github.com/google/zopfli" target="_blank" rel="noopener">zopflipng</a>. All of these tools can reduce PNG file size while preserving the perceptive image quality. </p>
+<p>The <code>pngcrush</code> tool is particularly effective: This tool iterates over PNG filters and zlib parameters, using each combination of filters and parameters to compress the image. It then clooses the configuration that yields the smallest compressed output .</p>
+<p>To compress JPEG files, you can use tools like <a href="http://www.elektronik.htw-aalen.de/packjpg/" target="_blank" rel="noopener">packJPG</a> and <a href="https://github.com/google/guetzli" target="_blank" rel="noopener">guetzli</a></p>
+<p>(压缩图片文件，可以用上述的几个工具)</p>
+<h3 id="Use-WebP-file-format"><a href="#Use-WebP-file-format" class="headerlink" title="Use WebP file format"></a>Use WebP file format</h3><p>Instead of using PNG or JPEG files, you can also use the <a href="https://developers.google.com/speed/webp/" target="_blank" rel="noopener">WebP</a> file format for your images, when targeting Android 3.2(API level 13) and higher. The WebP format provides lossy compression(like JPEG) as well as transparency(like PNG) but can provide better compression than either JPEG or PNG.</p>
+<p>You can convert existing BMP, JPG, PNG or static GIF images to WebP format using Android Studio. For more information, see <a href="https://developer.android.com/studio/write/convert-webp.html" target="_blank" rel="noopener">Creating WebP Images Using Android Studio</a></p>
+<p>(你可以使用webp文件来替代PNG 或者 JPEG， webp支持JPEG的有损压缩和PNG的透明通道，而且压缩效率更高)</p>
+<h3 id="Use-vector-graphics"><a href="#Use-vector-graphics" class="headerlink" title="Use vector graphics"></a>Use vector graphics</h3><p>You can use vector graphics to create resolution-independent icons and other scalable media. Using these graphics can greatly reduce your APK footprint. Vector images are represented in Android as <code>VectorDrawable</code> objects. With a <code>VectorDrawable</code> object, a 100-byte file can generate a sharp image the size of the screen.</p>
+<p>However, it takes a significant amount of time for the system to render each <code>VectorDrawable</code> object, and larger images take even longer to appear on the screen. Therefore, consider using these vector graphics only when displaying small images.</p>
+<p>For more information on working with <code>VectorDrawable</code> objects, see <a href="https://developer.android.com/training/material/drawables.html" target="_blank" rel="noopener">Working with Drawables</a><br>(你可以使用矢量图来表是图片，但是这种绘制起来很耗时而且占内存，因此，最好使用矢量图来展示小图片。)</p>
+<h3 id="Use-vector-graphics-for-animated-images"><a href="#Use-vector-graphics-for-animated-images" class="headerlink" title="Use vector graphics for animated images"></a>Use vector graphics for animated images</h3><p>Do not use <code>AnimationDrawable</code> to create frame-by-frame animations because doing so requires that you include a separate bitmap file for each frame of the animation, which drastically increase the size of your APk.</p>
+<p>Instead, you should use <code>AnimatedVectorDrawableCompat</code> to create <a href="https://developer.android.com/training/material/animations.html#AnimVector" target="_blank" rel="noopener">animated vector drawables</a>.
+(不要使用<code>AnimationDrawable</code>来绘制帧动画，这需要很多的图片。 你应该用<code>AnimatedVectorDrawableCompact</code>)</p>
+<h2 id="Reduce-native-and-Java-code"><a href="#Reduce-native-and-Java-code" class="headerlink" title="Reduce native and Java code"></a>Reduce native and Java code</h2><p>There are several methods you can use to reduce the size of the Java and natvie codebase in your app.</p>
+<h3 id="Remove-unnecessary-generated-code"><a href="#Remove-unnecessary-generated-code" class="headerlink" title="Remove unnecessary generated code"></a>Remove unnecessary generated code</h3><p>Make sure to understand the footprint of any code which is automatically generated. For example, many protocal buffer tools generate an excessive number of methdods and classes, which can double or triple the size of your app.<br>(删除无用的代码)</p>
+<h3 id="Avoid-enumerations"><a href="#Avoid-enumerations" class="headerlink" title="Avoid enumerations"></a>Avoid enumerations</h3><p>A single enum can add about 1.0 to 1.4KB of size to your app’s <code>classes.dex</code> file. These additions can quickly accumulate for complex systems or shared libraries. If possible, consider using the <code>@IntDef</code> annotation and <a href>ProGuard</a> to strip enumerations out and convert them to integers. This type conersion preserves all of the type safety benefits of enums.<br>(尽量使用<code>@IntDef</code>来替代Enum, 因为enum可以增加1.0-1.4KB的大小, 或者使用ProGuard来把Enum转换为integer)</p>
+<h3 id="Reduce-the-size-of-native-binaries"><a href="#Reduce-the-size-of-native-binaries" class="headerlink" title="Reduce the size of native binaries"></a>Reduce the size of native binaries</h3><p>If your app uses native code and the Android NDK, you can also reduce the size of the release version of your app by optimizing your code. Two useful techniques are removing debug symbols and not extracting native libraries.</p>
+<h4 id="Remove-debug-symbos"><a href="#Remove-debug-symbos" class="headerlink" title="Remove debug symbos"></a>Remove debug symbos</h4><p>Using debug symbols make sense if your application is in development and still requires debugging. Use the <code>armeabi-strip</code> tool, privided in the Android NDk, to remove unnecessary debug symbols from native libraries. After that, you can compile your release build.</p>
+<h4 id="Avoid-extracting-native-libraries"><a href="#Avoid-extracting-native-libraries" class="headerlink" title="Avoid extracting native libraries"></a>Avoid extracting native libraries</h4><p>When building the release version of your app, package unucompressed <code>.so</code> files in the APK by setting <code>android:extractNativeLibs=&quot;false&quot;</code> in the <code>&lt;application&gt;</code> element of your app’s manifest. Disabling this flag prevents PackageManager from copying .so files from the APK to the filesystem during installation and has the added benefit of making updates of your app smaller.</p>
+<h2 id="Maintain-multiple-lean-APKs"><a href="#Maintain-multiple-lean-APKs" class="headerlink" title="Maintain multiple lean APKs"></a>Maintain multiple lean APKs</h2><p>Your APK might contain content that users download but never use, like additional language or per-screen-density resources. To ensure a minimal download for your users, you should upload your app to Google Play using <a href="https://developer.android.com/topic/performance/reduce-apk-size#app_bundle" target="_blank" rel="noopener">Android App Bundles</a>. Uploading app bundles let’s Google Play generate and serve optimized APKs for each user’s device configuration, so they download only with the code and resources they need to run your app. You no longer have to build, sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads.</p>
+<p>If you’re not publishing your app to Google Play, you can segment your app into several APKs, differerntiated by factors such as screen size or GPU texture support.</p>
+<p>When a user downloads your app, their device receives the correct APK based on the devices’s features and settings. This way devices don’t receive assets for features that the devices don’t have. For example, if a user has a <code>hdpi</code> device, they don’t need <code>xxxhdpi</code> resources that you might include for devices with higher density displays.</p>
+<p>For more information, see <a href="https://developer.android.com/studio/build/configure-apk-splits.html" target="_blank" rel="noopener">configure APK Splits</a> and <a href="https://developer.android.com/training/multiple-apks/index.html" target="_blank" rel="noopener">Maintaining Multiple APKs</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AndroidOptimization/" rel="tag"># AndroidOptimization</a>
+          
+            <a href="/tags/AndroidTranslation/" rel="tag"># AndroidTranslation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/27/Android-IntentService的使用和原理/" rel="next" title="Android-IntentService的使用和原理">
+                <i class="fa fa-chevron-left"></i> Android-IntentService的使用和原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/30/Translation-Configure-your-build-Overview/" rel="prev" title="Translation-Configure your build-Overview">
+                Translation-Configure your build-Overview <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">体系(点 - 线 - 面)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">191</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reduce-your-app-size"><span class="nav-number">1.</span> <span class="nav-text">Reduce your app size</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Upload-yoru-app-with-Android-App-Bundles"><span class="nav-number">1.1.</span> <span class="nav-text">Upload yoru app with Android App Bundles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-the-Android-Size-Analyzer"><span class="nav-number">1.2.</span> <span class="nav-text">Use the Android Size Analyzer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-the-analyzer-in-Android-Studio"><span class="nav-number">1.2.1.</span> <span class="nav-text">Use the analyzer in Android Studio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-the-analyzer-from-the-command-line"><span class="nav-number">1.2.2.</span> <span class="nav-text">Use the analyzer from the command line</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Understand-the-APK-structure"><span class="nav-number">1.3.</span> <span class="nav-text">Understand the APK structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduce-resource-count-and-size"><span class="nav-number">1.4.</span> <span class="nav-text">Reduce resource count and size</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-unused-resources"><span class="nav-number">1.4.1.</span> <span class="nav-text">Remove unused resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Minimize-resource-use-from-libraries"><span class="nav-number">1.4.2.</span> <span class="nav-text">Minimize resource use from libraries</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Support-only-specific-densities"><span class="nav-number">1.4.3.</span> <span class="nav-text">Support only specific densities</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-drawable-objects"><span class="nav-number">1.4.4.</span> <span class="nav-text">Use drawable objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reuse-resources"><span class="nav-number">1.4.5.</span> <span class="nav-text">Reuse resources</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Render-from-code"><span class="nav-number">1.4.6.</span> <span class="nav-text">Render from code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Crunch-PNG-files"><span class="nav-number">1.4.7.</span> <span class="nav-text">Crunch PNG files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Compress-PNG-and-JPEG-files"><span class="nav-number">1.4.8.</span> <span class="nav-text">Compress PNG and JPEG files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-WebP-file-format"><span class="nav-number">1.4.9.</span> <span class="nav-text">Use WebP file format</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-vector-graphics"><span class="nav-number">1.4.10.</span> <span class="nav-text">Use vector graphics</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Use-vector-graphics-for-animated-images"><span class="nav-number">1.4.11.</span> <span class="nav-text">Use vector graphics for animated images</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reduce-native-and-Java-code"><span class="nav-number">1.5.</span> <span class="nav-text">Reduce native and Java code</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Remove-unnecessary-generated-code"><span class="nav-number">1.5.1.</span> <span class="nav-text">Remove unnecessary generated code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Avoid-enumerations"><span class="nav-number">1.5.2.</span> <span class="nav-text">Avoid enumerations</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reduce-the-size-of-native-binaries"><span class="nav-number">1.5.3.</span> <span class="nav-text">Reduce the size of native binaries</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Remove-debug-symbos"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">Remove debug symbos</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Avoid-extracting-native-libraries"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">Avoid extracting native libraries</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maintain-multiple-lean-APKs"><span class="nav-number">1.6.</span> <span class="nav-text">Maintain multiple lean APKs</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+  <script type="text/javascript" src="/js/src/love-click.js"></script>
+</body>
+</html>

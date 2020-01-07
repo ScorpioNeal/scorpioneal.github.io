@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AndroidNDK,AndroidTranslation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Android.mkReference This page descriebs the syntax of the Android.mk build file used by ndk-build. OverviewThe Android.mk file resides in a subdirectory of your project’s jni/ directory, and describes">
+<meta name="keywords" content="AndroidNDK,AndroidTranslation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Translation-NDK build Android.mk">
+<meta property="og:url" content="http://blog.scions.cn/2019/09/17/Translation-NDK-build-Android-mk/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="Android.mkReference This page descriebs the syntax of the Android.mk build file used by ndk-build. OverviewThe Android.mk file resides in a subdirectory of your project’s jni/ directory, and describes">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-09T13:01:07.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Translation-NDK build Android.mk">
+<meta name="twitter:description" content="Android.mkReference This page descriebs the syntax of the Android.mk build file used by ndk-build. OverviewThe Android.mk file resides in a subdirectory of your project’s jni/ directory, and describes">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/2019/09/17/Translation-NDK-build-Android-mk/">
+
+
+
+
+
+  <title>Translation-NDK build Android.mk | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<div class="bg_content">
+<canvas id="canvas"></canvas>
+</div>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/17/Translation-NDK-build-Android-mk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Translation-NDK build Android.mk</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T10:26:19+08:00">
+                2019-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/09/17/Translation-NDK-build-Android-mk/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/17/Translation-NDK-build-Android-mk/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Android-mk"><a href="#Android-mk" class="headerlink" title="Android.mk"></a>Android.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/android_mk" target="_blank" rel="noopener">Reference</a></p>
+<p>This page descriebs the syntax of the <code>Android.mk</code> build file used by <code>ndk-build</code>.</p>
+<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The <code>Android.mk</code> file resides in a subdirectory of your project’s <code>jni/</code> directory, and describes your sources and shared libraries to the build system. It is really a tiny GNU makefile fragment that the build system parses once or more. The <code>Android.mk</code> file is useful for defining project-wide settings that <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a>, the build system, and your environment variables leave undefined. It can also override project-wide settings for specific modules.</p>
+<p>The syntax of the <code>Android.mk</code> allows you to group your sources into modules. A module is either a static library , a shared library, or a standalone executable. You can define one or more modules in each <code>Android.mk</code> file, and you can use the same source file in multiple modules. The build system only places shared libraries into your application package. In additional, static libraries can generate shared libraries.</p>
+<p>In addition to packaging libraries, the build system handles a variety of other details for you. For example, you don’t need to list header files or explict dependencies between generated files in your <code>Android.mk</code> file. The NDK build system computes these relationships automatically for you. As a result, you should be able to benefit from new toolchain/platform support in future NDK release without having to touch your <code>Android.mk</code> file.</p>
+<p>The syntax of this file is very close to that used in the <code>Android.mk</code> files distributed with the full <a href="https://source.android.google.cn/" target="_blank" rel="noopener">Android Open Source Project</a>. While the build system implementation that uses them is different, their similarity is an intentional design desicion aimed at making it  eaiser for application developers to reuse source code for external libraries.</p>
+<h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><p>Before exploring the syntax in detail, it is useful to start by understanding the basics of what a <code>Android.mk</code> file contains. This section uses the <code>Android.mk</code> file in the Hello-JNI sample towards that end, explaining the role that each line in the file plays.</p>
+<p>An <code>Android.mk</code> file must begin by defining the <code>LOCAL_PATH</code> variable:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
+
+<p>This variable indicates the location of the source files in the development tree. Here, the macro function <code>my-dir</code>, provided by the build system, returns the path of the current directory(the directory containing the <code>Android.mk</code> file itself).</p>
+<p>The next line declares the <code>CLEAR_VARS</code> variable, whose value the build system provides.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)</span><br></pre></td></tr></table></figure>
+
+<p>The <code>CLEAR_VARGS</code> variable points to a special GNU Makefile that clears many <code>LOCAL_XXX</code> variables for you, such as <code>LOCAL_MODULE</code>, <code>LOCAL_SRC_FILES</code>, and <code>LOCAL_STATIC_LIBRARIES</code>. Note that it does not clear <code>LOCAL_PATH</code>. This variable must retain its value because the system parses all build control files in a single GNU Make execution context where all variables are global. You must (re-)declare this variable before describing each module.</p>
+<p>Next, the <code>LOCAL_MODULE</code> variable stores the name of the module that you wish to build. Use this variable once per module in your application.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := hello-jni</span><br></pre></td></tr></table></figure>
+
+<p>Each module name must be unique and not certain any spaces. The build system, when it generates the final shared library file, automatically adds the proper prefix and suffix to the name that you assign to <code>LOCAL_MODULE</code>. For example, the example that appears above results in generation of a library called <code>libhello-jni.so</code>.</p>
+<p>The next line enumerates the source files, with space delimiting multiple files:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := hello-jni.c</span><br></pre></td></tr></table></figure>
+
+<p>The <code>LOCAL_SRC_FILES</code> variable must contain a list of C and/or C++ source files to build into a module.</p>
+<p>The last line helps the system tie everything together:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
+
+<p>The <code>BUILD_SHARED_LIBRARY</code> variable points to a GNU Makefile script that collects all the information you defined in <code>LOCAL_XXX</code> variable since the most recent <code>include</code>. This script determines what to build, and how to do it.</p>
+<p>There are more complex examples in the sample directories, with commented <code>Android.mk</code> files that you can look at. In addition, <a href="https://developer.android.google.cn/ndk/samples/sample_na.html" target="_blank" rel="noopener">Sample: native-activity</a> provides a detailed explanation of that sample’s <code>Android.mk</code> file. Finally, <a href="https://developer.android.google.cn/ndk/guides/android_mk#var" target="_blank" rel="noopener">Variables and Macros</a> provides further information on the variables from this section.</p>
+<h3 id="Variable-and-Macros"><a href="#Variable-and-Macros" class="headerlink" title="Variable and Macros"></a>Variable and Macros</h3><p>The build system provides many possible variables for use in the <code>Android.mk</code> file. Many of these variable come with preassigned values. Others, you assign.</p>
+<p>In additional to these variables, you can also define your own arbitrary ones. If you do so, keep in mind that the ND build system reserves the following variable names:</p>
+<ul>
+<li>Names that begin with <code>LOCAL_</code>, such as <code>LOCAL_MODULE</code></li>
+<li>Names that begin with <code>PRIVATE_</code>, <code>NDK_</code> or <code>APP</code>. The build system uses these internally</li>
+<li>Lower-case names, such as <code>my-dir</code>. The build system uses these internally, as well</li>
+</ul>
+<p>If you need to define your own convenience variable in an <code>Android.mk</code> file, we recommend prepending <code>MY_</code> to their names.</p>
+<h3 id="NDK-defined-include-variables"><a href="#NDK-defined-include-variables" class="headerlink" title="NDK-defined include variables"></a>NDK-defined include variables</h3><p>This section discusses the GNU Make variables that the build system defines before parsing your <code>Android.mk</code> file. Under certain circumstances, the NDK might parse your <code>Android.mk</code> file several times, using a different definition for some of these variables each time.</p>
+<h4 id="CLEAR-VARS"><a href="#CLEAR-VARS" class="headerlink" title="CLEAR_VARS"></a>CLEAR_VARS</h4><p>This variable points to a build script that undefines nearly all <code>LOCAL_XXX</code> variables listed in the “Developer-defined variables” section below. Use this variable to include this script before describing a new module. The syntax for using it is:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)</span><br></pre></td></tr></table></figure>
+
+<h4 id="BUILD-EXECUTABLE"><a href="#BUILD-EXECUTABLE" class="headerlink" title="BUILD_EXECUTABLE"></a>BUILD_EXECUTABLE</h4><p>This variable points to a build script that collects all the information about the module you provided in your <code>LOCAL_XXX</code> variables, and determines how to build a target executable from the sources you listed. Note that using this script requires that you have already assigned values to <code>LOCAL_MODULE</code> and <code>LOCAL_SRC_FILES</code>, at a minimum(for more information about these variables, see <a href="https://developer.android.google.cn/ndk/guides/android_mk#mdv" target="_blank" rel="noopener">Module-Description Variables</a>)</p>
+<p>The syntax for using this variable is :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_EXECUTABLE)</span><br></pre></td></tr></table></figure>
+
+<h4 id="BUILD-SHARED-LIBRARY"><a href="#BUILD-SHARED-LIBRARY" class="headerlink" title="BUILD_SHARED_LIBRARY"></a>BUILD_SHARED_LIBRARY</h4><p>This variable points to a build script that collects all the information about the module  you provided in your <code>LOCAL_XXX</code> variables, and determines how to build a target shared library from the sources you listed. Note that using this script requires that you have already assigned values to <code>LOCAL_MODULE</code> and <code>LOCAL_SRC_FILES</code>, at a minimum(for more information about these variables, see <a href="https://developer.android.google.cn/ndk/guides/android_mk#mdv" target="_blank" rel="noopener">Module-Description Variables</a>).</p>
+<p>The syntax for using this variable is:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
+
+<p>A shared-library variable causes the build system to generate a library file with a <code>.so</code> extension.</p>
+<h4 id="BUILD-STATIC-LIBRARY"><a href="#BUILD-STATIC-LIBRARY" class="headerlink" title="BUILD_STATIC_LIBRARY"></a>BUILD_STATIC_LIBRARY</h4><p>A variant of <code>BUILD_SHARED_LIBRARY</code> that is used to build a static library. The build system does not copy static libraries into your <code>project/packages</code>, but it can use them to build shared libraries (see <code>LOCAL_STATIC_LIBRARIES</code> and <code>LOCAL_WHOLE_STATIC_LIBRARIES</code>, below). The syntax for using this variable is:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_STATIC_LIBRARY)</span><br></pre></td></tr></table></figure>
+
+<p>A static-library variable causes the build system to generate a library with a <code>.a</code> extension.</p>
+<h4 id="PREBUILT-SHARED-LIBRARY"><a href="#PREBUILT-SHARED-LIBRARY" class="headerlink" title="PREBUILT_SHARED_LIBRARY"></a>PREBUILT_SHARED_LIBRARY</h4><p>Points to a build script used to specify a prebuilt shared library. Unlike in the case of <code>BUILD_SHARED_LIBRARY</code> and <code>BUILD_STATIC_LIBRARY</code>, here the value of <code>LOCAL_SRC_FILES</code> cannot be a source file. Instead, it must be a single path to a prebuilt shared library, such as `foo/libfoo.so’. The syntax for using this variable is :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(PREBUILT_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
+
+<p>You can also reference a prebuilt library in another module by using the <code>LOCAL_PREBUILTS</code> variable. For more information about using prebuilts, see <a href="https://developer.android.google.cn/ndk/guides/prebuilts.html" target="_blank" rel="noopener">Using Prebuilt Libraries</a>.</p>
+<h4 id="PREBUILT-STATIC-LIBRARY"><a href="#PREBUILT-STATIC-LIBRARY" class="headerlink" title="PREBUILT_STATIC_LIBRARY"></a>PREBUILT_STATIC_LIBRARY</h4><p>The same as <code>PREBUILT_SHARED_LIBRARY</code>, but for a prebuilt static library. For more information about using prebuilts, see <a href="https://developer.android.google.cn/ndk/guides/prebuilts.html" target="_blank" rel="noopener">Using Prebuilt Libraries</a>.</p>
+<h3 id="Target-information-variables"><a href="#Target-information-variables" class="headerlink" title="Target information variables"></a>Target information variables</h3><p>The build system parses <code>Android.mk</code> once per ABI specified by the <code>APP_ABI</code> variable, which is typically defined in your <code>Application.mk</code> file. If <code>APP_ABI</code> is <code>all</code>, then the build system parses <code>Android.mk</code> once per ABI the NDK supports. This section describes variable the build system defines each time it parses <code>Android.mk</code>.</p>
+<h4 id="TARGET-ARCH"><a href="#TARGET-ARCH" class="headerlink" title="TARGET_ARCH"></a>TARGET_ARCH</h4><p>The CPU family the build system is targeting as it parses this <code>Android.mk</code> file. This variable will be one of: <code>arm</code>, <code>arm64</code>, <code>x86</code>, or <code>x86_64</code>.</p>
+<h4 id="TARGET-PLATFORM"><a href="#TARGET-PLATFORM" class="headerlink" title="TARGET_PLATFORM"></a>TARGET_PLATFORM</h4><p>The Android API level number the build system is targeting as it parses this <code>Android.mk</code> file. For example, the Android 5.1 system images correspond to Android API level 22: <code>android-22</code>. For a complete list of platform names and corresponding Android system images, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>. The following example shows the syntax for using this variable:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">ifeq($</span><span class="bash">(TARGET_PLATFORM), android-22)</span></span><br><span class="line">    # ... do something ....</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<h4 id="TARGET-ARCH-ABI"><a href="#TARGET-ARCH-ABI" class="headerlink" title="TARGET_ARCH_ABI"></a>TARGET_ARCH_ABI</h4><p>The ABI the build system is targeting as it parses this <code>Android.mk</code> file. Table 1 shows the ABI setting used for each supported CPU and architecture.</p>
+<p>Table 1. ABI settings for different CPUs and architectures.</p>
+<p>//TODO table</p>
+<p>The following example shows how to check for ARMv8 AArch64 as the target CPU-and-ABI combination:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ARCH_ABI),arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<p>For more details about architecture ABIs and associated compatibility issues, refer to <a href="https://developer.android.google.cn/ndk/guides/abis.html" target="_blank" rel="noopener">ABI Management</a>.</p>
+<p>New target ABIs in the future will have differrnt values.</p>
+<h4 id="TARGET-ABI"><a href="#TARGET-ABI" class="headerlink" title="TARGET_ABI"></a>TARGET_ABI</h4><p>A concatenation of target Android API level and ABI. It is especially useful when you want to test against a specific target system image for a real device. For example, to check for a 64-bit ARM device running on Android API level 22:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ABI),android-22-arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+
+<h3 id="Module-Description-Variables"><a href="#Module-Description-Variables" class="headerlink" title="Module-Description Variables"></a>Module-Description Variables</h3><p>The variables in this section describe your module to the build system. Each module description should follow this basic flow:</p>
+<ol>
+<li>Initialize or undefine the variables associated with the module, using the <code>CLEAR_VARS</code> variable</li>
+<li>Assign values to the variables used to describe the module</li>
+<li>Set the NDK build system to use the appropriate build script for the module, using the <code>BUILD_XXX</code> variable.</li>
+</ol>
+<h4 id="LOCAL-PATH"><a href="#LOCAL-PATH" class="headerlink" title="LOCAL_PATH"></a>LOCAL_PATH</h4><p>This variable is used to give the path to the current file. You must define it at the start of your <code>Android.mk</code> file. The following example shows how to do so: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
+
+<p>The script to which <code>CLEAR_VARS</code> points does not clear this variable. Therefore, you only need to define it a single time, even if your <code>Android.mk</code> file describes multiple modules.</p>
+<h4 id="LOCAL-MODULE"><a href="#LOCAL-MODULE" class="headerlink" title="LOCAL_MODULE"></a>LOCAL_MODULE</h4><p>This variable stores the name of your module. It must be unique among all modules names, and must not contain any spaces. You must define it before including any scripts(other than the one for <code>CLEAR_VARS</code>). You need not add either the <code>lib</code> prefix or the <code>.so</code> or <code>.a</code> file extension; the build system makes these modification automatically. Throughout your <code>Android.mk</code> and <a href>Application.mk</a> files, refer to your module by its unmodified name. For example, the following line results in the generation of a shared library module called <code>libfoo.so</code>.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := "foo"</span><br></pre></td></tr></table></figure>
+
+<p>If you want the generated module to have a name other than <code>lib</code> + the value of <code>LOCAL_MODULE</code>, you can use the <code>LOCAL_MODULE_FILENAME</code> variable to give the generated module a name of your own choosing, instead.</p>
+<h4 id="LOCAL-MODULE-FILENAME"><a href="#LOCAL-MODULE-FILENAME" class="headerlink" title="LOCAL_MODULE_FILENAME"></a>LOCAL_MODULE_FILENAME</h4><p>This optional variable allows you to override the names that the build system uses by default for files that it generates. For example, if the name of your <code>LOCAL_MODULE</code> is <code>foo</code>, you can force the system to call the file it generates <code>libnewfoo</code>. The following example shows how to accomplish this:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := foo</span><br><span class="line">LOCAL_MODULE_FILENAME := libnewfoo</span><br></pre></td></tr></table></figure>
+
+<p>For a shared library module, this example would generate a file called <code>libnewfoo.so</code>.</p>
+<h4 id="LOCAL-SRC-FILES"><a href="#LOCAL-SRC-FILES" class="headerlink" title="LOCAL_SRC_FILES"></a>LOCAL_SRC_FILES</h4><p>This variable contains the list of source files that the build system uses to generate the module. Only list the files that the build system actually passes to the compiler, since the build system automatically computes any associated depencies. Note that you can use both relative(to <code>LOCAL_PATH</code>) and absolute file paths.</p>
+<p>We recommend avoiding absolute file paths; relative paths make your <code>Android.mk</code> file more portable.</p>
+<h4 id="LOCAL-CPP-EXTENSION"><a href="#LOCAL-CPP-EXTENSION" class="headerlink" title="LOCAL_CPP_EXTENSION"></a>LOCAL_CPP_EXTENSION</h4><p>You can use this optional variable to indicate a file extension other than <code>.cpp</code> for your C++ source files. For example, the following line changes the extension to <code>.cxx</code> (The setting must include the dot)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_EXTENSION := .cxx</span><br></pre></td></tr></table></figure>
+
+<p>You can use this variable to specify multiple extensions. For instance:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_EXTENSION := .cxx .cpp .cc</span><br></pre></td></tr></table></figure>
+
+<h4 id="LOCAL-CPP-FEATURES"><a href="#LOCAL-CPP-FEATURES" class="headerlink" title="LOCAL_CPP_FEATURES"></a>LOCAL_CPP_FEATURES</h4><p>You can use this optional variable to indicate that your code relies on specific C++ features. It enables the right compiler and linker flags during the build process. For prebuilt binaries, this variable also declares which features the binary depends on, thus helping ensure the final linking works correctly. We recommend that you use this variable instead of enabling <code>-frtti</code> and <code>-fexceptions</code> directly in your <code>LOCAL_CPPFLAGS</code> definition.</p>
+<p>Using this variable allows the build system to use the appropriate flags for each module. Using <code>LOCAL_CPPFLAGS</code> causes the compiler to use all  specified flag for all module, regardless of actual need.</p>
+<p>For example, to indicate that your code uses RTTI(RunTime Type Information), write: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := rtti</span><br></pre></td></tr></table></figure>
+
+<p>To indicate that your code uses C++ exceptions, write:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := exceptions</span><br></pre></td></tr></table></figure>
+
+<p>You can also specify multiple values for this variable. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := rtti features</span><br></pre></td></tr></table></figure>
+
+<p>The order in which you describe the values does not matter.</p>
+<h4 id="LOCAL-C-INCLUDES"><a href="#LOCAL-C-INCLUDES" class="headerlink" title="LOCAL_C_INCLUDES"></a>LOCAL_C_INCLUDES</h4><p>You can use this optional variable to specifya list of paths, relative to the NDK <code>root</code> directory, to add to the include search path when compiling all sources (C, C++ and Assembly). For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_C_INCLUDES := sources/foo</span><br></pre></td></tr></table></figure>
+
+<p>Or even: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_C_INCLUDES := $(LOCAL_PATH)/&lt;subdirectory&gt;/foo</span><br></pre></td></tr></table></figure>
+
+<p>Define this variable before setting any corresponding inclusion flags via <code>LOCAL_CFLAGS</code> or <code>LOCAL_CPPFLAGS</code>.</p>
+<p>The build system also uses <code>LOCAL_C_INCLUDES</code> paths automatically when launching native debugging with ndk-gdb.</p>
+<h4 id="LOCAL-CFLAGS"><a href="#LOCAL-CFLAGS" class="headerlink" title="LOCAL_CFLAGS"></a>LOCAL_CFLAGS</h4><p>This optional variable sets compiler flags for the build system to pass when building C and C++ source files. The ability to do so can be useful for specifying additional macro definitions or compile options. Use <code>LOCAL_CPP_FLAGS</code> to specify flags for C++ only.</p>
+<p>Try not to change the optimization/debugging level in your <code>Android.mk</code> file. The build system can handle this setting automatically for you, using the relevant information in the <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> file. Doing it this way allows the build system to generate useful data files used during debugging.</p>
+<p>It is possible to specify additional include paths by writing: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CFLAGS += -I&lt;path&gt;,</span><br></pre></td></tr></table></figure>
+
+<p>It is better, however, to use <code>LOCAL_C_INCLUDES</code> for this purpose, since doing so also makes it possible to use the paths available for native debugging with ndk-gdb.</p>
+<h4 id="LOCAL-CPPFLAGS"><a href="#LOCAL-CPPFLAGS" class="headerlink" title="LOCAL_CPPFLAGS"></a>LOCAL_CPPFLAGS</h4><p>An optional set of compiler flags that will be passed when building C++ source files only. They will appear after the <code>LOCAL_CFLAGS</code> on the compiler’s command-line. Use <code>LOCAL_CFLAGS</code> to specify flags for both C and C++.</p>
+<h4 id="LOCAL-STATIC-LIBRARIES"><a href="#LOCAL-STATIC-LIBRARIES" class="headerlink" title="LOCAL_STATIC_LIBRARIES"></a>LOCAL_STATIC_LIBRARIES</h4><p>This variable stores the list of static libraries modules on which the current module depends.</p>
+<p>If the current module is a shared library or an executable, this variable will force these libraries to be linked into the resulting binary.</p>
+<p>If the current module is a static library, this variable simply indicates that other module depending on the current one will also depend on the listed libraries.</p>
+<h4 id="LOCAL-SHARED-LIBRARIES"><a href="#LOCAL-SHARED-LIBRARIES" class="headerlink" title="LOCAL_SHARED_LIBRARIES"></a>LOCAL_SHARED_LIBRARIES</h4><p>This variable is the list of shared libraries modules on which this module depends at runtime. This information is necessary at link time, and to embed the corresponding information in the generated file.</p>
+<h4 id="LOCAL-WHOLE-STATIC-LIBRARIES"><a href="#LOCAL-WHOLE-STATIC-LIBRARIES" class="headerlink" title="LOCAL_WHOLE_STATIC_LIBRARIES"></a>LOCAL_WHOLE_STATIC_LIBRARIES</h4><p>This variable is a variant of <code>LOCAL_STATIC_LIBRARIES</code>, and expresses that the linker should treat the associated library modules as whole archives. For more information on whole archives, see the <a href="http://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html" target="_blank" rel="noopener">GNU Id Documentation</a> for the <code>--whole-archive</code> flag</p>
+<p>This variable is useful when there are circular dependencies among several static libraries. When you use this variable to build a shared library, it will force the build system to add all object files from your static libraries to the final binary. The same is not true, however, when generating executables.</p>
+<h4 id="LOCAL-LDLIBS"><a href="#LOCAL-LDLIBS" class="headerlink" title="LOCAL_LDLIBS"></a>LOCAL_LDLIBS</h4><p>This variable contains the list of additional linker flags for use in building your shared library or executable. It enables you to use the <code>-l</code> prefix to pass the name of specifyc system libraries. For example, the following example tells the linker to generate a module that links to <code>/system/lib/libz.so</code> at load time:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_LDLIB := -lz</span><br></pre></td></tr></table></figure>
+
+<p>For the list of exposed system libraries against which you can link in this NDK release, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>.</p>
+<h4 id="LOCAL-LDFLAGS"><a href="#LOCAL-LDFLAGS" class="headerlink" title="LOCAL_LDFLAGS"></a>LOCAL_LDFLAGS</h4><p>The list of other linker flags for the build system to use when building your shared library or executable. For example, to use the <code>ld.bfd</code> linker on ARM/X86:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_LDFLAGS += -fuse-ld=bfd</span><br></pre></td></tr></table></figure>
+
+<h4 id="LOCAL-ALLOW-UNDEFINED-SYMBOLS"><a href="#LOCAL-ALLOW-UNDEFINED-SYMBOLS" class="headerlink" title="LOCAL_ALLOW_UNDEFINED_SYMBOLS"></a>LOCAL_ALLOW_UNDEFINED_SYMBOLS</h4><p>By default, when the build system encounters an undefined reference encountered while trying to build a shared, it will throw an undefined symbol error. This error can help you catch bugs in your source code.</p>
+<p>To disable this check, set this variable to <code>true</code>. Note that this setting may cause the shared library to load at runtime.</p>
+<h4 id="LOCAL-ARM-MODE"><a href="#LOCAL-ARM-MODE" class="headerlink" title="LOCAL_ARM_MODE"></a>LOCAL_ARM_MODE</h4><p>// TODO</p>
+<h4 id="LOCAL-ARM-NEON"><a href="#LOCAL-ARM-NEON" class="headerlink" title="LOCAL_ARM_NEON"></a>LOCAL_ARM_NEON</h4><p>//TODO</p>
+<h4 id="LOCAL-DISABLE-FORMAT-STRING-CHECKS"><a href="#LOCAL-DISABLE-FORMAT-STRING-CHECKS" class="headerlink" title="LOCAL_DISABLE_FORMAT_STRING_CHECKS"></a>LOCAL_DISABLE_FORMAT_STRING_CHECKS</h4><p>// TODO</p>
+<h4 id="LOCAL-EXPORT-CFLAGS"><a href="#LOCAL-EXPORT-CFLAGS" class="headerlink" title="LOCAL_EXPORT_CFLAGS"></a>LOCAL_EXPORT_CFLAGS</h4><p>// TODO</p>
+<h4 id="LOCAL-EXPORT-CPPFLAGS"><a href="#LOCAL-EXPORT-CPPFLAGS" class="headerlink" title="LOCAL_EXPORT_CPPFLAGS"></a>LOCAL_EXPORT_CPPFLAGS</h4><p>// TODO</p>
+<h4 id="LOCAL-EXPORT-C-INCLUDES"><a href="#LOCAL-EXPORT-C-INCLUDES" class="headerlink" title="LOCAL_EXPORT_C_INCLUDES"></a>LOCAL_EXPORT_C_INCLUDES</h4><p>// TODO</p>
+<h4 id="LOCAL-EXPORT-C-INCLUDES-1"><a href="#LOCAL-EXPORT-C-INCLUDES-1" class="headerlink" title="LOCAL_EXPORT_C_INCLUDES"></a>LOCAL_EXPORT_C_INCLUDES</h4><p>//TODO</p>
+<h4 id="LOCAL-EXPORT-LDFLAGS"><a href="#LOCAL-EXPORT-LDFLAGS" class="headerlink" title="LOCAL_EXPORT_LDFLAGS"></a>LOCAL_EXPORT_LDFLAGS</h4><p>//TODO</p>
+<h4 id="LOCAL-EXPORT-LDLIBS"><a href="#LOCAL-EXPORT-LDLIBS" class="headerlink" title="LOCAL_EXPORT_LDLIBS"></a>LOCAL_EXPORT_LDLIBS</h4><p>// TODO</p>
+<h4 id="LOCAL-SHORT-COMMANDS"><a href="#LOCAL-SHORT-COMMANDS" class="headerlink" title="LOCAL_SHORT_COMMANDS"></a>LOCAL_SHORT_COMMANDS</h4><p>// TODO</p>
+<h4 id="LOCAL-THIN-ARCHIVE"><a href="#LOCAL-THIN-ARCHIVE" class="headerlink" title="LOCAL_THIN_ARCHIVE"></a>LOCAL_THIN_ARCHIVE</h4><p>// TODO</p>
+<h4 id="LOCAL-FILTER-ASM"><a href="#LOCAL-FILTER-ASM" class="headerlink" title="LOCAL_FILTER_ASM"></a>LOCAL_FILTER_ASM</h4><p>// TODO</p>
+<h3 id="NDK-provided-function-macros"><a href="#NDK-provided-function-macros" class="headerlink" title="NDK-provided function macros"></a>NDK-provided function macros</h3><p>This section explains GNU Make function macros that the NDK provides. Use <code>$(call &lt;function&gt;)</code> to evaluate them; they return textural information.</p>
+<h4 id="my-dir"><a href="#my-dir" class="headerlink" title="my-dir"></a>my-dir</h4><p>This macro returns the path of the last included makefile, which typically is the current <code>Android.mk</code>‘s directory. <code>my-dir</code> is useful for defining <code>LOCAL_PATH</code> at the start of your <code>Android.mk</code> file. For example: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
+
+<p>Due to the way GNU Make works, what this macro really returns is the path of the last makefile that the build system included when parsing the build scripts. For this reason, you should not call <code>my-dir</code> after including another file.</p>
+<p>For example, consider the following example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
+
+<p>The problem here is that the second call to <code>my-dir</code> defines <code>LOCAL_PATH</code> as <code>$PATH/foo</code> instead of <code>$PATH</code>, because that was where its most recent include pointed.</p>
+<p>You can avoid this problem by putting additional includes after everything else in the <code>Android.mk</code> file. For example: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> extra includes at the end of the Android.mk file</span></span><br><span class="line">include $(LOCAL_PATH)/foo/Android.mk</span><br></pre></td></tr></table></figure>
+
+<p>If it is not feasible to structure the file in this way, save the value of the first <code>my-dir</code> call into another variable. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MY_LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="all-subdir-makefiles"><a href="#all-subdir-makefiles" class="headerlink" title="all-subdir-makefiles"></a>all-subdir-makefiles</h4><p>Returns the list of <code>Android.mk</code> files located in all subdirectories of the current <code>my-dir</code> path.</p>
+<p>You can use this fuction to provide deep-nested source directory hierarchies to the build system. By default, the NDK only looks for files in the directory containing the <code>Android.mk</code> file.</p>
+<h4 id="this-makefile"><a href="#this-makefile" class="headerlink" title="this-makefile"></a>this-makefile</h4><p>Returns the path of the current makefile(from which the build system called the function)</p>
+<h4 id="parent-makefile"><a href="#parent-makefile" class="headerlink" title="parent-makefile"></a>parent-makefile</h4><p>Returns the path of the parent makefile in the inclusion tree(the path of the makefile that included the current one)</p>
+<h4 id="grand-parent-makefile"><a href="#grand-parent-makefile" class="headerlink" title="grand-parent-makefile"></a>grand-parent-makefile</h4><p>Returns the path of the grandparent makefile in the inclusion tree (the path of the makefile that included the current one).</p>
+<h4 id="import-module"><a href="#import-module" class="headerlink" title="import-module"></a>import-module</h4><p>A function that allows you to find and include a module’s <code>Android.mk</code> file by the name of the module. A typical example is as follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(call import-module,&lt;name&gt;)</span></span><br></pre></td></tr></table></figure>
+
+<p>In this example, the build system looks for the module tagged <code>&lt;name&gt;</code> in the list of directories referenced that your <code>NDK_MODULE_PATH</code> environment variable references, and includes its <code>Android.mk</code> file automatically for you.</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AndroidNDK/" rel="tag"># AndroidNDK</a>
+          
+            <a href="/tags/AndroidTranslation/" rel="tag"># AndroidTranslation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/17/Translation-NDK-build-Application-mk/" rel="next" title="Translation-NDK build Application.mk">
+                <i class="fa fa-chevron-left"></i> Translation-NDK build Application.mk
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/23/Java-Java的解释执行和编译执行/" rel="prev" title="Java-Java的解释执行和编译执行">
+                Java-Java的解释执行和编译执行 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">体系(点 - 线 - 面)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">191</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-mk"><span class="nav-number">1.</span> <span class="nav-text">Android.mk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic"><span class="nav-number">1.2.</span> <span class="nav-text">Basic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable-and-Macros"><span class="nav-number">1.3.</span> <span class="nav-text">Variable and Macros</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDK-defined-include-variables"><span class="nav-number">1.4.</span> <span class="nav-text">NDK-defined include variables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CLEAR-VARS"><span class="nav-number">1.4.1.</span> <span class="nav-text">CLEAR_VARS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BUILD-EXECUTABLE"><span class="nav-number">1.4.2.</span> <span class="nav-text">BUILD_EXECUTABLE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BUILD-SHARED-LIBRARY"><span class="nav-number">1.4.3.</span> <span class="nav-text">BUILD_SHARED_LIBRARY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BUILD-STATIC-LIBRARY"><span class="nav-number">1.4.4.</span> <span class="nav-text">BUILD_STATIC_LIBRARY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PREBUILT-SHARED-LIBRARY"><span class="nav-number">1.4.5.</span> <span class="nav-text">PREBUILT_SHARED_LIBRARY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#PREBUILT-STATIC-LIBRARY"><span class="nav-number">1.4.6.</span> <span class="nav-text">PREBUILT_STATIC_LIBRARY</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Target-information-variables"><span class="nav-number">1.5.</span> <span class="nav-text">Target information variables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TARGET-ARCH"><span class="nav-number">1.5.1.</span> <span class="nav-text">TARGET_ARCH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TARGET-PLATFORM"><span class="nav-number">1.5.2.</span> <span class="nav-text">TARGET_PLATFORM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TARGET-ARCH-ABI"><span class="nav-number">1.5.3.</span> <span class="nav-text">TARGET_ARCH_ABI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TARGET-ABI"><span class="nav-number">1.5.4.</span> <span class="nav-text">TARGET_ABI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Module-Description-Variables"><span class="nav-number">1.6.</span> <span class="nav-text">Module-Description Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-PATH"><span class="nav-number">1.6.1.</span> <span class="nav-text">LOCAL_PATH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-MODULE"><span class="nav-number">1.6.2.</span> <span class="nav-text">LOCAL_MODULE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-MODULE-FILENAME"><span class="nav-number">1.6.3.</span> <span class="nav-text">LOCAL_MODULE_FILENAME</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-SRC-FILES"><span class="nav-number">1.6.4.</span> <span class="nav-text">LOCAL_SRC_FILES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-CPP-EXTENSION"><span class="nav-number">1.6.5.</span> <span class="nav-text">LOCAL_CPP_EXTENSION</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-CPP-FEATURES"><span class="nav-number">1.6.6.</span> <span class="nav-text">LOCAL_CPP_FEATURES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-C-INCLUDES"><span class="nav-number">1.6.7.</span> <span class="nav-text">LOCAL_C_INCLUDES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-CFLAGS"><span class="nav-number">1.6.8.</span> <span class="nav-text">LOCAL_CFLAGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-CPPFLAGS"><span class="nav-number">1.6.9.</span> <span class="nav-text">LOCAL_CPPFLAGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-STATIC-LIBRARIES"><span class="nav-number">1.6.10.</span> <span class="nav-text">LOCAL_STATIC_LIBRARIES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-SHARED-LIBRARIES"><span class="nav-number">1.6.11.</span> <span class="nav-text">LOCAL_SHARED_LIBRARIES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-WHOLE-STATIC-LIBRARIES"><span class="nav-number">1.6.12.</span> <span class="nav-text">LOCAL_WHOLE_STATIC_LIBRARIES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-LDLIBS"><span class="nav-number">1.6.13.</span> <span class="nav-text">LOCAL_LDLIBS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-LDFLAGS"><span class="nav-number">1.6.14.</span> <span class="nav-text">LOCAL_LDFLAGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-ALLOW-UNDEFINED-SYMBOLS"><span class="nav-number">1.6.15.</span> <span class="nav-text">LOCAL_ALLOW_UNDEFINED_SYMBOLS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-ARM-MODE"><span class="nav-number">1.6.16.</span> <span class="nav-text">LOCAL_ARM_MODE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-ARM-NEON"><span class="nav-number">1.6.17.</span> <span class="nav-text">LOCAL_ARM_NEON</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-DISABLE-FORMAT-STRING-CHECKS"><span class="nav-number">1.6.18.</span> <span class="nav-text">LOCAL_DISABLE_FORMAT_STRING_CHECKS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-EXPORT-CFLAGS"><span class="nav-number">1.6.19.</span> <span class="nav-text">LOCAL_EXPORT_CFLAGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-EXPORT-CPPFLAGS"><span class="nav-number">1.6.20.</span> <span class="nav-text">LOCAL_EXPORT_CPPFLAGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-EXPORT-C-INCLUDES"><span class="nav-number">1.6.21.</span> <span class="nav-text">LOCAL_EXPORT_C_INCLUDES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-EXPORT-C-INCLUDES-1"><span class="nav-number">1.6.22.</span> <span class="nav-text">LOCAL_EXPORT_C_INCLUDES</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-EXPORT-LDFLAGS"><span class="nav-number">1.6.23.</span> <span class="nav-text">LOCAL_EXPORT_LDFLAGS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-EXPORT-LDLIBS"><span class="nav-number">1.6.24.</span> <span class="nav-text">LOCAL_EXPORT_LDLIBS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-SHORT-COMMANDS"><span class="nav-number">1.6.25.</span> <span class="nav-text">LOCAL_SHORT_COMMANDS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-THIN-ARCHIVE"><span class="nav-number">1.6.26.</span> <span class="nav-text">LOCAL_THIN_ARCHIVE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LOCAL-FILTER-ASM"><span class="nav-number">1.6.27.</span> <span class="nav-text">LOCAL_FILTER_ASM</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NDK-provided-function-macros"><span class="nav-number">1.7.</span> <span class="nav-text">NDK-provided function macros</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#my-dir"><span class="nav-number">1.7.1.</span> <span class="nav-text">my-dir</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#all-subdir-makefiles"><span class="nav-number">1.7.2.</span> <span class="nav-text">all-subdir-makefiles</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this-makefile"><span class="nav-number">1.7.3.</span> <span class="nav-text">this-makefile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parent-makefile"><span class="nav-number">1.7.4.</span> <span class="nav-text">parent-makefile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grand-parent-makefile"><span class="nav-number">1.7.5.</span> <span class="nav-text">grand-parent-makefile</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#import-module"><span class="nav-number">1.7.6.</span> <span class="nav-text">import-module</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+  <script type="text/javascript" src="/js/src/love-click.js"></script>
+</body>
+</html>

@@ -1,8 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Algorithm LeetCode 143 Reorder List</title>
+    <url>/2020/01/07/Algorithm-LeetCode-143-Reorder-List/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 131 Palindrome Partitioning</title>
+    <url>/2020/01/07/Algorithm-LeetCode-131-Palindrome-Partitioning/</url>
+    <content><![CDATA[<p>与那个ip的非常像</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 81 Search in Rotated Sorted Array</title>
+    <url>/2020/01/07/Algorithm-LeetCode-81-Search-in-Rotated-Sorted-Array/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode Medium 目录</title>
+    <url>/2020/01/07/Algorithm-LeetCode-Medium/</url>
+    <content><![CDATA[<ul>
+<li><a href="Algorithm-LeetCode-2-Add-Two-Numbers">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-15-3Sum">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-16-3Sum-Closest">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-19-Remove-Nth-Node-From-End-of-List">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-22-Generate-Parentheses">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-24-Swap-nodes-in-pairs">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-33-Search-in-rotated-sorted-array">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-39-40-Combination-Sum">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-43-Multiply-Strings">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-46-47-Permutations">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-48-Rotate-Image">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-61-Rotate-List">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-77-Combinations">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-78-90-Subsets">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-79-Word-Search">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-81-Search-in-Rotated-Sorted-Array">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-82-Remove-Duplicates-from-sorted-list-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-86-Partition-List">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-90-Subsets-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-92-Reverse-Linked-List-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-93-Restore-IP-Address">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-96-Unique-Binary-Search-Trees">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-113-Path-Sum-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-120-Triangle">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-129-Sum-root-to-leaf-numbers">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-131-Palindrome-Partitioning">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-142-Linked-List-Cycle-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-143-Reorder-List">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-287-Find-the-Duplicate-Number">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-300-Longest-Increasing-Subsequence">Not Finished Yet</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 16 3Sum Closest</title>
+    <url>/2020/01/07/Algorithm-LeetCode-16-3Sum-Closest/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 113 Path Sum 2</title>
+    <url>/2020/01/07/Algorithm-LeetCode-113-Path-Sum-2/</url>
+    <content><![CDATA[<p>着实想不通</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 96 Unique Binary Search Trees</title>
+    <url>/2020/01/07/Algorithm-LeetCode-96-Unique-Binary-Search-Trees/</url>
+    <content><![CDATA[<p>递归比较简单，不知道有没有更高效的方法</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 93 Restore IP Address</title>
+    <url>/2020/01/07/Algorithm-LeetCode-93-Restore-IP-Address/</url>
+    <content><![CDATA[<p>一是只要遇到字符串的子序列或配准问题首先考虑动态规划DP，二是只要遇到需要求出所有可能情况首先考虑用递归。这</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android 自定义RecyclerView.LayoutManager</title>
+    <url>/2020/01/04/Android-%E8%87%AA%E5%AE%9A%E4%B9%89RecyclerView-LayoutManager/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/MLQ8087/article/details/89327084" target="_blank" rel="noopener">https://blog.csdn.net/MLQ8087/article/details/89327084</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Algorithm LeetCode 120 Triangle</title>
-    <url>/posts/4602b530/</url>
+    <url>/2020/01/04/Algorithm-LeetCode-120-Triangle/</url>
     <content><![CDATA[<p>DP问题</p>
 <p><a href="https://www.cnblogs.com/271934Liao/p/6919843.html" target="_blank" rel="noopener">https://www.cnblogs.com/271934Liao/p/6919843.html</a></p>
 <p>真的太巧妙了</p>
@@ -10,42 +98,42 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 86 Partition List</title>
-    <url>/posts/ec552937/</url>
+    <url>/2020/01/04/Algorithm-LeetCode-86-Partition-List/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 129 Sum root to leaf numbers</title>
-    <url>/posts/2e0659dc/</url>
+    <url>/2020/01/04/Algorithm-LeetCode-129-Sum-root-to-leaf-numbers/</url>
     <content><![CDATA[<p>比较经典的二叉树的题</p>
 ]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 92 Reverse Linked List 2</title>
-    <url>/posts/e1ca3b52/</url>
+    <url>/2020/01/04/Algorithm-LeetCode-92-Reverse-Linked-List-2/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 79 Word Search</title>
-    <url>/posts/2c6a9272/</url>
+    <url>/2020/01/04/Algorithm-LeetCode-79-Word-Search/</url>
     <content><![CDATA[<p>比较典型的DFS</p>
 ]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 77 Combinations</title>
-    <url>/posts/d0bc5ca9/</url>
+    <url>/2020/01/03/Algorithm-LeetCode-77-Combinations/</url>
     <content><![CDATA[<p>所有组合题目的始祖</p>
 ]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 287 Find the Duplicate Number</title>
-    <url>/posts/c9ab789a/</url>
+    <url>/2020/01/03/Algorithm-LeetCode-287-Find-the-Duplicate-Number/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/leaveMeAlone/p/9063790.html" target="_blank" rel="noopener">https://www.cnblogs.com/leaveMeAlone/p/9063790.html</a></p>
 <p>// 太难了</p>
 ]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 300 Longest Increasing Subsequence</title>
-    <url>/posts/fa9863d0/</url>
+    <url>/2020/01/03/Algorithm-LeetCode-300-Longest-Increasing-Subsequence/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/xushiyu1996818/article/details/86488853" target="_blank" rel="noopener">https://blog.csdn.net/xushiyu1996818/article/details/86488853</a></p>
 <p>经典提醒: 最长子序列</p>
 <p><a href="https://blog.csdn.net/qq_20304723/article/details/101232770" target="_blank" rel="noopener">https://blog.csdn.net/qq_20304723/article/details/101232770</a></p>
@@ -53,70 +141,70 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 90 Subsets 2</title>
-    <url>/posts/7e6505c5/</url>
+    <url>/2020/01/03/Algorithm-LeetCode-90-Subsets-2/</url>
     <content><![CDATA[<p>与某些题类似，可以针对性一起训练下<br>backtrack</p>
 <p>46, 47</p>
 ]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 43 Multiply Strings</title>
-    <url>/posts/4104aec9/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-43-Multiply-Strings/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 78 90 Subsets</title>
-    <url>/posts/c6550f93/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-78-90-Subsets/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 48 Rotate Image</title>
-    <url>/posts/3a38d4e9/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-48-Rotate-Image/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 46 47 Permutations</title>
-    <url>/posts/5eb5539f/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-46-47-Permutations/</url>
     <content><![CDATA[<p>与 39, 40题一起看，注意里面的递归</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//为什么是start + 1, 而39, 40是 i + 1</span><br><span class="line">            get(nums, start + 1);</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 39 40 Combination Sum</title>
-    <url>/posts/32dbc1ca/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-39-40-Combination-Sum/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Algorithm LeetCode 15 3 Sum</title>
-    <url>/posts/69cd7c73/</url>
+    <title>Algorithm LeetCode 15 3Sum</title>
+    <url>/2020/01/02/Algorithm-LeetCode-15-3Sum/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 82 Remove Duplicates from sorted list 2</title>
-    <url>/posts/b592bcbd/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-82-Remove-Duplicates-from-sorted-list-2/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 24 Swap nodes in pairs</title>
-    <url>/posts/9a7210a1/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-24-Swap-nodes-in-pairs/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 61 Rotate List</title>
-    <url>/posts/2889f084/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-61-Rotate-List/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 22 Generate Parentheses</title>
-    <url>/posts/9b84e32c/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-22-Generate-Parentheses/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 33 Search in rotated sorted array</title>
-    <url>/posts/b77a31af/</url>
+    <url>/2020/01/02/Algorithm-LeetCode-33-Search-in-rotated-sorted-array/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 142 Linked List Cycle 2</title>
-    <url>/posts/e6b2eb95/</url>
+    <url>/2020/01/01/Algorithm-LeetCode-142-Linked-List-Cycle-2/</url>
     <content><![CDATA[<p>假设两个指针在某点相遇，则慢指针走了a + b步，快指针走了a + (b + c) + b + nr步（其中n&gt;=0，环的长度是r，则b + c = r是一环的长度。快慢指针相遇时，快指针至少领先慢指针一环，所以有(b + c)）<br> 由于快指针走了慢指针的两倍路程，有：<br> 2(a + b) = a + (b + c) + b + nr<br> 得：<br> a = c + nr，n&gt;=0<br> 所以a的长度比c长n圈。</p>
 <p>我们让一个指针从链表头开始，另一个指针从相遇点开始，每次各走一步，由于a = c + nr，当从链表头出发的指针经过a步到环入口时，从相遇点出发的指针先经过c步返回入口处，又绕着环走了n圈，依旧回到入口。所以两个指针一定会在环入口处相遇。</p>
 <p>如此，就找到环的入口了。</p>
@@ -124,20 +212,20 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 19 Remove Nth Node From End of List</title>
-    <url>/posts/3c6ef004/</url>
+    <url>/2019/12/31/Algorithm-LeetCode-19-Remove-Nth-Node-From-End-of-List/</url>
     <content><![CDATA[<p>坑。</p>
 <p>如果链表本来就只有一个节点，删除之后就是空，所以不能返回head，而是应该new一个新的节点指向head,返回新节点的next;</p>
 ]]></content>
   </entry>
   <entry>
     <title>Algorithm LeetCode 2 Add Two Numbers</title>
-    <url>/posts/269361d5/</url>
+    <url>/2019/12/31/Algorithm-LeetCode-2-Add-Two-Numbers/</url>
     <content><![CDATA[<p>坑： 注意返回的值是Head还是 Tail</p>
 ]]></content>
   </entry>
   <entry>
     <title>Java-JMM相关</title>
-    <url>/posts/63c23fdb/</url>
+    <url>/2019/12/28/Java-JMM%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/kaleidoscope/p/9505829.html" target="_blank" rel="noopener">https://www.cnblogs.com/kaleidoscope/p/9505829.html</a></p>
 ]]></content>
       <tags>
@@ -146,12 +234,12 @@
   </entry>
   <entry>
     <title>Algorithm 各种排序算法</title>
-    <url>/posts/5c71f6b5/</url>
+    <url>/2019/12/27/Algorithm-%E5%90%84%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h2 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h2><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] num, <span class="keyword">int</span>[] tmp, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(start &gt;= end) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">    mergeSort(num, tmp, start, mid);</span><br><span class="line"></span><br><span class="line">    mergeSort(num, tmp, mid + <span class="number">1</span>, end);</span><br><span class="line"></span><br><span class="line">    merge(num, tmp, start, mid, end);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] num, <span class="keyword">int</span>[] tmp, <span class="keyword">int</span> start, <span class="keyword">int</span> mid, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = start;</span><br><span class="line">    <span class="keyword">int</span> j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= end) &#123;</span><br><span class="line">        <span class="keyword">if</span>(num[i] &lt;= num[j]) &#123;</span><br><span class="line">            tmp[k] = num[i];</span><br><span class="line">            i++;</span><br><span class="line">            k++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            tmp[k] = num[j];</span><br><span class="line">            j++;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) &#123;</span><br><span class="line">        tmp[k] = num[i];</span><br><span class="line">        k++;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= end) &#123;</span><br><span class="line">        tmp[k] = num[j];</span><br><span class="line">        k++;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> m = <span class="number">0</span>; m &lt; k; m++) &#123;</span><br><span class="line">        num[start + m] = tmp[m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
     <title>Algorithm 基于快排的topk问题</title>
-    <url>/posts/a6b0b03d/</url>
+    <url>/2019/12/27/Algorithm-%E5%9F%BA%E4%BA%8E%E5%BF%AB%E6%8E%92%E7%9A%84topk%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>快排</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span>[] a, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i, j, t, temp;<span class="comment">//哨兵i,哨兵j，交换ij用到t,基准数temp</span></span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) &#123;<span class="comment">//跳出</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//传过来的参数进行赋值</span></span><br><span class="line">        temp = a[left];<span class="comment">//temp中存储的就是基准数</span></span><br><span class="line">        i = left;<span class="comment">//左边哨兵</span></span><br><span class="line">        j = right;<span class="comment">//右边哨兵</span></span><br><span class="line">        <span class="keyword">while</span> (i != j) &#123;</span><br><span class="line">            <span class="comment">//顺序很重要，先从右边开始找 </span></span><br><span class="line">            <span class="comment">// 这里尤其需要注意，从基准数的对面开始先找</span></span><br><span class="line">            <span class="keyword">while</span> (a[j] &gt;= temp &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                j--;<span class="comment">//记录哨兵j位置</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//再从左边找：小于基准数的数</span></span><br><span class="line">            <span class="keyword">while</span> (a[i] &lt;= temp &amp;&amp; i &lt; j) &#123;</span><br><span class="line">                i++;<span class="comment">//记录哨兵i位置</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//交换两个数在数组中的位置</span></span><br><span class="line">            <span class="keyword">if</span> (i &lt; j) &#123;</span><br><span class="line">                t = a[i];</span><br><span class="line">                a[i] = a[j];</span><br><span class="line">                a[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//最终将基准数归位 ： 就是基准数跟ij相遇位置的数进行交换</span></span><br><span class="line">        a[left] = a[i];<span class="comment">//a[i]给left的位置也就是0，就是基准数</span></span><br><span class="line">        a[i] = temp;<span class="comment">//基准数该a[i]</span></span><br><span class="line"></span><br><span class="line">        quicksort(a, left, i - <span class="number">1</span>);<span class="comment">//继续处理左边的，这里是一个递归的过程</span></span><br><span class="line">        quicksort(a, i + <span class="number">1</span>, right);<span class="comment">//继续处理右边的 ，这里是一个递归的过程</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
@@ -169,7 +257,7 @@
   </entry>
   <entry>
     <title>Algorithm 二叉树转双向链表</title>
-    <url>/posts/5a778237/</url>
+    <url>/2019/12/27/Algorithm-%E4%BA%8C%E5%8F%89%E6%A0%91%E8%BD%AC%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8/</url>
     <content><![CDATA[<p>思路就是中序遍历二叉树，然后遍历过程中构造双向链表</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> TreeNode head=<span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">private</span> TreeNode tail=<span class="keyword">null</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">Convert</span><span class="params">(TreeNode pRootOfTree)</span> </span>&#123;</span><br><span class="line">        visit(pRootOfTree);</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">visit</span><span class="params">(TreeNode root)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;  </span><br><span class="line">            <span class="keyword">return</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        visit(root.left);  </span><br><span class="line">        createList(root);  </span><br><span class="line">        visit(root.right);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">createList</span><span class="params">(TreeNode cur)</span></span>&#123;  </span><br><span class="line">        cur.left=tail;</span><br><span class="line">        <span class="keyword">if</span>(tail!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            tail.right=cur;   </span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;   </span><br><span class="line">            head=cur;   </span><br><span class="line">        &#125;   </span><br><span class="line">        tail=cur;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
@@ -178,7 +266,7 @@
   </entry>
   <entry>
     <title>Algorithm 字符串全排列全组合</title>
-    <url>/posts/d6af3d46/</url>
+    <url>/2019/12/27/Algorithm-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%85%A8%E6%8E%92%E5%88%97%E5%85%A8%E7%BB%84%E5%90%88/</url>
     <content><![CDATA[<p><img src="https://img-blog.csdnimg.cn/20181106002147169.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hpYW94aW5neGluZzE3NDQ=,size_16,color_FFFFFF,t_70" alt></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(<span class="keyword">char</span>[] arr, <span class="keyword">int</span> start, TreeSet&lt;String&gt; set)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(start == arr.length) &#123;</span><br><span class="line">        set.add(String.valueOf(arr));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; arr.length; i++) &#123;</span><br><span class="line">        swap(arr, start, i);</span><br><span class="line">        get(arr, start + <span class="number">1</span>, set);</span><br><span class="line">        swap(arr, i, start);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">char</span>[] arr, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span> tmp = arr[i];</span><br><span class="line">    arr[i] = arr[j];</span><br><span class="line">    arr[j] = tmp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
@@ -187,7 +275,7 @@
   </entry>
   <entry>
     <title>Algorithm 约瑟夫环</title>
-    <url>/posts/807a2f8e/</url>
+    <url>/2019/12/27/Algorithm-%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF/</url>
     <content><![CDATA[<p>使用数组模拟, 活着的人有数，死去的人对应的数为-1</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Josephus</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">8</span>];</span><br><span class="line">		<span class="comment">//赋值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">			arr[i] = (i + <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//计数</span></span><br><span class="line">		<span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//容器中只要还多余1个数，就一直循环</span></span><br><span class="line">		<span class="keyword">int</span> total = arr.length;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">while</span>(total != <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">//for循环找出剩下的报数m的下标</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(arr[i] == -<span class="number">1</span>) &#123;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(count==<span class="number">3</span>) &#123;</span><br><span class="line">					System.out.print(arr[i] + <span class="string">" out "</span>);</span><br><span class="line"></span><br><span class="line">					arr[i] = -<span class="number">1</span>;</span><br><span class="line">					total--;</span><br><span class="line">					count=<span class="number">0</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				count++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		System.out.println();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(arr[i] != -<span class="number">1</span>) &#123;</span><br><span class="line">				System.out.println(arr[i] + <span class="string">" win"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -198,7 +286,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 203 Remove Linked List Elements</title>
-    <url>/posts/73c515b1/</url>
+    <url>/2019/12/25/Algorithm-Leetcode-203-Remove-Linked-List-Elements/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Remove all elements from a linked list of integers that have value val.</p>
 <p>Example:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input:  1-&gt;2-&gt;6-&gt;3-&gt;4-&gt;5-&gt;6, val = 6</span><br><span class="line">Output: 1-&gt;2-&gt;3-&gt;4-&gt;5</span><br></pre></td></tr></table></figure>
@@ -215,7 +303,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 111 Minimum Depth Of Binary Tree</title>
-    <url>/posts/ba9c4c03/</url>
+    <url>/2019/12/25/Algorithm-LeetCode-111-Minimum-Depth-Of-Binary-Tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, find its minimum depth.</p>
 <p>The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.</p>
 <p>Note: A leaf is a node with no children.</p>
@@ -234,7 +322,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 141 Linked List Cycle</title>
-    <url>/posts/ca466842/</url>
+    <url>/2019/12/25/Algorithm-LeetCode-141-Linked-List-Cycle/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a linked list, determine if it has a cycle in it.</p>
 <p>To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.</p>
 <p>Example 1:</p>
@@ -259,7 +347,7 @@
   </entry>
   <entry>
     <title>LeetCode EASY 目录</title>
-    <url>/posts/4164a485/</url>
+    <url>/2019/12/24/Algorithm-LeetCode-Easy/</url>
     <content><![CDATA[<h2 id="二叉树-15-15"><a href="#二叉树-15-15" class="headerlink" title="二叉树(15/15)"></a>二叉树(15/15)</h2><ul>
 <li><a href="Algorithm-LeetCode-107-Binary-Tree-Level-Order-Traversal-2">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a></li>
 <li><a href="Algorithm-LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree">Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</a></li>
@@ -349,7 +437,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 455 Assign Cookies</title>
-    <url>/posts/76b09fa2/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-455-Assign-Cookies/</url>
     <content><![CDATA[<p>Greedy</p>
 ]]></content>
       <categories>
@@ -361,7 +449,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 437 Path Sum 3</title>
-    <url>/posts/a898cbda/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-437-Path-Sum-3/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You are given a binary tree in which each node contains an integer value.</p>
 <p>Find the number of paths that sum to a given value.</p>
 <p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
@@ -381,7 +469,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 563 Binary Tree Tilt</title>
-    <url>/posts/c40d9066/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-563-Binary-Tree-Tilt/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return the tilt of the whole tree.</p>
 <p>The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtree node values. Null node has tilt 0.</p>
 <p>The tilt of the whole tree is defined as the sum of all nodes’ tilt.</p>
@@ -407,7 +495,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 538 Convert BST to Greater Tree</title>
-    <url>/posts/4738d6df/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-538-Convert-BST-to-Greater-Tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.</p>
 <p>Example:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Input: The root of a Binary Search Tree like this:</span><br><span class="line">            5</span><br><span class="line">          /   \</span><br><span class="line">         2     13</span><br><span class="line"></span><br><span class="line">Output: The root of a Greater Tree like this:</span><br><span class="line">           18</span><br><span class="line">          /   \</span><br><span class="line">        20     13</span><br></pre></td></tr></table></figure>
@@ -423,7 +511,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 475 Heaters</title>
-    <url>/posts/f1454c2d/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-475-Heaters/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -434,7 +522,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 429 N-ary Tree Level Order Traversal</title>
-    <url>/posts/8dcf895b/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-429-N-ary-Tree-Level-Order-Traversal/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an n-ary tree, return the level order traversal of its nodes’ values.</p>
 <p>Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).</p>
 <p>Example 1:</p>
@@ -456,7 +544,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 257 Binary Tree Paths</title>
-    <url>/posts/544be13c/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-257-Binary-Tree-Paths/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return all root-to-leaf paths.</p>
 <p>Note: A leaf is a node with no children.</p>
 <p>Example:</p>
@@ -475,7 +563,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 235 Lowest Common Ancestor of a Binary Search Tree</title>
-    <url>/posts/68a60d10/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
 <p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”</p>
 <p>Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]</p>
@@ -499,7 +587,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 637 Average of levels in binary tree</title>
-    <url>/posts/42adb360/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-637-Average-of-levels-in-binary-tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  Input:</span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br><span class="line">Output: [3, 14.5, 11]</span><br><span class="line">Explanation:</span><br><span class="line">The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].</span><br></pre></td></tr></table></figure>
@@ -516,7 +604,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 669 Trim a Binary Search Tree</title>
-    <url>/posts/76424700/</url>
+    <url>/2019/12/24/Algorithm-Leetcode-669-Trim-a-Binary-Search-Tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R &gt;= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Input: </span><br><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  0   2</span><br><span class="line"></span><br><span class="line">  L = 1</span><br><span class="line">  R = 2</span><br><span class="line"></span><br><span class="line">Output: </span><br><span class="line">    1</span><br><span class="line">      \</span><br><span class="line">       2</span><br></pre></td></tr></table></figure>
@@ -538,7 +626,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 707 Design LinkedList</title>
-    <url>/posts/c510d6d2/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-707-Design-LinkedList/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -549,7 +637,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 706 Design HashMap</title>
-    <url>/posts/9c9897b1/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-706-Design-HashMap/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -560,7 +648,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 705 Design HashSet</title>
-    <url>/posts/c0e9ac24/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-705-Design-HashSet/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -571,7 +659,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 443 String Compression</title>
-    <url>/posts/e660b369/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-443-String-Compression/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of characters, compress it in-place.</p>
 <p>The length after compression must always be smaller than or equal to the original array.</p>
 <p>Every element of the array should be a character (not int) of length 1.</p>
@@ -603,7 +691,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 232 Implement Queue using Stacks</title>
-    <url>/posts/b4a58c2a/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-232-Implement-Queue-using-Stacks/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Implement the following operations of a queue using stacks.</p>
 <ul>
 <li>push(x) – Push element x to the back of queue.</li>
@@ -631,7 +719,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 225 Implement Stack using Queues</title>
-    <url>/posts/8dc2d219/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-225-Implement-Stack-using-Queues/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Implement the following operations of a stack using queues.</p>
 <ul>
 <li>push(x) – Push element x onto stack.</li>
@@ -661,7 +749,7 @@
   </entry>
   <entry>
     <title>Algorithm 二叉树前中后序遍历 递归与非递归的实现</title>
-    <url>/posts/52f5d09b/</url>
+    <url>/2019/12/23/Algorithm-%E4%BA%8C%E5%8F%89%E6%A0%91%E5%89%8D%E4%B8%AD%E5%90%8E%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%80%92%E5%BD%92%E4%B8%8E%E9%9D%9E%E9%80%92%E5%BD%92%E7%9A%84%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -669,7 +757,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 897 Increasing order search tree</title>
-    <url>/posts/21b94842/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-897-Increasing-order-search-tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  Example 1:</span><br><span class="line">Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]</span><br><span class="line"></span><br><span class="line">       5</span><br><span class="line">      / \</span><br><span class="line">    3    6</span><br><span class="line">   / \    \</span><br><span class="line">  2   4    8</span><br><span class="line"> /        / \ </span><br><span class="line">1        7   9</span><br><span class="line"></span><br><span class="line">Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]</span><br><span class="line"></span><br><span class="line"> 1</span><br><span class="line">  \</span><br><span class="line">   2</span><br><span class="line">    \</span><br><span class="line">     3</span><br><span class="line">      \</span><br><span class="line">       4</span><br><span class="line">        \</span><br><span class="line">         5</span><br><span class="line">          \</span><br><span class="line">           6</span><br><span class="line">            \</span><br><span class="line">             7</span><br><span class="line">              \</span><br><span class="line">               8</span><br><span class="line">                \</span><br><span class="line">                 9</span><br></pre></td></tr></table></figure>
 
@@ -692,7 +780,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 994 Rotting Oranges</title>
-    <url>/posts/7727a6f3/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-994-Rotting-Oranges/</url>
     <content><![CDATA[<p>广度优先搜索</p>
 ]]></content>
       <categories>
@@ -704,7 +792,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 993 Cousins in binary tree</title>
-    <url>/posts/89a53fa/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-993-Cousins-in-binary-tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a binary tree, the root node is at depth 0, and children of each depth k node are at depth k+1.</p>
 <p>Two nodes of a binary tree are cousins if they have the same depth, but have different parents.</p>
 <p>We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.</p>
@@ -731,7 +819,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 1022 Sum of root to leaf binary numbers</title>
-    <url>/posts/2b2429b0/</url>
+    <url>/2019/12/23/Algorithm-Leetcode-1022-Sum-of-root-to-leaf-binary-numbers/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, each node has value 0 or 1.  Each root-to-leaf path represents a binary number starting with the most significant bit.  For example, if the path is 0 -&gt; 1 -&gt; 1 -&gt; 0 -&gt; 1, then this could represent 01101 in binary, which is 13.</p>
 <p>For all leaves in the tree, consider the numbers represented by the path from the root to that leaf.</p>
 <p>Return the sum of these numbers.</p>
@@ -755,7 +843,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 784 Letter Case Permutation</title>
-    <url>/posts/e1ef6796/</url>
+    <url>/2019/12/22/Algorithm-Leetcode-784-Letter-Case-Permutation/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a string S, we can transform every letter individually to be lowercase or uppercase to create another string.  Return a list of all possible strings we could create.</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">  Examples:</span><br><span class="line">Input: S = "a1b2"</span><br><span class="line">Output: ["a1b2", "a1B2", "A1b2", "A1B2"]</span><br><span class="line"></span><br><span class="line">Input: S = "3z4"</span><br><span class="line">Output: ["3z4", "3Z4"]</span><br><span class="line"></span><br><span class="line">Input: S = "12345"</span><br><span class="line">Output: ["12345"]</span><br></pre></td></tr></table></figure>
 
@@ -780,7 +868,7 @@
   </entry>
   <entry>
     <title>Algorithm Leetcode 1184 Distance Between Bus Stops</title>
-    <url>/posts/2d8ecbe2/</url>
+    <url>/2019/12/22/Algorithm-Leetcode-1184-Distance-Between-Bus-Stops/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -791,7 +879,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 849 Maximize Distance to Closest Person</title>
-    <url>/posts/49bede3d/</url>
+    <url>/2019/12/22/Algorithm-Leetcode-849-Maximize-Distance-to-Closest-Person-0/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a row of seats, 1 represents a person sitting in that seat, and 0 represents that the seat is empty. </p>
 <p>There is at least one empty seat, and at least one person sitting.</p>
 <p>Alex wants to sit in the seat such that the distance between him and the closest person to him is maximized. </p>
@@ -818,7 +906,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 532 K-diff Pairs in an Array</title>
-    <url>/posts/eabd76d6/</url>
+    <url>/2019/12/22/Algorithm-Leetcode-532-K-diff-Pairs-in-an-Array/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of integers and an integer k, you need to find the number of unique k-diff pairs in the array. Here a k-diff pair is defined as an integer pair (i, j), where i and j are both numbers in the array and their absolute difference is k.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: [3, 1, 4, 1, 5], k = 2</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: There are two 2-diff pairs in the array, (1, 3) and (3, 5).</span><br><span class="line">Although we have two 1s in the input, we should only return the number of unique pairs.</span><br></pre></td></tr></table></figure>
@@ -846,7 +934,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 754 Reach a Number</title>
-    <url>/posts/3cad5a96/</url>
+    <url>/2019/12/21/Algorithm-LeetCode-754-Reach-a-Number/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You are standing at position 0 on an infinite number line. There is a goal at position target.</p>
 <p>On each move, you can either go left or right. During the n-th move (starting from 1), you take n steps.</p>
 <p>Return the minimum number of steps required to reach the destination.</p>
@@ -871,7 +959,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 746 Min Cost Climbing Stairs</title>
-    <url>/posts/61d54b2b/</url>
+    <url>/2019/12/21/Algorithm-Leetcode-746-Min-Cost-Climbing-Stairs/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 indexed).</p>
 <p>Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the step with index 0, or the step with index 1.</p>
 <p>Example 1:</p>
@@ -902,7 +990,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 496 Next Greater Element 1</title>
-    <url>/posts/df3044a3/</url>
+    <url>/2019/12/20/Algorithm-Leetcode-496-Next-Greater-Element-1/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>ou are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1’s elements in the corresponding places of nums2.</p>
 <p>The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.</p>
 <p>Example 1:</p>
@@ -928,7 +1016,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1009 Complement of Base 10 Integer</title>
-    <url>/posts/dc26ed78/</url>
+    <url>/2019/12/20/Algorithm-Leetcode-1009-Complement-of-Base-10-Integer/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Every non-negative integer N has a binary representation.  For example, 5 can be represented as “101” in binary, 11 as “1011” in binary, and so on.  Note that except for N = 0, there are no leading zeroes in any binary representation.</p>
 <p>The complement of a binary representation is the number in binary you get when changing every 1 to a 0 and 0 to a 1.  For example, the complement of “101” in binary is “010” in binary.</p>
 <p>For a given number N in base-10, return the complement of it’s binary representation as a base-10 integer.</p>
@@ -962,7 +1050,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 453 Minimum Moves to Equal Array Elements</title>
-    <url>/posts/ea9f0311/</url>
+    <url>/2019/12/20/Algorithm-LeetCode-453-Minimum-Moves-to-Equal-Array-Elements/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty integer array of size n, find the minimum number of moves required to make all array elements equal, where a move is incrementing n - 1 elements by 1.</p>
 <p>Example:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Input:</span><br><span class="line">[1,2,3]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">3</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">Only three moves are needed (remember each move increments two elements):</span><br><span class="line"></span><br><span class="line">[1,2,3]  =&gt;  [2,3,3]  =&gt;  [3,4,3]  =&gt;  [4,4,4]</span><br></pre></td></tr></table></figure>
@@ -984,7 +1072,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 434 Number of segments in a string</title>
-    <url>/posts/afc442a4/</url>
+    <url>/2019/12/20/Algorithm-Leetcode-434-Number-of-segments-in-a-string/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Count the number of segments in a string, where a segment is defined to be a contiguous sequence of non-space characters.</p>
 <p>Please note that the string does not contain any non-printable characters.</p>
 <p>Example:</p>
@@ -1001,7 +1089,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1128 Number of equivalent domino pairs</title>
-    <url>/posts/17786f6d/</url>
+    <url>/2019/12/19/Algorithm-LeetCode-1128-Number-of-equivalent-domino-pairs/</url>
     <content><![CDATA[<p>计算出来num[i] 有多少个数之后<br>通过Cn2 = (n * (n - 1))/2 来获得最终多少种排列</p>
 ]]></content>
       <categories>
@@ -1013,7 +1101,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 204 Count Primes</title>
-    <url>/posts/c25081df/</url>
+    <url>/2019/12/19/Algorithm-LeetCode-204-Count-Primes/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Count the number of prime numbers less than a non-negative number, n.</p>
 <p>Example:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Input: 10</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.</span><br></pre></td></tr></table></figure>
@@ -1029,7 +1117,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 219 Contains Dulplicate 2</title>
-    <url>/posts/6c30c346/</url>
+    <url>/2019/12/19/Algorithm-Leetcode-219-Contains-Dulplicate-2/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: nums = [1,2,3,1], k = 3</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
@@ -1052,7 +1140,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1071 Greatest Common Divisor of Strings</title>
-    <url>/posts/301dd35e/</url>
+    <url>/2019/12/19/Algorithm-Leetcode-1071-Greatest-Common-Divisor-of-Strings/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>For strings S and T, we say “T divides S” if and only if S = T + … + T  (T concatenated with itself 1 or more times)</p>
 <p>Return the largest string X such that X divides str1 and X divides str2.</p>
 <p>Example 1:</p>
@@ -1081,7 +1169,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1051 Height Checker</title>
-    <url>/posts/6206342c/</url>
+    <url>/2019/12/19/Algorithm-Leetcode-1051-Height-Checker/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Students are asked to stand in non-decreasing order of heights for an annual photo.</p>
 <p>Return the minimum number of students not standing in the right positions.  (This is the number of students that must move in order for all students to be standing in non-decreasing order of height.)</p>
 <p>Example 1:</p>
@@ -1103,7 +1191,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 812 Largest Triangle Area</title>
-    <url>/posts/9520d35b/</url>
+    <url>/2019/12/19/Algorithm-LeetCode-812-Largest-Triangle-Area/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You have a list of points in the plane. Return the area of the largest triangle that can be formed by any 3 of the points.</p>
 <p>Example:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: points = [[0,0],[0,1],[1,0],[0,2],[2,0]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">The five points are show in the figure below. The red triangle is the largest.</span><br></pre></td></tr></table></figure>
@@ -1127,7 +1215,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1010 Pairs of songs with total duration divisible by 60</title>
-    <url>/posts/6fa4d6a/</url>
+    <url>/2019/12/19/Algorithm-LeetCode-1010-Pairs-of-songs-with-total-duration-divisible-by-60/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a list of songs, the i-th song has a duration of time[i] seconds. </p>
 <p>Return the number of pairs of songs for which their total duration in seconds is divisible by 60.  Formally, we want the number of indices i &lt; j with (time[i] + time[j]) % 60 == 0.</p>
 <p>Example 1:</p>
@@ -1158,7 +1246,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1002 Find Common Characters</title>
-    <url>/posts/fb8c3633/</url>
+    <url>/2019/12/19/Algorithm-LeetCode-1002-Find-Common-Characters/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates).  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.</p>
 <p>You may return the answer in any order.</p>
 <p>Example 1:</p>
@@ -1175,7 +1263,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 594 Longest harmonious Subsequence</title>
-    <url>/posts/b58ba739/</url>
+    <url>/2019/12/18/Algorithm-LeetCode-594-Longest-harmonious-Subsequence/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>We define a harmounious array as an array where the difference between its maximum value and its minimum value is exactly 1.</p>
 <p>Now, given an integer array, you need to find the length of its longest harmonious subsequence among all its possible subsequences.</p>
 <p>Example 1:</p>
@@ -1193,7 +1281,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 942 DI String Match</title>
-    <url>/posts/a4f6abd9/</url>
+    <url>/2019/12/18/Algorithm-LeetCode-942-DI-String-Match/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a string S that only contains “I” (increase) or “D” (decrease), let N = S.length.</p>
 <p>Return any permutation A of [0, 1, …, N] such that for all i = 0, …, N-1:</p>
 <ul>
@@ -1221,7 +1309,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 989 Add To Array Form Of Integer</title>
-    <url>/posts/346cd301/</url>
+    <url>/2019/12/18/Algorithm-LeetCode-989-Add-To-Array-Form-Of-Integer/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  For example, if X = 1231, then the array form is [1,2,3,1].</p>
 <p>Given the array-form A of a non-negative integer X, return the array-form of the integer X+K.</p>
 <p>Example 1:</p>
@@ -1254,7 +1342,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 949 Largest Time for Given Digits</title>
-    <url>/posts/31c696da/</url>
+    <url>/2019/12/18/Algorithm-LeetCode-949-Largest-Time-for-Given-Digits/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of 4 digits, return the largest 24 hour time that can be made.</p>
 <p>The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has elapsed since midnight.</p>
 <p>Return the answer as a string of length 5.  If no valid time can be made, return an empty string.</p>
@@ -1281,7 +1369,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 970 Powerful Integers</title>
-    <url>/posts/3485dad9/</url>
+    <url>/2019/12/18/Algorithm-LeetCode-970-Powerful-Integers/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Algorithm</category>
@@ -1292,7 +1380,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 922 Sort Array By Parity 2</title>
-    <url>/posts/aeee22f2/</url>
+    <url>/2019/12/18/Algorithm-LeetCode-922-Sort-Array-By-Parity-2/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even.</p>
 <p>Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i is even.</p>
 <p>You may return any answer array that satisfies this condition.</p>
@@ -1316,7 +1404,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 836 Rectangle Overlap</title>
-    <url>/posts/7b4a97c1/</url>
+    <url>/2019/12/17/Algorithm-LeetCode-836-Rectangle-Overlap/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner.</p>
 <p>Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.</p>
 <p>Given two (axis-aligned) rectangles, return whether they overlap.</p>
@@ -1342,7 +1430,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 1122 Relative Sort Array</title>
-    <url>/posts/503af792/</url>
+    <url>/2019/12/16/Algorithm-LeetCode-1122-Relative-Sort-Array/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.</p>
 <p>Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2.  Elements that don’t appear in arr2 should be placed at the end of arr1 in ascending order.</p>
 <p>Example 1:</p>
@@ -1367,7 +1455,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 844 Backspace String Compare</title>
-    <url>/posts/9715d017/</url>
+    <url>/2019/12/16/Algorithm-LeetCode-844-Backspace-String-Compare/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: S = "ab#c", T = "ad#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "ac".</span><br></pre></td></tr></table></figure>
@@ -1399,7 +1487,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 665 Non-decreasing Array</title>
-    <url>/posts/da9f9e6/</url>
+    <url>/2019/12/16/Algorithm-LeetCode-665-Non-decreasing-Array/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array with n integers, your task is to check if it could become non-decreasing by modifying at most 1 element.</p>
 <p>We define an array is non-decreasing if array[i] &lt;= array[i + 1] holds for every i (1 &lt;= i &lt; n).</p>
 <p>Example 1:</p>
@@ -1426,7 +1514,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 925 Long Pressed Name</title>
-    <url>/posts/fbb3e6/</url>
+    <url>/2019/12/16/Algorithm-LeetCode-925-Long-Pressed-Name/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Your friend is typing his name into a keyboard.  Sometimes, when typing a character c, the key might get long pressed, and the character will be typed 1 or more times.</p>
 <p>You examine the typed characters of the keyboard.  Return True if it is possible that it was your friends name, with some characters (possibly none) being long pressed.</p>
 <p>Example 1:</p>
@@ -1460,7 +1548,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 404 Sum Of Left Leaves</title>
-    <url>/posts/fa243c55/</url>
+    <url>/2019/12/16/Algorithm-LeetCode-404-Sum-Of-Left-Leaves/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Find the sum of all left leaves in a given binary tree.</p>
 <p>Example:</p>
 <pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7</p>
@@ -1476,7 +1564,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 155 Min Stack</title>
-    <url>/posts/a6096449/</url>
+    <url>/2019/12/14/Algorithm-LeetCode-155-Min-Stack/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
 <p>push(x) – Push element x onto stack.<br>pop() – Removes the element on top of the stack.<br>top() – Get the top element.<br>getMin() – Retrieve the minimum element in the stack.</p>
 <p>Example:</p>
@@ -1495,7 +1583,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 160 Intersection of Two LinkedList</title>
-    <url>/posts/4d5b7367/</url>
+    <url>/2019/12/14/Algorithm-LeetCode-160-Intersection-of-Two-LinkedList/</url>
     <content><![CDATA[<p>三种思路</p>
 <ol>
 <li>Stack</li>
@@ -1512,7 +1600,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 66 Plus One</title>
-    <url>/posts/5ac11b38/</url>
+    <url>/2019/12/14/Algorithm-LeetCode-66-Plus-One/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</p>
 <p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
 <p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
@@ -1536,7 +1624,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 914 X of a Kind in a Deck of Cards</title>
-    <url>/posts/e7c78f66/</url>
+    <url>/2019/12/14/Algorithm-LeetCode-914-X-of-a-Kind-in-a-Deck-of-Cards/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a deck of cards, each card has an integer written on it.</p>
 <p>Return true if and only if you can choose X &gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:</p>
 <p>Each group has exactly X cards.<br>All the cards in each group have the same integer.</p>
@@ -1571,7 +1659,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 374 Guess Number Higher or Lower</title>
-    <url>/posts/b5448e67/</url>
+    <url>/2019/12/14/Algorithm-LeetCode-374-Guess-Number-Higher-or-Lower/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>We are playing the Guess Game. The game is as follows:</p>
 <p>I pick a number from 1 to n. You have to guess which number I picked.</p>
 <p>Every time you guess wrong, I’ll tell you whether the number is higher or lower.</p>
@@ -1592,7 +1680,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 242 valid-anagram</title>
-    <url>/posts/b6f1cce9/</url>
+    <url>/2019/12/13/Algorithm-LeetCode-242-valid-anagram/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings s and t , write a function to determine if t is an anagram of s.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: s = "anagram", t = "nagaram"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
@@ -1617,7 +1705,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</title>
-    <url>/posts/72ef869e/</url>
+    <url>/2019/12/13/Algorithm-LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
 <p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
 <p>Example:</p>
@@ -1634,7 +1722,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</title>
-    <url>/posts/100ad818/</url>
+    <url>/2019/12/13/Algorithm-LeetCode-107-Binary-Tree-Level-Order-Traversal-2/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right, level by level from leaf to root).</p>
 <p>For example:<br>Given binary tree [3,9,20,null,null,15,7],</p>
 <pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7</p>
@@ -1651,7 +1739,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 28 Implement strStr()</title>
-    <url>/posts/2198e368/</url>
+    <url>/2019/12/13/Algorithm-LeetCode-28-Implement-strStr/</url>
     <content><![CDATA[<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
 <li><a href="https://blog.csdn.net/f1033774377/article/details/82556438" target="_blank" rel="noopener">https://blog.csdn.net/f1033774377/article/details/82556438</a></li>
 </ul>
@@ -1665,7 +1753,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 367 Valid Perfect Square</title>
-    <url>/posts/b6a37ecd/</url>
+    <url>/2019/12/13/Algorithm-LeetCode-367-Valid-Perfect-Square/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
 <p>Note: Do not use any built-in library function such as sqrt.</p>
 <p>Example 1:</p>
@@ -1684,7 +1772,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 234 Palindrome Linked List</title>
-    <url>/posts/6d34e4e/</url>
+    <url>/2019/12/13/Algorithm-LeetCode-234-Palindrome-Linked-List/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a singly linked list, determine if it is a palindrome.</p>
 <p>Example 1:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: 1-&gt;2</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
@@ -1709,7 +1797,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 119 Pascal&#39;s Triangle 2</title>
-    <url>/posts/3885d3ad/</url>
+    <url>/2019/12/12/Algorithm-LeetCode-119-Pascal-s-Triangle-2/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-negative index k where k ≤ 33, return the kth index row of the Pascal’s triangle.</p>
 <p>Note that the row index starts from 0.</p>
 <p>Example:</p>
@@ -1732,7 +1820,7 @@
   </entry>
   <entry>
     <title>Algorithm LeetCode 290 Word Pattern</title>
-    <url>/posts/afd7ba5c/</url>
+    <url>/2019/12/09/Algorithm-LeetCode-290-Word-Pattern/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a <code>pattern</code> and a string <code>str</code>, find if str follows the same pattern.</p>
 <p>Here follow means a full match, such that there is a bijection between a letter in <code>pattern</code> and a non-empty word in <code>str</code>.</p>
 <p>Example 1:</p>
@@ -1776,7 +1864,7 @@
   </entry>
   <entry>
     <title>Android 深入理解Scroller原理</title>
-    <url>/posts/31ea19a6/</url>
+    <url>/2019/12/08/Android-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Scroller%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/5629bee7718d" target="_blank" rel="noopener">https://www.jianshu.com/p/5629bee7718d</a></p>
 ]]></content>
       <categories>
@@ -1788,7 +1876,7 @@
   </entry>
   <entry>
     <title>Java-JVM相关</title>
-    <url>/posts/421312a6/</url>
+    <url>/2019/12/06/Java-JVM%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p><img src="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png" alt="JVM Architecture"></p>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="java-file-gt-class"><a href="#java-file-gt-class" class="headerlink" title=".java file -&gt; .class"></a>.java file -&gt; .class</h3><p>通过<code>javac</code> 把<code>java</code>文件编译为<code>.class</code>文件</p>
 <h3 id="class-gt-JVM"><a href="#class-gt-JVM" class="headerlink" title=".class -&gt; JVM"></a>.class -&gt; JVM</h3><p>通过<code>类加载器</code>把<code>.class</code>文件加载进<code>运行时数据区</code></p>
@@ -1844,7 +1932,7 @@
   </entry>
   <entry>
     <title>Android-Data Binding相关</title>
-    <url>/posts/d27340ce/</url>
+    <url>/2019/12/06/Android-Data-Binding%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/b9af64c9fa04" target="_blank" rel="noopener">https://www.jianshu.com/p/b9af64c9fa04</a><br><a href="https://www.jianshu.com/p/e4c4a9aece40" target="_blank" rel="noopener">https://www.jianshu.com/p/e4c4a9aece40</a><br><a href="https://juejin.im/post/5b02cf8c6fb9a07aa632146d" target="_blank" rel="noopener">https://juejin.im/post/5b02cf8c6fb9a07aa632146d</a><br><a href="https://www.jianshu.com/p/2c4ac24761f5" target="_blank" rel="noopener">https://www.jianshu.com/p/2c4ac24761f5</a></p>
 ]]></content>
       <categories>
@@ -1856,7 +1944,7 @@
   </entry>
   <entry>
     <title>Translation-Data Binding Library-Work with observable data objects</title>
-    <url>/posts/7ff436d6/</url>
+    <url>/2019/10/21/Translation-Data-Binding-Library-Work-with-observable-data-objects/</url>
     <content><![CDATA[<h1 id="Work-with-observable-data-objects"><a href="#Work-with-observable-data-objects" class="headerlink" title="Work with observable data objects"></a>Work with observable data objects</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">Reference</a></p>
 <p>Observability refers to the capability of an object to notify others about changes in its data. The Data Binding Library allows you to make objects, fields, or collections observable.</p>
 <p>Any plain-old object can be used for data binding, but modifying the object doesn’t automatically cause the UI to update. Data binding can be used to give your data objects the ability to notify other objects, known as listener, when its data changes. There are three different types of observable classes: <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">objects</a>, <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_fields" target="_blank" rel="noopener">fields</a>, and <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_collections" target="_blank" rel="noopener">collections</a>.</p>
@@ -1891,7 +1979,7 @@
   </entry>
   <entry>
     <title>Translation-Data Binding Library-Layouts and binding expressions</title>
-    <url>/posts/605894bb/</url>
+    <url>/2019/10/21/Translation-Data-Binding-Library-Layouts-and-binding-expressions/</url>
     <content><![CDATA[<h1 id="Layouts-and-binding-expressions"><a href="#Layouts-and-binding-expressions" class="headerlink" title="Layouts and binding expressions"></a>Layouts and binding expressions</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions" target="_blank" rel="noopener">Reference</a></p>
 <p>The expression language allows you to write expressions that handle events dispatched by the views. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects.</p>
 <p>Data binding layout files are slightly different and start with a root tag of <code>layout</code> followed by a <code>data</code> element and a <code>view</code> root element. This view element is what your root would be in a non-binding layout file. The following code shows a sample layout file:</p>
@@ -1931,7 +2019,7 @@
   </entry>
   <entry>
     <title>Translation-Data Binding Library-Get started</title>
-    <url>/posts/14f1fbc2/</url>
+    <url>/2019/10/21/Translation-Data-Binding-Library-Get-started/</url>
     <content><![CDATA[<h1 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/start" target="_blank" rel="noopener">Reference</a></p>
 <p>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</p>
 <p>The Data Binding Library offers both flexibility and broad compatibility-it’s a support library, so you can use it with devices running Android 4.0(API level 14) or higher.</p>
@@ -1977,7 +2065,7 @@
   </entry>
   <entry>
     <title>Translation-Data Binding Library-Overview</title>
-    <url>/posts/1d9e584e/</url>
+    <url>/2019/10/21/Translation-Data-Binding-Library-Overview/</url>
     <content><![CDATA[<h1 id="Data-Binding-Library"><a href="#Data-Binding-Library" class="headerlink" title="Data Binding Library"></a>Data Binding Library</h1><p><a href="https://developer.android.com/topic/libraries/data-binding" target="_blank" rel="noopener">Reference</a></p>
 <p>The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.</p>
 <p>Layouts are often defined in activities with code that calls UI framework methods. For example, the code below calls <code>findViewById()</code> to find a <code>TextView</code> widget and bind it to the <code>username</code> property of the <code>viewModel</code> variable:</p>
@@ -2024,7 +2112,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Manage your app&#39;s memory</title>
-    <url>/posts/5cbb013a/</url>
+    <url>/2019/10/17/Translation-Manage-your-app-s-memory/</url>
     <content><![CDATA[<p><a href="https://developer.android.com/topic/performance/memory" target="_blank" rel="noopener">Reference</a></p>
 <p>Random-access memory (RAM) is a valuable resource in any software development environment, but it’s even more valuable on a mobile operating system where physical memory is often constrained. Although both the Android Runtime (ART) and Dalvik virtual machine perform routine garbage collection, this doesn’t  mean you can ignore when and where your app allocates and release memory. You still need to avoid introducing memory leaks, usually caused by holding onto object references in static member variables, and release any <a href="https://developer.android.com/reference/java/lang/ref/Reference.html" target="_blank" rel="noopener">Reference</a> objects at the appropriate time as defined by lifecycle callbacks.</p>
 <p>This page explains how you can proactively reduce memory usage within your app. For information about how the Android operating system manages memory, see the <a href="https://developer.android.com/topic/performance/memory-overview.html" target="_blank" rel="noopener">Overview of Android Memeory Management</a>.</p>
@@ -2044,7 +2132,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-Build a Responsive UI with ConstraintLayout</title>
-    <url>/posts/5fec0e43/</url>
+    <url>/2019/10/14/Translation-Build-a-Responsive-UI-with-ConstraintLayout/</url>
     <content><![CDATA[<p><a href="https://developer.android.com/training/constraint-layout" target="_blank" rel="noopener">Reference</a></p>
 <p><a href="https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout.html" target="_blank" rel="noopener">ConstriaintLayout</a> allows you to create large and complex  layouts with a flat view hierarchy(no nested view groups). It’s similar to <code>RelativeLayout</code> in that all views are laid out according to relationships between sibling views and the parent layout, but it’s more flexible than <code>RelativeLayout</code> and easier to use with Android Studio’s Layout Editor.</p>
 <p>All the power of <code>ConstraintLayout</code> is available directly from the Layout Editor’s visual tools, because the layout API and the Layout Editor were specially built for each other. So you can build your layout with <code>ConstraintLayout</code> entirely by drag-and-dropping instead of editing the XML.</p>
@@ -2170,7 +2258,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android Retrofit</title>
-    <url>/posts/b6ff9bb5/</url>
+    <url>/2019/10/12/Android-Retrofit/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/59a4db0c518825242861181b" target="_blank" rel="noopener">https://juejin.im/post/59a4db0c518825242861181b</a></p>
 <p><a href="https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ</a></p>
 ]]></content>
@@ -2183,7 +2271,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-Dagger2</title>
-    <url>/posts/d41965e/</url>
+    <url>/2019/10/12/Android-Dagger2/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/5b45bd715188251b3a1db54f" target="_blank" rel="noopener">https://juejin.im/post/5b45bd715188251b3a1db54f</a><br><a href="https://juejin.im/post/5ccd496de51d453b573ee29d" target="_blank" rel="noopener">https://juejin.im/post/5ccd496de51d453b573ee29d</a><br><a href="https://juejin.im/post/5bcc7151f265da0ab41e8f6e" target="_blank" rel="noopener">https://juejin.im/post/5bcc7151f265da0ab41e8f6e</a></p>
 ]]></content>
       <categories>
@@ -2195,7 +2283,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-View the heap and memory allocations with Memory Profile</title>
-    <url>/posts/9fb3b143/</url>
+    <url>/2019/10/12/Translation-View-the-heap-and-memory-allocations-with-Memory-Profile/</url>
     <content><![CDATA[<p><a href="https://developer.android.com/studio/profile/memory-profiler" target="_blank" rel="noopener">Reference</a></p>
 <h1 id="View-the-Java-heap-and-memory-allocations-with-Memory-Profile"><a href="#View-the-Java-heap-and-memory-allocations-with-Memory-Profile" class="headerlink" title="View the Java heap and memory allocations with Memory Profile"></a>View the Java heap and memory allocations with Memory Profile</h1><p>The Memory Profile is a component in the <a href="https://developer.android.com/studio/preview/features/android-profiler.html" target="_blank" rel="noopener">Android Profile</a> that helps you identify memory leaks and memory churn that can lead to a stutter, freezes, and even app crashes. It shows a realtime graph of your app’s memory use and lets you capture a heap dump, force garbage collecctions, and track memory allocations.</p>
 <p>To open the Memory Profile, follow these steps:</p>
@@ -2402,7 +2490,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Guide to App Architecture</title>
-    <url>/posts/f6a91cf7/</url>
+    <url>/2019/10/10/Translation-Guide-to-App-Architecture/</url>
     <content><![CDATA[<p><a href="https://developer.android.com/jetpack/docs/guide" target="_blank" rel="noopener">Reference</a></p>
 <h1 id="Guide-to-app-architecture"><a href="#Guide-to-app-architecture" class="headerlink" title="Guide to app architecture"></a>Guide to app architecture</h1><p>This guide encompasses best practices and recommended architecture for building robust, production-quality apps.</p>
 <p>This page assumes a basic familiarity with the Android Framework. If you are new to Android app development, check out our <a href="https://developer.android.com/guide" target="_blank" rel="noopener">Developer guides</a> to get started and learn more about the concepts mentioned in this guide.</p>
@@ -2558,7 +2646,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Fragments Overview</title>
-    <url>/posts/3e88612c/</url>
+    <url>/2019/10/10/Translation-Fragments-Overview/</url>
     <content><![CDATA[<h1 id="Fragments-Overview"><a href="#Fragments-Overview" class="headerlink" title="Fragments Overview"></a>Fragments Overview</h1><p><a href="https://developer.android.com/guide/components/fragments" target="_blank" rel="noopener">Reference</a></p>
 <p>A <a href="https://developer.android.com/reference/androidx/fragment/app/Fragment.html" target="_blank" rel="noopener">Fragment</a> represents a behavior or a portion of user interface in a <a href="https://developer.android.com/reference/androidx/fragment/app/FragmentActivity.html" target="_blank" rel="noopener">FragmentActivity</a>. You can combine multiple fragments in a single activity to build a multi-pane UI and reuse a fragment in multiple activities. You can think of a fragment as a modular section of an activity, which has its own lifecycle, receives its own input events, and which you can add or remove while the activity is running (sort of like a “sub activity” that you can reuse in different activities).</p>
 <p>A fragment must always be hosted in an activity and the fragment’s lifecycle is directly affected by the host activity’s lifecycle. For example, when the activity is paused, so are all fragments in it, and when the activity is destroyed, so are all fragments. However, while an activity is running(it is in the resumed <a href="https://developer.android.com/guide/components/activities.html#Lifecycle" target="_blank" rel="noopener">lifecycle state</a>), you can manipulate each fragment independently, such as add or remove them. When you perform such a fragment transaction, you can also add it to a back stack that’s managed by the activity-each back stack entry in the activity is a record of the fragment transaction that occured. The back stack allows the user to reverse a fragment transaction(navigate backwards), by pressing the Back button.</p>
@@ -2764,7 +2852,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Google Protocol Buffer Language Guide</title>
-    <url>/posts/9f909ce9/</url>
+    <url>/2019/09/27/Translation-Google-Protocol-Buffer-Language-Guide/</url>
     <content><![CDATA[<h1 id="Language-Guide"><a href="#Language-Guide" class="headerlink" title="Language Guide"></a>Language Guide</h1><p>This guide describes how to use the protocol buffer language to structure your protocol buffer data, including <code>.proto</code> file syntax and how to generate data access classes from your <code>.proto</code> files. It covers the <code>proto2</code> version of the protocol buffers language: for information on the newer <code>proto3</code> syntax, see the <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Proto3 Language Guide</a>.</p>
 <p>This is a reference guide - for a step by step example that uses many of the featuers described in this document, see the <a href="https://developers.google.com/protocol-buffers/docs/tutorials" target="_blank" rel="noopener">tutorial</a> for your chosen language.</p>
 <h2 id="Define-A-Message-Type"><a href="#Define-A-Message-Type" class="headerlink" title="Define A Message Type"></a>Define A Message Type</h2><p>First let’s look at a very simple example. Let’s say you want to define a search request message format, where each search request has a query string, the particular page of results you are interested in, and a number of results per page. Here’s the <code>.proto</code> file you use to define the message type.</p>
@@ -2781,7 +2869,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Google Protocol Buffers</title>
-    <url>/posts/cb9fd130/</url>
+    <url>/2019/09/27/Translation-Google-Protocol-Buffers/</url>
     <content><![CDATA[<h1 id="Developer-Guide"><a href="#Developer-Guide" class="headerlink" title="Developer Guide"></a>Developer Guide</h1><p>Welcome to the developer documentation for protocol buffers - a language-neutral, platform-neutral, extensible way of serializing structured data for use in communications protocols, data storage, and more.</p>
 <p>This documentation is aimed at Java, C++, or Python developers who want to use protocol buffers in their applications. This overview introduces protocol buffers and tells you what you need to do to get started - you can then go on to follow the <a href="https://developers.google.com/protocol-buffers/docs/tutorials" target="_blank" rel="noopener">tutorial</a> or delve deeper into <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener">protocol buffer encoding</a>. API <a href="https://developers.google.com/protocol-buffers/docs/reference/overview" target="_blank" rel="noopener">reference documentation</a> is also provided for all three languages, as well as <a href="https://developers.google.com/protocol-buffers/docs/proto" target="_blank" rel="noopener">language</a> and <a href="https://developers.google.com/protocol-buffers/docs/style" target="_blank" rel="noopener">style</a> guides for writing <code>.proto</code> files.</p>
 <h2 id="What-are-protocol-buffers"><a href="#What-are-protocol-buffers" class="headerlink" title="What are protocol buffers"></a>What are protocol buffers</h2><p>Protocol buffers are a flexible, efficient, automated mechanism for serializing structed data - think XML, but smaller, faster, and simpler. You define how you want your data to be structed once, then you can use special generated source code to easily write and read your structured data to and from a variety of data streams and using a variety of languages. You can even update your data structure without breaking deployed programs that are compiled against the “old” format.</p>
@@ -2850,7 +2938,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-NDK遇到的坑</title>
-    <url>/posts/b4be5f5e/</url>
+    <url>/2019/09/26/Android-NDK%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/b4431ac22ec2" target="_blank" rel="noopener">https://www.jianshu.com/p/b4431ac22ec2</a><br><a href="https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html" target="_blank" rel="noopener">https://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html</a><br><a href="https://www.cnblogs.com/aiguozhe/p/5355211.html" target="_blank" rel="noopener">https://www.cnblogs.com/aiguozhe/p/5355211.html</a></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    System.loadLibrary(<span class="string">"Store"</span>) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -2888,7 +2976,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-JNI tips</title>
-    <url>/posts/f20ec14d/</url>
+    <url>/2019/09/25/Translation-JNI-tips/</url>
     <content><![CDATA[<h2 id="JNI-tips"><a href="#JNI-tips" class="headerlink" title="JNI tips"></a>JNI tips</h2><p>JNI is the Java Native Interface. It define a way for the bytecode that Android compiles from managed code(written in the Java or Kotlin programming language) to interact with native code(written in C/C++). JNI is vendor-neutral, has support for loading code from dynamic shared libraries, and while cumbersome at times is reasonably efficent.</p>
 <p>If you’re not already familiar with it, read through the <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html" target="_blank" rel="noopener">Java Native Interface Specification</a> to get a sense for how JNI works and what features are available. Some aspects of the interface aren’t immediately obvious on first reading, so you may find the next few sections handy.</p>
 <p>To browse global JNI references and see where global JNI references are created and deleted, see the JNI heap view in the <a href="https://developer.android.com/studio/profile/memory-profiler#jni-references" target="_blank" rel="noopener">Memory Profile</a> in ANdroid 3.2 and higher.</p>
@@ -2935,7 +3023,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java Java中Exception, Error的区别</title>
-    <url>/posts/789b713f/</url>
+    <url>/2019/09/23/Java-Java%E4%B8%ADException-Error%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p><code>Throwable</code>类是整个异常体系类的父级类。<code>Throwable</code>类实现了<code>Serializable</code>接口，表示<code>Throwable</code>可以进行序列化，继承自Object类，他的子类主要是<code>Error</code>和<code>Exception</code>。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exception</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Error</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
@@ -2957,7 +3045,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-Java的解释执行和编译执行</title>
-    <url>/posts/8f460aa2/</url>
+    <url>/2019/09/23/Java-Java%E7%9A%84%E8%A7%A3%E9%87%8A%E6%89%A7%E8%A1%8C%E5%92%8C%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C/</url>
     <content><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码</p>
 <ul>
 <li><p>编译执行: </p>
@@ -3019,7 +3107,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-NDK build Android.mk</title>
-    <url>/posts/4c0a9dae/</url>
+    <url>/2019/09/17/Translation-NDK-build-Android-mk/</url>
     <content><![CDATA[<h2 id="Android-mk"><a href="#Android-mk" class="headerlink" title="Android.mk"></a>Android.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/android_mk" target="_blank" rel="noopener">Reference</a></p>
 <p>This page descriebs the syntax of the <code>Android.mk</code> build file used by <code>ndk-build</code>.</p>
 <h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The <code>Android.mk</code> file resides in a subdirectory of your project’s <code>jni/</code> directory, and describes your sources and shared libraries to the build system. It is really a tiny GNU makefile fragment that the build system parses once or more. The <code>Android.mk</code> file is useful for defining project-wide settings that <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a>, the build system, and your environment variables leave undefined. It can also override project-wide settings for specific modules.</p>
@@ -3209,7 +3297,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-NDK build Application.mk</title>
-    <url>/posts/9bbc0cee/</url>
+    <url>/2019/09/17/Translation-NDK-build-Application-mk/</url>
     <content><![CDATA[<h2 id="Application-mk"><a href="#Application-mk" class="headerlink" title="Application.mk"></a>Application.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/application_mk" target="_blank" rel="noopener">Reference</a></p>
 <p>This document explains the <code>Application.mk</code> build file used by the <code>ndk-build</code></p>
 <p>We recommend that you read the <a href="https://developer.android.google.cn/ndk/guides/concepts" target="_blank" rel="noopener">Concepts</a> page before this one.</p>
@@ -3327,7 +3415,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-NDK build</title>
-    <url>/posts/e03339a9/</url>
+    <url>/2019/09/17/Translation-NDK-build/</url>
     <content><![CDATA[<h2 id="ndk-build"><a href="#ndk-build" class="headerlink" title="ndk-build"></a>ndk-build</h2><p><a href="https://developer.android.google.cn/ndk/guides/ndk-build" target="_blank" rel="noopener">Reference</a></p>
 <p>The <code>ndk-build</code> script builds projects that use the NDK’s Make-based build system. There is more sepcific documentation for the <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> and <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> configuration used by <code>ndk-build</code>.</p>
 <h3 id="Internals"><a href="#Internals" class="headerlink" title="Internals"></a>Internals</h3><p>Running the <code>ndk-build</code> script is equivalent to running the following command:</p>
@@ -3374,7 +3462,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-NDK Concepts</title>
-    <url>/posts/9f89c6d1/</url>
+    <url>/2019/09/16/Translation-NKD-Concepts/</url>
     <content><![CDATA[<h2 id="Concepts"><a href="#Concepts" class="headerlink" title="Concepts"></a>Concepts</h2><p><a href="https://developer.android.google.cn/ndk/guides/concepts" target="_blank" rel="noopener">Reference</a></p>
 <h3 id="Before-Beginning"><a href="#Before-Beginning" class="headerlink" title="Before Beginning"></a>Before Beginning</h3><p>This guide assumes that you are already familiar with concepts inherent in native programming and in <a href="https://developer.android.google.cn/develop/index.html" target="_blank" rel="noopener">Android development</a>.</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>This section provides a high-level explanation of how the NDK works. The Android NDK is a set of tools allowing you to embed C or C++(“native code”) into your Android apps. The ability to use native code in Android apps can be particularly useful to developers who wish to do one or more of the following: </p>
@@ -3423,7 +3511,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Getting Started with the NDK</title>
-    <url>/posts/516f7653/</url>
+    <url>/2019/09/16/Translation-Getting-Started-with-the-NDK/</url>
     <content><![CDATA[<h2 id="Getting-Started-with-the-NDK"><a href="#Getting-Started-with-the-NDK" class="headerlink" title="Getting Started with the NDK"></a>Getting Started with the NDK</h2><p><a href="https://developer.android.google.cn/ndk/guides" target="_blank" rel="noopener">Reference</a></p>
 <p>The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">platform libraries</a> you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps. However, the NDK can be useful for cases in which you need to do one or more of the following:</p>
 <ul>
@@ -3465,7 +3553,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Build your app from the command line</title>
-    <url>/posts/70d0c793/</url>
+    <url>/2019/09/16/Translation-Build-your-app-from-the-command-line/</url>
     <content><![CDATA[<h2 id="Build-your-app-from-the-command-line"><a href="#Build-your-app-from-the-command-line" class="headerlink" title="Build your app from the command line"></a>Build your app from the command line</h2><p><a href="https://developer.android.com/studio/build/building-cmdline" target="_blank" rel="noopener">Reference</a></p>
 <p>You can execute all the build tasks available to your Android project using the <a href>Gradle wrapper</a> command line tool. It’s available as a batch file for Windows(<code>gradlew.bat</code>) and a shell script for Linux and Mac(<code>gradlew.sh</code>), and it’s accessible from the root of each project you create with Android Studio.</p>
 <p>To run a task with the wrapper, use one of the following commands from a Terminal window(from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code>):</p>
@@ -3628,7 +3716,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-About Android App Bundles</title>
-    <url>/posts/8ef0f2e5/</url>
+    <url>/2019/09/16/Translation-About-Android-App-Bundles/</url>
     <content><![CDATA[<h2 id="About-Android-App-Bundles"><a href="#About-Android-App-Bundles" class="headerlink" title="About Android App Bundles"></a>About Android App Bundles</h2><p><a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Reference</a></p>
 <p>An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
 <p>Google Play’s new app serving model, called Dynamic Delivery, then uses your app bundle to generate and serve optimized APKs for each user’s device configuration, so they download only the code and resources they need to run your app. You no longer have to build , sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads.</p>
@@ -3726,7 +3814,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Algorithm LeetCode 206 Reverse Linked List</title>
-    <url>/posts/5f3606d7/</url>
+    <url>/2019/07/31/Algorithm-LeetCode-206-Reverse-Linked-List/</url>
     <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Reverse a singly linked list.</p>
 <p>Example:</p>
 <p>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
@@ -3741,7 +3829,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-Java静态代理&amp;动态代理</title>
-    <url>/posts/a4209768/</url>
+    <url>/2019/07/21/Java-Java%E9%9D%99%E6%80%81%E4%BB%A3%E7%90%86-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/maohuidong/p/7992894.html" target="_blank" rel="noopener">https://www.cnblogs.com/maohuidong/p/7992894.html</a></p>
 ]]></content>
       <categories>
@@ -3753,7 +3841,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 插件化</title>
-    <url>/posts/b26f467e/</url>
+    <url>/2019/07/16/Android-%E6%8F%92%E4%BB%B6%E5%8C%96/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Android</category>
@@ -3764,7 +3852,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java GC原理</title>
-    <url>/posts/b3e25f3f/</url>
+    <url>/2019/07/16/Java-GC%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>Reference:<br><a href="https://blog.csdn.net/future234/article/details/80677140" target="_blank" rel="noopener">https://blog.csdn.net/future234/article/details/80677140</a><br><a href="https://blog.csdn.net/mdxdjhpkpk/article/details/60141257" target="_blank" rel="noopener">https://blog.csdn.net/mdxdjhpkpk/article/details/60141257</a></p>
 ]]></content>
       <categories>
@@ -3776,7 +3864,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-类加载机制</title>
-    <url>/posts/2776dc8a/</url>
+    <url>/2019/07/16/Java-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/m0_38075425/article/details/81627349" target="_blank" rel="noopener">https://blog.csdn.net/m0_38075425/article/details/81627349</a></p>
 ]]></content>
       <categories>
@@ -3788,7 +3876,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android ART和DALVIK的区别</title>
-    <url>/posts/a540e7e6/</url>
+    <url>/2019/07/16/Android-ART%E5%92%8CDALVIK%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p>Dalvik与Art的区别：</p>
 <p>Dalvik每次都要编译再运行，Art只会首次启动编译<br>Art占用空间比Dalvik大（原生代码占用的存储空间更大），就是用“空间换时间”<br>Art减少编译，减少了CPU使用频率，使用明显改善电池续航<br>Art应用启动更快、运行更快、体验更流畅、触感反馈更及时</p>
 <p>在Dalvik下，应用每次运行的时候，字节码都需要通过即时编译器（just in time ，JIT）转换为机器码，这会拖慢应用的运行效率，而在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，使其成为真正的本地应用。这个过程叫做预编译（AOT,Ahead-Of-Time）。这样的话，应用的启动(首次)和执行都会变得更加快速。</p>
@@ -3803,7 +3891,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-Java中的几种引用</title>
-    <url>/posts/48979ded/</url>
+    <url>/2019/07/16/Java-Java%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%BC%95%E7%94%A8/</url>
     <content><![CDATA[<ul>
 <li>强引用(Strong Reference)</li>
 <li>软引用(Soft Reference)</li>
@@ -3827,7 +3915,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android requestLayout()和invalidate()原理</title>
-    <url>/posts/d718012c/</url>
+    <url>/2019/07/16/Android-requestLayout-%E5%92%8Cinvalidate-%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[]]></content>
       <categories>
         <category>Android</category>
@@ -3838,7 +3926,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-Fragment原理</title>
-    <url>/posts/4dd850/</url>
+    <url>/2019/07/16/Android-Fragment%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/d0c7ed3d05e9" target="_blank" rel="noopener">https://www.jianshu.com/p/d0c7ed3d05e9</a><br><a href="https://www.jianshu.com/p/78136d0d3501" target="_blank" rel="noopener">https://www.jianshu.com/p/78136d0d3501</a><br><a href="https://www.jianshu.com/p/f50a1d7ab161" target="_blank" rel="noopener">https://www.jianshu.com/p/f50a1d7ab161</a><br><a href="https://blog.csdn.net/gaugamela/article/details/56280384" target="_blank" rel="noopener">https://blog.csdn.net/gaugamela/article/details/56280384</a></p>
 <p>每次beginTransaction都是新建了一个回退栈记录</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FragmentTransaction <span class="title">beginTransaction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> BackStackRecord(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -3857,7 +3945,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android Serializable和Parcelable性能差异</title>
-    <url>/posts/6d7fb02e/</url>
+    <url>/2019/07/13/Android-Serializable%E5%92%8CParcelable%E6%80%A7%E8%83%BD%E5%B7%AE%E5%BC%82/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/yezhennan/p/5527506.html" target="_blank" rel="noopener">https://www.cnblogs.com/yezhennan/p/5527506.html</a></p>
 ]]></content>
       <categories>
@@ -3869,7 +3957,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-Fragment生命周期</title>
-    <url>/posts/b7f694e6/</url>
+    <url>/2019/07/13/Android-Fragment%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</url>
     <content><![CDATA[<p><img src="https://upload-images.jianshu.io/upload_images/6433394-2905902a1331235f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/317/format/webp" alt></p>
 <p>Fragment1切换到Fragment2时的生命周期变化</p>
 <ol>
@@ -3902,7 +3990,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 进程间通信</title>
-    <url>/posts/4f81d6fa/</url>
+    <url>/2019/07/12/Android-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/</url>
     <content><![CDATA[<p>Reference: </p>
 <ul>
 <li><a href="https://blog.csdn.net/qian520ao/article/details/78089877" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78089877</a></li>
@@ -4063,7 +4151,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 无埋点监控</title>
-    <url>/posts/1ada89fb/</url>
+    <url>/2019/07/12/Android-%E6%97%A0%E5%9F%8B%E7%82%B9%E7%9B%91%E6%8E%A7/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0" target="_blank" rel="noopener">https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0</a><br><a href="https://blog.csdn.net/jhyshenyu/article/details/87633652" target="_blank" rel="noopener">https://blog.csdn.net/jhyshenyu/article/details/87633652</a><br><a href="https://blog.csdn.net/wangkai0681080/article/details/82659516" target="_blank" rel="noopener">https://blog.csdn.net/wangkai0681080/article/details/82659516</a><br><a href="https://blog.csdn.net/qian520ao/article/details/85308948" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/85308948</a><br><a href="https://juejin.im/post/5da6d99b6fb9a04e0855bfe3" target="_blank" rel="noopener">https://juejin.im/post/5da6d99b6fb9a04e0855bfe3</a></p>
 ]]></content>
       <categories>
@@ -4075,7 +4163,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java Java内部类</title>
-    <url>/posts/e058f543/</url>
+    <url>/2019/07/12/Java-Java%E5%86%85%E9%83%A8%E7%B1%BB/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/u011240877/article/details/78682097" target="_blank" rel="noopener">https://blog.csdn.net/u011240877/article/details/78682097</a></p>
 ]]></content>
       <categories>
@@ -4087,7 +4175,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java finally, final, finalize</title>
-    <url>/posts/cc9d9ab/</url>
+    <url>/2019/07/12/Java-Java-finally-final-finalize/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/smart-hwt/p/8257330.html" target="_blank" rel="noopener">https://www.cnblogs.com/smart-hwt/p/8257330.html</a></p>
 <p>final: </p>
 <p><code>final</code>修饰的类不能被继承<br><code>final</code>修饰的方法不能被重写<br><code>final</code>修饰的变量叫常量，常量必须初始化, 初始化之后值就不能更改</p>
@@ -4101,7 +4189,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-ANR原理分析与解决</title>
-    <url>/posts/2c4d5f81/</url>
+    <url>/2019/07/10/Android-ANR%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%E4%B8%8E%E8%A7%A3%E5%86%B3/</url>
     <content><![CDATA[<p>ANR: Application Not Responding</p>
 <ul>
 <li>KeyDispatchTimeout(5s)</li>
@@ -4172,7 +4260,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-BlockCanary源码分析</title>
-    <url>/posts/ba081c48/</url>
+    <url>/2019/07/10/Android-BlockCanary%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>首先来看下<code>BlockCanary</code>的使用方法，一般是在程序<code>Application</code>里的<code>onCreate</code>方法中调用</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BlockCanary.install(<span class="keyword">this</span>, <span class="keyword">new</span> AppBlockCanaryContext()).start();</span><br></pre></td></tr></table></figure>
 
@@ -4251,7 +4339,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-LeakCanary源码分析</title>
-    <url>/posts/91222177/</url>
+    <url>/2019/07/10/Android-LeakCanary%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p><a href="https://square.github.io/leakcanary/" target="_blank" rel="noopener">https://square.github.io/leakcanary/</a><br><a href="https://mp.weixin.qq.com/s/idjFaJsLpVLw52RSYHA_Vg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/idjFaJsLpVLw52RSYHA_Vg</a></p>
 ]]></content>
       <categories>
@@ -4264,7 +4352,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-线程池相关</title>
-    <url>/posts/a254a370/</url>
+    <url>/2019/07/10/Java-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9B%B8%E5%85%B3/</url>
     <content><![CDATA[<p><a href="https://www.cnblogs.com/dolphin0520/p/3932921.html" target="_blank" rel="noopener">https://www.cnblogs.com/dolphin0520/p/3932921.html</a></p>
 ]]></content>
       <categories>
@@ -4276,7 +4364,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 界面适配</title>
-    <url>/posts/77dbc89e/</url>
+    <url>/2019/07/10/Android-%E7%95%8C%E9%9D%A2%E9%80%82%E9%85%8D/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/5b7a29736fb9a019d53e7ee2" target="_blank" rel="noopener">https://juejin.im/post/5b7a29736fb9a019d53e7ee2</a></p>
 <ol>
 <li>dpi (dots per inch)<br> 根据屏幕的真实尺寸和分辨率计算出来, 每个设备都不一样<br> <img src="http://img-scions.test.upcdn.net/dpi.png" alt="sf"></li>
@@ -4299,7 +4387,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-事件分发机制</title>
-    <url>/posts/23be93f7/</url>
+    <url>/2019/07/08/Android-%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
     <content><![CDATA[<p><a href="https://tryenough.com/android-motionevent" target="_blank" rel="noopener">https://tryenough.com/android-motionevent</a><br><a href="https://blog.csdn.net/carson_ho/article/details/54136311" target="_blank" rel="noopener">https://blog.csdn.net/carson_ho/article/details/54136311</a><br><a href="https://www.jianshu.com/p/d3758eef1f72" target="_blank" rel="noopener">https://www.jianshu.com/p/d3758eef1f72</a></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//伪代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Activity.java</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">        onUserInteraction();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这里实际是调用的viewgroup的dispatchTouchEvent进行分发事件</span></span><br><span class="line">    <span class="keyword">if</span> (getWindow().superDispatchTouchEvent(ev)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> onTouchEvent(ev);        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ViewGroup.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(!onInterruptedTouchEvent(ev)) &#123;</span><br><span class="line">        result = child.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果child的dispatchTouchEvent没有消耗这个事件, 就会viewgroup去onTouchEvent消耗</span></span><br><span class="line">    <span class="keyword">if</span>(!result) &#123;</span><br><span class="line">        result = onTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是不是可以理解为如果被onTouch消耗了，就不会走到onTouchEvent进行消耗</span></span><br><span class="line">    <span class="keyword">if</span>(onTouch(<span class="keyword">this</span>, ev)) &#123;</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!result &amp;&amp; onTouchEvent(ev)) &#123;</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
@@ -4311,7 +4399,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java sleep和wait的区别</title>
-    <url>/posts/6e02b883/</url>
+    <url>/2019/07/08/Java-sleep%E5%92%8Cwait%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/zhangqunshuai/article/details/82455503" target="_blank" rel="noopener">https://blog.csdn.net/zhangqunshuai/article/details/82455503</a></p>
 <p>类不同: <code>sleep</code>来自Thread方法， <code>wait</code>来自Object<br>释放锁: <code>sleep</code>不释放锁， <code>wait</code>释放锁<br>用法不同: <code>sleep</code>到时间会自动恢复, <code>wait</code>可以使用<code>notify/notifyAll</code>唤醒</p>
 ]]></content>
@@ -4324,7 +4412,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Bluetooth overview</title>
-    <url>/posts/b6e3e565/</url>
+    <url>/2019/07/04/Translation-Bluetooth-overview/</url>
     <content><![CDATA[<h1 id="Bluetooth-overview"><a href="#Bluetooth-overview" class="headerlink" title="Bluetooth overview"></a>Bluetooth overview</h1><p>The Android platform includes support for the Bluetooth network stack, which allows a device to wirelessly exchange data with other Bluetooth devices. The application framework provides access to the Bluetooth functionality through the Android Bluetooth APIs. These APIs let applications wirelessly connect to other Bluetooth devices, enabling point-to-point and multipoint wireless features.</p>
 <p>Using the Bluetooth APIs, an Android application can perform the following:</p>
 <ul>
@@ -4373,7 +4461,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 关于onPause和onStop回调时机的问题</title>
-    <url>/posts/eeb5a1cb/</url>
+    <url>/2019/07/02/Android-%E5%85%B3%E4%BA%8EonPause%E5%92%8ConStop%E5%9B%9E%E8%B0%83%E6%97%B6%E6%9C%BA%E7%9A%84%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>我们知道一个<code>Activity</code>的启动会执行<code>onCreate</code> -&gt; <code>onStart</code> -&gt;  <code>onResume</code></p>
 <p>一个<code>Activity</code>的停止会执行 <code>onPause</code> -&gt; <code>onStop</code> -&gt; <code>onDestroy</code></p>
 <p>那么，<code>ActivityA</code>启动<code>ActivityB</code>的时候，<code>ActivityB</code>的<code>onCreate</code>与<code>ActivityA</code>的<code>onPause</code>还是<code>onStop</code>哪个在前呢?</p>
@@ -4403,7 +4491,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-LruCache原理</title>
-    <url>/posts/85c12fe4/</url>
+    <url>/2019/07/02/Android-LruCache%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/b49a111147ee" target="_blank" rel="noopener">https://www.jianshu.com/p/b49a111147ee</a></p>
 <p>首先来看下构造函数</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LruCache</span><span class="params">(<span class="keyword">int</span> maxSize)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(maxSize &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"maxSize &lt;= 0"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.maxSize = maxSize;</span><br><span class="line">    <span class="keyword">this</span>.map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(<span class="number">0</span>, <span class="number">0.75f</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -4432,7 +4520,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Managing Bitmap Memory</title>
-    <url>/posts/77852a81/</url>
+    <url>/2019/07/02/Translation-Managing-Bitmap-Memory/</url>
     <content><![CDATA[<h1 id="Managing-Bitmap-Memory"><a href="#Managing-Bitmap-Memory" class="headerlink" title="Managing Bitmap Memory"></a>Managing Bitmap Memory</h1><p>In addition to the steps described in <a href="https://developer.android.com/topic/performance/graphics/cache-bitmap.html" target="_blank" rel="noopener">Caching Bitmaps</a>, there are specific things you can do to facilitate garbage collection and bitmap reuse. The recommended strategy depends on which version(s) of Android you are targeting. The <code>BitmapFun</code> sample app included with this class shows you how to design your app to work efficiently across different versions of Android.</p>
 <p>To set the stage of this lesson, here is how Android’s management of bitmap memory has evolved:</p>
 <ul>
@@ -4454,7 +4542,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Caching Bitmaps</title>
-    <url>/posts/a176b35b/</url>
+    <url>/2019/07/02/Translation-Caching-Bitmaps/</url>
     <content><![CDATA[<h1 id="Caching-Bitmaps"><a href="#Caching-Bitmaps" class="headerlink" title="Caching Bitmaps"></a>Caching Bitmaps</h1><p>Loading a single bitmap into your user interface(UI) is straightforward, however things get more complicated if you need to load a larger set of images at once. In many cases(such as with components like <code>ListView</code>, <code>GridView</code> or <code>ViewPager</code>), the total number of images on-screen combined with images that might soon scroll onto the screen are essentially unlimited.</p>
 <p>(直接把图片加载进UI可能还比较容易，但是，如果一下加载很多图片到listview, gridview或viewpager里，可能就会出现问题.)</p>
 <p>Memory usage is kept down with components like this by recycling the child views as they move off-screen. The garbage collector also frees up your loaded bitmaps, assuming you don’t keep any long lived references. This is all good and well but in order to keep a fluid and fast-loading UI you want to avoid continually processing these images each time they come back on-screen. A memory and disk cache can often help here, allowing componnets to quickly reload processed images.</p>
@@ -4510,7 +4598,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Loading Large Bitmaps Efficiently</title>
-    <url>/posts/74f024ac/</url>
+    <url>/2019/07/02/Translation-Loading-Large-Bitmaps-Efficiently/</url>
     <content><![CDATA[<h1 id="Loading-Large-Bitmaps-Efficiently"><a href="#Loading-Large-Bitmaps-Efficiently" class="headerlink" title="Loading Large Bitmaps Efficiently"></a>Loading Large Bitmaps Efficiently</h1><p>Images come in all shapes and sizes. In many cases they are larger than required for a typical application user interface (UI). For example, the system Gallery application displays photos taken using your Android devices’s camera which are typically much higher resolution than the screen density of your device.</p>
 <p>Given that you are working with limited memory, ideally you only want to load a lower resolution version in memory. The lower resolution version should match the size of the UI component that displays it. An image with a higher resolution does not provide any visible benefit, but still takes up precious memory and incurs additional performance overhead due to additional on the flying scale.</p>
 <p>This leason walks you through decoding large bitmaps without exceeding the per application memory limit by loading a smaller subsampled version in memory.</p>
@@ -4552,7 +4640,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 常见内存泄漏</title>
-    <url>/posts/a6157931/</url>
+    <url>/2019/07/01/Android-%E5%B8%B8%E8%A7%81%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F/</url>
     <content><![CDATA[<p><a href="https://www.toptal.com/java/hunting-memory-leaks-in-java" target="_blank" rel="noopener">https://www.toptal.com/java/hunting-memory-leaks-in-java</a></p>
 ]]></content>
       <categories>
@@ -4564,7 +4652,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android App启动过程和Activity启动过程</title>
-    <url>/posts/b5608f0f/</url>
+    <url>/2019/07/01/Android-App%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B%E5%92%8CActivity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/qian520ao/article/details/78156214" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78156214</a></p>
 ]]></content>
       <categories>
@@ -4576,7 +4664,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-RecyclerView与ListView的区别</title>
-    <url>/posts/d2b4a3fc/</url>
+    <url>/2019/07/01/Android-RecyclerView%E4%B8%8EListView%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">https://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
 ]]></content>
       <categories>
@@ -4588,7 +4676,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android StartService和bindService的区别</title>
-    <url>/posts/72e1c46d/</url>
+    <url>/2019/07/01/Android-StartService%E5%92%8CbindService%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
     <content><![CDATA[<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"SampleService"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onCreate..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onStartCommand"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onDestroy..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p><code>startService</code></p>
@@ -4608,7 +4696,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java HashMap &amp; HashTable, HashMap &amp; ConcurrentHashMap&#39;</title>
-    <url>/posts/f7f3c028/</url>
+    <url>/2019/07/01/Java-HashMap-HashTable-HashMap-ConcurrentHashMap/</url>
     <content><![CDATA[<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>惯例，先从构造函数开始看:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(initialCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> + initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(initialCapacity &gt; MAXIMUM_CAPACITY) &#123;</span><br><span class="line">        initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +</span><br><span class="line">                loadFactor);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">    <span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(initialCapacity, DEFAULT_LOAD_FACTOR);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">    putMapEntries(m, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回大于输入参数且最近的2的整数次幂的数。比如10，则返回16</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -4643,7 +4731,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-对象池的使用</title>
-    <url>/posts/d7e77019/</url>
+    <url>/2019/07/01/Android-%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>在Android中为了避免多次重复的创建对象，可以通过使用对象池技术来减少对象的创建，从而达到减少占用内存的效果。</p>
 <p>Android源码里也有很多地方用到:</p>
 <p>比如Handler的Message里，使用obtain()而不是每次new. </p>
@@ -4675,7 +4763,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translatioin-Shrink, obfuscate, and optimize your app</title>
-    <url>/posts/a692d70a/</url>
+    <url>/2019/06/30/Translation-Shrink-obfuscate-and-optimize-your-app/</url>
     <content><![CDATA[<h1 id="Shrink-Obfuscate-and-optimize-your-app"><a href="#Shrink-Obfuscate-and-optimize-your-app" class="headerlink" title="Shrink, Obfuscate, and optimize your app"></a>Shrink, Obfuscate, and optimize your app</h1><p>To make your app as small as possible, you should enable shrinking in your release build to remove unused code and resources. When enabling shrinking, you also benefit from obfuscation, which shortens the names of your app’s classes and members, and optimization, which applies more aggressive strategies for further reduce the size of your app. This page describes how R8 performs these compile-time tasks for your project and how you can customize them. (为了让减小你的app体积，你可以开启shrinking， 把app里没用到的代码和资源删除. 开启shrinking的同时，你也会从obfucsation中受益，因为obfuscation会把你的类和方法名缩短. 而且，optmizitaion里也有很多好策略可以进一步的减少app大小. 本文讲介绍R8是如何在编译时优化你的app的.)</p>
 <p>When you build your project using <a href>Android Gradle plugin 3.4.0</a> or higher, the plugin no longer uses ProGuard to peform compile-time code optimization. Instead, the plugin works with the R8 compiler to handle the following compile-time tasks:  </p>
 <p>(在Android Gradle Plugin 3.4.0以上， 使用R8编译器替代ProGuard来执行以下的优化: )</p>
@@ -4855,7 +4943,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Configure your build-Overview</title>
-    <url>/posts/8daa0b89/</url>
+    <url>/2019/06/30/Translation-Configure-your-build-Overview/</url>
     <content><![CDATA[<h1 id="Configure-your-build"><a href="#Configure-your-build" class="headerlink" title="Configure your build"></a>Configure your build</h1><p>The Android build system compiles app resources and source code, and packages them into APKs that you can test, deploy, sign, and distribute. Android Studio uses <a href="http://www.gradle.org/" target="_blank" rel="noopener">Gradle</a>, an advanced build toolkit, to automate and manage the build process, while allowing your to define flexible custom build configurations. Each build configuration can define its own set of code and resources, while reusing the parts common to all versions of your app. The Android plugin for Gradle works with the build toolkit to provide processes and configurable settings that are specific to building and testing Android applications.<br>(Android编译系统通过Gradle把app资源和代码，编译进APK里。Gradle是一个高级的工具，可以自动管理编译过程，而且提供了丰富的可配置选项.)</p>
 <p>Gradle and the Android plugin run independent of Android Studio. This means that you can build your Android apps from within Android Studio, the command line on your machine, or on machines where Android Studio is not installed(such as continuous integration servers.). If you are not using Android Studio, you can learn how to <a href="https://developer.android.com/studio/build/building-cmdline.html" target="_blank" rel="noopener">biuld and run your app from the command line</a>. The output of the build is the same whether you are building a project from the command line, on a remote machine, or using Android Studio.<br>(Gralde和Android Gradle插件是独立的。 你可以使用Android Studio或命令行或其他没有安装AndroidStudio的机器上来编译程序.)</p>
 <p>The flexibility of the Android build system enables you to perform custom build configurations without modifying your app’s core source files. This section helps you understand how the Android build system works, and how it can help you customize and automate multiple build configurations. If you simply want to learn more about deploying your app, see <a href="https://developer.android.com/studio/run/index.html" target="_blank" rel="noopener">Building and Running from Android Studio</a>. To start creating custom build configurations right away using Android Studio, see<a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">Configuring Build Variants</a>.</p>
@@ -4950,7 +5038,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Reduce your app size</title>
-    <url>/posts/f8021ed8/</url>
+    <url>/2019/06/28/Translation-Reduce-your-app-size/</url>
     <content><![CDATA[<h1 id="Reduce-your-app-size"><a href="#Reduce-your-app-size" class="headerlink" title="Reduce your app size"></a>Reduce your app size</h1><p>Users often avoid downloading apps that seem too large, particularly in emerging markets where devices connect to often-spotty 2G and 3G networks or work on pay-by-the-byte plans. This page describes how to reduce yoru app’s download size, which enables more users to download your app.</p>
 <p>(有些地方使用2G/3G或者需要按流量付费的地方，会不愿意去下载太大的程序。 本文讲告诉你如何减少app大小.)</p>
 <h2 id="Upload-yoru-app-with-Android-App-Bundles"><a href="#Upload-yoru-app-with-Android-App-Bundles" class="headerlink" title="Upload yoru app with Android App Bundles"></a>Upload yoru app with Android App Bundles</h2><p>The easiest way to gain immediate app size savings when publishing to Google Play is by uploading your app as an <a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Android App Bundle</a>, which is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
@@ -5059,7 +5147,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-IntentService的使用和原理</title>
-    <url>/posts/a445691e/</url>
+    <url>/2019/06/27/Android-IntentService%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>首先要知道<code>IntentService</code>本质上是一个<code>Service</code>, 目的是可以像线程一样执行一些异步操作. </p>
 <p>既然目的是为了执行异步操作，为什么不直接通过Thread或者AsyncTask这种来实现，而是继承自Service呢? </p>
 <p>因为<code>Android</code>在面对使用<code>IntentService</code>的应用优先级会高些， 主动杀掉的可能性会降低点。</p>
@@ -5089,7 +5177,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android HandlerThread原理</title>
-    <url>/posts/efbd99a7/</url>
+    <url>/2019/06/27/Android-HandlerThread%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>HandlerThread代码还是很简单的，里面有一个Handler和一个Looper, 继承自thread, 本质是一个Thread</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HandlerThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> mPriority;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HandlerThread</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        mPriority = Process.THREAD_PRIORITY_DEFAULT;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">HandlerThread</span><span class="params">(String name, <span class="keyword">int</span> priority)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(name);</span><br><span class="line">        mPriority = priority;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Looper mLooper;</span><br><span class="line">    <span class="keyword">int</span> mTid;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mTid = Process.myTid();</span><br><span class="line">        Looper.prepare();</span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            mLooper = Looper.myLooper();</span><br><span class="line">            notifyAll();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Process.setThreadPriority(mPriority);</span><br><span class="line">        onLooperPrepared();</span><br><span class="line">        Looper.loop();</span><br><span class="line">        mTid = -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onLooperPrepared</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Looper <span class="title">getLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!isAlive()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (isAlive() &amp;&amp; mLooper == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    wait();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mLooper;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Handler mHandler;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Handler <span class="title">getThreadHandler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(mHandler == <span class="keyword">null</span>) &#123;</span><br><span class="line">            mHandler = <span class="keyword">new</span> Handler(getLooper());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mHandler;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">quit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Looper looper = getLooper();</span><br><span class="line">        <span class="keyword">if</span>(looper != <span class="keyword">null</span>) &#123;</span><br><span class="line">            looper.quit();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">quitSafely</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Looper looper = getLooper();</span><br><span class="line">        <span class="keyword">if</span> (looper != <span class="keyword">null</span>) &#123;</span><br><span class="line">            looper.quitSafely();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getThreadId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> mTid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -5111,7 +5199,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-AsyncTask原理</title>
-    <url>/posts/cc1de343/</url>
+    <url>/2019/06/27/Android-AsyncTask%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>看一个类，首先找到它的构造函数，这儿是起点。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>((Looper)<span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncTask</span><span class="params">(Handler handler)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(handler != <span class="keyword">null</span> ? handler.getLooper() : <span class="keyword">null</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AsyncTask</span><span class="params">(Looper callbackLooper)</span> </span>&#123;</span><br><span class="line">    mHandler = callbackLooper == <span class="keyword">null</span> || callbackLooper == Looper.getMainLooper() ? getMainHandler() : <span class="keyword">new</span> Handler(callbackLooper);</span><br><span class="line">    mWorker = <span class="keyword">new</span> WorkerRunnable&lt;Params, Result&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Result <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            mTaskInvoked.set(<span class="keyword">true</span>);</span><br><span class="line">            Result result = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);</span><br><span class="line">                <span class="comment">// doInBackground抽象方法，外面实现</span></span><br><span class="line">                result = doInBackground(mParams);</span><br><span class="line">                Binder.flushPendingCommands();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Throwable tr) &#123;</span><br><span class="line">                mCancelled.set(<span class="keyword">true</span>);</span><br><span class="line">                <span class="keyword">throw</span> tr;</span><br><span class="line">            &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">//执行完之后发送到getHandler()所在的线程</span></span><br><span class="line">                postResult(result);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    mFuture = <span class="keyword">new</span> FutureTask&lt;Result&gt;(mWorker) &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">done</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                postResultIfNotInvoked(get());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line"></span><br><span class="line">            &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"An error occurred while executing doInBackground()"</span>,</span><br><span class="line">                        e.getCause());</span><br><span class="line">            &#125; <span class="keyword">catch</span> (CancellationException e) &#123;</span><br><span class="line">                postResultIfNotInvoked(<span class="keyword">null</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -5150,7 +5238,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-Handler原理</title>
-    <url>/posts/122d6ee8/</url>
+    <url>/2019/06/27/Android-Handler%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p><code>Handler</code>是Android中最常用的类之一，我们今天来分析下他的源码结构.</p>
 <p>先从构造函数来看.</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Handler.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(<span class="keyword">boolean</span> async)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(<span class="keyword">null</span>, async);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Callback callback)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(callback, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Looper looper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(looper, <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Looper looper, Callback callback)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(looper, callback, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Callback callback, <span class="keyword">boolean</span> async)</span> </span>&#123;</span><br><span class="line">    mLooper = Looper.myLooper();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mLooper == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                <span class="string">"Can't create handler inside thread "</span> + Thread.currentThread()</span><br><span class="line">                        + <span class="string">" that has not called Looper.prepare()"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    mQueue = mLooper.mQueue;</span><br><span class="line">    mCallback = callback;</span><br><span class="line">    mAsynchronous = async;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Handler</span><span class="params">(Looper looper, Callback callback, <span class="keyword">boolean</span> async)</span> </span>&#123;</span><br><span class="line">    mLooper = looper;</span><br><span class="line">    mQueue = looper.mQueue;</span><br><span class="line">    mCallback = callback;</span><br><span class="line">    mAsynchronous = async;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -5223,7 +5311,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-IdleHandler的使用</title>
-    <url>/posts/971bf444/</url>
+    <url>/2019/06/27/Android-IdleHandler%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p>直接看代码</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Callback interface for discovering when a thread is going to block</span></span><br><span class="line"><span class="comment">   * waiting for more messages.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">interface</span> <span class="title">IdleHandler</span> </span>&#123;</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Called when the message queue has run out of messages and will now</span></span><br><span class="line"><span class="comment">   * wait for more. Return true to keep your idle handler active, false</span></span><br><span class="line"><span class="comment">   * to have it removed. This may be called if there are still messages</span></span><br><span class="line"><span class="comment">   * pending in the queue, but they are all scheduled to be dispatched</span></span><br><span class="line"><span class="comment">   * after the current time.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">   <span class="function"><span class="keyword">boolean</span> <span class="title">queueIdle</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -5246,7 +5334,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-EventBus2 &amp; EventBus3对比</title>
-    <url>/posts/c09a1c52/</url>
+    <url>/2019/06/27/Android-EventBus2-EventBus3%E5%AF%B9%E6%AF%94/</url>
     <content><![CDATA[<p>在使用<code>method tracing</code>工具分析启动速度的时候，会发现<code>EventBus.getDefault().register</code>方法会耗时挺久，因此分析下<code>EventBus</code>源码，这里使用的是<code>EventBus2.4</code>. 之后，再来看下<code>EventBus3.0</code>究竟优化了什么地方，以及他们之间的性能比较。</p>
 <p>为了便于理解，这里先把几个关键变量介绍一下:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * key is Event name</span></span><br><span class="line"><span class="comment"> * value is subscription</span></span><br><span class="line"><span class="comment"> * 也就是记录了某个事件上所有的注册信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Class&lt;?&gt;, CopyOnWriteArrayList&lt;Subscription&gt;&gt; subscriptionsByEventType;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 记录当前Object类里所有的注册信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Object, List&lt;Class&lt;?&gt;&gt;&gt; typesBySubscriber;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 记录所有sticky的注册信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> Map&lt;Class&lt;?&gt;, Object&gt; stickyEvents;</span><br></pre></td></tr></table></figure>
@@ -5304,7 +5392,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-SharedPreference原理</title>
-    <url>/posts/c8244c97/</url>
+    <url>/2019/06/26/Android-SharedPreference%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>在使用method tracing工具时，发现SharedPreference在初次使用的时候，占用的时间比较长。 因此，这里研究下SharedPreference源码， 了解下是什么消耗了的时间</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    SharedPreferences.java</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">SharedPreferences</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnSharedPreferenceChangeListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onSharedPreferenceChanged</span><span class="params">(SharedPreferences sharedPreferences, String key)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Editor</span> </span>&#123;</span><br><span class="line">        <span class="function">Editor <span class="title">putString</span><span class="params">(String key, @Nullable String value)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">putStringSet</span><span class="params">(String key, @Nullable Set&lt;String&gt; values)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">putInt</span><span class="params">(String key, <span class="keyword">int</span> value)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">putLong</span><span class="params">(String key, <span class="keyword">long</span> value)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">putFloat</span><span class="params">(String key, <span class="keyword">float</span> value)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">putBoolean</span><span class="params">(String key, <span class="keyword">boolean</span> value)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">remove</span><span class="params">(String key)</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">Editor <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">boolean</span> <span class="title">commit</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">apply</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Map&lt;String, ?&gt; getAll();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="function">String <span class="title">getString</span><span class="params">(String key, @Nullable String defValue)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="function">Set&lt;String&gt; <span class="title">getStringSet</span><span class="params">(String key, @Nullable Set&lt;String&gt; defValues)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getInt</span><span class="params">(String key, <span class="keyword">int</span> defValue)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">getLong</span><span class="params">(String key, <span class="keyword">long</span> defValue)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">float</span> <span class="title">getFloat</span><span class="params">(String key, <span class="keyword">float</span> defValue)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">getBoolean</span><span class="params">(String key, <span class="keyword">boolean</span> defValue)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">contains</span><span class="params">(String key)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">Editor <span class="title">edit</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">registerOnSharedPreferenceChangeListener</span><span class="params">(OnSharedPreferenceChangeListener listener)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">unregisterOnSharedPreferenceChangeListener</span><span class="params">(OnSharedPreferenceChangeListener listener)</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -5365,7 +5453,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android Activity栈和启动模式</title>
-    <url>/posts/a578e2/</url>
+    <url>/2019/06/26/Android-Activity%E6%A0%88%E5%92%8C%E5%90%AF%E5%8A%A8%E6%A8%A1%E5%BC%8F/</url>
     <content><![CDATA[<p>观察<code>Activity</code>栈的脚本:</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">adb shell dumpsys activity | sed -n -e '/Stack #/p' -e '/Running activities/,/Run #0/p'</span><br></pre></td></tr></table></figure>
 
@@ -5429,7 +5517,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Analyze with Profile GPU Rendering</title>
-    <url>/posts/5f491d88/</url>
+    <url>/2019/06/25/Translation-Analyze-with-Profile-GPU-Rendering/</url>
     <content><![CDATA[<h1 id="Analyze-with-Profile-GPU-Rendering"><a href="#Analyze-with-Profile-GPU-Rendering" class="headerlink" title="Analyze with Profile GPU Rendering"></a>Analyze with Profile GPU Rendering</h1><p>The <a href="https://developer.android.com/studio/profile/dev-options-rendering.html" target="_blank" rel="noopener">Profile GPU Rendering</a> too indicates the relative time that each stage of the rendering pipeline takes to render the previous frame. This knowledge can help you identify bottlenecks in the pipeline, so that you can know what to optimize to improve your app’s rendering performance.</p>
 <p>This page briefly explains what happens during each pipeline stage, and discusses issues that can cause bottlenecks there. Before reading this page, you should be familiar with the information presented in <a href="https://developer.android.com/studio/profile/dev-options-rendering.html" target="_blank" rel="noopener">Profile GPU rendering</a>. In addition, to understand how all of the stages fit together, it may be helpful to review <a href="https://www.youtube.com/watch?v=we6poP0kw6E&index=64&list=PLWz5rJ2EKKc9CBxr3BVjPTPoDPLdPIFCE" target="_blank" rel="noopener">how the rendering pipeline works</a></p>
 <h2 id="Visual-representation"><a href="#Visual-representation" class="headerlink" title="Visual representation"></a>Visual representation</h2><p>The Profile GPU Rendering tool displays stages and their relative times in the form of a graph: a color-coded histogram.</p>
@@ -5492,7 +5580,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android UI优化常用工具</title>
-    <url>/posts/d96da03e/</url>
+    <url>/2019/06/25/Android-UI%E4%BC%98%E5%8C%96%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<ul>
 <li>Analyze with Profile GPU Rendering</li>
 <li>TraceView</li>
@@ -5508,7 +5596,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-View的绘制流程</title>
-    <url>/posts/5c71151a/</url>
+    <url>/2019/06/24/Android-View%E7%9A%84%E7%BB%98%E5%88%B6%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[<p>View的绘制流程是从<code>ViewRootImpl.java</code>中的<code>performTraversales()</code>函数开始的。</p>
 <p>包括以下三个阶段</p>
 <ul>
@@ -5567,7 +5655,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-AsyncLayoutInflator原理</title>
-    <url>/posts/7053c23b/</url>
+    <url>/2019/06/24/Android-AsyncLayoutInflator%E5%8E%9F%E7%90%86/</url>
     <content><![CDATA[<p>AsyncInflatInflator源码其实很简单。 </p>
 <p>总结来说，就是开启一个线程，进行inflate操作，如果inflate失败，会调用原有线程的inflate操作. inflate成功后返回view, 没有attachToRoot, 需要自己去处理.<br>内部原理需要注意的地方，都以注释方式加上了。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">AsyncLayoutInflater</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"AsyncLayoutInflater"</span>;</span><br><span class="line"></span><br><span class="line">    LayoutInflater mInflater;</span><br><span class="line">    Handler mHandler;</span><br><span class="line">    InflateThread mInflateThread;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AsyncLayoutInflater</span><span class="params">(@NonNull Context context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 原来的inflater</span></span><br><span class="line">        mInflater = <span class="keyword">new</span> BasicInflater(context);</span><br><span class="line">        mHandler = <span class="keyword">new</span> Handler(mhandlerCallback);</span><br><span class="line">        <span class="comment">// 单线程</span></span><br><span class="line">        mInflateThread = InflateThread.getInstance();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@UiThread</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">inflate</span><span class="params">(@LayoutRes <span class="keyword">int</span> resid, @Nullable ViewGroup parent, @NonNull OnInflateFinishedListener callback)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == callback) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"callback argument may not be null!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        InflateRequest request = mInflateThread.obtainRequest();</span><br><span class="line">        request.inflater = <span class="keyword">this</span>;</span><br><span class="line">        request.resid = resid;</span><br><span class="line">        request.parent = parent;</span><br><span class="line">        request.callback = callback;</span><br><span class="line">        mInflateThread.enqueue(request);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnInflateFinishedListener</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">onInflateFinished</span><span class="params">(@NonNull View view, @LayoutRes <span class="keyword">int</span> resid,</span></span></span><br><span class="line"><span class="function"><span class="params">                               @Nullable ViewGroup parent)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InflateRequest</span> </span>&#123;</span><br><span class="line">        AsyncLayoutInflater inflater;</span><br><span class="line">        ViewGroup parent;</span><br><span class="line">        <span class="keyword">int</span> resid;</span><br><span class="line">        View view;</span><br><span class="line">        OnInflateFinishedListener callback;</span><br><span class="line"></span><br><span class="line">        InflateRequest() &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Handler.Callback mhandlerCallback = <span class="keyword">new</span> Handler.Callback() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            InflateRequest request = (InflateRequest)msg.obj;</span><br><span class="line">            <span class="keyword">if</span>(request.view == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// 如果inflate失败，会调用原来的inflater去inflate布局</span></span><br><span class="line">                <span class="comment">// 而且没有attachToRoot, 需要自己去处理返回的request.view</span></span><br><span class="line">                request.view = mInflater.inflate(request.resid, request.parent, <span class="keyword">false</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            request.callback.onInflateFinished(request.view, request.resid, request.parent);</span><br><span class="line">            mInflateThread.releaseRequest(request);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicInflater</span> <span class="keyword">extends</span> <span class="title">LayoutInflater</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] sClassPrefixList = &#123;</span><br><span class="line">                <span class="string">"android.widget."</span>,</span><br><span class="line">                <span class="string">"android.webkit."</span>,</span><br><span class="line">                <span class="string">"android.app."</span></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        BasicInflater(Context context) &#123;</span><br><span class="line">            <span class="keyword">super</span>(context);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> LayoutInflater <span class="title">cloneInContext</span><span class="params">(Context newContext)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BasicInflater(newContext);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">protected</span> View <span class="title">onCreateView</span><span class="params">(String name, AttributeSet attrs)</span> <span class="keyword">throws</span> ClassNotFoundException </span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(String prefix : sClassPrefixList) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="comment">// 不是很清楚这里</span></span><br><span class="line">                    View view = createView(name, prefix, attrs);</span><br><span class="line">                    <span class="keyword">if</span>(view != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        <span class="keyword">return</span> view;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InflateThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> InflateThread sInstance;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            sInstance = <span class="keyword">new</span> InflateThread();</span><br><span class="line">            sInstance.start();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> InflateThread <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> sInstance;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//阻塞队列， 如果inflate request超过10个会阻塞</span></span><br><span class="line">        <span class="keyword">private</span> ArrayBlockingQueue&lt;InflateRequest&gt; mQueue = <span class="keyword">new</span> ArrayBlockingQueue&lt;InflateRequest&gt;(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 对象池， 不用多次创建对象，内存优化</span></span><br><span class="line">        <span class="keyword">private</span> Pools.SynchronizedPool&lt;InflateRequest&gt; mRequestPool = <span class="keyword">new</span> Pools.SynchronizedPool&lt;InflateRequest&gt;(<span class="number">10</span>);</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">                runInner();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runInner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            InflateRequest request;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                request = mQueue.take();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                request.view = request.inflater.mInflater.inflate(request.resid, request.parent, <span class="keyword">false</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (RuntimeException e) &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 发送给调用处的handler</span></span><br><span class="line">            Message.obtain(request.inflater.mHandler, <span class="number">0</span>, request).sendToTarget();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> InflateRequest <span class="title">obtainRequest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            InflateRequest obj = mRequestPool.acquire();</span><br><span class="line">            <span class="keyword">if</span>(obj == <span class="keyword">null</span>) &#123;</span><br><span class="line">                obj = <span class="keyword">new</span> InflateRequest();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> obj;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(InflateRequest request)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                mQueue.put(request);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(</span><br><span class="line">                        <span class="string">"Failed to enqueue async inflate request"</span>, e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">releaseRequest</span><span class="params">(InflateRequest obj)</span> </span>&#123;</span><br><span class="line">            obj.callback = <span class="keyword">null</span>;</span><br><span class="line">            obj.inflater = <span class="keyword">null</span>;</span><br><span class="line">            obj.parent = <span class="keyword">null</span>;</span><br><span class="line">            obj.resid = <span class="number">0</span>;</span><br><span class="line">            obj.view = <span class="keyword">null</span>;</span><br><span class="line">            mRequestPool.release(obj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
@@ -5581,7 +5669,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 抽象布局的使用</title>
-    <url>/posts/db834188/</url>
+    <url>/2019/06/24/Android-%E6%8A%BD%E8%B1%A1%E5%B8%83%E5%B1%80%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><ul>
 <li>include</li>
 <li>merge</li>
@@ -5614,7 +5702,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java- 《Java编程的逻辑》_容器类</title>
-    <url>/posts/290d3103/</url>
+    <url>/2019/06/21/Java-%E3%80%8AJava%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E3%80%8B-%E5%AE%B9%E5%99%A8%E7%B1%BB/</url>
     <content><![CDATA[<h2 id="Collections子接口"><a href="#Collections子接口" class="headerlink" title="Collections子接口"></a>Collections子接口</h2><p><img src="http://img-scions.test.upcdn.net/Collection.png" alt></p>
 ]]></content>
       <categories>
@@ -5627,7 +5715,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-《Java编程的逻辑》- 并发</title>
-    <url>/posts/c8a24b3d/</url>
+    <url>/2019/06/19/Java-%E3%80%8AJava%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E3%80%8B-%E5%B9%B6%E5%8F%91/</url>
     <content><![CDATA[<h1 id="并发总结"><a href="#并发总结" class="headerlink" title="并发总结"></a>并发总结</h1><p>多线程2个核心问题， <code>竞争</code>和<code>协作</code></p>
 <ul>
 <li><p>竞争 -&gt; 线程安全的机制</p>
@@ -5865,7 +5953,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 动画原理分析</title>
-    <url>/posts/4ea354ae/</url>
+    <url>/2019/06/12/Android-%E5%8A%A8%E7%94%BB%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/131faec834d1" target="_blank" rel="noopener">https://www.jianshu.com/p/131faec834d1</a><br><a href="https://www.jianshu.com/p/2f19fe1e3ca1" target="_blank" rel="noopener">https://www.jianshu.com/p/2f19fe1e3ca1</a></p>
 <p>本文将从一个实际问题出发，带领大家分析Android动画的原理(<code>ValueAnimator</code>), 以及动画集合(<code>AnimatorSet</code>)在不同平台上的不一样的组织形式。</p>
 <p>Contents:</p>
@@ -6027,7 +6115,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Java-《Java编程的逻辑》读书笔记</title>
-    <url>/posts/21792e63/</url>
+    <url>/2019/06/11/Java-%E3%80%8AJava%E7%BC%96%E7%A8%8B%E7%9A%84%E9%80%BB%E8%BE%91%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="编程基础"><a href="#编程基础" class="headerlink" title="编程基础"></a>编程基础</h2><p>补码表示法: 在原码表示的基础上取反然后加1.<br>给定一个负数的二进制，想知道他的10进制可以采用相同的补码运算，先取反，再加1<br>e.g<br>-2: 原码 00000010, 取反11111101， 加1 11111110</p>
 <p>位运算</p>
 <ol>
@@ -6202,7 +6290,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Translation-Dumpsys工具</title>
-    <url>/posts/122f7e6c/</url>
+    <url>/2019/06/06/Translation-dumpsys%E5%B7%A5%E5%85%B7/</url>
     <content><![CDATA[<h1 id="dumpsys工具"><a href="#dumpsys工具" class="headerlink" title="dumpsys工具"></a>dumpsys工具</h1><p>翻译, 原文见<a href="https://developer.android.com/studio/command-line/dumpsys" target="_blank" rel="noopener">dympsys</a></p>
 <p><code>dumpsys</code> is a tool that runs on Android devices and provides information about system services. You can call <code>dumpsys</code> from the command line using the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">Androi Debug Bridge(ADB)</a> to get diagonostic output for all system services running on a connected device. This output is typically more verbose than you may want, so use the command line options described below to get output for only the system services you’re interested in. This page also describes how to use <code>dumpsys</code> to accomplish common tasks, such as inspecting input, RAM, battery, or network diagnostics.</p>
 <h2 id="Syntax"><a href="#Syntax" class="headerlink" title="Syntax"></a>Syntax</h2><p>The general syntax for using <code>dumpsys</code> is as follows:</p>
@@ -6410,7 +6498,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android-Fragment懒加载</title>
-    <url>/posts/34ef83a0/</url>
+    <url>/2019/06/05/Android-Fragment%E6%87%92%E5%8A%A0%E8%BD%BD/</url>
     <content><![CDATA[<p>通用的使用方法是: <code>Fragment</code> + <code>ViewPager</code>配合使用</p>
 <p>ViewPager的解析，单独放到其他博文来说，这里主要注意一下,ViewPager的常用的两种Adapter的用法和区别:</p>
 <ul>
@@ -6438,7 +6526,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android setContentView与LayoutInflater加载解析机制源码分析</title>
-    <url>/posts/5259ae3c/</url>
+    <url>/2019/06/04/Android-setContentView%E4%B8%8ELayoutInflater%E5%8A%A0%E8%BD%BD%E8%A7%A3%E6%9E%90%E6%9C%BA%E5%88%B6%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
     <content><![CDATA[<p>Activity中的setContentView源码</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(@LayoutRes <span class="keyword">int</span> layoutResID)</span> </span>&#123;</span><br><span class="line">    getWindow().setContentView(layoutResID);</span><br><span class="line">    initWindowDecorActionBar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">    getWindow().setContentView(view);</span><br><span class="line">    initWindowDecorActionBar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setContentView</span><span class="params">(View view, ViewGroup.LayoutParams params)</span> </span>&#123;</span><br><span class="line">    getWindow().setContentView(view, params);</span><br><span class="line">    initWindowDecorActionBar();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -6484,7 +6572,7 @@ These features of the library coexist seamlessly with your existing layouts. For
   </entry>
   <entry>
     <title>Android 性能优化</title>
-    <url>/posts/dee8b541/</url>
+    <url>/2019/05/04/Android-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</url>
     <content><![CDATA[<h2 id="Android-性能优化"><a href="#Android-性能优化" class="headerlink" title="Android 性能优化"></a>Android 性能优化</h2><p><a href="https://www.jianshu.com/p/797395731747" target="_blank" rel="noopener">https://www.jianshu.com/p/797395731747</a><br><a href="https://juejin.im/post/5d95f4a4f265da5b8f10714b" target="_blank" rel="noopener">https://juejin.im/post/5d95f4a4f265da5b8f10714b</a><br><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="noopener">https://www.jianshu.com/p/7e9ca2c73c97</a><br><a href="https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26" target="_blank" rel="noopener">https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26</a><br><a href="https://juejin.im/post/5d4bdb23e51d453c2577b747" target="_blank" rel="noopener">https://juejin.im/post/5d4bdb23e51d453c2577b747</a></p>
 <ul>
 <li>UI优化</li>
