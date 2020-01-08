@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AndroidOptimization,AndroidTranslation,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Reference View the Java heap and memory allocations with Memory ProfileThe Memory Profile is a component in the Android Profile that helps you identify memory leaks and memory churn that can lead to a">
+<meta name="keywords" content="AndroidOptimization,AndroidTranslation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Translation-View the heap and memory allocations with Memory Profile">
+<meta property="og:url" content="http://blog.scions.cn/posts/9fb3b143/index.html">
+<meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
+<meta property="og:description" content="Reference View the Java heap and memory allocations with Memory ProfileThe Memory Profile is a component in the Android Profile that helps you identify memory leaks and memory churn that can lead to a">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://developer.android.com/studio/images/profile/memory-profiler-callouts_2x.png">
+<meta property="og:image" content="https://developer.android.com/studio/images/profile/memory-profiler-counts_2x.png">
+<meta property="og:image" content="https://developer.android.com/studio/images/profile/memory-profiler-allocations-detail_2x.png">
+<meta property="og:image" content="https://developer.android.com/studio/images/memory-profiler-jni-heap_2x.png">
+<meta property="og:image" content="https://developer.android.com/studio/images/profile/memory-profiler-dump_2x.png">
+<meta property="og:image" content="https://developer.android.com/studio/images/profile/memory-profiler-dump-stacktrace_2x.png">
+<meta property="og:updated_time" content="2019-12-09T13:01:07.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Translation-View the heap and memory allocations with Memory Profile">
+<meta name="twitter:description" content="Reference View the Java heap and memory allocations with Memory ProfileThe Memory Profile is a component in the Android Profile that helps you identify memory leaks and memory churn that can lead to a">
+<meta name="twitter:image" content="https://developer.android.com/studio/images/profile/memory-profiler-callouts_2x.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://blog.scions.cn/posts/9fb3b143/">
+
+
+
+
+
+  <title>Translation-View the heap and memory allocations with Memory Profile | ScorpioNeal's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="/live2d/css/live2d.css">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<div class="bg_content">
+<canvas id="canvas"></canvas>
+</div>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ScorpioNeal's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todo">
+          <a href="/todo/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            todo
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9fb3b143/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Translation-View the heap and memory allocations with Memory Profile</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T09:30:29+08:00">
+                2019-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/9fb3b143/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9fb3b143/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://developer.android.com/studio/profile/memory-profiler" target="_blank" rel="noopener">Reference</a></p>
+<h1 id="View-the-Java-heap-and-memory-allocations-with-Memory-Profile"><a href="#View-the-Java-heap-and-memory-allocations-with-Memory-Profile" class="headerlink" title="View the Java heap and memory allocations with Memory Profile"></a>View the Java heap and memory allocations with Memory Profile</h1><p>The Memory Profile is a component in the <a href="https://developer.android.com/studio/preview/features/android-profiler.html" target="_blank" rel="noopener">Android Profile</a> that helps you identify memory leaks and memory churn that can lead to a stutter, freezes, and even app crashes. It shows a realtime graph of your app’s memory use and lets you capture a heap dump, force garbage collecctions, and track memory allocations.</p>
+<p>To open the Memory Profile, follow these steps:</p>
+<ol>
+<li>Click <code>View &gt; Tool Windows &gt; Profiler</code>(you can also click <code>Profile</code> in the toolbar).</li>
+<li>Select the device and app process you want to profile from the Android Profile toolbar. If you’ve connected a device over USB but don’t see it listed, ensure that you have <a href="https://developer.android.com/studio/debug/dev-options.html#enable" target="_blank" rel="noopener">enable USB debugging</a></li>
+<li>Click anywhere in the <code>MEMORY</code> timeline to open the Memory Profile.</li>
+</ol>
+<p>Alternatively, you can inspect your app memory from the command line with <a href="https://developer.android.com/studio/command-line/dumpsys.html" target="_blank" rel="noopener">dumpsys</a>, and also <a href="https://developer.android.com/studio/debug/am-logcat.html#memory-logs" target="_blank" rel="noopener">see GC events in logcat</a>.</p>
+<h2 id="Why-you-should-profile-your-app-memory"><a href="#Why-you-should-profile-your-app-memory" class="headerlink" title="Why you should profile your app memory"></a>Why you should profile your app memory</h2><p>Android provides a <a href="https://developer.android.com/topic/performance/memory-overview.html" target="_blank" rel="noopener">managed memory environment</a>-when it determines that your app is no longer using some objects, the garbage collector release the unused memory back to the heap. How Android goes about finding unused memory constantly being improved, but at some point on all Android versions, the system must briefly pause your code. Most of the time, the pauses are imperceptible. However, if your app allocates memory faster than the system can collect it, your app might be delayed while the collector frees enough memory to satisfy your allocations. The delay could cause your app to skip frames and cause visible slowness.</p>
+<p>Even if your app doesn’t exhibit slowness, you should use the Memory Profiler to do the following:</p>
+<ul>
+<li>Look for undesirable memory allocation patterns in the timeline that might be causing performance problems</li>
+<li>Dump the Java heap to see which objects are using up memory at any given time. Several heap dumps over an extended period of time can help identify memory leaks.</li>
+<li>Record memory allocations during normal and extreme user interaction to identify exactly where your code is either allocating too many objects in a short time or allocating objects that become leaked.</li>
+</ul>
+<p>For information about programming practices that can reduce your app’s memory to use, read <a href="https://developer.android.com/topic/performance/memory.html" target="_blank" rel="noopener">Manage your app’s memory</a>.</p>
+<h2 id="Memory-Profiler-overview"><a href="#Memory-Profiler-overview" class="headerlink" title="Memory Profiler overview"></a>Memory Profiler overview</h2><p>When you first open the Memory Profiler, you’ll see a detailed timeline of your app’s memory use and access tools to force garbage collection, capture a heap dump, and record memory allocations.</p>
+<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-callouts_2x.png" alt></p>
+<p>As indicated in figure 1, the default view for the Memory Profiler includes the following:</p>
+<ol>
+<li>A button to force a garbage collection event.</li>
+<li>A button to <a href="https://developer.android.com/studio/profile/memory-profiler#capture-heap-dump" target="_blank" rel="noopener">capture a heap dump</a>.</li>
+<li>A dropdown menu to specify how frequently the profiler captures memory allocations. Selecting the appropriate option may help you <a href="https://developer.android.com/studio/profile/memory-profiler#performance" target="_blank" rel="noopener">improve app performance while profiling</a></li>
+<li>Button to zoom in/out of the timeline.</li>
+<li>A button to jump forward to the live memory data.</li>
+<li>The event timeline, which shows the activity states, user input events, and screen rotation events.</li>
+<li>The memory use timeline, which includes the following:<ul>
+<li>A stacked graph of how much memory is being used by each memory category, as indicated by the y-axis on the left and the color key at the top.</li>
+<li>A dashed line indicates the number of allocated objects, as indicated by the y-axis on the right.</li>
+<li>An icon for each garbage collection event.</li>
+</ul>
+</li>
+</ol>
+<p>However, if you’re using a device running Android 7.1 or lower, not all profiling data is visible by default. If you see a message that says, “Advanced profiling is unavailable for the selected process,” you need to <a href="https://developer.android.com/studio/preview/features/android-profiler.html#advanced-profiling" target="_blank" rel="noopener">enable advanced profiling</a> to see the following:</p>
+<ul>
+<li>Event timeline</li>
+<li>Number of allocated objects</li>
+<li>Garbage collection events</li>
+<li>On Android 8.0 and higher, advanced profiling is always enabled for debuggable apps.</li>
+</ul>
+<h3 id="How-memory-is-counted"><a href="#How-memory-is-counted" class="headerlink" title="How memory is counted"></a>How memory is counted</h3><p>The numbers you see at the top of the Memory Profiler are based on all the private memory pages that your app has committed, according to the Android system. This count does not include pages shared with the system or other apps.</p>
+<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-counts_2x.png" alt></p>
+<p>The categories in the memory count are as follows:</p>
+<ul>
+<li><p>Java: Memory from objects allocated from Java or Kotlin code.</p>
+</li>
+<li><p>Native: Memory from objects allocated from C or C++ code.</p>
+<p>  Even if you’re not using C++ in your app, you might see some native memory used here because the Android framework uses native memory to handle various tasks on your behalf, such as when handling image assets and other graphics-even though the code you’ve written is in Java or Kotlin.</p>
+</li>
+<li><p>Graphics: Memory used for graphics buffer queues to display pixels to the screen,including GL surfaces, GL textures, and so on. (Note that this is memory shared with the CPU, not dedicated GPU memory).</p>
+</li>
+<li><p>Stack: Memory used by both native and Java stacks in your app. This usually relates to how many threads your app is running.</p>
+</li>
+<li><p>Code: Memory that your app uses for code and resources, such as dex bytecode, optimized or compiled dex code, .so libraries, and  fonts.</p>
+</li>
+<li><p>Other: Memory used by your app that the system isn’t sure how to categorize.</p>
+</li>
+<li><p>Allocated: The number of Java/Kotlin objects allocated by your app. This does not count objects allocated in C or C++.</p>
+<p>  When connected to a device running Android 7.1 and lower, this allocation count starts only at the time the Memory Profiler connected to your running app. So any objects allocated before you start profiling are not accounted for. However, Android 8.0 and higher includes an on-device profiling tool that keeps track of all allocations, so this number always represents the total number of Java objects outstanding in your app on Android 8.0 and higher.</p>
+</li>
+</ul>
+<p>When compared to memory counts from the previous Android Monitor tool, the new Memory Profiler records your memory differently, so it might seem like your memory use is now higher. The Memory Profiler monitors some extra categories that increase the total, but if you only care about the Java heap memory, then the “Java” number should be similar to the value from the previous tool. Although the Java number probably doesn’t exactly match what you saw in Android Monitor, the new number accounts for all physical memory pages that have been allocated to your app’s Java heap since it was forked from Zygote. So this provides an accurate representation of how much physical memory your app is actually using.</p>
+<h2 id="View-memory-allocations"><a href="#View-memory-allocations" class="headerlink" title="View memory allocations"></a>View memory allocations</h2><p>Memory allocations show you how each Java object and JNI reference in your memory was allocated. Specifically, the Memory Profiler can show you the following about object allocations:</p>
+<ul>
+<li>What types of objects were allocated and how much space they use.</li>
+<li>The stack trace of each allocation, including in which thread</li>
+<li>When the objects were deallocated(only when using a device with Android 8.0 or higher)</li>
+</ul>
+<p>If your device is running Android 8.0 or higher, you can view your object allocations at any time as follows: Drag in the timeline to select the region for which you want to view the allocations (as shown in video 1). There’s no need to begin a recording session, because Android 8.0 and higher includes an on-device profiling tool that constantly tracks your app’s allocations.</p>
+<p>// Vieo</p>
+<p>If your device is running Android 7.1 or lower, click Record memory allocations  in the Memory Profiler toolbar. While recording, the Memory Profiler tracks all allocations that occur in your app. When you’re done, click Stop recording  (the same button; see video 2) to view the allocations.</p>
+<p>// Video</p>
+<p>After you select a region of the timeline (or when you finish a recording session with a device running Android 7.1 or lower), the list of allocated objects appears below the timeline, grouped by class name and sorted by their heap count.</p>
+<p>To inspect the allocation record, follow these steps:</p>
+<ol>
+<li>Browser the list to find objects that have unusually large heap counts and that might be leaked. To help find known classes, click the <code>Class Name</code> column header to sort alphabetically. Then click a class name. The <code>Instant View</code> pane appears on the right, showing each instance of that class, as shown in figure 3.<ul>
+<li>Alternatively, you can locate objects quickly by clicking Filter, or by pressing Control+F(Command + F on Mac), and entering a class or package name in the search field. You can also search by method name if you select <code>Arrange by callstack</code> from the dropdown menu. If you want to use regular expressions, check the box next to <code>Regex</code>. Check the box next to <code>Match case</code> if your search query in case-sensitive.</li>
+</ul>
+</li>
+<li>In the <code>Instance View</code> pane, click an instance. The <code>Call Stack</code> tab appears below , showing where that instance was allocated and in which thread.</li>
+<li>In the <code>Call Stack</code> tab, right-click any line and choose <code>Jump to Source</code> to open that code in the editor.</li>
+</ol>
+<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-allocations-detail_2x.png" alt></p>
+<p>You can use the two menus above the list of allocated objects to choose which heap to inspect and how to organize the data.</p>
+<p>From the menu on the left, choose which heap to inspect:</p>
+<ul>
+<li>default heap: When no heap is specified by the system.</li>
+<li>image heap: The system boot image, containing classes that are preloaded during boot time. Allocations here are guarateed to never move or go away.</li>
+<li>zygote heap: The copy-on-write heap where an app process is forked from in the Android system</li>
+<li>app heap: The primary heap on which your app allocates memory</li>
+<li>JNI heap: The heap that shows where Java Native Interface(JNI) references are allocated and released.</li>
+</ul>
+<p>From the menu on the right, choose how to arrange the allocations:</p>
+<ul>
+<li>Arrange by class: Groups all allocations based on class name. This is the default.</li>
+<li>Arrange by package: Groups all allocations based on package name</li>
+<li>Arrange by callstack: Groups all allocations into their corresponding call stack.</li>
+</ul>
+<h3 id="Improve-app-performance-while-profiling"><a href="#Improve-app-performance-while-profiling" class="headerlink" title="Improve app performance while profiling"></a>Improve app performance while profiling</h3><p>To improve app performance while profiling, the memory profile samples  memory allocations periodically by default. When testing on devices running API level 26 or higher, you can change this behavior by using the <code>Allocation Tracking</code> dropdown. The options available are as follows:</p>
+<ul>
+<li>Full: Captures all object allocations in memory. This is the default behavior in Android Studio 3.2 and earlier. If you have an app that allocates a lot of objects, you might observe visible slowdowns with your app while profiling.</li>
+<li>Sampled: Samples object allocations in memory at regular intervals. This is the default option and has less impact on app performance while profiling. Apps that allocate a lot of objects over a short span of time may still exhibit visible slowdowns.</li>
+<li>Off: Stops tracking your app’s memory allocation.</li>
+</ul>
+<h3 id="View-global-JNI-references"><a href="#View-global-JNI-references" class="headerlink" title="View global JNI references"></a>View global JNI references</h3><p>Java Native Interface(JNI) is a framework that allows Java code and native code to call one another.</p>
+<p>JNI references are managed manually by the native code, so it is possible for Java objects used by native code to be kept alive for too long. Some objects on the Java heap may become unreachable if a JNI reference is discarded without first being explicitly deleted. Also , it is possible to exhaust the global JNI reference limit.</p>
+<p>To troubleshoot such issues, use the <code>JNI heap</code> view in the Memory Profiler to browser all global JNI refrences and filter them by Java types and native call stacks. With this information, you can find when and where global JNI references are created and deleted.</p>
+<p>While your app is running, select a portion of the timeline that you want to inspect and select <code>JNI heap</code> from the drop-down menu above the class list. You can then inspect objects in the heap as you normally would and double-click objects in the <code>Allocation Call Stack</code> tab to see where the JNI references are allocated and released in your code, as shown in figure 4.</p>
+<p><img src="https://developer.android.com/studio/images/memory-profiler-jni-heap_2x.png" alt="figure 4"></p>
+<p>To inspect memory allocations for your app’s JNI code, you must deploy your app to a device running Android 8.0 or higher.</p>
+<p>For more information on JNI, see <a href="https://developer.android.com/training/articles/perf-jni" target="_blank" rel="noopener">JNI tips</a>.</p>
+<h2 id="Capture-a-heap-dump"><a href="#Capture-a-heap-dump" class="headerlink" title="Capture a heap dump"></a>Capture a heap dump</h2><p>A heap dump shows which objects in your app are using memory at the time you capture the heap dump. Especially after an extended user session, a heap dump can help identify memory leaks by showing objects still in memory that you believe should no longer be there.</p>
+<p>After you capture a heap dump, you can view the following:</p>
+<ul>
+<li>What types of objects your app has allocated, and how many of each</li>
+<li>How much memory each object is using</li>
+<li>Where references to each object are being held in your code.</li>
+<li>The call stack for where an object was allocated. (Call stacks are currently available with a heap dump only with Android 7.1 and lower when you capture the heap dump while recording allocations.)</li>
+</ul>
+<p>To capture a heap dump, click <code>Dump Java heap</code> in the Memory Profile toolbar. While dumping the heap, the amount of Java memory might increase temporarily. This is normal because the heap dump occurs in the same process as your app and requires some memory to collect the data.</p>
+<p>The heap dump appears below the memory timeline, showing all class types in the heap, as shown in figure 5.</p>
+<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-dump_2x.png" alt="figure 5"></p>
+<p>If you need to be more precise about when the dump is created, you can create a heap dump at the critical point in your app code by calling <a href="https://developer.android.com/reference/android/os/Debug.html#dumpHprofData(java.lang.String)" target="_blank" rel="noopener">dumpHprofData()</a>.</p>
+<p>In the list of classes, you can see the following information:</p>
+<ul>
+<li><p>Allocations: Number of allocations in the heap.</p>
+</li>
+<li><p>Native Size: Total amount of native memory used by this object type(in bytes). This column is visible only for Android 7.0 and higher.</p>
+<p>  You will see memory here for some objects allocated in Java because Android uses native memory for some framework classes, such as Bitmap.</p>
+</li>
+<li><p>Shallow Size: Total amount of Java memory used by this object type(in types)</p>
+</li>
+<li><p>Retained Size: Total size of memory being retained due to all instances of this class (in bytes).</p>
+</li>
+</ul>
+<p>You can use the two menus above the list of allocated objects to choose which heap dumps to inspect and how to organize the data.</p>
+<p>From the menu on the left, choose which heap to inspect:</p>
+<ul>
+<li><p>default heap: When no heap is specified by the system.</p>
+</li>
+<li><p>app heap: The primary heap on which your app allocates memory.</p>
+</li>
+<li><p>image heap: The system boot image, containing classes that are preloaded during boot time.                      Allocations here are guaranteed to never move or go away.</p>
+</li>
+<li><p>zygote heap: The copy-on-write heap where an app process is forked from in the Android system.</p>
+</li>
+</ul>
+<p>From the menu on the right, choose how to arrange the allocations:</p>
+<ul>
+<li><p>Arrange by class: Groups all allocations based on class name. This is the default.</p>
+</li>
+<li><p>Arrange by package: Groups all allocations based on package name.</p>
+</li>
+<li><p>Arrange by callstack: Groups all allocations into their corresponding call stack. This option works only if you capture the heap dump while recording allocations. Even so, there are likely to be objects in the heap that were allocated before you started recording, so those allocations appear first, simply listed by class name.</p>
+</li>
+</ul>
+<p>The list is sorted by the <code>Retained Size</code> column by default. To sort by the values in a different column, click the column’s heading.</p>
+<p>Click a class name to open the <code>Instance View</code> window on the right(shown in figure 6). Each listed instance includes the following:</p>
+<ul>
+<li>Depth: The shortest number of hops from any GC root to the selected instance.</li>
+<li>Native Size: Size of this instance in native memory. This column is visible only for Android 7.0 and higher.</li>
+<li>Shallow Size: Size of this instance in Java memory.</li>
+<li>Retained Size: Size of memory that this instance dominates (as per the <a href="https://en.wikipedia.org/wiki/Dominator_(graph_theory)" target="_blank" rel="noopener">dominator tree</a>). </li>
+</ul>
+<p><img src="https://developer.android.com/studio/images/profile/memory-profiler-dump-stacktrace_2x.png" alt="figure 8"></p>
+<p>To inspect your heap, follow these steps:</p>
+<ol>
+<li>Browse the list to find objects that have unusually large heap counts and that might be leaked. To help find known classes, click the <code>Class Name</code> column header to sort alphabetically. Then click a class name. The <code>Instance View</code> pane appears on the right, showing each instance of that class, as shown in figure 6.<ol>
+<li>Alternatively, you can locate objects quickly by clicking <code>Filter</code> , or by pressing Control+F (Command+F on Mac), and entering a class or package name in the search field. You can also search by method name if you select <code>Arrange by callstack</code> from the dropdown menu. If you want to use regular expressions, check the box next to <code>Regex</code>. Check the box next to <code>Match case</code> if your search query is case-sensitive.</li>
+</ol>
+</li>
+<li>In the <code>Instance View</code> pane, click an instance. The <code>References</code> tab appears below, showing every reference to that object.<br>Or, click the arrow next to the instance name to view all its fields, and then click a field name to view all its references. If you want to view the instance details for a field, right-click on the field and select <code>Go to Instance</code>.</li>
+<li>In the <code>References</code> tab, if you identify a reference that might be leaking memory, right-click it and select <code>Go to Instance</code>. This selects the corresponding instance from the heap dump, showing you its own instance data.</li>
+</ol>
+<p>In your heap dump, look for memory leaks caused by any of the following:</p>
+<ul>
+<li>Long-lived references to <code>Activity</code>, <code>Context</code>, <code>View</code>, <code>Drawable</code>, and other objects that might hold a reference to the <code>Activity</code> or <code>Context</code> container.</li>
+<li>Non-static inner classes, such as a <code>Runnable</code>, that can hold an <code>Activity</code> instance.</li>
+<li>Caches that hold objects longer than necessary.</li>
+</ul>
+<h3 id="Save-a-heap-dump-as-an-HPROF-file"><a href="#Save-a-heap-dump-as-an-HPROF-file" class="headerlink" title="Save a heap dump as an HPROF file"></a>Save a heap dump as an HPROF file</h3><p>After you capture a heap dump, the data is viewable in the Memory Profiler only while the profiler is running. When you exit the profiling session, you lose the heap dump. So, if you want to save it for review later, export the heap dump to an HPROF file. In Android Studio 3.1 and lower, the <code>Export capture to file</code>  button is on the left side of the toolbar below the timeline; in Android Studio 3.2 and higher, there is an <code>Export Heap Dump</code> button at the right of each <code>Heap Dump</code> entry in the <code>Sessions</code> pane. In the <code>Export As</code> dialog that appears, save the file with the <code>.hprof</code> file-name extension.</p>
+<p>To use a different HPROF analyzer like <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/jhat.html" target="_blank" rel="noopener">jhat</a>, you need to convert the HPROF file from Android format to the Java SE HPROF format. You can do so with the <code>hprof-conv</code> tool provided in the <code>android_sdk/platform-tools/</code> directory. Run the <code>hprof-conv</code> command with two arguments: the original HPROF file and the location to write the converted HPROF file. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hprof-conv heap-original.hprof heap-converted.hprof</span><br></pre></td></tr></table></figure>
+
+<h3 id="Import-a-heap-dump-file"><a href="#Import-a-heap-dump-file" class="headerlink" title="Import a heap dump file"></a>Import a heap dump file</h3><p>To import an HPROF (<code>.hprof</code>) file, click <code>Start a new profiling session</code>  in the Sessions pane, select <code>Load from file</code>, and choose the file from the file browser.</p>
+<p>You can also import an HPROF file by dragging it from the file browser into an editor window.</p>
+<h2 id="Techniques-for-profiling-your-memory"><a href="#Techniques-for-profiling-your-memory" class="headerlink" title="Techniques for profiling your memory"></a>Techniques for profiling your memory</h2><p>While using the Memory Profiler, you should stress your app code and try forcing memory leaks. One way to provoke memory leaks in your app is to let it run for a while before inspecting the heap. Leaks might trickle up to the top of the allocations in the heap. However, the smaller the leak, the longer you need to run the app in order to see it.</p>
+<p>You can also trigger a memory leak in one of the following ways:</p>
+<ul>
+<li><p>Rotate the device from portrait to landscape and back again multiple times while in different activity states. Rotating the device can often cause an app to leak an <code>Activity</code>, <code>Context</code>, or <code>View</code> object because the system recreates the <code>Activity</code> and if your app holds a reference to one of those objects somewhere else, the system can’t garbage collect it.</p>
+</li>
+<li><p>Switch between your app and another app while in different activity states (navigate to the Home screen, then return to your app).</p>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.jpg" alt="ScorpioNeal WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="ScorpioNeal Alipay">
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AndroidOptimization/" rel="tag"># AndroidOptimization</a>
+          
+            <a href="/tags/AndroidTranslation/" rel="tag"># AndroidTranslation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/f6a91cf7/" rel="next" title="Translation-Guide to App Architecture">
+                <i class="fa fa-chevron-left"></i> Translation-Guide to App Architecture
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/d41965e/" rel="prev" title="Android-Dagger2">
+                Android-Dagger2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ScorpioNeal</p>
+              <p class="site-description motion-element" itemprop="description">体系(点 - 线 - 面)</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#View-the-Java-heap-and-memory-allocations-with-Memory-Profile"><span class="nav-number">1.</span> <span class="nav-text">View the Java heap and memory allocations with Memory Profile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Why-you-should-profile-your-app-memory"><span class="nav-number">1.1.</span> <span class="nav-text">Why you should profile your app memory</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Memory-Profiler-overview"><span class="nav-number">1.2.</span> <span class="nav-text">Memory Profiler overview</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-memory-is-counted"><span class="nav-number">1.2.1.</span> <span class="nav-text">How memory is counted</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#View-memory-allocations"><span class="nav-number">1.3.</span> <span class="nav-text">View memory allocations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Improve-app-performance-while-profiling"><span class="nav-number">1.3.1.</span> <span class="nav-text">Improve app performance while profiling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#View-global-JNI-references"><span class="nav-number">1.3.2.</span> <span class="nav-text">View global JNI references</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capture-a-heap-dump"><span class="nav-number">1.4.</span> <span class="nav-text">Capture a heap dump</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Save-a-heap-dump-as-an-HPROF-file"><span class="nav-number">1.4.1.</span> <span class="nav-text">Save a heap dump as an HPROF file</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Import-a-heap-dump-file"><span class="nav-number">1.4.2.</span> <span class="nav-text">Import a heap dump file</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Techniques-for-profiling-your-memory"><span class="nav-number">1.5.</span> <span class="nav-text">Techniques for profiling your memory</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ScorpioNeal</span>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'Bp6gNEmnfgAF2Ci7moO9v4Rm-gzGzoHsz',
+        appKey: 'xNstrbz0DRkVzIMvuDNrkAOh',
+        placeholder: '要不要说点啥',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  <script type="text/javascript" src="/js/src/dynamic_bg.js"></script>
+  <script type="text/javascript" src="/js/src/love-click.js"></script>
+</body>
+</html>

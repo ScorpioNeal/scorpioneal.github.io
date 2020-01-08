@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/16/Translation-Getting-Started-with-the-NDK/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/421312a6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -326,7 +326,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/16/Translation-Getting-Started-with-the-NDK/" itemprop="url">Translation-Getting Started with the NDK</a></h1>
+                <a class="post-title-link" href="/posts/421312a6/" itemprop="url">Java-JVM相关</a></h1>
         
 
         <div class="post-meta">
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:53:53+08:00">
-                2019-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T14:35:53+08:00">
+                2019-12-06
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/16/Translation-Getting-Started-with-the-NDK/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/Translation-Getting-Started-with-the-NDK/" itemprop="commentCount"></span>
+                <a href="/posts/421312a6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/421312a6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,36 +410,51 @@
       
         
           
-            <h2 id="Getting-Started-with-the-NDK"><a href="#Getting-Started-with-the-NDK" class="headerlink" title="Getting Started with the NDK"></a>Getting Started with the NDK</h2><p><a href="https://developer.android.google.cn/ndk/guides" target="_blank" rel="noopener">Reference</a></p>
-<p>The Native Development Kit(NDK) is a set of tools that allows you to use C and C++ code with Android, and provides <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">platform libraries</a> you can use to manage native activities and access physical device components, such as sensors and touch input. The NDK may not be appropriate for most novice Android programmers who need to use only Java code and framework APIs to develop their apps. However, the NDK can be useful for cases in which you need to do one or more of the following:</p>
-<ul>
-<li>Squeeze extra performance out of a device to archive low latency or run computationally intensive applications, such as games or physics simulations.</li>
-<li>Reuse your own or other developers’ C or C++ libraries</li>
+            <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p><img src="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png" alt="JVM Architecture"></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="java-file-gt-class"><a href="#java-file-gt-class" class="headerlink" title=".java file -&gt; .class"></a>.java file -&gt; .class</h3><p>通过<code>javac</code> 把<code>java</code>文件编译为<code>.class</code>文件</p>
+<h3 id="class-gt-JVM"><a href="#class-gt-JVM" class="headerlink" title=".class -&gt; JVM"></a>.class -&gt; JVM</h3><p>通过<code>类加载器</code>把<code>.class</code>文件加载进<code>运行时数据区</code></p>
+<h4 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h4><ul>
+<li>AppClassLoader</li>
+<li>ExtClassLoader</li>
+<li>RootClassLoader</li>
 </ul>
-<p>Using <a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">Android Studio 2.2 and higher</a>, you can use the NDK to compile C and C++ code into a native library and package it into your APK using Gradle, the IDE’s integrated build system. Your Java code can then call functions in your native library through the <a href="http://docs.oracle.com/javase/7/docs/technotes/guides/jni/spec/jniTOC.html" target="_blank" rel="noopener">Java Native Interface (JNI)</a> framework. To learn more about Gradle and the Android build system, read <a href="https://developer.android.google.cn/studio/build/index.html" target="_blank" rel="noopener">Configure Your Build</a>.</p>
-<p>Android Studio’s default build tool to compile native library is <a href="https://cmake.org/" target="_blank" rel="noopener">CMake</a>. Android Studio also supports <a href="https://developer.android.google.cn/ndk/guides/ndk-build.html" target="_blank" rel="noopener">ndk-build</a> due to the large number of existing projects that use the build toolkit. However, if you are creating a new native library, you should use CMake.</p>
-<p>This guide gives you the information you need to get up and running with the NDK on Android Studio. If you don’t have the latest version of Android Studio, <a href="https://developer.android.google.cn/studio/index.html" target="_blank" rel="noopener">download and install it now</a>.</p>
-<h3 id="Download-the-NDK-and-Tools"><a href="#Download-the-NDK-and-Tools" class="headerlink" title="Download the NDK and Tools"></a>Download the NDK and Tools</h3><p>To complile and debug native code for your app, you need the following components:</p>
+<p>双亲委派机制, 主要是从安全角度考虑</p>
+<h3 id="JVM运行时数据区"><a href="#JVM运行时数据区" class="headerlink" title="JVM运行时数据区"></a>JVM运行时数据区</h3><h4 id="程序计数器-Program-Counter-Register"><a href="#程序计数器-Program-Counter-Register" class="headerlink" title="程序计数器 Program Counter Register"></a>程序计数器 Program Counter Register</h4><p>线程私有</p>
+<h4 id="本地方法栈-Native-Method-Stack"><a href="#本地方法栈-Native-Method-Stack" class="headerlink" title="本地方法栈 Native Method Stack"></a>本地方法栈 Native Method Stack</h4><p> 本地方法接口(JNI) -&gt; 本地方法库  本地方法栈里放的是 native方法</p>
+<h4 id="虚拟机栈-VM-Stack"><a href="#虚拟机栈-VM-Stack" class="headerlink" title="虚拟机栈 VM Stack"></a>虚拟机栈 VM Stack</h4><p>栈中存放 8大基本类型， 对象的引用，实例方法</p>
+<p>弹栈</p>
+<p>栈的生命周期与线程同步，线程结束，栈结束</p>
+<p>e.g </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Student s = <span class="keyword">new</span> Student();</span><br><span class="line"><span class="comment">// s在栈中，指向heap里的实际的对象</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>所有线程共享</p>
+<p>静态变量, 常量， 类信息(构造方法， 接口定义) 运行时常量池</p>
+<p>JDK 1.6  常量池在方法区中<br>JDK 1.7 常量池在堆中<br>JDK 1.8 常量池在 metaspace里</p>
+<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>Heap 线程共享</p>
+<p>一般说方法区也是在堆里。 垃圾回收只会发生在堆里</p>
+<p>一个JVM只有一个heap, 大小可以调节</p>
+<p>分为:</p>
 <ul>
-<li>The Android Native Development Kit(NDK): a set of tools that allows you to use C and C++ code with Android.</li>
-<li>CMake: an external build tool that works alongside Gradle to build your native library. You do not need this component if you only plan to use ndk-build.</li>
-<li>LLDB: the debugger Android Studio uses to debug native code.</li>
-</ul>
-<p>For information on installing these components, see <a href="https://developer.android.google.cn/studio/projects/install-ndk.md" target="_blank" rel="noopener">install and configure the NDK, CMake, and LLDB</a>.</p>
-<h3 id="Create-or-import-a-Native-Project"><a href="#Create-or-import-a-Native-Project" class="headerlink" title="Create or import a Native Project"></a>Create or import a Native Project</h3><p>Once you set up Android Studio, you can simply <a href="https://developer.android.google.cn/studio/projects/add-native-code.html#new-project" target="_blank" rel="noopener">Create a New Project with C/C++ Support</a>. However , if you want to add or import native code to an existing Android Studio project, you need to follow this basic process: </p>
-<ol>
-<li><a href>Create new native source files</a> and add them to your Android Studio project.<ul>
-<li>You can skip this step if you already have native code or want to import a prebuilt native library</li>
+<li>新生区   ——&gt; 轻GC<ul>
+<li>Eden 区</li>
+<li>Suvivor 0 区</li>
+<li>Survivor 1区</li>
 </ul>
 </li>
-<li><a href="https://developer.android.google.cn/studio/projects/add-native-code.html#create-cmake-script" target="_blank" rel="noopener">Create a CMake build script</a> to tell CMake how to build your native sources into a library. You also require this build script if you are importing and linking against prebuilt or platform libraries.<ul>
-<li>You can skip this step if you existing native library already has a <code>CMakeList.txt</code> build script, or uses ndk-build and includes an <a href="https://developer.android.google.cn/ndk/guides/android_mk.html" target="_blank" rel="noopener">Android.mk</a> build script.</li>
+<li>养老区 —–&gt; 满了触发Full GC</li>
+<li>永久区(1.8后叫metaspace) // 方法区也在这里</li>
 </ul>
-</li>
-<li><a href="https://developer.android.google.cn/studio/projects/add-native-code.html#link-gradle" target="_blank" rel="noopener">Link Gradle to your native library</a> by providing a path to your CMake or ndk-build script file. Gradle uses the build script to import source code into your Android Studio project and package your native library(the SO file) into the APK.</li>
-<li><a href="https://developer.android.google.cn/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a> by clicking <code>Run</code>. Gradle adds your CMake or ndk-build process as a dependency to compile, build, and package your native library with your APK.</li>
-</ol>
-<p>Once your app is running on a physical device or the emulator, you can use Android Studio to <a href="https://developer.android.google.cn/studio/debug/index.html" target="_blank" rel="noopener">Debug Your App</a>. Otherwise, to learn more about the NDK and its components, read the <a href="https://developer.android.google.cn/ndk/guides/concepts.html" target="_blank" rel="noopener">Concetps</a> page.</p>
+<p>永久区一般存储JDK自带的对象，不存在垃圾回收<br>其他2个区的垃圾回收算法:</p>
+<ul>
+<li>标记清除</li>
+<li>标记压缩</li>
+<li>复制算法</li>
+<li>引用计数算法</li>
+</ul>
+<h3 id="执行引擎"><a href="#执行引擎" class="headerlink" title="执行引擎"></a>执行引擎</h3><p>//TODO JIT<br>一些操作可以在这里处理, </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html</a> </li>
+</ul>
 
           
         
@@ -488,7 +503,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/16/Translation-Build-your-app-from-the-command-line/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d27340ce/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -507,7 +522,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/16/Translation-Build-your-app-from-the-command-line/" itemprop="url">Translation-Build your app from the command line</a></h1>
+                <a class="post-title-link" href="/posts/d27340ce/" itemprop="url">Android-Data Binding相关</a></h1>
         
 
         <div class="post-meta">
@@ -519,8 +534,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:52:49+08:00">
-                2019-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T13:27:29+08:00">
+                2019-12-06
               </time>
             
 
@@ -542,8 +557,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
                   </a>
                 </span>
 
@@ -560,8 +575,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/16/Translation-Build-your-app-from-the-command-line/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/Translation-Build-your-app-from-the-command-line/" itemprop="commentCount"></span>
+                <a href="/posts/d27340ce/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d27340ce/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -591,157 +606,7 @@
       
         
           
-            <h2 id="Build-your-app-from-the-command-line"><a href="#Build-your-app-from-the-command-line" class="headerlink" title="Build your app from the command line"></a>Build your app from the command line</h2><p><a href="https://developer.android.com/studio/build/building-cmdline" target="_blank" rel="noopener">Reference</a></p>
-<p>You can execute all the build tasks available to your Android project using the <a href>Gradle wrapper</a> command line tool. It’s available as a batch file for Windows(<code>gradlew.bat</code>) and a shell script for Linux and Mac(<code>gradlew.sh</code>), and it’s accessible from the root of each project you create with Android Studio.</p>
-<p>To run a task with the wrapper, use one of the following commands from a Terminal window(from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code>):</p>
-<ul>
-<li><p>On Windows:</p>
-<p>  gradlew task-name</p>
-</li>
-<li><p>on Mac or Linux:</p>
-<p>  ./gradlew task-name</p>
-</li>
-</ul>
-<p>To see a list of all available build tasks for your project, execute <code>tasks</code>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew tasks</span><br></pre></td></tr></table></figure>
-
-<p>The rest of this page describes the basics to build and run your app with the Gradle wrapper. For more information about how to set up your Android build, see <a href="https://developer.android.com/studio/build/index.html" target="_blank" rel="noopener">Configure your build</a>.</p>
-<p>If you’d prefer to use the Android Studio tools instead of the command line tools, see <a href="https://developer.android.com/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a></p>
-<h3 id="About-build-types"><a href="#About-build-types" class="headerlink" title="About build types"></a>About build types</h3><p>By default, there are two build types avaiable for every Android app: one for debugging your app-the <code>debug</code> build - and one for releasing your app to users-the <code>release</code> build. The resulting output from each build must be signed with a certificate before you can deploy your app to a device. The debug build is automatically signed with a debug key provided by the SDK tools(it’s insecure and you connot publish with it into the Google Play Store), and the release build must be signed with your own private key.</p>
-<p>If you want to build your app for release, it’s important that you also <a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">sign your app</a> with the appropriate signing key. If you’re just getting started, however, you can quickly run your apps on an emulator or a connected device by <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">building a debug APK</a>.</p>
-<p>You can also define a custom build type in your <code>build.gradle</code> file and configure it to be signed as a debug build by including <code>debuggable true</code>. For more information, see <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">Configure Build Variants</a>.</p>
-<h3 id="Build-and-deploy-an-APK"><a href="#Build-and-deploy-an-APK" class="headerlink" title="Build and deploy an APK"></a>Build and deploy an APK</h3><p>Although <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundles</a> is the best way to package your app and upload it to the Play Console, building an APK is better suited for when you want to quickly test a debug build or share your app as a deployable artifact with others.</p>
-<h4 id="Build-a-debug-APK"><a href="#Build-a-debug-APK" class="headerlink" title="Build a debug APK"></a>Build a debug APK</h4><p>For immediate app testing and debugging, you can build a debug APK. The debug APK is signed with a debug key provided by the SDK tools and allows debugging throught <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a>.</p>
-<p>To build a debug APK, open a command line and navigate to the root of your project directory. To initiate a debug build, invoke the <code>assembleDebug</code> task:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew assembleDebug</span><br></pre></td></tr></table></figure>
-
-<p>This creates an APK named <code>module_name-debug.apk</code> in <code>project_name/module_name/build/outputs/apk/</code>. The file is already signed with the debug key and aligned with <a href="https://developer.android.com/tools/help/zipalign.html" target="_blank" rel="noopener">zipalign</a> so you can immediately install it on a device.</p>
-<p>Or to build the APK and immediately install it on a running emulator or connected device, instead invoke <code>installDebug</code>: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew installDebug</span><br></pre></td></tr></table></figure>
-
-<p>The “Debug” part in the above task names is just a camel-case version of the <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">build variant</a> name, so it can be replaced with whichever build type or vairant you want to assemble or install. For example, if you have a “demo” product flavor, then you can build the debug version with the <code>assembleDemoDebug</code> task.</p>
-<p>To see all the build and install tasks available for each variant(including uninstall tasks), run the <code>tasks</code> task.</p>
-<p>Also see the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnEmulator" target="_blank" rel="noopener">run your app on the emulator</a> and <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnDevice" target="_blank" rel="noopener">run your app on a device</a>.</p>
-<h4 id="Build-a-release-APK"><a href="#Build-a-release-APK" class="headerlink" title="Build a release APK"></a>Build a release APK</h4><p>When you’re ready to release and distribute your app, you must build a release APK that is signed with your private key. For more information, go to section about how to [sign your app from the command line].(<a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">https://developer.android.com/studio/build/building-cmdline#sign_cmdline</a>)</p>
-<h4 id="Deploy-your-app-to-the-emulator"><a href="#Deploy-your-app-to-the-emulator" class="headerlink" title="Deploy your app to the emulator"></a>Deploy your app to the emulator</h4><p>To use the Android Emulator, you must <a href="https://developer.android.com/studio/run/managing-avds.html#createavd" target="_blank" rel="noopener">create an Android Virtual Device (AVD)</a> using Android Studio.</p>
-<p>Once you have an AVD, start the Android Emulator and install your app as follows:</p>
-<ol>
-<li>In a command line, navigate to <code>android_sdk/tools/</code> and start the emulator by specifying your AVD:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -avd avd_name</span><br></pre></td></tr></table></figure>
-
-<p>If you’re unsure of the AVD name, execute `emulator -list-avds’</p>
-<ol start="2">
-<li>Now you can install your app using either one of the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool.</li>
-</ol>
-<p>If the APK is built using a developer preview SDK (if the <code>targetSdkVersion</code> is letter instead of a number), you must include the <a href="https://developer.android.com/studio/command-line/adb.html#-t-option" target="_blank" rel="noopener">-t option</a> with the <code>install</code> command to install a test APK.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
-
-<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code>.</p>
-<p>For more information, see <a href="https://developer.android.com/studio/run/emulator.html" target="_blank" rel="noopener">Run Apps on the Android Emulator</a>.</p>
-<h4 id="Deploy-your-app-to-a-physical-device"><a href="#Deploy-your-app-to-a-physical-device" class="headerlink" title="Deploy your app to a physical device"></a>Deploy your app to a physical device</h4><p>Before you can run your app on a device, you must enable <code>USB debugging</code> on your device. You can find the option under <code>Settings &gt; Developer options</code>.</p>
-<p>Once your device is set up and connected via USB, you can install your app using either the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -d install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
-
-<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code></p>
-<p>For more information, see <a href="https://developer.android.com/studio/run/device.html" target="_blank" rel="noopener">Run Apps on a Hardware Device</a>.</p>
-<h3 id="Build-an-app-bundle"><a href="#Build-an-app-bundle" class="headerlink" title="Build an app bundle"></a>Build an app bundle</h3><p><a href>Android App Bundles</a> include all your app’s compiled code and resources, but defer APK generation and signing to Google Play. Unlike an APK, you can’t deploy an app bundle directly to a device. So, if you want to quickly test or share an APK with someone else, you should instead <a href="https://developer.android.com/studio/build/building-cmdline#build_apk" target="_blank" rel="noopener">build an APK</a>.</p>
-<p>The easiest way to build an app bundle is by <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">using Android Studio</a>. However, if you need to build an app bundle from the command line, you can do so by using either Gradle or <code>bundletool</code>, as described in the section below.</p>
-<h4 id="Build-an-app-bundle-with-Gradle"><a href="#Build-an-app-bundle-with-Gradle" class="headerlink" title="Build an app bundle with Gradle"></a>Build an app bundle with Gradle</h4><p>If you’d rather generate an app bundle from the command line, run the <code>buildVariant</code> Gradle task on your app’s base module. For example, the following command builds an app bundle for the debug version of the base module:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew :base:bundleDebug</span><br></pre></td></tr></table></figure>
-
-<p>If you want to build a signed bundle for upload to the Play Console, you need to first configure the base module’s <code>build.gradle</code> file with your app’s signing information. To learn more, go to the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#gradle_signing" target="_blank" rel="noopener">Configure Gradle to sign your app</a>. You can then, for example, build the release version of your app, and Gradle automatically generates an app bundle and signs it with the signing information you provide in the <code>build.gradle</code> file.</p>
-<p>If you instead want to sign an app bundle as a separate step, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a> to sign your app bundle from the command line.</p>
-<h4 id="Build-an-app-bundle-using-bundletool"><a href="#Build-an-app-bundle-using-bundletool" class="headerlink" title="Build an app bundle using bundletool"></a>Build an app bundle using bundletool</h4><p><code>bundletool</code> is a command line tool that Android Studio, the Android Gradle plugin, and Google Play use to convert your app’s compiled code and resources into app bundles, and generate deployable APKs from those bundles.</p>
-<p>So, while it’s useful to <a href>test app bundles with bundletool</a> and locally recreate how Google Play generates APKs, you typically won’t need to invoke <code>bundletool</code> to build the app bundle itself-you should instead use Android Studio or Gradle tasks, as described in previous sections.</p>
-<p>However, if you don’t want to use Android Studio or Gradle tasks to build bundles-for example, if you use a custom build toolchain-you can use <code>bundletool</code> from the command line to build an app bundle from pre-compiled code and resources. If you haven’t already done so, download <a href="https://github.com/google/bundletool/releases" target="_blank" rel="noopener">bundletool</a> from the GitHub repository.</p>
-<p>This section describes how to package your app’s compiled code and resources, and how to use <code>bundletool</code> from the command line to convert them into an Android App Bundle.</p>
-<ul>
-<li>Generate the manifest and resources in proto format</li>
-</ul>
-<p><code>bundletool</code> requries certain information about your app project, such as the app’s manifest and resources, to be in <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">Google’s Protocal Buffer format</a>-which is also known as “protobuf” and uses the <code>*.pb</code> file extendsion. Protobufs provides a language-neutral, platform-neutral, and extensible mechanism for serializing structured data-it’s similiar to XML, but smaller, faster, and simpler.</p>
-<ul>
-<li>Download AAPT2</li>
-</ul>
-<p>You can generate your app’s manifest file and resource table in protobuf format using the latest version of AAPT2 from the <a href="https://developer.android.com/studio/build/dependencies#google-maven" target="_blank" rel="noopener">Google Maven Repository</a></p>
-<p>To download AAPT2 from Google’s Maven repository, proceed as follows:</p>
-<ol>
-<li>Navigate to <code>com.android.tools.build &gt; aapt2</code> in the <a href="https://maven.google.com/" target="_blank" rel="noopener">repository index</a>.</li>
-<li>Copy the name of the latest version of AAPT2.</li>
-<li>Insert the version name you copied into the following URL and specify your target operating system: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows</a> | linux | osx].jar  </li>
-</ol>
-<p>For example, to download version 3.2.0-alpha18-4804415 for Windows, you would use: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar</a></p>
-<ol start="4">
-<li>Navigate to the URL in a browser—AAPT2 should begin downloading shortly.</li>
-<li>Unpackage the JAR file you just downloaded.</li>
-</ol>
-<ul>
-<li>Compile and link your app’s resources</li>
-</ul>
-<p>Use AAPT2 to compile your app’s resources with the following command:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aapt2 compile \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image1.png \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image2.png \</span><br><span class="line">-o compiled_resources/</span><br></pre></td></tr></table></figure>
-
-<p>During the link phase, where AAPT2 links your various compiled resources into a single APK, instruct AAPT2 to convert your app’s manifest and compiled resources into the protobuf format by including the <code>--proto-format</code> flag, as shown below:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aapt2 link --proto-format -o output.apk \</span><br><span class="line">-I android_sdk/platforms/android_version/android.jar \</span><br><span class="line">--manifest project_root/module_root/src/main/AndroidManifest.xml \</span><br><span class="line">-R compiled_resources/*.flat \</span><br><span class="line">--auto-add-overlay</span><br></pre></td></tr></table></figure>
-
-<p>You can then extract content from the output APK, such as your app’s AndroidManifest.xml, resources.pb, and other resource files—now in the protobuf format. You need these files when preparing the input bundletool requires to build your app bundle, as described in the following section.</p>
-<ul>
-<li>Package pre-compiled code and resources</li>
-</ul>
-<p>Before you use <code>bundletool</code> to generate an app bundle for your app, you must first provide ZIP files that each contain the compiled code and resources for a given app module. The content and organization of each module’s ZIP file is very similar to that of <a href="https://developer.android.com/guide/app-bundle#aab_format" target="_blank" rel="noopener">the Android App Bundle format</a>. For example, you should create a <code>base.zip</code> file for your app’s base module and organize its contents as follows:</p>
-<p>// TODO table</p>
-<p>After you prepare the ZIP file for each module of your app, you can pass them to <code>bundletool</code> to build your app bundle, as described in the following section.</p>
-<ul>
-<li>Build your app bundle using bundletool</li>
-</ul>
-<p>To build your app bundle, you use the <code>bundletool build-bundle</code> command, as shown below:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundletool build-bundle --modules=base.zip --output=mybundle.aab</span><br></pre></td></tr></table></figure>
-
-<p>The following table describes flag for the <code>build-bundle</code> command in more detail:</p>
-<p>//TODO table</p>
-<ul>
-<li>Customize downstream APK generation </li>
-</ul>
-<p>App bundles include a <code>BundleConfig.pb</code> file that provides metadata that app stores, such as Google Play, require when generating APKs from the bundle. Although <code>bundletool</code> create this file for you, you can configure some aspects of the metadata in a <code>BundleConfig.json</code> file and pass it to the <code>buldtool build-bundle</code> command -<code>buildtool</code> later converts and merges this file with the protobuf version included in each app bundle.</p>
-<p>For example, you can control which categories of configuration APKs to enable or disable. The following example of an <code>BundleConfig.json</code> file disables configuration APKs that each target a different langauge(that is, resources for all languages are included in their respective base or dynamic feature APKs):</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "optimizations": &#123;</span><br><span class="line">    "splitsConfig": &#123;</span><br><span class="line">      "splitDimension": [&#123;</span><br><span class="line">        "value": "LANGUAGE",</span><br><span class="line">        "negate": true</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>In your <code>BundleConfig.json</code> file, you can also specify which file types to leave uncompressed when packaging APKs using <a href="https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob" target="_blank" rel="noopener">glob patterns</a>, as follows:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "compression": &#123;</span><br><span class="line">    "uncompressedGlob": ["res/raw/**", "assets/**.uncompressed"]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Keep in mind, by default, bundletool does not compress your app’s native libraries (on Android 6.0 or higher) and resource table (resources.arsc). For a full description of what you can configure in your BundleConfig.json, inspect the <a href="https://github.com/google/bundletool/blob/master/src/main/proto/config.proto" target="_blank" rel="noopener">bundletool config.proto file</a>, which is written using <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Proto3</a> syntax.</p>
-<h4 id="Deploy-your-app-from-an-app-bundle"><a href="#Deploy-your-app-from-an-app-bundle" class="headerlink" title="Deploy your app from an app bundle"></a>Deploy your app from an app bundle</h4><p>If you’ve built and signed an app bundle, <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">use bundletool</a> to generate APKs and deploy them to a device.</p>
-<h3 id="Sign-your-app-from-command-line"><a href="#Sign-your-app-from-command-line" class="headerlink" title="Sign your app from command line"></a>Sign your app from command line</h3><p>You do not need Android Studio to sign your app. You can sign your app from  the command line, using <code>apksigner</code> for APKs or <code>jarsigner</code> for app undles, or configure Gradle to sign it for you during the build. Either way, you need to first generate a private key using <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html" target="_blank" rel="noopener">keytool</a> as shown below:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.jks</span><br><span class="line">-keyalg RSA -keysize 2048 -validity 10000 -alias my-alias</span><br></pre></td></tr></table></figure>
-
-<p>The example above prompts you for passwords for the keystore and key, and for the “Distinguished Name” field for your key. It then generates the keystore as a file called <code>my-release-key.jks</code>, saving it in the current directory(you can move it wherever you’d like). The keystore contains a single key that is valid for 10000 days.</p>
-<p>Now you can sign your APK or app bundle manually, or configure Gradle to sign your app during the build process, as described in the sections below.</p>
-<h4 id="Sign-your-app-manually-from-the-command-line"><a href="#Sign-your-app-manually-from-the-command-line" class="headerlink" title="Sign your app manually from the command line"></a>Sign your app manually from the command line</h4><p>If you want to sign an app bundle from the command line, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a>. If instead you want to sign an APK, you need to use <code>zipalign</code> and <code>apksigner</code> as described below.</p>
-<ol>
-<li>Open a command line-from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code> - and navigate to the directory where your unsigned APK is located.</li>
-<li>Align the unsigned APK using <a href="https://developer.android.com/studio/command-line/zipalign.html" target="_blank" rel="noopener">zipalign</a>:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zipalign -v -p 4 my-app-unsigned.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
-
-<p><code>zipalign</code> ensures that all uncompressed data starts with a particular byte alignment relative to the start of the file, which may reduce the amount of RAM consumed by an app.</p>
-<ol start="3">
-<li>Sign your APK with your private key using <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a>:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner sign --ks my-release-key.jks --out my-app-release.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
-
-<p>This example outputs the signed APK at <code>my-app-release.apk</code> after signing it with a private key and certificate that are stored in a single KeyStore file: <code>my-release-key.jks</code>.</p>
-<p>The <code>apksigner</code> tool supports other signing options, including signing an APK file using separate private key and certificate files, and signing an APK using multiple signers. For more details, see the <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a> reference.</p>
-<ol start="4">
-<li>Verify that your APK is signed:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner verify my-app-release.apk</span><br></pre></td></tr></table></figure>
-
-<h4 id="Configure-Gradle-to-sign-your-app"><a href="#Configure-Gradle-to-sign-your-app" class="headerlink" title="Configure Gradle to sign your app"></a>Configure Gradle to sign your app</h4><p>Open the module-level <code>build.gradle</code> file and add the <code>signingConfigs {}</code> block with entries for <code>storeFile</code>, <code>storePassword</code>, <code>keyAlias</code> and <code>keyPassword</code>, and then pass that object to the <code>signingConfig</code> property in your build type. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123; ... &#125;</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            // You need to specify either an absolute path or include the</span><br><span class="line">            // keystore file in the same directory as the build.gradle file.</span><br><span class="line">            storeFile file("my-release-key.jks")</span><br><span class="line">            storePassword "password"</span><br><span class="line">            keyAlias "my-alias"</span><br><span class="line">            keyPassword "password"</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Now, when you build your app by invoking a Gradle task, Gradle signs your app (and runs zipalign) for you.</p>
-<p>Additionally, because you’ve configured the release build with your signing key, the “install” task is available for that build type. So you can build, align, sign, and install the release APK on an emulator or device all with the <code>installRelease</code> task.</p>
-<p>An app signed with your private key is ready for distribution, but you should first read more about how to <a href="https://developer.android.com/studio/publish/index.html" target="_blank" rel="noopener">publish your app</a> and review the <a href="https://developer.android.com/distribute/tools/launch-checklist.html" target="_blank" rel="noopener">Google Play launch checklist</a>.</p>
+            <p><a href="https://www.jianshu.com/p/b9af64c9fa04" target="_blank" rel="noopener">https://www.jianshu.com/p/b9af64c9fa04</a><br><a href="https://www.jianshu.com/p/e4c4a9aece40" target="_blank" rel="noopener">https://www.jianshu.com/p/e4c4a9aece40</a><br><a href="https://juejin.im/post/5b02cf8c6fb9a07aa632146d" target="_blank" rel="noopener">https://juejin.im/post/5b02cf8c6fb9a07aa632146d</a><br><a href="https://www.jianshu.com/p/2c4ac24761f5" target="_blank" rel="noopener">https://www.jianshu.com/p/2c4ac24761f5</a></p>
 
           
         
@@ -790,7 +655,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/09/16/Translation-About-Android-App-Bundles/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/7ff436d6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -809,7 +674,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/09/16/Translation-About-Android-App-Bundles/" itemprop="url">Translation-About Android App Bundles</a></h1>
+                <a class="post-title-link" href="/posts/7ff436d6/" itemprop="url">Translation-Data Binding Library-Work with observable data objects</a></h1>
         
 
         <div class="post-meta">
@@ -821,8 +686,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:51:04+08:00">
-                2019-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T11:26:23+08:00">
+                2019-10-21
               </time>
             
 
@@ -862,8 +727,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/09/16/Translation-About-Android-App-Bundles/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/09/16/Translation-About-Android-App-Bundles/" itemprop="commentCount"></span>
+                <a href="/posts/7ff436d6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7ff436d6/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -893,89 +758,390 @@
       
         
           
-            <h2 id="About-Android-App-Bundles"><a href="#About-Android-App-Bundles" class="headerlink" title="About Android App Bundles"></a>About Android App Bundles</h2><p><a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Reference</a></p>
-<p>An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
-<p>Google Play’s new app serving model, called Dynamic Delivery, then uses your app bundle to generate and serve optimized APKs for each user’s device configuration, so they download only the code and resources they need to run your app. You no longer have to build , sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads.</p>
-<p>Additionally, you can add dynamic feature modules to your app project and include them in your app bundle. These modules contain features and assets that you can decide not to include when users first download and install your app. <a href="https://developer.android.com/guide/app-bundle#playcore" target="_blank" rel="noopener">Using the Play Core Library</a>, your app can later request to download those modules as dynamic feature APKs, and, through Dynamic Delivery, Google Play serves only the code and resources for that module to the device.</p>
-<p>Publishing with Android App Bundles also increases the app size limit to 150MB without having to use APK expansion files. Keep in mind, this limit applies only to the actual download size, not the publishing size. So, users can download apps as large as 150MB and , with dynamic delivery, all of that storage is used for only the code and resourcecs they need to run the app. When you combine this with support for <a href="https://developer.android.com/topic/performance/reduce-apk-size#reduce-binaries" target="_blank" rel="noopener">uncompressed native libraries</a>, larger apps ,such as games, can reduce disk usage and increase user retention.</p>
-<p>If you are using Android Studio 3.2 or higher , most app projects require little effort to support Dynamic Delivery, and you can build an Android App Bundle in just a few clicks. However, adding dynamic feature modules requires a little more effort and possibly refactoring your app.</p>
-<p>This page describes the steps to get started building Android App Bundles and describes some important concepts related to app bundles and Dynamic Delivery.</p>
-<h3 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h3><p>To build app bundles and support Dynamic Delivery, follow these steps: </p>
-<ol>
-<li><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Download Android Studio 3.2 or higher</a> - it’s the easiest way to add dyanmic feature modules and build app bundles.</li>
-<li><a href="https://developer.android.com/studio/projects/dynamic-delivery" target="_blank" rel="noopener">Add support for Dynamic Delivery</a> by including a base module, organizing code and resources for configuration APKs, and, optionally, adding dynamic feature modules.</li>
-<li><a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">Build an Android App Bundle</a> using Android. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundle from the command line</a>.</li>
-<li><a href="https://developer.android.com/guide/app-bundle#bundletool" target="_blank" rel="noopener">Test your Android App Bundle</a> by using it to generate APKs that you deploy to a device.</li>
-<li><a href="https://support.google.com/googleplay/android-developer/answer/7384423" target="_blank" rel="noopener">Enroll into app signing by Google Play</a>. Otherwise, you can’t upload your app bundle to the Play Console.</li>
-<li><a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">Publishing your app bundle to Google Play</a>.</li>
-</ol>
-<h3 id="The-Android-App-Bundle-format"><a href="#The-Android-App-Bundle-format" class="headerlink" title="The Android App Bundle format"></a>The Android App Bundle format</h3><p>An Android APP Bundle is a file(with the <code>.aab</code> file extension) that you upload to Google Play to support Dynamic Delivery.</p>
-<p>App bundles are signed binaries that organize your app’s code and resources into modules, as illustrated in figure 1.Code and resources for each module are organized similarly to what you would find in an APK-and that makes sense because each of these modules may be generated as separate APKs. Google Play then uses the app bundle to generate the various APKs that are served to users, such as the base APK, dynamic feature APKs, configuration APKs, and (for devices that do not support split APKs) multi-APKs. The directories that are colored in blue-such as the <code>drawable/</code>, <code>values/</code>, and <code>lib</code> directories-represent code and resources that Google Play uses to create configuration APKs for each module.</p>
-<p><img src="https://developer.android.com/images/app-bundle/aab_format-2x.png" alt="The contents of an Android App Bundle with one base module and two dynamic feature modules."></p>
-<p>The following list describes some of the app bundle’s files and directories in more detail:</p>
+            <h1 id="Work-with-observable-data-objects"><a href="#Work-with-observable-data-objects" class="headerlink" title="Work with observable data objects"></a>Work with observable data objects</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">Reference</a></p>
+<p>Observability refers to the capability of an object to notify others about changes in its data. The Data Binding Library allows you to make objects, fields, or collections observable.</p>
+<p>Any plain-old object can be used for data binding, but modifying the object doesn’t automatically cause the UI to update. Data binding can be used to give your data objects the ability to notify other objects, known as listener, when its data changes. There are three different types of observable classes: <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">objects</a>, <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_fields" target="_blank" rel="noopener">fields</a>, and <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_collections" target="_blank" rel="noopener">collections</a>.</p>
+<p>When one of these observable data objects is bound to the UI and a property of the data object changes, the UI is updated automatically.</p>
+<h2 id="Observable-fields"><a href="#Observable-fields" class="headerlink" title="Observable fields"></a>Observable fields</h2><p>Some work is involved in creating classes that implement the <a href="https://developer.android.com/reference/androidx/databinding/Observable.html" target="_blank" rel="noopener">Observable</a> interface, which could not be worth the effort if your classes only have a few properties. In this case, you can use the generic <a href="https://developer.android.com/reference/androidx/databinding/Observable.html" target="_blank" rel="noopener">Observable</a> class and the following primitive-specific classes to make fields observable:</p>
 <ul>
-<li>base/, feature1/, and feature2/: Each of these top-level directories represents a different module of your app. The base module for your app is always contained in a <code>base</code> directory of the app bundle. However, the directory for each dynamic feature module is given the name specified by the <code>split</code> attribute in the module’s manifest. To learn more, read about the <a href="https://developer.android.com/guide/app-bundle/configure#dynamic_feature_manifest" target="_blank" rel="noopener">Dynamic feature module manifest</a>.</li>
-<li>BUNDLE-METADATA/: This directory includes metadata files that contain information useful for tools or app stores. Such metadata files may include ProGuard mappings and the complete list of your app’s DEX files. Files in this directory are not packaged into your app’s APKs.</li>
-<li>Module Protocal Buffer(*.pb) files: These files provide metadata that helps describe the contents of each app module to app stores, such as Google Play. For example, <code>BundleConfig.pb</code> provides information about the bundle itself, such as which version of the build tools were used to build the app bundle, and <code>native.pb</code> and <code>resources.pb</code> describe the code and resources in each module, which is useful when Google Play optimizes APKs for different device configurations.</li>
-<li>manifest/: Unlike APKs, app bundles store the <code>AndroidManifest.xml</code> file of each module in this separate directory.</li>
-<li>dex/ : Unlike APKs, app bundles store the DEX files for each module in this separate directory</li>
-<li>res/, lib/ and assets/: These directories are dientical to those in a typical APK. When you upload your app bundle, Google Play inspects these directories and packages only the files that satisfy the target device configuration, while preserving file paths.</li>
-<li>root/: This directory stores files that are later relocated to the root of any APK that includes the module that this directory is located in. For example, the <code>base/root</code> directory of an app bundle may include Java-based resources that your app loads using <a href="https://developer.android.com/reference/java/lang/Class.html#getResource(java.lang.String)" target="_blank" rel="noopener">Class.getResource()</a>. Those files are later relocated to the root directory of your app’s base APK and every multi-APK that Google Play generates. Paths within this directory are also preserved. That is, directories(and their subdirectories) are also relocated to the root of the APk.</li>
+<li>ObservableBoolean</li>
+<li>ObservableByte</li>
+<li>ObservableChar</li>
+<li>ObservableShort</li>
+<li>ObservableInt</li>
+<li>ObservableLong</li>
+<li>ObservableFloat</li>
+<li>ObservableDouble</li>
+<li>ObservableParcelable</li>
 </ul>
-<h4 id="Build-and-deploy-Android-App-Bundles"><a href="#Build-and-deploy-Android-App-Bundles" class="headerlink" title="Build and deploy Android App Bundles"></a>Build and deploy Android App Bundles</h4><p>An app bundle is different from an APK in that you can’t deploy one to a device. Rather, it’s a upload format that includes all your app’s compiled code and resources in a single build artifact. So, after you upload your signed app bundle , Google Play has everything it needs to build and sign your app’s APKs, and serve them to users through Dynamic Delivery.</p>
-<p>If you’re using Android Studio, you can <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">build your project</a> as a signed app bundle in just a few clicks. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app from the command line.</a> Then, simply <a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">upload your app bundle</a> to the Play Console to test or publish your app with Dynamic Delivery.</p>
-<h3 id="Test-your-app-bundle"><a href="#Test-your-app-bundle" class="headerlink" title="Test your app bundle"></a>Test your app bundle</h3><p>After you build your Android App Bundle, you should test how Google Play will use it to generate APKs and how those APKs will behave when deployed to a device.</p>
-<p>To test your app bundle, use any of the following methods:</p>
+<p>Observable fields are self-contained observable objects that have a single field. The primaitive versions avoid boxing and unboxing during access operations. To use this mechanism, create a <code>public final</code> property in the Java programming language or a read-only property in Kotlin, as shown in the following example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; firstName = <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; lastName = <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableInt age = <span class="keyword">new</span> ObservableInt();</span><br></pre></td></tr></table></figure>
+
+<p>To access the field value, use the <code>set()</code> and <code>get()</code> accessor methods, as follows:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user.firstName.set(<span class="string">"Google"</span>);</span><br><span class="line"><span class="keyword">int</span> age = user.age.get();</span><br></pre></td></tr></table></figure>
+
+<p>// TODO</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/605894bb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/605894bb/" itemprop="url">Translation-Data Binding Library-Layouts and binding expressions</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T10:37:57+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/605894bb/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/605894bb/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Layouts-and-binding-expressions"><a href="#Layouts-and-binding-expressions" class="headerlink" title="Layouts and binding expressions"></a>Layouts and binding expressions</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions" target="_blank" rel="noopener">Reference</a></p>
+<p>The expression language allows you to write expressions that handle events dispatched by the views. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects.</p>
+<p>Data binding layout files are slightly different and start with a root tag of <code>layout</code> followed by a <code>data</code> element and a <code>view</code> root element. This view element is what your root would be in a non-binding layout file. The following code shows a sample layout file:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName&#125;"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:text</span>=<span class="string">"@&#123;user.lastName&#125;"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>The <code>user</code> variable within <code>data</code> describes a property that may be used within this layout.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Expressions within the layout are written in the attribute properties using the <code>&quot;@{}&quot;</code> syntax. Here, the TextView text is set to the <code>firstName</code> property of the <code>user</code> variable:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Data-object"><a href="#Data-object" class="headerlink" title="Data object"></a>Data object</h2><p>Let’s assume for now that you have a plain-old object to describe the <code>User</code> entity:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> String firstName;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> String lastName;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">      <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This type of object has data that never changes. It is common in applications to have data that is read once and never changes thereafter. It is also possible to use an object that follows a set of conventions, such as the usage of accessor methods in Java, as shown in the following example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String firstName;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String lastName;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">      <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.firstName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>From the perspective of data binding, these two classes are equivalent. The expression <code>@{user.firstName}</code> used for the <code>android:text</code> attribute accesses the <code>firstName</code> field in the former class and the <code>getFirstName()</code> method in the latter class. Alternatively, it is also resolved to <code>firstName()</code> if that method exists.</p>
+<h2 id="Binding-data"><a href="#Binding-data" class="headerlink" title="Binding data"></a>Binding data</h2><p>A binding class is generated for each layout file. By default, the name of the classes is based on the name of the layout file, converting it to Pascal case and adding the Binding suffix to it. The above layout file is <code>activity_main.xml</code> so the corresponding generated class is <code>ActivityMainBinding</code>. This class holds all the bindings from the layout properties(for example, the <code>user</code> variable) to the layout’s views and knows how to assign values for the binding expressions. The recommended method to create the bindings is to do it while inflating the layout, as shown in the following example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">   ActivityMainBinding binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_main);</span><br><span class="line">   User user = <span class="keyword">new</span> User(<span class="string">"Test"</span>, <span class="string">"User"</span>);</span><br><span class="line">   binding.setUser(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>At runtime, the app displays the <code>Test</code> user in the UI. Alternatively, you can get the view using a <code>LayoutInflater</code>, as shown in the following example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());</span><br></pre></td></tr></table></figure>
+
+<p>If you are using data binding items inside a <code>Fragment</code>, <code>ListView</code> or <code>RecyclerView</code> adapter, you may prefer to use the <code>inflate()</code> methods of the bindings classes or the <code>DataBindingUtil</code> class, as shown in the follow code example: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, <span class="keyword">false</span>);</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Expression-language"><a href="#Expression-language" class="headerlink" title="Expression language"></a>Expression language</h2><p>TODO 暂时不需要看</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/14f1fbc2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/14f1fbc2/" itemprop="url">Translation-Data Binding Library-Get started</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T10:02:52+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/14f1fbc2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/14f1fbc2/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/start" target="_blank" rel="noopener">Reference</a></p>
+<p>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</p>
+<p>The Data Binding Library offers both flexibility and broad compatibility-it’s a support library, so you can use it with devices running Android 4.0(API level 14) or higher.</p>
+<p>It’s recommended to use the latest Android Plugin for Gradle in your project. However, data binding is supported on version 1.5.0 and higher. For more information, see how to <a href="https://developer.android.com/studio/releases/gradle-plugin.html#updating-plugin" target="_blank" rel="noopener">update the Android Plugin for Gradle</a>.</p>
+<h2 id="Build-environment"><a href="#Build-environment" class="headerlink" title="Build environment"></a>Build environment</h2><p>To get started with data binding, download the library from the <code>Support Repository</code> in the Android SDK manager. For more information, see <a href="https://developer.android.com/studio/intro/update.html" target="_blank" rel="noopener">Update the IDE and SDK Tools</a>.</p>
+<p>To configure your app to use the data binding, add the <code>dataBinding</code> element to your <code>build.gradle</code> file in the app module, as shown in the following example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    ...</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Android-Studio-support-for-data-binding"><a href="#Android-Studio-support-for-data-binding" class="headerlink" title="Android Studio support for data binding"></a>Android Studio support for data binding</h2><p>Android Studio supports many of the editing features for data binding code. For example, it supports the following features for data binding expressions:</p>
 <ul>
-<li><a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">Test your Android App Bundle locally using bundletool</a> to generate APKs from your app bundle and deploy them to a connected device.</li>
-<li><a href="https://support.google.com/googleplay/android-developer/answer/9303479" target="_blank" rel="noopener">Share your app with a URL</a>. This is the fastest way to upload your app bundle and share your app as a Google Play Store link with trusted tester. Additionally, this is the fastest way to test custom delivery options, such as dowloading features on demand.</li>
-<li><a href="https://support.google.com/googleplay/android-developer/answer/3131213" target="_blank" rel="noopener">Set up an open, closed, or internal test.</a>. This is another method to test custom delivery options, such as dowloading features on demand.</li>
+<li>Syntax highlighting</li>
+<li>Flagging of expression language syntax errors</li>
+<li>XML code completion</li>
+<li>References, including <a href="https://www.jetbrains.com/help/idea/2017.1/navigation-in-source-code.html" target="_blank" rel="noopener">navigation</a>(such as navigate to a declaration) and <a href="https://www.jetbrains.com/help/idea/2017.1/viewing-inline-documentation.html" target="_blank" rel="noopener">quick documentation</a></li>
 </ul>
-<h3 id="Download-dynamic-feature-modules-with-the-Play-Core-Library"><a href="#Download-dynamic-feature-modules-with-the-Play-Core-Library" class="headerlink" title="Download dynamic feature modules with the Play Core Library"></a>Download dynamic feature modules with the Play Core Library</h3><p>If your app includes dynamic features, it needs to use the Play Core Library to request, monitor, and manage dynamic feature module downloads. To learn more, go to [Download modules with the Play Core Library].(<a href="https://developer.android.com/guide/app-bundle/playcore" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore</a>)</p>
-<p>If you want to see the library in action, try the <a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">Play Core Library sample app</a>.</p>
-<h3 id="A-note-about-instant-Apps"><a href="#A-note-about-instant-Apps" class="headerlink" title="A note about instant Apps"></a>A note about instant Apps</h3><p>In Android Studio 3.2 or higher, you can <a href="https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle" target="_blank" rel="noopener">add an instant experience</a> to an app bundle , as long as your app’s size is smaller enough. For details on the size limits for the different types of instant experiences that you can create, see <a href="https://developer.android.com/topic/google-play-instant/overview#reduce-size" target="_blank" rel="noopener">Overview of Google Play Instant</a>.</p>
-<h3 id="Compressed-download-size-restriction"><a href="#Compressed-download-size-restriction" class="headerlink" title="Compressed download size restriction"></a>Compressed download size restriction</h3><p>While publishing with Android App Bundles helps your users install your app with the smallest download possible, <code>compressed downloads are limited to 150MB</code>. That is , when a user downloads your app, the total size of the compressed APKs required to install your app(for example, the base APK + configuration APK(s)) must be no more than 150MB. Any subsequent downloads, such as downloading a dynamic feature (and its configuration APK(s)) on demand, must also meet this compressed download size restriction.</p>
-<p>When you upload your app bundle, if the Play Console finds any of the possible downloads of your app or its on demand features to be more than 150MB, you get an error.</p>
-<p>Keep in mind, <code>Android App Bundles do not support APK expansion(.obb) files</code>. So, if you encounter this error when publishing your app bundle, use one of the following resources to reduce compressed APK download size:</p>
+<p>The <code>Preview</code> pane in <code>Layout Editor</code> displays the default value of data binidng expressions, if provided. For example, the <code>Preview</code> pane displays the <code>my_default</code> value on the <code>TextView</code> widget declared in the following example:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName, default=my_default&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>If you need to display a default value only during the design phase of your project, you can use <code>tools</code> attributes instead of default expression values, as described in <a href="https://developer.android.com/studio/write/tool-attributes.html" target="_blank" rel="noopener">Tools Attributes Reference</a>.</p>
+<h2 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h2><p>To learn more about data binding, consult the following additional resources.</p>
 <ul>
-<li>Make sure you <a href="https://developer.android.com/studio/projects/dynamic-delivery#disable_config_apks" target="_blank" rel="noopener">enable all configuration APKs </a> by setting <code>enableSplit = true</code> for each type of configuration APK. This makes sure that users download only the code and resources they need to run your app on their device.</li>
-<li>Make sure you <a href="https://developer.android.com/studio/build/shrink-code" target="_blank" rel="noopener">shrink your app</a> by removing unused code and resources.</li>
-<li>Follow best practices to further [reduce app size].(<a href="https://developer.android.com/topic/performance/reduce-apk-size" target="_blank" rel="noopener">https://developer.android.com/topic/performance/reduce-apk-size</a>)</li>
-<li>Consider converting features that are used by only some of your users into <a href="https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules" target="_blank" rel="noopener">dynamic feature modules</a> that your app can download later, on demand. Keep in mind ,this may require some refactoring of your app, so make sure to first try the other suggestions described above.</li>
-</ul>
-<h3 id="Known-issues"><a href="#Known-issues" class="headerlink" title="Known issues"></a>Known issues</h3><p>The following are the currently known issues when building Android App Bundles or serving your app using Dynamic Delivery. If you experience issues that are not described below, please <a href="https://issuetracker.google.com/issues/new?component=398856&template=1084213" target="_blank" rel="noopener">report a bug</a>.</p>
-<ul>
-<li>If you use tools that dynamically modify resource tables, APKs generated from app bundles might behave unexpectedly. So, when building an app bundle, it is recommended taht you disable such tools.</li>
-<li>In a dynamic feature module’s manifest, you should not reference resources that don’t exist in the base module. That’s because , when Google Play generates your app’s base APK, it merges manifests for all modules into that of the base APK. So, resource linking breaks if the base APK’s manifest references resources taht don’t exist in the base APK.</li>
-<li>As of Android Studio 3.2 Canary 14, when your <a href>change the build variant</a> for your app’s base module, the same build variant is not automatically selected for dynamic feature modules that depand on the base module. So, you might receive an error when building your app. Simply make sure that you select the same build variant for the base module and other modules that depend on it.</li>
-<li>It is currently possible to configure properties in a dynamic feature module’s build coniguration that conflict with those from the base(or other) modules. For example, you can set <code>buildTypes.release.debuggable = true</code> in the base module and set it to <code>false</code> in a dynamic feature module. Such conflicts might cause build and runtime issues. Keep in mind, by default, dynamic feature modules inherit some build configurations from the base module. So, make sure you understand which configurations you should keep, and which ones you should omit, in your <a href="https://developer.android.com/guide/app-bundle/configure#feature_build_config" target="_blank" rel="noopener">Dynamic feature module build configuration</a>.</li>
-<li>Because app installs may require downloading more than onre APK(such the base APK and a few of its configuration APKs), you should be careful when manually transferring your app’s APKs onto a device(also known as sideloading). Otherwise, your app may experience runtime issues due to missing code and resources.</li>
-<li>Currently, Google Play inclues all the code and resources for a dynamic feature module in a single APK. In the near future, for devices running Android 5.0 (API level 21) and higher, serving will be optimized to use configuration APKs.</li>
-<li>Downloading dynamic feature modules requires devices to have a recent version of the Play Store app installed. So, if your app includes dynamic feature modules, downloads for a very small percentage of users may fall back to a single optimized multi-APK, which is the same download experience for devices running Android 4.4 (API level 20) and lower.</li>
-</ul>
-<h3 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h3><p>To learn more about Android App Bundles, consult the following resources.</p>
-<ul>
-<li>Samples  <ul>
-<li><a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">PlayCore API sample</a>, which demonstrates usage of the PlayCore API to request and download dynamic features.</li>
-<li><a href="https://github.com/googlesamples/android-dynamic-code-loading" target="_blank" rel="noopener">Dynamic code loading sample</a>, which demonstrates three different approaches to safely access code from an installed dynamic feature module.</li>
+<li>Sample<ul>
+<li><a href="https://github.com/googlesamples/android-databinding" target="_blank" rel="noopener">Android Data Binding Library samples</a></li>
 </ul>
 </li>
 <li>Codelabs<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/your-first-dynamic-app/index.html" target="_blank" rel="noopener">Your First Android App Bundle</a>, a codelab that explores the basic principles of Android App Bundles and shows you how to quickly get started with building your own using Android Stuio. This codelab also explores how to test your app bundles <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">using bundletool</a></li>
-<li><a href="https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery/index.html" target="_blank" rel="noopener">On demand modules</a>, which helps you create an app that downloads and installs dynamic features on demand.</li>
+<li><a href="https://codelabs.developers.google.com/codelabs/android-databinding" target="_blank" rel="noopener">Android Data Binding codelab</a></li>
 </ul>
 </li>
 <li>Blog posts<ul>
-<li><a href="https://medium.com/googleplaydev/what-a-new-publishing-format-means-for-the-future-of-android-2e34981793a" target="_blank" rel="noopener">What a new publishing format means for the future of Android</a></li>
-<li><a href="https://android-developers.googleblog.com/2019/05/whats-new-in-play.html" target="_blank" rel="noopener">New features to help you develop, release, and grow your business on Google Play</a></li>
-<li><a href="https://android-developers.googleblog.com/2019/03/the-latest-android-app-bundle-updates.html" target="_blank" rel="noopener">The latest Android App Bundle updates including the additional languages API</a></li>
-<li><a href="https://medium.com/androiddevelopers/a-patchwork-plaid-monolith-to-modularized-app-60235d9f212e" target="_blank" rel="noopener">Patchwork Plaid — A modularization story</a></li>
-<li><a href="https://medium.com/androiddevelopers/google-santa-tracker-moving-to-an-android-app-bundle-dde180716096" target="_blank" rel="noopener">Google Santa Tracker — Moving to an Android App Bundle</a></li>
-</ul>
-</li>
-<li>Videos<ul>
-<li><a href="https://www.youtube.com/watch?v=flhib2krW7U" target="_blank" rel="noopener">Customizable Delivery with the App Bundle and Easy Sharing of Test Builds</a></li>
-<li><a href="https://www.youtube.com/watch?v=rEuwVWpYBOY" target="_blank" rel="noopener">New Tools to Optimize Your App’s Size and Boost Installs on Google Play</a></li>
+<li><a href="https://medium.com/androiddevelopers/data-binding-lessons-learnt-4fd16576b719" target="_blank" rel="noopener">Data Binding - Lessons Learnt</a></li>
 </ul>
 </li>
 </ul>
@@ -1027,7 +1193,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/31/Algorithm-LeetCode-206-Reverse-Linked-List/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/1d9e584e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1046,7 +1212,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/31/Algorithm-LeetCode-206-Reverse-Linked-List/" itemprop="url">Algorithm LeetCode 206 Reverse Linked List</a></h1>
+                <a class="post-title-link" href="/posts/1d9e584e/" itemprop="url">Translation-Data Binding Library-Overview</a></h1>
         
 
         <div class="post-meta">
@@ -1058,8 +1224,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T14:06:56+08:00">
-                2019-07-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T09:27:35+08:00">
+                2019-10-21
               </time>
             
 
@@ -1081,8 +1247,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
                   </a>
                 </span>
 
@@ -1099,8 +1265,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/31/Algorithm-LeetCode-206-Reverse-Linked-List/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/31/Algorithm-LeetCode-206-Reverse-Linked-List/" itemprop="commentCount"></span>
+                <a href="/posts/1d9e584e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1d9e584e/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1130,162 +1296,41 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Reverse a singly linked list.</p>
-<p>Example:</p>
-<p>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">      ListNode cur = head;</span><br><span class="line">      ListNode tail = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span>(head != <span class="keyword">null</span>) &#123;</span><br><span class="line">          head = head.next;</span><br><span class="line">          cur.next = tail;</span><br><span class="line">          tail = cur;</span><br><span class="line">          cur = head;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> tail;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
+            <h1 id="Data-Binding-Library"><a href="#Data-Binding-Library" class="headerlink" title="Data Binding Library"></a>Data Binding Library</h1><p><a href="https://developer.android.com/topic/libraries/data-binding" target="_blank" rel="noopener">Reference</a></p>
+<p>The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.</p>
+<p>Layouts are often defined in activities with code that calls UI framework methods. For example, the code below calls <code>findViewById()</code> to find a <code>TextView</code> widget and bind it to the <code>username</code> property of the <code>viewModel</code> variable:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TextView textView = findViewById(R.id.sample_text);</span><br><span class="line">textView.setText(viewModel.getUserName());</span><br></pre></td></tr></table></figure>
 
-    
+<p>The following examples shows how to use the Data Binding Library to assign text to the widget directly in the layout file. This removes the need to call any of the Java code shown above. Note the use of <code>@{}</code> syntax in the assignment expression:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">android:text=<span class="string">"@&#123;viewmodel.userName&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
 
-    
+<p>Binding components in the layout file lets you remove many UI framework calls in your activities, making them simpler and easier to maintain. This can also improve your app’s performance and help prevent memory leaks and null pointer exceptions.</p>
+<h2 id="Using-the-Data-Binding-Library"><a href="#Using-the-Data-Binding-Library" class="headerlink" title="Using the Data Binding Library"></a>Using the Data Binding Library</h2><p>Use the following pages to learn how to use the Data Binding Library in your Android apps.</p>
+<p><a href="https://developer.android.com/topic/libraries/data-binding/start.html" target="_blank" rel="noopener">Get started</a></p>
+<pre><code>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions.html" target="_blank" rel="noopener">Layouts and binding expressions</a></p>
+<pre><code>The expression language allows you to write expressions that connecct variable to the views in the layout. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects. The library provides features such as imports, variable, and includes that you can use in your layout.
 
-    
+These features of the library coexist seamlessly with your existing layouts. For example, the binding variables that can be used in expressions are defined inside a `data` element that is a sibling of the UI layout&apos;s root element. Both elements are wrapped in a `layout` tag, as shown in the following example:
 
-    <footer class="post-footer">
-      
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"viewmodel"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"com.myapp.data.ViewModel"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ConstraintLayout...</span> /&gt;</span> <span class="comment">&lt;!-- UI layout's root element --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/observability.html" target="_blank" rel="noopener">Work with observable data objects</a></p>
+<pre><code>The Data Binding Library provides classes and methods to easily observe data for changes. You don&apos;t have to worry about refreshing the UI when the underlying data source changes. You can make your variables or their properties observable. The library allows you to make objects, fields, or collections observable.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/generated-binding.html" target="_blank" rel="noopener">Generated binding classes</a></p>
+<pre><code>The Data Binding Library generates binding classes that are used to access the layout&apos;s variable and views. This page shows you how to use and customize generated binding classes.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/binding-adapters.html" target="_blank" rel="noopener">Binding adapters</a></p>
+<pre><code>For every layout expression, there is a binding adapter that makes the framework calls required to set the corresponding properties or listeners. For example, the binding adapter can take care of calling the `setText()` method to set the text property or call the `setOnClickListener()` method to add a listener to the click event. The most common binding adapters, such as the adapters for the `android:text` property used in the examples in this page, are available for you to use in the `android.databinding.adapters` pakage. For a list of the common binding adapters, see [adapters](https://android.googlesource.com/platform/frameworks/data-binding/+/refs/heads/studio-master-dev/extensions/baseAdapters/src/main/java/androidx/databinding/adapters). You can also create custom adapters, as shown in the following example:
 
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/21/Java-Java静态代理-动态代理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/21/Java-Java静态代理-动态代理/" itemprop="url">Java-Java静态代理&动态代理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T15:20:37+08:00">
-                2019-07-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/21/Java-Java静态代理-动态代理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/21/Java-Java静态代理-动态代理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/maohuidong/p/7992894.html" target="_blank" rel="noopener">https://www.cnblogs.com/maohuidong/p/7992894.html</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BindingAdapter</span>(<span class="string">"app:goneUnless"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">goneUnless</span><span class="params">(View view, Boolean visible)</span> </span>&#123;</span><br><span class="line">    view.visibility = visible ? View.VISIBLE : View.GONE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/architecture.html" target="_blank" rel="noopener">Bind layout views to Architecture components</a></p>
+<pre><code>The Android Support Library includes the [Architecture Components](), which you can use to design rbust, testable, and maintainable apps. You can use the Architecture Components with the Data Binding Library to further simplify the development of your UI.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/two-way" target="_blank" rel="noopener">Two-way data binding</a></p>
+<pre><code>The Data Binding Library supports two-way data binding. The notation used for this type of binding supports the ability to receive data changes to a property and listen to user updates to that property at the same time.</code></pre><h2 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h2><p>To learn more about data binding, consult the following additional resources.</p>
+<ul>
+<li><p>Samples</p>
+<p>  <a href="https://github.com/googlesamples/android-databinding" target="_blank" rel="noopener">Android Data Binding Library saples</a></p>
+</li>
+<li><p>Codelabs</p>
+<p>  <a href="https://codelabs.developers.google.com/codelabs/android-databinding" target="_blank" rel="noopener">Android Data Binding codelab</a></p>
+</li>
+<li><p>Blog posts</p>
+<p>  <a href="https://medium.com/androiddevelopers/android-data-binding-library-from-observable-fields-to-livedata-in-two-steps-690a384218f2" target="_blank" rel="noopener">Android Data Binding Library — From Observable Fields to LiveData in two steps</a><br>  <a href="https://medium.com/androiddevelopers/data-binding-lessons-learnt-4fd16576b719" target="_blank" rel="noopener">Data Binding - Lessons learnt</a></p>
+</li>
+</ul>
 
           
         
@@ -1334,7 +1379,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/16/Android-插件化/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5cbb013a/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1353,7 +1398,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/16/Android-插件化/" itemprop="url">Android 插件化</a></h1>
+                <a class="post-title-link" href="/posts/5cbb013a/" itemprop="url">Translation-Manage your app's memory</a></h1>
         
 
         <div class="post-meta">
@@ -1365,8 +1410,432 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:36+08:00">
-                2019-07-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-17T20:33:14+08:00">
+                2019-10-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/5cbb013a/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5cbb013a/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developer.android.com/topic/performance/memory" target="_blank" rel="noopener">Reference</a></p>
+<p>Random-access memory (RAM) is a valuable resource in any software development environment, but it’s even more valuable on a mobile operating system where physical memory is often constrained. Although both the Android Runtime (ART) and Dalvik virtual machine perform routine garbage collection, this doesn’t  mean you can ignore when and where your app allocates and release memory. You still need to avoid introducing memory leaks, usually caused by holding onto object references in static member variables, and release any <a href="https://developer.android.com/reference/java/lang/ref/Reference.html" target="_blank" rel="noopener">Reference</a> objects at the appropriate time as defined by lifecycle callbacks.</p>
+<p>This page explains how you can proactively reduce memory usage within your app. For information about how the Android operating system manages memory, see the <a href="https://developer.android.com/topic/performance/memory-overview.html" target="_blank" rel="noopener">Overview of Android Memeory Management</a>.</p>
+<h2 id="Monitor-available-memory-and-memory-usage"><a href="#Monitor-available-memory-and-memory-usage" class="headerlink" title="Monitor available memory and memory usage"></a>Monitor available memory and memory usage</h2><p>Before you can fix the memory usage problems in your app, you first need to find them. The <a href="https://developer.android.com/studio/profile/memory-profiler.html" target="_blank" rel="noopener">Memory Profiler</a> in Android Studio helps you find and diagnose memory issues in the following ways.</p>
+<ol>
+<li>See how your app allocates memory over time. The Memory Profiler shows a realtime graph of how much memory your app is using, the number of allocated Java objects, and when garbage collection occurs.</li>
+<li>Initiate garbage $</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5fec0e43/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/5fec0e43/" itemprop="url">Android-Build a Responsive UI with ConstraintLayout</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-14T20:43:32+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/5fec0e43/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5fec0e43/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developer.android.com/training/constraint-layout" target="_blank" rel="noopener">Reference</a></p>
+<p><a href="https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout.html" target="_blank" rel="noopener">ConstriaintLayout</a> allows you to create large and complex  layouts with a flat view hierarchy(no nested view groups). It’s similar to <code>RelativeLayout</code> in that all views are laid out according to relationships between sibling views and the parent layout, but it’s more flexible than <code>RelativeLayout</code> and easier to use with Android Studio’s Layout Editor.</p>
+<p>All the power of <code>ConstraintLayout</code> is available directly from the Layout Editor’s visual tools, because the layout API and the Layout Editor were specially built for each other. So you can build your layout with <code>ConstraintLayout</code> entirely by drag-and-dropping instead of editing the XML.</p>
+<p>This page provides a guide to build a layout with <code>ConstraintLayout</code> in Android Studio 3.0 or higher. If you’d like more information about the Layout Editor itself, see the Android Studio guide to <a href="https://developer.android.com/studio/write/layout-editor.html" target="_blank" rel="noopener">Build a UI with Layout Editor</a>.</p>
+<p>To see a variety of layouts you can create with <code>ConstraintLayout</code>, check out the <a href="https://github.com/android/views-widgets-samples/tree/master/ConstraintLayoutExamples" target="_blank" rel="noopener">Constraint Layout Examples project on Github</a>.</p>
+<h2 id="Constraints-overview"><a href="#Constraints-overview" class="headerlink" title="Constraints overview"></a>Constraints overview</h2><p>To define a view’s position in <code>ConstraintLayout</code>, you must add at least one horizontal and one vertical constraint for the view. Each constraint represents a connection or alignment to another view, the parent layout, or an invisible guideline. Each constraint defines the view’s position along either the vertical or horizontal axis; so each view must have a minimum of one constraint for each axis, but often more are necessary.</p>
+<p>When you drop a view into the Layout Editor, it stays where you leave it even if it has no constraints. However, this is only to make editing easier; if a view has no constraints when you run your layout on a device, it is drawn at position [0, 0] (the top-left corner).</p>
+<p>In figure 1, the layout looks good in the editor, but there’s no vertical constraint on view C. When this layout draws on a device, view C horizontally aligns with the left and right edges of view A, but appears at the top of the screen because it has no vertical constraint.</p>
+<p>Figure 1. The editor shows view C below A, but it has no vertical constraint<br><img src="https://developer.android.com/training/constraint-layout/images/constraint-fail_2x.png" alt></p>
+<p>Although a missing constraint won’t cause a compilation error, the Layout Editor indicates missing constraints as an error in the toolbar. To view the errors and other warnings, click <code>Show Warnings and Errors</code>. The help you avoid missing constraints, the Layout Editro can automatially add constraints for you with the <a href="https://developer.android.com/training/constraint-layout#use-autoconnect-and-infer-constraints" target="_blank" rel="noopener">Autoconnect and infer constraints</a> feature.</p>
+<h2 id="Add-ConstraintLayout-to-your-project"><a href="#Add-ConstraintLayout-to-your-project" class="headerlink" title="Add ConstraintLayout to your project"></a>Add ConstraintLayout to your project</h2><p>To use <code>ConstraintLayout</code> in your project, procceed as follows:</p>
+<ol>
+<li>Ensure you have the <code>maven.google.com</code> repository declared in your module-level <code>build.gradle</code> file:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repository &#123;</span><br><span class="line">    google()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Add the library as a dependency in the same <code>build.gradle</code> file, as shown in the following example. Note that the latest version might be different than what is shown in the example:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    dependencies &#123;</span><br><span class="line">    implementation 'com.android.support.constraint:constraint-layout:1.1.2'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>In the toolbar or sync notification, click <code>Sync Project with Gradle Files</code>.</li>
+</ol>
+<p>Now you’re ready to build your layout with <code>ConstraintLayout</code>.</p>
+<h3 id="Convert-a-layout"><a href="#Convert-a-layout" class="headerlink" title="Convert a layout"></a>Convert a layout</h3><p>To convert an existing layout to a constraint layout, follow these steps:</p>
+<ol>
+<li>Open your layout in Android Studio and click the <code>Design</code> tab at the bottom of the editor window.</li>
+<li>In the <code>Component Tree</code> window, right-click the layout and click <code>Convert layout to ConstraintLayout</code>.</li>
+</ol>
+<h3 id="Create-a-new-layout"><a href="#Create-a-new-layout" class="headerlink" title="Create a new layout"></a>Create a new layout</h3><p>To start a new constraint layout file, follow these steps:</p>
+<ol>
+<li>In the <code>Project</code> window, click the module folder and then select <code>File &gt; New &gt; XML &gt; Layout XML</code>.</li>
+<li>Enter a name for the layout file and enter “android.support.constraint.ConstraintLayout” for the <code>Root Tag</code>.</li>
+<li>Click <code>Finish</code>.</li>
+</ol>
+<h2 id="Add-or-remove-a-constraint"><a href="#Add-or-remove-a-constraint" class="headerlink" title="Add or remove a constraint"></a>Add or remove a constraint</h2><p>To add a constraint, do the following:</p>
+<ol>
+<li>Drag a view from the <code>Palette</code> window into the editor.</li>
+</ol>
+<p>When you add a view in a <code>ConstraintLayout</code>, it displays a bounding box with square resizing handles on each corner and circular constraint handles on each side.</p>
+<ol start="2">
+<li><p>Click the view to select it.</p>
+</li>
+<li><p>Do one of the following</p>
+<ul>
+<li><p>Click a constraint handle and drag it to an available anchor point. This point can be the edge of another view, the edge of the layout, or a guideline. NOtice that as you drag the constraint handle, the Layout Editor shows potential connection anchors and blue overlays.</p>
+</li>
+<li><p>Click one of the <code>Create a connection</code> buttons in the <code>Layout</code> section of the <code>Attributes</code> window, as shown in figure 4.</p>
+<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-create-constraint-2x.png" alt="Figure 4"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>When the constraint is created, the editor gives it a <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-margins" target="_blank" rel="noopener">default margin</a> to separate the two views.</p>
+<p>When creating constraints, remember the following rules:</p>
+<ul>
+<li>Every view must have at least two constraints: one horizontal and one vertical</li>
+<li>You can create constraints only between a constraint handle and an anchor point that share the same plane. So a vertical plane(the left and right sides) of a view can be constrainted only to another vertical plane; and baselines can constraint only to other baselines.(不太理解啥意思)</li>
+<li>Each constraint handle can be used for just one constraint, but you can create multiple constraints(from different views) to the same anchor point.</li>
+</ul>
+<p>You can delete a constraint by doing any of the following:</p>
+<ul>
+<li>Click on a constraint to select it, and then press <code>Delete</code></li>
+<li>Press and hold <code>Control</code>(<code>Command</code> on macOS), and then click on a constraint anchor. Noteh that the constraint turns red to indicate that you can click to delte it , as shown in figure 5.</li>
+</ul>
+<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-delete-1-2x.png" alt="Figure 5"></p>
+<ul>
+<li>In the <code>Layout</code> section of the <code>Attributes</code> window, click on a constraint anchor, as shown in figure 6.</li>
+</ul>
+<p>If you add opposing constraints on a view, the constraint lines become squiggly like a spring to indicate the opposing force, as shown in video 2. The effect is most visible when the view size is set to “fixed” or “wrap content”, in which case the view is centered between the constraints. If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switching the size to “match constraints”</a>; or if you want to keep the current size but move the view so that it is not centered, <a href="https://developer.android.com/training/constraint-layout#adjust-the-constraint-bias" target="_blank" rel="noopener">adjust the constraints bias</a>.</p>
+<p>You can use constraints to achieve different types of layout behavior, as described in the following sections.</p>
+<h3 id="Parent-position"><a href="#Parent-position" class="headerlink" title="Parent position"></a>Parent position</h3><p>Constrain the side of a view to the corresponding edge of the layout.</p>
+<p>In figure 7, the left side of the view is connected to the left edge of the parent layout. You can define the distance from the edge with margin.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/parent-constraint_2x.png" alt="Figure 7"></p>
+<h3 id="Order-position"><a href="#Order-position" class="headerlink" title="Order position"></a>Order position</h3><p>Define the order of appearance for two views, either vertically or horizontally.</p>
+<p>In figure 8, B is constrained to alwasys be to the right of A, and C is constrained below A. However, these constraints do not imply alignment, so B can still move up and down.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/position-constraint_2x.png" alt="Figure 8"></p>
+<h3 id="Alignment"><a href="#Alignment" class="headerlink" title="Alignment"></a>Alignment</h3><p>Align the edge of a view to the same edge of another view.</p>
+<p>In figure 9, the left side of B is aligned to the left side of A. If you want to align the view centers, create a constraint on both sides.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint_2x.png" alt="figure 9"></p>
+<p>You can offset the alignment by dragging the view inward from the constraint. For example, figure 10 shows B with a 24dp offset alignment. The offset is defined by the constrained view’s margin.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint-offset_2x.png" alt="figure 10"></p>
+<p>You can also select all the views you want to align, and then click <code>Align</code> in the toolbar to select the alignment type.</p>
+<h3 id="Baseline-alignment"><a href="#Baseline-alignment" class="headerlink" title="Baseline alignment"></a>Baseline alignment</h3><p>Align the text baseline of a view to the text baseline of another view.</p>
+<p>In figure 11, the first line of B is aligned with the text in A.</p>
+<p>To create a baseline constraint, right-click the text view you want to constrain and then click <code>Show Baseline</code>. Then click on the text baseline and drag the line to another line.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/baseline-constraint_2x.png" alt="Figure 11"></p>
+<h3 id="Constrain-to-a-guideline"><a href="#Constrain-to-a-guideline" class="headerlink" title="Constrain to a guideline"></a>Constrain to a guideline</h3><p>You can add a vertical or horizontal guideline to which you can constrain views, and the guideline will be invisible to app users. You can position the guideline with the layout based on either up units or percent, relative to the layout’s edge.</p>
+<p>To create a guideline, click <code>Guidelines</code> in the toolbar, and then click either <code>Add Vertical Guideline</code> or <code>Add Horizontal Guideline</code>.</p>
+<p>Drag the dotted line to reposition it and click the circle at the edge of the guideline to toggle the measurement mode.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/guideline-constraint_2x.png" alt="Figure 12"></p>
+<h3 id="Constrain-to-a-barrier"><a href="#Constrain-to-a-barrier" class="headerlink" title="Constrain to a barrier"></a>Constrain to a barrier</h3><p>Similar to a guideline, a barrier is an invisible line that you can constrain views to. Except a barrier does not define its own position; instead, the barrier position moves based on the position of views constrained within it.This is useful when you want to constrain a view to the a set of views rather than to one specific view.</p>
+<p>For example, figure 13 shows view C is constrained to the right side of a barrier. The barrier is set to the “end”(or the right side in a left-to-right layout) of both view A and view B. So the barrier moves depending on whether the right side of view A or View B is is farthest right.</p>
+<p>To create a barrier, follow these steps:</p>
+<ol>
+<li>Click <code>Guidelines</code> in the toolbar, and then click <code>Add Vertical Barrier</code> or <code>Add Horizontal Barrier</code></li>
+<li>In the <code>Component Tree</code> window, select the views you want inside the barrier and drag them into the barrier compoent</li>
+<li>Select the barrier from the <code>Component Tree</code>, open the <code>Attributes</code> window, and then set the <code>barrierDirection</code></li>
+</ol>
+<p>Now you can create a constraint from another view to the barrier.</p>
+<p>You can also constrain views that are inside the barrier to the barrier. This way, you can ensure that all views in the barrier always align to each other, even if you don’t know which view will be the longest or tallest.</p>
+<p>You can also include a guideline inside a barrier to ensure a “minimum” position for the barrier.</p>
+<h2 id="Adjust-the-constraint-bias"><a href="#Adjust-the-constraint-bias" class="headerlink" title="Adjust the constraint bias"></a>Adjust the constraint bias</h2><p>When you add a constraint to both side of a view( and the view size for the same dimension is either “fixed” or “wrap content”), the view becomes centered between the two constraints with a bias of 50% by default. You can adjust the bias by dragging the bias slider in the <code>Attributes</code> window or by dragging the view, as shown in video 3.</p>
+<p>If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switch the size to “match constratins”</a>.</p>
+<h2 id="Adjust-the-view-size"><a href="#Adjust-the-view-size" class="headerlink" title="Adjust the view size"></a>Adjust the view size</h2><p>You can use the corner handles to resize a view, but this hard codes the size so the view will not resize for different content or screen sizes. To select a different sizing mode, click a view and open the <code>Attributes</code> window on the right side of the editor.</p>
+<p>Near the top of the <code>Attributes</code> window is the view inspector, which includes controls for several layout attributes, as shown in figure 14(this is available only for views in a constraint layout).</p>
+<p>You can change the way the height and width are calculated by clicking the symbols indicated with callout 3 in figure 14. These symbols represent the size mode as follows(click the symbol to toggle between these settings):</p>
+<ul>
+<li><img src="https://developer.android.com/studio/images/buttons/layout-width-fixed.png" alt> Fixed: You specify a specific dimension in the text box below or by resizing the view in the editor.</li>
+<li><img src="https://developer.android.com/studio/images/buttons/layout-width-wrap.png" alt> Wrap Content: The view expands only as much as needed to fit its contents.</li>
+<li><img src="https://developer.android.com/studio/images/buttons/layout-width-match.png" alt> Match Constraints: The view expands as much as possible to meet the constraints on each side(after accounting for the view’s margins). However, you can modify that behavior with the following attributes and values(these attributes take effect only when you set the view width to match constraints):</li>
+</ul>
+<p>//// TODO….</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6ff9bb5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b6ff9bb5/" itemprop="url">Android Retrofit</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T13:57:25+08:00">
+                2019-10-12
               </time>
             
 
@@ -1406,8 +1875,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/16/Android-插件化/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/Android-插件化/" itemprop="commentCount"></span>
+                <a href="/posts/b6ff9bb5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6ff9bb5/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1437,158 +1906,8 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/16/Java-GC原理/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/16/Java-GC原理/" itemprop="url">Java GC原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:26+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/16/Java-GC原理/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/Java-GC原理/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Reference:<br><a href="https://blog.csdn.net/future234/article/details/80677140" target="_blank" rel="noopener">https://blog.csdn.net/future234/article/details/80677140</a><br><a href="https://blog.csdn.net/mdxdjhpkpk/article/details/60141257" target="_blank" rel="noopener">https://blog.csdn.net/mdxdjhpkpk/article/details/60141257</a></p>
+            <p><a href="https://juejin.im/post/59a4db0c518825242861181b" target="_blank" rel="noopener">https://juejin.im/post/59a4db0c518825242861181b</a></p>
+<p><a href="https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ</a></p>
 
           
         
@@ -1637,7 +1956,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/16/Java-类加载机制/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d41965e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1656,7 +1975,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/16/Java-类加载机制/" itemprop="url">Java-类加载机制</a></h1>
+                <a class="post-title-link" href="/posts/d41965e/" itemprop="url">Android-Dagger2</a></h1>
         
 
         <div class="post-meta">
@@ -1668,160 +1987,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:18+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/16/Java-类加载机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/Java-类加载机制/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://blog.csdn.net/m0_38075425/article/details/81627349" target="_blank" rel="noopener">https://blog.csdn.net/m0_38075425/article/details/81627349</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/16/Android-ART和DALVIK的区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/16/Android-ART和DALVIK的区别/" itemprop="url">Android ART和DALVIK的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:44:09+08:00">
-                2019-07-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T13:55:01+08:00">
+                2019-10-12
               </time>
             
 
@@ -1861,8 +2028,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/07/16/Android-ART和DALVIK的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/Android-ART和DALVIK的区别/" itemprop="commentCount"></span>
+                <a href="/posts/d41965e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d41965e/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1892,174 +2059,7 @@
       
         
           
-            <p>Dalvik与Art的区别：</p>
-<p>Dalvik每次都要编译再运行，Art只会首次启动编译<br>Art占用空间比Dalvik大（原生代码占用的存储空间更大），就是用“空间换时间”<br>Art减少编译，减少了CPU使用频率，使用明显改善电池续航<br>Art应用启动更快、运行更快、体验更流畅、触感反馈更及时</p>
-<p>在Dalvik下，应用每次运行的时候，字节码都需要通过即时编译器（just in time ，JIT）转换为机器码，这会拖慢应用的运行效率，而在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，使其成为真正的本地应用。这个过程叫做预编译（AOT,Ahead-Of-Time）。这样的话，应用的启动(首次)和执行都会变得更加快速。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/8669504-2ea1a7935df54a10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/338/format/webp" alt></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/2019/07/16/Java-Java中的几种引用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/16/Java-Java中的几种引用/" itemprop="url">Java-Java中的几种引用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:43:30+08:00">
-                2019-07-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/07/16/Java-Java中的几种引用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/07/16/Java-Java中的几种引用/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>强引用(Strong Reference)</li>
-<li>软引用(Soft Reference)</li>
-<li>弱引用(Weak Reference)</li>
-<li>虚引用(Phantom Reference)</li>
-</ul>
-<p>强引用:<br>    代码中普遍存在的, 类似<code>Object obj = new Object()</code>这类引用，只要强引用还存在，垃圾收集器就永远不会回收掉被引用的对象</p>
-<p>软引用:<br>    软引用是用来描述一些还有用但并非必须的对象。对于软引用关联着的对象, 在系统将要发生内存溢出之前，将会把这些对象列进回收范围之中进行二次回收。如果这次回收还没有足够的内存，才会抛出内存溢出异常.</p>
-<p>弱引用:<br>    用来描述非必须的对象， 但是它的强度比软引用更弱一些，被弱引用关联的对象只能生存到下一次垃圾收集之前。 当垃圾收集器工作的时候，无论当前内存是否足够，都会回收掉只被弱引用关联的对象。</p>
-<p>虚引用:<br>    最弱的一种引用关系，一个对象是否有虚引用存在，完全不会对其生存时间构成影响，也无法通过虚引用来取得一个对象实例。唯一目的就是能在这个对象被收集器回收时收到一个系统通知.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li>《深入理解Java虚拟机》</li>
-</ul>
+            <p><a href="https://juejin.im/post/5b45bd715188251b3a1db54f" target="_blank" rel="noopener">https://juejin.im/post/5b45bd715188251b3a1db54f</a><br><a href="https://juejin.im/post/5ccd496de51d453b573ee29d" target="_blank" rel="noopener">https://juejin.im/post/5ccd496de51d453b573ee29d</a><br><a href="https://juejin.im/post/5bcc7151f265da0ab41e8f6e" target="_blank" rel="noopener">https://juejin.im/post/5bcc7151f265da0ab41e8f6e</a></p>
 
           
         
@@ -2099,7 +2099,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/13/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/15/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2145,7 +2145,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">191</span>
+                  <span class="site-state-item-count">214</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
