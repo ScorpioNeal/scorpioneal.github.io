@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Leetcode,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="https://blog.csdn.net/xushiyu1996818/article/details/86488853 经典提醒: 最长子序列 https://blog.csdn.net/qq_20304723/article/details/101232770">
+<meta name="description" content="DescriptionGiven an unsorted array of integers, find the length of longest increasing subsequence. Example: 123Input: [10,9,2,5,3,7,101,18]Output: 4 Explanation: The longest increasing subsequence is">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 300 Longest Increasing Subsequence">
 <meta property="og:url" content="http://blog.scions.cn/posts/fa9863d0/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="https://blog.csdn.net/xushiyu1996818/article/details/86488853 经典提醒: 最长子序列 https://blog.csdn.net/qq_20304723/article/details/101232770">
+<meta property="og:description" content="DescriptionGiven an unsorted array of integers, find the length of longest increasing subsequence. Example: 123Input: [10,9,2,5,3,7,101,18]Output: 4 Explanation: The longest increasing subsequence is">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-04T04:08:21.384Z">
+<meta property="og:updated_time" content="2020-01-10T05:53:51.998Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 300 Longest Increasing Subsequence">
-<meta name="twitter:description" content="https://blog.csdn.net/xushiyu1996818/article/details/86488853 经典提醒: 最长子序列 https://blog.csdn.net/qq_20304723/article/details/101232770">
+<meta name="twitter:description" content="DescriptionGiven an unsorted array of integers, find the length of longest increasing subsequence. Example: 123Input: [10,9,2,5,3,7,101,18]Output: 4 Explanation: The longest increasing subsequence is">
 
 
 
@@ -347,6 +348,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -389,10 +412,20 @@
       
 
       
-        <p><a href="https://blog.csdn.net/xushiyu1996818/article/details/86488853" target="_blank" rel="noopener">https://blog.csdn.net/xushiyu1996818/article/details/86488853</a></p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an unsorted array of integers, find the length of longest increasing subsequence.</p>
+<p>Example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [10,9,2,5,3,7,101,18]</span><br><span class="line">Output: 4 </span><br><span class="line">Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>There may be more than one LIS combination, it is only necessary for you to return the length.</li>
+<li>Your algorithm should run in O(n2) complexity.<br>Follow up: Could you improve it to O(n log n) time complexity?</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p><a href="https://blog.csdn.net/xushiyu1996818/article/details/86488853" target="_blank" rel="noopener">https://blog.csdn.net/xushiyu1996818/article/details/86488853</a></p>
 <p>经典提醒: 最长子序列</p>
 <p><a href="https://blog.csdn.net/qq_20304723/article/details/101232770" target="_blank" rel="noopener">https://blog.csdn.net/qq_20304723/article/details/101232770</a></p>
-
+<p>还要自己写几遍</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lengthOfLIS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(nums == <span class="keyword">null</span> || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">        list.add(nums[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(list.contains(nums[i])) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(nums[i] &gt; list.get(list.size() - <span class="number">1</span>)) &#123;</span><br><span class="line">                list.add(nums[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span>(nums[i] &lt; list.get(list.size()  - <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">int</span> l = <span class="number">0</span>; <span class="keyword">int</span> r = list.size() - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span>(l &lt; r) &#123;</span><br><span class="line">                    <span class="keyword">int</span> mid = l + (r - l) / <span class="number">2</span>;</span><br><span class="line">                    <span class="keyword">if</span>(list.get(mid) &lt; nums[i]) &#123;</span><br><span class="line">                        l = mid + <span class="number">1</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        r = mid;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                list.set(r, nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -435,6 +468,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
       
 
       
@@ -512,8 +551,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -528,7 +576,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">217</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -573,6 +621,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

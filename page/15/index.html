@@ -307,6 +307,576 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5fec0e43/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/5fec0e43/" itemprop="url">Android-Build a Responsive UI with ConstraintLayout</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-14T20:43:32+08:00">
+                2019-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/5fec0e43/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5fec0e43/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developer.android.com/training/constraint-layout" target="_blank" rel="noopener">Reference</a></p>
+<p><a href="https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout.html" target="_blank" rel="noopener">ConstriaintLayout</a> allows you to create large and complex  layouts with a flat view hierarchy(no nested view groups). It’s similar to <code>RelativeLayout</code> in that all views are laid out according to relationships between sibling views and the parent layout, but it’s more flexible than <code>RelativeLayout</code> and easier to use with Android Studio’s Layout Editor.</p>
+<p>All the power of <code>ConstraintLayout</code> is available directly from the Layout Editor’s visual tools, because the layout API and the Layout Editor were specially built for each other. So you can build your layout with <code>ConstraintLayout</code> entirely by drag-and-dropping instead of editing the XML.</p>
+<p>This page provides a guide to build a layout with <code>ConstraintLayout</code> in Android Studio 3.0 or higher. If you’d like more information about the Layout Editor itself, see the Android Studio guide to <a href="https://developer.android.com/studio/write/layout-editor.html" target="_blank" rel="noopener">Build a UI with Layout Editor</a>.</p>
+<p>To see a variety of layouts you can create with <code>ConstraintLayout</code>, check out the <a href="https://github.com/android/views-widgets-samples/tree/master/ConstraintLayoutExamples" target="_blank" rel="noopener">Constraint Layout Examples project on Github</a>.</p>
+<h2 id="Constraints-overview"><a href="#Constraints-overview" class="headerlink" title="Constraints overview"></a>Constraints overview</h2><p>To define a view’s position in <code>ConstraintLayout</code>, you must add at least one horizontal and one vertical constraint for the view. Each constraint represents a connection or alignment to another view, the parent layout, or an invisible guideline. Each constraint defines the view’s position along either the vertical or horizontal axis; so each view must have a minimum of one constraint for each axis, but often more are necessary.</p>
+<p>When you drop a view into the Layout Editor, it stays where you leave it even if it has no constraints. However, this is only to make editing easier; if a view has no constraints when you run your layout on a device, it is drawn at position [0, 0] (the top-left corner).</p>
+<p>In figure 1, the layout looks good in the editor, but there’s no vertical constraint on view C. When this layout draws on a device, view C horizontally aligns with the left and right edges of view A, but appears at the top of the screen because it has no vertical constraint.</p>
+<p>Figure 1. The editor shows view C below A, but it has no vertical constraint<br><img src="https://developer.android.com/training/constraint-layout/images/constraint-fail_2x.png" alt></p>
+<p>Although a missing constraint won’t cause a compilation error, the Layout Editor indicates missing constraints as an error in the toolbar. To view the errors and other warnings, click <code>Show Warnings and Errors</code>. The help you avoid missing constraints, the Layout Editro can automatially add constraints for you with the <a href="https://developer.android.com/training/constraint-layout#use-autoconnect-and-infer-constraints" target="_blank" rel="noopener">Autoconnect and infer constraints</a> feature.</p>
+<h2 id="Add-ConstraintLayout-to-your-project"><a href="#Add-ConstraintLayout-to-your-project" class="headerlink" title="Add ConstraintLayout to your project"></a>Add ConstraintLayout to your project</h2><p>To use <code>ConstraintLayout</code> in your project, procceed as follows:</p>
+<ol>
+<li>Ensure you have the <code>maven.google.com</code> repository declared in your module-level <code>build.gradle</code> file:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repository &#123;</span><br><span class="line">    google()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Add the library as a dependency in the same <code>build.gradle</code> file, as shown in the following example. Note that the latest version might be different than what is shown in the example:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    dependencies &#123;</span><br><span class="line">    implementation 'com.android.support.constraint:constraint-layout:1.1.2'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>In the toolbar or sync notification, click <code>Sync Project with Gradle Files</code>.</li>
+</ol>
+<p>Now you’re ready to build your layout with <code>ConstraintLayout</code>.</p>
+<h3 id="Convert-a-layout"><a href="#Convert-a-layout" class="headerlink" title="Convert a layout"></a>Convert a layout</h3><p>To convert an existing layout to a constraint layout, follow these steps:</p>
+<ol>
+<li>Open your layout in Android Studio and click the <code>Design</code> tab at the bottom of the editor window.</li>
+<li>In the <code>Component Tree</code> window, right-click the layout and click <code>Convert layout to ConstraintLayout</code>.</li>
+</ol>
+<h3 id="Create-a-new-layout"><a href="#Create-a-new-layout" class="headerlink" title="Create a new layout"></a>Create a new layout</h3><p>To start a new constraint layout file, follow these steps:</p>
+<ol>
+<li>In the <code>Project</code> window, click the module folder and then select <code>File &gt; New &gt; XML &gt; Layout XML</code>.</li>
+<li>Enter a name for the layout file and enter “android.support.constraint.ConstraintLayout” for the <code>Root Tag</code>.</li>
+<li>Click <code>Finish</code>.</li>
+</ol>
+<h2 id="Add-or-remove-a-constraint"><a href="#Add-or-remove-a-constraint" class="headerlink" title="Add or remove a constraint"></a>Add or remove a constraint</h2><p>To add a constraint, do the following:</p>
+<ol>
+<li>Drag a view from the <code>Palette</code> window into the editor.</li>
+</ol>
+<p>When you add a view in a <code>ConstraintLayout</code>, it displays a bounding box with square resizing handles on each corner and circular constraint handles on each side.</p>
+<ol start="2">
+<li><p>Click the view to select it.</p>
+</li>
+<li><p>Do one of the following</p>
+<ul>
+<li><p>Click a constraint handle and drag it to an available anchor point. This point can be the edge of another view, the edge of the layout, or a guideline. NOtice that as you drag the constraint handle, the Layout Editor shows potential connection anchors and blue overlays.</p>
+</li>
+<li><p>Click one of the <code>Create a connection</code> buttons in the <code>Layout</code> section of the <code>Attributes</code> window, as shown in figure 4.</p>
+<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-create-constraint-2x.png" alt="Figure 4"></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>When the constraint is created, the editor gives it a <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-margins" target="_blank" rel="noopener">default margin</a> to separate the two views.</p>
+<p>When creating constraints, remember the following rules:</p>
+<ul>
+<li>Every view must have at least two constraints: one horizontal and one vertical</li>
+<li>You can create constraints only between a constraint handle and an anchor point that share the same plane. So a vertical plane(the left and right sides) of a view can be constrainted only to another vertical plane; and baselines can constraint only to other baselines.(不太理解啥意思)</li>
+<li>Each constraint handle can be used for just one constraint, but you can create multiple constraints(from different views) to the same anchor point.</li>
+</ul>
+<p>You can delete a constraint by doing any of the following:</p>
+<ul>
+<li>Click on a constraint to select it, and then press <code>Delete</code></li>
+<li>Press and hold <code>Control</code>(<code>Command</code> on macOS), and then click on a constraint anchor. Noteh that the constraint turns red to indicate that you can click to delte it , as shown in figure 5.</li>
+</ul>
+<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-delete-1-2x.png" alt="Figure 5"></p>
+<ul>
+<li>In the <code>Layout</code> section of the <code>Attributes</code> window, click on a constraint anchor, as shown in figure 6.</li>
+</ul>
+<p>If you add opposing constraints on a view, the constraint lines become squiggly like a spring to indicate the opposing force, as shown in video 2. The effect is most visible when the view size is set to “fixed” or “wrap content”, in which case the view is centered between the constraints. If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switching the size to “match constraints”</a>; or if you want to keep the current size but move the view so that it is not centered, <a href="https://developer.android.com/training/constraint-layout#adjust-the-constraint-bias" target="_blank" rel="noopener">adjust the constraints bias</a>.</p>
+<p>You can use constraints to achieve different types of layout behavior, as described in the following sections.</p>
+<h3 id="Parent-position"><a href="#Parent-position" class="headerlink" title="Parent position"></a>Parent position</h3><p>Constrain the side of a view to the corresponding edge of the layout.</p>
+<p>In figure 7, the left side of the view is connected to the left edge of the parent layout. You can define the distance from the edge with margin.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/parent-constraint_2x.png" alt="Figure 7"></p>
+<h3 id="Order-position"><a href="#Order-position" class="headerlink" title="Order position"></a>Order position</h3><p>Define the order of appearance for two views, either vertically or horizontally.</p>
+<p>In figure 8, B is constrained to alwasys be to the right of A, and C is constrained below A. However, these constraints do not imply alignment, so B can still move up and down.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/position-constraint_2x.png" alt="Figure 8"></p>
+<h3 id="Alignment"><a href="#Alignment" class="headerlink" title="Alignment"></a>Alignment</h3><p>Align the edge of a view to the same edge of another view.</p>
+<p>In figure 9, the left side of B is aligned to the left side of A. If you want to align the view centers, create a constraint on both sides.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint_2x.png" alt="figure 9"></p>
+<p>You can offset the alignment by dragging the view inward from the constraint. For example, figure 10 shows B with a 24dp offset alignment. The offset is defined by the constrained view’s margin.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint-offset_2x.png" alt="figure 10"></p>
+<p>You can also select all the views you want to align, and then click <code>Align</code> in the toolbar to select the alignment type.</p>
+<h3 id="Baseline-alignment"><a href="#Baseline-alignment" class="headerlink" title="Baseline alignment"></a>Baseline alignment</h3><p>Align the text baseline of a view to the text baseline of another view.</p>
+<p>In figure 11, the first line of B is aligned with the text in A.</p>
+<p>To create a baseline constraint, right-click the text view you want to constrain and then click <code>Show Baseline</code>. Then click on the text baseline and drag the line to another line.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/baseline-constraint_2x.png" alt="Figure 11"></p>
+<h3 id="Constrain-to-a-guideline"><a href="#Constrain-to-a-guideline" class="headerlink" title="Constrain to a guideline"></a>Constrain to a guideline</h3><p>You can add a vertical or horizontal guideline to which you can constrain views, and the guideline will be invisible to app users. You can position the guideline with the layout based on either up units or percent, relative to the layout’s edge.</p>
+<p>To create a guideline, click <code>Guidelines</code> in the toolbar, and then click either <code>Add Vertical Guideline</code> or <code>Add Horizontal Guideline</code>.</p>
+<p>Drag the dotted line to reposition it and click the circle at the edge of the guideline to toggle the measurement mode.</p>
+<p><img src="https://developer.android.com/training/constraint-layout/images/guideline-constraint_2x.png" alt="Figure 12"></p>
+<h3 id="Constrain-to-a-barrier"><a href="#Constrain-to-a-barrier" class="headerlink" title="Constrain to a barrier"></a>Constrain to a barrier</h3><p>Similar to a guideline, a barrier is an invisible line that you can constrain views to. Except a barrier does not define its own position; instead, the barrier position moves based on the position of views constrained within it.This is useful when you want to constrain a view to the a set of views rather than to one specific view.</p>
+<p>For example, figure 13 shows view C is constrained to the right side of a barrier. The barrier is set to the “end”(or the right side in a left-to-right layout) of both view A and view B. So the barrier moves depending on whether the right side of view A or View B is is farthest right.</p>
+<p>To create a barrier, follow these steps:</p>
+<ol>
+<li>Click <code>Guidelines</code> in the toolbar, and then click <code>Add Vertical Barrier</code> or <code>Add Horizontal Barrier</code></li>
+<li>In the <code>Component Tree</code> window, select the views you want inside the barrier and drag them into the barrier compoent</li>
+<li>Select the barrier from the <code>Component Tree</code>, open the <code>Attributes</code> window, and then set the <code>barrierDirection</code></li>
+</ol>
+<p>Now you can create a constraint from another view to the barrier.</p>
+<p>You can also constrain views that are inside the barrier to the barrier. This way, you can ensure that all views in the barrier always align to each other, even if you don’t know which view will be the longest or tallest.</p>
+<p>You can also include a guideline inside a barrier to ensure a “minimum” position for the barrier.</p>
+<h2 id="Adjust-the-constraint-bias"><a href="#Adjust-the-constraint-bias" class="headerlink" title="Adjust the constraint bias"></a>Adjust the constraint bias</h2><p>When you add a constraint to both side of a view( and the view size for the same dimension is either “fixed” or “wrap content”), the view becomes centered between the two constraints with a bias of 50% by default. You can adjust the bias by dragging the bias slider in the <code>Attributes</code> window or by dragging the view, as shown in video 3.</p>
+<p>If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switch the size to “match constratins”</a>.</p>
+<h2 id="Adjust-the-view-size"><a href="#Adjust-the-view-size" class="headerlink" title="Adjust the view size"></a>Adjust the view size</h2><p>You can use the corner handles to resize a view, but this hard codes the size so the view will not resize for different content or screen sizes. To select a different sizing mode, click a view and open the <code>Attributes</code> window on the right side of the editor.</p>
+<p>Near the top of the <code>Attributes</code> window is the view inspector, which includes controls for several layout attributes, as shown in figure 14(this is available only for views in a constraint layout).</p>
+<p>You can change the way the height and width are calculated by clicking the symbols indicated with callout 3 in figure 14. These symbols represent the size mode as follows(click the symbol to toggle between these settings):</p>
+<ul>
+<li><img src="https://developer.android.com/studio/images/buttons/layout-width-fixed.png" alt> Fixed: You specify a specific dimension in the text box below or by resizing the view in the editor.</li>
+<li><img src="https://developer.android.com/studio/images/buttons/layout-width-wrap.png" alt> Wrap Content: The view expands only as much as needed to fit its contents.</li>
+<li><img src="https://developer.android.com/studio/images/buttons/layout-width-match.png" alt> Match Constraints: The view expands as much as possible to meet the constraints on each side(after accounting for the view’s margins). However, you can modify that behavior with the following attributes and values(these attributes take effect only when you set the view width to match constraints):</li>
+</ul>
+<p>//// TODO….</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6ff9bb5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b6ff9bb5/" itemprop="url">Android Retrofit</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T13:57:25+08:00">
+                2019-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b6ff9bb5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6ff9bb5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://juejin.im/post/59a4db0c518825242861181b" target="_blank" rel="noopener">https://juejin.im/post/59a4db0c518825242861181b</a></p>
+<p><a href="https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/I4M1QCxQx49IA-hVjhelKQ</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d41965e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/d41965e/" itemprop="url">Android-Dagger2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-12T13:55:01+08:00">
+                2019-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/d41965e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d41965e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://juejin.im/post/5b45bd715188251b3a1db54f" target="_blank" rel="noopener">https://juejin.im/post/5b45bd715188251b3a1db54f</a><br><a href="https://juejin.im/post/5ccd496de51d453b573ee29d" target="_blank" rel="noopener">https://juejin.im/post/5ccd496de51d453b573ee29d</a><br><a href="https://juejin.im/post/5bcc7151f265da0ab41e8f6e" target="_blank" rel="noopener">https://juejin.im/post/5bcc7151f265da0ab41e8f6e</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9fb3b143/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1970,699 +2540,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/789b713f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/789b713f/" itemprop="url">Java Java中Exception, Error的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T19:27:11+08:00">
-                2019-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/789b713f/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/789b713f/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>Throwable</code>类是整个异常体系类的父级类。<code>Throwable</code>类实现了<code>Serializable</code>接口，表示<code>Throwable</code>可以进行序列化，继承自Object类，他的子类主要是<code>Error</code>和<code>Exception</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Exception</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Error</span> <span class="keyword">extends</span> <span class="title">Throwable</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在Java中只有<code>Throwable</code>类的实例才可以被抛出（<code>throw</code>）或者捕获（<code>catch</code>），它是异常处理机子的基本组成类型</p>
-<p><code>Exception</code>和<code>Error</code>提现了Java平台对于不同未知情况的分类。</p>
-<p><code>Exception</code>是程序正常运行中，<code>可以预料到的意外情况</code>，可能并且应该被捕获，进行相应处理。</p>
-<p><code>Exception</code>分为两类，可检查（<code>checked</code>）异常和不检查（<code>unchecked</code>）异常，可检查异常是在源代码中必须显示地进行捕获处理，这<code>是编译期检查的一部分</code>。<code>不检查异常就是所谓的运行时异常</code>（<code>RuntimeException</code>），类似<code>NullPointerException</code>、ArrayIndexOutOfBoundsException等、通常是可以避免的逻辑错误，具体根据需要来判断是否需要捕获，并不会在编译期强制要求。</p>
-<p><code>Error</code>是程序正常运行中，不大可能出现的情况，绝大部分的<code>Error</code>都会导致程序（比如JVM）处于非正常、不可恢复状态。<code>既然是非正常情况，所以不便于也不需要捕获</code>，常见的比如<code>OutOfMemoryError</code>之类，都是<code>Error</code>的子类。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://blog.csdn.net/foreveyking/article/details/85683662" target="_blank" rel="noopener">https://blog.csdn.net/foreveyking/article/details/85683662</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8f460aa2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/8f460aa2/" itemprop="url">Java-Java的解释执行和编译执行</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T19:22:39+08:00">
-                2019-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/8f460aa2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8f460aa2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>我们平时写的代码，计算机是没法直接执行的，需要相应的编译器将其编译成机器代码</p>
-<ul>
-<li><p>编译执行: </p>
-<p>  先编译，再执行。 这里需要一个编译器，把我们的代码全部编译成机器代码，然后执行。因为是整体编译，所以会生成编译后的机器代码</p>
-</li>
-<li><p>解释执行</p>
-<p>  需要一个解释器，将我们代码逐句解释成机器代码来执行，可以理解为解释一句，执行一句，这个过程中不会生成中间文件</p>
-</li>
-</ul>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>编译执行</th>
-<th>解释执行</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>次数</td>
-<td>编译一次，多次运行</td>
-<td>每运行一次，都要经过解释器</td>
-</tr>
-<tr>
-<td>启动效率</td>
-<td>需要编译过程，慢</td>
-<td>速度更快</td>
-</tr>
-<tr>
-<td>运行效率</td>
-<td>编译一次后续无需编译，效率高</td>
-<td>每次都要解释，效率低</td>
-</tr>
-<tr>
-<td>内存</td>
-<td>生成编译后的机器码文件</td>
-<td>不会生成中间文件，内存占用少</td>
-</tr>
-<tr>
-<td>跨平台</td>
-<td>在windows下编译的代码只能在windows下用</td>
-<td>根据不同平台解释，可以跨平台, e.g js在linux和window下都可以运行</td>
-</tr>
-<tr>
-<td>其他</td>
-<td>大型项目注重效率，核心使用编译执行</td>
-<td>简单操作可以混合解释执行</td>
-</tr>
-</tbody></table>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://blog.csdn.net/hongsheng6353328/article/details/80463434" target="_blank" rel="noopener">https://blog.csdn.net/hongsheng6353328/article/details/80463434</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4c0a9dae/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/4c0a9dae/" itemprop="url">Translation-NDK build Android.mk</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-17T10:26:19+08:00">
-                2019-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/4c0a9dae/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4c0a9dae/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Android-mk"><a href="#Android-mk" class="headerlink" title="Android.mk"></a>Android.mk</h2><p><a href="https://developer.android.google.cn/ndk/guides/android_mk" target="_blank" rel="noopener">Reference</a></p>
-<p>This page descriebs the syntax of the <code>Android.mk</code> build file used by <code>ndk-build</code>.</p>
-<h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>The <code>Android.mk</code> file resides in a subdirectory of your project’s <code>jni/</code> directory, and describes your sources and shared libraries to the build system. It is really a tiny GNU makefile fragment that the build system parses once or more. The <code>Android.mk</code> file is useful for defining project-wide settings that <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a>, the build system, and your environment variables leave undefined. It can also override project-wide settings for specific modules.</p>
-<p>The syntax of the <code>Android.mk</code> allows you to group your sources into modules. A module is either a static library , a shared library, or a standalone executable. You can define one or more modules in each <code>Android.mk</code> file, and you can use the same source file in multiple modules. The build system only places shared libraries into your application package. In additional, static libraries can generate shared libraries.</p>
-<p>In addition to packaging libraries, the build system handles a variety of other details for you. For example, you don’t need to list header files or explict dependencies between generated files in your <code>Android.mk</code> file. The NDK build system computes these relationships automatically for you. As a result, you should be able to benefit from new toolchain/platform support in future NDK release without having to touch your <code>Android.mk</code> file.</p>
-<p>The syntax of this file is very close to that used in the <code>Android.mk</code> files distributed with the full <a href="https://source.android.google.cn/" target="_blank" rel="noopener">Android Open Source Project</a>. While the build system implementation that uses them is different, their similarity is an intentional design desicion aimed at making it  eaiser for application developers to reuse source code for external libraries.</p>
-<h3 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h3><p>Before exploring the syntax in detail, it is useful to start by understanding the basics of what a <code>Android.mk</code> file contains. This section uses the <code>Android.mk</code> file in the Hello-JNI sample towards that end, explaining the role that each line in the file plays.</p>
-<p>An <code>Android.mk</code> file must begin by defining the <code>LOCAL_PATH</code> variable:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
-
-<p>This variable indicates the location of the source files in the development tree. Here, the macro function <code>my-dir</code>, provided by the build system, returns the path of the current directory(the directory containing the <code>Android.mk</code> file itself).</p>
-<p>The next line declares the <code>CLEAR_VARS</code> variable, whose value the build system provides.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)</span><br></pre></td></tr></table></figure>
-
-<p>The <code>CLEAR_VARGS</code> variable points to a special GNU Makefile that clears many <code>LOCAL_XXX</code> variables for you, such as <code>LOCAL_MODULE</code>, <code>LOCAL_SRC_FILES</code>, and <code>LOCAL_STATIC_LIBRARIES</code>. Note that it does not clear <code>LOCAL_PATH</code>. This variable must retain its value because the system parses all build control files in a single GNU Make execution context where all variables are global. You must (re-)declare this variable before describing each module.</p>
-<p>Next, the <code>LOCAL_MODULE</code> variable stores the name of the module that you wish to build. Use this variable once per module in your application.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := hello-jni</span><br></pre></td></tr></table></figure>
-
-<p>Each module name must be unique and not certain any spaces. The build system, when it generates the final shared library file, automatically adds the proper prefix and suffix to the name that you assign to <code>LOCAL_MODULE</code>. For example, the example that appears above results in generation of a library called <code>libhello-jni.so</code>.</p>
-<p>The next line enumerates the source files, with space delimiting multiple files:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_SRC_FILES := hello-jni.c</span><br></pre></td></tr></table></figure>
-
-<p>The <code>LOCAL_SRC_FILES</code> variable must contain a list of C and/or C++ source files to build into a module.</p>
-<p>The last line helps the system tie everything together:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>The <code>BUILD_SHARED_LIBRARY</code> variable points to a GNU Makefile script that collects all the information you defined in <code>LOCAL_XXX</code> variable since the most recent <code>include</code>. This script determines what to build, and how to do it.</p>
-<p>There are more complex examples in the sample directories, with commented <code>Android.mk</code> files that you can look at. In addition, <a href="https://developer.android.google.cn/ndk/samples/sample_na.html" target="_blank" rel="noopener">Sample: native-activity</a> provides a detailed explanation of that sample’s <code>Android.mk</code> file. Finally, <a href="https://developer.android.google.cn/ndk/guides/android_mk#var" target="_blank" rel="noopener">Variables and Macros</a> provides further information on the variables from this section.</p>
-<h3 id="Variable-and-Macros"><a href="#Variable-and-Macros" class="headerlink" title="Variable and Macros"></a>Variable and Macros</h3><p>The build system provides many possible variables for use in the <code>Android.mk</code> file. Many of these variable come with preassigned values. Others, you assign.</p>
-<p>In additional to these variables, you can also define your own arbitrary ones. If you do so, keep in mind that the ND build system reserves the following variable names:</p>
-<ul>
-<li>Names that begin with <code>LOCAL_</code>, such as <code>LOCAL_MODULE</code></li>
-<li>Names that begin with <code>PRIVATE_</code>, <code>NDK_</code> or <code>APP</code>. The build system uses these internally</li>
-<li>Lower-case names, such as <code>my-dir</code>. The build system uses these internally, as well</li>
-</ul>
-<p>If you need to define your own convenience variable in an <code>Android.mk</code> file, we recommend prepending <code>MY_</code> to their names.</p>
-<h3 id="NDK-defined-include-variables"><a href="#NDK-defined-include-variables" class="headerlink" title="NDK-defined include variables"></a>NDK-defined include variables</h3><p>This section discusses the GNU Make variables that the build system defines before parsing your <code>Android.mk</code> file. Under certain circumstances, the NDK might parse your <code>Android.mk</code> file several times, using a different definition for some of these variables each time.</p>
-<h4 id="CLEAR-VARS"><a href="#CLEAR-VARS" class="headerlink" title="CLEAR_VARS"></a>CLEAR_VARS</h4><p>This variable points to a build script that undefines nearly all <code>LOCAL_XXX</code> variables listed in the “Developer-defined variables” section below. Use this variable to include this script before describing a new module. The syntax for using it is:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(CLEAR_VARS)</span><br></pre></td></tr></table></figure>
-
-<h4 id="BUILD-EXECUTABLE"><a href="#BUILD-EXECUTABLE" class="headerlink" title="BUILD_EXECUTABLE"></a>BUILD_EXECUTABLE</h4><p>This variable points to a build script that collects all the information about the module you provided in your <code>LOCAL_XXX</code> variables, and determines how to build a target executable from the sources you listed. Note that using this script requires that you have already assigned values to <code>LOCAL_MODULE</code> and <code>LOCAL_SRC_FILES</code>, at a minimum(for more information about these variables, see <a href="https://developer.android.google.cn/ndk/guides/android_mk#mdv" target="_blank" rel="noopener">Module-Description Variables</a>)</p>
-<p>The syntax for using this variable is :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_EXECUTABLE)</span><br></pre></td></tr></table></figure>
-
-<h4 id="BUILD-SHARED-LIBRARY"><a href="#BUILD-SHARED-LIBRARY" class="headerlink" title="BUILD_SHARED_LIBRARY"></a>BUILD_SHARED_LIBRARY</h4><p>This variable points to a build script that collects all the information about the module  you provided in your <code>LOCAL_XXX</code> variables, and determines how to build a target shared library from the sources you listed. Note that using this script requires that you have already assigned values to <code>LOCAL_MODULE</code> and <code>LOCAL_SRC_FILES</code>, at a minimum(for more information about these variables, see <a href="https://developer.android.google.cn/ndk/guides/android_mk#mdv" target="_blank" rel="noopener">Module-Description Variables</a>).</p>
-<p>The syntax for using this variable is:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>A shared-library variable causes the build system to generate a library file with a <code>.so</code> extension.</p>
-<h4 id="BUILD-STATIC-LIBRARY"><a href="#BUILD-STATIC-LIBRARY" class="headerlink" title="BUILD_STATIC_LIBRARY"></a>BUILD_STATIC_LIBRARY</h4><p>A variant of <code>BUILD_SHARED_LIBRARY</code> that is used to build a static library. The build system does not copy static libraries into your <code>project/packages</code>, but it can use them to build shared libraries (see <code>LOCAL_STATIC_LIBRARIES</code> and <code>LOCAL_WHOLE_STATIC_LIBRARIES</code>, below). The syntax for using this variable is:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(BUILD_STATIC_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>A static-library variable causes the build system to generate a library with a <code>.a</code> extension.</p>
-<h4 id="PREBUILT-SHARED-LIBRARY"><a href="#PREBUILT-SHARED-LIBRARY" class="headerlink" title="PREBUILT_SHARED_LIBRARY"></a>PREBUILT_SHARED_LIBRARY</h4><p>Points to a build script used to specify a prebuilt shared library. Unlike in the case of <code>BUILD_SHARED_LIBRARY</code> and <code>BUILD_STATIC_LIBRARY</code>, here the value of <code>LOCAL_SRC_FILES</code> cannot be a source file. Instead, it must be a single path to a prebuilt shared library, such as `foo/libfoo.so’. The syntax for using this variable is :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include $(PREBUILT_SHARED_LIBRARY)</span><br></pre></td></tr></table></figure>
-
-<p>You can also reference a prebuilt library in another module by using the <code>LOCAL_PREBUILTS</code> variable. For more information about using prebuilts, see <a href="https://developer.android.google.cn/ndk/guides/prebuilts.html" target="_blank" rel="noopener">Using Prebuilt Libraries</a>.</p>
-<h4 id="PREBUILT-STATIC-LIBRARY"><a href="#PREBUILT-STATIC-LIBRARY" class="headerlink" title="PREBUILT_STATIC_LIBRARY"></a>PREBUILT_STATIC_LIBRARY</h4><p>The same as <code>PREBUILT_SHARED_LIBRARY</code>, but for a prebuilt static library. For more information about using prebuilts, see <a href="https://developer.android.google.cn/ndk/guides/prebuilts.html" target="_blank" rel="noopener">Using Prebuilt Libraries</a>.</p>
-<h3 id="Target-information-variables"><a href="#Target-information-variables" class="headerlink" title="Target information variables"></a>Target information variables</h3><p>The build system parses <code>Android.mk</code> once per ABI specified by the <code>APP_ABI</code> variable, which is typically defined in your <code>Application.mk</code> file. If <code>APP_ABI</code> is <code>all</code>, then the build system parses <code>Android.mk</code> once per ABI the NDK supports. This section describes variable the build system defines each time it parses <code>Android.mk</code>.</p>
-<h4 id="TARGET-ARCH"><a href="#TARGET-ARCH" class="headerlink" title="TARGET_ARCH"></a>TARGET_ARCH</h4><p>The CPU family the build system is targeting as it parses this <code>Android.mk</code> file. This variable will be one of: <code>arm</code>, <code>arm64</code>, <code>x86</code>, or <code>x86_64</code>.</p>
-<h4 id="TARGET-PLATFORM"><a href="#TARGET-PLATFORM" class="headerlink" title="TARGET_PLATFORM"></a>TARGET_PLATFORM</h4><p>The Android API level number the build system is targeting as it parses this <code>Android.mk</code> file. For example, the Android 5.1 system images correspond to Android API level 22: <code>android-22</code>. For a complete list of platform names and corresponding Android system images, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>. The following example shows the syntax for using this variable:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">ifeq($</span><span class="bash">(TARGET_PLATFORM), android-22)</span></span><br><span class="line">    # ... do something ....</span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<h4 id="TARGET-ARCH-ABI"><a href="#TARGET-ARCH-ABI" class="headerlink" title="TARGET_ARCH_ABI"></a>TARGET_ARCH_ABI</h4><p>The ABI the build system is targeting as it parses this <code>Android.mk</code> file. Table 1 shows the ABI setting used for each supported CPU and architecture.</p>
-<p>Table 1. ABI settings for different CPUs and architectures.</p>
-<p>//TODO table</p>
-<p>The following example shows how to check for ARMv8 AArch64 as the target CPU-and-ABI combination:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ARCH_ABI),arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<p>For more details about architecture ABIs and associated compatibility issues, refer to <a href="https://developer.android.google.cn/ndk/guides/abis.html" target="_blank" rel="noopener">ABI Management</a>.</p>
-<p>New target ABIs in the future will have differrnt values.</p>
-<h4 id="TARGET-ABI"><a href="#TARGET-ABI" class="headerlink" title="TARGET_ABI"></a>TARGET_ABI</h4><p>A concatenation of target Android API level and ABI. It is especially useful when you want to test against a specific target system image for a real device. For example, to check for a 64-bit ARM device running on Android API level 22:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ifeq ($(TARGET_ABI),android-22-arm64-v8a)</span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="keyword">do</span> something ...</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-
-<h3 id="Module-Description-Variables"><a href="#Module-Description-Variables" class="headerlink" title="Module-Description Variables"></a>Module-Description Variables</h3><p>The variables in this section describe your module to the build system. Each module description should follow this basic flow:</p>
-<ol>
-<li>Initialize or undefine the variables associated with the module, using the <code>CLEAR_VARS</code> variable</li>
-<li>Assign values to the variables used to describe the module</li>
-<li>Set the NDK build system to use the appropriate build script for the module, using the <code>BUILD_XXX</code> variable.</li>
-</ol>
-<h4 id="LOCAL-PATH"><a href="#LOCAL-PATH" class="headerlink" title="LOCAL_PATH"></a>LOCAL_PATH</h4><p>This variable is used to give the path to the current file. You must define it at the start of your <code>Android.mk</code> file. The following example shows how to do so: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
-
-<p>The script to which <code>CLEAR_VARS</code> points does not clear this variable. Therefore, you only need to define it a single time, even if your <code>Android.mk</code> file describes multiple modules.</p>
-<h4 id="LOCAL-MODULE"><a href="#LOCAL-MODULE" class="headerlink" title="LOCAL_MODULE"></a>LOCAL_MODULE</h4><p>This variable stores the name of your module. It must be unique among all modules names, and must not contain any spaces. You must define it before including any scripts(other than the one for <code>CLEAR_VARS</code>). You need not add either the <code>lib</code> prefix or the <code>.so</code> or <code>.a</code> file extension; the build system makes these modification automatically. Throughout your <code>Android.mk</code> and <a href>Application.mk</a> files, refer to your module by its unmodified name. For example, the following line results in the generation of a shared library module called <code>libfoo.so</code>.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := "foo"</span><br></pre></td></tr></table></figure>
-
-<p>If you want the generated module to have a name other than <code>lib</code> + the value of <code>LOCAL_MODULE</code>, you can use the <code>LOCAL_MODULE_FILENAME</code> variable to give the generated module a name of your own choosing, instead.</p>
-<h4 id="LOCAL-MODULE-FILENAME"><a href="#LOCAL-MODULE-FILENAME" class="headerlink" title="LOCAL_MODULE_FILENAME"></a>LOCAL_MODULE_FILENAME</h4><p>This optional variable allows you to override the names that the build system uses by default for files that it generates. For example, if the name of your <code>LOCAL_MODULE</code> is <code>foo</code>, you can force the system to call the file it generates <code>libnewfoo</code>. The following example shows how to accomplish this:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_MODULE := foo</span><br><span class="line">LOCAL_MODULE_FILENAME := libnewfoo</span><br></pre></td></tr></table></figure>
-
-<p>For a shared library module, this example would generate a file called <code>libnewfoo.so</code>.</p>
-<h4 id="LOCAL-SRC-FILES"><a href="#LOCAL-SRC-FILES" class="headerlink" title="LOCAL_SRC_FILES"></a>LOCAL_SRC_FILES</h4><p>This variable contains the list of source files that the build system uses to generate the module. Only list the files that the build system actually passes to the compiler, since the build system automatically computes any associated depencies. Note that you can use both relative(to <code>LOCAL_PATH</code>) and absolute file paths.</p>
-<p>We recommend avoiding absolute file paths; relative paths make your <code>Android.mk</code> file more portable.</p>
-<h4 id="LOCAL-CPP-EXTENSION"><a href="#LOCAL-CPP-EXTENSION" class="headerlink" title="LOCAL_CPP_EXTENSION"></a>LOCAL_CPP_EXTENSION</h4><p>You can use this optional variable to indicate a file extension other than <code>.cpp</code> for your C++ source files. For example, the following line changes the extension to <code>.cxx</code> (The setting must include the dot)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_EXTENSION := .cxx</span><br></pre></td></tr></table></figure>
-
-<p>You can use this variable to specify multiple extensions. For instance:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_EXTENSION := .cxx .cpp .cc</span><br></pre></td></tr></table></figure>
-
-<h4 id="LOCAL-CPP-FEATURES"><a href="#LOCAL-CPP-FEATURES" class="headerlink" title="LOCAL_CPP_FEATURES"></a>LOCAL_CPP_FEATURES</h4><p>You can use this optional variable to indicate that your code relies on specific C++ features. It enables the right compiler and linker flags during the build process. For prebuilt binaries, this variable also declares which features the binary depends on, thus helping ensure the final linking works correctly. We recommend that you use this variable instead of enabling <code>-frtti</code> and <code>-fexceptions</code> directly in your <code>LOCAL_CPPFLAGS</code> definition.</p>
-<p>Using this variable allows the build system to use the appropriate flags for each module. Using <code>LOCAL_CPPFLAGS</code> causes the compiler to use all  specified flag for all module, regardless of actual need.</p>
-<p>For example, to indicate that your code uses RTTI(RunTime Type Information), write: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := rtti</span><br></pre></td></tr></table></figure>
-
-<p>To indicate that your code uses C++ exceptions, write:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := exceptions</span><br></pre></td></tr></table></figure>
-
-<p>You can also specify multiple values for this variable. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CPP_FEATURES := rtti features</span><br></pre></td></tr></table></figure>
-
-<p>The order in which you describe the values does not matter.</p>
-<h4 id="LOCAL-C-INCLUDES"><a href="#LOCAL-C-INCLUDES" class="headerlink" title="LOCAL_C_INCLUDES"></a>LOCAL_C_INCLUDES</h4><p>You can use this optional variable to specifya list of paths, relative to the NDK <code>root</code> directory, to add to the include search path when compiling all sources (C, C++ and Assembly). For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_C_INCLUDES := sources/foo</span><br></pre></td></tr></table></figure>
-
-<p>Or even: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_C_INCLUDES := $(LOCAL_PATH)/&lt;subdirectory&gt;/foo</span><br></pre></td></tr></table></figure>
-
-<p>Define this variable before setting any corresponding inclusion flags via <code>LOCAL_CFLAGS</code> or <code>LOCAL_CPPFLAGS</code>.</p>
-<p>The build system also uses <code>LOCAL_C_INCLUDES</code> paths automatically when launching native debugging with ndk-gdb.</p>
-<h4 id="LOCAL-CFLAGS"><a href="#LOCAL-CFLAGS" class="headerlink" title="LOCAL_CFLAGS"></a>LOCAL_CFLAGS</h4><p>This optional variable sets compiler flags for the build system to pass when building C and C++ source files. The ability to do so can be useful for specifying additional macro definitions or compile options. Use <code>LOCAL_CPP_FLAGS</code> to specify flags for C++ only.</p>
-<p>Try not to change the optimization/debugging level in your <code>Android.mk</code> file. The build system can handle this setting automatically for you, using the relevant information in the <a href="https://developer.android.google.cn/ndk/guides/application_mk.html" target="_blank" rel="noopener">Application.mk</a> file. Doing it this way allows the build system to generate useful data files used during debugging.</p>
-<p>It is possible to specify additional include paths by writing: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_CFLAGS += -I&lt;path&gt;,</span><br></pre></td></tr></table></figure>
-
-<p>It is better, however, to use <code>LOCAL_C_INCLUDES</code> for this purpose, since doing so also makes it possible to use the paths available for native debugging with ndk-gdb.</p>
-<h4 id="LOCAL-CPPFLAGS"><a href="#LOCAL-CPPFLAGS" class="headerlink" title="LOCAL_CPPFLAGS"></a>LOCAL_CPPFLAGS</h4><p>An optional set of compiler flags that will be passed when building C++ source files only. They will appear after the <code>LOCAL_CFLAGS</code> on the compiler’s command-line. Use <code>LOCAL_CFLAGS</code> to specify flags for both C and C++.</p>
-<h4 id="LOCAL-STATIC-LIBRARIES"><a href="#LOCAL-STATIC-LIBRARIES" class="headerlink" title="LOCAL_STATIC_LIBRARIES"></a>LOCAL_STATIC_LIBRARIES</h4><p>This variable stores the list of static libraries modules on which the current module depends.</p>
-<p>If the current module is a shared library or an executable, this variable will force these libraries to be linked into the resulting binary.</p>
-<p>If the current module is a static library, this variable simply indicates that other module depending on the current one will also depend on the listed libraries.</p>
-<h4 id="LOCAL-SHARED-LIBRARIES"><a href="#LOCAL-SHARED-LIBRARIES" class="headerlink" title="LOCAL_SHARED_LIBRARIES"></a>LOCAL_SHARED_LIBRARIES</h4><p>This variable is the list of shared libraries modules on which this module depends at runtime. This information is necessary at link time, and to embed the corresponding information in the generated file.</p>
-<h4 id="LOCAL-WHOLE-STATIC-LIBRARIES"><a href="#LOCAL-WHOLE-STATIC-LIBRARIES" class="headerlink" title="LOCAL_WHOLE_STATIC_LIBRARIES"></a>LOCAL_WHOLE_STATIC_LIBRARIES</h4><p>This variable is a variant of <code>LOCAL_STATIC_LIBRARIES</code>, and expresses that the linker should treat the associated library modules as whole archives. For more information on whole archives, see the <a href="http://ftp.gnu.org/old-gnu/Manuals/ld-2.9.1/html_node/ld_3.html" target="_blank" rel="noopener">GNU Id Documentation</a> for the <code>--whole-archive</code> flag</p>
-<p>This variable is useful when there are circular dependencies among several static libraries. When you use this variable to build a shared library, it will force the build system to add all object files from your static libraries to the final binary. The same is not true, however, when generating executables.</p>
-<h4 id="LOCAL-LDLIBS"><a href="#LOCAL-LDLIBS" class="headerlink" title="LOCAL_LDLIBS"></a>LOCAL_LDLIBS</h4><p>This variable contains the list of additional linker flags for use in building your shared library or executable. It enables you to use the <code>-l</code> prefix to pass the name of specifyc system libraries. For example, the following example tells the linker to generate a module that links to <code>/system/lib/libz.so</code> at load time:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_LDLIB := -lz</span><br></pre></td></tr></table></figure>
-
-<p>For the list of exposed system libraries against which you can link in this NDK release, see <a href="https://developer.android.google.cn/ndk/guides/stable_apis.html" target="_blank" rel="noopener">Android NDK Native APIs</a>.</p>
-<h4 id="LOCAL-LDFLAGS"><a href="#LOCAL-LDFLAGS" class="headerlink" title="LOCAL_LDFLAGS"></a>LOCAL_LDFLAGS</h4><p>The list of other linker flags for the build system to use when building your shared library or executable. For example, to use the <code>ld.bfd</code> linker on ARM/X86:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_LDFLAGS += -fuse-ld=bfd</span><br></pre></td></tr></table></figure>
-
-<h4 id="LOCAL-ALLOW-UNDEFINED-SYMBOLS"><a href="#LOCAL-ALLOW-UNDEFINED-SYMBOLS" class="headerlink" title="LOCAL_ALLOW_UNDEFINED_SYMBOLS"></a>LOCAL_ALLOW_UNDEFINED_SYMBOLS</h4><p>By default, when the build system encounters an undefined reference encountered while trying to build a shared, it will throw an undefined symbol error. This error can help you catch bugs in your source code.</p>
-<p>To disable this check, set this variable to <code>true</code>. Note that this setting may cause the shared library to load at runtime.</p>
-<h4 id="LOCAL-ARM-MODE"><a href="#LOCAL-ARM-MODE" class="headerlink" title="LOCAL_ARM_MODE"></a>LOCAL_ARM_MODE</h4><p>// TODO</p>
-<h4 id="LOCAL-ARM-NEON"><a href="#LOCAL-ARM-NEON" class="headerlink" title="LOCAL_ARM_NEON"></a>LOCAL_ARM_NEON</h4><p>//TODO</p>
-<h4 id="LOCAL-DISABLE-FORMAT-STRING-CHECKS"><a href="#LOCAL-DISABLE-FORMAT-STRING-CHECKS" class="headerlink" title="LOCAL_DISABLE_FORMAT_STRING_CHECKS"></a>LOCAL_DISABLE_FORMAT_STRING_CHECKS</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-CFLAGS"><a href="#LOCAL-EXPORT-CFLAGS" class="headerlink" title="LOCAL_EXPORT_CFLAGS"></a>LOCAL_EXPORT_CFLAGS</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-CPPFLAGS"><a href="#LOCAL-EXPORT-CPPFLAGS" class="headerlink" title="LOCAL_EXPORT_CPPFLAGS"></a>LOCAL_EXPORT_CPPFLAGS</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-C-INCLUDES"><a href="#LOCAL-EXPORT-C-INCLUDES" class="headerlink" title="LOCAL_EXPORT_C_INCLUDES"></a>LOCAL_EXPORT_C_INCLUDES</h4><p>// TODO</p>
-<h4 id="LOCAL-EXPORT-C-INCLUDES-1"><a href="#LOCAL-EXPORT-C-INCLUDES-1" class="headerlink" title="LOCAL_EXPORT_C_INCLUDES"></a>LOCAL_EXPORT_C_INCLUDES</h4><p>//TODO</p>
-<h4 id="LOCAL-EXPORT-LDFLAGS"><a href="#LOCAL-EXPORT-LDFLAGS" class="headerlink" title="LOCAL_EXPORT_LDFLAGS"></a>LOCAL_EXPORT_LDFLAGS</h4><p>//TODO</p>
-<h4 id="LOCAL-EXPORT-LDLIBS"><a href="#LOCAL-EXPORT-LDLIBS" class="headerlink" title="LOCAL_EXPORT_LDLIBS"></a>LOCAL_EXPORT_LDLIBS</h4><p>// TODO</p>
-<h4 id="LOCAL-SHORT-COMMANDS"><a href="#LOCAL-SHORT-COMMANDS" class="headerlink" title="LOCAL_SHORT_COMMANDS"></a>LOCAL_SHORT_COMMANDS</h4><p>// TODO</p>
-<h4 id="LOCAL-THIN-ARCHIVE"><a href="#LOCAL-THIN-ARCHIVE" class="headerlink" title="LOCAL_THIN_ARCHIVE"></a>LOCAL_THIN_ARCHIVE</h4><p>// TODO</p>
-<h4 id="LOCAL-FILTER-ASM"><a href="#LOCAL-FILTER-ASM" class="headerlink" title="LOCAL_FILTER_ASM"></a>LOCAL_FILTER_ASM</h4><p>// TODO</p>
-<h3 id="NDK-provided-function-macros"><a href="#NDK-provided-function-macros" class="headerlink" title="NDK-provided function macros"></a>NDK-provided function macros</h3><p>This section explains GNU Make function macros that the NDK provides. Use <code>$(call &lt;function&gt;)</code> to evaluate them; they return textural information.</p>
-<h4 id="my-dir"><a href="#my-dir" class="headerlink" title="my-dir"></a>my-dir</h4><p>This macro returns the path of the last included makefile, which typically is the current <code>Android.mk</code>‘s directory. <code>my-dir</code> is useful for defining <code>LOCAL_PATH</code> at the start of your <code>Android.mk</code> file. For example: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br></pre></td></tr></table></figure>
-
-<p>Due to the way GNU Make works, what this macro really returns is the path of the last makefile that the build system included when parsing the build scripts. For this reason, you should not call <code>my-dir</code> after including another file.</p>
-<p>For example, consider the following example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
-
-<p>The problem here is that the second call to <code>my-dir</code> defines <code>LOCAL_PATH</code> as <code>$PATH/foo</code> instead of <code>$PATH</code>, because that was where its most recent include pointed.</p>
-<p>You can avoid this problem by putting additional includes after everything else in the <code>Android.mk</code> file. For example: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> extra includes at the end of the Android.mk file</span></span><br><span class="line">include $(LOCAL_PATH)/foo/Android.mk</span><br></pre></td></tr></table></figure>
-
-<p>If it is not feasible to structure the file in this way, save the value of the first <code>my-dir</code> call into another variable. For example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">MY_LOCAL_PATH := $(call my-dir)</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> one module</span></span><br><span class="line"></span><br><span class="line">include $(LOCAL_PATH)/foo/`Android.mk`</span><br><span class="line"></span><br><span class="line">LOCAL_PATH := $(MY_LOCAL_PATH)</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> ... <span class="built_in">declare</span> another module</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="all-subdir-makefiles"><a href="#all-subdir-makefiles" class="headerlink" title="all-subdir-makefiles"></a>all-subdir-makefiles</h4><p>Returns the list of <code>Android.mk</code> files located in all subdirectories of the current <code>my-dir</code> path.</p>
-<p>You can use this fuction to provide deep-nested source directory hierarchies to the build system. By default, the NDK only looks for files in the directory containing the <code>Android.mk</code> file.</p>
-<h4 id="this-makefile"><a href="#this-makefile" class="headerlink" title="this-makefile"></a>this-makefile</h4><p>Returns the path of the current makefile(from which the build system called the function)</p>
-<h4 id="parent-makefile"><a href="#parent-makefile" class="headerlink" title="parent-makefile"></a>parent-makefile</h4><p>Returns the path of the parent makefile in the inclusion tree(the path of the makefile that included the current one)</p>
-<h4 id="grand-parent-makefile"><a href="#grand-parent-makefile" class="headerlink" title="grand-parent-makefile"></a>grand-parent-makefile</h4><p>Returns the path of the grandparent makefile in the inclusion tree (the path of the makefile that included the current one).</p>
-<h4 id="import-module"><a href="#import-module" class="headerlink" title="import-module"></a>import-module</h4><p>A function that allows you to find and include a module’s <code>Android.mk</code> file by the name of the module. A typical example is as follows:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(call import-module,&lt;name&gt;)</span></span><br></pre></td></tr></table></figure>
-
-<p>In this example, the build system looks for the module tagged <code>&lt;name&gt;</code> in the list of directories referenced that your <code>NDK_MODULE_PATH</code> environment variable references, and includes its <code>Android.mk</code> file automatically for you.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2713,7 +2590,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">217</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

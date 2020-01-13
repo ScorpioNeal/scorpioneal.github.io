@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Leetcode,">
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="假设两个指针在某点相遇，则慢指针走了a + b步，快指针走了a + (b + c) + b + nr步（其中n&amp;gt;=0，环的长度是r，则b + c = r是一环的长度。快慢指针相遇时，快指针至少领先慢指针一环，所以有(b + c)） 由于快指针走了慢指针的两倍路程，有： 2(a + b) = a + (b + c) + b + nr 得： a = c + nr，n&amp;gt;=0 所以a的长度比c">
+<meta name="description" content="DescriptionGiven a linked list, return the node where the cycle begins. If there is no cycle, return null. To represent a cycle in the given linked list, we use an integer pos which represents the pos">
+<meta name="keywords" content="Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm LeetCode 142 Linked List Cycle 2">
 <meta property="og:url" content="http://blog.scions.cn/posts/e6b2eb95/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="假设两个指针在某点相遇，则慢指针走了a + b步，快指针走了a + (b + c) + b + nr步（其中n&amp;gt;=0，环的长度是r，则b + c = r是一环的长度。快慢指针相遇时，快指针至少领先慢指针一环，所以有(b + c)） 由于快指针走了慢指针的两倍路程，有： 2(a + b) = a + (b + c) + b + nr 得： a = c + nr，n&amp;gt;=0 所以a的长度比c">
+<meta property="og:description" content="DescriptionGiven a linked list, return the node where the cycle begins. If there is no cycle, return null. To represent a cycle in the given linked list, we use an integer pos which represents the pos">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-08T08:11:26.356Z">
+<meta property="og:updated_time" content="2020-01-09T07:11:27.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Algorithm LeetCode 142 Linked List Cycle 2">
-<meta name="twitter:description" content="假设两个指针在某点相遇，则慢指针走了a + b步，快指针走了a + (b + c) + b + nr步（其中n&amp;gt;=0，环的长度是r，则b + c = r是一环的长度。快慢指针相遇时，快指针至少领先慢指针一环，所以有(b + c)） 由于快指针走了慢指针的两倍路程，有： 2(a + b) = a + (b + c) + b + nr 得： a = c + nr，n&amp;gt;=0 所以a的长度比c">
+<meta name="twitter:description" content="DescriptionGiven a linked list, return the node where the cycle begins. If there is no cycle, return null. To represent a cycle in the given linked list, we use an integer pos which represents the pos">
 
 
 
@@ -347,6 +348,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -389,10 +412,25 @@
       
 
       
-        <p>假设两个指针在某点相遇，则慢指针走了a + b步，快指针走了a + (b + c) + b + nr步（其中n&gt;=0，环的长度是r，则b + c = r是一环的长度。快慢指针相遇时，快指针至少领先慢指针一环，所以有(b + c)）<br> 由于快指针走了慢指针的两倍路程，有：<br> 2(a + b) = a + (b + c) + b + nr<br> 得：<br> a = c + nr，n&gt;=0<br> 所以a的长度比c长n圈。</p>
+        <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a linked list, return the node where the cycle begins. If there is no cycle, return null.</p>
+<p>To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.</p>
+<p>Note: Do not modify the linked list.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [3,2,0,-4], pos = 1</span><br><span class="line">Output: tail connects to node index 1</span><br><span class="line">Explanation: There is a cycle in the linked list, where tail connects to the second node.</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2], pos = 0</span><br><span class="line">Output: tail connects to node index 0</span><br><span class="line">Explanation: There is a cycle in the linked list, where tail connects to the first node.</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1], pos = -1</span><br><span class="line">Output: no cycle</span><br><span class="line">Explanation: There is no cycle in the linked list.</span><br></pre></td></tr></table></figure>
+
+
+<p>Follow-up:<br>Can you solve it without using extra space?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>与141题类似，但是这题要求环的位置</p>
+<p>假设两个指针在某点相遇，则慢指针走了a + b步，快指针走了a + (b + c) + b + nr步（其中n&gt;=0，环的长度是r，则b + c = r是一环的长度。快慢指针相遇时，快指针至少领先慢指针一环，所以有(b + c)）<br> 由于快指针走了慢指针的两倍路程，有：<br> 2(a + b) = a + (b + c) + b + nr<br> 得：<br> a = c + nr，n&gt;=0<br> 所以a的长度比c长n圈。</p>
 <p>我们让一个指针从链表头开始，另一个指针从相遇点开始，每次各走一步，由于a = c + nr，当从链表头出发的指针经过a步到环入口时，从相遇点出发的指针先经过c步返回入口处，又绕着环走了n圈，依旧回到入口。所以两个指针一定会在环入口处相遇。</p>
 <p>如此，就找到环的入口了。</p>
-
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">detectCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode slow = head;</span><br><span class="line">        ListNode fast = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">            <span class="keyword">if</span>(slow == fast) &#123;</span><br><span class="line">                <span class="keyword">while</span>(head != fast) &#123;</span><br><span class="line">                    fast = fast.next;</span><br><span class="line">                    head = head.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> head;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -435,6 +473,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+        </div>
       
 
       
@@ -512,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -528,7 +581,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">217</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -573,6 +626,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AC代码"><span class="nav-number">3.</span> <span class="nav-text">AC代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
