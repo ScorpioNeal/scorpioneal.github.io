@@ -884,145 +884,145 @@
   <entry>
     <title>LeetCode  目录</title>
     <url>/posts/4164a485/</url>
-    <content><![CDATA[<h2 id="二叉树-23-28"><a href="#二叉树-23-28" class="headerlink" title="二叉树(23/28)"></a>二叉树(23/28)</h2><ul>
-<li><a href="Algorithm-LeetCode-95-Unique-Binary-Search-Trees-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-96-Unique-Binary-Search-Trees">Algorithm LeetCode 96 Unique Binary Search Trees</a></li>
-<li><a href="Algorithm-LeetCode-98-Validate-Binary-Search-Tree">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal">Algorithm LeetCode 105 Construct Binary Tree from Preorder and Inorder Traversal</a></li>
-<li><a href="Algorithm-LeetCode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal">Algorithm LeetCode 106 Construct Binary Tree from Inorder and Postorder Traversal</a></li>
-<li><a href="Algorithm-LeetCode-107-Binary-Tree-Level-Order-Traversal-2">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a></li>
-<li><a href="Algorithm-LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree">Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</a></li>
-<li><a href="Algorithm-LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree">Algorithm LeetCode 109 Convert Sorted List to Binary Search Tree</a></li>
-<li><a href="Algorithm-LeetCode-111-Minimum-Depth-Of-Binary-Tree">Algorithm LeetCode 111 Minimum Depth Of Binary Tree</a></li>
-<li><a href="Algorithm-LeetCode-113-Path-Sum-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-114-Flattern-Binary-Tree-to-Linked-List">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-129-Sum-root-to-leaf-numbers">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-144-Binary-Tree-Preorder-Traversal">Algorithm LeetCode 144 Binary Tree Preorder Traversal</a></li>
-<li><a href="Algorithm-LeetCode-145-Binary-Tree-Postorder-Traversal">Algorithm LeetCode 145 Binary Tree Postorder Traversal</a></li>
-<li><a href="Algorithm-LeetCode-199-Binary-Tree-Right-Side-View">Algorithm LeetCode 199 Binary Tree Right Side View</a></li>
-<li><a href="Algorithm-LeetCode-230-Kth-Smallest-Element-in-a-BST">Algorithm LeetCode 230 Kth Smallest Element in a BST</a></li>
-<li><a href="Algorithm-Leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree">Algorithm Leetcode 235 Lowest Common Ancestor of a Binary Search Tree</a></li>
-<li><a href="Algorithm-Leetcode-257-Binary-Tree-Paths">Algorithm Leetcode 257 Binary Tree Paths</a></li>
-<li><a href="Algorithm-LeetCode-404-Sum-Of-Left-Leaves">Algorithm LeetCode 404 Sum Of Left Leaves</a></li>
-<li><a href="Algorithm-Leetcode-429-N-ary-Tree-Level-Order-Traversal">Algorithm Leetcode 429 N-ary Tree Level Order Traversal</a></li>
-<li><a href="Algorithm-Leetcode-437-Path-Sum-3">Algorithm Leetcode 437 Path Sum 3</a></li>
-<li><a href="Algorithm-Leetcode-538-Convert-BST-to-Greater-Tree">Algorithm LeetCode 538 Convert BST to Greater Tree</a></li>
-<li><a href="Algorithm-Leetcode-563-Binary-Tree-Tilt">Algorithm LeetCode 563 Binary Tree Tilt</a></li>
-<li><a href="Algorithm-Leetcode-637-Average-of-levels-in-binary-tree">Algorithm Leetcode 637 Average of levels in binary tree</a></li>
-<li><a href="Algorithm-Leetcode-669-Trim-a-Binary-Search-Tree">Algorithm LeetCode 669 Trim a Binary Search Tree</a></li>
-<li><a href="Algorithm-Leetcode-897-Increasing-order-search-tree">Algorithm LeetCode 897 Increasing order search tree</a></li>
-<li><a href="Algorithm-Leetcode-993-Cousins-in-binary-tree">Algorithm Leetcode 993 Cousins in binary tree</a></li>
-<li><a href="Algorithm-Leetcode-1022-Sum-of-root-to-leaf-binary-numbers">Algorithm Leetcode 1022 Sum of root to leaf binary numbers</a></li>
+    <content><![CDATA[<h2 id="Binary-Tree-23-28"><a href="#Binary-Tree-23-28" class="headerlink" title="Binary Tree(23/28)"></a>Binary Tree(23/28)</h2><ul>
+<li><a href="posts/d375b61d">Not Finished Yet</a> <a href="Algorithm-LeetCode-95-Unique-Binary-Search-Trees-2"></a></li>
+<li><a href="posts/18322">Algorithm LeetCode 96 Unique Binary Search Trees</a> <a href="Algorithm-LeetCode-96-Unique-Binary-Search-Trees"></a></li>
+<li><a href="posts/b788828">Not Finished Yet</a> <a href="Algorithm-LeetCode-98-Validate-Binary-Search-Tree"></a></li>
+<li><a href="posts/25258304">Algorithm LeetCode 105 Construct Binary Tree from Preorder and Inorder Traversal</a> <a href="Algorithm-LeetCode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal"></a> </li>
+<li><a href="posts/8347a056">Algorithm LeetCode 106 Construct Binary Tree from Inorder and Postorder Traversal</a> <a href="Algorithm-LeetCode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"></a></li>
+<li><a href="posts/100ad818">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a> <a href="Algorithm-LeetCode-107-Binary-Tree-Level-Order-Traversal-2"></a></li>
+<li><a href="posts/72ef869e">Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</a> <a href="Algorithm-LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree"></a></li>
+<li><a href="posts/ba9c4c03">Algorithm LeetCode 109 Convert Sorted List to Binary Search Tree</a> <a href="Algorithm-LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree"></a></li>
+<li><a href="posts/ba9c4c03">Algorithm LeetCode 111 Minimum Depth Of Binary Tree</a> <a href="Algorithm-LeetCode-111-Minimum-Depth-Of-Binary-Tree"></a></li>
+<li><a href="posts/51820">Not Finished Yet</a> <a href="Algorithm-LeetCode-113-Path-Sum-2"></a></li>
+<li><a href="posts/1465a4a">Not Finished Yet</a> <a href="Algorithm-LeetCode-114-Flattern-Binary-Tree-to-Linked-List"></a></li>
+<li><a href="posts/2e0659dc">Not Finished Yet</a> <a href="Algorithm-LeetCode-129-Sum-root-to-leaf-numbers"></a></li>
+<li><a href="posts/a3f50e76">Algorithm LeetCode 144 Binary Tree Preorder Traversal</a> <a href="Algorithm-LeetCode-144-Binary-Tree-Preorder-Traversal"></a></li>
+<li><a href="posts/704ee7f7">Algorithm LeetCode 145 Binary Tree Postorder Traversal</a> <a href="Algorithm-LeetCode-145-Binary-Tree-Postorder-Traversal"></a></li>
+<li><a href="posts/a734793">Algorithm LeetCode 199 Binary Tree Right Side View</a> <a href="Algorithm-LeetCode-199-Binary-Tree-Right-Side-View"></a></li>
+<li><a href="posts/58dedc64">Algorithm LeetCode 230 Kth Smallest Element in a BST</a> <a href="Algorithm-LeetCode-230-Kth-Smallest-Element-in-a-BST"></a></li>
+<li><a href="posts/68a60d10">Algorithm Leetcode 235 Lowest Common Ancestor of a Binary Search Tree</a> <a href="Algorithm-Leetcode-235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree"></a></li>
+<li><a href="posts/544be13c">Algorithm Leetcode 257 Binary Tree Paths</a> <a href="Algorithm-Leetcode-257-Binary-Tree-Paths"></a></li>
+<li><a href="posts/fa243c55">Algorithm LeetCode 404 Sum Of Left Leaves</a> <a href="Algorithm-LeetCode-404-Sum-Of-Left-Leaves"></a></li>
+<li><a href="posts/8dcf895b">Algorithm Leetcode 429 N-ary Tree Level Order Traversal</a> <a href="Algorithm-Leetcode-429-N-ary-Tree-Level-Order-Traversal"></a></li>
+<li><a href="posts/a898cbda">Algorithm Leetcode 437 Path Sum 3</a> <a href="Algorithm-Leetcode-437-Path-Sum-3"></a></li>
+<li><a href="posts/4738d6df">Algorithm LeetCode 538 Convert BST to Greater Tree</a> <a href="Algorithm-Leetcode-538-Convert-BST-to-Greater-Tree"></a></li>
+<li><a href="posts/c40d9066">Algorithm LeetCode 563 Binary Tree Tilt</a> <a href="Algorithm-Leetcode-563-Binary-Tree-Tilt"></a></li>
+<li><a href="posts/42adb360">Algorithm Leetcode 637 Average of levels in binary tree</a> <a href="Algorithm-Leetcode-637-Average-of-levels-in-binary-tree"></a></li>
+<li><a href="posts/76424700">Algorithm LeetCode 669 Trim a Binary Search Tree</a> <a href="Algorithm-Leetcode-669-Trim-a-Binary-Search-Tree"></a></li>
+<li><a href="posts/21b94842">Algorithm LeetCode 897 Increasing order search tree</a> <a href="Algorithm-Leetcode-897-Increasing-order-search-tree"></a></li>
+<li><a href="posts/89a53fa">Algorithm Leetcode 993 Cousins in binary tree</a> <a href="Algorithm-Leetcode-993-Cousins-in-binary-tree"></a></li>
+<li><a href="posts/2b2429b0">Algorithm Leetcode 1022 Sum of root to leaf binary numbers</a> <a href="Algorithm-Leetcode-1022-Sum-of-root-to-leaf-binary-numbers"></a></li>
 </ul>
 <h2 id="链表-10-13"><a href="#链表-10-13" class="headerlink" title="链表(10/13)"></a>链表(10/13)</h2><ul>
-<li><a href="Algorithm-LeetCode-19-Remove-Nth-Node-From-End-of-List">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-24-Swap-nodes-in-pairs">Algorithm LeetCode 24 Swap nodes in pairs</a></li>
-<li><a href="Algorithm-LeetCode-61-Rotate-List">Algorithm LeetCode 61 Rotate List</a></li>
-<li><a href="Algorithm-LeetCode-82-Remove-Duplicates-from-sorted-list-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-86-Partition-List">Algorithm LeetCode 86 Partition List</a></li>
-<li><a href="Algorithm-LeetCode-92-Reverse-Linked-List-2">Algorithm LeetCode 92 Reverse Linked List 2</a></li>
-<li><a href="Algorithm-LeetCode-141-Linked-List-Cycle">Algorithm LeetCode 141 Linked List Cycle</a></li>
-<li><a href="Algorithm-LeetCode-142-Linked-List-Cycle-2">Algorithm LeetCode 142 Linked List Cycle 2</a></li>
-<li><a href="Algorithm-LeetCode-143-Reorder-List">Algorithm LeetCode 143 Reorder List</a></li>
-<li><a href="Algorithm-LeetCode-160-Intersection-of-Two-LinkedList">Algorithm LeetCode 160 Intersection of Two LinkedList</a></li>
-<li><a href="Algorithm-Leetcode-203-Remove-Linked-List-Elements">Algorithm LeetCode 203 Remove Linked List Elements</a></li>
-<li><a href="Algorithm-LeetCode-206-Reverse-Linked-List">Algorithm LeetCode 206 Reverse Linked List</a></li>
-<li><a href="Algorithm-LeetCode-234-Palindrome-Linked-List">Not Finished Yet</a></li>
+<li><a href="posts/3c6ef004">Not Finished Yet</a> <a href="Algorithm-LeetCode-19-Remove-Nth-Node-From-End-of-List"></a></li>
+<li><a href="posts/9a7210a1">Algorithm LeetCode 24 Swap nodes in pairs</a> <a href="Algorithm-LeetCode-24-Swap-nodes-in-pairs"></a></li>
+<li><a href="posts/2889f084">Algorithm LeetCode 61 Rotate List</a> <a href="Algorithm-LeetCode-61-Rotate-List"></a></li>
+<li><a href="posts/b592bcbd">Not Finished Yet</a> <a href="Algorithm-LeetCode-82-Remove-Duplicates-from-sorted-list-2"></a></li>
+<li><a href="posts/ec552937">Algorithm LeetCode 86 Partition List</a> <a href="Algorithm-LeetCode-86-Partition-List"></a></li>
+<li><a href="posts/e1ca3b52">Algorithm LeetCode 92 Reverse Linked List 2</a> <a href="Algorithm-LeetCode-92-Reverse-Linked-List-2"></a></li>
+<li><a href="posts/ca466842">Algorithm LeetCode 141 Linked List Cycle</a> <a href="Algorithm-LeetCode-141-Linked-List-Cycle"></a></li>
+<li><a href="posts/e6b2eb95">Algorithm LeetCode 142 Linked List Cycle 2</a> <a href="Algorithm-LeetCode-142-Linked-List-Cycle-2"></a></li>
+<li><a href="posts/24176">Algorithm LeetCode 143 Reorder List</a> <a href="Algorithm-LeetCode-143-Reorder-List"></a></li>
+<li><a href="posts/4d5b7367">Algorithm LeetCode 160 Intersection of Two LinkedList</a> <a href="Algorithm-LeetCode-160-Intersection-of-Two-LinkedList"></a></li>
+<li><a href="posts/73c515b1">Algorithm LeetCode 203 Remove Linked List Elements</a> <a href="Algorithm-Leetcode-203-Remove-Linked-List-Elements"></a></li>
+<li><a href="posts/5f3606d7">Algorithm LeetCode 206 Reverse Linked List</a> <a href="Algorithm-LeetCode-206-Reverse-Linked-List"></a></li>
+<li><a href="posts/6d34e4e">Not Finished Yet</a> <a href="Algorithm-LeetCode-234-Palindrome-Linked-List"></a></li>
 </ul>
 <h2 id="Stack-amp-Queue-3-3"><a href="#Stack-amp-Queue-3-3" class="headerlink" title="Stack &amp; Queue(3/3)"></a>Stack &amp; Queue(3/3)</h2><ul>
-<li><a href="Algorithm-LeetCode-155-Min-Stack">Algorithm LeetCode 155 Min Stack</a></li>
-<li><a href="Algorithm-Leetcode-225-Implement-Stack-using-Queues">Algorithm Leetcode 225 Implement Stack using Queues</a></li>
-<li><a href="Algorithm-Leetcode-232-Implement-Queue-using-Stacks">Algorithm Leetcode 232 Implement Queue using Stacks</a></li>
+<li><a href="posts/a6096449">Algorithm LeetCode 155 Min Stack</a> <a href="Algorithm-LeetCode-155-Min-Stack"></a></li>
+<li><a href="posts/8dc2d219">Algorithm Leetcode 225 Implement Stack using Queues</a> <a href="Algorithm-Leetcode-225-Implement-Stack-using-Queues"></a></li>
+<li><a href="posts/b4a58c2a">Algorithm Leetcode 232 Implement Queue using Stacks</a> <a href="Algorithm-Leetcode-232-Implement-Queue-using-Stacks"></a></li>
 </ul>
 <h2 id="array-string-30-41"><a href="#array-string-30-41" class="headerlink" title="array/string(30/41)"></a>array/string(30/41)</h2><ul>
-<li><a href="Algorithm-LeetCode-5-Longest-Palindromic-Substring">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-15-3Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-16-3Sum-Closest">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-18-4Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-28-Implement-strStr">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-33-Search-in-rotated-sorted-array">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-48-Rotate-Image">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-66-Plus-One">Algorithm LeetCode 66 Plus One</a></li>
-<li><a href="Algorithm-LeetCode-81-Search-in-Rotated-Sorted-Array">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-119-Pascal-s-Triangle-2">Algorithm LeetCode 119 Pascal’s Triangle 2</a></li>
-<li><a href="Algorithm-LeetCode-153-Find-Minimum-in-Rotated-Sorted-Array">Algorithm LeetCode 153 Find Minimum in Rotated Sorted Array</a></li>
-<li><a href="Algorithm-LeetCode-179-Largest-Number">Algorithm LeetCode 179 Largest Number</a></li>
-<li><a href="Algorithm-LeetCode-204-Count-Primes">Algorithm LeetCode 204 Count Primes</a></li>
-<li><a href="Algorithm-LeetCode-209-Minimum-Size-Subarray-Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-219-Contains-Dulplicate-2">Algorithm LeetCode 219 Contains Dulplicate 2</a></li>
-<li><a href="Algorithm-LeetCode-229-Majority-Element-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-242-valid-anagram">Algorithm LeetCode 242 valid-anagram</a></li>
-<li><a href="Algorithm-LeetCode-287-Find-the-Duplicate-Number">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-290-Word-Pattern">Algorithm LeetCode 290 Word Pattern</a></li>
-<li><a href="Algorithm-LeetCode-300-Longest-Increasing-Subsequence">Algorithm LeetCode 300 Longest Increasing Subsequence</a></li>
-<li><a href="Algorithm-Leetcode-434-Number-of-segments-in-a-string">Algorithm LeetCode 434 Number of segments in a string</a></li>
-<li><a href="Algorithm-Leetcode-443-String-Compression">Algorithm LeetCode 443 String Compression</a></li>
-<li><a href="Algorithm-LeetCode-453-Minimum-Moves-to-Equal-Array-Elements">Algorithm LeetCode 453 Minimum Moves to Equal Array Elements</a></li>
-<li><a href="Algorithm-Leetcode-496-Next-Greater-Element-1">Algorithm LeetCode 496 Next Greater Element 1</a></li>
-<li><a href="Algorithm-Leetcode-532-K-diff-Pairs-in-an-Array">Algorithm LeetCode 532 K-diff Pairs in an Array</a></li>
-<li><a href="Algorithm-LeetCode-594-Longest-harmonious-Subsequence">Algorithm LeetCode 594 Longest harmonious Subsequence</a></li>
-<li><a href="Algorithm-LeetCode-665-Non-decreasing-Array">Algorithm LeetCode 665 Non-decreasing Array</a></li>
-<li><a href="Algorithm-Leetcode-784-Letter-Case-Permutation">Algorithm LeetCode 784 Letter Case Permutation</a></li>
-<li><a href="Algorithm-LeetCode-844-Backspace-String-Compare">Algorithm LeetCode 844 Backspace String Compare</a></li>
-<li><a href="Algorithm-Leetcode-849-Maximize-Distance-to-Closest-Person-0">Algorithm LeetCode 849 Maximize Distance to Closest Person</a></li>
-<li><a href="Algorithm-LeetCode-914-X-of-a-Kind-in-a-Deck-of-Cards">Algorithm LeetCode 914 X of a Kind in a Deck of Cards</a></li>
-<li><a href="Algorithm-LeetCode-922-Sort-Array-By-Parity-2">Algorithm LeetCode 922 Sort Array By Parity 2</a></li>
-<li><a href="Algorithm-LeetCode-925-Long-Pressed-Name">Algorithm LeetCode 925 Long Pressed Name</a></li>
-<li><a href="Algorithm-LeetCode-942-DI-String-Match">Algorithm LeetCode 942 DI String Match</a></li>
-<li><a href="Algorithm-LeetCode-949-Largest-Time-for-Given-Digits">Algorithm LeetCode 949 Largest Time for Given Digits</a></li>
-<li><a href="Algorithm-LeetCode-989-Add-To-Array-Form-Of-Integer">Algorithm LeetCode 989 Add To Array Form Of Integer</a></li>
-<li><a href="Algorithm-LeetCode-1002-Find-Common-Characters">Algorithm LeetCode 1002 Find Common Characters</a></li>
-<li><a href="Algorithm-LeetCode-1010-Pairs-of-songs-with-total-duration-divisible-by-60">Algorithm LeetCode 1010 Pairs of songs with total duration divisible by 60</a></li>
-<li><a href="Algorithm-Leetcode-1051-Height-Checker">Algorithm LeetCode 1051 Height Checker</a></li>
-<li><a href="Algorithm-Leetcode-1071-Greatest-Common-Divisor-of-Strings">Algorithm LeetCode 1071 Greatest Common Divisor of Strings</a></li>
-<li><a href="Algorithm-LeetCode-1122-Relative-Sort-Array">Algorithm LeetCode 1122 Relative Sort Array</a></li>
+<li><a href="posts/23c9f4f0">Not Finished Yet</a> <a href="Algorithm-LeetCode-5-Longest-Palindromic-Substring"></a></li>
+<li><a href="posts/69cd7c73">Not Finished Yet</a> <a href="Algorithm-LeetCode-15-3Sum"></a></li>
+<li><a href="posts/503">Not Finished Yet</a> <a href="Algorithm-LeetCode-16-3Sum-Closest"></a></li>
+<li><a href="posts/63981bc4">Not Finished Yet</a> <a href="Algorithm-LeetCode-18-4Sum"></a></li>
+<li><a href="posts/2198e368">Not Finished Yet</a> <a href="Algorithm-LeetCode-28-Implement-strStr"></a></li>
+<li><a href="posts/b77a31af">Not Finished Yet</a> <a href="Algorithm-LeetCode-33-Search-in-rotated-sorted-array"></a></li>
+<li><a href="posts/3a38d4e9">Not Finished Yet</a> <a href="Algorithm-LeetCode-48-Rotate-Image"></a></li>
+<li><a href="posts/5ac11b38">Algorithm LeetCode 66 Plus One</a> <a href="Algorithm-LeetCode-66-Plus-One"></a></li>
+<li><a href="posts/54882">Not Finished Yet</a> <a href="Algorithm-LeetCode-81-Search-in-Rotated-Sorted-Array"></a></li>
+<li><a href="posts/3885d3ad">Algorithm LeetCode 119 Pascal’s Triangle 2</a> <a href="Algorithm-LeetCode-119-Pascal-s-Triangle-2"></a></li>
+<li><a href="posts/7db4e9d3">Algorithm LeetCode 153 Find Minimum in Rotated Sorted Array</a> <a href="Algorithm-LeetCode-153-Find-Minimum-in-Rotated-Sorted-Array"></a></li>
+<li><a href="posts/c312b235">Algorithm LeetCode 179 Largest Number</a> <a href="Algorithm-LeetCode-179-Largest-Number"></a></li>
+<li><a href="posts/c25081df">Algorithm LeetCode 204 Count Primes</a> <a href="Algorithm-LeetCode-204-Count-Primes"></a></li>
+<li><a href="posts/7fb278a0">Not Finished Yet</a> <a href="Algorithm-LeetCode-209-Minimum-Size-Subarray-Sum"></a></li>
+<li><a href="posts/6c30c346">Algorithm LeetCode 219 Contains Dulplicate 2</a> <a href="Algorithm-Leetcode-219-Contains-Dulplicate-2"></a></li>
+<li><a href="posts/d6416c6b">Not Finished Yet</a> <a href="Algorithm-LeetCode-229-Majority-Element-2"></a></li>
+<li><a href="posts/b6f1cce9">Algorithm LeetCode 242 valid-anagram</a> <a href="Algorithm-LeetCode-242-valid-anagram"></a></li>
+<li><a href="posts/c9ab789a">Not Finished Yet</a> <a href="Algorithm-LeetCode-287-Find-the-Duplicate-Number"></a></li>
+<li><a href="posts/afd7ba5c">Algorithm LeetCode 290 Word Pattern</a> <a href="Algorithm-LeetCode-290-Word-Pattern"></a></li>
+<li><a href="posts/fa9863d0">Algorithm LeetCode 300 Longest Increasing Subsequence</a> <a href="Algorithm-LeetCode-300-Longest-Increasing-Subsequence"></a></li>
+<li><a href="posts/afc442a4">Algorithm LeetCode 434 Number of segments in a string</a> <a href="Algorithm-Leetcode-434-Number-of-segments-in-a-string"></a></li>
+<li><a href="posts/e660b369">Algorithm LeetCode 443 String Compression</a> <a href="Algorithm-Leetcode-443-String-Compression"></a></li>
+<li><a href="posts/ea9f0311">Algorithm LeetCode 453 Minimum Moves to Equal Array Elements</a> <a href="Algorithm-LeetCode-453-Minimum-Moves-to-Equal-Array-Elements"></a></li>
+<li><a href="posts/df3044a3">Algorithm LeetCode 496 Next Greater Element 1</a> <a href="Algorithm-Leetcode-496-Next-Greater-Element-1"></a></li>
+<li><a href="posts/eabd76d6">Algorithm LeetCode 532 K-diff Pairs in an Array</a> <a href="Algorithm-Leetcode-532-K-diff-Pairs-in-an-Array"></a></li>
+<li><a href="posts/b58ba739">Algorithm LeetCode 594 Longest harmonious Subsequence</a> <a href="Algorithm-LeetCode-594-Longest-harmonious-Subsequence"></a></li>
+<li><a href="posts/da9f9e6">Algorithm LeetCode 665 Non-decreasing Array</a> <a href="Algorithm-LeetCode-665-Non-decreasing-Array"></a></li>
+<li><a href="posts/e1ef6796">Algorithm LeetCode 784 Letter Case Permutation</a> <a href="Algorithm-Leetcode-784-Letter-Case-Permutation"></a></li>
+<li><a href="posts/9715d017">Algorithm LeetCode 844 Backspace String Compare</a> <a href="Algorithm-LeetCode-844-Backspace-String-Compare"></a></li>
+<li><a href="posts/49bede3d">Algorithm LeetCode 849 Maximize Distance to Closest Person</a> <a href="Algorithm-Leetcode-849-Maximize-Distance-to-Closest-Person-0"></a></li>
+<li><a href="posts/e7c78f66">Algorithm LeetCode 914 X of a Kind in a Deck of Cards</a> <a href="Algorithm-LeetCode-914-X-of-a-Kind-in-a-Deck-of-Cards"></a></li>
+<li><a href="posts/aeee22f2">Algorithm LeetCode 922 Sort Array By Parity 2</a> <a href="Algorithm-LeetCode-922-Sort-Array-By-Parity-2"></a></li>
+<li><a href="posts/fbb3e6">Algorithm LeetCode 925 Long Pressed Name</a> <a href="Algorithm-LeetCode-925-Long-Pressed-Name"></a></li>
+<li><a href="posts/a4f6abd9">Algorithm LeetCode 942 DI String Match</a> <a href="Algorithm-LeetCode-942-DI-String-Match"></a></li>
+<li><a href="posts/31c696da">Algorithm LeetCode 949 Largest Time for Given Digits</a> <a href="Algorithm-LeetCode-949-Largest-Time-for-Given-Digits"></a></li>
+<li><a href="posts/346cd301">Algorithm LeetCode 989 Add To Array Form Of Integer</a> <a href="Algorithm-LeetCode-989-Add-To-Array-Form-Of-Integer"></a></li>
+<li><a href="posts/fb8c3633">Algorithm LeetCode 1002 Find Common Characters</a> <a href="Algorithm-LeetCode-1002-Find-Common-Characters"></a></li>
+<li><a href="posts/6fa4d6a">Algorithm LeetCode 1010 Pairs of songs with total duration divisible by 60</a> <a href="Algorithm-LeetCode-1010-Pairs-of-songs-with-total-duration-divisible-by-60"></a></li>
+<li><a href="posts/6206342c">Algorithm LeetCode 1051 Height Checker</a> <a href="Algorithm-Leetcode-1051-Height-Checker"></a></li>
+<li><a href="posts/301dd35e">Algorithm LeetCode 1071 Greatest Common Divisor of Strings</a> <a href="Algorithm-Leetcode-1071-Greatest-Common-Divisor-of-Strings"></a></li>
+<li><a href="posts/503af792">Algorithm LeetCode 1122 Relative Sort Array</a> <a href="Algorithm-LeetCode-1122-Relative-Sort-Array"></a></li>
 </ul>
 <h2 id="math-others-6-17"><a href="#math-others-6-17" class="headerlink" title="math/others(6/17)"></a>math/others(6/17)</h2><ul>
-<li><a href="Algorithm-LeetCode-2-Add-Two-Numbers">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-43-Multiply-Strings">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-367-Valid-Perfect-Square">Algorithm LeetCode 367 Valid Perfect Square</a></li>
-<li><a href="Algorithm-LeetCode-374-Guess-Number-Higher-or-Lower">Algorithm LeetCode 374 Guess Number Higher or Lower</a></li>
-<li><a href="Algorithm-Leetcode-455-Assign-Cookies">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-475-Heaters">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-705-Design-HashSet">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-706-Design-HashMap">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-707-Design-LinkedList">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-754-Reach-a-Number">Algorithm LeetCode 754 Reach a Number</a></li>
-<li><a href="Algorithm-LeetCode-812-Largest-Triangle-Area">Algorithm LeetCode 812 Largest Triangle Area</a></li>
-<li><a href="Algorithm-LeetCode-836-Rectangle-Overlap">Algorithm LeetCode 836 Rectangle Overlap</a></li>
-<li><a href="Algorithm-LeetCode-970-Powerful-Integers">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-994-Rotting-Oranges">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-1009-Complement-of-Base-10-Integer">Algorithm LeetCode 1009 Complement of Base 10 Integer</a></li>
-<li><a href="Algorithm-LeetCode-1128-Number-of-equivalent-domino-pairs">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-1184-Distance-Between-Bus-Stops">Not Finished Yet</a></li>
+<li><a href="posts/269361d5">Not Finished Yet</a> <a href="Algorithm-LeetCode-2-Add-Two-Numbers"></a></li>
+<li><a href="posts/4104aec9">Not Finished Yet</a> <a href="Algorithm-LeetCode-43-Multiply-Strings"></a></li>
+<li><a href="posts/b6a37ecd">Algorithm LeetCode 367 Valid Perfect Square</a> <a href="Algorithm-LeetCode-367-Valid-Perfect-Square"></a></li>
+<li><a href="posts/b5448e67">Algorithm LeetCode 374 Guess Number Higher or Lower</a> <a href="Algorithm-LeetCode-374-Guess-Number-Higher-or-Lower"></a></li>
+<li><a href="posts/76b09fa2">Not Finished Yet</a> <a href="Algorithm-Leetcode-455-Assign-Cookies"></a></li>
+<li><a href="posts/f1454c2d">Not Finished Yet</a> <a href="Algorithm-Leetcode-475-Heaters"></a></li>
+<li><a href="posts/c0e9ac24">Not Finished Yet</a> <a href="Algorithm-Leetcode-705-Design-HashSet"></a></li>
+<li><a href="posts/9c9897b1">Not Finished Yet</a> <a href="Algorithm-Leetcode-706-Design-HashMap"></a></li>
+<li><a href="posts/c510d6d2">Not Finished Yet</a> <a href="Algorithm-Leetcode-707-Design-LinkedList"></a></li>
+<li><a href="posts/3cad5a96">Algorithm LeetCode 754 Reach a Number</a> <a href="Algorithm-LeetCode-754-Reach-a-Number"></a></li>
+<li><a href="posts/9520d35b">Algorithm LeetCode 812 Largest Triangle Area</a> <a href="Algorithm-LeetCode-812-Largest-Triangle-Area"></a></li>
+<li><a href="posts/7b4a97c1">Algorithm LeetCode 836 Rectangle Overlap</a> <a href="Algorithm-LeetCode-836-Rectangle-Overlap"></a></li>
+<li><a href="posts/3485dad9">Not Finished Yet</a> <a href="Algorithm-LeetCode-970-Powerful-Integers"></a></li>
+<li><a href="posts/7727a6f3">Not Finished Yet</a> <a href="Algorithm-Leetcode-994-Rotting-Oranges"></a></li>
+<li><a href="posts/dc26ed78">Algorithm LeetCode 1009 Complement of Base 10 Integer</a> <a href="Algorithm-Leetcode-1009-Complement-of-Base-10-Integer"></a></li>
+<li><a href="posts/17786f6d">Not Finished Yet</a> <a href="Algorithm-LeetCode-1128-Number-of-equivalent-domino-pairs"></a></li>
+<li><a href="posts/2d8ecbe2">Not Finished Yet</a> <a href="Algorithm-Leetcode-1184-Distance-Between-Bus-Stops"></a></li>
 </ul>
 <h2 id="DP问题-1-5"><a href="#DP问题-1-5" class="headerlink" title="DP问题(1/5)"></a>DP问题(1/5)</h2><ul>
-<li><a href="Algorithm-LeetCode-120-Triangle">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-132-Palindrome-Partitioning-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-152-Maximum-Product-Subarray">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-221-Maximal-Square">Not Finished Yet</a></li>
-<li><a href="Algorithm-Leetcode-746-Min-Cost-Climbing-Stairs">Algorithm LeetCode 746 Min Cost Climbing Stairs</a></li>
+<li><a href="posts/4602b530">Not Finished Yet</a> <a href="Algorithm-LeetCode-120-Triangle"></a></li>
+<li><a href="posts/a92db813">Not Finished Yet</a> <a href="Algorithm-LeetCode-132-Palindrome-Partitioning-2"></a></li>
+<li><a href="posts/e466a26f">Not Finished Yet</a> <a href="Algorithm-LeetCode-152-Maximum-Product-Subarray"></a></li>
+<li><a href="posts/eeab49e5">Not Finished Yet</a> <a href="Algorithm-LeetCode-221-Maximal-Square"></a></li>
+<li><a href="posts/61d54b2b">Algorithm LeetCode 746 Min Cost Climbing Stairs</a> <a href="Algorithm-Leetcode-746-Min-Cost-Climbing-Stairs"></a></li>
 </ul>
 <h2 id="Backtracking-4-14"><a href="#Backtracking-4-14" class="headerlink" title="Backtracking(4/14)"></a>Backtracking(4/14)</h2><ul>
-<li><a href="Algorithm-LeetCode-22-Generate-Parentheses">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-39-Combination-Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-40-Combination-Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-46-Permutations">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-47-Permutations-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-60-Permutation-Sequence">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-77-Combinations">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-78-Subsets">Algorithm LeetCode 78 Subsets</a></li>
-<li><a href="Algorithm-LeetCode-79-Word-Search">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-90-Subsets-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-93-Restore-IP-Address">Algorithm LeetCode 93 Restore IP Address</a></li>
-<li><a href="Algorithm-LeetCode-131-Palindrome-Partitioning">Algorithm LeetCode 131 Palindrome Partitioning</a></li>
-<li><a href="Algorithm-LeetCode-139-Word-Break">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-216-Combination-Sum-3">Algorithm LeetCode 216 Combination Sum 3</a></li>
+<li><a href="posts/9b84e32c">Not Finished Yet</a> <a href="Algorithm-LeetCode-22-Generate-Parentheses"></a></li>
+<li><a href="posts/32dbc1ca">Not Finished Yet</a> <a href="Algorithm-LeetCode-39-Combination-Sum"></a></li>
+<li><a href="posts/316095ca">Not Finished Yet</a> <a href="Algorithm-LeetCode-40-Sombination-Sum-2"></a></li>
+<li><a href="posts/5eb5539f">Not Finished Yet</a> <a href="Algorithm-LeetCode-46-Permutations"></a></li>
+<li><a href="posts/9b8ca6c9">Not Finished Yet</a> <a href="Algorithm-LeetCode-47-Permutations-2"></a></li>
+<li><a href="posts/e543f658">Not Finished Yet</a> <a href="Algorithm-LeetCode-60-Permutation-Sequence"></a></li>
+<li><a href="posts/d0bc5ca9">Not Finished Yet</a> <a href="Algorithm-LeetCode-77-Combinations"></a></li>
+<li><a href="posts/c6550f93">Algorithm LeetCode 78 Subsets</a> <a href="Algorithm-LeetCode-78-Subsets"></a></li>
+<li><a href="posts/2c6a9272">Not Finished Yet</a> <a href="Algorithm-LeetCode-79-Word-Search"></a></li>
+<li><a href="posts/7e6505c5">Not Finished Yet</a> <a href="Algorithm-LeetCode-90-Subsets-2"></a></li>
+<li><a href="posts/45958">Algorithm LeetCode 93 Restore IP Address</a> <a href="Algorithm-LeetCode-93-Restore-IP-Address"></a></li>
+<li><a href="posts/11107">Algorithm LeetCode 131 Palindrome Partitioning</a> <a href="Algorithm-LeetCode-131-Palindrome-Partitioning"></a></li>
+<li><a href="posts/8ac9d314">Not Finished Yet</a> <a href="Algorithm-LeetCode-139-Word-Break"></a></li>
+<li><a href="posts/f06d3d98">Algorithm LeetCode 216 Combination Sum 3</a> <a href="Algorithm-LeetCode-216-Combination-Sum-3"></a></li>
 </ul>
 <h2 id="位运算-1-3"><a href="#位运算-1-3" class="headerlink" title="位运算(1/3)"></a>位运算(1/3)</h2><ul>
-<li><a href="Algorithm-LeetCode-136-Single-Number">Algorithm LeetCode 136 Single Number</a></li>
-<li><a href="Algorithm-LeetCode-137-Single-Number-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-260-Single-Number-3">Not Finished Yet</a></li>
+<li><a href="posts/d7f9b70d">Algorithm LeetCode 136 Single Number</a> <a href="Algorithm-LeetCode-136-Single-Number"></a></li>
+<li><a href="posts/7b872305">Not Finished Yet</a> <a href="Algorithm-LeetCode-137-Single-Number-2"></a></li>
+<li><a href="posts/6bbe8896">Not Finished Yet</a> <a href="Algorithm-LeetCode-260-Single-Number-3"></a></li>
 </ul>
 ]]></content>
       <categories>
@@ -7180,51 +7180,51 @@ These features of the library coexist seamlessly with your existing layouts. For
 <li>内存优化</li>
 </ul>
 <h3 id="UI优化"><a href="#UI优化" class="headerlink" title="UI优化"></a>UI优化</h3><ul>
-<li><a href="http://blog.scions.cn/2019/06/04/setContentView%E4%B8%8ELayoutInflater%E5%8A%A0%E8%BD%BD%E8%A7%A3%E6%9E%90%E6%9C%BA%E5%88%B6%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">setContentView与LayoutInflater加载解析机制源码分析</a></li>
-<li><a href="done...">AsyncLayoutInflator原理</a></li>
-<li><a href="done...">抽象布局的使用</a></li>
-<li><a href="done........">动画原理分析</a></li>
-<li><a href="done......">View的绘制流程</a></li>
-<li><a href="done...">Fragment懒加载</a></li>
-<li><a href="progressing....">UI优化常用工具</a></li>
-<li><a href="progressing...">ANR原理分析与解决</a></li>
-<li><a href="progressing...">ReclerView与ListView的区别</a></li>
+<li><a href="posts/5259ae3c">setContentView与LayoutInflater加载解析机制源码分析</a> <a href="Android-setContentView与LayoutInflater加载解析机制源码分析"></a></li>
+<li><a href="posts/7053c23b">AsyncLayoutInflator原理</a> <a href="Android-AsyncLayoutInflator原理"></a></li>
+<li><a href="posts/db834188">抽象布局的使用</a> <a href="Android-抽象布局的使用"></a></li>
+<li><a href="posts/4ea354ae">动画原理分析</a> <a href="Android-动画原理分析"></a></li>
+<li><a href="posts/5c71151a">View的绘制流程</a> <a href="Android-View的绘制流程"></a></li>
+<li><a href="posts/34ef83a0">Fragment懒加载</a> <a href="Android-Fragment懒加载"></a></li>
+<li><a href="posts/d96da03e">UI优化常用工具</a> <a href="Android-UI优化常用工具"></a></li>
+<li><a href="posts/2c4d5f81">ANR原理分析与解决</a> <a href="Android-ANR原理分析与解决"></a></li>
+<li><a href="posts/d2b4a3fc">ReclerView与ListView的区别</a> <a href="Android-RecyclerView与ListView的区别"></a></li>
 <li>ViewPager &amp; ViewPager2源码分析</li>
 <li>[TextView优化](<a href="https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0</a>   不着急)</li>
 <li>[X2C框架原理分析](<a href="https://github.com/iReaderAndroid/X2C" target="_blank" rel="noopener">https://github.com/iReaderAndroid/X2C</a> 不着急. 原理是new 替代 反射)</li>
 </ul>
 <h3 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h3><ul>
-<li><a href="progressing...">App启动过程和Activity启动过程</a></li>
-<li><a href="done...">Activity栈和LaunchMode</a></li>
-<li><a href="progressing...">SharedPreferene原理</a></li>
-<li><a href="done...">EventBus2 &amp; EventBus3对比</a></li>
+<li><a href="posts/b5608f0f">App启动过程和Activity启动过程</a> <a href="Android-App启动过程和Activity启动过程"></a></li>
+<li><a href="posts/a578e2">Activity栈和LaunchMode</a> <a href="Android-Activity栈和启动模式"></a></li>
+<li><a href="posts/c8244c97">SharedPreferene原理</a> <a href="Android-SharedPreference原理"></a></li>
+<li><a href="posts/c09a1c52">EventBus2 &amp; EventBus3对比</a> <a href="Android-EventBus2-EventBus3对比"></a></li>
 </ul>
 <h3 id="包体积优化"><a href="#包体积优化" class="headerlink" title="包体积优化"></a>包体积优化</h3><ul>
-<li><a href="done...">Reduce your app size</a></li>
-<li><a href="done...">Configure your build-Overview</a></li>
-<li><a href="done...">Shrink, obfuscate, and optimize your app</a></li>
+<li><a href="posts/f8021ed8">Reduce your app size</a> <a href="Translation-Reduce-your-app-size"></a></li>
+<li><a href="posts/8daa0b89">Configure your build-Overview</a> <a href="Translation-Configure-your-build-Overview"></a></li>
+<li><a href="posts/a692d70a">Shrink, obfuscate, and optimize your app</a> <a href="Translation-Shrink-obfuscate-and-optimize-your-app"></a></li>
 <li>Redex的使用</li>
 <li>Lint的使用</li>
 </ul>
 <h3 id="线程优化"><a href="#线程优化" class="headerlink" title="线程优化"></a>线程优化</h3><ul>
-<li><a href="done...">Handler原理</a></li>
-<li><a href="done...">IdleHandler的使用</a></li>
-<li><a href="done...">AsyncTask原理</a></li>
-<li><a href="done...">HandlerThread原理</a></li>
-<li><a href="done...">IntentService的使用和原理</a></li>
-<li><a href="progressing...">Android中startService和bindService的区别</a></li>
+<li><a href="posts/122d6ee8">Handler原理</a> <a href="Android-Handler原理.md"></a></li>
+<li><a href="posts/971bf444">IdleHandler的使用</a> <a href="Android-IdleHandler的使用"></a></li>
+<li><a href="posts/cc1de343">AsyncTask原理</a> <a href="Android-AsyncTask原理"></a></li>
+<li><a href="posts/efbd99a7">HandlerThread原理</a> <a href="Android-HandlerThread原理"></a></li>
+<li><a href="posts/a445691e">IntentService的使用和原理</a> <a href="Android-IntentService的使用和原理"></a></li>
+<li><a href="posts/72e1c46d">Android中startService和bindService的区别</a> <a href="Android-StartService和bindService的区别"></a></li>
 <li><a href="progressing...">线程池相关</a></li>
 </ul>
 <h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><ul>
-<li><a href="done...">对象池的使用</a></li>
-<li><a href="done...">Loading Large Bitmaps Efficiently</a></li>
-<li><a href="done...">Caching Bitmaps</a></li>
+<li><a href="posts/d7e77019">对象池的使用</a> <a href="Android-对象池的使用"></a></li>
+<li><a href="posts/74f024ac">Loading Large Bitmaps Efficiently</a> <a href="Translation-Loading-Large-Bitmaps-Efficiently"></a></li>
+<li><a href="posts/a176b35b">Caching Bitmaps</a> <a href="Translation-Caching-Bitmaps"></a></li>
 <li><a href="progressing...">Managing Bitmap Memory</a></li>
-<li><a href="progressing...">Android常见内存泄漏</a></li>
+<li><a href="posts/a6157931">Android常见内存泄漏</a> <a href="Android-常见内存泄漏"></a></li>
 <li><a href="progressing...">图片的内存计算</a></li>
-<li><a href="progressing...">LruCache原理</a></li>
-<li><a href="progressing...">LeakCanary源码分析</a></li>
-<li><a href="done...">BlockCanary源码分析</a></li>
+<li><a href="posts/85c12fe4">LruCache原理</a> <a href="Android-LruCache原理"></a></li>
+<li><a href="posts/91222177">LeakCanary源码分析</a> <a href="Android-LeakCanary源码分析"></a></li>
+<li><a href="posts/ba081c48">BlockCanary源码分析</a> <a href="Android-BlockCanary源码分析"></a></li>
 <li>Java GC内存回收机制</li>
 <li>开源图片加载库源码分析</li>
 <li>内存分析工具的使用, MAT, TraceView, SystemTrace, HeapViewer, Heap SnapShot</li>
