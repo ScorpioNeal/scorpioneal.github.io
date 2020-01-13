@@ -307,6 +307,330 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/db834188/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/db834188/" itemprop="url">Android 抽象布局的使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-24T09:41:49+08:00">
+                2019-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/db834188/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/db834188/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Contents"><a href="#Contents" class="headerlink" title="Contents"></a>Contents</h2><ul>
+<li>include</li>
+<li>merge</li>
+<li>viewstub</li>
+</ul>
+<h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p>重用布局文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">include</span> <span class="attr">layout</span>=<span class="string">"@layout/layout_file"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以在<code>include</code>中指定<code>id</code>， 如果这样，会覆盖<code>layout_file</code>中的<code>id</code></p>
+<h2 id="merge"><a href="#merge" class="headerlink" title="merge"></a>merge</h2><p>减少视图层级, 多用于替换<code>FramenLayout</code>或者当一个布局包含另一个时</p>
+<p>Since the <code>FrameLayout</code> has the same dimension as its parent, by the virtue of using the <code>match_parent</code> constraints, and does not define any background, extra padding or a gravity, it is totally useless, we can use merge tag to replace it. (也就是说，当前布局根布局如果使用的是<code>Framelayout</code>而且与父布局完全一致，那么当前这层布局的根布局就可以省略，使用<code>merge</code>代替)</p>
+<p>When the <code>LayoutInflater</code> encounters this tag, it skips it and adds the <code>&lt;merge/&gt;</code> children to the <code>&lt;merge/&gt;</code> parent. (当<code>LayoutInflater</code>解析<code>xml</code>时，如果遇到了<code>merge</code>标签，那么他会忽略这个标签，而是把他的子布局添加到他的父布局里，具体参见<a href>setContentView与LayoutInflater加载解析机制源码解析</a>)</p>
+<p>You can’t use this trick if your layout was using a <code>LinearLayout</code> as its root tag. (根布局使用<code>LinearLayout</code>的时候不能用merge替代)</p>
+<p><code>&lt;merge&gt;</code> can only be used as the root tag of an XML layout.(<code>merge</code>标签只能用于根布局)</p>
+<p>When inflating a layout starting with a <code>&lt;merge/&gt;</code>, you must specify a parent ViewGroup and you must set attachToRoot to true.(使用<code>LayoutInflater</code>解析<code>xml</code>时，如果<code>xml</code>以<code>merge</code>开始，你必须在解析时指定<code>parent viewgroup</code>和<code>attachToRoot = true</code>)</p>
+<h2 id="viewstub"><a href="#viewstub" class="headerlink" title="viewstub"></a>viewstub</h2><p>需要的时候才加载</p>
+<p>It has no dimension, it does not draw anything and does not participate in the layout in any way.</p>
+<p><code>ViewStub</code>只能<code>inflate</code>一次，之后<code>ViewStub</code>对象就会被置为空, 换句话说，某个被<code>ViewStub</code>指定的布局被<code>inflate</code>后，就不能再通过<code>ViewStub</code>来控制它了.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ViewStub</span>&gt;</span></span><br><span class="line">  android:id=""</span><br><span class="line">  android:layout="to refreence what layout file to include and inflate"</span><br><span class="line">  android:inflatedId="can be used to override the id of the root of the included file"</span><br><span class="line"><span class="tag">&lt;/<span class="name">ViewStub</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>When you are ready to inflate the stub, simply invoke the inflate() method. you can also simply change the visiblity of the stub to VISIBLE or INVISIBLE and the stub will inflate.(使用的时候，你可以通过<code>inflate()</code>方法来加载这个布局，也可以简单的通过设置 <code>VISIBLE</code>和<code>INVISIBLE</code>来控制)</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/290d3103/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/290d3103/" itemprop="url">Java- 《Java编程的逻辑》_容器类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-21T09:10:18+08:00">
+                2019-06-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/290d3103/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/290d3103/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Collections子接口"><a href="#Collections子接口" class="headerlink" title="Collections子接口"></a>Collections子接口</h2><p><img src="http://img-scions.test.upcdn.net/Collection.png" alt></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c8a24b3d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2247,7 +2571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">217</span>
+                  <span class="site-state-item-count">219</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Algorithm LeetCode 40 Sombination Sum 2</title>
+    <url>/posts/316095ca/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Algorithm LeetCode 47 Permutations 2</title>
+    <url>/posts/9b8ca6c9/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Algorithm LeetCode 132 Palindrome Partitioning 2</title>
     <url>/posts/a92db813/</url>
     <content><![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
@@ -525,7 +535,20 @@
   <entry>
     <title>Algorithm LeetCode 92 Reverse Linked List 2</title>
     <url>/posts/e1ca3b52/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Reverse a linked list from position m to n. Do it in one-pass.</p>
+<p>Note: 1 ≤ m ≤ n ≤ length of list.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4</span><br><span class="line">Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>第一步: 1-2-3-4-5-null变为1-3-2-4-5-null<br>第二步: 1-3-2-4-5-null变为1-4-3-2-5-null</p>
+<p>还需要自己多写几次</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseBetween</span><span class="params">(ListNode head, <span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> cnt = (n - m);</span><br><span class="line">        <span class="keyword">if</span>(cnt &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        ListNode newHead = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        newHead.next = head;</span><br><span class="line"></span><br><span class="line">        ListNode prev = newHead;</span><br><span class="line">        <span class="keyword">int</span> tmp = m;</span><br><span class="line">        <span class="keyword">while</span>(tmp-- &gt; <span class="number">1</span> &amp;&amp; prev != <span class="keyword">null</span>) &#123;</span><br><span class="line">            prev = prev.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(prev == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> newHead.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ListNode start = prev.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(cnt-- &gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            ListNode p = start.next;</span><br><span class="line">            start.next = p.next;</span><br><span class="line">            p.next = prev.next;</span><br><span class="line">            prev.next = p;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> newHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title>Algorithm LeetCode 79 Word Search</title>
@@ -586,9 +609,14 @@
   <entry>
     <title>Algorithm LeetCode 90 Subsets 2</title>
     <url>/posts/7e6505c5/</url>
-    <content><![CDATA[<p>与某些题类似，可以针对性一起训练下<br>backtrack</p>
-<p>46, 47</p>
+    <content><![CDATA[<p>与46, 47, 78题类似，可以针对性一起训练下<br>backtracking</p>
 ]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title>Algorithm LeetCode 43 Multiply Strings</title>
@@ -596,9 +624,26 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Algorithm LeetCode 78 90 Subsets</title>
+    <title>Algorithm LeetCode 78 Subsets</title>
     <url>/posts/c6550f93/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a set of distinct integers, nums, return all possible subsets (the power set).</p>
+<p>Note: The solution set must not contain duplicate subsets.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">Input: nums = [1,2,3]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [3],</span><br><span class="line">  [1],</span><br><span class="line">  [2],</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3],</span><br><span class="line">  [2,3],</span><br><span class="line">  [1,2],</span><br><span class="line">  []</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>可以使用queue的思想. 先把[]和[1]放入<br>然后对于数组里的2. queue里[]和[1] 先保留一份自身，然后每个增加个[2]。变为<br>[], [1], [2], [1, 2]</p>
+<p>然后对于数组里的3, queue里先保留自身一份, 然后每个增加[3]变为<br>[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]</p>
+<p>这种代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == nums || nums.length == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Queue&lt;List&lt;Integer&gt;&gt; queue = <span class="keyword">new</span> LinkedList();</span><br><span class="line"></span><br><span class="line">        queue.add(<span class="keyword">new</span> ArrayList());</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        list.add(nums[<span class="number">0</span>]);</span><br><span class="line">        queue.add(list);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> queueSize = queue.size();</span><br><span class="line">            <span class="keyword">int</span> num =  nums[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; queueSize; j++) &#123;</span><br><span class="line">                List&lt;Integer&gt; copy = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                List&lt;Integer&gt; raw = queue.poll();</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> m  = <span class="number">0</span>; m &lt; raw.size(); m++) &#123;</span><br><span class="line">                    copy.add(raw.get(m));</span><br><span class="line">                &#125;</span><br><span class="line">                copy.add(num);</span><br><span class="line">                queue.add(copy);</span><br><span class="line">                queue.add(raw);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ret = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">            ret.add(queue.poll());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>还有种思路就是比较典型的backtracking问题</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; subsets(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    backtrack(list, <span class="keyword">new</span> ArrayList&lt;&gt;(), nums, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">backtrack</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; list , List&lt;Integer&gt; tempList, <span class="keyword">int</span> [] nums, <span class="keyword">int</span> start)</span></span>&#123;</span><br><span class="line">    list.add(<span class="keyword">new</span> ArrayList&lt;&gt;(tempList));</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = start; i &lt; nums.length; i++)&#123;</span><br><span class="line">        tempList.add(nums[i]);</span><br><span class="line">        backtrack(list, tempList, nums, i + <span class="number">1</span>);</span><br><span class="line">        tempList.remove(tempList.size() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title>Algorithm LeetCode 48 Rotate Image</title>
@@ -606,13 +651,13 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Algorithm LeetCode 46 47 Permutations</title>
+    <title>Algorithm LeetCode 46 Permutations</title>
     <url>/posts/5eb5539f/</url>
     <content><![CDATA[<p>与 39, 40题一起看，注意里面的递归</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//为什么是start + 1, 而39, 40是 i + 1</span><br><span class="line">            get(nums, start + 1);</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
-    <title>Algorithm LeetCode 39 40 Combination Sum</title>
+    <title>Algorithm LeetCode 39 Combination Sum</title>
     <url>/posts/32dbc1ca/</url>
     <content><![CDATA[]]></content>
   </entry>
@@ -646,7 +691,21 @@
   <entry>
     <title>Algorithm LeetCode 61 Rotate List</title>
     <url>/posts/2889f084/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a linked list, rotate the list to the right by k places, where k is non-negative.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, k = 2</span><br><span class="line">Output: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br><span class="line">Explanation:</span><br><span class="line">rotate 1 steps to the right: 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL</span><br><span class="line">rotate 2 steps to the right: 4-&gt;5-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Input: 0-&gt;1-&gt;2-&gt;NULL, k = 4</span><br><span class="line">Output: 2-&gt;0-&gt;1-&gt;NULL</span><br><span class="line">Explanation:</span><br><span class="line">rotate 1 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</span><br><span class="line">rotate 2 steps to the right: 1-&gt;2-&gt;0-&gt;NULL</span><br><span class="line">rotate 3 steps to the right: 0-&gt;1-&gt;2-&gt;NULL</span><br><span class="line">rotate 4 steps to the right: 2-&gt;0-&gt;1-&gt;NULL</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>思路很好，形成一个环，然后再剪断</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">rotateRight</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == head) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        ListNode h = head;</span><br><span class="line">        <span class="keyword">int</span> n = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(head.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            head = head.next;</span><br><span class="line">            ++n;</span><br><span class="line">        &#125;</span><br><span class="line">        head.next = h;</span><br><span class="line">        <span class="keyword">int</span> m = n - k % n;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            h = h.next;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode p = h.next;</span><br><span class="line">        h.next = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> p;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title>Algorithm LeetCode 22 Generate Parentheses</title>
@@ -825,14 +884,19 @@
   <entry>
     <title>LeetCode  目录</title>
     <url>/posts/4164a485/</url>
-    <content><![CDATA[<h2 id="二叉树-15-15"><a href="#二叉树-15-15" class="headerlink" title="二叉树(15/15)"></a>二叉树(15/15)</h2><ul>
+    <content><![CDATA[<h2 id="二叉树-23-28"><a href="#二叉树-23-28" class="headerlink" title="二叉树(23/28)"></a>二叉树(23/28)</h2><ul>
+<li><a href="Algorithm-LeetCode-95-Unique-Binary-Search-Trees-2">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-96-Unique-Binary-Search-Trees">Algorithm LeetCode 96 Unique Binary Search Trees</a></li>
+<li><a href="Algorithm-LeetCode-98-Validate-Binary-Search-Tree">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal">Algorithm LeetCode 105 Construct Binary Tree from Preorder and Inorder Traversal</a></li>
 <li><a href="Algorithm-LeetCode-106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal">Algorithm LeetCode 106 Construct Binary Tree from Inorder and Postorder Traversal</a></li>
 <li><a href="Algorithm-LeetCode-107-Binary-Tree-Level-Order-Traversal-2">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a></li>
 <li><a href="Algorithm-LeetCode-108-Convert-Sorted-Array-to-Binary-Search-Tree">Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</a></li>
 <li><a href="Algorithm-LeetCode-109-Convert-Sorted-List-to-Binary-Search-Tree">Algorithm LeetCode 109 Convert Sorted List to Binary Search Tree</a></li>
 <li><a href="Algorithm-LeetCode-111-Minimum-Depth-Of-Binary-Tree">Algorithm LeetCode 111 Minimum Depth Of Binary Tree</a></li>
+<li><a href="Algorithm-LeetCode-113-Path-Sum-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-114-Flattern-Binary-Tree-to-Linked-List">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-129-Sum-root-to-leaf-numbers">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-144-Binary-Tree-Preorder-Traversal">Algorithm LeetCode 144 Binary Tree Preorder Traversal</a></li>
 <li><a href="Algorithm-LeetCode-145-Binary-Tree-Postorder-Traversal">Algorithm LeetCode 145 Binary Tree Postorder Traversal</a></li>
 <li><a href="Algorithm-LeetCode-199-Binary-Tree-Right-Side-View">Algorithm LeetCode 199 Binary Tree Right Side View</a></li>
@@ -850,9 +914,13 @@
 <li><a href="Algorithm-Leetcode-993-Cousins-in-binary-tree">Algorithm Leetcode 993 Cousins in binary tree</a></li>
 <li><a href="Algorithm-Leetcode-1022-Sum-of-root-to-leaf-binary-numbers">Algorithm Leetcode 1022 Sum of root to leaf binary numbers</a></li>
 </ul>
-<h2 id="链表-4-5"><a href="#链表-4-5" class="headerlink" title="链表(4/5)"></a>链表(4/5)</h2><ul>
+<h2 id="链表-10-13"><a href="#链表-10-13" class="headerlink" title="链表(10/13)"></a>链表(10/13)</h2><ul>
+<li><a href="Algorithm-LeetCode-19-Remove-Nth-Node-From-End-of-List">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-24-Swap-nodes-in-pairs">Algorithm LeetCode 24 Swap nodes in pairs</a></li>
+<li><a href="Algorithm-LeetCode-61-Rotate-List">Algorithm LeetCode 61 Rotate List</a></li>
+<li><a href="Algorithm-LeetCode-82-Remove-Duplicates-from-sorted-list-2">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-86-Partition-List">Algorithm LeetCode 86 Partition List</a></li>
+<li><a href="Algorithm-LeetCode-92-Reverse-Linked-List-2">Algorithm LeetCode 92 Reverse Linked List 2</a></li>
 <li><a href="Algorithm-LeetCode-141-Linked-List-Cycle">Algorithm LeetCode 141 Linked List Cycle</a></li>
 <li><a href="Algorithm-LeetCode-142-Linked-List-Cycle-2">Algorithm LeetCode 142 Linked List Cycle 2</a></li>
 <li><a href="Algorithm-LeetCode-143-Reorder-List">Algorithm LeetCode 143 Reorder List</a></li>
@@ -866,9 +934,16 @@
 <li><a href="Algorithm-Leetcode-225-Implement-Stack-using-Queues">Algorithm Leetcode 225 Implement Stack using Queues</a></li>
 <li><a href="Algorithm-Leetcode-232-Implement-Queue-using-Stacks">Algorithm Leetcode 232 Implement Queue using Stacks</a></li>
 </ul>
-<h2 id="array-string-27-28"><a href="#array-string-27-28" class="headerlink" title="array/string(27/28)"></a>array/string(27/28)</h2><ul>
+<h2 id="array-string-30-41"><a href="#array-string-30-41" class="headerlink" title="array/string(30/41)"></a>array/string(30/41)</h2><ul>
+<li><a href="Algorithm-LeetCode-5-Longest-Palindromic-Substring">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-15-3Sum">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-16-3Sum-Closest">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-18-4Sum">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-28-Implement-strStr">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-33-Search-in-rotated-sorted-array">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-48-Rotate-Image">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-66-Plus-One">Algorithm LeetCode 66 Plus One</a></li>
+<li><a href="Algorithm-LeetCode-81-Search-in-Rotated-Sorted-Array">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-119-Pascal-s-Triangle-2">Algorithm LeetCode 119 Pascal’s Triangle 2</a></li>
 <li><a href="Algorithm-LeetCode-153-Find-Minimum-in-Rotated-Sorted-Array">Algorithm LeetCode 153 Find Minimum in Rotated Sorted Array</a></li>
 <li><a href="Algorithm-LeetCode-179-Largest-Number">Algorithm LeetCode 179 Largest Number</a></li>
@@ -902,7 +977,9 @@
 <li><a href="Algorithm-Leetcode-1071-Greatest-Common-Divisor-of-Strings">Algorithm LeetCode 1071 Greatest Common Divisor of Strings</a></li>
 <li><a href="Algorithm-LeetCode-1122-Relative-Sort-Array">Algorithm LeetCode 1122 Relative Sort Array</a></li>
 </ul>
-<h2 id="math-others-6-15"><a href="#math-others-6-15" class="headerlink" title="math/others(6/15)"></a>math/others(6/15)</h2><ul>
+<h2 id="math-others-6-17"><a href="#math-others-6-17" class="headerlink" title="math/others(6/17)"></a>math/others(6/17)</h2><ul>
+<li><a href="Algorithm-LeetCode-2-Add-Two-Numbers">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-43-Multiply-Strings">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-367-Valid-Perfect-Square">Algorithm LeetCode 367 Valid Perfect Square</a></li>
 <li><a href="Algorithm-LeetCode-374-Guess-Number-Higher-or-Lower">Algorithm LeetCode 374 Guess Number Higher or Lower</a></li>
 <li><a href="Algorithm-Leetcode-455-Assign-Cookies">Not Finished Yet</a></li>
@@ -919,51 +996,33 @@
 <li><a href="Algorithm-LeetCode-1128-Number-of-equivalent-domino-pairs">Not Finished Yet</a></li>
 <li><a href="Algorithm-Leetcode-1184-Distance-Between-Bus-Stops">Not Finished Yet</a></li>
 </ul>
-<h2 id="DP问题-1-3"><a href="#DP问题-1-3" class="headerlink" title="DP问题(1/3)"></a>DP问题(1/3)</h2><ul>
+<h2 id="DP问题-1-5"><a href="#DP问题-1-5" class="headerlink" title="DP问题(1/5)"></a>DP问题(1/5)</h2><ul>
+<li><a href="Algorithm-LeetCode-120-Triangle">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-132-Palindrome-Partitioning-2">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-152-Maximum-Product-Subarray">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-221-Maximal-Square">Not Finished Yet</a></li>
 <li><a href="Algorithm-Leetcode-746-Min-Cost-Climbing-Stairs">Algorithm LeetCode 746 Min Cost Climbing Stairs</a></li>
 </ul>
-<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><ul>
+<h2 id="Backtracking-4-14"><a href="#Backtracking-4-14" class="headerlink" title="Backtracking(4/14)"></a>Backtracking(4/14)</h2><ul>
+<li><a href="Algorithm-LeetCode-22-Generate-Parentheses">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-39-Combination-Sum">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-40-Combination-Sum">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-46-Permutations">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-47-Permutations-2">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-60-Permutation-Sequence">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-77-Combinations">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-78-Subsets">Algorithm LeetCode 78 Subsets</a></li>
+<li><a href="Algorithm-LeetCode-79-Word-Search">Not Finished Yet</a></li>
+<li><a href="Algorithm-LeetCode-90-Subsets-2">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-93-Restore-IP-Address">Algorithm LeetCode 93 Restore IP Address</a></li>
 <li><a href="Algorithm-LeetCode-131-Palindrome-Partitioning">Algorithm LeetCode 131 Palindrome Partitioning</a></li>
+<li><a href="Algorithm-LeetCode-139-Word-Break">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-216-Combination-Sum-3">Algorithm LeetCode 216 Combination Sum 3</a></li>
 </ul>
-<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><ul>
+<h2 id="位运算-1-3"><a href="#位运算-1-3" class="headerlink" title="位运算(1/3)"></a>位运算(1/3)</h2><ul>
 <li><a href="Algorithm-LeetCode-136-Single-Number">Algorithm LeetCode 136 Single Number</a></li>
 <li><a href="Algorithm-LeetCode-137-Single-Number-2">Not Finished Yet</a></li>
 <li><a href="Algorithm-LeetCode-260-Single-Number-3">Not Finished Yet</a></li>
-</ul>
-<ul>
-<li><a href="Algorithm-LeetCode-2-Add-Two-Numbers">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-5-Longest-Palindromic-Substring">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-15-3Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-16-3Sum-Closest">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-18-4Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-19-Remove-Nth-Node-From-End-of-List">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-22-Generate-Parentheses">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-33-Search-in-rotated-sorted-array">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-39-40-Combination-Sum">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-43-Multiply-Strings">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-46-47-Permutations">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-48-Rotate-Image">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-60-Permutation-Sequence">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-61-Rotate-List">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-77-Combinations">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-78-90-Subsets">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-79-Word-Search">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-81-Search-in-Rotated-Sorted-Array">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-82-Remove-Duplicates-from-sorted-list-2">Not Finished Yet</a>$$</li>
-<li><a href="Algorithm-LeetCode-90-Subsets-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-92-Reverse-Linked-List-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-95-Unique-Binary-Search-Trees-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-98-Validate-Binary-Search-Tree">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-113-Path-Sum-2">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-114-Flattern-Binary-Tree-to-Linked-List">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-120-Triangle">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-129-Sum-root-to-leaf-numbers">Not Finished Yet</a></li>
-<li><a href="Algorithm-LeetCode-139-Word-Break">Not Finished Yet</a></li>
 </ul>
 ]]></content>
       <categories>
