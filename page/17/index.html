@@ -307,195 +307,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/cb9fd130/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/cb9fd130/" itemprop="url">Translation-Google Protocol Buffers</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-27T13:23:51+08:00">
-                2019-09-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/cb9fd130/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/cb9fd130/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Developer-Guide"><a href="#Developer-Guide" class="headerlink" title="Developer Guide"></a>Developer Guide</h1><p>Welcome to the developer documentation for protocol buffers - a language-neutral, platform-neutral, extensible way of serializing structured data for use in communications protocols, data storage, and more.</p>
-<p>This documentation is aimed at Java, C++, or Python developers who want to use protocol buffers in their applications. This overview introduces protocol buffers and tells you what you need to do to get started - you can then go on to follow the <a href="https://developers.google.com/protocol-buffers/docs/tutorials" target="_blank" rel="noopener">tutorial</a> or delve deeper into <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener">protocol buffer encoding</a>. API <a href="https://developers.google.com/protocol-buffers/docs/reference/overview" target="_blank" rel="noopener">reference documentation</a> is also provided for all three languages, as well as <a href="https://developers.google.com/protocol-buffers/docs/proto" target="_blank" rel="noopener">language</a> and <a href="https://developers.google.com/protocol-buffers/docs/style" target="_blank" rel="noopener">style</a> guides for writing <code>.proto</code> files.</p>
-<h2 id="What-are-protocol-buffers"><a href="#What-are-protocol-buffers" class="headerlink" title="What are protocol buffers"></a>What are protocol buffers</h2><p>Protocol buffers are a flexible, efficient, automated mechanism for serializing structed data - think XML, but smaller, faster, and simpler. You define how you want your data to be structed once, then you can use special generated source code to easily write and read your structured data to and from a variety of data streams and using a variety of languages. You can even update your data structure without breaking deployed programs that are compiled against the “old” format.</p>
-<h2 id="How-do-they-work"><a href="#How-do-they-work" class="headerlink" title="How do they work?"></a>How do they work?</h2><p>You specify how you want the information you’re serializing to be structured by defining protocol buffer message types in <code>.proto</code> files. Each protocol buffer message is a small logical record of information, containing a series of name-value pairs. Here’s a very basic example of a <code>.proto</code> file that defines a message containing information about a person:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">message Person &#123;</span><br><span class="line">    required string name = 1;</span><br><span class="line">    required int32 id = 2;</span><br><span class="line">    optional string email = 3;</span><br><span class="line"></span><br><span class="line">    enum PhoneType &#123;</span><br><span class="line">        MOBILE = 0;</span><br><span class="line">        HOME = 1;</span><br><span class="line">        WORK = 2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    message PhoneNumber &#123;</span><br><span class="line">        required string number = 1;</span><br><span class="line">        optional PhoneType type = 2 [default = HOME];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    repeated PhoneNumber phone = 4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>As you can see, the message format is simple - each message type has one or more uniquely numbered fields, and each field has a name and a value type, where value types can be numbers(integer or floating-point), booleans, strings, raw bytes, or even(as in the example above) other protocol buffer message types, allowing you to structure your data hierarchically. You can speify optional field, <a href="https://developers.google.com/protocol-buffers/docs/proto#required_warning" target="_blank" rel="noopener">required fields</a>, and repeated fields. You can find more information about writing <code>.proto</code> files in the <a href="https://developers.google.com/protocol-buffers/docs/proto" target="_blank" rel="noopener">Protocol Buffer Language Guide</a>.</p>
-<p>Once you’ve defined your messages, you run the protocol buffer compiler for your application’s language to your <code>.proto</code> file to generate data access cleasses. These provide simple accessors for each field(like <code>name()</code> and <code>set_name()</code>) as well as methods to serialize/parse the whole structure to/from raw bytes - so, for instance, if your chosen language is C++, running the compiler on the above example will generate a class called <code>Person</code>. You can then use this class in your application to populate, serialize, and retrieve <code>Person</code> protocol buffer messages. You might then write some code like this: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Person person;</span><br><span class="line">person.set_name("John Doe");</span><br><span class="line">person.set_id(1234);</span><br><span class="line">person.set_email("jdoe@exmaple.com")</span><br><span class="line">fstream output("myfile", ios::out | ios::binary);</span><br><span class="line">person.SerializeToOstream(&amp;output);</span><br></pre></td></tr></table></figure>
-
-<p>Then later on, you could read your message back in :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fstream input("myfile", ios::in | ios::binary);</span><br><span class="line">Person person;</span><br><span class="line">person.ParseFromIstream(&amp;input);</span><br><span class="line">cout &lt;&lt; "Name: " &lt;&lt; person.name() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; "E-mail: " &lt;&lt; person.email() &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
-<p>You can add new fields to your message formats without breaking backwards-compatibility; old binaries simply ignore the new field when parsing. So if you have a communications protocol that uses protocol buffers as its data format, you can extend your protocol without having worry about breaking existing code.</p>
-<p>You’ll find a complete reference for using generated protocol buffer code in the <a href="https://developers.google.com/protocol-buffers/docs/reference/overview" target="_blank" rel="noopener">API Reference section</a>, and you can find out more about how protocol buffer messages are encoded in <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener">Protocol Buffer Encoding</a>.</p>
-<h2 id="Why-not-just-use-XML"><a href="#Why-not-just-use-XML" class="headerlink" title="Why not just use XML"></a>Why not just use XML</h2><p>Protocol buffers have many advantages over XML for serializing structureed data. Protocol buffers:</p>
-<ul>
-<li>are simpler</li>
-<li>are 3 to 10 times smaller</li>
-<li>are 20 to 100 times faster</li>
-<li>are less ambiguous</li>
-<li>generate data access classes that are easier to use programmatically</li>
-</ul>
-<p>For example, let’s say you want to model a <code>person</code> with a <code>name</code> and an <code>email</code>. In XML, you need to do: </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;person&gt;</span><br><span class="line">    &lt;name&gt; John Doe &lt;/name&gt;</span><br><span class="line">    &lt;email&gt;jdoe@example.com&lt;/email&gt;</span><br><span class="line">&lt;/person&gt;</span><br></pre></td></tr></table></figure>
-
-<p>while the corresponding protocol buffer message (in protocol buffer <a href="https://developers.google.com/protocol-buffers/docs/reference/cpp/google.protobuf.text_format" target="_blank" rel="noopener">text format</a>) is :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Textual representation of a protocol buffer.</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> This is *not* the binary format used on the wire.</span></span><br><span class="line">person &#123;</span><br><span class="line">    name: "John Doe"</span><br><span class="line">    email: "jode@example.com"</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>When this message is encoded to the protocol buffer <a href="https://developers.google.com/protocol-buffers/docs/encoding" target="_blank" rel="noopener">binary format</a>(the text format above is just a convenient human-readable representation for debugging and editing), it would probably be 28 bytes long and take around 100-200 nanoseconds to parse. The XML version is at least 69 bytes if you remove whitespace, and would take around 5000-10000 nanoseconds to parse.</p>
-<p>Also, manipulating a protocol buffer is much easier:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; "Name: " &lt;&lt; person.name() &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; "E-mail: " &lt;&lt; person.email() &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
-<p>whereas with XML you would have to do something like:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    cout &lt;&lt; "Name: "</span><br><span class="line">     &lt;&lt; person.getElementsByTagName("name")-&gt;item(0)-&gt;innerText()</span><br><span class="line">     &lt;&lt; endl;</span><br><span class="line">cout &lt;&lt; "E-mail: "</span><br><span class="line">     &lt;&lt; person.getElementsByTagName("email")-&gt;item(0)-&gt;innerText()</span><br><span class="line">     &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
-
-<p>However, protocol buffers are not always a better solution than XML - for instance, protobufs would not be a good way to model a text-based document with markup(e.g HTML) , since you cannot easily interleave structure with text. In addition, XML is human-readable and human-editable; protocol buffers, at least in their native format, are not. XML is also -to some extent - self-describing. A protocol buffer is only meaningful if you have the message definition(the <code>.proto</code> file).</p>
-<h2 id="Sounds-like-the-solution-for-me-How-do-I-get-started"><a href="#Sounds-like-the-solution-for-me-How-do-I-get-started" class="headerlink" title="Sounds like the solution for me! How do I get started?"></a>Sounds like the solution for me! How do I get started?</h2><p><a href="https://developers.google.com/protocol-buffers/docs/downloads.html" target="_blank" rel="noopener">Download the package</a> - this contains the complete source code for the Java, Python, and C++ protocol buffer compilers, as well as the classes you need for I/O and testing. To build and install your compiler, follow the instructions in the README.</p>
-<p>Once you’re all set, try following the <a href="https://developers.google.com/protocol-buffers/docs/tutorials" target="_blank" rel="noopener">tutorial</a> for your chosen language - this will step you through creating a simple appliation that uses protocol buffers.</p>
-<h2 id="Introducing-proto3"><a href="#Introducing-proto3" class="headerlink" title="Introducing proto3"></a>Introducing proto3</h2><p>Our most recent version 3 release introduces a new language version - Protocol Buffers language version 3(aka proto3), as well as some new featuers in our existing language version(aka proto2). Proto3 simplifies the protocol buffer language, both for ease of use and to make it available in a wider range of programming language: our current release lets you generate protocol buffer code in Java, C++, Python, Java Lite, Ruby, Javascript, Object-C, and C#. In addition you can generate proto3 code for Go using the latest Go protoc plugin, available from the <a href="https://github.com/golang/protobuf" target="_blank" rel="noopener">golang/protobuf</a> Github repository. More language are in the pipeline.</p>
-<p>Note that the two language version APIs are not completely compatible. To avoid inconvenience to existing users, we will continue to support the previous language version in new protocol buffers releases.</p>
-<p>You can see the major differences from the current default version in the release notes and learn about proto3 syntax in the <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Proto3 Language Guide</a>. Full documentation for proto3 is coming soon!</p>
-<p>(If the names proto2 and proto3 seem a little confusing, it’s because when we originally open-sourced protocol buffers it was actually Google’s second version of the language – also known as proto2. This is also why our open source version number started from v2.0.0).</p>
-<h2 id="A-bit-of-history"><a href="#A-bit-of-history" class="headerlink" title="A bit of history"></a>A bit of history</h2><p>Protocol buffers were initially developed at Google to deal with an index server request/response protocol. Prior to protocol buffers, there was a format for requests and responses that used hand marshalling/unmarshalling of requests and responses, and that supported a number of versions of the protocol. This resulted in some very ugly code, like:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> if (version == 3) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125; else if (version &gt; 4) &#123;</span><br><span class="line">    if (version == 5) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Explicitly formatted protocols also compilcated the rollout of new protocol versions, because developers had to make sure that all servers between the originator of the request and the actual server handling the request understood the new protocol before they could flip a switch to start using the new protocol.</p>
-<p>Protocol buffers were designed to solve many of these problems:</p>
-<ul>
-<li>New fields could be easily introduced, and intermediate servers that didn’t need to inspect the data could simply parse it and pass through the data without needing to know about all the fields.</li>
-<li>Formats were more self-describing, and could be dealt with from a variety of languages (C++, Java, etc.)</li>
-</ul>
-<p>However, users still needed to hand-write their own parsing code.</p>
-<p>As the system evolved, it acquired a number of other features and uses: </p>
-<ul>
-<li>Automatically-generated serialization and deserialization code avoided the need for hand parsing.</li>
-<li>In addition to being used for short-lived RPC (Remote Procedure Call) requests, people started to use protocol buffers as a handy self-describing format for storing data persistently (for example, in Bigtable).</li>
-<li>Server RPC interfaces started to be declared as part of protocol files, with the protocol compiler generating stub classes that users could override with actual implementations of the server’s interface.</li>
-</ul>
-<p>Protocol buffers are now Google’s lingua franca for data – at time of writing, there are 306,747 different message types defined in the Google code tree across 348,952 .proto files. They’re used both in RPC systems and for persistent storage of data in a variety of storage systems.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b4be5f5e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2319,6 +2130,308 @@
 <li><a href="https://developer.android.google.cn/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a> by clicking <code>Run</code>. Gradle adds your CMake or ndk-build process as a dependency to compile, build, and package your native library with your APK.</li>
 </ol>
 <p>Once your app is running on a physical device or the emulator, you can use Android Studio to <a href="https://developer.android.google.cn/studio/debug/index.html" target="_blank" rel="noopener">Debug Your App</a>. Otherwise, to learn more about the NDK and its components, read the <a href="https://developer.android.google.cn/ndk/guides/concepts.html" target="_blank" rel="noopener">Concetps</a> page.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/70d0c793/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/70d0c793/" itemprop="url">Translation-Build your app from the command line</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:52:49+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/70d0c793/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/70d0c793/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Build-your-app-from-the-command-line"><a href="#Build-your-app-from-the-command-line" class="headerlink" title="Build your app from the command line"></a>Build your app from the command line</h2><p><a href="https://developer.android.com/studio/build/building-cmdline" target="_blank" rel="noopener">Reference</a></p>
+<p>You can execute all the build tasks available to your Android project using the <a href>Gradle wrapper</a> command line tool. It’s available as a batch file for Windows(<code>gradlew.bat</code>) and a shell script for Linux and Mac(<code>gradlew.sh</code>), and it’s accessible from the root of each project you create with Android Studio.</p>
+<p>To run a task with the wrapper, use one of the following commands from a Terminal window(from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code>):</p>
+<ul>
+<li><p>On Windows:</p>
+<p>  gradlew task-name</p>
+</li>
+<li><p>on Mac or Linux:</p>
+<p>  ./gradlew task-name</p>
+</li>
+</ul>
+<p>To see a list of all available build tasks for your project, execute <code>tasks</code>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew tasks</span><br></pre></td></tr></table></figure>
+
+<p>The rest of this page describes the basics to build and run your app with the Gradle wrapper. For more information about how to set up your Android build, see <a href="https://developer.android.com/studio/build/index.html" target="_blank" rel="noopener">Configure your build</a>.</p>
+<p>If you’d prefer to use the Android Studio tools instead of the command line tools, see <a href="https://developer.android.com/studio/run/index.html" target="_blank" rel="noopener">Build and run your app</a></p>
+<h3 id="About-build-types"><a href="#About-build-types" class="headerlink" title="About build types"></a>About build types</h3><p>By default, there are two build types avaiable for every Android app: one for debugging your app-the <code>debug</code> build - and one for releasing your app to users-the <code>release</code> build. The resulting output from each build must be signed with a certificate before you can deploy your app to a device. The debug build is automatically signed with a debug key provided by the SDK tools(it’s insecure and you connot publish with it into the Google Play Store), and the release build must be signed with your own private key.</p>
+<p>If you want to build your app for release, it’s important that you also <a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">sign your app</a> with the appropriate signing key. If you’re just getting started, however, you can quickly run your apps on an emulator or a connected device by <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">building a debug APK</a>.</p>
+<p>You can also define a custom build type in your <code>build.gradle</code> file and configure it to be signed as a debug build by including <code>debuggable true</code>. For more information, see <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">Configure Build Variants</a>.</p>
+<h3 id="Build-and-deploy-an-APK"><a href="#Build-and-deploy-an-APK" class="headerlink" title="Build and deploy an APK"></a>Build and deploy an APK</h3><p>Although <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundles</a> is the best way to package your app and upload it to the Play Console, building an APK is better suited for when you want to quickly test a debug build or share your app as a deployable artifact with others.</p>
+<h4 id="Build-a-debug-APK"><a href="#Build-a-debug-APK" class="headerlink" title="Build a debug APK"></a>Build a debug APK</h4><p>For immediate app testing and debugging, you can build a debug APK. The debug APK is signed with a debug key provided by the SDK tools and allows debugging throught <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a>.</p>
+<p>To build a debug APK, open a command line and navigate to the root of your project directory. To initiate a debug build, invoke the <code>assembleDebug</code> task:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew assembleDebug</span><br></pre></td></tr></table></figure>
+
+<p>This creates an APK named <code>module_name-debug.apk</code> in <code>project_name/module_name/build/outputs/apk/</code>. The file is already signed with the debug key and aligned with <a href="https://developer.android.com/tools/help/zipalign.html" target="_blank" rel="noopener">zipalign</a> so you can immediately install it on a device.</p>
+<p>Or to build the APK and immediately install it on a running emulator or connected device, instead invoke <code>installDebug</code>: </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradlew installDebug</span><br></pre></td></tr></table></figure>
+
+<p>The “Debug” part in the above task names is just a camel-case version of the <a href="https://developer.android.com/studio/build/build-variants.html" target="_blank" rel="noopener">build variant</a> name, so it can be replaced with whichever build type or vairant you want to assemble or install. For example, if you have a “demo” product flavor, then you can build the debug version with the <code>assembleDemoDebug</code> task.</p>
+<p>To see all the build and install tasks available for each variant(including uninstall tasks), run the <code>tasks</code> task.</p>
+<p>Also see the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnEmulator" target="_blank" rel="noopener">run your app on the emulator</a> and <a href="https://developer.android.com/studio/build/building-cmdline#RunningOnDevice" target="_blank" rel="noopener">run your app on a device</a>.</p>
+<h4 id="Build-a-release-APK"><a href="#Build-a-release-APK" class="headerlink" title="Build a release APK"></a>Build a release APK</h4><p>When you’re ready to release and distribute your app, you must build a release APK that is signed with your private key. For more information, go to section about how to [sign your app from the command line].(<a href="https://developer.android.com/studio/build/building-cmdline#sign_cmdline" target="_blank" rel="noopener">https://developer.android.com/studio/build/building-cmdline#sign_cmdline</a>)</p>
+<h4 id="Deploy-your-app-to-the-emulator"><a href="#Deploy-your-app-to-the-emulator" class="headerlink" title="Deploy your app to the emulator"></a>Deploy your app to the emulator</h4><p>To use the Android Emulator, you must <a href="https://developer.android.com/studio/run/managing-avds.html#createavd" target="_blank" rel="noopener">create an Android Virtual Device (AVD)</a> using Android Studio.</p>
+<p>Once you have an AVD, start the Android Emulator and install your app as follows:</p>
+<ol>
+<li>In a command line, navigate to <code>android_sdk/tools/</code> and start the emulator by specifying your AVD:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emulator -avd avd_name</span><br></pre></td></tr></table></figure>
+
+<p>If you’re unsure of the AVD name, execute `emulator -list-avds’</p>
+<ol start="2">
+<li>Now you can install your app using either one of the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool.</li>
+</ol>
+<p>If the APK is built using a developer preview SDK (if the <code>targetSdkVersion</code> is letter instead of a number), you must include the <a href="https://developer.android.com/studio/command-line/adb.html#-t-option" target="_blank" rel="noopener">-t option</a> with the <code>install</code> command to install a test APK.</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
+
+<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code>.</p>
+<p>For more information, see <a href="https://developer.android.com/studio/run/emulator.html" target="_blank" rel="noopener">Run Apps on the Android Emulator</a>.</p>
+<h4 id="Deploy-your-app-to-a-physical-device"><a href="#Deploy-your-app-to-a-physical-device" class="headerlink" title="Deploy your app to a physical device"></a>Deploy your app to a physical device</h4><p>Before you can run your app on a device, you must enable <code>USB debugging</code> on your device. You can find the option under <code>Settings &gt; Developer options</code>.</p>
+<p>Once your device is set up and connected via USB, you can install your app using either the Gradle install tasks mentioned in the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#DebugMode" target="_blank" rel="noopener">build a debug APK</a> or the <a href="https://developer.android.com/studio/command-line/adb.html" target="_blank" rel="noopener">adb</a> tool:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb -d install path/to/your_app.apk</span><br></pre></td></tr></table></figure>
+
+<p>All APKs you build are saved in <code>project_name/module_name/build/outputs/apk/</code></p>
+<p>For more information, see <a href="https://developer.android.com/studio/run/device.html" target="_blank" rel="noopener">Run Apps on a Hardware Device</a>.</p>
+<h3 id="Build-an-app-bundle"><a href="#Build-an-app-bundle" class="headerlink" title="Build an app bundle"></a>Build an app bundle</h3><p><a href>Android App Bundles</a> include all your app’s compiled code and resources, but defer APK generation and signing to Google Play. Unlike an APK, you can’t deploy an app bundle directly to a device. So, if you want to quickly test or share an APK with someone else, you should instead <a href="https://developer.android.com/studio/build/building-cmdline#build_apk" target="_blank" rel="noopener">build an APK</a>.</p>
+<p>The easiest way to build an app bundle is by <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">using Android Studio</a>. However, if you need to build an app bundle from the command line, you can do so by using either Gradle or <code>bundletool</code>, as described in the section below.</p>
+<h4 id="Build-an-app-bundle-with-Gradle"><a href="#Build-an-app-bundle-with-Gradle" class="headerlink" title="Build an app bundle with Gradle"></a>Build an app bundle with Gradle</h4><p>If you’d rather generate an app bundle from the command line, run the <code>buildVariant</code> Gradle task on your app’s base module. For example, the following command builds an app bundle for the debug version of the base module:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gradlew :base:bundleDebug</span><br></pre></td></tr></table></figure>
+
+<p>If you want to build a signed bundle for upload to the Play Console, you need to first configure the base module’s <code>build.gradle</code> file with your app’s signing information. To learn more, go to the section about how to <a href="https://developer.android.com/studio/build/building-cmdline#gradle_signing" target="_blank" rel="noopener">Configure Gradle to sign your app</a>. You can then, for example, build the release version of your app, and Gradle automatically generates an app bundle and signs it with the signing information you provide in the <code>build.gradle</code> file.</p>
+<p>If you instead want to sign an app bundle as a separate step, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a> to sign your app bundle from the command line.</p>
+<h4 id="Build-an-app-bundle-using-bundletool"><a href="#Build-an-app-bundle-using-bundletool" class="headerlink" title="Build an app bundle using bundletool"></a>Build an app bundle using bundletool</h4><p><code>bundletool</code> is a command line tool that Android Studio, the Android Gradle plugin, and Google Play use to convert your app’s compiled code and resources into app bundles, and generate deployable APKs from those bundles.</p>
+<p>So, while it’s useful to <a href>test app bundles with bundletool</a> and locally recreate how Google Play generates APKs, you typically won’t need to invoke <code>bundletool</code> to build the app bundle itself-you should instead use Android Studio or Gradle tasks, as described in previous sections.</p>
+<p>However, if you don’t want to use Android Studio or Gradle tasks to build bundles-for example, if you use a custom build toolchain-you can use <code>bundletool</code> from the command line to build an app bundle from pre-compiled code and resources. If you haven’t already done so, download <a href="https://github.com/google/bundletool/releases" target="_blank" rel="noopener">bundletool</a> from the GitHub repository.</p>
+<p>This section describes how to package your app’s compiled code and resources, and how to use <code>bundletool</code> from the command line to convert them into an Android App Bundle.</p>
+<ul>
+<li>Generate the manifest and resources in proto format</li>
+</ul>
+<p><code>bundletool</code> requries certain information about your app project, such as the app’s manifest and resources, to be in <a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">Google’s Protocal Buffer format</a>-which is also known as “protobuf” and uses the <code>*.pb</code> file extendsion. Protobufs provides a language-neutral, platform-neutral, and extensible mechanism for serializing structured data-it’s similiar to XML, but smaller, faster, and simpler.</p>
+<ul>
+<li>Download AAPT2</li>
+</ul>
+<p>You can generate your app’s manifest file and resource table in protobuf format using the latest version of AAPT2 from the <a href="https://developer.android.com/studio/build/dependencies#google-maven" target="_blank" rel="noopener">Google Maven Repository</a></p>
+<p>To download AAPT2 from Google’s Maven repository, proceed as follows:</p>
+<ol>
+<li>Navigate to <code>com.android.tools.build &gt; aapt2</code> in the <a href="https://maven.google.com/" target="_blank" rel="noopener">repository index</a>.</li>
+<li>Copy the name of the latest version of AAPT2.</li>
+<li>Insert the version name you copied into the following URL and specify your target operating system: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/aapt2-version/aapt2-aapt2-version-[windows</a> | linux | osx].jar  </li>
+</ol>
+<p>For example, to download version 3.2.0-alpha18-4804415 for Windows, you would use: <a href="https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar" target="_blank" rel="noopener">https://dl.google.com/dl/android/maven2/com/android/tools/build/aapt2/3.2.0-alpha18-4804415/aapt2-3.2.0-alpha18-4804415-windows.jar</a></p>
+<ol start="4">
+<li>Navigate to the URL in a browser—AAPT2 should begin downloading shortly.</li>
+<li>Unpackage the JAR file you just downloaded.</li>
+</ol>
+<ul>
+<li>Compile and link your app’s resources</li>
+</ul>
+<p>Use AAPT2 to compile your app’s resources with the following command:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">aapt2 compile \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image1.png \</span><br><span class="line">project_root/module_root/src/main/res/drawable/Image2.png \</span><br><span class="line">-o compiled_resources/</span><br></pre></td></tr></table></figure>
+
+<p>During the link phase, where AAPT2 links your various compiled resources into a single APK, instruct AAPT2 to convert your app’s manifest and compiled resources into the protobuf format by including the <code>--proto-format</code> flag, as shown below:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aapt2 link --proto-format -o output.apk \</span><br><span class="line">-I android_sdk/platforms/android_version/android.jar \</span><br><span class="line">--manifest project_root/module_root/src/main/AndroidManifest.xml \</span><br><span class="line">-R compiled_resources/*.flat \</span><br><span class="line">--auto-add-overlay</span><br></pre></td></tr></table></figure>
+
+<p>You can then extract content from the output APK, such as your app’s AndroidManifest.xml, resources.pb, and other resource files—now in the protobuf format. You need these files when preparing the input bundletool requires to build your app bundle, as described in the following section.</p>
+<ul>
+<li>Package pre-compiled code and resources</li>
+</ul>
+<p>Before you use <code>bundletool</code> to generate an app bundle for your app, you must first provide ZIP files that each contain the compiled code and resources for a given app module. The content and organization of each module’s ZIP file is very similar to that of <a href="https://developer.android.com/guide/app-bundle#aab_format" target="_blank" rel="noopener">the Android App Bundle format</a>. For example, you should create a <code>base.zip</code> file for your app’s base module and organize its contents as follows:</p>
+<p>// TODO table</p>
+<p>After you prepare the ZIP file for each module of your app, you can pass them to <code>bundletool</code> to build your app bundle, as described in the following section.</p>
+<ul>
+<li>Build your app bundle using bundletool</li>
+</ul>
+<p>To build your app bundle, you use the <code>bundletool build-bundle</code> command, as shown below:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bundletool build-bundle --modules=base.zip --output=mybundle.aab</span><br></pre></td></tr></table></figure>
+
+<p>The following table describes flag for the <code>build-bundle</code> command in more detail:</p>
+<p>//TODO table</p>
+<ul>
+<li>Customize downstream APK generation </li>
+</ul>
+<p>App bundles include a <code>BundleConfig.pb</code> file that provides metadata that app stores, such as Google Play, require when generating APKs from the bundle. Although <code>bundletool</code> create this file for you, you can configure some aspects of the metadata in a <code>BundleConfig.json</code> file and pass it to the <code>buldtool build-bundle</code> command -<code>buildtool</code> later converts and merges this file with the protobuf version included in each app bundle.</p>
+<p>For example, you can control which categories of configuration APKs to enable or disable. The following example of an <code>BundleConfig.json</code> file disables configuration APKs that each target a different langauge(that is, resources for all languages are included in their respective base or dynamic feature APKs):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "optimizations": &#123;</span><br><span class="line">    "splitsConfig": &#123;</span><br><span class="line">      "splitDimension": [&#123;</span><br><span class="line">        "value": "LANGUAGE",</span><br><span class="line">        "negate": true</span><br><span class="line">      &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>In your <code>BundleConfig.json</code> file, you can also specify which file types to leave uncompressed when packaging APKs using <a href="https://docs.oracle.com/javase/tutorial/essential/io/fileOps.html#glob" target="_blank" rel="noopener">glob patterns</a>, as follows:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  "compression": &#123;</span><br><span class="line">    "uncompressedGlob": ["res/raw/**", "assets/**.uncompressed"]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Keep in mind, by default, bundletool does not compress your app’s native libraries (on Android 6.0 or higher) and resource table (resources.arsc). For a full description of what you can configure in your BundleConfig.json, inspect the <a href="https://github.com/google/bundletool/blob/master/src/main/proto/config.proto" target="_blank" rel="noopener">bundletool config.proto file</a>, which is written using <a href="https://developers.google.com/protocol-buffers/docs/proto3" target="_blank" rel="noopener">Proto3</a> syntax.</p>
+<h4 id="Deploy-your-app-from-an-app-bundle"><a href="#Deploy-your-app-from-an-app-bundle" class="headerlink" title="Deploy your app from an app bundle"></a>Deploy your app from an app bundle</h4><p>If you’ve built and signed an app bundle, <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">use bundletool</a> to generate APKs and deploy them to a device.</p>
+<h3 id="Sign-your-app-from-command-line"><a href="#Sign-your-app-from-command-line" class="headerlink" title="Sign your app from command line"></a>Sign your app from command line</h3><p>You do not need Android Studio to sign your app. You can sign your app from  the command line, using <code>apksigner</code> for APKs or <code>jarsigner</code> for app undles, or configure Gradle to sign it for you during the build. Either way, you need to first generate a private key using <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html" target="_blank" rel="noopener">keytool</a> as shown below:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkey -v -keystore my-release-key.jks</span><br><span class="line">-keyalg RSA -keysize 2048 -validity 10000 -alias my-alias</span><br></pre></td></tr></table></figure>
+
+<p>The example above prompts you for passwords for the keystore and key, and for the “Distinguished Name” field for your key. It then generates the keystore as a file called <code>my-release-key.jks</code>, saving it in the current directory(you can move it wherever you’d like). The keystore contains a single key that is valid for 10000 days.</p>
+<p>Now you can sign your APK or app bundle manually, or configure Gradle to sign your app during the build process, as described in the sections below.</p>
+<h4 id="Sign-your-app-manually-from-the-command-line"><a href="#Sign-your-app-manually-from-the-command-line" class="headerlink" title="Sign your app manually from the command line"></a>Sign your app manually from the command line</h4><p>If you want to sign an app bundle from the command line, you can use <a href="https://docs.oracle.com/javase/8/docs/technotes/tools/windows/jarsigner.html" target="_blank" rel="noopener">jarsigner</a>. If instead you want to sign an APK, you need to use <code>zipalign</code> and <code>apksigner</code> as described below.</p>
+<ol>
+<li>Open a command line-from Android Studio, select <code>View &gt; Tool Windows &gt; Terminal</code> - and navigate to the directory where your unsigned APK is located.</li>
+<li>Align the unsigned APK using <a href="https://developer.android.com/studio/command-line/zipalign.html" target="_blank" rel="noopener">zipalign</a>:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zipalign -v -p 4 my-app-unsigned.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
+
+<p><code>zipalign</code> ensures that all uncompressed data starts with a particular byte alignment relative to the start of the file, which may reduce the amount of RAM consumed by an app.</p>
+<ol start="3">
+<li>Sign your APK with your private key using <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a>:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner sign --ks my-release-key.jks --out my-app-release.apk my-app-unsigned-aligned.apk</span><br></pre></td></tr></table></figure>
+
+<p>This example outputs the signed APK at <code>my-app-release.apk</code> after signing it with a private key and certificate that are stored in a single KeyStore file: <code>my-release-key.jks</code>.</p>
+<p>The <code>apksigner</code> tool supports other signing options, including signing an APK file using separate private key and certificate files, and signing an APK using multiple signers. For more details, see the <a href="https://developer.android.com/studio/command-line/apksigner.html" target="_blank" rel="noopener">apksigner</a> reference.</p>
+<ol start="4">
+<li>Verify that your APK is signed:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apksigner verify my-app-release.apk</span><br></pre></td></tr></table></figure>
+
+<h4 id="Configure-Gradle-to-sign-your-app"><a href="#Configure-Gradle-to-sign-your-app" class="headerlink" title="Configure Gradle to sign your app"></a>Configure Gradle to sign your app</h4><p>Open the module-level <code>build.gradle</code> file and add the <code>signingConfigs {}</code> block with entries for <code>storeFile</code>, <code>storePassword</code>, <code>keyAlias</code> and <code>keyPassword</code>, and then pass that object to the <code>signingConfig</code> property in your build type. For example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123; ... &#125;</span><br><span class="line">    signingConfigs &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            // You need to specify either an absolute path or include the</span><br><span class="line">            // keystore file in the same directory as the build.gradle file.</span><br><span class="line">            storeFile file("my-release-key.jks")</span><br><span class="line">            storePassword "password"</span><br><span class="line">            keyAlias "my-alias"</span><br><span class="line">            keyPassword "password"</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        release &#123;</span><br><span class="line">            signingConfig signingConfigs.release</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Now, when you build your app by invoking a Gradle task, Gradle signs your app (and runs zipalign) for you.</p>
+<p>Additionally, because you’ve configured the release build with your signing key, the “install” task is available for that build type. So you can build, align, sign, and install the release APK on an emulator or device all with the <code>installRelease</code> task.</p>
+<p>An app signed with your private key is ready for distribution, but you should first read more about how to <a href="https://developer.android.com/studio/publish/index.html" target="_blank" rel="noopener">publish your app</a> and review the <a href="https://developer.android.com/distribute/tools/launch-checklist.html" target="_blank" rel="noopener">Google Play launch checklist</a>.</p>
 
           
         
