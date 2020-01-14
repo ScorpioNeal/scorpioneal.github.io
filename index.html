@@ -307,6 +307,352 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/dee8b541/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/dee8b541/" itemprop="url">Android 性能优化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T16:32:21+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/dee8b541/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/dee8b541/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Android-性能优化"><a href="#Android-性能优化" class="headerlink" title="Android 性能优化"></a>Android 性能优化</h2><p><a href="https://www.jianshu.com/p/797395731747" target="_blank" rel="noopener">https://www.jianshu.com/p/797395731747</a><br><a href="https://juejin.im/post/5d95f4a4f265da5b8f10714b" target="_blank" rel="noopener">https://juejin.im/post/5d95f4a4f265da5b8f10714b</a><br><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="noopener">https://www.jianshu.com/p/7e9ca2c73c97</a><br><a href="https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26" target="_blank" rel="noopener">https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26</a><br><a href="https://juejin.im/post/5d4bdb23e51d453c2577b747" target="_blank" rel="noopener">https://juejin.im/post/5d4bdb23e51d453c2577b747</a></p>
+<ul>
+<li>UI优化</li>
+<li>启动优化</li>
+<li>内存优化</li>
+<li>包体积优化</li>
+<li>线程优化</li>
+<li>内存优化</li>
+</ul>
+<h3 id="UI优化"><a href="#UI优化" class="headerlink" title="UI优化"></a>UI优化</h3><ul>
+<li><a href="posts/5259ae3c">setContentView与LayoutInflater加载解析机制源码分析</a> <a href="Android-setContentView与LayoutInflater加载解析机制源码分析"></a></li>
+<li><a href="posts/7053c23b">AsyncLayoutInflator原理</a> <a href="Android-AsyncLayoutInflator原理"></a></li>
+<li><a href="posts/db834188">抽象布局的使用</a> <a href="Android-抽象布局的使用"></a></li>
+<li><a href="posts/4ea354ae">动画原理分析</a> <a href="Android-动画原理分析"></a></li>
+<li><a href="posts/5c71151a">View的绘制流程</a> <a href="Android-View的绘制流程"></a></li>
+<li><a href="posts/34ef83a0">Fragment懒加载</a> <a href="Android-Fragment懒加载"></a></li>
+<li><a href="posts/d96da03e">UI优化常用工具</a> <a href="Android-UI优化常用工具"></a></li>
+<li><a href="posts/2c4d5f81">ANR原理分析与解决</a> <a href="Android-ANR原理分析与解决"></a></li>
+<li><a href="posts/d2b4a3fc">ReclerView与ListView的区别</a> <a href="Android-RecyclerView与ListView的区别"></a></li>
+<li>ViewPager &amp; ViewPager2源码分析</li>
+<li>[TextView优化](<a href="https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0</a>   不着急)</li>
+<li>[X2C框架原理分析](<a href="https://github.com/iReaderAndroid/X2C" target="_blank" rel="noopener">https://github.com/iReaderAndroid/X2C</a> 不着急. 原理是new 替代 反射)</li>
+</ul>
+<h3 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h3><ul>
+<li><a href="posts/b5608f0f">App启动过程和Activity启动过程</a> <a href="Android-App启动过程和Activity启动过程"></a></li>
+<li><a href="posts/a578e2">Activity栈和LaunchMode</a> <a href="Android-Activity栈和启动模式"></a></li>
+<li><a href="posts/c8244c97">SharedPreferene原理</a> <a href="Android-SharedPreference原理"></a></li>
+<li><a href="posts/c09a1c52">EventBus2 &amp; EventBus3对比</a> <a href="Android-EventBus2-EventBus3对比"></a></li>
+</ul>
+<h3 id="包体积优化"><a href="#包体积优化" class="headerlink" title="包体积优化"></a>包体积优化</h3><ul>
+<li><a href="posts/f8021ed8">Reduce your app size</a> <a href="Translation-Reduce-your-app-size"></a></li>
+<li><a href="posts/8daa0b89">Configure your build-Overview</a> <a href="Translation-Configure-your-build-Overview"></a></li>
+<li><a href="posts/a692d70a">Shrink, obfuscate, and optimize your app</a> <a href="Translation-Shrink-obfuscate-and-optimize-your-app"></a></li>
+<li>Redex的使用</li>
+<li>Lint的使用</li>
+</ul>
+<h3 id="线程优化"><a href="#线程优化" class="headerlink" title="线程优化"></a>线程优化</h3><ul>
+<li><a href="posts/122d6ee8">Handler原理</a> <a href="Android-Handler原理.md"></a></li>
+<li><a href="posts/971bf444">IdleHandler的使用</a> <a href="Android-IdleHandler的使用"></a></li>
+<li><a href="posts/cc1de343">AsyncTask原理</a> <a href="Android-AsyncTask原理"></a></li>
+<li><a href="posts/efbd99a7">HandlerThread原理</a> <a href="Android-HandlerThread原理"></a></li>
+<li><a href="posts/a445691e">IntentService的使用和原理</a> <a href="Android-IntentService的使用和原理"></a></li>
+<li><a href="posts/72e1c46d">Android中startService和bindService的区别</a> <a href="Android-StartService和bindService的区别"></a></li>
+<li><a href="progressing...">线程池相关</a></li>
+</ul>
+<h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><ul>
+<li><a href="posts/d7e77019">对象池的使用</a> <a href="Android-对象池的使用"></a></li>
+<li><a href="posts/74f024ac">Loading Large Bitmaps Efficiently</a> <a href="Translation-Loading-Large-Bitmaps-Efficiently"></a></li>
+<li><a href="posts/a176b35b">Caching Bitmaps</a> <a href="Translation-Caching-Bitmaps"></a></li>
+<li><a href="progressing...">Managing Bitmap Memory</a></li>
+<li><a href="posts/a6157931">Android常见内存泄漏</a> <a href="Android-常见内存泄漏"></a></li>
+<li><a href="progressing...">图片的内存计算</a></li>
+<li><a href="posts/85c12fe4">LruCache原理</a> <a href="Android-LruCache原理"></a></li>
+<li><a href="posts/91222177">LeakCanary源码分析</a> <a href="Android-LeakCanary源码分析"></a></li>
+<li><a href="posts/ba081c48">BlockCanary源码分析</a> <a href="Android-BlockCanary源码分析"></a></li>
+<li>Java GC内存回收机制</li>
+<li>开源图片加载库源码分析</li>
+<li>内存分析工具的使用, MAT, TraceView, SystemTrace, HeapViewer, Heap SnapShot</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8cef9339/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/8cef9339/" itemprop="url">Android 知识体系</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T10:41:27+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/8cef9339/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8cef9339/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Base-Component"><a href="#Base-Component" class="headerlink" title="Base Component"></a>Base Component</h2><p><a href="posts/a578e2">Android-Activity栈和启动模式</a> <a href="Android-Activity栈和启动模式"></a><br><a href="posts/b5608f0f">Android-App启动过程和Activity启动过程</a> <a href="Android-App启动过程和Activity启动过程"></a><br><a href="posts/4dd850">Android-Fragment原理</a> <a href="Android-Fragment原理"></a><br><a href="posts/b7f694e6">Android-Fragment生命周期</a> <a href="Android-Fragment生命周期"></a><br><a href="posts/efbd99a7">Android-HandlerThread原理</a> <a href="Android-HandlerThread原理"></a><br><a href="posts/122d6ee8">Android-Handler原理</a> <a href="Android-Handler原理"></a><br><a href="posts/971bf444">Android-IdleHandler的使用</a> <a href="Android-IdleHandler的使用"></a><br><a href="posts/a445691e">Android-IntentService的使用和原理</a> <a href="Android-IntentService的使用和原理"></a><br><a href="posts/b4be5f5e">Android-NDK遇到的坑</a> <a href="Android-NDK遇到的坑"></a><br><a href="posts/72e1c46d">Android-StartService和bindService的区别</a> <a href="Android-StartService和bindService的区别"></a><br><a href="posts/c321745">Android-Window机制</a> <a href="Android-Window机制"></a><br><a href="posts/23be93f7">Android-事件分发机制</a> <a href="Android-事件分发机制"></a><br><a href="posts/eeb5a1cb">Android-关于onPause和onStop回调时机的问题</a> <a href="Android-关于onPause和onStop回调时机的问题"></a></p>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><p><a href="posts/8a3a7d94">Android-OKHttp使用和原理</a> <a href="Android-OKHttp使用和原理"></a><br><a href="posts/b6ff9bb5">Android-Retrofit</a> <a href="Android-Retrofit"></a></p>
+<h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p><a href="posts/6caf8444">Android-GreenDao使用和原理</a> <a href="Android-GreenDao使用和原理"></a><br><a href="posts/c8244c97">Android-SharedPreference原理</a> <a href="Android-SharedPreference原理"></a></p>
+<h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><p><a href="posts/c09a1c52">Android-EventBus2-EventBus3对比</a> <a href="Android-EventBus2-EventBus3对比"></a><br><a href="posts/c1cd9018">Android-LiveDataBus使用和原理</a> <a href="Android-LiveDataBus使用和原理"></a><br><a href="posts/4f81d6fa">Android-进程间通信</a> <a href="Android-进程间通信"></a><br><a href="posts/52567396">Google-Protocol-Buffer实战</a> <a href="Google-Protocol-Buffer实战"></a></p>
+<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><p><a href="posts/d2b4a3fc">Android-RecyclerView与ListView的区别</a> <a href="Android-RecyclerView与ListView的区别"></a><br><a href="posts/d718012c">Android-requestLayout-和invalidate-原理</a> <a href="Android-requestLayout-和invalidate-原理"></a><br><a href="posts/5259ae3c">Android-setContentView与LayoutInflater加载解析机制源码分析</a> <a href="Android-setContentView与LayoutInflater加载解析机制源码分析"></a><br><a href="posts/4e76d615">Android-SurfaceView机制</a> <a href="Android-SurfaceView机制"></a><br><a href="posts/d96da03e">Android-UI优化常用工具</a> <a href="Android-UI优化常用工具"></a><br><a href="posts/5c71151a">Android-View的绘制流程</a> <a href="Android-View的绘制流程"></a><br><a href="posts/4ea354ae">Android-动画原理分析</a> <a href="Android-动画原理分析"></a><br><a href="posts/db834188">Android-抽象布局的使用</a> <a href="Android-抽象布局的使用"></a><br><a href="posts/31ea19a6">Android-深入理解Scroller原理</a> <a href="Android-深入理解Scroller原理"></a><br><a href="posts/77dbc89e">Android-界面适配</a> <a href="Android-界面适配"></a><br><a href="posts/16995">Android-自定义RecyclerView-LayoutManager</a> <a href="Android-自定义RecyclerView-LayoutManager"></a></p>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><p><a href="posts/2c4d5f81">Android-ANR原理分析与解决</a> <a href="Android-ANR原理分析与解决"></a><br><a href="posts/7053c23b">Android-AsyncLayoutInflator原理</a> <a href="Android-AsyncLayoutInflator原理"></a><br><a href="posts/cc1de343">Android-AsyncTask原理</a> <a href="Android-AsyncTask原理"></a><br><a href="posts/ba081c48">Android-BlockCanary源码分析</a> <a href="Android-BlockCanary源码分析"></a><br><a href="posts/34ef83a0">Android-Fragment懒加载</a> <a href="Android-Fragment懒加载"></a><br><a href="posts/91222177">Android-LeakCanary源码分析</a> <a href="Android-LeakCanary源码分析"></a><br><a href="posts/6d7fb02e">Android-Serializable和Parcelable性能差异</a> <a href="Android-Serializable和Parcelable性能差异"></a><br><a href="posts/d7e77019">Android-对象池的使用</a> <a href="Android-对象池的使用"></a><br><a href="posts/a6157931">Android-常见内存泄漏</a> <a href="Android-常见内存泄漏"></a><br><a href="posts/dee8b541">Android-性能优化</a> <a href="Android-性能优化"></a><br><a href="posts/1ada89fb">Android-无埋点监控</a> <a href="Android-无埋点监控"></a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="posts/b26f467e">Android-插件化</a> <a href="Android-插件化"></a><br><a href="posts/d41965e">Android-Dagger2</a> <a href="Android-Dagger2"></a><br><a href="posts/d27340ce">Android-Data-Binding相关</a> <a href="Android-Data-Binding相关"></a><br><a href="posts/53083ab4">Android-Glide使用和原理</a> <a href="Android-Glide使用和原理"></a><br><a href="posts/85c12fe4">Android-LruCache原理</a> <a href="Android-LruCache原理"></a><br><a href="posts/a540e7e6">Android-ART和DALVIK的区别</a> <a href="Android-ART和DALVIK的区别"></a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4164a485/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -598,7 +944,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/dee8b541/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/52567396/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -617,7 +963,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/dee8b541/" itemprop="url">Android 性能优化</a></h1>
+                <a class="post-title-link" href="/posts/52567396/" itemprop="url">Google Protocol Buffer实战</a></h1>
         
 
         <div class="post-meta">
@@ -629,8 +975,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T16:32:21+08:00">
-                2019-05-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T10:16:08+08:00">
+                2020-01-14
               </time>
             
 
@@ -640,28 +986,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -670,8 +994,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/dee8b541/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/dee8b541/" itemprop="commentCount"></span>
+                <a href="/posts/52567396/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/52567396/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -701,65 +1025,7 @@
       
         
           
-            <h2 id="Android-性能优化"><a href="#Android-性能优化" class="headerlink" title="Android 性能优化"></a>Android 性能优化</h2><p><a href="https://www.jianshu.com/p/797395731747" target="_blank" rel="noopener">https://www.jianshu.com/p/797395731747</a><br><a href="https://juejin.im/post/5d95f4a4f265da5b8f10714b" target="_blank" rel="noopener">https://juejin.im/post/5d95f4a4f265da5b8f10714b</a><br><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="noopener">https://www.jianshu.com/p/7e9ca2c73c97</a><br><a href="https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26" target="_blank" rel="noopener">https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26</a><br><a href="https://juejin.im/post/5d4bdb23e51d453c2577b747" target="_blank" rel="noopener">https://juejin.im/post/5d4bdb23e51d453c2577b747</a></p>
-<ul>
-<li>UI优化</li>
-<li>启动优化</li>
-<li>内存优化</li>
-<li>包体积优化</li>
-<li>线程优化</li>
-<li>内存优化</li>
-</ul>
-<h3 id="UI优化"><a href="#UI优化" class="headerlink" title="UI优化"></a>UI优化</h3><ul>
-<li><a href="posts/5259ae3c">setContentView与LayoutInflater加载解析机制源码分析</a> <a href="Android-setContentView与LayoutInflater加载解析机制源码分析"></a></li>
-<li><a href="posts/7053c23b">AsyncLayoutInflator原理</a> <a href="Android-AsyncLayoutInflator原理"></a></li>
-<li><a href="posts/db834188">抽象布局的使用</a> <a href="Android-抽象布局的使用"></a></li>
-<li><a href="posts/4ea354ae">动画原理分析</a> <a href="Android-动画原理分析"></a></li>
-<li><a href="posts/5c71151a">View的绘制流程</a> <a href="Android-View的绘制流程"></a></li>
-<li><a href="posts/34ef83a0">Fragment懒加载</a> <a href="Android-Fragment懒加载"></a></li>
-<li><a href="posts/d96da03e">UI优化常用工具</a> <a href="Android-UI优化常用工具"></a></li>
-<li><a href="posts/2c4d5f81">ANR原理分析与解决</a> <a href="Android-ANR原理分析与解决"></a></li>
-<li><a href="posts/d2b4a3fc">ReclerView与ListView的区别</a> <a href="Android-RecyclerView与ListView的区别"></a></li>
-<li>ViewPager &amp; ViewPager2源码分析</li>
-<li>[TextView优化](<a href="https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0" target="_blank" rel="noopener">https://www.jianshu.com/p/9f7f9213bff8?from=timeline&amp;isappinstalled=0</a>   不着急)</li>
-<li>[X2C框架原理分析](<a href="https://github.com/iReaderAndroid/X2C" target="_blank" rel="noopener">https://github.com/iReaderAndroid/X2C</a> 不着急. 原理是new 替代 反射)</li>
-</ul>
-<h3 id="启动优化"><a href="#启动优化" class="headerlink" title="启动优化"></a>启动优化</h3><ul>
-<li><a href="posts/b5608f0f">App启动过程和Activity启动过程</a> <a href="Android-App启动过程和Activity启动过程"></a></li>
-<li><a href="posts/a578e2">Activity栈和LaunchMode</a> <a href="Android-Activity栈和启动模式"></a></li>
-<li><a href="posts/c8244c97">SharedPreferene原理</a> <a href="Android-SharedPreference原理"></a></li>
-<li><a href="posts/c09a1c52">EventBus2 &amp; EventBus3对比</a> <a href="Android-EventBus2-EventBus3对比"></a></li>
-</ul>
-<h3 id="包体积优化"><a href="#包体积优化" class="headerlink" title="包体积优化"></a>包体积优化</h3><ul>
-<li><a href="posts/f8021ed8">Reduce your app size</a> <a href="Translation-Reduce-your-app-size"></a></li>
-<li><a href="posts/8daa0b89">Configure your build-Overview</a> <a href="Translation-Configure-your-build-Overview"></a></li>
-<li><a href="posts/a692d70a">Shrink, obfuscate, and optimize your app</a> <a href="Translation-Shrink-obfuscate-and-optimize-your-app"></a></li>
-<li>Redex的使用</li>
-<li>Lint的使用</li>
-</ul>
-<h3 id="线程优化"><a href="#线程优化" class="headerlink" title="线程优化"></a>线程优化</h3><ul>
-<li><a href="posts/122d6ee8">Handler原理</a> <a href="Android-Handler原理.md"></a></li>
-<li><a href="posts/971bf444">IdleHandler的使用</a> <a href="Android-IdleHandler的使用"></a></li>
-<li><a href="posts/cc1de343">AsyncTask原理</a> <a href="Android-AsyncTask原理"></a></li>
-<li><a href="posts/efbd99a7">HandlerThread原理</a> <a href="Android-HandlerThread原理"></a></li>
-<li><a href="posts/a445691e">IntentService的使用和原理</a> <a href="Android-IntentService的使用和原理"></a></li>
-<li><a href="posts/72e1c46d">Android中startService和bindService的区别</a> <a href="Android-StartService和bindService的区别"></a></li>
-<li><a href="progressing...">线程池相关</a></li>
-</ul>
-<h3 id="内存优化"><a href="#内存优化" class="headerlink" title="内存优化"></a>内存优化</h3><ul>
-<li><a href="posts/d7e77019">对象池的使用</a> <a href="Android-对象池的使用"></a></li>
-<li><a href="posts/74f024ac">Loading Large Bitmaps Efficiently</a> <a href="Translation-Loading-Large-Bitmaps-Efficiently"></a></li>
-<li><a href="posts/a176b35b">Caching Bitmaps</a> <a href="Translation-Caching-Bitmaps"></a></li>
-<li><a href="progressing...">Managing Bitmap Memory</a></li>
-<li><a href="posts/a6157931">Android常见内存泄漏</a> <a href="Android-常见内存泄漏"></a></li>
-<li><a href="progressing...">图片的内存计算</a></li>
-<li><a href="posts/85c12fe4">LruCache原理</a> <a href="Android-LruCache原理"></a></li>
-<li><a href="posts/91222177">LeakCanary源码分析</a> <a href="Android-LeakCanary源码分析"></a></li>
-<li><a href="posts/ba081c48">BlockCanary源码分析</a> <a href="Android-BlockCanary源码分析"></a></li>
-<li>Java GC内存回收机制</li>
-<li>开源图片加载库源码分析</li>
-<li>内存分析工具的使用, MAT, TraceView, SystemTrace, HeapViewer, Heap SnapShot</li>
-</ul>
+            <p><a href="https://www.jianshu.com/p/65d1c4b0ceff" target="_blank" rel="noopener">https://www.jianshu.com/p/65d1c4b0ceff</a></p>
 
           
         
@@ -808,7 +1074,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/316095ca/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4e76d615/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -827,7 +1093,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/316095ca/" itemprop="url">Algorithm LeetCode 40 Sombination Sum 2</a></h1>
+                <a class="post-title-link" href="/posts/4e76d615/" itemprop="url">Android SurfaceView机制</a></h1>
         
 
         <div class="post-meta">
@@ -839,8 +1105,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-13T14:18:37+08:00">
-                2020-01-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T09:52:54+08:00">
+                2020-01-14
               </time>
             
 
@@ -858,8 +1124,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/316095ca/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/316095ca/" itemprop="commentCount"></span>
+                <a href="/posts/4e76d615/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4e76d615/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -889,903 +1155,7 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9b8ca6c9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/9b8ca6c9/" itemprop="url">Algorithm LeetCode 47 Permutations 2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-13T14:04:44+08:00">
-                2020-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/9b8ca6c9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9b8ca6c9/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a92db813/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/a92db813/" itemprop="url">Algorithm LeetCode 132 Palindrome Partitioning 2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-09T15:18:03+08:00">
-                2020-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/a92db813/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a92db813/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a string s, partition s such that every substring of the partition is a palindrome.</p>
-<p>Return the minimum cuts needed for a palindrome partitioning of s.</p>
-<p>Example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: "aab"</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: The palindrome partitioning ["aa","b"] could be produced using 1 cut.</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>本来以为跟131题一样，使用回溯法，然后获取所有的list, 然后获取最小的list.size.<br>但是报了TLE错误，没有通过</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minCut</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        get(s, <span class="keyword">new</span> ArrayList());</span><br><span class="line">        <span class="keyword">return</span> min - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(String left, List&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(left == <span class="keyword">null</span> || left.isEmpty()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(list.size() &lt; min) &#123;</span><br><span class="line">                min = list.size();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> length = left.length();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= length; i++) &#123;</span><br><span class="line">            String sub = left.substring(<span class="number">0</span>, i);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(isPalidrome(sub)) &#123;</span><br><span class="line">                list.add(sub);</span><br><span class="line">                get(left.substring(i, length), list);</span><br><span class="line">                list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isPalidrome</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s).reverse().toString().equals(s);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>所以需要换个思路</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d7f9b70d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/d7f9b70d/" itemprop="url">Algorithm LeetCode 136 Single Number</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-09T15:14:17+08:00">
-                2020-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/d7f9b70d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d7f9b70d/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a non-empty array of integers, every element appears twice except for one. Find that single one.</p>
-<p>Note:</p>
-<p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,2,1]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-
-<p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用异或运算</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            ret ^= nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/704ee7f7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/704ee7f7/" itemprop="url">Algorithm LeetCode 145 Binary Tree Postorder Traversal</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-08T18:01:57+08:00">
-                2020-01-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/704ee7f7/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/704ee7f7/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary tree, return the postorder traversal of its nodes’ values.</p>
-<p>Example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,null,2,3]</span><br><span class="line">   1</span><br><span class="line">    \</span><br><span class="line">     2</span><br><span class="line">    /</span><br><span class="line">   3</span><br><span class="line"></span><br><span class="line">Output: [3,2,1]</span><br></pre></td></tr></table></figure>
-
-<p>Follow up: Recursive solution is trivial, could you do it iteratively?</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>与144题类似，知道使用Stack做，就比较容易找规律了</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        List&lt;Integer&gt; retList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">            <span class="keyword">return</span> retList;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!stack.isEmpty()) &#123;</span><br><span class="line">            TreeNode node = stack.pop();</span><br><span class="line">            retList.add(<span class="number">0</span>, node.val);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.left) &#123;</span><br><span class="line">                stack.push(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.right) &#123;</span><br><span class="line">                stack.push(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> retList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/18a94975/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/18a94975/" itemprop="url">Algorithm LeetCode 140 Word Break 2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-08T17:59:09+08:00">
-                2020-01-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/18a94975/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/18a94975/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/6bbe8896/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/6bbe8896/" itemprop="url">Algorithm LeetCode 260 Single Number 3</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-08T15:12:58+08:00">
-                2020-01-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/6bbe8896/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6bbe8896/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once.</p>
-<p>Example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:  [1,2,1,3,2,5]</span><br><span class="line">Output: [3,5]</span><br></pre></td></tr></table></figure>
-
-<p>Note:</p>
-<ul>
-<li>The order of the result is not important. So in the above example, [5, 3] is also correct.</li>
-<li>Your algorithm should run in linear runtime complexity. Could you implement it using only constant space complexity?</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>看不懂</p>
+            <p><a href="https://juejin.im/post/5da721a6518825200b2d547e" target="_blank" rel="noopener">https://juejin.im/post/5da721a6518825200b2d547e</a></p>
 
           
         
@@ -1834,7 +1204,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/58dedc64/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c321745/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1853,7 +1223,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/58dedc64/" itemprop="url">Algorithm LeetCode 230 Kth Smallest Element in a BST</a></h1>
+                <a class="post-title-link" href="/posts/c321745/" itemprop="url">Android Window机制</a></h1>
         
 
         <div class="post-meta">
@@ -1865,8 +1235,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-08T15:12:03+08:00">
-                2020-01-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T09:52:12+08:00">
+                2020-01-14
               </time>
             
 
@@ -1876,28 +1246,6 @@
           </span>
 
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -1906,8 +1254,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/58dedc64/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/58dedc64/" itemprop="commentCount"></span>
+                <a href="/posts/c321745/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c321745/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1937,18 +1285,528 @@
       
         
           
-            <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a binary search tree, write a function kthSmallest to find the kth smallest element in it.</p>
-<p>Note:<br>You may assume k is always valid, 1 ≤ k ≤ BST’s total elements.</p>
-<p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: root = [3,1,4,null,2], k = 1</span><br><span class="line">   3</span><br><span class="line">  / \</span><br><span class="line"> 1   4</span><br><span class="line">  \</span><br><span class="line">   2</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+            <p><a href="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3" target="_blank" rel="noopener">https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3</a></p>
 
-<p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: root = [5,3,6,2,4,null,null,1], k = 3</span><br><span class="line">       5</span><br><span class="line">      / \</span><br><span class="line">     3   6</span><br><span class="line">    / \</span><br><span class="line">   2   4</span><br><span class="line">  /</span><br><span class="line"> 1</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
 
-<p>Follow up:</p>
-<p>What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>找出左子树节点数，右子树节点数。然后与 k 进行比较，看kth 落在左边还是右边，然后递归求解</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthSmallest</span><span class="params">(TreeNode root, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">int</span> left = getNodeCount(root.left);</span><br><span class="line">        <span class="keyword">if</span>(k &lt;= left) &#123;</span><br><span class="line">            <span class="keyword">return</span> kthSmallest(root.left, k);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(k == left + <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> root.val;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> kthSmallest(root.right, k - left - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getNodeCount</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> != root.left) &#123;</span><br><span class="line">            left = getNodeCount(root.left);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> != root.right) &#123;</span><br><span class="line">            right = getNodeCount(root.right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left + right + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c1cd9018/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/c1cd9018/" itemprop="url">Android LiveDataBus使用和原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T09:49:10+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/c1cd9018/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c1cd9018/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://mp.weixin.qq.com/s/rxOt6QCGXBLGgpmAXD4OrQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/rxOt6QCGXBLGgpmAXD4OrQ</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/65a6c4f0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/65a6c4f0/" itemprop="url">Algorithm KMP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T09:44:41+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/65a6c4f0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/65a6c4f0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.csdn.net/v_july_v/article/details/7041827" target="_blank" rel="noopener">https://blog.csdn.net/v_july_v/article/details/7041827</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4dc6b84f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/4dc6b84f/" itemprop="url">Algorithm 红黑树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T09:43:28+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/4dc6b84f/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4dc6b84f/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://juejin.im/post/5df4aaefe51d45581269a6d2" target="_blank" rel="noopener">https://juejin.im/post/5df4aaefe51d45581269a6d2</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/53083ab4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/53083ab4/" itemprop="url">Android Glide使用和原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-14T09:40:58+08:00">
+                2020-01-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/53083ab4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/53083ab4/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://jsonchao.github.io/2018/12/16/Android%E4%B8%BB%E6%B5%81%E4%B8%89%E6%96%B9%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%89%E3%80%81%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Glide%E6%BA%90%E7%A0%81%EF%BC%89/" target="_blank" rel="noopener">https://jsonchao.github.io/2018/12/16/Android%E4%B8%BB%E6%B5%81%E4%B8%89%E6%96%B9%E5%BA%93%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%89%E3%80%81%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3Glide%E6%BA%90%E7%A0%81%EF%BC%89/</a></p>
+
           
         
       
@@ -1987,7 +1845,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2033,7 +1891,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">219</span>
+                  <span class="site-state-item-count">229</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

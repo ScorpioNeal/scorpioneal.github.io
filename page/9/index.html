@@ -307,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/76424700/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/ca466842/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -326,7 +326,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/76424700/" itemprop="url">Algorithm LeetCode 669 Trim a Binary Search Tree</a></h1>
+                <a class="post-title-link" href="/posts/ca466842/" itemprop="url">Algorithm LeetCode 141 Linked List Cycle</a></h1>
         
 
         <div class="post-meta">
@@ -338,7 +338,172 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T09:16:33+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-25T10:44:04+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/ca466842/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/ca466842/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a linked list, determine if it has a cycle in it.</p>
+<p>To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [3,2,0,-4], pos = 1</span><br><span class="line">Output: true</span><br><span class="line">Explanation: There is a cycle in the linked list, where tail connects to the second node.</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2], pos = 0</span><br><span class="line">Output: true</span><br><span class="line">Explanation: There is a cycle in the linked list, where tail connects to the first node.</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1], pos = -1</span><br><span class="line">Output: false</span><br><span class="line">Explanation: There is no cycle in the linked list.</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断链表是否有环，使用快慢指针。</p>
+<p>如果快指针到链表结尾处还没有与慢指针相同则说明没有环，否则有环</p>
+<p>因为，假如有环，则在环内，因为快慢指针速度不同，总会有相遇的时刻 </p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast = head;</span><br><span class="line">    ListNode slow = head;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        <span class="comment">// 注意这里不可以使用slow.val == fast.val这样判断</span></span><br><span class="line">        <span class="comment">// 因为fast / slow 可能为空</span></span><br><span class="line">        <span class="keyword">if</span>(slow == fast) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/76b09fa2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/76b09fa2/" itemprop="url">Algorithm Leetcode 455 Assign Cookies</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T14:20:24+08:00">
                 2019-12-24
               </time>
             
@@ -379,8 +544,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/76424700/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/76424700/" itemprop="commentCount"></span>
+                <a href="/posts/76b09fa2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/76b09fa2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -410,18 +575,8 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary search tree and the lowest and highest boundaries as L and R, trim the tree so that all its elements lies in [L, R] (R &gt;= L). You might need to change the root of the tree, so the result should return the new root of the trimmed binary search tree.</p>
-<p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: </span><br><span class="line">    1</span><br><span class="line">   / \</span><br><span class="line">  0   2</span><br><span class="line"></span><br><span class="line">  L = 1</span><br><span class="line">  R = 2</span><br><span class="line"></span><br><span class="line">Output: </span><br><span class="line">    1</span><br><span class="line">      \</span><br><span class="line">       2</span><br></pre></td></tr></table></figure>
+            <p>Greedy</p>
 
-<p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  Input: </span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  0   4</span><br><span class="line">   \</span><br><span class="line">    2</span><br><span class="line">   /</span><br><span class="line">  1</span><br><span class="line"></span><br><span class="line">  L = 1</span><br><span class="line">  R = 3</span><br><span class="line"></span><br><span class="line">Output: </span><br><span class="line">      3</span><br><span class="line">     / </span><br><span class="line">   2   </span><br><span class="line">  /</span><br><span class="line"> 1</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>在遍历的过程中就修改二叉树，移除不合题意的结点。</p>
-<p>首先判断如果root为空，那么直接返回空即可。</p>
-<p>然后就是要看根结点是否在范围内，如果根结点值小于L，那么返回对其右子结点调用递归函数的值；如果根结点大于R，那么返回对其左子结点调用递归函数的值。</p>
-<p>如果根结点在范围内，将其左子结点更新为对其左子结点调用递归函数的返回值，同样，将其右子结点更新为对其右子结点调用递归函数的返回值。最后返回root即可，</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> TreeNode <span class="title">trimBST</span><span class="params">(TreeNode root, <span class="keyword">int</span> L, <span class="keyword">int</span> R)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(root.val &lt; L) &#123;</span><br><span class="line">        <span class="keyword">return</span> trimBST(root.right, L, R);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(root.val &gt; R) &#123;</span><br><span class="line">        <span class="keyword">return</span> trimBST(root.left, L, R);</span><br><span class="line">    &#125;</span><br><span class="line">    root.left = trimBST(root.left, L, R);</span><br><span class="line">    root.right = trimBST(root.right, L, R);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -469,7 +624,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c510d6d2/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a898cbda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -488,7 +643,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/c510d6d2/" itemprop="url">Algorithm Leetcode 707 Design LinkedList</a></h1>
+                <a class="post-title-link" href="/posts/a898cbda/" itemprop="url">Algorithm Leetcode 437 Path Sum 3</a></h1>
         
 
         <div class="post-meta">
@@ -500,8 +655,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T20:28:29+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T14:19:13+08:00">
+                2019-12-24
               </time>
             
 
@@ -541,8 +696,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/c510d6d2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c510d6d2/" itemprop="commentCount"></span>
+                <a href="/posts/a898cbda/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a898cbda/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -572,7 +727,16 @@
       
         
           
-            
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>You are given a binary tree in which each node contains an integer value.</p>
+<p>Find the number of paths that sum to a given value.</p>
+<p>The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<p>The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8</span><br><span class="line"></span><br><span class="line">      10</span><br><span class="line">     /  \</span><br><span class="line">    5   -3</span><br><span class="line">   / \    \</span><br><span class="line">  3   2   11</span><br><span class="line"> / \   \</span><br><span class="line">3  -2   1</span><br><span class="line"></span><br><span class="line">Return 3. The paths that sum to 8 are:</span><br><span class="line"></span><br><span class="line">1.  5 -&gt; 3</span><br><span class="line">2.  5 -&gt; 2 -&gt; 1</span><br><span class="line">3. -3 -&gt; 11</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>题目划分为2块内容</p>
+<p>第一部分: 求从root开始到叶子节点，总和是否等于给定的sum<br>第二部分: 从每一个节点开始, 到叶子节点，总和是否等于给定的sum</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pathSum</span><span class="params">(TreeNode root, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> r = sum(root, sum);</span><br><span class="line">    <span class="comment">// 遍历每一个节点</span></span><br><span class="line">    <span class="keyword">return</span> r + pathSum(root.left, sum) + pathSum(root.right, sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(TreeNode node, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 从node节点到叶子节点，找出是否总和等于sum</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == node) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(node.val == sum) &#123;</span><br><span class="line">        count++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count + sum(node.left, sum - node.val) + sum(node.right, sum - node.val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -620,7 +784,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/9c9897b1/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c40d9066/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -639,7 +803,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/9c9897b1/" itemprop="url">Algorithm Leetcode 706 Design HashMap</a></h1>
+                <a class="post-title-link" href="/posts/c40d9066/" itemprop="url">Algorithm LeetCode 563 Binary Tree Tilt</a></h1>
         
 
         <div class="post-meta">
@@ -651,8 +815,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T20:28:18+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T13:42:23+08:00">
+                2019-12-24
               </time>
             
 
@@ -692,8 +856,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/9c9897b1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9c9897b1/" itemprop="commentCount"></span>
+                <a href="/posts/c40d9066/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c40d9066/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -723,330 +887,22 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/c0e9ac24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/c0e9ac24/" itemprop="url">Algorithm LeetCode 705 Design HashSet</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T20:28:05+08:00">
-                2019-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/c0e9ac24/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/c0e9ac24/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/e660b369/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/e660b369/" itemprop="url">Algorithm LeetCode 443 String Compression</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T20:24:45+08:00">
-                2019-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/e660b369/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e660b369/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of characters, compress it in-place.</p>
-<p>The length after compression must always be smaller than or equal to the original array.</p>
-<p>Every element of the array should be a character (not int) of length 1.</p>
-<p>After you are done modifying the input array in-place, return the new length of the array.</p>
-<p>Follow up:<br>Could you solve it using only O(1) extra space?</p>
-<p>Example 1:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[&quot;a&quot;,&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;c&quot;,&quot;c&quot;,&quot;c&quot;]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">Return 6, and the first 6 characters of the input array should be: [&quot;a&quot;,&quot;2&quot;,&quot;b&quot;,&quot;2&quot;,&quot;c&quot;,&quot;3&quot;]</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">&quot;aa&quot; is replaced by &quot;a2&quot;. &quot;bb&quot; is replaced by &quot;b2&quot;. &quot;ccc&quot; is replaced by &quot;c3&quot;.</span><br></pre></td></tr></table></figure>
-
-<p>Example 2:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[&quot;a&quot;]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">Return 1, and the first 1 characters of the input array should be: [&quot;a&quot;]</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">Nothing is replaced.</span><br></pre></td></tr></table></figure>
-
-<p>Example 3:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[&quot;a&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;,&quot;b&quot;]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">Return 4, and the first 4 characters of the input array should be: [&quot;a&quot;,&quot;b&quot;,&quot;1&quot;,&quot;2&quot;].</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">Since the character &quot;a&quot; does not repeat, it is not compressed. &quot;bbbbbbbbbbbb&quot; is replaced by &quot;b12&quot;.</span><br><span class="line">Notice each digit has it&apos;s own entry in the array.</span><br></pre></td></tr></table></figure>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return the tilt of the whole tree.</p>
+<p>The tilt of a tree node is defined as the absolute difference between the sum of all left subtree node values and the sum of all right subtree node values. Null node has tilt 0.</p>
+<p>The tilt of the whole tree is defined as the sum of all nodes’ tilt.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  Input: </span><br><span class="line">         1</span><br><span class="line">       /   \</span><br><span class="line">      2     3</span><br><span class="line">Output: 1</span><br><span class="line">Explanation: </span><br><span class="line">Tilt of node 2 : 0</span><br><span class="line">Tilt of node 3 : 0</span><br><span class="line">Tilt of node 1 : |2-3| = 1</span><br><span class="line">Tilt of binary tree : 0 + 0 + 1 = 1</span><br></pre></td></tr></table></figure>
 
 <p>Note:</p>
 <ul>
-<li>All characters have an ASCII value in [35, 126].</li>
-<li>1 &lt;= len(chars) &lt;= 1000.</li>
+<li>The sum of node values in any subtree won’t exceed the range of 32-bit integer.</li>
+<li>All the tilt values won’t exceed the range of 32-bit integer.</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用2个指针遍历数组</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><p>看得懂逻辑，但是自己写还是很多错误</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compress</span><span class="params">(<span class="keyword">char</span>[] chars)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> len = chars.length;</span><br><span class="line">	<span class="keyword">if</span> (len &lt; <span class="number">2</span>)</span><br><span class="line">		<span class="keyword">return</span> len;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>; <span class="comment">// slow pointer</span></span><br><span class="line">	<span class="keyword">int</span> j = <span class="number">0</span>; <span class="comment">// fast pointer</span></span><br><span class="line">	<span class="keyword">int</span> head = <span class="number">0</span>; <span class="comment">// writing head pointer</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (j &lt;= len) &#123;</span><br><span class="line">		<span class="keyword">while</span> ((j &lt; len) &amp;&amp; (chars[i] == chars[j]))</span><br><span class="line">			j++;</span><br><span class="line">		chars[head++] = chars[i];</span><br><span class="line">		<span class="keyword">int</span> count = j - i;</span><br><span class="line">		<span class="keyword">if</span> (count &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			String s = Integer.toString(count);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; s.length(); k++)</span><br><span class="line">				chars[head++] = s.charAt(k);</span><br><span class="line">		&#125;</span><br><span class="line">		i = j;</span><br><span class="line">		j++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>tilt = 左子树和 - 右子树和  的绝对值</p>
+<p>因此我们需要一个计算给定节点的子节点和的方法. 然后顺带着计算tilt</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findTilt</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">         sum(root);</span><br><span class="line">         <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">sum</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> left =  sum(node.left);</span><br><span class="line">        <span class="keyword">int</span> right = sum(node.right);</span><br><span class="line">        res += Math.abs(left - right);</span><br><span class="line">        <span class="keyword">return</span> left + right + node.val;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
           
         
       
@@ -1094,7 +950,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b4a58c2a/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4738d6df/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1113,7 +969,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/b4a58c2a/" itemprop="url">Algorithm Leetcode 232 Implement Queue using Stacks</a></h1>
+                <a class="post-title-link" href="/posts/4738d6df/" itemprop="url">Algorithm LeetCode 538 Convert BST to Greater Tree</a></h1>
         
 
         <div class="post-meta">
@@ -1125,8 +981,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T20:22:15+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T13:18:36+08:00">
+                2019-12-24
               </time>
             
 
@@ -1166,8 +1022,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/b4a58c2a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b4a58c2a/" itemprop="commentCount"></span>
+                <a href="/posts/4738d6df/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4738d6df/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1197,24 +1053,12 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Implement the following operations of a queue using stacks.</p>
-<ul>
-<li>push(x) – Push element x to the back of queue.</li>
-<li>pop() – Removes the element from in front of queue.</li>
-<li>peek() – Get the front element.</li>
-<li>empty() – Return whether the queue is empty.</li>
-</ul>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.</p>
 <p>Example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MyQueue queue = new MyQueue();</span><br><span class="line"></span><br><span class="line">queue.push(1);</span><br><span class="line">queue.push(2);  </span><br><span class="line">queue.peek();  // returns 1</span><br><span class="line">queue.pop();   // returns 1</span><br><span class="line">queue.empty(); // returns false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: The root of a Binary Search Tree like this:</span><br><span class="line">            5</span><br><span class="line">          /   \</span><br><span class="line">         2     13</span><br><span class="line"></span><br><span class="line">Output: The root of a Greater Tree like this:</span><br><span class="line">           18</span><br><span class="line">          /   \</span><br><span class="line">        20     13</span><br></pre></td></tr></table></figure>
 
-<p>Notes:</p>
-<ul>
-<li>You must use only standard operations of a stack – which means only push to top, peek/pop from top, size, and is empty operations are valid.</li>
-<li>Depending on your language, stack may not be supported natively. You may simulate a stack by using a list or deque (double-ended queue), as long as you use only standard operations of a stack.</li>
-<li>You may assume that all operations are valid (for example, no pop or peek operations will be called on an empty queue).</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>使用2个Stack来记录, input &amp; output. 这样负负得正，可以把原有顺序反过来</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line"><span class="keyword">private</span> Stack&lt;Integer&gt; input = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"><span class="keyword">private</span> Stack&lt;Integer&gt; output = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MyQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Push element x to the back of queue. */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    input.push(x);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Removes the element from in front of queue and returns that element. */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    peek();</span><br><span class="line">    <span class="keyword">return</span> output.pop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Get the front element. */</span></span><br><span class="line"><span class="comment">// 注意，这里的核心逻辑不能放在pop()里, 不然peek方法会失败</span></span><br><span class="line"><span class="comment">// 如果说放在pop()里，然后在peek里先调用pop也不行</span></span><br><span class="line"><span class="comment">// 因为peek不会影响数据状态，而pop会改变stack内容</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">peek</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(output.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">while</span>(!input.isEmpty()) &#123;</span><br><span class="line">            output.push(input.pop());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> output.peek();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** Returns whether the queue is empty. */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> input.isEmpty() &amp;&amp; output.isEmpty();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>右-&gt;中-&gt;左顺序遍历, 记录sum为之前的和 然后当前node.val = node.val + sum</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">convertBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        get(root);</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(TreeNode node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(node == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        get(node.right);</span><br><span class="line">        node.val += sum;</span><br><span class="line">        sum = node.val;</span><br><span class="line">        get(node.left);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1262,7 +1106,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8dc2d219/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/f1454c2d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1281,7 +1125,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/8dc2d219/" itemprop="url">Algorithm Leetcode 225 Implement Stack using Queues</a></h1>
+                <a class="post-title-link" href="/posts/f1454c2d/" itemprop="url">Algorithm Leetcode 475 Heaters</a></h1>
         
 
         <div class="post-meta">
@@ -1293,8 +1137,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T20:21:50+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T13:15:12+08:00">
+                2019-12-24
               </time>
             
 
@@ -1334,8 +1178,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/8dc2d219/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8dc2d219/" itemprop="commentCount"></span>
+                <a href="/posts/f1454c2d/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/f1454c2d/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1365,26 +1209,328 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Implement the following operations of a stack using queues.</p>
-<ul>
-<li>push(x) – Push element x onto stack.</li>
-<li>pop() – Removes the element on top of the stack.</li>
-<li>top() – Get the top element.</li>
-<li>empty() – Return whether the stack is empty.</li>
-</ul>
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8dcf895b/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/8dcf895b/" itemprop="url">Algorithm Leetcode 429 N-ary Tree Level Order Traversal</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T13:05:34+08:00">
+                2019-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/8dcf895b/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8dcf895b/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an n-ary tree, return the level order traversal of its nodes’ values.</p>
+<p>Nary-Tree input serialization is represented in their level order traversal, each group of children is separated by the null value (See examples).</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,null,3,2,4,null,5,6]</span><br><span class="line">Output: [[1],[3,2,4],[5,6]]</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]</span><br><span class="line">Output: [[1],[2,3,4,5],[6,7,8,9,10],[11,12,13],[14]]</span><br></pre></td></tr></table></figure>
+
+<p>Constraints:</p>
+<p>The height of the n-ary tree is less than or equal to 1000<br>The total number of nodes is between [0, 10^4]</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>碰到树的层序遍历就要想到queue, 与之前某一题类似(TODO)</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrder(Node root) &#123;</span><br><span class="line">      List&lt;List&lt;Integer&gt;&gt; retList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">          <span class="keyword">return</span> retList;</span><br><span class="line">      &#125;</span><br><span class="line">      Queue&lt;Node&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">      queue.add(root);</span><br><span class="line">      <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">          <span class="keyword">int</span> size = queue.size();</span><br><span class="line">          List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">          <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">              Node node = queue.poll();</span><br><span class="line">              <span class="keyword">if</span>(<span class="keyword">null</span> == node) &#123;</span><br><span class="line">                  <span class="keyword">continue</span>;</span><br><span class="line">              &#125;</span><br><span class="line">              list.add(node.val);</span><br><span class="line">              <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; node.children.size(); j++) &#123;</span><br><span class="line">                  <span class="keyword">if</span>(<span class="keyword">null</span> != node.children.get(j)) &#123;</span><br><span class="line">                      queue.add(node.children.get(j));</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          retList.add(list);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> retList;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/544be13c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/544be13c/" itemprop="url">Algorithm Leetcode 257 Binary Tree Paths</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T11:11:26+08:00">
+                2019-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/544be13c/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/544be13c/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return all root-to-leaf paths.</p>
+<p>Note: A leaf is a node with no children.</p>
 <p>Example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MyStack stack = new MyStack();</span><br><span class="line"></span><br><span class="line">stack.push(1);</span><br><span class="line">stack.push(2);  </span><br><span class="line">stack.top();   // returns 2</span><br><span class="line">stack.pop();   // returns 2</span><br><span class="line">stack.empty(); // returns false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">  Input:</span><br><span class="line"></span><br><span class="line">   1</span><br><span class="line"> /   \</span><br><span class="line">2     3</span><br><span class="line"> \</span><br><span class="line">  5</span><br><span class="line"></span><br><span class="line">Output: ["1-&gt;2-&gt;5", "1-&gt;3"]</span><br><span class="line"></span><br><span class="line">Explanation: All root-to-leaf paths are: 1-&gt;2-&gt;5, 1-&gt;3</span><br></pre></td></tr></table></figure>
 
-<p>Notes:</p>
-<ul>
-<li>You must use only standard operations of a queue – which means only push to back, peek/pop from front, size, and is empty operations are valid.</li>
-<li>Depending on your language, queue may not be supported natively. You may simulate a queue by using a list or deque (double-ended queue), as long as you use only standard operations of a queue.</li>
-<li>You may assume that all operations are valid (for example, no pop or top operations will be called on an empty stack).</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每次queue add 的时候，把queue里的顺序调整一下<br>核心代码为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    q1.add(x);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q1.size() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        q1.add(q1.poll());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>二叉树就是递归。把list 和 string传进来<br>每次string会变化，最后到叶子节点时，list.add(string)进来</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">binaryTreePaths</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> != root) &#123;</span><br><span class="line">        get(root, list, <span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">get</span><span class="params">(TreeNode node, List&lt;String&gt; list, String str)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == node.left &amp;&amp; <span class="keyword">null</span> == node.right) &#123;</span><br><span class="line">        list.add(str + node.val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> != node.left) &#123;</span><br><span class="line">        get(node.left, list, str + node.val + <span class="string">"-&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> != node.right) &#123;</span><br><span class="line">        get(node.right, list, str + node.val + <span class="string">"-&gt;"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">MyStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Queue&lt;Integer&gt; q1 = <span class="keyword">new</span> LinkedList();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Push element x onto stack. */</span></span><br><span class="line">    <span class="comment">// 这里是核心逻辑</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        q1.add(x);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q1.size() - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            q1.add(q1.poll());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Removes the element on top of the stack and returns that element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.poll();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Get the top element. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/** Returns whether the stack is empty. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> q1.isEmpty();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1432,7 +1578,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/52f5d09b/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/68a60d10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1451,7 +1597,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/52f5d09b/" itemprop="url">Algorithm 二叉树前中后序遍历 递归与非递归的实现</a></h1>
+                <a class="post-title-link" href="/posts/68a60d10/" itemprop="url">Algorithm Leetcode 235 Lowest Common Ancestor of a Binary Search Tree</a></h1>
         
 
         <div class="post-meta">
@@ -1463,8 +1609,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T19:50:43+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T11:04:07+08:00">
+                2019-12-24
               </time>
             
 
@@ -1504,8 +1650,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/52f5d09b/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/52f5d09b/" itemprop="commentCount"></span>
+                <a href="/posts/68a60d10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/68a60d10/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1535,170 +1681,20 @@
       
         
           
-            
-          
-        
-      
-    </div>
-    
-    
-    
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.</p>
+<p>According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself).”</p>
+<p>Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8</span><br><span class="line">Output: 6</span><br><span class="line">Explanation: The LCA of nodes 2 and 8 is 6.</span><br></pre></td></tr></table></figure>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/21b94842/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/21b94842/" itemprop="url">Algorithm LeetCode 897 Increasing order search tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T19:50:21+08:00">
-                2019-12-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/21b94842/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/21b94842/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">  Example 1:</span><br><span class="line">Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]</span><br><span class="line"></span><br><span class="line">       5</span><br><span class="line">      / \</span><br><span class="line">    3    6</span><br><span class="line">   / \    \</span><br><span class="line">  2   4    8</span><br><span class="line"> /        / \ </span><br><span class="line">1        7   9</span><br><span class="line"></span><br><span class="line">Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]</span><br><span class="line"></span><br><span class="line"> 1</span><br><span class="line">  \</span><br><span class="line">   2</span><br><span class="line">    \</span><br><span class="line">     3</span><br><span class="line">      \</span><br><span class="line">       4</span><br><span class="line">        \</span><br><span class="line">         5</span><br><span class="line">          \</span><br><span class="line">           6</span><br><span class="line">            \</span><br><span class="line">             7</span><br><span class="line">              \</span><br><span class="line">               8</span><br><span class="line">                \</span><br><span class="line">                 9</span><br></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The LCA of nodes 2 and 4 is 2, since a node can be a descendant of itself according to the LCA definition.</span><br></pre></td></tr></table></figure>
 
 <p>Note:</p>
-<ul>
-<li>The number of nodes in the given tree will be between 1 and 100.</li>
-<li>Each node will have a unique integer value from 0 to 1000.</li>
-</ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>其实就是遍历二叉树，然后按顺序重新排列，遍历规则就是左-中-右</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> TreeNode <span class="title">increasingBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">    get(root, list);</span><br><span class="line">    TreeNode node = <span class="keyword">new</span> TreeNode(list.get(<span class="number">0</span>));</span><br><span class="line">    TreeNode head = node;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">        TreeNode right = <span class="keyword">new</span> TreeNode(list.get(i));</span><br><span class="line">        node.right = right;</span><br><span class="line">        node = node.right;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> List&lt;Integer&gt; <span class="title">get</span><span class="params">(TreeNode root, List&lt;Integer&gt; list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    get(root.left, list);</span><br><span class="line">    list.add(root.val);</span><br><span class="line">    get(root.right, list);</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>top voted solution还没太看懂，留坑</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    TreeNode dummy = <span class="keyword">new</span> TreeNode(<span class="number">0</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> TreeNode <span class="title">increasingBST</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">        TreeNode ans = dummy;</span><br><span class="line">        traversal(root);</span><br><span class="line">        <span class="keyword">return</span> ans.right;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traversal</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        traversal(root.left);</span><br><span class="line">        root.left = <span class="keyword">null</span>;</span><br><span class="line">        dummy.right = root;</span><br><span class="line">        dummy = root;</span><br><span class="line">        traversal(root.right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>All of the nodes’ values will be unique.<br>p and q are different and both values will exist in the BST.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>如果给的p, q的val大于root, 则LCA在右侧找，如果小于root， 则在左侧找, 如果在p, q中间，则root就是要找的值</p>
+<p>思路很巧妙</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span>(root.val &gt; Math.max(p.val, q.val)) &#123;</span><br><span class="line">          <span class="keyword">return</span> lowestCommonAncestor(root.left, p, q);</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span>(root.val &lt; Math.min(p.val, q.val)) &#123;</span><br><span class="line">          <span class="keyword">return</span> lowestCommonAncestor(root.right, p, q);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> root;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1746,7 +1742,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/7727a6f3/">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/42adb360/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1765,7 +1761,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/7727a6f3/" itemprop="url">Algorithm Leetcode 994 Rotting Oranges</a></h1>
+                <a class="post-title-link" href="/posts/42adb360/" itemprop="url">Algorithm Leetcode 637 Average of levels in binary tree</a></h1>
         
 
         <div class="post-meta">
@@ -1777,8 +1773,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-23T19:16:43+08:00">
-                2019-12-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-24T09:35:04+08:00">
+                2019-12-24
               </time>
             
 
@@ -1818,8 +1814,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/7727a6f3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7727a6f3/" itemprop="commentCount"></span>
+                <a href="/posts/42adb360/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/42adb360/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1849,8 +1845,13 @@
       
         
           
-            <p>广度优先搜索</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty binary tree, return the average value of the nodes on each level in the form of an array.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  Input:</span><br><span class="line">    3</span><br><span class="line">   / \</span><br><span class="line">  9  20</span><br><span class="line">    /  \</span><br><span class="line">   15   7</span><br><span class="line">Output: [3, 14.5, 11]</span><br><span class="line">Explanation:</span><br><span class="line">The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 is 11. Hence return [3, 14.5, 11].</span><br></pre></td></tr></table></figure>
 
+<p>Note:<br>The range of node’s value is in the range of 32-bit signed integer.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>与前面某题一样(TODO), 遇到树的层序遍历，就是queue</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> List&lt;Double&gt; <span class="title">averageOfLevels</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> == root) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line">    List&lt;Double&gt; retList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">            TreeNode node = queue.poll();</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> == node) &#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            list.add(node.val);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.left) &#123;</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.right) &#123;</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> sum = <span class="number">0</span>d;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            sum += list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        retList.add(sum / list.size());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> retList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1889,7 +1890,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/8/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/23/">23</a><a class="extend next" rel="next" href="/page/10/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1935,7 +1936,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">219</span>
+                  <span class="site-state-item-count">229</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
