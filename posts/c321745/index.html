@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3">
+<meta name="description" content="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3 https://blog.csdn.net/yuanzeyao/article/details/12979943 https://blog.csdn.net/yanbober/article/details/46361191 h">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Window机制">
 <meta property="og:url" content="http://blog.scions.cn/posts/c321745/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3">
+<meta property="og:description" content="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3 https://blog.csdn.net/yuanzeyao/article/details/12979943 https://blog.csdn.net/yanbober/article/details/46361191 h">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-14T02:36:54.383Z">
+<meta property="og:updated_time" content="2020-01-15T02:01:49.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Window机制">
-<meta name="twitter:description" content="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3">
+<meta name="twitter:description" content="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3 https://blog.csdn.net/yuanzeyao/article/details/12979943 https://blog.csdn.net/yanbober/article/details/46361191 h">
 
 
 
@@ -390,6 +390,222 @@
 
       
         <p><a href="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3" target="_blank" rel="noopener">https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3</a></p>
+<p><a href="https://blog.csdn.net/yuanzeyao/article/details/12979943" target="_blank" rel="noopener">https://blog.csdn.net/yuanzeyao/article/details/12979943</a></p>
+<p><a href="https://blog.csdn.net/yanbober/article/details/46361191" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/46361191</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&mid=403668684&idx=1&sn=5e498bb86bcc884c43ba469c8e26623c&scene=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=403668684&amp;idx=1&amp;sn=5e498bb86bcc884c43ba469c8e26623c&amp;scene=0</a></p>
+<p>Android将窗口分为三类: 应用窗口, 子窗口, 系统窗口 </p>
+<p>其中应用窗口需要和一个Activity对应</p>
+<p>子窗口是有父窗口的窗口</p>
+<p>系统窗口是由系统创建的窗口，用户无法创建，除Toast, 输入法窗口，壁纸窗口除外</p>
+<pre><code>ViewManager.java
+
+public interface ViewManager {
+    public void addView(View view, ViewGroup.LayoutParams params);
+    public void updateViewLayout(View view, ViewGroup.LayoutParams params);
+    public void removeView(View view);
+}
+
+WindowManager.java extends ViewManager.java
+
+public interface WindowManager extends ViewManager {
+    public static class BadTokenException extends RuntimeException{}
+    public static class InvalidDisplayException extends RuntimeException{}
+
+    public Display getDefaultDisplay();
+
+  public void removeViewImmediate(View view);
+
+    public interface KeyboardShortcutsReceiver {
+        void onKeyboardShortcutsReceived(List&lt;KeyboardShortcutGroup&gt; result);
+    }
+
+    final int TAKE_SCREENSHOT_FULLSCREEN = 1;
+    final int TAKE_SCREENSHOT_SELECTED_REGION = 2;
+
+    public static final String PARCEL_KEY_SHORTCURS_ARRAY = &quot;shortcuts_array&quot;;
+
+    public void requestAppKeyboardsShortcuts(final KeyboardShortcutsReceiver receiver, int deviceId);
+
+    public Region getCurrentImeTouchRegion();
+
+    public static class LayoutParams extends ViewGroup.LayoutParams{}
+}
+
+
+WindowManagerImpl implements WindowManager
+
+public final class WindowManagerImpl implements WindowManager {
+    private final Window mParentWindow; // 这里的Window见下文 Window.java
+    private final Context mContext;
+    private final WindowManagerGloabl mGlobal = WindowManagerGlobal.getInstance();
+    private IBinder mDefaultToken;
+
+    ...
+
+    public WindowManagerImpl(Context context){
+        this(context, null);
+    }
+
+    public WindowManagerImpl(Context context, Window parentWindow)  {
+        mContext =context;
+        mParentWindow = parentWindow;
+    }
+}
+
+Window.java
+
+public abstract class Window {
+
+}
+
+PhoneWindow.java
+
+public PhoneWindow extends Window implements MenuBuilder.Callback {
+
+}</code></pre><p>在ActivityThread中的 performLaunchActivity方法中</p>
+<ol>
+<li><p>通过反射创建一个Activity</p>
+<p> try {</p>
+<pre><code>    java.lang.ClassLoader cl = appContext.getClassLoader();
+    activity = mInstrumentation.newActivity(
+            cl, component.getClassName(), r.intent);
+    StrictMode.incrementExpectedActivityCount(activity.getClass());
+    r.intent.setExtrasClassLoader(cl);
+    r.intent.prepareToEnterProcess();
+    if (r.state != null) {
+        r.state.setClassLoader(cl);
+    }
+} catch (Exception e) {
+    if (!mInstrumentation.onException(activity, e)) {
+        throw new RuntimeException(
+            &quot;Unable to instantiate activity &quot; + component
+            + &quot;: &quot; + e.toString(), e);
+    }
+}</code></pre></li>
+<li><p>activity调用attach方法</p>
+<p> Activity.java</p>
+<p> activity.attach(appContext, this, getInstrumentation(), r.token,</p>
+<pre><code>r.ident, app, r.intent, r.activityInfo, title, r.parent,
+r.embeddedID, r.lastNonConfigurationInstances, config,
+r.referrer, r.voiceInteractor, window, r.configCallback);</code></pre><p> 其中attach方法里</p>
+<pre><code>    mWindow = new PhoneWindow(this, window, activityConfigCallback);
+mWindow.setWindowControllerCallback(this);
+mWindow.setCallback(this);
+mWindow.setOnWindowDismissedCallback(this);
+mWindow.getLayoutInflater().setPrivateFactory(this);
+    ...
+    mWindow.setWindowManager(
+        (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),
+        mToken, mComponent.flattenToString(),
+        (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);
+    ....
+mWindowManager = mWindow.getWindowManager();</code></pre></li>
+<li><p>所以由上述可以知道window在这里得到初始化new PhoneWindow</p>
+</li>
+<li><p>windowManager通过WindowManagerImpl中的createLocalWindowManager获得, 传入的一个WindowManager wm 由getSystemService获得</p>
+</li>
+</ol>
+<pre><code>Window.java
+public void setWindowManager(WindowManager wm, IBinder appToken, String appName,
+            boolean hardwareAccelerated) {
+        mAppToken = appToken;
+        mAppName = appName;
+        mHardwareAccelerated = hardwareAccelerated
+                || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, false);
+        if (wm == null) {
+            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
+        }
+        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(this);
+    }
+也会通过getSystemService获得WindowManager</code></pre><ol start="5">
+<li><p>其中context.getSystemService为什么能获取到WindowManager, 这就要从context.java类中进行分析</p>
+<p> Context.java<br> public abstract class Context {</p>
+<pre><code>public final @Nullable &lt;T&gt; T getSystemService(@NonNull Class&lt;T&gt; serviceClass) {
+    // Because subclasses may override getSystemService(String) we cannot
+    // perform a lookup by class alone.  We must first map the class to its
+    // service name then invoke the string-based method.
+    String serviceName = getSystemServiceName(serviceClass);
+    return serviceName != null ? (T)getSystemService(serviceName) : null;
+}</code></pre><p> }</p>
+<p> Context.java的实现类是ComtextImpl.java<br> class ContextImpl extends Context {<br> @Override</p>
+<pre><code>public Object getSystemService(String name) {
+    return SystemServiceRegistry.getSystemService(this, name);
+}</code></pre><p> }</p>
+<p> SystemServiceRegistry.java<br> final class SystemServiceRegistry {</p>
+<pre><code>static {
+    registerService(Context.WINDOW_SERVICE, WindowManager.class,
+            new CachedServiceFetcher&lt;WindowManager&gt;() {
+        @Override
+        public WindowManager createService(ContextImpl ctx) {
+            return new WindowManagerImpl(ctx);
+        }});
+}</code></pre><p> }<br> 因为静态代码只执行一次，也就是每个Application只有一个WindowManagerImpl实例</p>
+</li>
+<li><p>这就建立了Activity和Window之间的联系</p>
+</li>
+<li><p>在<a href="https://blog.csdn.net/yanbober/article/details/45970721" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/45970721</a>中说到，setContentView实际是触发了Activity的onResume状态，也就是makeVisible方法</p>
+<p> void makeVisible() {</p>
+<pre><code>    if (!mWindowAdded) {
+        ViewManager wm = getWindowManager();
+        wm.addView(mDecor, getWindow().getAttributes());
+        mWindowAdded = true;
+    }
+    mDecor.setVisibility(View.VISIBLE);
+}</code></pre></li>
+</ol>
+<p>这里的wm变量，是Window类通过调用WindowManagerImp的createLocalWindowManager创建的实例，每个Activity都会创建一个，与上文说的WindowManager不一样。Context的WM只有一个</p>
+<ol start="8">
+<li><p>wm.addView</p>
+<p> WindowManagerImpl.java<br> @Override</p>
+<pre><code>public void addView(@NonNull View view, @NonNull ViewGroup.LayoutParams params) {
+    applyDefaultToken(params);
+    mGlobal.addView(view, params, mContext.getDisplay(), mParentWindow);
+}</code></pre><p> 最终是WindowManagerGlobal调用的addView</p>
+<p> public final class WindowManagerGlobal {<br> ……</p>
+<pre><code>private final ArrayList&lt;View&gt; mViews = new ArrayList&lt;View&gt;();
+private final ArrayList&lt;ViewRootImpl&gt; mRoots = new ArrayList&lt;ViewRootImpl&gt;();
+private final ArrayList&lt;WindowManager.LayoutParams&gt; mParams =
+        new ArrayList&lt;WindowManager.LayoutParams&gt;();
+private final ArraySet&lt;View&gt; mDyingViews = new ArraySet&lt;View&gt;();
+
+......</code></pre><p> public void addView(View view, ViewGroup.LayoutParams params,</p>
+<pre><code>        Display display, Window parentWindow) {
+    ......
+    //获取Activity的Window的getWindow().getAttributes()的LayoutParams 
+    final WindowManager.LayoutParams wparams = (WindowManager.LayoutParams)params;
+    //如果是Activity中调运的，parentWindow=Window，如果不是Activity的，譬如是Context的静态代码块的实例化则parentWindow为null
+    if (parentWindow != null) {
+        //依据当前Activity的Window调节sub Window的LayoutParams
+        parentWindow.adjustLayoutParamsForSubWindow(wparams);
+    } else {
+        ......
+    }
+
+    ViewRootImpl root;
+    ......
+    synchronized (mLock) {
+        ......
+        //为当前Window创建ViewRoot
+        root = new ViewRootImpl(view.getContext(), display);
+        view.setLayoutParams(wparams);
+        //把当前Window相关的东西存入各自的List中，在remove中会删掉
+        mViews.add(view);
+        mRoots.add(root);
+        mParams.add(wparams);
+    }
+
+    // do this last because it fires off messages to start doing things
+    try {
+        //把View和ViewRoot关联起来，很重要！！！
+        root.setView(view, wparams, panelParentView);
+    } catch (RuntimeException e) {
+        ......
+    }
+}
+......</code></pre></li>
+</ol>
+<pre><code>}</code></pre><p>在addView方法中利用LayoutParams获取Window属性，然后为每个Window创建一个ViewRootImpl, 通过ViewRootImpl的setView方法通过mSession向WindowManagerService发送添加窗口，请求把窗口添加到WindowManager中，并通过WindowManager来管理窗口的view,事件和消息处理等。</p>
+<p>Dialog, PopupWindow, Toast显示原理<a href="https://blog.csdn.net/yanbober/article/details/46361191" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/46361191</a></p>
 
       
     </div>
@@ -526,7 +742,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">229</span>
+                  <span class="site-state-item-count">235</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

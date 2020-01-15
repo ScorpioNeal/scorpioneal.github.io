@@ -1,15 +1,310 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java SparseArray原理</title>
+    <url>/posts/87b5612/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>targetSDK, compileSDK, minSDK版本选择问题</title>
+    <url>/posts/8570bc54/</url>
+    <content><![CDATA[<h2 id="compileSdkVersion"><a href="#compileSdkVersion" class="headerlink" title="compileSdkVersion"></a><strong>compileSdkVersion</strong></h2><p>is your way to tell Gradle what version of the Android SDK to compile your app with.  Using the new Android SDK is a requirement to use any of the new APIs added in that level.</p>
+<p>BUT. <strong>Changing your compileSdkVersion doesn’t change runtime behavior</strong>. It purely used at compile time and new compiler warnings/errors may be present when changing your compileSdkVersion.</p>
+<p>It’s strongly recommended that you always compile with the latest SDK.</p>
+<p>If you use Support Library, compiling with the latest SDK is a requirement for using the latest Support Library release. e.g You must have a compileSdkVersion of at least 23 to use the 23.1.1 Support Library</p>
+<p>In general, a new version of the Support Library is released alongside a new platform version, providing compatibility shims(薄垫片) to newly added APIs as well as new features.(为系统新增加的API和特性提供兼容性支持)</p>
+<h2 id="minSdkVersion"><a href="#minSdkVersion" class="headerlink" title="minSdkVersion"></a>minSdkVersion</h2><p>is the lowest bound for your app. It is also one of the signals the Google Play store uses to determine which of a user’s devices an app can be installed on.</p>
+<p>It plays an important role during development: by default lint runs against your project, warning you when you use any APIs above your minSdkVersion (lint检查会对使用任何API高于minSdkVersion的情况报warning), helping your avoid the runtime issue of attempting to call an API that doesn’t exist.  <a href="http://developer.android.com/training/basics/supporting-devices/platforms.html?utm_campaign=adp_series_sdkversion_010616&utm_source=medium&utm_medium=blog#version-codes" target="_blank" rel="noopener">Checking the system version at runtime</a> is a common technique when using APIs only on newer platform versions.</p>
+<p>The libraries you use may have their own minSdkVersion. Your app’s minSdkVersion must be at least as high as your dependencies’ minSdkVersion.  In rare case where you want to continue to use a library with a higher minSdkVersion than your app, you can use the <a href="http://tools.android.com/tech-docs/new-build-system/user-guide/manifest-merger?utm_campaign=adp_series_sdkversion_010616&utm_source=medium&utm_medium=blog#TOC-tools:overrideLibrary-marker" target="_blank" rel="noopener">tools:overrideLibrary</a> marker.(很少情况下，如果你仍然想用minSdkVersion &gt; app minSdkVersion的库，你可以使用tools:overrideLibeary标记。)</p>
+<h2 id="targetSdkVersion"><a href="#targetSdkVersion" class="headerlink" title="targetSdkVersion"></a>targetSdkVersion</h2><p>is the main way Android provides forward compatibility by not applying behavior changes unless the targetSdkVersion is updated. This allows you to use new APIs prior to working through the behavior changes. (targetSdkVersion是Android提供向前兼容的主要依据，在应用的targetSdkVersion没有更新之前系统不会应用最新的行为变化。 这允许你在适应新的行为变化之前使用新的API.)</p>
+<p>Much of the behavior changes that targetSdkVersion implies are documented directly in the <a href="http://developer.android.com/reference/android/os/Build.VERSION_CODES.html?utm_campaign=adp_series_sdkversion_010616&utm_source=medium&utm_medium=blog" target="_blank" rel="noopener">VERSION_CODES</a>, but all of the gory details are also listed on the each releases’ platform highlights, nicely linked in the <a href="http://developer.android.com/guide/topics/manifest/uses-sdk-element.html?utm_campaign=adp_series_sdkversion_010616&utm_source=medium&utm_medium=blog#ApiLevels" target="_blank" rel="noopener">API Levels table</a>. (targetSdkVersion 所暗示的许多行为变化都记录在 VERSION_CODES 文档中了，但是所有恐怖的细节也都列在每次发布的平台亮点中了，在这个 API Level 表中可以方便地找到相应的链接。)</p>
+<p>With some of the behavior changes being very visible to user, updating to target the latest SDK should be a high priority for every app.  Test before updating your targetSdkVersion. </p>
+<p>minSdkVersion and targetSdkVersion also differ from compileSdkVersion in that they are included in your final APK. </p>
+<p>You’ll find if you manually put this is your manifest, it’ll be ignored when you build with Gradle. (如果你在 manifest 文件中手工设置，你会发现 Gradle 在构建时会忽略它们。)</p>
+<h2 id="Putting-it-all-together"><a href="#Putting-it-all-together" class="headerlink" title="Putting it all together"></a>Putting it all together</h2><blockquote>
+<p>minSdkVersion ≤ targetSdkVersion ≤ compileSdkVersion</p>
+</blockquote>
+<p>compileSdkVersion is your ‘maximum’ and minSdkVersion is your ‘minimum’ </p>
+<p>Ideally, the relationship would look more like this</p>
+<blockquote>
+<p>minSdkVersion(lowest possible) ≤ targetSdkVersion == compileSdkVersion(latest SDK)</p>
+</blockquote>
+<p>You will hit the biggest audience with a low minSdkVersion and look and act the best by targeting and compiling with the latest SDK(用较低的 minSdkVersion 来覆盖最大的人群，用最新的 SDK 设置 target 和 compile 来获得最好的外观和行为)</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android 权限相关</title>
+    <url>/posts/66d7bf51/</url>
+    <content><![CDATA[<p>Android M api 23之后引入运行时权限。</p>
+<p>再此之前，权限是在androidManifest.xml中申请，用户安装的时候可以看到，要么全同意，要么全不同意。</p>
+<p>权限分组:</p>
+<ul>
+<li>Normal Protection权限</li>
+<li>Dangerous 权限</li>
+<li>Particular 权限</li>
+<li>Other 权限</li>
+</ul>
+<p>正常权限:</p>
+<p>对用户隐私没有较大影响或者不会带来安全问题，安装后就赋予这些权限，不需要提醒用户，用户也不能取消这些权限, 主要是一些网络，蓝牙，时区，快捷方式。只要AndroidManifest中进行设置，就会被授予，且不能取消。</p>
+<pre><code>ACCESS_LOCATION_EXTRA_COMMANDS
+ACCESS_NETWORK_STATE
+ACCESS_NOTIFICATION_POLICY
+ACCESS_WIFI_STATE
+BLUETOOTH
+BLUETOOTH_ADMIN
+BROADCAST_STICKY
+CHANGE_NETWORK_STATE
+CHANGE_WIFI_MULTICAST_STATE
+CHANGE_WIFI_STATE
+DISABLE_KEYGUARD
+EXPAND_STATUS_BAR
+GET_PACKAGE_SIZE
+INTERNET
+KILL_BACKGROUND_PROCESSES
+MODIFY_AUDIO_SETTINGS
+NFC
+READ_SYNC_SETTINGS
+READ_SYNC_STATS
+RECEIVE_BOOT_COMPLETED
+REORDER_TASKS
+REQUEST_INSTALL_PACKAGES
+SET_TIME_ZONE
+SET_WALLPAPER
+SET_WALLPAPER_HINTS
+TRANSMIT_IR
+USE_FINGERPRINT
+VIBRATE
+WAKE_LOCK
+WRITE_SYNC_SETTINGS
+SET_ALARM
+INSTALL_SHORTCUT
+UNINSTALL_SHORTCUT</code></pre><p>特殊权限</p>
+<p>主要有2个</p>
+<pre><code>SYSTEM_ALERT_WINDOW 设置悬浮窗, 进行一些黑科技
+WRITE_SETTINGS 修改系统设置
+
+做法是通过startActivityForResult来进行授权
+
+e.g 请求悬浮窗
+private static final int REQUEST_CODE = 1;
+private  void requestAlertWindowPermission() {
+    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+    intent.setData(Uri.parse(&quot;package:&quot; + getPackageName()));
+    startActivityForResult(intent, REQUEST_CODE);
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_CODE) {
+        if (Settings.canDrawOverlays(this)) {
+            Log.i(LOGTAG, &quot;onActivityResult granted&quot;);
+        }
+    }
+}
+
+请求WRITE_SETTINGS
+private static final int REQUEST_CODE_WRITE_SETTINGS = 2;
+private void requestWriteSettings() {
+    Intent intent = new Intent(Settings.ACTION_MANAGE_WRITE_SETTINGS);
+    intent.setData(Uri.parse(&quot;package:&quot; + getPackageName()));
+    startActivityForResult(intent, REQUEST_CODE_WRITE_SETTINGS );
+}
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (requestCode == REQUEST_CODE_WRITE_SETTINGS) {
+        if (Settings.System.canWrite(this)) {
+            Log.i(LOGTAG, &quot;onActivityResult write settings granted&quot; );
+        }
+    }</code></pre><p>危险权限</p>
+<pre><code>CALENDAR
+CAMERA
+CONTACTS
+LOCATION
+MICROPHONE
+PHONE
+SENSORS
+SMS
+STORAGE</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6e1b3155-71bd-42cb-b9b6-97688d5611d1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45FWSOCWXQ%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020900Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDYDTV3JVhhMw0UpiXaDMd0Rn4T76BgAmiaNM7bPBWLKgIhAOsW9xTz9LZcAsoT8%2F7QQvnNZmRIN8aSgInpXgSENc6BKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgzV3Qi8QK5nDODVbucqkQN4XADfjcgckwmsOuhFZQPf2j2OEmJNTzZJiq%2FzI1MogjWbmxNjvLBS9cfvN0EFkI77hAC1wFE%2F7zVAO6sXEpNQZGfAWEkZDUC2leYslClHP7TyzOLRxLIBGZ9%2BRc1YNhEAhmXJN%2B8wQBy3AxYda9c6%2B8aRBBUSMalk7SkubnAtMAia38ZXrFLAiAzKx9WG0znMJkDQpVgm9KAXPbCmtsZshBOETaj4eeLfC0W0wtuFTjmxLk4nUxeBXoZmImu9qsewbml05OwXV98zTTKGLAXaeGCmna4mofx6AqwCoh1wD8b1SBi%2BjxJHTbNsD6cmMydDJdSXtxNnWmwHU7T7%2FdnY86SHS33HllEEUNaKUn0p4V4oCayCDdsG%2FvZZCYzxr9YIa3oNph9VtGjzroj%2FStMuM7RLl913W9ETD8faOH4%2BiUDdODdPe%2BN9w5Rdl0DrdkqaY5N6S%2FLpk9hNJOdFVBy9cG9JWLO8fGX6w%2Fa8Rj%2BmUtQOk1QwrzqS%2F8UfitGGnuvDXFlAEX807R1%2BfGih56upWDD74fjwBTrqAbvHkixC0yQ0bshXas3oMfhSaKpgLWOQUvPR3rgiDY9ZSwif9vzfPUDLnrHH44cr%2F%2BtJE5wwsl4aPV0Pbw1MZ3Wk9v8pcYkjlw3qyQji4jptLcLu%2Bs%2FSvPwdOcdJi%2Fyrad0TUIDRVpTSB%2BPqeTVD4rCzPofVwQey%2BaMy3Kdt5fBEoBT%2FGbJMZWFr4wNxImC1VYNFc92yehomMYGSEM2As7Z1kEkyJe%2FtC93hgAH8JJ3eqzKP12W097ylbEhZjD1DU0YlE35jvr0pCaSroHP7hR9yWUCXBZMcKH8FYvl466FNzwgudRs2AKJP3Q%3D%3D&X-Amz-Signature=7167c9133af1c24f7a62e50a38ba2ae1b28e316694351bd6a097602b9aa5e08b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6e1b3155-71bd-42cb-b9b6-97688d5611d1/Untitled.png"></p>
+<p>通常我们需要使用如下的API.</p>
+<ul>
+<li><strong>int checkSelfPermission(String permission)</strong> 用来检测应用是否已经具有权限</li>
+<li><strong>void requestPermissions(String[] permissions, int requestCode)</strong> 进行请求单个或多个权限</li>
+<li><strong>void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)</strong> 用户对请求作出响应后的回调</li>
+</ul>
+<p>但是这些方法在API23之后才加入，低于23的版本需要使用V4包中提供的方法</p>
+<ul>
+<li>ContextCompat.checkSelfPermission</li>
+<li>ActivityCompat.requestPermissions</li>
+<li>ActivityCompat.shouldShowRequestPermissionRationale</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android 图片计算相关</title>
+    <url>/posts/6be564f4/</url>
+    <content><![CDATA[<p><a href="http://www.gcssloop.com/customview/Matrix_Method" target="_blank" rel="noopener">http://www.gcssloop.com/customview/Matrix_Method</a></p>
+<p><a href="https://blog.csdn.net/larryl2003/article/details/6919513" target="_blank" rel="noopener">https://blog.csdn.net/larryl2003/article/details/6919513</a></p>
+<p><a href="http://www.cnblogs.com/hrlnw/p/4403334.html" target="_blank" rel="noopener">http://www.cnblogs.com/hrlnw/p/4403334.html</a></p>
+<p><a href="http://blog.mrriddler.com/2016/07/20/%E5%9B%BE%E7%89%87%E4%B9%8B%E6%97%85/" target="_blank" rel="noopener">http://blog.mrriddler.com/2016/07/20/%E5%9B%BE%E7%89%87%E4%B9%8B%E6%97%85/</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&mid=404530070&idx=1&sn=e2580b69d6ec73dabf8160216aa6702a&scene=1&srcid=0322dGvv5B4miLg3vt0q2rK2&key=710a5d99946419d9e5ab07eaa09e546952524b770e8a63c46c223b7588209d3a542fe4a0827571ac73b03cb78b404289&ascene=0&uin=MTYzMjY2MTE1&devicetype=iMac+MacBookPro10,1+OSX+OSX+10.11.4+build(15E65)&version=11020201&pass_ticket=Sqb+pOLTrZ0wixoScJ8flYxFV4tOFnBa7NFos1uIG8U=" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA4MjU5NTY0NA==&amp;mid=404530070&amp;idx=1&amp;sn=e2580b69d6ec73dabf8160216aa6702a&amp;scene=1&amp;srcid=0322dGvv5B4miLg3vt0q2rK2&amp;key=710a5d99946419d9e5ab07eaa09e546952524b770e8a63c46c223b7588209d3a542fe4a0827571ac73b03cb78b404289&amp;ascene=0&amp;uin=MTYzMjY2MTE1&amp;devicetype=iMac+MacBookPro10,1+OSX+OSX+10.11.4+build(15E65)&amp;version=11020201&amp;pass_ticket=Sqb+pOLTrZ0wixoScJ8flYxFV4tOFnBa7NFos1uIG8U=</a></p>
+<p>Bitmap的decodeResource和decodeFile的区别</p>
+<p>decodeFile读取SD卡中的图，得到的是图片的原始尺寸</p>
+<p>decodeResource读取Res, Raw等资源，得到的是图片的原始尺寸 * 缩放系数</p>
+<pre><code>// 通过BitmapFactory.Options的这几个参数可以调整缩放系数
+public class BitmapFactory {
+    public static class Options {
+        // 默认true
+        public boolean inScaled;
+        // 无dpi的文件夹下默认160
+        public int inDensity;
+        // 取决具体屏幕
+        public int inTargetDensity;
+                // 3.0后引入 
+                public Bitmap inBitmap;
+
+                public booleaninJustDecodeBounds;
+
+        public int inSampleSize;
+        ......
+    }
+}</code></pre><p>e.g 处理720 * 720的图片。 </p>
+<p>inScaled为false表示不缩放，得到720*720</p>
+<p>inScaled为true, 根据inDensity&amp;inTargetDensity来计算缩放系数</p>
+<p>缩放系数 = inTargetDensity (实际的density / inDensity)</p>
+<p>e.g 1080P 实际density = 480. 图片在drawable下, inDensity 为160 缩放系数为3，解码后的图片为2160 * 2160</p>
+<p>如果图片放在xhdpi下 inDensity = 160 * 2 = 320, 缩放系数为480/320 = 1.5 得到的图片为1080 * 1080</p>
+<p>可以手动设置inTargetDensity和inDensity来自主解码</p>
+<p>inBitmap如果设置了这个属性, 则会重用这个Bitmap的内存从而提升性能，但是重用是有条件的4.4之前只能重用相同大小的Bitmap, 4.4以后只要比重用Bitmap小即可. 不太理解 TODO</p>
+<p>加载Bitmap需要先读取Bitmap的原始大小，按缩小了合适的倍数进行加载，这个缩小倍数的计算就是inSampleSize的计算 采样率?</p>
+<pre><code>// 根据maxWidth, maxHeight计算最合适的inSampleSize
+public static int $sampleSize(BitmapFactory.Options options, int maxWidth, int maxHeight) {
+
+    // raw height and width of image
+    int rawWidth = options.outWidth;
+    int rawHeight = options.outHeight;
+
+    // calculate best sample size
+    int inSampleSize = 0;
+
+    if (rawHeight &gt; maxHeight || rawWidth &gt; maxWidth) {
+    float ratioWidth = (float) rawWidth / maxWidth;
+    float ratioHeight = (float) rawHeight / maxHeight;    
+    inSampleSize = (int) Math.min(ratioHeight, ratioWidth);
+}
+    inSampleSize = Math.max(1, inSampleSize);
+
+    return inSampleSize;
+}</code></pre><p>关于inSampleSize需要注意，它只能是2的次方，否则它会取最接近2的次方的值。</p>
+<p>为了节省内存，需要先设置BitmapFactory.Options的inJustDecodeBounds为true，这样的Bitmap可以借助decodeFile方法把高和宽存放到Bitmap.Options中，但是内存占用为空（不会真正的加载图片）。</p>
+<p>有了具备高宽信息的Options，结合上面的inSampleSize算法算出缩小的倍数，我们就能加载本地大图的某个合适大小的缩略图了。</p>
+<pre><code>/**
+ * 获取缩略图
+ * 支持自动旋转
+ * 某些型号的手机相机图片是反的，可以根据exif信息实现自动纠正
+ * @return
+ */
+public static Bitmap $thumbnail(String path, int maxWidth, int maxHeight, boolean autoRotate) {
+    int angle = 0;
+    if (autoRotate) {
+        angle = ImageLess.$exifRotateAngle(path);
+    }
+
+    BitmapFactory.Options options = new BitmapFactory.Options();
+    options.inJustDecodeBounds = true;   
+    // 获取这个图片的宽和高信息到options中, 此时返回bm为空
+    Bitmap bitmap = BitmapFactory.decodeFile(path, options);
+// 在下次使用BitmapFactory的decodeFile()等方法实例化Bitmap对象前，别忘记将opts.inJustDecodeBound设置回false。否则获取的bitmap对象还是null。
+    options.inJustDecodeBounds = false;   
+    // 计算缩放比
+    int sampleSize = $sampleSize(options, maxWidth, maxHeight);
+    options.inSampleSize = sampleSize;
+    options.inPreferredConfig = Bitmap.Config.RGB_565;
+    options.inPurgeable = true;
+    options.inInputShareable = true;
+
+    if (bitmap != null &amp;&amp; !bitmap.isRecycled()) {
+        bitmap.recycle();
+    }
+
+    bitmap = BitmapFactory.decodeFile(path, options);
+    if (autoRotate &amp;&amp; angle != 0) {
+        bitmap = $rotate(bitmap, angle);
+    }
+
+    return bitmap;
+}</code></pre><p>Matrix变形</p>
+<p>每一种变化都包括set, pre, post三种分别为 设置，矩阵先乘，矩阵后乘</p>
+<p>圆角，圆形图片的裁剪</p>
+<p>圆角我们需要借助Xfermode和PorterDuffXfermode，把圆角矩阵套在原Bitmap上取交集得到圆角Bitmap。</p>
+<p>巨图加载</p>
+<p>BitmapRegionDecoder可以按区域加载</p>
+<p>颜色矩阵ColorMatrix 可以实现很多特效</p>
+<p>ThumbnailUtils</p>
+<p><a href="http://jayfeng.com/2016/03/16/%E7%90%86%E8%A7%A3ThumbnailUtils/" target="_blank" rel="noopener">http://jayfeng.com/2016/03/16/理解ThumbnailUtils/</a></p>
+<p>Bitmap在内存中占用大小取决于:</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&mid=403263974&idx=1&sn=b0315addbc47f3c38e65d9c633a12cd6&scene=0&key=41ecb04b05111003d79189315d2ebdda9a5dc312d579a616c9358c3994f94eaf700ba910fb56c37d348fbe317cbce872&ascene=0&uin=NTMyODkxMDE1&devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.2+build(15C50)&version=11020201&pass_ticket=uq%2BZUPewIgxSiSrWWGqLMnd8%2Fy8eclx6vr92bs5s8Q9YVusWCl2cgRirA7iVDRu%2B" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=403263974&amp;idx=1&amp;sn=b0315addbc47f3c38e65d9c633a12cd6&amp;scene=0&amp;key=41ecb04b05111003d79189315d2ebdda9a5dc312d579a616c9358c3994f94eaf700ba910fb56c37d348fbe317cbce872&amp;ascene=0&amp;uin=NTMyODkxMDE1&amp;devicetype=iMac+MacBookPro12%2C1+OSX+OSX+10.11.2+build(15C50)&amp;version=11020201&amp;pass_ticket=uq%2BZUPewIgxSiSrWWGqLMnd8%2Fy8eclx6vr92bs5s8Q9YVusWCl2cgRirA7iVDRu%2B</a></p>
+<ul>
+<li>色彩格式 ARG_8888 一个像素占4个字节 RGB_565 一个像素占2个</li>
+<li>原始文件在的资源目录 hdpi, xxhdpi等</li>
+<li>目标屏幕的密度</li>
+</ul>
+<p>计算方法: </p>
+<p>float f = 目标屏幕的密度 / 原始文件在的资源目录</p>
+<p>f * width * f * height * 色彩格式字节</p>
+<p>误差是由精度导致的误差</p>
+<p>e.g 522宽度，目标density 640, xxhdpi下计算后</p>
+<p>scaledWidth = (int)(522 * 640 / 480 + 0.5f)</p>
+<p>大图小用用采样，小图大用用矩阵。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android 沉浸式状态栏</title>
+    <url>/posts/6384456b/</url>
+    <content><![CDATA[<p>setFitSystemWindow(boolean) 设置是否需要考虑SystemBar占据的区域来显示, true → 系统会适应SystemBar区域，让内容不会遮住</p>
+<p>value-19以后</p>
+<p><item name="android:windowTranslucentStatus">true</item> 半透明状态栏</p>
+<!--Android 5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色-->
+
+<p><item name="android:statusBarColor">@android:color/transparent</item></p>
+<p>设置StatusBarColor</p>
+<p>21之后AndroidL之后才支持Window.setStatusBarColor</p>
+<p>21之前可以通过decroView.add一个view来作为StatusBar的底色</p>
+<p>沉浸式状态栏 全屏模式和非全屏模式下的切换会造成抖动，因为根布局发生了变化，造成的界面重新布局</p>
+<p><a href="http://liandongyang.coding.me/posts/status-bar-and-immersive-mode/" target="_blank" rel="noopener">http://liandongyang.coding.me/posts/status-bar-and-immersive-mode/</a></p>
+<p><a href="https://www.jianshu.com/p/a4d685422604" target="_blank" rel="noopener">https://www.jianshu.com/p/a4d685422604</a></p>
+<p><a href="https://juejin.im/entry/5c9afe50e51d45246e414be7" target="_blank" rel="noopener">https://juejin.im/entry/5c9afe50e51d45246e414be7</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android ViewPager &amp; ViewPager2</title>
+    <url>/posts/ea2def3/</url>
+    <content><![CDATA[<p>ViewPager &amp; ViewPager2(<a href="https://mp.weixin.qq.com/s/rk-OJp3D_6nCAbiA58H0Yg" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/rk-OJp3D_6nCAbiA58H0Yg</a>)</p>
+<p>ViewPager+Fragment LazyLoading方案 &amp; Fragment相关</p>
+<p><a href="https://blog.csdn.net/harvic880925/article/details/38453725" target="_blank" rel="noopener">https://blog.csdn.net/harvic880925/article/details/38453725</a></p>
+<p><a href="https://blog.csdn.net/harvic880925/article/details/38487149" target="_blank" rel="noopener">https://blog.csdn.net/harvic880925/article/details/38487149</a></p>
+<p><a href="https://blog.csdn.net/harvic880925/article/details/38521865" target="_blank" rel="noopener">https://blog.csdn.net/harvic880925/article/details/38521865</a></p>
+<p><a href="https://blog.csdn.net/harvic880925/article/details/38557517" target="_blank" rel="noopener">https://blog.csdn.net/harvic880925/article/details/38557517</a></p>
+<p><a href="https://blog.csdn.net/harvic880925/article/details/38660861" target="_blank" rel="noopener">https://blog.csdn.net/harvic880925/article/details/38660861</a></p>
+<p><a href="https://juejin.im/post/5adcb0e36fb9a07aa7673fbc" target="_blank" rel="noopener">https://juejin.im/post/5adcb0e36fb9a07aa7673fbc</a></p>
+<p>Fragment相关:</p>
+<p><a href="https://blog.csdn.net/lmj623565791/article/details/37970961" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/37970961</a></p>
+<p><a href="https://blog.csdn.net/lmj623565791/article/details/37992017" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/37992017</a></p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/8881711" target="_blank" rel="noopener">http://blog.csdn.net/guolin_blog/article/details/8881711</a></p>
+<p><a href="https://www.jianshu.com/p/f2fcc670afd6" target="_blank" rel="noopener">https://www.jianshu.com/p/f2fcc670afd6</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Android 知识体系</title>
     <url>/posts/8cef9339/</url>
     <content><![CDATA[<h2 id="Base-Component"><a href="#Base-Component" class="headerlink" title="Base Component"></a>Base Component</h2><p><a href="posts/a578e2">Android-Activity栈和启动模式</a> <a href="Android-Activity栈和启动模式"></a><br><a href="posts/b5608f0f">Android-App启动过程和Activity启动过程</a> <a href="Android-App启动过程和Activity启动过程"></a><br><a href="posts/4dd850">Android-Fragment原理</a> <a href="Android-Fragment原理"></a><br><a href="posts/b7f694e6">Android-Fragment生命周期</a> <a href="Android-Fragment生命周期"></a><br><a href="posts/efbd99a7">Android-HandlerThread原理</a> <a href="Android-HandlerThread原理"></a><br><a href="posts/122d6ee8">Android-Handler原理</a> <a href="Android-Handler原理"></a><br><a href="posts/971bf444">Android-IdleHandler的使用</a> <a href="Android-IdleHandler的使用"></a><br><a href="posts/a445691e">Android-IntentService的使用和原理</a> <a href="Android-IntentService的使用和原理"></a><br><a href="posts/b4be5f5e">Android-NDK遇到的坑</a> <a href="Android-NDK遇到的坑"></a><br><a href="posts/72e1c46d">Android-StartService和bindService的区别</a> <a href="Android-StartService和bindService的区别"></a><br><a href="posts/c321745">Android-Window机制</a> <a href="Android-Window机制"></a><br><a href="posts/23be93f7">Android-事件分发机制</a> <a href="Android-事件分发机制"></a><br><a href="posts/eeb5a1cb">Android-关于onPause和onStop回调时机的问题</a> <a href="Android-关于onPause和onStop回调时机的问题"></a></p>
-<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><p><a href="posts/8a3a7d94">Android-OKHttp使用和原理</a> <a href="Android-OKHttp使用和原理"></a><br><a href="posts/b6ff9bb5">Android-Retrofit</a> <a href="Android-Retrofit"></a></p>
+<h2 id="Net"><a href="#Net" class="headerlink" title="Net"></a>Net</h2><p><a href="posts/8a3a7d94">Android-OKHttp使用和原理</a> <a href="Android-OKHttp使用和原理"></a><br><a href="posts/b6ff9bb5">Android-Retrofit</a> <a href="Android-Retrofit"></a></p>
 <h2 id="Data"><a href="#Data" class="headerlink" title="Data"></a>Data</h2><p><a href="posts/6caf8444">Android-GreenDao使用和原理</a> <a href="Android-GreenDao使用和原理"></a><br><a href="posts/c8244c97">Android-SharedPreference原理</a> <a href="Android-SharedPreference原理"></a></p>
 <h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><p><a href="posts/c09a1c52">Android-EventBus2-EventBus3对比</a> <a href="Android-EventBus2-EventBus3对比"></a><br><a href="posts/c1cd9018">Android-LiveDataBus使用和原理</a> <a href="Android-LiveDataBus使用和原理"></a><br><a href="posts/4f81d6fa">Android-进程间通信</a> <a href="Android-进程间通信"></a><br><a href="posts/52567396">Google-Protocol-Buffer实战</a> <a href="Google-Protocol-Buffer实战"></a></p>
-<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><p><a href="posts/d2b4a3fc">Android-RecyclerView与ListView的区别</a> <a href="Android-RecyclerView与ListView的区别"></a><br><a href="posts/d718012c">Android-requestLayout-和invalidate-原理</a> <a href="Android-requestLayout-和invalidate-原理"></a><br><a href="posts/5259ae3c">Android-setContentView与LayoutInflater加载解析机制源码分析</a> <a href="Android-setContentView与LayoutInflater加载解析机制源码分析"></a><br><a href="posts/4e76d615">Android-SurfaceView机制</a> <a href="Android-SurfaceView机制"></a><br><a href="posts/d96da03e">Android-UI优化常用工具</a> <a href="Android-UI优化常用工具"></a><br><a href="posts/5c71151a">Android-View的绘制流程</a> <a href="Android-View的绘制流程"></a><br><a href="posts/4ea354ae">Android-动画原理分析</a> <a href="Android-动画原理分析"></a><br><a href="posts/db834188">Android-抽象布局的使用</a> <a href="Android-抽象布局的使用"></a><br><a href="posts/31ea19a6">Android-深入理解Scroller原理</a> <a href="Android-深入理解Scroller原理"></a><br><a href="posts/77dbc89e">Android-界面适配</a> <a href="Android-界面适配"></a><br><a href="posts/16995">Android-自定义RecyclerView-LayoutManager</a> <a href="Android-自定义RecyclerView-LayoutManager"></a></p>
+<h2 id="UI"><a href="#UI" class="headerlink" title="UI"></a>UI</h2><p><a href="posts/d2b4a3fc">Android-RecyclerView与ListView的区别</a> <a href="Android-RecyclerView与ListView的区别"></a><br><a href="posts/d718012c">Android-requestLayout-和invalidate-原理</a> <a href="Android-requestLayout-和invalidate-原理"></a><br><a href="posts/5259ae3c">Android-setContentView与LayoutInflater加载解析机制源码分析</a> <a href="Android-setContentView与LayoutInflater加载解析机制源码分析"></a><br><a href="posts/4e76d615">Android-SurfaceView机制</a> <a href="Android-SurfaceView机制"></a><br><a href="posts/d96da03e">Android-UI优化常用工具</a> <a href="Android-UI优化常用工具"></a><br><a href="posts/5c71151a">Android-View的绘制流程</a> <a href="Android-View的绘制流程"></a><br><a href="posts/4ea354ae">Android-动画原理分析</a> <a href="Android-动画原理分析"></a><br><a href="posts/db834188">Android-抽象布局的使用</a> <a href="Android-抽象布局的使用"></a><br><a href="posts/31ea19a6">Android-深入理解Scroller原理</a> <a href="Android-深入理解Scroller原理"></a><br><a href="posts/77dbc89e">Android-界面适配</a> <a href="Android-界面适配"></a><br><a href="posts/16995">Android-自定义RecyclerView-LayoutManager</a> <a href="Android-自定义RecyclerView-LayoutManager"></a><br><a href="posts/ea2def3">Android-ViewPager-ViewPager2</a> <a href="Android-ViewPager-ViewPager2"></a><br><a href="posts/6384456b">Android-沉浸式状态栏</a> <a href="Android-沉浸式状态栏"></a><br><a href="posts/6be564f4">Android-图片计算相关</a> <a href="Android-图片计算相关"></a></p>
 <h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h2><p><a href="posts/2c4d5f81">Android-ANR原理分析与解决</a> <a href="Android-ANR原理分析与解决"></a><br><a href="posts/7053c23b">Android-AsyncLayoutInflator原理</a> <a href="Android-AsyncLayoutInflator原理"></a><br><a href="posts/cc1de343">Android-AsyncTask原理</a> <a href="Android-AsyncTask原理"></a><br><a href="posts/ba081c48">Android-BlockCanary源码分析</a> <a href="Android-BlockCanary源码分析"></a><br><a href="posts/34ef83a0">Android-Fragment懒加载</a> <a href="Android-Fragment懒加载"></a><br><a href="posts/91222177">Android-LeakCanary源码分析</a> <a href="Android-LeakCanary源码分析"></a><br><a href="posts/6d7fb02e">Android-Serializable和Parcelable性能差异</a> <a href="Android-Serializable和Parcelable性能差异"></a><br><a href="posts/d7e77019">Android-对象池的使用</a> <a href="Android-对象池的使用"></a><br><a href="posts/a6157931">Android-常见内存泄漏</a> <a href="Android-常见内存泄漏"></a><br><a href="posts/dee8b541">Android-性能优化</a> <a href="Android-性能优化"></a><br><a href="posts/1ada89fb">Android-无埋点监控</a> <a href="Android-无埋点监控"></a></p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="posts/b26f467e">Android-插件化</a> <a href="Android-插件化"></a><br><a href="posts/d41965e">Android-Dagger2</a> <a href="Android-Dagger2"></a><br><a href="posts/d27340ce">Android-Data-Binding相关</a> <a href="Android-Data-Binding相关"></a><br><a href="posts/53083ab4">Android-Glide使用和原理</a> <a href="Android-Glide使用和原理"></a><br><a href="posts/85c12fe4">Android-LruCache原理</a> <a href="Android-LruCache原理"></a><br><a href="posts/a540e7e6">Android-ART和DALVIK的区别</a> <a href="Android-ART和DALVIK的区别"></a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><a href="posts/b26f467e">Android-插件化</a> <a href="Android-插件化"></a><br><a href="posts/d41965e">Android-Dagger2</a> <a href="Android-Dagger2"></a><br><a href="posts/d27340ce">Android-Data-Binding相关</a> <a href="Android-Data-Binding相关"></a><br><a href="posts/53083ab4">Android-Glide使用和原理</a> <a href="Android-Glide使用和原理"></a><br><a href="posts/85c12fe4">Android-LruCache原理</a> <a href="Android-LruCache原理"></a><br><a href="posts/a540e7e6">Android-ART和DALVIK的区别</a> <a href="Android-ART和DALVIK的区别"></a><br><a href="posts/66d7bf51">Android-权限相关</a> <a href="Android-权限相关"></a><br><a href="posts/8570bc54">Android-targetSDK-compileSDK-minSDK版本选择问题</a> <a href="Android-targetSDK-compileSDK-minSDK版本选择问题"></a></p>
 ]]></content>
   </entry>
   <entry>
@@ -28,6 +323,222 @@
     <title>Android Window机制</title>
     <url>/posts/c321745/</url>
     <content><![CDATA[<p><a href="https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3" target="_blank" rel="noopener">https://juejin.im/entry/5a123c31f265da430d579cda#%E5%BA%94%E7%94%A8%E7%AA%97%E5%8F%A3</a></p>
+<p><a href="https://blog.csdn.net/yuanzeyao/article/details/12979943" target="_blank" rel="noopener">https://blog.csdn.net/yuanzeyao/article/details/12979943</a></p>
+<p><a href="https://blog.csdn.net/yanbober/article/details/46361191" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/46361191</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&mid=403668684&idx=1&sn=5e498bb86bcc884c43ba469c8e26623c&scene=0" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzA3NTYzODYzMg==&amp;mid=403668684&amp;idx=1&amp;sn=5e498bb86bcc884c43ba469c8e26623c&amp;scene=0</a></p>
+<p>Android将窗口分为三类: 应用窗口, 子窗口, 系统窗口 </p>
+<p>其中应用窗口需要和一个Activity对应</p>
+<p>子窗口是有父窗口的窗口</p>
+<p>系统窗口是由系统创建的窗口，用户无法创建，除Toast, 输入法窗口，壁纸窗口除外</p>
+<pre><code>ViewManager.java
+
+public interface ViewManager {
+    public void addView(View view, ViewGroup.LayoutParams params);
+    public void updateViewLayout(View view, ViewGroup.LayoutParams params);
+    public void removeView(View view);
+}
+
+WindowManager.java extends ViewManager.java
+
+public interface WindowManager extends ViewManager {
+    public static class BadTokenException extends RuntimeException{}
+    public static class InvalidDisplayException extends RuntimeException{}
+
+    public Display getDefaultDisplay();
+
+  public void removeViewImmediate(View view);
+
+    public interface KeyboardShortcutsReceiver {
+        void onKeyboardShortcutsReceived(List&lt;KeyboardShortcutGroup&gt; result);
+    }
+
+    final int TAKE_SCREENSHOT_FULLSCREEN = 1;
+    final int TAKE_SCREENSHOT_SELECTED_REGION = 2;
+
+    public static final String PARCEL_KEY_SHORTCURS_ARRAY = &quot;shortcuts_array&quot;;
+
+    public void requestAppKeyboardsShortcuts(final KeyboardShortcutsReceiver receiver, int deviceId);
+
+    public Region getCurrentImeTouchRegion();
+
+    public static class LayoutParams extends ViewGroup.LayoutParams{}
+}
+
+
+WindowManagerImpl implements WindowManager
+
+public final class WindowManagerImpl implements WindowManager {
+    private final Window mParentWindow; // 这里的Window见下文 Window.java
+    private final Context mContext;
+    private final WindowManagerGloabl mGlobal = WindowManagerGlobal.getInstance();
+    private IBinder mDefaultToken;
+
+    ...
+
+    public WindowManagerImpl(Context context){
+        this(context, null);
+    }
+
+    public WindowManagerImpl(Context context, Window parentWindow)  {
+        mContext =context;
+        mParentWindow = parentWindow;
+    }
+}
+
+Window.java
+
+public abstract class Window {
+
+}
+
+PhoneWindow.java
+
+public PhoneWindow extends Window implements MenuBuilder.Callback {
+
+}</code></pre><p>在ActivityThread中的 performLaunchActivity方法中</p>
+<ol>
+<li><p>通过反射创建一个Activity</p>
+<p> try {</p>
+<pre><code>    java.lang.ClassLoader cl = appContext.getClassLoader();
+    activity = mInstrumentation.newActivity(
+            cl, component.getClassName(), r.intent);
+    StrictMode.incrementExpectedActivityCount(activity.getClass());
+    r.intent.setExtrasClassLoader(cl);
+    r.intent.prepareToEnterProcess();
+    if (r.state != null) {
+        r.state.setClassLoader(cl);
+    }
+} catch (Exception e) {
+    if (!mInstrumentation.onException(activity, e)) {
+        throw new RuntimeException(
+            &quot;Unable to instantiate activity &quot; + component
+            + &quot;: &quot; + e.toString(), e);
+    }
+}</code></pre></li>
+<li><p>activity调用attach方法</p>
+<p> Activity.java</p>
+<p> activity.attach(appContext, this, getInstrumentation(), r.token,</p>
+<pre><code>r.ident, app, r.intent, r.activityInfo, title, r.parent,
+r.embeddedID, r.lastNonConfigurationInstances, config,
+r.referrer, r.voiceInteractor, window, r.configCallback);</code></pre><p> 其中attach方法里</p>
+<pre><code>    mWindow = new PhoneWindow(this, window, activityConfigCallback);
+mWindow.setWindowControllerCallback(this);
+mWindow.setCallback(this);
+mWindow.setOnWindowDismissedCallback(this);
+mWindow.getLayoutInflater().setPrivateFactory(this);
+    ...
+    mWindow.setWindowManager(
+        (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),
+        mToken, mComponent.flattenToString(),
+        (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);
+    ....
+mWindowManager = mWindow.getWindowManager();</code></pre></li>
+<li><p>所以由上述可以知道window在这里得到初始化new PhoneWindow</p>
+</li>
+<li><p>windowManager通过WindowManagerImpl中的createLocalWindowManager获得, 传入的一个WindowManager wm 由getSystemService获得</p>
+</li>
+</ol>
+<pre><code>Window.java
+public void setWindowManager(WindowManager wm, IBinder appToken, String appName,
+            boolean hardwareAccelerated) {
+        mAppToken = appToken;
+        mAppName = appName;
+        mHardwareAccelerated = hardwareAccelerated
+                || SystemProperties.getBoolean(PROPERTY_HARDWARE_UI, false);
+        if (wm == null) {
+            wm = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
+        }
+        mWindowManager = ((WindowManagerImpl)wm).createLocalWindowManager(this);
+    }
+也会通过getSystemService获得WindowManager</code></pre><ol start="5">
+<li><p>其中context.getSystemService为什么能获取到WindowManager, 这就要从context.java类中进行分析</p>
+<p> Context.java<br> public abstract class Context {</p>
+<pre><code>public final @Nullable &lt;T&gt; T getSystemService(@NonNull Class&lt;T&gt; serviceClass) {
+    // Because subclasses may override getSystemService(String) we cannot
+    // perform a lookup by class alone.  We must first map the class to its
+    // service name then invoke the string-based method.
+    String serviceName = getSystemServiceName(serviceClass);
+    return serviceName != null ? (T)getSystemService(serviceName) : null;
+}</code></pre><p> }</p>
+<p> Context.java的实现类是ComtextImpl.java<br> class ContextImpl extends Context {<br> @Override</p>
+<pre><code>public Object getSystemService(String name) {
+    return SystemServiceRegistry.getSystemService(this, name);
+}</code></pre><p> }</p>
+<p> SystemServiceRegistry.java<br> final class SystemServiceRegistry {</p>
+<pre><code>static {
+    registerService(Context.WINDOW_SERVICE, WindowManager.class,
+            new CachedServiceFetcher&lt;WindowManager&gt;() {
+        @Override
+        public WindowManager createService(ContextImpl ctx) {
+            return new WindowManagerImpl(ctx);
+        }});
+}</code></pre><p> }<br> 因为静态代码只执行一次，也就是每个Application只有一个WindowManagerImpl实例</p>
+</li>
+<li><p>这就建立了Activity和Window之间的联系</p>
+</li>
+<li><p>在<a href="https://blog.csdn.net/yanbober/article/details/45970721" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/45970721</a>中说到，setContentView实际是触发了Activity的onResume状态，也就是makeVisible方法</p>
+<p> void makeVisible() {</p>
+<pre><code>    if (!mWindowAdded) {
+        ViewManager wm = getWindowManager();
+        wm.addView(mDecor, getWindow().getAttributes());
+        mWindowAdded = true;
+    }
+    mDecor.setVisibility(View.VISIBLE);
+}</code></pre></li>
+</ol>
+<p>这里的wm变量，是Window类通过调用WindowManagerImp的createLocalWindowManager创建的实例，每个Activity都会创建一个，与上文说的WindowManager不一样。Context的WM只有一个</p>
+<ol start="8">
+<li><p>wm.addView</p>
+<p> WindowManagerImpl.java<br> @Override</p>
+<pre><code>public void addView(@NonNull View view, @NonNull ViewGroup.LayoutParams params) {
+    applyDefaultToken(params);
+    mGlobal.addView(view, params, mContext.getDisplay(), mParentWindow);
+}</code></pre><p> 最终是WindowManagerGlobal调用的addView</p>
+<p> public final class WindowManagerGlobal {<br> ……</p>
+<pre><code>private final ArrayList&lt;View&gt; mViews = new ArrayList&lt;View&gt;();
+private final ArrayList&lt;ViewRootImpl&gt; mRoots = new ArrayList&lt;ViewRootImpl&gt;();
+private final ArrayList&lt;WindowManager.LayoutParams&gt; mParams =
+        new ArrayList&lt;WindowManager.LayoutParams&gt;();
+private final ArraySet&lt;View&gt; mDyingViews = new ArraySet&lt;View&gt;();
+
+......</code></pre><p> public void addView(View view, ViewGroup.LayoutParams params,</p>
+<pre><code>        Display display, Window parentWindow) {
+    ......
+    //获取Activity的Window的getWindow().getAttributes()的LayoutParams 
+    final WindowManager.LayoutParams wparams = (WindowManager.LayoutParams)params;
+    //如果是Activity中调运的，parentWindow=Window，如果不是Activity的，譬如是Context的静态代码块的实例化则parentWindow为null
+    if (parentWindow != null) {
+        //依据当前Activity的Window调节sub Window的LayoutParams
+        parentWindow.adjustLayoutParamsForSubWindow(wparams);
+    } else {
+        ......
+    }
+
+    ViewRootImpl root;
+    ......
+    synchronized (mLock) {
+        ......
+        //为当前Window创建ViewRoot
+        root = new ViewRootImpl(view.getContext(), display);
+        view.setLayoutParams(wparams);
+        //把当前Window相关的东西存入各自的List中，在remove中会删掉
+        mViews.add(view);
+        mRoots.add(root);
+        mParams.add(wparams);
+    }
+
+    // do this last because it fires off messages to start doing things
+    try {
+        //把View和ViewRoot关联起来，很重要！！！
+        root.setView(view, wparams, panelParentView);
+    } catch (RuntimeException e) {
+        ......
+    }
+}
+......</code></pre></li>
+</ol>
+<pre><code>}</code></pre><p>在addView方法中利用LayoutParams获取Window属性，然后为每个Window创建一个ViewRootImpl, 通过ViewRootImpl的setView方法通过mSession向WindowManagerService发送添加窗口，请求把窗口添加到WindowManager中，并通过WindowManager来管理窗口的view,事件和消息处理等。</p>
+<p>Dialog, PopupWindow, Toast显示原理<a href="https://blog.csdn.net/yanbober/article/details/46361191" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/46361191</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2959,7 +3470,6 @@ These features of the library coexist seamlessly with your existing layouts. For
     <title>Android-Dagger2</title>
     <url>/posts/d41965e/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/5b45bd715188251b3a1db54f" target="_blank" rel="noopener">https://juejin.im/post/5b45bd715188251b3a1db54f</a><br><a href="https://juejin.im/post/5ccd496de51d453b573ee29d" target="_blank" rel="noopener">https://juejin.im/post/5ccd496de51d453b573ee29d</a><br><a href="https://juejin.im/post/5bcc7151f265da0ab41e8f6e" target="_blank" rel="noopener">https://juejin.im/post/5bcc7151f265da0ab41e8f6e</a></p>
-<p><a href="https://www.jianshu.com/p/4db940c8da97" target="_blank" rel="noopener">https://www.jianshu.com/p/4db940c8da97</a><br><a href="https://juejin.im/entry/578cf2612e958a00543c45a4" target="_blank" rel="noopener">https://juejin.im/entry/578cf2612e958a00543c45a4</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -5341,7 +5851,466 @@ These features of the library coexist seamlessly with your existing layouts. For
   <entry>
     <title>Android App启动过程和Activity启动过程</title>
     <url>/posts/b5608f0f/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/qian520ao/article/details/78156214" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78156214</a></p>
+    <content><![CDATA[<p><a href="http://blog.csdn.net/qian520ao/article/details/78156214" target="_blank" rel="noopener">http://blog.csdn.net/qian520ao/article/details/78156214</a></p>
+<p><a href="https://juejin.im/post/59aba2a6f265da248e75883c" target="_blank" rel="noopener">https://juejin.im/post/59aba2a6f265da248e75883c</a></p>
+<p><a href="https://juejin.im/post/5c3832e66fb9a049e308510b" target="_blank" rel="noopener">https://juejin.im/post/5c3832e66fb9a049e308510b</a></p>
+<h2 id="App启动过程"><a href="#App启动过程" class="headerlink" title="App启动过程"></a>App启动过程</h2><p>存在4个进程, <code>Launcher进程</code>，<code>system_server进程</code>, <code>Zygote进程</code>, <code>App进程</code>。</p>
+<ol>
+<li>点击Launcher的app图标, <code>Launcher进程</code>采用<code>Binder IPC</code>向<code>system_server进程</code>发起<code>startActivity</code>请求</li>
+<li><code>system_server进程</code>收到请求后, 通过Socket方式向<code>Zygote进程</code>发送创建进程的请求</li>
+<li><code>Zygote进程</code>fork出新的子进程, 也就是<code>App进程</code></li>
+<li><code>App进程</code>通过<code>Binder IPC</code>向<code>system_server进程</code>发起<code>attachApplication</code>请求(App端的<code>ActivityManagerProxy</code>和<code>system_server</code>端的<code>ActivityManagerService</code>通信)</li>
+<li><code>system_server进程</code>收到请求后, 进行准备工作后，使用<code>ApplicationThreadProxy</code>通过<code>Binder IPC</code>向<code>App进程</code>的<code>ApplicationThread</code>发送<code>scheduleLaunchActivity</code>请求</li>
+<li><code>App进程</code>的<code>ApplicationThread</code>收到请求后通过Handler向<code>ActivityThread</code>也就是主线程发送LAUNCH_ACTIVITY消息</li>
+<li><code>ActivityThread</code>收到消息后, 通过反射创建目标Activity, 调用Activity的onCreate等方法</li>
+<li>至此，App正式启动，进入Activity的生命周期</li>
+</ol>
+<p>一个app想启动另一个app, 先告诉system_server进程, system_server进程告诉Zygote进程来fork另一个app的进程, 这就涉及了4个进程间的通讯</p>
+<h2 id="Zygote"><a href="#Zygote" class="headerlink" title="Zygote"></a>Zygote</h2><p>Linux中，所有的进程都是由init进程fork出来的。 Android系统开启新进程的方式，是通过fork第一个Zygote进程实现的。 也就是说除了第一个Zygote进程，其他进程都是Zygote的子进程。</p>
+<h2 id="system-server"><a href="#system-server" class="headerlink" title="system_server"></a>system_server</h2><p>也是由Zygote进程fork出来的一个进程<br>系统中的许多服务都是在这个进程里开启的。</p>
+<ul>
+<li>ActivityManagerService AMS 所有的Activity的启开启，暂停，关闭都由AMS控制. 负责系统中所有Activity的生命周期</li>
+<li>PackageManagerService</li>
+<li>WindowManagerService</li>
+</ul>
+<p>一些概念:</p>
+<ul>
+<li>ActivityThread App的真正入口，当开启App之后, 调用main()开始工作，开启消息循环队列，与AMS配合完成管理Activity的工作</li>
+<li>ApplicationThread, 用来实现ActivityManagerService与ActivityThread的交互</li>
+<li>ApplicationThreadProxy, 是ApplicationThread在服务端的代理，负责与客户端的ApplicationThread通讯</li>
+<li>Instrumentation, 每一个应用程序只有一个Instrumentation对象，每个Activity内部有一个对该对象的引用。ActivityThread创建Activity或暂停Activity的时候都需要Instrumentation来具体操作. startActivity实际调用的是 Instrumentation.execStartActivity(). (AMS通过ActivityThread, ActivityThread通过Instrument)来执行Activity的一些操作</li>
+<li>ActivityStack Activity在AMS的栈管理</li>
+<li>ActivityRecord ActivityStack的管理对象,每个 Activity在AMS对应一个ActivityRecord，也就是Activity对象在服务端的映射</li>
+<li>TaskRecord, AMS抽象出来的任务的概念，记录ActivityRecord的栈，一个Task包含若干个ActivityRecord, AMS用TaskRecord来确保 Activity的启动和退出。</li>
+</ul>
+<p>(Client)ActivityManagerProxy -&gt; Binder IPC -&gt; ActivityManagerService(Server)<br>(Server)ApplicationThreadProxy -&gt; BinderIPC -&gt; ApplicationThread (Client)</p>
+<p>首先看一下Activity的继承关系</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ceffcc21-00bf-41d9-8b3b-87453caf8403/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45M6JA72MA%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T012707Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCSAOw19aEBzxv7f%2BlWzRpU0CDWhA4iBXVRZNo1fVautwIhANOy8IOoYqLE%2Fnk6uUEjOLZa4XCa13OtLuM0nCPBhH%2FPKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgxGM9ZBs48YByFE6y8qkQNqki8NOz3IAGhvOQNwlQura1J12AcDGdc4v8dWpHvuDNvlXF%2FKoBWNR7a4rYxpVwpu3t70Ff4Wo1kB0jRbchLTsdGZi8lZrYbdlr95VdlIhPmJWN2YT441WV5u4GQede0gPwszhvDuoiptrW%2Ftdj0sBL6ynCBir1D0aQibsh6cIysAlcNmUyEcW%2BMU7RapDvGNQ5A1tG2yGT%2FEwM7MJgXykNeediBx2l2eE7YhK6uSF52vKiYc3h5L01ea%2BY13PbLIF5pojgddEm2PKi96zExPwjGMIuuceG10z54T6ZdCeip62N5OF4CYSxbRfoMVn%2FA3tCS3w3Gkqb943WeYzQJzdV%2BGEvOY1CDwfyGj21joxp5%2B7tSVnxpCZtlOSC85RCg7DAuO%2FQgA6EvowtW9U0RvxH3iPm4HDKJLIj3GXUAcat4pOV%2BROLs8EDeB4qKVd3zy%2BCwxn%2BloMGS%2BqoLj%2FlnAHEuPGxq3oF7iwz99ni6sJKdd7NWwGgjr8SL4SXtb7SsGYOoy1vYQaw4zrbyj71Be2DC46vjwBTrqAcmiIGa3UYYFklL1OAHcKJxHhq%2Fg%2FGRtowD2MBH4Cjsi%2Fnm8o2yf3tECPMMDU4ih5hKzoEgVSgI4sqe%2FEc1TMFwcGFgBrHGHC1rktpTbOEP4F3sNOEVuv%2By8Ymipw%2FWgr4iwG72iPKD3zyXMUS%2Fs%2FSXDafGCAg5wvfozQhmR0I7RN1%2FnuZBWQ59ExfO5ny3X%2B5s5HUi42VgPCF%2BLpMP4bskBTtS%2Fg1%2F2PS8yqqtWGc5ZHboaCTPq9iaePqbIpyCicDGXKl0i5H8H1q42O6HwIhWNnYJGNVo%2BhCUdYTa5umGznXPWGdYZrBYr0Q%3D%3D&X-Amz-Signature=ce82de06c8a85823d849e49346b1ec55a415d52c8f7ea1f89278df5b024df9ec&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ceffcc21-00bf-41d9-8b3b-87453caf8403/Untitled.png"></p>
+<p><a href="http://context.java" target="_blank" rel="noopener">Context.java</a> 抽象类</p>
+<p><a href="http://contextimpl.java" target="_blank" rel="noopener">ContextImpl.java</a> Context的具体实现类</p>
+<p>ContextWrapper Context的包装类 包装了其子类的公共属性，传入一个Context类型的 base, 调用base的方法进行使用，其实base就是传入了一个ContextImpl</p>
+<pre><code>ContextWrapper.java
+
+public class ContextWrapper {
+        Context mBase;
+
+    public ContextWrapper(Context base) {
+        mBase = base;
+    }
+}</code></pre><p>ContextThemeWrapper: 包含了主题的ContextWrapper</p>
+<p>由于Service和Application没有主题，所以继承自ContextWrapper.</p>
+<p>来看startActivity方法: </p>
+<ul>
+<li><p>activity中自己实现了startActivity</p>
+</li>
+<li><p>ContextImpl实现了startActivity, Service和Application中都依赖于ContextImpl的实现</p>
+<p>  Activity.java</p>
+<p>  @Override<br>  public void startActivity(Intent intent, @Nullable Bundle options) {</p>
+<pre><code>if (options != null) {
+    startActivityForResult(intent, -1, options);
+} else {
+    startActivityForResult(intent, -1);
+}</code></pre><p>  }</p>
+<p>  public void startActivityForResult(@RequiresPermission Intent intent, int requestCode, @Nullable Bundle options) {<br>  //parent是什么？Android3.0之前使用ActivityGroup来解决嵌套的问题，3.0之后推出了Fragment，就将ActivityGroup废弃了，这里是对其的一个兼容。</p>
+<pre><code>if (mParent == null) {
+    options = transferSpringboardActivityOptions(options);
+    Instrumentation.ActivityResult ar =
+        mInstrumentation.execStartActivity(
+            this, mMainThread.getApplicationThread(), mToken, this,
+            intent, requestCode, options);
+    if (ar != null) {
+        mMainThread.sendActivityResult(
+            mToken, mEmbeddedID, requestCode, ar.getResultCode(),
+            ar.getResultData());
+    }
+    if (requestCode &gt;= 0) {
+        mStartedActivity = true;
+    }
+    cancelInputsAndStartExitTransition(options);
+} else {
+    //此处省略调用parent的child方法
+}</code></pre><p>  }</p>
+<p>  ContextImpl.java</p>
+<p>  //第一步，跳到第二步<br>  @Override<br>  public void startActivity(Intent intent) {</p>
+<pre><code>warnIfCallingFromSystemProcess();
+startActivity(intent, null);</code></pre><p>  }</p>
+<p>  //warn函数<br>  private void warnIfCallingFromSystemProcess() {</p>
+<pre><code>if (Process.myUid() == Process.SYSTEM_UID) {
+    Slog.w(TAG, &quot;Calling a method in the system process without a qualified user: &quot; + Debug.getCallers(5));
+}</code></pre><p>  }</p>
+<p>  //第二步，真正实现<br>  @Override<br>  public void startActivity(Intent intent, Bundle options) {</p>
+<pre><code>warnIfCallingFromSystemProcess();
+if ((intent.getFlags()&amp;Intent.FLAG_ACTIVITY_NEW_TASK) == 0
+        &amp;&amp; options != null 
+        &amp;&amp; ActivityOptions.fromBundle(options).getLaunchTaskId() == -1) {
+    throw new AndroidRuntimeException(
+            &quot;Calling startActivity() from outside of an Activity &quot;
+            + &quot; context requires the FLAG_ACTIVITY_NEW_TASK flag.&quot;
+            + &quot; Is this really what you want?&quot;);
+}
+mMainThread.getInstrumentation().execStartActivity(
+        getOuterContext(), mMainThread.getApplicationThread(), null,
+        (Activity) null, intent, -1, options);</code></pre><p>  }</p>
+</li>
+</ul>
+<p>这里都是通过Instrumentation通过执行execStartActivity来实现。</p>
+<pre><code>public ActivityResult execStartActivity(
+            Context who, IBinder contextThread, IBinder token, Activity target,
+            Intent intent, int requestCode, Bundle options) {
+    ...
+    int result = ActivityManagerNative.getDefault()
+        .startActivity(whoThread, who.getBasePackageName(), intent,
+                intent.resolveTypeIfNeeded(who.getContentResolver()),
+                token, target != null ? target.mEmbeddedID : null,
+                requestCode, 0, null, options);
+    // who： 正在启动该Activity的上下文
+  // contextThread 正在启动该Activity的上下文线程，这里为ApplicationThread
+  // token 正在启动该Activity的标识
+// target 正在启动该Activity的activity, 也就是回调结果的Activity
+    checkStartActivityResult(result, intent);
+    ...
+}</code></pre><p>这里先看下checkStartActivityResult(result, intent)这个方法, 用于根据返回码和intent抛出相应的异常</p>
+<pre><code>public static void checkStartActivityResult(int res, Object intent) {
+    if (res &gt;= ActivityManager.START_SUCCESS) {
+        return;
+    }
+    switch (res) {
+        case ActivityManager.START_INTENT_NOT_RESOLVED:
+        case ActivityManager.START_CLASS_NOT_FOUND:
+            if (intent instanceof Intent &amp;&amp; ((Intent)intent).getComponent() != null)
+                throw new ActivityNotFoundException(
+                        &quot;Unable to find explicit activity class &quot;
+                        + ((Intent)intent).getComponent().toShortString()
+                        + &quot;; have you declared this activity in your AndroidManifest.xml?&quot;);
+            throw new ActivityNotFoundException(
+                    &quot;No Activity found to handle &quot; + intent);
+        case ActivityManager.START_PERMISSION_DENIED:
+            throw new SecurityException(&quot;Not allowed to start activity &quot;
+                    + intent);
+        case ActivityManager.START_FORWARD_AND_REQUEST_CONFLICT:
+            throw new AndroidRuntimeException(
+                    &quot;FORWARD_RESULT_FLAG used while also requesting a result&quot;);
+        case ActivityManager.START_NOT_ACTIVITY:
+            throw new IllegalArgumentException(
+                    &quot;PendingIntent is not an activity&quot;);
+        case ActivityManager.START_NOT_VOICE_COMPATIBLE:
+            throw new SecurityException(
+                    &quot;Starting under voice control not allowed for: &quot; + intent);
+        case ActivityManager.START_VOICE_NOT_ACTIVE_SESSION:
+            throw new IllegalStateException(
+                    &quot;Session calling startVoiceActivity does not match active session&quot;);
+        case ActivityManager.START_VOICE_HIDDEN_SESSION:
+            throw new IllegalStateException(
+                    &quot;Cannot start voice activity on a hidden session&quot;);
+        case ActivityManager.START_CANCELED:
+            throw new AndroidRuntimeException(&quot;Activity could not be started for &quot;
+                    + intent);
+        default:
+            throw new AndroidRuntimeException(&quot;Unknown error code &quot;
+                    + res + &quot; when starting &quot; + intent);
+    }
+}</code></pre><p>在看下ActivityManagerNative.getDefault() // 在Android27变成 ActivityManager.getService()</p>
+<pre><code>static public IActivityManager getDefault() {
+    return gDefault.get();
+}
+private static final Singleton&lt;IActivityManager&gt; gDefault = new Singleton&lt;IActivityManager&gt;() {
+    protected IActivityManager create() {
+        IBinder b = ServiceManager.getService(&quot;activity&quot;);
+        ...
+        IActivityManager am = asInterface(b);
+        ...
+        return am;
+    }
+};
+static public IActivityManager asInterface(IBinder obj) {
+    ...
+    return new ActivityManagerProxy(obj);
+}
+
+所以ActivityManagerNative.getDefault().startActivity实际是由ActivityManagerProxy调用的
+
+ActivityManagerProxy.java
+
+public int startActivity(IApplicationThread caller, String callingPackage, Intent intent,
+            String resolvedType, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, Bundle options) throws RemoteException {
+    Parcel data = Parcel.obtain();
+    Parcel reply = Parcel.obtain();
+    ...
+    mRemote.transact(START_ACTIVITY_TRANSACTION, data, reply, 0);
+    ...
+    reply.recycle();
+    data.recycle();
+    return result;
+}
+
+我们的Activity相当于客户端, Service相当于服务端, 这里也是一样, 
+代理类就是ActivityManagerProxy, 真正传输数据的是mRemote.transact()
+
+第一个参数告诉服务器我们请求的方法是什么
+第二个参数是传递的参数
+
+至于为什么要跨进程通信。因为应用启动会初始化一个init进程，
+init进程会产生Zygote进程，它会fork出SystemService进程, 比如AMS, WMS, PMS
+而我们的应用进程也是靠AMS通信告诉Zygote进程fork出来的</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ec048d04-cf9b-4245-817e-3faa8a0bfd1c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45NXGUY7N7%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T012729Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCvOuYx87EWSqLUCowf2%2BSESKoTeprBtz7OBO1mTiIDmAIhANkXmYli%2F3nCrYpt6CFu7hm1U2zjYnHl%2Bv7KaeOyXsjWKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgwHGW5EjaiBv0ow4S8qkQNqQaxkPJ%2BJXb2nJwnFl5xFzpgxqgOhzCLFdnhZMaQPkDvuVLrQDPsfOGRZAqUYaigpqp%2Bs4W6h%2BPjrfWbi5FTf1La49jjEmAQ75LTyPj4wY4E1dkZw3I9ymObRszCuFGXWWlSFrL9A3bNBX1V%2FtQn6ppDjeCbEBDAD%2Fh9UVNeZY0ldjT4RLuVKabYtoCI52rd3rWQJG7PgTjvznhAVixm%2BJmbVk6%2Bv%2BOLp7ZAHkaN1v3uuYFiZc0QxZwr9WABrNnzgvDGYByfIYxkMXc4cXW6MlLDpCpcX2v77cjk4lgu74c93BgwwHHwKVCen%2BiW%2FUVD4dSyBPp8vrfXFMXAyIQzQwpoK1nrGdBlNjp9GYRX%2BFPKENj2HyZMrY8qekc0nUB3I39I7gETKDBG6%2FlE3HlQCX0Gf3LE2YYZ57vnHdCaTjpdNfy%2FK9kpT8MuCZKY7x6ax5eNIti2czGI0qr43HVQNz%2BVEKZRow940tBwT8xsnt3sy1NGa6VSpnsQLYbSnZOcenCW5dPk3eKCHjFsL%2BXAKDDDz5vjwBTrqAfVKvDZUbDt1lnqiBI%2BQhyhXn2BMTiLfYHebuVM5ZV%2B9jxKDkUd9g7jA9IH5ALSKNiZLkua0taZ5PYjj9f1503%2BlsOVD28GzkOhXgdAlzWKRZ2gD4yzK73V9pglxf%2F0q0vjzefEf8VaEMD8sMa3GNOUzZFuhoS8WjUp9mp3ogO8pEZHQcPZwA5MSVTz7ju%2FXKYD7xygFy59cuZXNKuzPsCXW0lz3xQIatj%2FNnKyUqpKXQ8Ssmx4V0bup3t7KSAIwGDO%2F8QcWlRz%2BPqMajcBfMDlQJfzfX7ndyDFtJIIF%2FzpipyqB%2BiTNZBU4tg%3D%3D&X-Amz-Signature=0ab98984a39751e2d7a4bee79a639bda6cba399b8bb47866959c7bcc2f03a9c8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec048d04-cf9b-4245-817e-3faa8a0bfd1c/Untitled.png"></p>
+<p>在AMS中</p>
+<pre><code>ActivityManagerService.java
+
+@Override
+    public final int startActivity(IApplicationThread caller, String callingPackage,
+            Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
+            int startFlags, ProfilerInfo profilerInfo, Bundle bOptions) {
+        return startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
+                resultWho, requestCode, startFlags, profilerInfo, bOptions,
+                UserHandle.getCallingUserId());
+    }
+
+caller: 就是Instrumentation中的whoThread
+callingPackage: 包名
+intent: 
+resolvedType: 就是AndroidManifest注册时的MIME类型
+resultTo: Instrumentation中的token
+resultWho: target的Id
+requestCode:
+startFlags: 启动标志默认0
+
+这里直接调用startActivityAsUser()
+@Override
+public final int startActivityAsUser(IApplicationThread caller, String callingPackage,
+        Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
+        int startFlags, ProfilerInfo profilerInfo, Bundle bOptions, int userId) {
+    enforceNotIsolatedCaller(&quot;startActivity&quot;);
+    userId = mUserController.handleIncomingUser(Binder.getCallingPid(), Binder.getCallingUid(),userId, false, ALLOW_FULL_ONLY, &quot;startActivity&quot;, null);
+    return mActivityStarter.startActivityMayWait(caller, -1, callingPackage, intent,resolvedType, null, null, resultTo, resultWho, requestCode, startFlags,profilerInfo, null, null, bOptions, false, userId, null, null);
+}
+
+通过ActivityStarter来startActivityMayWait
+
+final int startActivityMayWait(IApplicationThread caller, int callingUid,
+            String callingPackage, Intent intent, String resolvedType,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            IBinder resultTo, String resultWho, int requestCode, int startFlags,
+            ProfilerInfo profilerInfo, IActivityManager.WaitResult outResult, Configuration config,
+            Bundle bOptions, boolean ignoreTargetSecurity, int userId,
+            IActivityContainer iContainer, TaskRecord inTask) {
+    ...
+    ResolveInfo rInfo = mSupervisor.resolveIntent(intent, resolvedType, userId);
+    ...
+    ActivityInfo aInfo = mSupervisor.resolveActivity(intent, rInfo, startFlags, profilerInfo);
+    ...
+    final ProcessRecord heavy = mService.mHeavyWeightProcess;
+    if (heavy != null &amp;&amp; (heavy.info.uid != aInfo.applicationInfo.uid
+            || !heavy.processName.equals(aInfo.processName))) {
+        ...
+    }
+    ...
+    int res = startActivityLocked(caller, intent, ephemeralIntent, resolvedType,
+            aInfo, rInfo, voiceSession, voiceInteractor,
+            resultTo, resultWho, requestCode, callingPid,
+            callingUid, callingPackage, realCallingPid, realCallingUid, startFlags,
+            options, ignoreTargetSecurity, componentSpecified, outRecord, container,
+            inTask);
+    ...
+}
+这里的mSupervisor(ActivityStackSupervisor)简单来说就是管理ActivityStack的
+resolveIntent和resolveActivity方法用来确定此次启动activity信息
+
+关于heavy(ResolveInfo)涉及到重量级进程(SystemServer, MediaServer,ServiceManager)
+，如果当前系统中已经存在的重量级进程且不是即将要启动的这个，
+那么就要给Intent赋值。接下来继续走我们的探索之路startActivityLocked。
+
+
+final int startActivityLocked(IApplicationThread caller, Intent intent, Intent ephemeralIntent,
+            String resolvedType, ActivityInfo aInfo, ResolveInfo rInfo,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            IBinder resultTo, String resultWho, int requestCode, int callingPid, int callingUid,
+            String callingPackage, int realCallingPid, int realCallingUid, int startFlags,
+            ActivityOptions options, boolean ignoreTargetSecurity, boolean componentSpecified,
+            ActivityRecord[] outActivity, ActivityStackSupervisor.ActivityContainer container,
+            TaskRecord inTask) {
+    ...
+    ProcessRecord callerApp = null;
+    ...
+    ActivityRecord sourceRecord = null;
+    ActivityRecord resultRecord = null;
+    ...
+    ActivityRecord r = new ActivityRecord(mService, callerApp, callingUid, callingPackage,
+            intent, resolvedType, aInfo, mService.mConfiguration, resultRecord, resultWho,
+            requestCode, componentSpecified, voiceSession != null, mSupervisor, container,
+            options, sourceRecord);
+    ...
+    err = startActivityUnchecked(r, sourceRecord, voiceSession, voiceInteractor, startFlags,
+            true, options, inTask);
+    ...
+    return err;
+}
+
+private int startActivityUnchecked(final ActivityRecord r, ActivityRecord sourceRecord,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
+            int startFlags, boolean doResume, ActivityOptions options, TaskRecord inTask) {
+    setInitialState(r, options, inTask, doResume, startFlags, sourceRecord, voiceSession,
+    voiceInteractor);
+    computeLaunchingTaskFlags();
+    ...
+    mIntent.setFlags(mLaunchFlags);
+    mReusedActivity = getReusableIntentActivity();
+    ...
+    boolean newTask = false;
+    ...
+     if (mStartActivity.resultTo == null &amp;&amp; mInTask == null &amp;&amp; !mAddingToTask
+        &amp;&amp; (mLaunchFlags &amp; FLAG_ACTIVITY_NEW_TASK) != 0) {
+        newTask = true;
+        ...
+    }
+    ...
+    mTargetStack.startActivityLocked(mStartActivity, newTask, mKeepCurTransition, mOptions);
+    ...
+    mSupervisor.resumeFocusedStackTopActivityLocked(mTargetStack, mStartActivity,
+                        mOptions);
+    ...
+}
+
+先看setInitialState方法
+private void setInitialState(ActivityRecord r, ActivityOptions options, TaskRecord inTask,
+            boolean doResume, int startFlags, ActivityRecord sourceRecord,
+            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor) {
+    reset();
+    mStartActivity = r;
+    mIntent = r.intent;
+    mOptions = options;
+    mCallingUid = r.launchedFromUid;
+    mSourceRecord = sourceRecord;
+    mVoiceSession = voiceSession;
+    ...
+    mLaunchSingleTop = r.launchMode == LAUNCH_SINGLE_TOP;
+    mLaunchSingleInstance = r.launchMode == LAUNCH_SINGLE_INSTANCE;
+    mLaunchSingleTask = r.launchMode == LAUNCH_SINGLE_TASK;
+    mLaunchFlags = adjustLaunchFlagsToDocumentMode(
+            r, mLaunchSingleInstance, mLaunchSingleTask, mIntent.getFlags());
+     ...
+}
+这里初始化了一些Activity的基本元素
+
+之后computeLaunchingTaskFlags方法初始化启动标志位
+然后mIntent.setFlags(mLaunchFlags);
+
+final void startActivityLocked(ActivityRecord r, boolean newTask, boolean keepCurTransition,
+            ActivityOptions options) {
+    ...
+    mWindowManager.setAppVisibility(r.appToken, true);
+    // 表示这个Activity已经具备了显示的条件
+    ...
+}
+
+接下来我们会调用ActivityStackSupervisor的resumeFocusedStackTopActivityLocked方法
+，接着调ActivityStack的resumeTopActivityUncheckedLocked方法
+，再调自己的resumeTopActivityInnerLocked方法
+，如果Activity已存在需要可见状态，那么会调IApplicationThread的scheduleResumeActivity方法，
+且经过一系列判断可见Activity；反之调ActivityStackSupervisor的startSpecificActivityLocked的方法
+，那么继续会调realStartActivityLocked的方</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c27a8e9f-547a-4932-a3ec-7609ad1a8dd9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45BGMYQT6J%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020052Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCrlLN7wsv%2BTC1H3UhT2BWXLEbIFu84YlFPSEULO8tGbAIgJw5hAh%2BmD9q8CF1q0dUBYYmy7fLGybiFXUaNVp%2BvTCkqtAMIZhAAGgwyNzQ1NjcxNDkzNzAiDGzyGx4ScYOs4BsygCqRAzSxMViZG1aYRupqqXqwsehKxhOzJ1cIPF2pVUBCzxG4GY3Za2q98YdxXRf0aygK33EHCbPDjETBi%2Ff1eYRQwAqy6DgRS2l9Na5PbuGhUpGZjh08R01AkpFpTqvR%2FKikfu95U%2BXG1has3Xlcg1w5B33Doo%2FJ0Ca8dyPysePbsocyzNz2FyQvCCR%2Fv5AHfsBd4znRjcl%2B4fXUp%2F4eyV56aPlehcGGs1diCgajGQ6PCUnWqbJo9opdHHgCA8mgfx0u9A%2FqAZWJBxGVwtJK9oOMVXzntiREOCpTiANHqRn%2B8hM3Yy3SyI0M64cJzp%2FF%2BIwhyYymQDlcb%2Bo189YvDMoy8I5h9a%2FUrFgGouoLvh2OP12FdCfJna8zOsmc6UdLAPR9xiAWPab52U0zRzcrEiRx%2B0mRkJ9aabwz5kBiNluK4zIzkGUpJaFx4veso1BvYwomz1VIsbnNMbdA4vxrd5eSlQFzBd815W3jG7aOvkw1iF%2Boa2RL9%2BZM9bDRKiMn7IPLccZTMGH0Jq8AlLsxWZ9qWz4CMNjR%2BPAFOusBI026Ni36%2B6ttH9x1r8%2FqzqZj%2Fd4emkhfJVH5zz2n5AOs2hTLWzNFLbHPfEmhc3W3zjuBqzh6YUf7brdvomFBVhGwK54MCSuP1PRe8jv8sIzTZgGQBTHFxzstTEyNB7T%2FuGwfyZedjjZBayBE4DY4cwEohKi5e%2BVFBMCKuabPKNhwWXsUUkchj3OQESh%2BDwqm75e3dbJAY71oI9GIAg%2F0LIVbhiidOasztq8OA34Zf20xmgdybl28sJQ28%2F5ujHW%2FMc%2BOJzqO66Oy4H7UKNMQEzMpALMNI7P7VFLZIG17aq0LEQ%2BWRpBAwk5WtQ%3D%3D&X-Amz-Signature=297f114c8203811b5b82c8d3456a66730952383c322a493ed346df610b634452&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c27a8e9f-547a-4932-a3ec-7609ad1a8dd9/Untitled.png"></p>
+<p>之后调用ApplicationThread的scheduleLaunchActivity方法啦！</p>
+<pre><code>@Override
+public final void scheduleLaunchActivity(Intent intent, IBinder token, int ident,
+        ActivityInfo info, Configuration curConfig, Configuration overrideConfig,
+        CompatibilityInfo compatInfo, String referrer, IVoiceInteractor voiceInteractor,
+        int procState, Bundle state, PersistableBundle persistentState,
+        List&lt;ResultInfo&gt; pendingResults, List&lt;ReferrerIntent&gt; pendingNewIntents,
+        boolean notResumed, boolean isForward, ProfilerInfo profilerInfo) {
+    updateProcessState(procState, false);
+    ActivityClientRecord r = new ActivityClientRecord();
+    r.token = token;
+    r.ident = ident;
+    r.intent = intent;
+    r.referrer = referrer;
+    r.voiceInteractor = voiceInteractor;
+    r.activityInfo = info;
+    r.compatInfo = compatInfo;
+    r.state = state;
+    r.persistentState = persistentState;
+    r.pendingResults = pendingResults;
+    r.pendingIntents = pendingNewIntents;
+    r.startsNotResumed = notResumed;
+    r.isForward = isForward;
+    r.profilerInfo = profilerInfo;
+    r.overrideConfig = overrideConfig;
+    updatePendingConfiguration(curConfig);
+    sendMessage(H.LAUNCH_ACTIVITY, r);
+}
+
+在Handler中
+private class H extends Handler {
+    ...
+    public void handleMessage(Message msg) {
+        if (DEBUG_MESSAGES) Slog.v(TAG, &quot;&gt;&gt;&gt; handling: &quot; + codeToString(msg.what));
+        switch (msg.what) {
+            case LAUNCH_ACTIVITY: {
+                Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;activityStart&quot;);
+                final ActivityClientRecord r = (ActivityClientRecord) msg.obj;
+                r.packageInfo = getPackageInfoNoCheck(
+                        r.activityInfo.applicationInfo, r.compatInfo);
+                handleLaunchActivity(r, null, &quot;LAUNCH_ACTIVITY&quot;);
+                Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
+            } break;
+            ...
+    }
+}
+
+调用handleLaunchActivity
+ActivityThread.java
+private void handleLaunchActivity(){
+...
+WindowManagerGlobal.initialize();//初始化WMS
+Activity a = performLaunchActivity(r, customIntent);//创建并启动
+....
+
+private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
+    ActivityInfo aInfo = r.activityInfo;//取出组件信息，并一顿操作
+    ...
+    Activity activity = null;
+    try {
+        java.lang.ClassLoader cl = r.packageInfo.getClassLoader();
+        activity = mInstrumentation.newActivity(
+                cl, component.getClassName(), r.intent);
+         //开始创建Activity实例，通过类加载器创建，看参数就知道了
+         ...
+         Application app = r.packageInfo.makeApplication(false, mInstrumentation);
+         //获取Application
+         ...
+         activity.attach(appContext, this, getInstrumentation(), r.token,
+                        r.ident, app, r.intent, r.activityInfo, title, r.parent,
+                        r.embeddedID, r.lastNonConfigurationInstances, config,
+                        r.referrer, r.voiceInteractor, window);
+         //与window建立关联
+         ...
+         mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);
+         //callActivityOnCreate-&gt;activity.performCreate-&gt;onCreate，之后就很熟悉了
+         ...
+    }
+}
+
+其中的makeApplication方法
+public Application makeApplication(boolean forceDefaultAppClass,
+            Instrumentation instrumentation) {
+    if (mApplication != null) {
+        return mApplication;
+    }
+    //如果mApplication不为空则直接返回，这也是为什么Application为单例
+    ...
+    Application app = null;
+    ...
+    ContextImpl appContext = ContextImpl.createAppContext(mActivityThread, this);
+    app = mActivityThread.mInstrumentation.newApplication(
+                cl, appClass, appContext);
+    //创建Application，跟Activity一样，都是用类加载器创建
+    ...
+    mApplication = app;//保存下来
+    ...
+    instrumentation.callApplicationOnCreate(app);
+    //callApplicationOnCreate-&gt;onCreate
+    ...
+}</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/eae3a6be-0576-4b97-ad77-a7b545e9d38d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45ABCNKXHH%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020040Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQD%2FHuUjg5gr8C7Ed13a4i1kJx6kZ5qxZMvnUPp5LlianwIhAJx4ni%2FL8n3AwZ7127oG8PSgHAPZ4WmQHNL%2FnbFxZOfnKrQDCGYQABoMMjc0NTY3MTQ5MzcwIgyYenibqLwYVL87r6IqkQOvsGK7n9vUVFwwatyrD2Qt3gyVB%2B2L3QFZPQzIexEz5YgDjKK0RYL0VmWKidxZqjUTwA4u275MgT1Mu9ZY2XGxD6er6X6QSeGUL%2BwcJPT8r0SaHPf3hmQsAL3o7w5v4UIND9NNpTwwGodMvqpDJn%2FgVExFYsig3Ol7Q3OPi2K3%2Bnp2KyQzwsacBoB%2Bs5KGvsRTQ3Ajb%2FWfQw5FRYOMrYc9Qa4Fag%2BeVjHtkBs9YdiFPXnc6d4VB4blHi6D9fWhzytljnrB1PiwviOmHPLSgVB2kHz1B%2BsnqVhc0uvFr4uV6Te7BF2rI%2FvonJzEYD6KmNV0pBnhDLsCxHUkRdIVTpmHRe%2FvdLYicmdk4UuERI7ypL1o2Aa5m2X4jG0hqYJDDYBT18SiVtz56MWzXlZN0qI2Wi3NtBr%2FHtqlevEbKLh8kZyco5x0ds1MBf4KoZWU9rYUhWEiplLZK0%2Fg0OYuygqmXn6YIeJRtuHzsriiomDpP4gqf1lJbehN5Sw9c2u%2F4Hc1y%2BqdClYhvUwlCSUlTbb%2BxTDy2vjwBTrqAZrstycL0LbjMiXqUGpuvlCAVxf8aDIqg5Ea6964D68HFl9Rqdivvv%2BxOhdoTN0b1v0g8uiDwUgw82pN3F3xJzE9VprK9rVw4KUIPw8xjqhbWVvrSjYV5NVc5clWKCDKE3mEkpgt5LAGrFTUkdmAHsS098AOQhvkF5Y%2BYZgkLIIlIzFAEa8UkVVmCwU%2FulzgNRAiLAvUtScW68HS1A%2BTp4YWXcvAQMU4h%2BINO5SKg1k2hgoU%2Fb8NPa6ofU6IFvJ5uwk3XPspesDedi86HlCTs1fLW%2BS%2F27UODic9Lhvn9Vta2lAa9Xpsn6OKnA%3D%3D&X-Amz-Signature=2a45fb6aa493dc656c9d912a578476c768730500e68f6eb89950a669e0eea725&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eae3a6be-0576-4b97-ad77-a7b545e9d38d/Untitled.png"></p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a604c5b5-b967-4759-8527-dba82b60032a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45CVDBZQGM%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020029Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCPFUQ9eVBhVG%2FxqjNRO11arCOihCaAOE%2FIvHjyGqhw1wIhAKBFpsEOpIXmHAx8hyq5YW5hdQq30S%2F34MeIzr5%2BsNlZKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgwkBRVtA6z13TC4Q7MqkQNgsIkQD3FmJggamt3NXPLMPqH9jRLatDGTtop1ay9WbPSTgBcYKFIjehnCQdkHleEAj6Q0HglEifrQHM3lSWUjwPfc6GJr%2BKfiZvefyoa3fipuPspQ%2BV9PGuwTC8HX9he3sFuFl%2BL3If3G1JpssuyPsnXQLCyIJAhI1gajARFR34zIeiVZOq4rXsQpr5jd7mkxbDvOxog81t8JD8IIhmXhYOmYwBuP3aG7B1HH6%2FgkJVRD69yln1MN2HYcn6wbDElEoKxqri5Om4YSbt6J9vHlVIQpRkjGCO5AG%2BB%2BKjEQqnS%2F93YIv1h%2FB7SIAwpNCAop6cz4TXsR59aT4den7Sr0GUhUK26Ofx8EPbCb33NiaWNZqBJYU47jV%2FT6CUAOV4V8BHRcHk%2BuWBQ91UTVWEeeqAphJQsDS8byl%2BV%2BLw9gz%2F0y3yO99zTVhMI4QTgcNKdYIdBjOc2NyMimJ2dqTcBNdTg1zWS0%2FM%2FtttWejbOLLxVM%2BYJAyFvInzUiruH87zCpNGN16F70PW1vTHBnNg9p7zCM5fjwBTrqAaSNk4ugdnmFqEEAoCokJlJyP28l078BGYTwI9mte7tTbKZImR6gEeBxV0R6i545NGTPXsF3RbzuJZQdQl9WkJrAVbQ5FE6I6GEslT%2FNzH%2BKTqllG98naywEH92CZNvhrPfas2SjhSZeCz5i4Ng71uSB6hNrIZwBVlxohMVGl564UhUJS5b%2F0H7PxerJ8lU10Ze%2BvCL0PyBPq%2Ftqg6ebM61TJ1HH9ZreFba2x84qxFbCut%2FleuxJtCa8rerOZhqdSQ7GcX9a3d%2FZcZxaxLt2H%2BF6dWtvE%2BKZsrLZoHTlKt9Eew8e8Fyak2tEOA%3D%3D&X-Amz-Signature=42f5fcf4aac3359a7b8bf3b227620b0b3eaf4f47d1e57311004782dea8469e7d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a604c5b5-b967-4759-8527-dba82b60032a/Untitled.png"></p>
+<p>Instrumentation是一个很重要的类，负责intent的分发，调用Activity的onCreate, 调用Activity的onResume, 在插件化中也有广泛的应用。</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -5354,6 +6323,19 @@ These features of the library coexist seamlessly with your existing layouts. For
     <title>Android-RecyclerView与ListView的区别</title>
     <url>/posts/d2b4a3fc/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">https://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
+<p>滑动嵌套处理 &amp; Scroller解析</p>
+<p><a href="http://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">http://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
+<p><a href="https://blog.csdn.net/yanbober/article/details/49904715" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/49904715</a></p>
+<p><a href="http://www.apkbus.com/android-161576-1-1.html" target="_blank" rel="noopener">http://www.apkbus.com/android-161576-1-1.html</a></p>
+<p><a href="https://segmentfault.com/a/1190000002873657" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002873657</a></p>
+<p><a href="https://blog.csdn.net/briblue/article/details/73441698" target="_blank" rel="noopener">https://blog.csdn.net/briblue/article/details/73441698</a></p>
+<p>图片加载错乱的原理和解决方案</p>
+<p><a href="https://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">https://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286405&idx=1&sn=414e2d2eb577884ccee5c9076e8b8357&chksm=8334c387b4434a9124f5acd93f331968a44256b8374eeafb4b1857671072b3b6364e5ec38485&mpshare=1&scene=1&srcid=10217YX3Ym7X8oIIwOsTErmj%23rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286405&amp;idx=1&amp;sn=414e2d2eb577884ccee5c9076e8b8357&amp;chksm=8334c387b4434a9124f5acd93f331968a44256b8374eeafb4b1857671072b3b6364e5ec38485&amp;mpshare=1&amp;scene=1&amp;srcid=10217YX3Ym7X8oIIwOsTErmj%23rd</a></p>
+<p><a href="https://blog.csdn.net/lmj623565791/article/details/45059587" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/45059587</a></p>
+<p><a href="https://blog.csdn.net/tcpipstack/article/details/19214849" target="_blank" rel="noopener">https://blog.csdn.net/tcpipstack/article/details/19214849</a></p>
+<p><a href="https://www.jianshu.com/p/6c78a5a07db5" target="_blank" rel="noopener">https://www.jianshu.com/p/6c78a5a07db5</a></p>
+<p><a href="https://mp.weixin.qq.com/s/FiQEa0M93eSi1i4PzW_6Nw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/FiQEa0M93eSi1i4PzW_6Nw</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -7319,6 +8301,217 @@ These features of the library coexist seamlessly with your existing layouts. For
 <li>Java GC内存回收机制</li>
 <li>开源图片加载库源码分析</li>
 <li>内存分析工具的使用, MAT, TraceView, SystemTrace, HeapViewer, Heap SnapShot</li>
+</ul>
+<p>Android系统每隔16ms发出VSYNC信号触发UI进行渲染, 那么要求每一帧都要在 16ms内完成绘制(包括发送给CPU和GPU绘制到缓冲区的命令, 这样就可以达到流畅画面要求的60fps)</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/878788c4-8e95-4fb2-b18c-08032d4782f1/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45OEE5CTIH%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T011536Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCPHPQPA6cjDd39tRagcbe2jWlM2YwG%2B5bOIej5hJ5PsQIhAPgIeO7wej6ucmWvQaA8QY5wADd1tM2%2FemWqleNetRruKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgw5B%2B%2FhqMMcKZhrBuMqkQPVwmFWPMdKq01EOK75IuwlQ8jVEKzWsxRSPxogQ3TPd7pnjUwdDzK2cgaZHJKUvCi%2BAhUz%2BQuxZ%2B%2B5J2OkcRmfzWfjY%2BiFAKCZuzS%2BlUO61tjH5EuVNV2VIT76yuPq%2Fn4gYXZCXxTYL3OlZZ5%2BTAhDYOfxpELC4796iPZd9gUL6oc90T9QREJSu2MjOtb6Y9fm2URZDjqrQL9wU%2FriykfQG90ZtWV38wowUgnwD%2BUJ8o4EU7TRd5lW0LlIKqDj8ByWK0IaWzeFpCQLjz2c0vE9EH%2B%2FXulOrJvmgIHMnVE5b17BZzr7JgNSEK4DUETTh0O52B4l1Uzm1UjQKaswlHRlWPE5SISunXCrCfIa14mnJnLLZlLgTwRgfaoVcYw%2BdNNIgqO8%2BHSygQCpeAQmHZZ3%2FxBFmATyxGBo1WKPl0Vlcvmc753SG1O9zssHUgaes7UM%2FanpujYDe2XKNNZrRNzwTKsUmqB0kNYQ92aw5QsY%2BR09fUthqPQOmyyRyDs7uLzoUiT5%2BwA5iVSbHVb2qMea4TC48fjwBTrqAV2yclo%2FjrSYS2k%2BoqnYIwyM8AuQyYUehBFc2io4raI0YXAeEbNijMcSeOA%2FewlpqrlCJ8WzL8m6kcXm4xZ7sO9AhImfPcXtEu%2BjP%2BwhBJplyHgHjah%2Fy%2BUZP0PdxJ9up4hALjY%2Byqi6IkkmVslfPT1ICLi094yrZPmoCcR%2BAikptspyLs7RREL4ss%2F%2FZ0Ic%2FlyukZgIgiQKzhD%2FFmEZF1eVK3%2FOMzO7NFaC4KtocQVm%2FAXWaQoN6kdY%2BrvrYCLZeVilsddWtwmEbRmXmelYJsnee0il8WcMuWiluczhlGV3f7C7%2Froy1EdWaw%3D%3D&X-Amz-Signature=eff6652a1fc863c0640e42d6c95083010e8d1dac25023d24c6d2664df4ff78e8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/878788c4-8e95-4fb2-b18c-08032d4782f1/Untitled.png"></p>
+<p>如果某个操作花费24ms, 系统在得到VSYNC信号时无法进行正常渲染，导致丢帧现象。 那么用户在32ms内看到的会是同一帧画面</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/35a81769-06ff-4b2b-b8f0-8c76f14732cb/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45NAQUBLH2%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T011711Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJGMEQCIHpqjGsgxOtlUKOuJGpJzwhL4V1v0KMPdzrdkN67j6XqAiAUN%2FFJEEWVaGzmoWbZmL4UlHFGz6085RkftiLtd2i%2FTiq0AwhnEAAaDDI3NDU2NzE0OTM3MCIM0xfkXqd7qZBPJ5rXKpEDHH8fQs8%2BQmEDC8mkwrEqmOI1mhg4YIOJ3UmjmFAYNvSYSaHC5hXlgvV5h3KpP8742%2FwlUrTMm5Xj5bIJHM3ypuC9aQ9M1RSYaW09rLSyG81Fo413Q5eZCz73w%2BIo20vuud04n%2BXP4JAXgIrbK5ckx4BDCl8CtKsS262Oii1ktW3K0kDXtXS86CyeXsMAvVPg1QxTjVxrimzDBTE6B8oo%2BrYaA4dZfb%2FtFHASxjxIGslV5JcEjDHaATVRmAou3NrQ1PNzqv%2F%2BZya%2Fxe%2F%2FNoFFXHQ44VRdxaPHb%2FjjznH1tDx45n%2FOoOkxbIJ5CngUIMag0KKywyeCaRdDoZHMcm31flOx9TDOqib9CBFqEiO7gAUKp8%2BgiLtFX%2BNKPy3WBQDFoEoLi4uKhMwghAp6vsnJVpham5pj3O1%2BlT0FJmG4vIHNXdfouGXFgpv%2BaNEfAtlslghleCidF10K0s2X%2FatG0o%2FTOfCE3qxLoWeKnqZqQHj1wHYsEnanvexdypD4ff2H5gA7KiPnpwmr0CA5aSWQVzwwy%2Bj48AU67AHBdwVpdCFExKhQXX8MoWPavnNn0uDLAYsNJKrBc9keSk%2FJhA0kReKnueDxQ2TWZgxi0UxBOzqv1aAuLTvwRmQ7KUCKJT%2FsptcmASjKWnNKbZmDNfJWIoLsuOl6ilqd6GyyaeFmqgs2zm%2FgiTnEsM%2F9DPWM5PQDRrqTWXAWbzquq0yDNT8%2BJC4WrPutHBp3wSjhtoHPYS1uLozbEYVd0Rluc6xgWJhT1yAQ04%2FYHGl8BLGo%2BcPELFRtUT%2BkkEe0WnAkqhwWKqEmgEIHlU%2FLRfN6GA4%2FN4qJPwvBD9vud%2Fmc4hI5MlfEOrmb7A6TxA%3D%3D&X-Amz-Signature=0809454a344b7554ed5e7929b5ce59de0927dd37f7e7742b53173b8b8b9f1d88&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/35a81769-06ff-4b2b-b8f0-8c76f14732cb/Untitled.png"></p>
+<p>市面上绝大多数Android设备的屏幕刷新频率是 60 HZ。当然，超过 60 Fps 是没有意义的，人眼感知不到区别。24 Fps 是人眼能感知的连续线性的运动，所以是电影胶圈的常用帧率，因为这个帧率已经足够支撑大部分电影画面所要表达的内容，同时能最大限度地减少费用支出。但是，低于 30 Fps 是无法顺畅表现绚丽的画面内容的，此时就需要用到 60 Fps 来达到想要表达的效果。</p>
+<h2 id="丢帧原因"><a href="#丢帧原因" class="headerlink" title="丢帧原因"></a>丢帧原因</h2><ul>
+<li>Layout过于复杂, 层次过多</li>
+<li>UI上有层叠过多的绘制单元, 过度绘制</li>
+<li>CPU, GPU负载过重</li>
+<li>动画执行次数过多</li>
+<li>频繁GC, 内存抖动</li>
+<li>UI线程执行耗时操作</li>
+</ul>
+<h3 id="Layout过于复杂，层次过多"><a href="#Layout过于复杂，层次过多" class="headerlink" title="Layout过于复杂，层次过多"></a>Layout过于复杂，层次过多</h3><p>Layout布局是一棵树，root是window的decorView, 嵌套的子view越深，树就越复杂，渲染就越费时。每个view都经过measure, layout, draw三个流程，都是从树根开始下绘制。</p>
+<h3 id="LinearLayout"><a href="#LinearLayout" class="headerlink" title="LinearLayout"></a>LinearLayout</h3><p>LinearLayout measure的时候，会横向或纵向的测量子view的宽高，且只会测量一次，但是设置layout_weight的时候，会测量2次才会获得准确的展示尺寸。</p>
+<pre><code>public class LinearLayout extends ViewGroup {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (mOrientation == VERTICAL) {
+            measureVertical(widthMeasureSpec, heightMeasureSpec);
+        } else {
+            measureHorizontal(widthMeasureSpec, heightMeasureSpec);
+        }
+    }
+
+    void measureVertical(int widthMeasureSpec, int heightMeasureSpec) {
+        //blablabla......
+        final int count = getVirtualChildCount();
+
+        for (int i = 0; i &lt; count; ++i) {
+            //blablabla......
+            if (heightMode == MeasureSpec.EXACTLY &amp;&amp; lp.height == 0 &amp;&amp; lp.weight &gt; 0) {
+                //blablabla......
+            } else {
+                //blablabla......
+
+                // Determine how big this child would like to be. If this or
+                // previous children have given a weight, then we allow it to
+                // use all available space (and we will shrink things later
+                // if needed).
+                measureChildBeforeLayout(
+                       child, i, widthMeasureSpec, 0, heightMeasureSpec,
+                       totalWeight == 0 ? mTotalLength : 0);
+                //blablabla......
+            }
+        }
+        //blablabla......
+        if (skippedMeasure || delta != 0 &amp;&amp; totalWeight &gt; 0.0f) {
+            for (int i = 0; i &lt; count; ++i) {
+                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) child.getLayoutParams();
+
+                float childExtra = lp.weight;
+                if (childExtra &gt; 0) {
+int share = (int) (childExtra * delta / weightSum);
+                    weightSum -= childExtra;
+                    delta -= share;
+
+                    final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec,
+                            mPaddingLeft + mPaddingRight +
+                                    lp.leftMargin + lp.rightMargin, lp.width);
+
+                    if ((lp.height != 0) || (heightMode != MeasureSpec.EXACTLY)) {
+                        // child was measured once already above...
+                        // base new measurement on stored values
+                        int childHeight = child.getMeasuredHeight() + share;
+                        if (childHeight &lt; 0) {
+                            childHeight = 0;
+                        }
+
+                        child.measure(childWidthMeasureSpec,
+                                MeasureSpec.makeMeasureSpec(childHeight, MeasureSpec.EXACTLY));
+                    } else {
+                        // child was skipped in the loop above.
+                        // Measure for this first time here      
+                        child.measure(childWidthMeasureSpec,
+                                MeasureSpec.makeMeasureSpec(share &gt; 0 ? share : 0,
+                                        MeasureSpec.EXACTLY));
+                    }
+                }
+            }
+        } else {
+            alternativeMaxWidth = Math.max(alternativeMaxWidth,
+                                           weightedMaxWidth);
+
+
+            // We have no limit, so make all weighted views as tall as the largest child.
+            // Children will have already been measured once.
+            if (useLargestChild &amp;&amp; heightMode != MeasureSpec.EXACTLY) {
+                for (int i = 0; i &lt; count; i++) {
+                    final View child = getVirtualChildAt(i);
+
+                    if (child == null || child.getVisibility() == View.GONE) {
+                        continue;
+                    }
+
+                    final LinearLayout.LayoutParams lp =
+                            (LinearLayout.LayoutParams) child.getLayoutParams();
+
+                    float childExtra = lp.weight;
+                    if (childExtra &gt; 0) {
+                        child.measure(
+                                MeasureSpec.makeMeasureSpec(child.getMeasuredWidth(),
+                                        MeasureSpec.EXACTLY),
+                                MeasureSpec.makeMeasureSpec(largestChildHeight,
+                                        MeasureSpec.EXACTLY));
+                    }
+                }
+            }
+        }
+        //blablabla......
+    }
+}</code></pre><h3 id="RelativeLayout"><a href="#RelativeLayout" class="headerlink" title="RelativeLayout"></a>RelativeLayout</h3><p>RelativeLayout在measure的时候会横向纵向各测量一次</p>
+<pre><code>public class RelativeLayout extends ViewGroup {
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //blablabla......
+
+        View[] views = mSortedHorizontalChildren;
+        int count = views.length;
+        for (int i = 0; i &lt; count; i++) {
+            View child = views[i];
+            if (child.getVisibility() != GONE) {
+                LayoutParams params = (LayoutParams) child.getLayoutParams();
+                int[] rules = params.getRules(layoutDirection);
+
+                applyHorizontalSizeRules(params, myWidth, rules);
+                measureChildHorizontal(child, params, myWidth, myHeight);
+
+                if (positionChildHorizontal(child, params, myWidth, isWrapContentWidth)) {
+                    offsetHorizontalAxis = true;
+                }
+            }
+        }
+        //blablabla......
+
+        views = mSortedVerticalChildren;
+        count = views.length;
+        for (int i = 0; i &lt; count; i++) {
+            final View child = views[i];
+            if (child.getVisibility() != GONE) {
+                final LayoutParams params = (LayoutParams) child.getLayoutParams();
+
+                applyVerticalSizeRules(params, myHeight, child.getBaseline());
+                measureChild(child, params, myWidth, myHeight);
+                if (positionChildVertical(child, params, myHeight, isWrapContentHeight)) {
+                    offsetVerticalAxis = true;
+                }
+
+                if (isWrapContentWidth) {
+                    if (isLayoutRtl()) {
+                        if (targetSdkVersion &lt; Build.VERSION_CODES.KITKAT) {
+                            width = Math.max(width, myWidth - params.mLeft);
+                        } else {
+                            width = Math.max(width, myWidth - params.mLeft - params.leftMargin);
+                        }
+                    } else {
+                        if (targetSdkVersion &lt; Build.VERSION_CODES.KITKAT) {
+                            width = Math.max(width, params.mRight);
+                        } else {
+                            width = Math.max(width, params.mRight + params.rightMargin);
+                        }
+                    }
+                }
+
+                if (isWrapContentHeight) {
+                    if (targetSdkVersion &lt; Build.VERSION_CODES.KITKAT) {
+                        height = Math.max(height, params.mBottom);
+                    } else {
+                        height = Math.max(height, params.mBottom + params.bottomMargin);
+                    }
+                }
+
+                if (child != ignore || verticalGravity) {
+                    left = Math.min(left, params.mLeft - params.leftMargin);
+                    top = Math.min(top, params.mTop - params.topMargin);
+                }
+
+                if (child != ignore || horizontalGravity) {
+                    right = Math.max(right, params.mRight + params.rightMargin);
+                    bottom = Math.max(bottom, params.mBottom + params.bottomMargin);
+                }
+            }
+        }
+        //blablabla......
+    }
+}</code></pre><p>如果带有weight属性的LinearLayout或者RelativeLayout被嵌套使用，measure所费的时间会呈指数级增长。为了缩短时间，尽量保持树的深度低点, 层次少点。</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><ul>
+<li>能用LinearLayout就不要用RelativeLayout, LinearLayout measure 1次， RelativeLayout 2次</li>
+<li><include>, <merge> <viewstub> 标签的使用</viewstub></merge></include></li>
+<li>尽量避免用layout_weight</li>
+</ul>
+<h3 id="UI上层叠过多，过度绘制"><a href="#UI上层叠过多，过度绘制" class="headerlink" title="UI上层叠过多，过度绘制"></a>UI上层叠过多，过度绘制</h3><p>跟Measure一样，View的绘制也是从树根一层层往叶子绘制，难免会导致叶子的绘制挡住了其他父节点的一些绘制内容。</p>
+<h3 id="优化-1"><a href="#优化-1" class="headerlink" title="优化"></a>优化</h3><ul>
+<li>去除不必要的background</li>
+<li>去除window的background</li>
+<li>自定义空间可以通过canvas.clipRect()帮助系统识别可见区域</li>
+</ul>
+<h3 id="负载过重"><a href="#负载过重" class="headerlink" title="负载过重"></a>负载过重</h3><p>UI渲染过程中，是CPU和GPU共同合作完成的，其中CPU负责把UI组件计算为Polygons, Texture纹理，然后交给GPU进行栅格化渲染</p>
+<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/f8aaff9f-7bb9-4b46-a664-912baaacd55d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45NEQ5P7GZ%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T011744Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDZWYhoiwUn8NBwlmIjlDp9K10sTRcPV72GdrWs%2BAiQQAIhAMExHxo9detywTG%2BkDzD3WV89OIOO282%2BE26cvZ7tWwzKrQDCGYQABoMMjc0NTY3MTQ5MzcwIgyCbwuZqW419FAUM50qkQNCZqr75NRCs903HPmG8yXUNdAORFpZYwDWHxP80ojsbP0XmPgx4h6dfJpFJvN5c6Tsd1MM2gQulM5yMnBbwcdIB5n2Ty%2BexlxVb8O9tKdBwKLO%2Bpv%2FGKBu0hhGbvtlyH1kcZ8zPfhC8dRKxOMNxDoK8JrvnwixiHnpPGrfS3sz3F5mYCJAy0g6yAC1KKYzc9KwxOVZrkO3Fnhbh6FucF%2F1mV7qaFY4tRVc%2B2SfB4H3tVMYeqavesXgiN3OZ07eqDtEt%2B6JzoUR%2B5IVtPgy2uyqMbn%2BsPxF4CVbaqSzjEFKWLqAAIUwOw5DDKE%2F2EucJsIvg2BP4eJPBhMSQ5jrtXxt8XvPFKVbSlGzrCQIUWon1tylB3YFg6LrzS%2B%2F5TAZcdRh1oMFfkniJH4%2FJFMyajaJAyEkMujqLJVCvSKt9LDnkWtRItJskjAQvi%2FJL6wKkBS8zHZiyGub8DwsLDr48JWV4ir08OMLPk1GMSFPe4iMas5FGKNNmKM5Rv8A0qd8oIYByWApT2uY7OiNaHjLrIISZzCU1vjwBTrqAVEpx9dkhogHjMT4NcOQOQc2XRlcJchGiSQevcMcLJIsqyphTOEdMdCyed%2BeB2NuxJ%2B5z9eWHiSxBRpOxZ0az5yqdjk98G%2FFdpXjs%2BiB9XwWi1UjOyi7lwpBUTBs56MpRdNw64VkryR0wVBB%2FRlcScmNKuEbkPoqEqVM4umRh2K%2FMyxrhdjBLsXLy3jtJkgpG26glONZ4fGuXS7KXOrLpGzWUoGM3luuq72f1mtM6FXlPNfiUr0HWBrMm7PNWsTa6IrHM%2FycrYWqjnkKHaQNA9W9GevqTJ2YAA1K7WEt89rr97dPkHnwNf6Nhw%3D%3D&X-Amz-Signature=d6927d5789895f0cb18da6673fcf709fd8b39c926867121354aecb150b984df0&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f8aaff9f-7bb9-4b46-a664-912baaacd55d/Untitled.png"></p>
+<h3 id="内存抖动"><a href="#内存抖动" class="headerlink" title="内存抖动"></a>内存抖动</h3><p>一般是频繁创建大对象或者频繁创建大量对象，然后用完就废弃，比如byte[]</p>
+<p>平滑的完成一帧意味着所有渲染代码都必须在 16ms 内完成。频繁的 GC 会严重限制一帧时间内的剩余时间，如果 GC 所做的工作超过了那些必须的工作，那么留给应用平滑的帧率的时间就越少。越接近 16ms ，在垃圾回收事件触发的时候，就越容易导致卡顿。</p>
+<p> Android4.4 引进了新的 ART 虚拟机来取代 Dalvik 虚拟机。他们的机制大有不同，简而言之:</p>
+<ul>
+<li>Dalvik VM的GC非常耗资源, 并且在正常的情况下一个硬件性能不错的Android设备也会很容易耗费掉 10 - 20 ms 的时间；</li>
+<li>ART 虚拟机的GC会动态提升垃圾回收的效率，在 ART 中的中断，通常在 2 - 3 ms 间。 比 Dalvik 虚拟机有很大的性能提升；</li>
+</ul>
+<p>ART 虚拟机相对于 Dalvik 虚拟机来说的垃圾回收来说有一个很大的性能提升，但 2 - 3 ms 的回收时间对于超过16ms帧率的界限也是足够的。因此，尽管垃圾回收在 Android 5.0 之后不再是耗资源的行为，但也是始终需要尽可能避免的，特别是在执行动画的情况下，可能会导致一些让用户明显感觉的丢帧</p>
+<h3 id="优化-2"><a href="#优化-2" class="headerlink" title="优化"></a>优化</h3><ul>
+<li>大对象可以使用对象池复用</li>
+<li>尽量少在16ms内创建对象</li>
 </ul>
 ]]></content>
       <categories>
