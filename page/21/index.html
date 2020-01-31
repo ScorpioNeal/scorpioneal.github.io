@@ -307,6 +307,663 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/77dbc89e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/77dbc89e/" itemprop="url">Android 界面适配</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-10T09:07:32+08:00">
+                2019-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/77dbc89e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/77dbc89e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://juejin.im/post/5b7a29736fb9a019d53e7ee2" target="_blank" rel="noopener">https://juejin.im/post/5b7a29736fb9a019d53e7ee2</a></p>
+<ol>
+<li>dpi (dots per inch)<br> 根据屏幕的真实尺寸和分辨率计算出来, 每个设备都不一样<br> <img src="http://img-scions.test.upcdn.net/dpi.png" alt="sf"></li>
+<li>density = dpi / 160</li>
+<li>px = density * dp</li>
+</ol>
+<p>e.g 1920 * 1080屏幕尺寸为5寸，那么dpi大约为440</p>
+<p>因为每个屏幕的dpi不同，所以会导致适配的问题。</p>
+<p>比如UI设计图按照屏幕宽度为360dp的设计，但是在上述屏幕上, 宽度实际为1080/(440/160) = 392.7dp. 从而导致显示的效果与设计图的不一致</p>
+<p>解决方法:<br>由于px = dp * density. 设计图为360dp, 要保证所有设备计算出来的px相同，我们更改density来保证. </p>
+<p>density 是 DisplayMetrics中的成员变量<br>DisplayMetrics#density为上述的density<br>DisplayMetrics#densityDpi为上述dpi<br>DisplayMetrics#scaledDensity字体的缩放因子，正常情况下和density相同，但是调节系统字体大小会更改此值</p>
+<p>更改后的density为 设备真实宽度(px) / 360</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> sNoncompatDensity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> sNoncompatScaledDensity;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setCustomDensity</span><span class="params">(@NonNull Activity activity, @NonNull <span class="keyword">final</span> Application application)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> DisplayMetrics appDisplayMetrics = application.getResources().getDisplayMetrics();</span><br><span class="line">        <span class="keyword">if</span>(sNoncompatDensity == <span class="number">0</span>) &#123;</span><br><span class="line">            sNoncompatDensity = appDisplayMetrics.density;</span><br><span class="line">            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity;</span><br><span class="line">            application.registerComponentCallbacks(<span class="keyword">new</span> ComponentCallbacks() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onConfigurationChanged</span><span class="params">(Configuration newConfig)</span> </span>&#123;</span><br><span class="line">                    <span class="keyword">if</span>(newConfig != <span class="keyword">null</span> &amp;&amp; newConfig.fontScale &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        sNoncompatScaledDensity = application.getResources().getDisplayMetrics().scaledDensity;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLowMemory</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> targetDensity = appDisplayMetrics.widthPixels / <span class="number">360</span>;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">float</span> targetScaledDensity = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity);</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> targetDensityDpi = (<span class="keyword">int</span>)(<span class="number">160</span> * targetDensity);</span><br><span class="line"></span><br><span class="line">        appDisplayMetrics.density = targetDensity;</span><br><span class="line">        appDisplayMetrics.scaledDensity = targetScaledDensity;</span><br><span class="line">        appDisplayMetrics.densityDpi = targetDensityDpi;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> DisplayMetrics activityDisplayMetric = activity.getResources().getDisplayMetrics();</span><br><span class="line">        activityDisplayMetric.density = targetDensity;</span><br><span class="line">        activityDisplayMetric.scaledDensity = targetScaledDensity;</span><br><span class="line">        activityDisplayMetric.densityDpi = targetDensityDpi;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/23be93f7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/23be93f7/" itemprop="url">Android-事件分发机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-08T13:43:57+08:00">
+                2019-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/23be93f7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/23be93f7/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://tryenough.com/android-motionevent" target="_blank" rel="noopener">https://tryenough.com/android-motionevent</a><br><a href="https://blog.csdn.net/carson_ho/article/details/54136311" target="_blank" rel="noopener">https://blog.csdn.net/carson_ho/article/details/54136311</a><br><a href="https://www.jianshu.com/p/d3758eef1f72" target="_blank" rel="noopener">https://www.jianshu.com/p/d3758eef1f72</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//伪代码</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Activity.java</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(MotionEvent ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ev.getAction() == MotionEvent.ACTION_DOWN) &#123;</span><br><span class="line">        onUserInteraction();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//这里实际是调用的viewgroup的dispatchTouchEvent进行分发事件</span></span><br><span class="line">    <span class="keyword">if</span> (getWindow().superDispatchTouchEvent(ev)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> onTouchEvent(ev);        </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ViewGroup.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span>(!onInterruptedTouchEvent(ev)) &#123;</span><br><span class="line">        result = child.dispatchTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果child的dispatchTouchEvent没有消耗这个事件, 就会viewgroup去onTouchEvent消耗</span></span><br><span class="line">    <span class="keyword">if</span>(!result) &#123;</span><br><span class="line">        result = onTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">View.java</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">dispatchTouchEvent</span><span class="params">(ev)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是不是可以理解为如果被onTouch消耗了，就不会走到onTouchEvent进行消耗</span></span><br><span class="line">    <span class="keyword">if</span>(onTouch(<span class="keyword">this</span>, ev)) &#123;</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(!result &amp;&amp; onTouchEvent(ev)) &#123;</span><br><span class="line">        result = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/6e02b883/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/6e02b883/" itemprop="url">Java sleep和wait的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-08T12:12:39+08:00">
+                2019-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/6e02b883/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6e02b883/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.csdn.net/zhangqunshuai/article/details/82455503" target="_blank" rel="noopener">https://blog.csdn.net/zhangqunshuai/article/details/82455503</a></p>
+<p>类不同: <code>sleep</code>来自Thread方法， <code>wait</code>来自Object<br>释放锁: <code>sleep</code>不释放锁， <code>wait</code>释放锁<br>用法不同: <code>sleep</code>到时间会自动恢复, <code>wait</code>可以使用<code>notify/notifyAll</code>唤醒</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b6e3e565/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b6e3e565/" itemprop="url">Translation-Bluetooth overview</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-04T14:52:03+08:00">
+                2019-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b6e3e565/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6e3e565/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Bluetooth-overview"><a href="#Bluetooth-overview" class="headerlink" title="Bluetooth overview"></a>Bluetooth overview</h1><p>The Android platform includes support for the Bluetooth network stack, which allows a device to wirelessly exchange data with other Bluetooth devices. The application framework provides access to the Bluetooth functionality through the Android Bluetooth APIs. These APIs let applications wirelessly connect to other Bluetooth devices, enabling point-to-point and multipoint wireless features.</p>
+<p>Using the Bluetooth APIs, an Android application can perform the following:</p>
+<ul>
+<li>Scan for other Bluetooth devices</li>
+<li>Query the local Bluetooth adapter for paired Bluetooth devices</li>
+<li>Establish RFCOMM channels</li>
+<li>Connect to other devices through service discovery</li>
+<li>Transfer data to and from other devices</li>
+<li>Manage multiple connections</li>
+</ul>
+<p>This page focuses on Classic Bluetooth. Classic Bluetooth is the right choice for more battery-intensive operations, which include streaming and communicating between Android devices. For Bluetooth devices with low power requirements, Android 4.3(API level 18) introduces API support for Bluetooth Low Energy. To learn more, see <a href="https://developer.android.com/guide/topics/connectivity/bluetooth-le.html" target="_blank" rel="noopener">Bluetooth Low Energy</a></p>
+<p>This document describes different Bluetooth profiles, including the Health Device Profile. It then explains how to use the Android Bluetooth APIs to accomplish the four major tasks necessary to communicate using Bluetooth: setting up Bluetooth, finding devices that are either paired or available in the local area, connecting devices, and transferring data between devices.</p>
+<h2 id="The-basics"><a href="#The-basics" class="headerlink" title="The basics"></a>The basics</h2><p>In order for Bluetooth-enabled devices to transmit data between each other, they must first from a channel of communication using a pairing process. One device, a discoverable device, makes itself available for incoming connection requests. Another device finds the discoverable device using a service discovery process. After the discoverable device accepts the paring request, the two devices complete a bonding process where they exchange security keys. The devices cache these keys for later use. After the pairing and bonding processes are complete, the two device exchange information. When the session is complete, the device that initiated the paring request releases the channel that had linked it to the discoverable device. The two devices remain bonded, however, so they can reconnect automatically during a future session as long as they’re in range of each other and neither device has removed the bond.</p>
+<h3 id="Bluetooth-Permission"><a href="#Bluetooth-Permission" class="headerlink" title="Bluetooth Permission"></a>Bluetooth Permission</h3><p>In order to use Bluetooth features in your application, you must declare two permissions. The first of these is <code>BLUETOOTH</code>. You need this permission to perform any Bluetooth communication, such as requesting a connection, accepting a connection, and transferring data.</p>
+<p>The other permission that you must declare is either <code>ACCESS_COARSE_LOCATION</code> or <code>ACCESS_FINE_LOCATION</code>. A location permission is required because Bluetooth scans can be used to gather infomation about the location of the user. This information may come from the user’s own devices, as well as Bluetooth beacons in use at locations such as shops and transit facilities.</p>
+<p>If you want your app to initiate device discovery or manipulate Bluetooth settings, you must declare the <code>BLUETOOTH_ADMIN</code> permission in addition to the <code>BLUETOOTH</code> permission. Most applications need this permission solely for the ability to discover local Bluetooth devices. The other abilities granted by this permission should not be used, unless the application is a “power manager” that modifies Bluetooth settings upon user request.</p>
+<p>Declare the Bluetooth permission(s) in your application manifest file. For example:</p>
+<p>See the <uses-permission> reference for more information about declaring application permissions.</uses-permission></p>
+<h2 id="Work-with-profiles"><a href="#Work-with-profiles" class="headerlink" title="Work with profiles"></a>Work with profiles</h2><p>Starting in Android 3.0, the Bluetooth API includes support for working with Bluetooth profiles. A Bluetooth profile is a wireless interface specification for Bluetooth-based communication between devices. An example is the Hands-Free profile. For a mobile phone to connect to a wireless headset, both devices must support the Hands-Free profile.</p>
+<p>The Android Bluetooth API provides implementations for the following Bluetooth profiles:</p>
+<ul>
+<li>Headset. The Headset profile provides support for Bluetooth headsets to be used with mobile phones. Android provides the <code>BluetoothHeadset</code> class, which is a proxy for controlling the Bluetooth Headset Service. This includes both Bluetooth Headset and Hands-Free(v1.5) profiles. The <code>BluetoothHeadset</code> class includes support for AT command. For more discussion of this topic, see <a href="https://developer.android.com/guide/topics/connectivity/bluetooth#AT-Commands" target="_blank" rel="noopener">Vendor-specific AT commands</a>.</li>
+<li>A2DP. The Advanced Audio Distribution Profile(A2DP) profile defines how high quality audio can be streamed from one device to another over a Bluetooth connection. Android provides the <code>BluetoothA2dp</code> class, which is a proxy for controlling the Bluetooth A2DP Service.</li>
+<li>Health Device. Android 4.0(API level 14) introduces support for the Bluetooth Health Device Profile(HDP). This lets you create applications that use Bluetooth to communicates with health devices that support Bluetooth, such as heart-rate monitors, blood meters, thermometers, scales, and so on. For a list of supported devices and their corresponding device data specilization codes, refer to Bluetooth’s <a href="https://www.bluetooth.com/specifications/assigned-numbers/health-device-profile" target="_blank" rel="noopener">HDP Device Specializations</a>. These values are also referenced in the ISO/IEEE 11073-20601 specification as MDC_DEV_SPEC_PROFILE_* in the Nomenclature Codes Annex. For more discussion of HDP, see <a href="https://developer.android.com/guide/topics/connectivity/bluetooth#HDP" target="_blank" rel="noopener">Health Device Profile</a>.</li>
+</ul>
+<p>Here are the basic steps for working with a profile:</p>
+<ol>
+<li>Get the default adapter , as described in <a href="https://developer.android.com/guide/topics/connectivity/bluetooth.html#SettingUp" target="_blank" rel="noopener">Setting Up Bluetooth</a></li>
+<li>Set up a <code>BluetoothProfile.ServiceListener</code>. This listener notifies <code>BluetoothProfile</code> clients when they have been connected to or disconnected from the service.</li>
+<li>Use <code>getProfileProxy()</code> to establish a connection to the profile proxy object associated with the profile. In the example below ,the profile proxy object is an instance of <code>BluetoothHeadset</code></li>
+<li>In <code>onServiceConnected()</code>, get a handle to the profile proxy object.</li>
+<li>Once you have the profile proxy object, you can use it to monitor the state of the connection and perform other operations that are  relevant to that profile.</li>
+</ol>
+<p>For example, this code snippet shows how to connect to a <code>BluetoothHeadset</code> proxy object so that you can control the Headset profile: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">BluetoothHeadset bluetoothHeadset;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Get the default adapter</span></span><br><span class="line">BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> BluetoothProfile.ServiceListener profileListener = <span class="keyword">new</span> BluetoothProfile.ServiceListener() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(<span class="keyword">int</span> profile, BluetoothProfile proxy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (profile == BluetoothProfile.HEADSET) &#123;</span><br><span class="line">            bluetoothHeadset = (BluetoothHeadset) proxy;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(<span class="keyword">int</span> profile)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (profile == BluetoothProfile.HEADSET) &#123;</span><br><span class="line">            bluetoothHeadset = <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Establish connection to the proxy.</span></span><br><span class="line">bluetoothAdapter.getProfileProxy(context, profileListener, BluetoothProfile.HEADSET);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... call functions on bluetoothHeadset</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Close proxy connection after use.</span></span><br><span class="line">bluetoothAdapter.closeProfileProxy(bluetoothHeadset);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Vendor-specific-AT-commands"><a href="#Vendor-specific-AT-commands" class="headerlink" title="Vendor-specific AT commands"></a>Vendor-specific AT commands</h3><p>Starting in Android 3.0 (API level 11), applications can register to receive system broadcasts of predefined vendor-specific AT commands sent by headsets (such as a Plantronics +XEVENT command). For example, an application could receive broadcasts that indicate a connected device’s battery level and could notify the user or take other action as needed. Create a broadcast receiver for the <code>ACTION_VENDOR_SPECIFIC_HEADSET_EVENT</code> intent to handle vendor-specific AT commands for the headset.</p>
+<h2 id="Health-device-profile"><a href="#Health-device-profile" class="headerlink" title="Health device profile"></a>Health device profile</h2><p>Android 4.0 (API level 14) introduces support for the Bluetooth Health</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/eeb5a1cb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1319,1116 +1976,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b5608f0f/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/b5608f0f/" itemprop="url">Android App启动过程和Activity启动过程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:39:34+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/b5608f0f/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b5608f0f/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="http://blog.csdn.net/qian520ao/article/details/78156214" target="_blank" rel="noopener">http://blog.csdn.net/qian520ao/article/details/78156214</a></p>
-<p><a href="https://juejin.im/post/59aba2a6f265da248e75883c" target="_blank" rel="noopener">https://juejin.im/post/59aba2a6f265da248e75883c</a></p>
-<p><a href="https://juejin.im/post/5c3832e66fb9a049e308510b" target="_blank" rel="noopener">https://juejin.im/post/5c3832e66fb9a049e308510b</a></p>
-<h2 id="App启动过程"><a href="#App启动过程" class="headerlink" title="App启动过程"></a>App启动过程</h2><p>存在4个进程, <code>Launcher进程</code>，<code>system_server进程</code>, <code>Zygote进程</code>, <code>App进程</code>。</p>
-<ol>
-<li>点击Launcher的app图标, <code>Launcher进程</code>采用<code>Binder IPC</code>向<code>system_server进程</code>发起<code>startActivity</code>请求</li>
-<li><code>system_server进程</code>收到请求后, 通过Socket方式向<code>Zygote进程</code>发送创建进程的请求</li>
-<li><code>Zygote进程</code>fork出新的子进程, 也就是<code>App进程</code></li>
-<li><code>App进程</code>通过<code>Binder IPC</code>向<code>system_server进程</code>发起<code>attachApplication</code>请求(App端的<code>ActivityManagerProxy</code>和<code>system_server</code>端的<code>ActivityManagerService</code>通信)</li>
-<li><code>system_server进程</code>收到请求后, 进行准备工作后，使用<code>ApplicationThreadProxy</code>通过<code>Binder IPC</code>向<code>App进程</code>的<code>ApplicationThread</code>发送<code>scheduleLaunchActivity</code>请求</li>
-<li><code>App进程</code>的<code>ApplicationThread</code>收到请求后通过Handler向<code>ActivityThread</code>也就是主线程发送LAUNCH_ACTIVITY消息</li>
-<li><code>ActivityThread</code>收到消息后, 通过反射创建目标Activity, 调用Activity的onCreate等方法</li>
-<li>至此，App正式启动，进入Activity的生命周期</li>
-</ol>
-<p>一个app想启动另一个app, 先告诉system_server进程, system_server进程告诉Zygote进程来fork另一个app的进程, 这就涉及了4个进程间的通讯</p>
-<h2 id="Zygote"><a href="#Zygote" class="headerlink" title="Zygote"></a>Zygote</h2><p>Linux中，所有的进程都是由init进程fork出来的。 Android系统开启新进程的方式，是通过fork第一个Zygote进程实现的。 也就是说除了第一个Zygote进程，其他进程都是Zygote的子进程。</p>
-<h2 id="system-server"><a href="#system-server" class="headerlink" title="system_server"></a>system_server</h2><p>也是由Zygote进程fork出来的一个进程<br>系统中的许多服务都是在这个进程里开启的。</p>
-<ul>
-<li>ActivityManagerService AMS 所有的Activity的启开启，暂停，关闭都由AMS控制. 负责系统中所有Activity的生命周期</li>
-<li>PackageManagerService</li>
-<li>WindowManagerService</li>
-</ul>
-<p>一些概念:</p>
-<ul>
-<li>ActivityThread App的真正入口，当开启App之后, 调用main()开始工作，开启消息循环队列，与AMS配合完成管理Activity的工作</li>
-<li>ApplicationThread, 用来实现ActivityManagerService与ActivityThread的交互</li>
-<li>ApplicationThreadProxy, 是ApplicationThread在服务端的代理，负责与客户端的ApplicationThread通讯</li>
-<li>Instrumentation, 每一个应用程序只有一个Instrumentation对象，每个Activity内部有一个对该对象的引用。ActivityThread创建Activity或暂停Activity的时候都需要Instrumentation来具体操作. startActivity实际调用的是 Instrumentation.execStartActivity(). (AMS通过ActivityThread, ActivityThread通过Instrument)来执行Activity的一些操作</li>
-<li>ActivityStack Activity在AMS的栈管理</li>
-<li>ActivityRecord ActivityStack的管理对象,每个 Activity在AMS对应一个ActivityRecord，也就是Activity对象在服务端的映射</li>
-<li>TaskRecord, AMS抽象出来的任务的概念，记录ActivityRecord的栈，一个Task包含若干个ActivityRecord, AMS用TaskRecord来确保 Activity的启动和退出。</li>
-</ul>
-<p>(Client)ActivityManagerProxy -&gt; Binder IPC -&gt; ActivityManagerService(Server)<br>(Server)ApplicationThreadProxy -&gt; BinderIPC -&gt; ApplicationThread (Client)</p>
-<p>首先看一下Activity的继承关系</p>
-<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ceffcc21-00bf-41d9-8b3b-87453caf8403/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45M6JA72MA%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T012707Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCSAOw19aEBzxv7f%2BlWzRpU0CDWhA4iBXVRZNo1fVautwIhANOy8IOoYqLE%2Fnk6uUEjOLZa4XCa13OtLuM0nCPBhH%2FPKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgxGM9ZBs48YByFE6y8qkQNqki8NOz3IAGhvOQNwlQura1J12AcDGdc4v8dWpHvuDNvlXF%2FKoBWNR7a4rYxpVwpu3t70Ff4Wo1kB0jRbchLTsdGZi8lZrYbdlr95VdlIhPmJWN2YT441WV5u4GQede0gPwszhvDuoiptrW%2Ftdj0sBL6ynCBir1D0aQibsh6cIysAlcNmUyEcW%2BMU7RapDvGNQ5A1tG2yGT%2FEwM7MJgXykNeediBx2l2eE7YhK6uSF52vKiYc3h5L01ea%2BY13PbLIF5pojgddEm2PKi96zExPwjGMIuuceG10z54T6ZdCeip62N5OF4CYSxbRfoMVn%2FA3tCS3w3Gkqb943WeYzQJzdV%2BGEvOY1CDwfyGj21joxp5%2B7tSVnxpCZtlOSC85RCg7DAuO%2FQgA6EvowtW9U0RvxH3iPm4HDKJLIj3GXUAcat4pOV%2BROLs8EDeB4qKVd3zy%2BCwxn%2BloMGS%2BqoLj%2FlnAHEuPGxq3oF7iwz99ni6sJKdd7NWwGgjr8SL4SXtb7SsGYOoy1vYQaw4zrbyj71Be2DC46vjwBTrqAcmiIGa3UYYFklL1OAHcKJxHhq%2Fg%2FGRtowD2MBH4Cjsi%2Fnm8o2yf3tECPMMDU4ih5hKzoEgVSgI4sqe%2FEc1TMFwcGFgBrHGHC1rktpTbOEP4F3sNOEVuv%2By8Ymipw%2FWgr4iwG72iPKD3zyXMUS%2Fs%2FSXDafGCAg5wvfozQhmR0I7RN1%2FnuZBWQ59ExfO5ny3X%2B5s5HUi42VgPCF%2BLpMP4bskBTtS%2Fg1%2F2PS8yqqtWGc5ZHboaCTPq9iaePqbIpyCicDGXKl0i5H8H1q42O6HwIhWNnYJGNVo%2BhCUdYTa5umGznXPWGdYZrBYr0Q%3D%3D&X-Amz-Signature=ce82de06c8a85823d849e49346b1ec55a415d52c8f7ea1f89278df5b024df9ec&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ceffcc21-00bf-41d9-8b3b-87453caf8403/Untitled.png"></p>
-<p><a href="http://context.java" target="_blank" rel="noopener">Context.java</a> 抽象类</p>
-<p><a href="http://contextimpl.java" target="_blank" rel="noopener">ContextImpl.java</a> Context的具体实现类</p>
-<p>ContextWrapper Context的包装类 包装了其子类的公共属性，传入一个Context类型的 base, 调用base的方法进行使用，其实base就是传入了一个ContextImpl</p>
-<pre><code>ContextWrapper.java
-
-public class ContextWrapper {
-        Context mBase;
-
-    public ContextWrapper(Context base) {
-        mBase = base;
-    }
-}</code></pre><p>ContextThemeWrapper: 包含了主题的ContextWrapper</p>
-<p>由于Service和Application没有主题，所以继承自ContextWrapper.</p>
-<p>来看startActivity方法: </p>
-<ul>
-<li><p>activity中自己实现了startActivity</p>
-</li>
-<li><p>ContextImpl实现了startActivity, Service和Application中都依赖于ContextImpl的实现</p>
-<p>  Activity.java</p>
-<p>  @Override<br>  public void startActivity(Intent intent, @Nullable Bundle options) {</p>
-<pre><code>if (options != null) {
-    startActivityForResult(intent, -1, options);
-} else {
-    startActivityForResult(intent, -1);
-}</code></pre><p>  }</p>
-<p>  public void startActivityForResult(@RequiresPermission Intent intent, int requestCode, @Nullable Bundle options) {<br>  //parent是什么？Android3.0之前使用ActivityGroup来解决嵌套的问题，3.0之后推出了Fragment，就将ActivityGroup废弃了，这里是对其的一个兼容。</p>
-<pre><code>if (mParent == null) {
-    options = transferSpringboardActivityOptions(options);
-    Instrumentation.ActivityResult ar =
-        mInstrumentation.execStartActivity(
-            this, mMainThread.getApplicationThread(), mToken, this,
-            intent, requestCode, options);
-    if (ar != null) {
-        mMainThread.sendActivityResult(
-            mToken, mEmbeddedID, requestCode, ar.getResultCode(),
-            ar.getResultData());
-    }
-    if (requestCode &gt;= 0) {
-        mStartedActivity = true;
-    }
-    cancelInputsAndStartExitTransition(options);
-} else {
-    //此处省略调用parent的child方法
-}</code></pre><p>  }</p>
-<p>  ContextImpl.java</p>
-<p>  //第一步，跳到第二步<br>  @Override<br>  public void startActivity(Intent intent) {</p>
-<pre><code>warnIfCallingFromSystemProcess();
-startActivity(intent, null);</code></pre><p>  }</p>
-<p>  //warn函数<br>  private void warnIfCallingFromSystemProcess() {</p>
-<pre><code>if (Process.myUid() == Process.SYSTEM_UID) {
-    Slog.w(TAG, &quot;Calling a method in the system process without a qualified user: &quot; + Debug.getCallers(5));
-}</code></pre><p>  }</p>
-<p>  //第二步，真正实现<br>  @Override<br>  public void startActivity(Intent intent, Bundle options) {</p>
-<pre><code>warnIfCallingFromSystemProcess();
-if ((intent.getFlags()&amp;Intent.FLAG_ACTIVITY_NEW_TASK) == 0
-        &amp;&amp; options != null 
-        &amp;&amp; ActivityOptions.fromBundle(options).getLaunchTaskId() == -1) {
-    throw new AndroidRuntimeException(
-            &quot;Calling startActivity() from outside of an Activity &quot;
-            + &quot; context requires the FLAG_ACTIVITY_NEW_TASK flag.&quot;
-            + &quot; Is this really what you want?&quot;);
-}
-mMainThread.getInstrumentation().execStartActivity(
-        getOuterContext(), mMainThread.getApplicationThread(), null,
-        (Activity) null, intent, -1, options);</code></pre><p>  }</p>
-</li>
-</ul>
-<p>这里都是通过Instrumentation通过执行execStartActivity来实现。</p>
-<pre><code>public ActivityResult execStartActivity(
-            Context who, IBinder contextThread, IBinder token, Activity target,
-            Intent intent, int requestCode, Bundle options) {
-    ...
-    int result = ActivityManagerNative.getDefault()
-        .startActivity(whoThread, who.getBasePackageName(), intent,
-                intent.resolveTypeIfNeeded(who.getContentResolver()),
-                token, target != null ? target.mEmbeddedID : null,
-                requestCode, 0, null, options);
-    // who： 正在启动该Activity的上下文
-  // contextThread 正在启动该Activity的上下文线程，这里为ApplicationThread
-  // token 正在启动该Activity的标识
-// target 正在启动该Activity的activity, 也就是回调结果的Activity
-    checkStartActivityResult(result, intent);
-    ...
-}</code></pre><p>这里先看下checkStartActivityResult(result, intent)这个方法, 用于根据返回码和intent抛出相应的异常</p>
-<pre><code>public static void checkStartActivityResult(int res, Object intent) {
-    if (res &gt;= ActivityManager.START_SUCCESS) {
-        return;
-    }
-    switch (res) {
-        case ActivityManager.START_INTENT_NOT_RESOLVED:
-        case ActivityManager.START_CLASS_NOT_FOUND:
-            if (intent instanceof Intent &amp;&amp; ((Intent)intent).getComponent() != null)
-                throw new ActivityNotFoundException(
-                        &quot;Unable to find explicit activity class &quot;
-                        + ((Intent)intent).getComponent().toShortString()
-                        + &quot;; have you declared this activity in your AndroidManifest.xml?&quot;);
-            throw new ActivityNotFoundException(
-                    &quot;No Activity found to handle &quot; + intent);
-        case ActivityManager.START_PERMISSION_DENIED:
-            throw new SecurityException(&quot;Not allowed to start activity &quot;
-                    + intent);
-        case ActivityManager.START_FORWARD_AND_REQUEST_CONFLICT:
-            throw new AndroidRuntimeException(
-                    &quot;FORWARD_RESULT_FLAG used while also requesting a result&quot;);
-        case ActivityManager.START_NOT_ACTIVITY:
-            throw new IllegalArgumentException(
-                    &quot;PendingIntent is not an activity&quot;);
-        case ActivityManager.START_NOT_VOICE_COMPATIBLE:
-            throw new SecurityException(
-                    &quot;Starting under voice control not allowed for: &quot; + intent);
-        case ActivityManager.START_VOICE_NOT_ACTIVE_SESSION:
-            throw new IllegalStateException(
-                    &quot;Session calling startVoiceActivity does not match active session&quot;);
-        case ActivityManager.START_VOICE_HIDDEN_SESSION:
-            throw new IllegalStateException(
-                    &quot;Cannot start voice activity on a hidden session&quot;);
-        case ActivityManager.START_CANCELED:
-            throw new AndroidRuntimeException(&quot;Activity could not be started for &quot;
-                    + intent);
-        default:
-            throw new AndroidRuntimeException(&quot;Unknown error code &quot;
-                    + res + &quot; when starting &quot; + intent);
-    }
-}</code></pre><p>在看下ActivityManagerNative.getDefault() // 在Android27变成 ActivityManager.getService()</p>
-<pre><code>static public IActivityManager getDefault() {
-    return gDefault.get();
-}
-private static final Singleton&lt;IActivityManager&gt; gDefault = new Singleton&lt;IActivityManager&gt;() {
-    protected IActivityManager create() {
-        IBinder b = ServiceManager.getService(&quot;activity&quot;);
-        ...
-        IActivityManager am = asInterface(b);
-        ...
-        return am;
-    }
-};
-static public IActivityManager asInterface(IBinder obj) {
-    ...
-    return new ActivityManagerProxy(obj);
-}
-
-所以ActivityManagerNative.getDefault().startActivity实际是由ActivityManagerProxy调用的
-
-ActivityManagerProxy.java
-
-public int startActivity(IApplicationThread caller, String callingPackage, Intent intent,
-            String resolvedType, IBinder resultTo, String resultWho, int requestCode,
-            int startFlags, ProfilerInfo profilerInfo, Bundle options) throws RemoteException {
-    Parcel data = Parcel.obtain();
-    Parcel reply = Parcel.obtain();
-    ...
-    mRemote.transact(START_ACTIVITY_TRANSACTION, data, reply, 0);
-    ...
-    reply.recycle();
-    data.recycle();
-    return result;
-}
-
-我们的Activity相当于客户端, Service相当于服务端, 这里也是一样, 
-代理类就是ActivityManagerProxy, 真正传输数据的是mRemote.transact()
-
-第一个参数告诉服务器我们请求的方法是什么
-第二个参数是传递的参数
-
-至于为什么要跨进程通信。因为应用启动会初始化一个init进程，
-init进程会产生Zygote进程，它会fork出SystemService进程, 比如AMS, WMS, PMS
-而我们的应用进程也是靠AMS通信告诉Zygote进程fork出来的</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/ec048d04-cf9b-4245-817e-3faa8a0bfd1c/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45NXGUY7N7%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T012729Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCvOuYx87EWSqLUCowf2%2BSESKoTeprBtz7OBO1mTiIDmAIhANkXmYli%2F3nCrYpt6CFu7hm1U2zjYnHl%2Bv7KaeOyXsjWKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgwHGW5EjaiBv0ow4S8qkQNqQaxkPJ%2BJXb2nJwnFl5xFzpgxqgOhzCLFdnhZMaQPkDvuVLrQDPsfOGRZAqUYaigpqp%2Bs4W6h%2BPjrfWbi5FTf1La49jjEmAQ75LTyPj4wY4E1dkZw3I9ymObRszCuFGXWWlSFrL9A3bNBX1V%2FtQn6ppDjeCbEBDAD%2Fh9UVNeZY0ldjT4RLuVKabYtoCI52rd3rWQJG7PgTjvznhAVixm%2BJmbVk6%2Bv%2BOLp7ZAHkaN1v3uuYFiZc0QxZwr9WABrNnzgvDGYByfIYxkMXc4cXW6MlLDpCpcX2v77cjk4lgu74c93BgwwHHwKVCen%2BiW%2FUVD4dSyBPp8vrfXFMXAyIQzQwpoK1nrGdBlNjp9GYRX%2BFPKENj2HyZMrY8qekc0nUB3I39I7gETKDBG6%2FlE3HlQCX0Gf3LE2YYZ57vnHdCaTjpdNfy%2FK9kpT8MuCZKY7x6ax5eNIti2czGI0qr43HVQNz%2BVEKZRow940tBwT8xsnt3sy1NGa6VSpnsQLYbSnZOcenCW5dPk3eKCHjFsL%2BXAKDDDz5vjwBTrqAfVKvDZUbDt1lnqiBI%2BQhyhXn2BMTiLfYHebuVM5ZV%2B9jxKDkUd9g7jA9IH5ALSKNiZLkua0taZ5PYjj9f1503%2BlsOVD28GzkOhXgdAlzWKRZ2gD4yzK73V9pglxf%2F0q0vjzefEf8VaEMD8sMa3GNOUzZFuhoS8WjUp9mp3ogO8pEZHQcPZwA5MSVTz7ju%2FXKYD7xygFy59cuZXNKuzPsCXW0lz3xQIatj%2FNnKyUqpKXQ8Ssmx4V0bup3t7KSAIwGDO%2F8QcWlRz%2BPqMajcBfMDlQJfzfX7ndyDFtJIIF%2FzpipyqB%2BiTNZBU4tg%3D%3D&X-Amz-Signature=0ab98984a39751e2d7a4bee79a639bda6cba399b8bb47866959c7bcc2f03a9c8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ec048d04-cf9b-4245-817e-3faa8a0bfd1c/Untitled.png"></p>
-<p>在AMS中</p>
-<pre><code>ActivityManagerService.java
-
-@Override
-    public final int startActivity(IApplicationThread caller, String callingPackage,
-            Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
-            int startFlags, ProfilerInfo profilerInfo, Bundle bOptions) {
-        return startActivityAsUser(caller, callingPackage, intent, resolvedType, resultTo,
-                resultWho, requestCode, startFlags, profilerInfo, bOptions,
-                UserHandle.getCallingUserId());
-    }
-
-caller: 就是Instrumentation中的whoThread
-callingPackage: 包名
-intent: 
-resolvedType: 就是AndroidManifest注册时的MIME类型
-resultTo: Instrumentation中的token
-resultWho: target的Id
-requestCode:
-startFlags: 启动标志默认0
-
-这里直接调用startActivityAsUser()
-@Override
-public final int startActivityAsUser(IApplicationThread caller, String callingPackage,
-        Intent intent, String resolvedType, IBinder resultTo, String resultWho, int requestCode,
-        int startFlags, ProfilerInfo profilerInfo, Bundle bOptions, int userId) {
-    enforceNotIsolatedCaller(&quot;startActivity&quot;);
-    userId = mUserController.handleIncomingUser(Binder.getCallingPid(), Binder.getCallingUid(),userId, false, ALLOW_FULL_ONLY, &quot;startActivity&quot;, null);
-    return mActivityStarter.startActivityMayWait(caller, -1, callingPackage, intent,resolvedType, null, null, resultTo, resultWho, requestCode, startFlags,profilerInfo, null, null, bOptions, false, userId, null, null);
-}
-
-通过ActivityStarter来startActivityMayWait
-
-final int startActivityMayWait(IApplicationThread caller, int callingUid,
-            String callingPackage, Intent intent, String resolvedType,
-            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
-            IBinder resultTo, String resultWho, int requestCode, int startFlags,
-            ProfilerInfo profilerInfo, IActivityManager.WaitResult outResult, Configuration config,
-            Bundle bOptions, boolean ignoreTargetSecurity, int userId,
-            IActivityContainer iContainer, TaskRecord inTask) {
-    ...
-    ResolveInfo rInfo = mSupervisor.resolveIntent(intent, resolvedType, userId);
-    ...
-    ActivityInfo aInfo = mSupervisor.resolveActivity(intent, rInfo, startFlags, profilerInfo);
-    ...
-    final ProcessRecord heavy = mService.mHeavyWeightProcess;
-    if (heavy != null &amp;&amp; (heavy.info.uid != aInfo.applicationInfo.uid
-            || !heavy.processName.equals(aInfo.processName))) {
-        ...
-    }
-    ...
-    int res = startActivityLocked(caller, intent, ephemeralIntent, resolvedType,
-            aInfo, rInfo, voiceSession, voiceInteractor,
-            resultTo, resultWho, requestCode, callingPid,
-            callingUid, callingPackage, realCallingPid, realCallingUid, startFlags,
-            options, ignoreTargetSecurity, componentSpecified, outRecord, container,
-            inTask);
-    ...
-}
-这里的mSupervisor(ActivityStackSupervisor)简单来说就是管理ActivityStack的
-resolveIntent和resolveActivity方法用来确定此次启动activity信息
-
-关于heavy(ResolveInfo)涉及到重量级进程(SystemServer, MediaServer,ServiceManager)
-，如果当前系统中已经存在的重量级进程且不是即将要启动的这个，
-那么就要给Intent赋值。接下来继续走我们的探索之路startActivityLocked。
-
-
-final int startActivityLocked(IApplicationThread caller, Intent intent, Intent ephemeralIntent,
-            String resolvedType, ActivityInfo aInfo, ResolveInfo rInfo,
-            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
-            IBinder resultTo, String resultWho, int requestCode, int callingPid, int callingUid,
-            String callingPackage, int realCallingPid, int realCallingUid, int startFlags,
-            ActivityOptions options, boolean ignoreTargetSecurity, boolean componentSpecified,
-            ActivityRecord[] outActivity, ActivityStackSupervisor.ActivityContainer container,
-            TaskRecord inTask) {
-    ...
-    ProcessRecord callerApp = null;
-    ...
-    ActivityRecord sourceRecord = null;
-    ActivityRecord resultRecord = null;
-    ...
-    ActivityRecord r = new ActivityRecord(mService, callerApp, callingUid, callingPackage,
-            intent, resolvedType, aInfo, mService.mConfiguration, resultRecord, resultWho,
-            requestCode, componentSpecified, voiceSession != null, mSupervisor, container,
-            options, sourceRecord);
-    ...
-    err = startActivityUnchecked(r, sourceRecord, voiceSession, voiceInteractor, startFlags,
-            true, options, inTask);
-    ...
-    return err;
-}
-
-private int startActivityUnchecked(final ActivityRecord r, ActivityRecord sourceRecord,
-            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor,
-            int startFlags, boolean doResume, ActivityOptions options, TaskRecord inTask) {
-    setInitialState(r, options, inTask, doResume, startFlags, sourceRecord, voiceSession,
-    voiceInteractor);
-    computeLaunchingTaskFlags();
-    ...
-    mIntent.setFlags(mLaunchFlags);
-    mReusedActivity = getReusableIntentActivity();
-    ...
-    boolean newTask = false;
-    ...
-     if (mStartActivity.resultTo == null &amp;&amp; mInTask == null &amp;&amp; !mAddingToTask
-        &amp;&amp; (mLaunchFlags &amp; FLAG_ACTIVITY_NEW_TASK) != 0) {
-        newTask = true;
-        ...
-    }
-    ...
-    mTargetStack.startActivityLocked(mStartActivity, newTask, mKeepCurTransition, mOptions);
-    ...
-    mSupervisor.resumeFocusedStackTopActivityLocked(mTargetStack, mStartActivity,
-                        mOptions);
-    ...
-}
-
-先看setInitialState方法
-private void setInitialState(ActivityRecord r, ActivityOptions options, TaskRecord inTask,
-            boolean doResume, int startFlags, ActivityRecord sourceRecord,
-            IVoiceInteractionSession voiceSession, IVoiceInteractor voiceInteractor) {
-    reset();
-    mStartActivity = r;
-    mIntent = r.intent;
-    mOptions = options;
-    mCallingUid = r.launchedFromUid;
-    mSourceRecord = sourceRecord;
-    mVoiceSession = voiceSession;
-    ...
-    mLaunchSingleTop = r.launchMode == LAUNCH_SINGLE_TOP;
-    mLaunchSingleInstance = r.launchMode == LAUNCH_SINGLE_INSTANCE;
-    mLaunchSingleTask = r.launchMode == LAUNCH_SINGLE_TASK;
-    mLaunchFlags = adjustLaunchFlagsToDocumentMode(
-            r, mLaunchSingleInstance, mLaunchSingleTask, mIntent.getFlags());
-     ...
-}
-这里初始化了一些Activity的基本元素
-
-之后computeLaunchingTaskFlags方法初始化启动标志位
-然后mIntent.setFlags(mLaunchFlags);
-
-final void startActivityLocked(ActivityRecord r, boolean newTask, boolean keepCurTransition,
-            ActivityOptions options) {
-    ...
-    mWindowManager.setAppVisibility(r.appToken, true);
-    // 表示这个Activity已经具备了显示的条件
-    ...
-}
-
-接下来我们会调用ActivityStackSupervisor的resumeFocusedStackTopActivityLocked方法
-，接着调ActivityStack的resumeTopActivityUncheckedLocked方法
-，再调自己的resumeTopActivityInnerLocked方法
-，如果Activity已存在需要可见状态，那么会调IApplicationThread的scheduleResumeActivity方法，
-且经过一系列判断可见Activity；反之调ActivityStackSupervisor的startSpecificActivityLocked的方法
-，那么继续会调realStartActivityLocked的方</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/c27a8e9f-547a-4932-a3ec-7609ad1a8dd9/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45BGMYQT6J%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020052Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIQCrlLN7wsv%2BTC1H3UhT2BWXLEbIFu84YlFPSEULO8tGbAIgJw5hAh%2BmD9q8CF1q0dUBYYmy7fLGybiFXUaNVp%2BvTCkqtAMIZhAAGgwyNzQ1NjcxNDkzNzAiDGzyGx4ScYOs4BsygCqRAzSxMViZG1aYRupqqXqwsehKxhOzJ1cIPF2pVUBCzxG4GY3Za2q98YdxXRf0aygK33EHCbPDjETBi%2Ff1eYRQwAqy6DgRS2l9Na5PbuGhUpGZjh08R01AkpFpTqvR%2FKikfu95U%2BXG1has3Xlcg1w5B33Doo%2FJ0Ca8dyPysePbsocyzNz2FyQvCCR%2Fv5AHfsBd4znRjcl%2B4fXUp%2F4eyV56aPlehcGGs1diCgajGQ6PCUnWqbJo9opdHHgCA8mgfx0u9A%2FqAZWJBxGVwtJK9oOMVXzntiREOCpTiANHqRn%2B8hM3Yy3SyI0M64cJzp%2FF%2BIwhyYymQDlcb%2Bo189YvDMoy8I5h9a%2FUrFgGouoLvh2OP12FdCfJna8zOsmc6UdLAPR9xiAWPab52U0zRzcrEiRx%2B0mRkJ9aabwz5kBiNluK4zIzkGUpJaFx4veso1BvYwomz1VIsbnNMbdA4vxrd5eSlQFzBd815W3jG7aOvkw1iF%2Boa2RL9%2BZM9bDRKiMn7IPLccZTMGH0Jq8AlLsxWZ9qWz4CMNjR%2BPAFOusBI026Ni36%2B6ttH9x1r8%2FqzqZj%2Fd4emkhfJVH5zz2n5AOs2hTLWzNFLbHPfEmhc3W3zjuBqzh6YUf7brdvomFBVhGwK54MCSuP1PRe8jv8sIzTZgGQBTHFxzstTEyNB7T%2FuGwfyZedjjZBayBE4DY4cwEohKi5e%2BVFBMCKuabPKNhwWXsUUkchj3OQESh%2BDwqm75e3dbJAY71oI9GIAg%2F0LIVbhiidOasztq8OA34Zf20xmgdybl28sJQ28%2F5ujHW%2FMc%2BOJzqO66Oy4H7UKNMQEzMpALMNI7P7VFLZIG17aq0LEQ%2BWRpBAwk5WtQ%3D%3D&X-Amz-Signature=297f114c8203811b5b82c8d3456a66730952383c322a493ed346df610b634452&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c27a8e9f-547a-4932-a3ec-7609ad1a8dd9/Untitled.png"></p>
-<p>之后调用ApplicationThread的scheduleLaunchActivity方法啦！</p>
-<pre><code>@Override
-public final void scheduleLaunchActivity(Intent intent, IBinder token, int ident,
-        ActivityInfo info, Configuration curConfig, Configuration overrideConfig,
-        CompatibilityInfo compatInfo, String referrer, IVoiceInteractor voiceInteractor,
-        int procState, Bundle state, PersistableBundle persistentState,
-        List&lt;ResultInfo&gt; pendingResults, List&lt;ReferrerIntent&gt; pendingNewIntents,
-        boolean notResumed, boolean isForward, ProfilerInfo profilerInfo) {
-    updateProcessState(procState, false);
-    ActivityClientRecord r = new ActivityClientRecord();
-    r.token = token;
-    r.ident = ident;
-    r.intent = intent;
-    r.referrer = referrer;
-    r.voiceInteractor = voiceInteractor;
-    r.activityInfo = info;
-    r.compatInfo = compatInfo;
-    r.state = state;
-    r.persistentState = persistentState;
-    r.pendingResults = pendingResults;
-    r.pendingIntents = pendingNewIntents;
-    r.startsNotResumed = notResumed;
-    r.isForward = isForward;
-    r.profilerInfo = profilerInfo;
-    r.overrideConfig = overrideConfig;
-    updatePendingConfiguration(curConfig);
-    sendMessage(H.LAUNCH_ACTIVITY, r);
-}
-
-在Handler中
-private class H extends Handler {
-    ...
-    public void handleMessage(Message msg) {
-        if (DEBUG_MESSAGES) Slog.v(TAG, &quot;&gt;&gt;&gt; handling: &quot; + codeToString(msg.what));
-        switch (msg.what) {
-            case LAUNCH_ACTIVITY: {
-                Trace.traceBegin(Trace.TRACE_TAG_ACTIVITY_MANAGER, &quot;activityStart&quot;);
-                final ActivityClientRecord r = (ActivityClientRecord) msg.obj;
-                r.packageInfo = getPackageInfoNoCheck(
-                        r.activityInfo.applicationInfo, r.compatInfo);
-                handleLaunchActivity(r, null, &quot;LAUNCH_ACTIVITY&quot;);
-                Trace.traceEnd(Trace.TRACE_TAG_ACTIVITY_MANAGER);
-            } break;
-            ...
-    }
-}
-
-调用handleLaunchActivity
-ActivityThread.java
-private void handleLaunchActivity(){
-...
-WindowManagerGlobal.initialize();//初始化WMS
-Activity a = performLaunchActivity(r, customIntent);//创建并启动
-....
-
-private Activity performLaunchActivity(ActivityClientRecord r, Intent customIntent) {
-    ActivityInfo aInfo = r.activityInfo;//取出组件信息，并一顿操作
-    ...
-    Activity activity = null;
-    try {
-        java.lang.ClassLoader cl = r.packageInfo.getClassLoader();
-        activity = mInstrumentation.newActivity(
-                cl, component.getClassName(), r.intent);
-         //开始创建Activity实例，通过类加载器创建，看参数就知道了
-         ...
-         Application app = r.packageInfo.makeApplication(false, mInstrumentation);
-         //获取Application
-         ...
-         activity.attach(appContext, this, getInstrumentation(), r.token,
-                        r.ident, app, r.intent, r.activityInfo, title, r.parent,
-                        r.embeddedID, r.lastNonConfigurationInstances, config,
-                        r.referrer, r.voiceInteractor, window);
-         //与window建立关联
-         ...
-         mInstrumentation.callActivityOnCreate(activity, r.state, r.persistentState);
-         //callActivityOnCreate-&gt;activity.performCreate-&gt;onCreate，之后就很熟悉了
-         ...
-    }
-}
-
-其中的makeApplication方法
-public Application makeApplication(boolean forceDefaultAppClass,
-            Instrumentation instrumentation) {
-    if (mApplication != null) {
-        return mApplication;
-    }
-    //如果mApplication不为空则直接返回，这也是为什么Application为单例
-    ...
-    Application app = null;
-    ...
-    ContextImpl appContext = ContextImpl.createAppContext(mActivityThread, this);
-    app = mActivityThread.mInstrumentation.newApplication(
-                cl, appClass, appContext);
-    //创建Application，跟Activity一样，都是用类加载器创建
-    ...
-    mApplication = app;//保存下来
-    ...
-    instrumentation.callApplicationOnCreate(app);
-    //callApplicationOnCreate-&gt;onCreate
-    ...
-}</code></pre><p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/eae3a6be-0576-4b97-ad77-a7b545e9d38d/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45ABCNKXHH%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020040Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQD%2FHuUjg5gr8C7Ed13a4i1kJx6kZ5qxZMvnUPp5LlianwIhAJx4ni%2FL8n3AwZ7127oG8PSgHAPZ4WmQHNL%2FnbFxZOfnKrQDCGYQABoMMjc0NTY3MTQ5MzcwIgyYenibqLwYVL87r6IqkQOvsGK7n9vUVFwwatyrD2Qt3gyVB%2B2L3QFZPQzIexEz5YgDjKK0RYL0VmWKidxZqjUTwA4u275MgT1Mu9ZY2XGxD6er6X6QSeGUL%2BwcJPT8r0SaHPf3hmQsAL3o7w5v4UIND9NNpTwwGodMvqpDJn%2FgVExFYsig3Ol7Q3OPi2K3%2Bnp2KyQzwsacBoB%2Bs5KGvsRTQ3Ajb%2FWfQw5FRYOMrYc9Qa4Fag%2BeVjHtkBs9YdiFPXnc6d4VB4blHi6D9fWhzytljnrB1PiwviOmHPLSgVB2kHz1B%2BsnqVhc0uvFr4uV6Te7BF2rI%2FvonJzEYD6KmNV0pBnhDLsCxHUkRdIVTpmHRe%2FvdLYicmdk4UuERI7ypL1o2Aa5m2X4jG0hqYJDDYBT18SiVtz56MWzXlZN0qI2Wi3NtBr%2FHtqlevEbKLh8kZyco5x0ds1MBf4KoZWU9rYUhWEiplLZK0%2Fg0OYuygqmXn6YIeJRtuHzsriiomDpP4gqf1lJbehN5Sw9c2u%2F4Hc1y%2BqdClYhvUwlCSUlTbb%2BxTDy2vjwBTrqAZrstycL0LbjMiXqUGpuvlCAVxf8aDIqg5Ea6964D68HFl9Rqdivvv%2BxOhdoTN0b1v0g8uiDwUgw82pN3F3xJzE9VprK9rVw4KUIPw8xjqhbWVvrSjYV5NVc5clWKCDKE3mEkpgt5LAGrFTUkdmAHsS098AOQhvkF5Y%2BYZgkLIIlIzFAEa8UkVVmCwU%2FulzgNRAiLAvUtScW68HS1A%2BTp4YWXcvAQMU4h%2BINO5SKg1k2hgoU%2Fb8NPa6ofU6IFvJ5uwk3XPspesDedi86HlCTs1fLW%2BS%2F27UODic9Lhvn9Vta2lAa9Xpsn6OKnA%3D%3D&X-Amz-Signature=2a45fb6aa493dc656c9d912a578476c768730500e68f6eb89950a669e0eea725&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/eae3a6be-0576-4b97-ad77-a7b545e9d38d/Untitled.png"></p>
-<p><img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a604c5b5-b967-4759-8527-dba82b60032a/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAT73L2G45CVDBZQGM%2F20200115%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20200115T020029Z&X-Amz-Expires=86400&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEN7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCPFUQ9eVBhVG%2FxqjNRO11arCOihCaAOE%2FIvHjyGqhw1wIhAKBFpsEOpIXmHAx8hyq5YW5hdQq30S%2F34MeIzr5%2BsNlZKrQDCGcQABoMMjc0NTY3MTQ5MzcwIgwkBRVtA6z13TC4Q7MqkQNgsIkQD3FmJggamt3NXPLMPqH9jRLatDGTtop1ay9WbPSTgBcYKFIjehnCQdkHleEAj6Q0HglEifrQHM3lSWUjwPfc6GJr%2BKfiZvefyoa3fipuPspQ%2BV9PGuwTC8HX9he3sFuFl%2BL3If3G1JpssuyPsnXQLCyIJAhI1gajARFR34zIeiVZOq4rXsQpr5jd7mkxbDvOxog81t8JD8IIhmXhYOmYwBuP3aG7B1HH6%2FgkJVRD69yln1MN2HYcn6wbDElEoKxqri5Om4YSbt6J9vHlVIQpRkjGCO5AG%2BB%2BKjEQqnS%2F93YIv1h%2FB7SIAwpNCAop6cz4TXsR59aT4den7Sr0GUhUK26Ofx8EPbCb33NiaWNZqBJYU47jV%2FT6CUAOV4V8BHRcHk%2BuWBQ91UTVWEeeqAphJQsDS8byl%2BV%2BLw9gz%2F0y3yO99zTVhMI4QTgcNKdYIdBjOc2NyMimJ2dqTcBNdTg1zWS0%2FM%2FtttWejbOLLxVM%2BYJAyFvInzUiruH87zCpNGN16F70PW1vTHBnNg9p7zCM5fjwBTrqAaSNk4ugdnmFqEEAoCokJlJyP28l078BGYTwI9mte7tTbKZImR6gEeBxV0R6i545NGTPXsF3RbzuJZQdQl9WkJrAVbQ5FE6I6GEslT%2FNzH%2BKTqllG98naywEH92CZNvhrPfas2SjhSZeCz5i4Ng71uSB6hNrIZwBVlxohMVGl564UhUJS5b%2F0H7PxerJ8lU10Ze%2BvCL0PyBPq%2Ftqg6ebM61TJ1HH9ZreFba2x84qxFbCut%2FleuxJtCa8rerOZhqdSQ7GcX9a3d%2FZcZxaxLt2H%2BF6dWtvE%2BKZsrLZoHTlKt9Eew8e8Fyak2tEOA%3D%3D&X-Amz-Signature=42f5fcf4aac3359a7b8bf3b227620b0b3eaf4f47d1e57311004782dea8469e7d&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22" alt="https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a604c5b5-b967-4759-8527-dba82b60032a/Untitled.png"></p>
-<p>Instrumentation是一个很重要的类，负责intent的分发，调用Activity的onCreate, 调用Activity的onResume, 在插件化中也有广泛的应用。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/d2b4a3fc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/d2b4a3fc/" itemprop="url">Android-RecyclerView与ListView的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:38:45+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/d2b4a3fc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d2b4a3fc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">https://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
-<p>滑动嵌套处理 &amp; Scroller解析</p>
-<p><a href="http://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">http://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
-<p><a href="https://blog.csdn.net/yanbober/article/details/49904715" target="_blank" rel="noopener">https://blog.csdn.net/yanbober/article/details/49904715</a></p>
-<p><a href="http://www.apkbus.com/android-161576-1-1.html" target="_blank" rel="noopener">http://www.apkbus.com/android-161576-1-1.html</a></p>
-<p><a href="https://segmentfault.com/a/1190000002873657" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002873657</a></p>
-<p><a href="https://blog.csdn.net/briblue/article/details/73441698" target="_blank" rel="noopener">https://blog.csdn.net/briblue/article/details/73441698</a></p>
-<p>图片加载错乱的原理和解决方案</p>
-<p><a href="https://blog.csdn.net/guolin_blog/article/details/44996879" target="_blank" rel="noopener">https://blog.csdn.net/guolin_blog/article/details/44996879</a></p>
-<p><a href="https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&mid=2649286405&idx=1&sn=414e2d2eb577884ccee5c9076e8b8357&chksm=8334c387b4434a9124f5acd93f331968a44256b8374eeafb4b1857671072b3b6364e5ec38485&mpshare=1&scene=1&srcid=10217YX3Ym7X8oIIwOsTErmj%23rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzAwNDY1ODY2OQ==&amp;mid=2649286405&amp;idx=1&amp;sn=414e2d2eb577884ccee5c9076e8b8357&amp;chksm=8334c387b4434a9124f5acd93f331968a44256b8374eeafb4b1857671072b3b6364e5ec38485&amp;mpshare=1&amp;scene=1&amp;srcid=10217YX3Ym7X8oIIwOsTErmj%23rd</a></p>
-<p><a href="https://blog.csdn.net/lmj623565791/article/details/45059587" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/45059587</a></p>
-<p><a href="https://blog.csdn.net/tcpipstack/article/details/19214849" target="_blank" rel="noopener">https://blog.csdn.net/tcpipstack/article/details/19214849</a></p>
-<p><a href="https://www.jianshu.com/p/6c78a5a07db5" target="_blank" rel="noopener">https://www.jianshu.com/p/6c78a5a07db5</a></p>
-<p><a href="https://mp.weixin.qq.com/s/FiQEa0M93eSi1i4PzW_6Nw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/FiQEa0M93eSi1i4PzW_6Nw</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/72e1c46d/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/72e1c46d/" itemprop="url">Android StartService和bindService的区别</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:36:07+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/72e1c46d/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/72e1c46d/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = <span class="string">"SampleService"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onCreate..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">onStartCommand</span><span class="params">(Intent intent, <span class="keyword">int</span> flags, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        Debug.i(TAG, <span class="string">"onStartCommand"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.onStartCommand(intent, flags, startId);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">        Debug.i(TAG, <span class="string">"onDestroy..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>startService</code></p>
-<p>第一次会走<code>onCreate</code>, <code>onStartCommand</code> (<code>onStart</code>已经<code>deprecated</code>了, 取而代之的是<code>onStartComand</code>), 之后每次在<code>start</code> 都只会走<code>onStartCommand</code>. 退出Activity, Service的<code>onDestroy</code>不会走到, 会一直在后台运行</p>
-<p><code>bindService</code><br>第一次会走<code>onCreate</code>, <code>onBind</code>, 之后每次<code>bind</code>都只触发<code>onBind</code>和<code>onCreate</code>， Activity推出后, 会执行<code>onDestroy</code></p>
-<p><code>start()</code>方式，很难在Activity中对<code>Service</code>进行控制， 因此，会有<code>bindService</code>方式, 在Service里创建一个类继承Binder, 然后会回调会bindService的地方</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> Service.java</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> LocalBinder binder = <span class="keyword">new</span> LocalBinder();</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LocalBinder</span> <span class="keyword">extends</span> <span class="title">Binder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         Debug.i(TAG, <span class="string">"test..."</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> IBinder <span class="title">onBind</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">     Debug.i(TAG, <span class="string">"onBind..."</span>);</span><br><span class="line">     <span class="keyword">return</span> binder;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> Activity.java</span><br><span class="line"> </span><br><span class="line"> bindService(<span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, SampleService.class), <span class="keyword">new</span> ServiceConnection() &#123;</span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceConnected</span><span class="params">(ComponentName name, IBinder service)</span> </span>&#123;</span><br><span class="line">                     Debug.i(TAG, <span class="string">"onServiceConnected "</span>);</span><br><span class="line">                     SampleService.LocalBinder binder = (SampleService.LocalBinder)service;</span><br><span class="line">                     binder.test();</span><br><span class="line">                 &#125;</span><br><span class="line"></span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onServiceDisconnected</span><span class="params">(ComponentName name)</span> </span>&#123;</span><br><span class="line">                     Debug.i(TAG, <span class="string">"onServiceDisconnected "</span>);</span><br><span class="line"></span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;, Context.BIND_AUTO_CREATE);</span><br></pre></td></tr></table></figure>
-
-<h1 id="AIDL"><a href="#AIDL" class="headerlink" title="AIDL"></a>AIDL</h1><p>Android Interface Definition Language. 可以让某个Service与多个应用程序组件之间进行跨进程通讯, 从而实现多个应用程序共享一个Service的功能. 也是通过bindService来实现，流程与上述差不多。 具体细节有待分析.</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/f7f3c028/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/f7f3c028/" itemprop="url">Java HashMap & HashTable, HashMap & ConcurrentHashMap'</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-01T23:22:18+08:00">
-                2019-07-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/f7f3c028/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/f7f3c028/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><h3 id="constructor-NaN"><a href="#constructor-NaN" class="headerlink" title="constructor"></a>constructor</h3><p>惯例，先从构造函数开始看:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(initialCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> + initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(initialCapacity &gt; MAXIMUM_CAPACITY) &#123;</span><br><span class="line">        initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +</span><br><span class="line">                loadFactor);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">    <span class="keyword">this</span>.threshold = tableSizeFor(initialCapacity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(initialCapacity, DEFAULT_LOAD_FACTOR);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.loadFactor = DEFAULT_LOAD_FACTOR;</span><br><span class="line">    putMapEntries(m, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回大于输入参数且最近的2的整数次幂的数。比如10，则返回16</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">tableSizeFor</span><span class="params">(<span class="keyword">int</span> cap)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = cap - <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">1</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">2</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">4</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">8</span>;</span><br><span class="line">    n |= n &gt;&gt;&gt; <span class="number">16</span>;</span><br><span class="line">    <span class="keyword">return</span> (n &lt; <span class="number">0</span>) ? <span class="number">1</span> : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里主要注意几个参数</p>
-<ul>
-<li>loadFactor </li>
-<li>threshold // next size value at which to resize (capacity * load factor) 就是size超过多少时数组需要resize </li>
-<li>capacity</li>
-</ul>
-<h3 id="put"><a href="#put" class="headerlink" title="put"></a>put</h3><p>接下来看下重要的put方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> putVal(hash(key), key, value, <span class="keyword">false</span>, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">hash</span><span class="params">(Object key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    <span class="keyword">return</span> (key == <span class="keyword">null</span>)  ? <span class="number">0</span> : (h = key.hashCode()) ^ (h &gt;&gt;&gt; <span class="number">16</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里核心就是<code>putVal</code>函数:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> onlyIfAbsent if true, don't change existing value</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> evict if false, the table is in creation mode.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">final</span> V <span class="title">putVal</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">boolean</span> onlyIfAbsent, <span class="keyword">boolean</span> evict)</span> </span>&#123;</span><br><span class="line">    Node&lt;K, V&gt;[] tab;</span><br><span class="line">    Node&lt;K, V&gt; p;</span><br><span class="line">    <span class="keyword">int</span> n; <span class="comment">// 记录数组的length</span></span><br><span class="line">    <span class="keyword">int</span> i; <span class="comment">//记录存放node所在数组的index</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>((tab = table) == <span class="keyword">null</span> || (n = tab.length) == <span class="number">0</span>) &#123;</span><br><span class="line">        n = (tab = resize()).length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>((p = tab[i = (n - <span class="number">1</span>) &amp; hash]) == <span class="keyword">null</span>) &#123; <span class="comment">// hash通过与数组size做&amp;运算，找到对应到index</span></span><br><span class="line">        tab[i] = newNode(hash, key, value, <span class="keyword">null</span>); <span class="comment">//当前数组i无节点</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Node&lt;K, V&gt; e;</span><br><span class="line">        K k;</span><br><span class="line">        <span class="comment">// p 指向数组中index位置，第一个节点</span></span><br><span class="line">        <span class="keyword">if</span>(p.hash == hash &amp;&amp; ((k = p.key) == key) || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))) &#123;</span><br><span class="line">            e = p; <span class="comment">//直接替换</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(p <span class="keyword">instanceof</span> TreeNode) &#123;</span><br><span class="line">            e = ((TreeNode&lt;K, V&gt;)p).putTreeVal(<span class="keyword">this</span>, tab, hash, key, value);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> binCount = <span class="number">0</span>; ; ++binCount) &#123;</span><br><span class="line">                <span class="keyword">if</span>((e = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// 查询到最后都没找到，就在链表的最后newNode一个</span></span><br><span class="line">                    p.next = newNode(hash, key, value, <span class="keyword">null</span>);</span><br><span class="line">                    <span class="comment">//长度超过TREEIFY_THRESHOLD后就重新treeifyBin， 把链表改为红黑树</span></span><br><span class="line">                    <span class="keyword">if</span>(binCount &gt;= TREEIFY_THRESHOLD - <span class="number">1</span>) &#123;</span><br><span class="line">                        treeifyBin(tab, hash);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                        ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k)))) &#123;</span><br><span class="line">                    <span class="comment">//因为前面e = p.next, 所以这里的e就是在链表里找到了一个相同的</span></span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//p指向下一个</span></span><br><span class="line">                p = e;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            V oldValue = e.value;</span><br><span class="line">            <span class="keyword">if</span>(!onlyIfAbsent || oldValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                e.value = value;</span><br><span class="line">            &#125;</span><br><span class="line">            afterNodeAccess(e);</span><br><span class="line">            <span class="keyword">return</span> oldValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ++modCount;</span><br><span class="line">    <span class="keyword">if</span>(++size &gt; threshold) &#123;</span><br><span class="line">        <span class="comment">//长度超过阈值，resize</span></span><br><span class="line">        resize();</span><br><span class="line">    &#125;</span><br><span class="line">    afterNodeInsertion(evict);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里是把Node放入hashmap里的过程，hashmap就是数组和链表的结合。有着2种数据结构的优势，首先选取数组位置的时候通过(hash &amp; capacity - 1)获取index, 然后在遍历单找到是直接替换还是放在最后, 如果链表长度超过<code>TREEIFY_THRESHOLD</code>就会转化为红黑树,  <code>treeifyBin</code>和<code>TreeNode</code>相关，后续再议。</p>
-<h3 id="resize"><a href="#resize" class="headerlink" title="resize"></a>resize</h3><p>然后我们看下比较重要的<code>resize</code>过程</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">4</span>; <span class="comment">// aka 16</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">final</span> Node&lt;K, V&gt;[] resize() &#123;</span><br><span class="line">    Node&lt;K, V&gt;[] oldTab = table;</span><br><span class="line">    <span class="keyword">int</span> oldCap = (oldTab == <span class="keyword">null</span>) ? <span class="number">0</span> : oldTab.length;</span><br><span class="line">    <span class="keyword">int</span> oldThr = threshold;</span><br><span class="line">    <span class="keyword">int</span> newCap = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> newThr = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(oldCap &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(oldCap &gt;= MAXIMUM_CAPACITY) &#123;</span><br><span class="line">            threshold = Integer.MAX_VALUE;</span><br><span class="line">            <span class="keyword">return</span> oldTab;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>((newCap = oldCap &lt;&lt; <span class="number">1</span>) &lt; MAXIMUM_CAPACITY &amp;&amp; oldCap &gt;= DEFAULT_INITIAL_CAPACITY) &#123; <span class="comment">//新的capacity也变为2倍</span></span><br><span class="line">            newThr = oldThr &lt;&lt; <span class="number">1</span>; <span class="comment">//变为2倍</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(oldThr &gt; <span class="number">0</span>) &#123; <span class="comment">// initial capacity was placed in threshold ??</span></span><br><span class="line">        newCap = oldThr;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        newCap = DEFAULT_INITIAL_CAPACITY;</span><br><span class="line">        newThr = (<span class="keyword">int</span>)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(newThr == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">float</span> ft = (<span class="keyword">float</span>)newCap * loadFactor;</span><br><span class="line">        newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (<span class="keyword">float</span>)MAXIMUM_CAPACITY ? (<span class="keyword">int</span>)ft : Integer.MAX_VALUE); <span class="comment">//newThr = ft</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    threshold = newThr;</span><br><span class="line">    Node&lt;K, V&gt;[] newTab = (Node&lt;K, V&gt;[]) <span class="keyword">new</span> Node[newCap]; <span class="comment">//新建一个newCap容量的array</span></span><br><span class="line">    table = newTab;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(oldTab != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; oldCap; ++j) &#123;</span><br><span class="line">            Node&lt;K, V&gt; e;</span><br><span class="line">            <span class="keyword">if</span>((e = oldTab[j]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                oldTab[j] = <span class="keyword">null</span>;</span><br><span class="line">                <span class="keyword">if</span>(e.next == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    newTab[e.hash &amp; (newCap - <span class="number">1</span>)] = e; <span class="comment">//重新计算hash并放置对应index位置</span></span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span>(e <span class="keyword">instanceof</span>  TreeNode) &#123;</span><br><span class="line">                    ((TreeNode&lt;K,V&gt;)e).split(<span class="keyword">this</span>, newTab, j, oldCap);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">/**</span></span><br><span class="line"><span class="comment">                     * 比如oldCap=8,hash是3，11，19，27时，(e.hash &amp; oldCap)的结果是0，8，0，8，这样3，19组成新的链表，index为3；而11，27组成新的链表，新分配的index为3+8；</span></span><br><span class="line"><span class="comment">                     *</span></span><br><span class="line"><span class="comment">                     * JDK1.7中重写hash是(e.hash &amp; newCap-1)，也就是3，11，19，27对16取余，也是3，11，3，11，和上面的结果一样，但是index为3的链表是19，3，index为3+8的链表是</span></span><br><span class="line"><span class="comment">                     *</span></span><br><span class="line"><span class="comment">                     * 27，11，也就是说1.7中经过resize后数据的顺序变成了倒叙，而1.8没有改变顺序。</span></span><br><span class="line"><span class="comment">                     * ---------------------</span></span><br><span class="line"><span class="comment">                     * 作者：bnmb888</span></span><br><span class="line"><span class="comment">                     * 来源：CSDN</span></span><br><span class="line"><span class="comment">                     * 原文：https://blog.csdn.net/bnmb888/article/details/77164485</span></span><br><span class="line"><span class="comment">                     * 版权声明：本文为博主原创文章，转载请附上博文链接！</span></span><br><span class="line"><span class="comment">                     */</span></span><br><span class="line">                    Node&lt;K, V&gt; loHead = <span class="keyword">null</span>, loTail = <span class="keyword">null</span>;</span><br><span class="line">                    Node&lt;K, V&gt; hiHead = <span class="keyword">null</span>, hiTail = <span class="keyword">null</span>;</span><br><span class="line">                    Node&lt;K, V&gt; next;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">do</span> &#123;</span><br><span class="line">                        next = e.next;</span><br><span class="line">                        <span class="keyword">if</span>((e.hash &amp; oldCap) == <span class="number">0</span>) &#123;</span><br><span class="line">                            <span class="keyword">if</span>(loTail == <span class="keyword">null</span>) &#123;</span><br><span class="line">                                loHead = e;</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                loTail.next = e;</span><br><span class="line">                            &#125;</span><br><span class="line">                            loTail = e;</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            <span class="keyword">if</span>(hiTail == <span class="keyword">null</span>) &#123;</span><br><span class="line">                                hiHead = e;</span><br><span class="line">                            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                hiTail.next = e;</span><br><span class="line">                            &#125;</span><br><span class="line">                            hiTail = e;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">while</span> ((e = next) != <span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">if</span>(loTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        loTail.next = <span class="keyword">null</span>;</span><br><span class="line">                        newTab[j] = loHead;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span> (hiTail != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        hiTail.next = <span class="keyword">null</span>;</span><br><span class="line">                        newTab[j + oldCap] = hiHead;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newTab;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="get"><a href="#get" class="headerlink" title="get"></a>get</h3><p>最后，经常用的还有<code>get</code>方法，理解了上述之后，这儿就很简单了， 遍历链表或者树，找到后就返回即可。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">final</span> Node&lt;K,V&gt; <span class="title">getNode</span><span class="params">(<span class="keyword">int</span> hash, Object key)</span> </span>&#123;</span><br><span class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; first, e; <span class="keyword">int</span> n; K k;</span><br><span class="line">    <span class="keyword">if</span> ((tab = table) != <span class="keyword">null</span> &amp;&amp; (n = tab.length) &gt; <span class="number">0</span> &amp;&amp;</span><br><span class="line">        (first = tab[(n - <span class="number">1</span>) &amp; hash]) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (first.hash == hash &amp;&amp; <span class="comment">// always check first node</span></span><br><span class="line">            ((k = first.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">            <span class="keyword">return</span> first;</span><br><span class="line">        <span class="keyword">if</span> ((e = first.next) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (first <span class="keyword">instanceof</span> TreeNode)</span><br><span class="line">                <span class="keyword">return</span> ((TreeNode&lt;K,V&gt;)first).getTreeNode(hash, key);</span><br><span class="line">            <span class="keyword">do</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (e.hash == hash &amp;&amp;</span><br><span class="line">                    ((k = e.key) == key || (key != <span class="keyword">null</span> &amp;&amp; key.equals(k))))</span><br><span class="line">                    <span class="keyword">return</span> e;</span><br><span class="line">            &#125; <span class="keyword">while</span> ((e = e.next) != <span class="keyword">null</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/xorxos/article/details/49781677" target="_blank" rel="noopener">https://blog.csdn.net/xorxos/article/details/49781677</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2479,7 +2026,7 @@ public Application makeApplication(boolean forceDefaultAppClass,
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">235</span>
+                  <span class="site-state-item-count">239</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

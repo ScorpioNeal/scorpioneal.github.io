@@ -307,6 +307,701 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/8ef0f2e5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/8ef0f2e5/" itemprop="url">Translation-About Android App Bundles</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-16T20:51:04+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Translation/" itemprop="url" rel="index">
+                    <span itemprop="name">Translation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/8ef0f2e5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/8ef0f2e5/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="About-Android-App-Bundles"><a href="#About-Android-App-Bundles" class="headerlink" title="About Android App Bundles"></a>About Android App Bundles</h2><p><a href="https://developer.android.com/guide/app-bundle" target="_blank" rel="noopener">Reference</a></p>
+<p>An Android App Bundle is a new upload format that includes all your app’s compiled code and resources, but defers APK generation and signing to Google Play.</p>
+<p>Google Play’s new app serving model, called Dynamic Delivery, then uses your app bundle to generate and serve optimized APKs for each user’s device configuration, so they download only the code and resources they need to run your app. You no longer have to build , sign, and manage multiple APKs to support different devices, and users get smaller, more optimized downloads.</p>
+<p>Additionally, you can add dynamic feature modules to your app project and include them in your app bundle. These modules contain features and assets that you can decide not to include when users first download and install your app. <a href="https://developer.android.com/guide/app-bundle#playcore" target="_blank" rel="noopener">Using the Play Core Library</a>, your app can later request to download those modules as dynamic feature APKs, and, through Dynamic Delivery, Google Play serves only the code and resources for that module to the device.</p>
+<p>Publishing with Android App Bundles also increases the app size limit to 150MB without having to use APK expansion files. Keep in mind, this limit applies only to the actual download size, not the publishing size. So, users can download apps as large as 150MB and , with dynamic delivery, all of that storage is used for only the code and resourcecs they need to run the app. When you combine this with support for <a href="https://developer.android.com/topic/performance/reduce-apk-size#reduce-binaries" target="_blank" rel="noopener">uncompressed native libraries</a>, larger apps ,such as games, can reduce disk usage and increase user retention.</p>
+<p>If you are using Android Studio 3.2 or higher , most app projects require little effort to support Dynamic Delivery, and you can build an Android App Bundle in just a few clicks. However, adding dynamic feature modules requires a little more effort and possibly refactoring your app.</p>
+<p>This page describes the steps to get started building Android App Bundles and describes some important concepts related to app bundles and Dynamic Delivery.</p>
+<h3 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h3><p>To build app bundles and support Dynamic Delivery, follow these steps: </p>
+<ol>
+<li><a href="https://developer.android.com/studio" target="_blank" rel="noopener">Download Android Studio 3.2 or higher</a> - it’s the easiest way to add dyanmic feature modules and build app bundles.</li>
+<li><a href="https://developer.android.com/studio/projects/dynamic-delivery" target="_blank" rel="noopener">Add support for Dynamic Delivery</a> by including a base module, organizing code and resources for configuration APKs, and, optionally, adding dynamic feature modules.</li>
+<li><a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">Build an Android App Bundle</a> using Android. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app bundle from the command line</a>.</li>
+<li><a href="https://developer.android.com/guide/app-bundle#bundletool" target="_blank" rel="noopener">Test your Android App Bundle</a> by using it to generate APKs that you deploy to a device.</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/7384423" target="_blank" rel="noopener">Enroll into app signing by Google Play</a>. Otherwise, you can’t upload your app bundle to the Play Console.</li>
+<li><a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">Publishing your app bundle to Google Play</a>.</li>
+</ol>
+<h3 id="The-Android-App-Bundle-format"><a href="#The-Android-App-Bundle-format" class="headerlink" title="The Android App Bundle format"></a>The Android App Bundle format</h3><p>An Android APP Bundle is a file(with the <code>.aab</code> file extension) that you upload to Google Play to support Dynamic Delivery.</p>
+<p>App bundles are signed binaries that organize your app’s code and resources into modules, as illustrated in figure 1.Code and resources for each module are organized similarly to what you would find in an APK-and that makes sense because each of these modules may be generated as separate APKs. Google Play then uses the app bundle to generate the various APKs that are served to users, such as the base APK, dynamic feature APKs, configuration APKs, and (for devices that do not support split APKs) multi-APKs. The directories that are colored in blue-such as the <code>drawable/</code>, <code>values/</code>, and <code>lib</code> directories-represent code and resources that Google Play uses to create configuration APKs for each module.</p>
+<p><img src="https://developer.android.com/images/app-bundle/aab_format-2x.png" alt="The contents of an Android App Bundle with one base module and two dynamic feature modules."></p>
+<p>The following list describes some of the app bundle’s files and directories in more detail:</p>
+<ul>
+<li>base/, feature1/, and feature2/: Each of these top-level directories represents a different module of your app. The base module for your app is always contained in a <code>base</code> directory of the app bundle. However, the directory for each dynamic feature module is given the name specified by the <code>split</code> attribute in the module’s manifest. To learn more, read about the <a href="https://developer.android.com/guide/app-bundle/configure#dynamic_feature_manifest" target="_blank" rel="noopener">Dynamic feature module manifest</a>.</li>
+<li>BUNDLE-METADATA/: This directory includes metadata files that contain information useful for tools or app stores. Such metadata files may include ProGuard mappings and the complete list of your app’s DEX files. Files in this directory are not packaged into your app’s APKs.</li>
+<li>Module Protocal Buffer(*.pb) files: These files provide metadata that helps describe the contents of each app module to app stores, such as Google Play. For example, <code>BundleConfig.pb</code> provides information about the bundle itself, such as which version of the build tools were used to build the app bundle, and <code>native.pb</code> and <code>resources.pb</code> describe the code and resources in each module, which is useful when Google Play optimizes APKs for different device configurations.</li>
+<li>manifest/: Unlike APKs, app bundles store the <code>AndroidManifest.xml</code> file of each module in this separate directory.</li>
+<li>dex/ : Unlike APKs, app bundles store the DEX files for each module in this separate directory</li>
+<li>res/, lib/ and assets/: These directories are dientical to those in a typical APK. When you upload your app bundle, Google Play inspects these directories and packages only the files that satisfy the target device configuration, while preserving file paths.</li>
+<li>root/: This directory stores files that are later relocated to the root of any APK that includes the module that this directory is located in. For example, the <code>base/root</code> directory of an app bundle may include Java-based resources that your app loads using <a href="https://developer.android.com/reference/java/lang/Class.html#getResource(java.lang.String)" target="_blank" rel="noopener">Class.getResource()</a>. Those files are later relocated to the root directory of your app’s base APK and every multi-APK that Google Play generates. Paths within this directory are also preserved. That is, directories(and their subdirectories) are also relocated to the root of the APk.</li>
+</ul>
+<h4 id="Build-and-deploy-Android-App-Bundles"><a href="#Build-and-deploy-Android-App-Bundles" class="headerlink" title="Build and deploy Android App Bundles"></a>Build and deploy Android App Bundles</h4><p>An app bundle is different from an APK in that you can’t deploy one to a device. Rather, it’s a upload format that includes all your app’s compiled code and resources in a single build artifact. So, after you upload your signed app bundle , Google Play has everything it needs to build and sign your app’s APKs, and serve them to users through Dynamic Delivery.</p>
+<p>If you’re using Android Studio, you can <a href="https://developer.android.com/studio/run/#reference" target="_blank" rel="noopener">build your project</a> as a signed app bundle in just a few clicks. If you’re not using the IDE, you can instead <a href="https://developer.android.com/studio/build/building-cmdline#build_bundle" target="_blank" rel="noopener">build an app from the command line.</a> Then, simply <a href="https://developer.android.com/studio/publish/upload-bundle" target="_blank" rel="noopener">upload your app bundle</a> to the Play Console to test or publish your app with Dynamic Delivery.</p>
+<h3 id="Test-your-app-bundle"><a href="#Test-your-app-bundle" class="headerlink" title="Test your app bundle"></a>Test your app bundle</h3><p>After you build your Android App Bundle, you should test how Google Play will use it to generate APKs and how those APKs will behave when deployed to a device.</p>
+<p>To test your app bundle, use any of the following methods:</p>
+<ul>
+<li><a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">Test your Android App Bundle locally using bundletool</a> to generate APKs from your app bundle and deploy them to a connected device.</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/9303479" target="_blank" rel="noopener">Share your app with a URL</a>. This is the fastest way to upload your app bundle and share your app as a Google Play Store link with trusted tester. Additionally, this is the fastest way to test custom delivery options, such as dowloading features on demand.</li>
+<li><a href="https://support.google.com/googleplay/android-developer/answer/3131213" target="_blank" rel="noopener">Set up an open, closed, or internal test.</a>. This is another method to test custom delivery options, such as dowloading features on demand.</li>
+</ul>
+<h3 id="Download-dynamic-feature-modules-with-the-Play-Core-Library"><a href="#Download-dynamic-feature-modules-with-the-Play-Core-Library" class="headerlink" title="Download dynamic feature modules with the Play Core Library"></a>Download dynamic feature modules with the Play Core Library</h3><p>If your app includes dynamic features, it needs to use the Play Core Library to request, monitor, and manage dynamic feature module downloads. To learn more, go to [Download modules with the Play Core Library].(<a href="https://developer.android.com/guide/app-bundle/playcore" target="_blank" rel="noopener">https://developer.android.com/guide/app-bundle/playcore</a>)</p>
+<p>If you want to see the library in action, try the <a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">Play Core Library sample app</a>.</p>
+<h3 id="A-note-about-instant-Apps"><a href="#A-note-about-instant-Apps" class="headerlink" title="A note about instant Apps"></a>A note about instant Apps</h3><p>In Android Studio 3.2 or higher, you can <a href="https://developer.android.com/topic/google-play-instant/getting-started/instant-enabled-app-bundle" target="_blank" rel="noopener">add an instant experience</a> to an app bundle , as long as your app’s size is smaller enough. For details on the size limits for the different types of instant experiences that you can create, see <a href="https://developer.android.com/topic/google-play-instant/overview#reduce-size" target="_blank" rel="noopener">Overview of Google Play Instant</a>.</p>
+<h3 id="Compressed-download-size-restriction"><a href="#Compressed-download-size-restriction" class="headerlink" title="Compressed download size restriction"></a>Compressed download size restriction</h3><p>While publishing with Android App Bundles helps your users install your app with the smallest download possible, <code>compressed downloads are limited to 150MB</code>. That is , when a user downloads your app, the total size of the compressed APKs required to install your app(for example, the base APK + configuration APK(s)) must be no more than 150MB. Any subsequent downloads, such as downloading a dynamic feature (and its configuration APK(s)) on demand, must also meet this compressed download size restriction.</p>
+<p>When you upload your app bundle, if the Play Console finds any of the possible downloads of your app or its on demand features to be more than 150MB, you get an error.</p>
+<p>Keep in mind, <code>Android App Bundles do not support APK expansion(.obb) files</code>. So, if you encounter this error when publishing your app bundle, use one of the following resources to reduce compressed APK download size:</p>
+<ul>
+<li>Make sure you <a href="https://developer.android.com/studio/projects/dynamic-delivery#disable_config_apks" target="_blank" rel="noopener">enable all configuration APKs </a> by setting <code>enableSplit = true</code> for each type of configuration APK. This makes sure that users download only the code and resources they need to run your app on their device.</li>
+<li>Make sure you <a href="https://developer.android.com/studio/build/shrink-code" target="_blank" rel="noopener">shrink your app</a> by removing unused code and resources.</li>
+<li>Follow best practices to further [reduce app size].(<a href="https://developer.android.com/topic/performance/reduce-apk-size" target="_blank" rel="noopener">https://developer.android.com/topic/performance/reduce-apk-size</a>)</li>
+<li>Consider converting features that are used by only some of your users into <a href="https://developer.android.com/studio/projects/dynamic-delivery#dynamic_feature_modules" target="_blank" rel="noopener">dynamic feature modules</a> that your app can download later, on demand. Keep in mind ,this may require some refactoring of your app, so make sure to first try the other suggestions described above.</li>
+</ul>
+<h3 id="Known-issues"><a href="#Known-issues" class="headerlink" title="Known issues"></a>Known issues</h3><p>The following are the currently known issues when building Android App Bundles or serving your app using Dynamic Delivery. If you experience issues that are not described below, please <a href="https://issuetracker.google.com/issues/new?component=398856&template=1084213" target="_blank" rel="noopener">report a bug</a>.</p>
+<ul>
+<li>If you use tools that dynamically modify resource tables, APKs generated from app bundles might behave unexpectedly. So, when building an app bundle, it is recommended taht you disable such tools.</li>
+<li>In a dynamic feature module’s manifest, you should not reference resources that don’t exist in the base module. That’s because , when Google Play generates your app’s base APK, it merges manifests for all modules into that of the base APK. So, resource linking breaks if the base APK’s manifest references resources taht don’t exist in the base APK.</li>
+<li>As of Android Studio 3.2 Canary 14, when your <a href>change the build variant</a> for your app’s base module, the same build variant is not automatically selected for dynamic feature modules that depand on the base module. So, you might receive an error when building your app. Simply make sure that you select the same build variant for the base module and other modules that depend on it.</li>
+<li>It is currently possible to configure properties in a dynamic feature module’s build coniguration that conflict with those from the base(or other) modules. For example, you can set <code>buildTypes.release.debuggable = true</code> in the base module and set it to <code>false</code> in a dynamic feature module. Such conflicts might cause build and runtime issues. Keep in mind, by default, dynamic feature modules inherit some build configurations from the base module. So, make sure you understand which configurations you should keep, and which ones you should omit, in your <a href="https://developer.android.com/guide/app-bundle/configure#feature_build_config" target="_blank" rel="noopener">Dynamic feature module build configuration</a>.</li>
+<li>Because app installs may require downloading more than onre APK(such the base APK and a few of its configuration APKs), you should be careful when manually transferring your app’s APKs onto a device(also known as sideloading). Otherwise, your app may experience runtime issues due to missing code and resources.</li>
+<li>Currently, Google Play inclues all the code and resources for a dynamic feature module in a single APK. In the near future, for devices running Android 5.0 (API level 21) and higher, serving will be optimized to use configuration APKs.</li>
+<li>Downloading dynamic feature modules requires devices to have a recent version of the Play Store app installed. So, if your app includes dynamic feature modules, downloads for a very small percentage of users may fall back to a single optimized multi-APK, which is the same download experience for devices running Android 4.4 (API level 20) and lower.</li>
+</ul>
+<h3 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h3><p>To learn more about Android App Bundles, consult the following resources.</p>
+<ul>
+<li>Samples  <ul>
+<li><a href="http://github.com/googlesamples/android-dynamic-features" target="_blank" rel="noopener">PlayCore API sample</a>, which demonstrates usage of the PlayCore API to request and download dynamic features.</li>
+<li><a href="https://github.com/googlesamples/android-dynamic-code-loading" target="_blank" rel="noopener">Dynamic code loading sample</a>, which demonstrates three different approaches to safely access code from an installed dynamic feature module.</li>
+</ul>
+</li>
+<li>Codelabs<ul>
+<li><a href="https://codelabs.developers.google.com/codelabs/your-first-dynamic-app/index.html" target="_blank" rel="noopener">Your First Android App Bundle</a>, a codelab that explores the basic principles of Android App Bundles and shows you how to quickly get started with building your own using Android Stuio. This codelab also explores how to test your app bundles <a href="https://developer.android.com/studio/command-line/bundletool" target="_blank" rel="noopener">using bundletool</a></li>
+<li><a href="https://codelabs.developers.google.com/codelabs/on-demand-dynamic-delivery/index.html" target="_blank" rel="noopener">On demand modules</a>, which helps you create an app that downloads and installs dynamic features on demand.</li>
+</ul>
+</li>
+<li>Blog posts<ul>
+<li><a href="https://medium.com/googleplaydev/what-a-new-publishing-format-means-for-the-future-of-android-2e34981793a" target="_blank" rel="noopener">What a new publishing format means for the future of Android</a></li>
+<li><a href="https://android-developers.googleblog.com/2019/05/whats-new-in-play.html" target="_blank" rel="noopener">New features to help you develop, release, and grow your business on Google Play</a></li>
+<li><a href="https://android-developers.googleblog.com/2019/03/the-latest-android-app-bundle-updates.html" target="_blank" rel="noopener">The latest Android App Bundle updates including the additional languages API</a></li>
+<li><a href="https://medium.com/androiddevelopers/a-patchwork-plaid-monolith-to-modularized-app-60235d9f212e" target="_blank" rel="noopener">Patchwork Plaid — A modularization story</a></li>
+<li><a href="https://medium.com/androiddevelopers/google-santa-tracker-moving-to-an-android-app-bundle-dde180716096" target="_blank" rel="noopener">Google Santa Tracker — Moving to an Android App Bundle</a></li>
+</ul>
+</li>
+<li>Videos<ul>
+<li><a href="https://www.youtube.com/watch?v=flhib2krW7U" target="_blank" rel="noopener">Customizable Delivery with the App Bundle and Easy Sharing of Test Builds</a></li>
+<li><a href="https://www.youtube.com/watch?v=rEuwVWpYBOY" target="_blank" rel="noopener">New Tools to Optimize Your App’s Size and Boost Installs on Google Play</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/5f3606d7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/5f3606d7/" itemprop="url">Algorithm LeetCode 206 Reverse Linked List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-31T14:06:56+08:00">
+                2019-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/5f3606d7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5f3606d7/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Reverse a singly linked list.</p>
+<p>Example:</p>
+<p>Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL<br>Output: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>2个指针，一个指向当前节点，一个指向前一个节点, 每次移动1个位置, 断开连接，重新连接</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">      ListNode cur = head;</span><br><span class="line">      ListNode tail = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span>(head != <span class="keyword">null</span>) &#123;</span><br><span class="line">          head = head.next;</span><br><span class="line">          cur.next = tail;</span><br><span class="line">          tail = cur;</span><br><span class="line">          cur = head;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> tail;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/a4209768/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/a4209768/" itemprop="url">Java-Java静态代理&动态代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-21T15:20:37+08:00">
+                2019-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/a4209768/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a4209768/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/maohuidong/p/7992894.html" target="_blank" rel="noopener">https://www.cnblogs.com/maohuidong/p/7992894.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b26f467e/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b26f467e/" itemprop="url">Android 插件化</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-16T11:45:36+08:00">
+                2019-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b26f467e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b26f467e/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b3e25f3f/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1227,785 +1922,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/6d7fb02e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/6d7fb02e/" itemprop="url">Android Serializable和Parcelable性能差异</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T21:38:20+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/6d7fb02e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/6d7fb02e/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/yezhennan/p/5527506.html" target="_blank" rel="noopener">https://www.cnblogs.com/yezhennan/p/5527506.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/b7f694e6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/b7f694e6/" itemprop="url">Android-Fragment生命周期</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T17:31:49+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/b7f694e6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b7f694e6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://upload-images.jianshu.io/upload_images/6433394-2905902a1331235f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/317/format/webp" alt></p>
-<p>Fragment1切换到Fragment2时的生命周期变化</p>
-<ol>
-<li>add, hide, show方式切换<ol>
-<li>Fragment1 : onCreate, onCreateView, onStart, onResume</li>
-<li>Fragment2 : onCreate, onCreateView, onStart, onResume<br>返回到Fragment1</li>
-<li>不走任何生命周期方法</li>
-</ol>
-</li>
-</ol>
-<p>所有的Fragment都保存在内存，Fragment的隐藏不走onDestroyView, 所有的显示也不走onCreateView</p>
-<ol start="2">
-<li>replace方式切换<ol>
-<li>Fragment1: onCreate, onCreateView, onStart, onResume<br>切换到Fragment2</li>
-<li>Fragment1: onPause(), onStop, onDestroyView, onDestroy</li>
-<li>Fragment2: onCreate, onCreateView, onStart, onResume<br>返回到Fragment1</li>
-<li>Fragment2: onPause, onStop, onDestroyView, onDestroy</li>
-<li>Fragment1: onCreate, onCreateView, onStart, onResume</li>
-</ol>
-</li>
-</ol>
-<p>所有的Fragment都进行了销毁，会重新走一套生命周期</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/4f81d6fa/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/4f81d6fa/" itemprop="url">Android 进程间通信</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T21:15:39+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/4f81d6fa/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4f81d6fa/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Reference: </p>
-<ul>
-<li><a href="https://blog.csdn.net/qian520ao/article/details/78089877" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78089877</a></li>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81275438" target="_blank" rel="noopener">https://blog.csdn.net/hzw2017/article/details/81275438</a></li>
-<li><a href="https://juejin.im/post/5acccf845188255c3201100f" target="_blank" rel="noopener">https://juejin.im/post/5acccf845188255c3201100f</a></li>
-<li><a href="https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ</a></li>
-</ul>
-<h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><p><code>RPC(Remote Porcedure Call)</code> 远程过程调用, 是一种通过网络从远程计算机程序上请求服务，在不需要了解底层网络技术协议下，即可获取计算机进程中的数据。 RPC使得开发包括网络分布式多程序在内的应用程序更加容易。</p>
-<p>RPC在OSI网络通信7层模型中，位于<code>会话层</code>: </p>
-<p><img src="https://img-blog.csdn.net/2018072918504362?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-<p>RPC的实现模式, 也就是常说的C/S结构: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RPC采用客户机/服务器模式。请求程序就是一个客户机，而服务提供程序就是一个服务器。首先，客户机调用进程发送一个有进程参数的调用信息到服务进程，然后等待应答信息。在服务器端，进程保持睡眠状态直到调用信息到达为止。当一个调用信息到达，服务器获得进程参数，计算结果，发送答复信息，然后等待下一个调用信息，最后，客户端调用进程接收答复信息，获得进程结果，然后调用执行继续进行。</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://img-blog.csdn.net/20180729185637282?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-<p>简而言之：客户端能向服务端发送若干个进程请求，服务端根据发送的进程参数依次返回对应的计算结果。RPC可以说客户端调用服务端的接口的过程，是面向接口的编程。</p>
-<p>RPC在Android中的体现:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Android 利用远程过程调用 (RPC) 提供了一种进程间通信 (IPC) 机制，通过这种机制，由 Activity 或其他应用组件调用的方法将（在其他进程中）远程执行，而所有结果将返回给调用方。 这就要求把方法调用及其数据分解至操作系统可以识别的程度，并将其从本地进程和地址空间传输至远程进程和地址空间，然后在远程进程中重新组装并执行该调用。 然后，返回值将沿相反方向传输回来。 Android 提供了执行这些 IPC 事务所需的全部代码，因此您只需集中精力定义和实现 RPC 编程接口即可。 </span><br><span class="line">要执行 IPC，必须使用 bindService() 将应用绑定到服务上。</span><br></pre></td></tr></table></figure>
-
-<p>也就是说，RPC在的Android具体体现，是依赖 bindService()的方式，在onBind方法将服务端的计算结果返回给客户端（Activity等组件）的过程。</p>
-<h2 id="IPC"><a href="#IPC" class="headerlink" title="IPC"></a>IPC</h2><p><code>IPC</code>是<code>Inter-Process communication</code> 进程间通信, 是指进程间数据交互的过程<br>Android底层是基于Linux, 而Linux基于安全考虑，是不允许两个进程直接操作对方数据, 这就是<code>进程隔离</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在Linux系统中，虚拟内存机制为每个进程分配了线性连续的内存空间，操作系统将这种虚拟内存空间映射到物理内存空间，每个进程有自己的虚拟内存空间，进而不能操作其他进程的内存空间，每个进程只能操作自己的虚拟内存空间，只有操作系统才有权限操作物理内存空间.进程隔离保证了每个进程的内存安全，但是在大多数情形下，不同进程间的数据通讯是不可避免的，因此操作系统必须提供跨进程通信机制。</span><br></pre></td></tr></table></figure>
-
-<p>虽然Android是基于Linux，但并不能继承Linux中的进程通信的方式，Android有着自己进程间通信方式。常用有如下几种：</p>
-<ul>
-<li>Bundle(四大组件之间)</li>
-<li>文件共享<ul>
-<li>可参考<a href="https://blog.csdn.net/hzw2017/article/details/80978663" target="_blank" rel="noopener">Android进程通信 - 序列化Serialzable与Parcelable</a>中的示例</li>
-</ul>
-</li>
-<li>AIDL(基于Binder)<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81048650" target="_blank" rel="noopener">Android进程通信-AIDL的使用方法</a></li>
-</ul>
-</li>
-<li>Messenger(基于Binder)<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81090319" target="_blank" rel="noopener">Android进程间通信-Messenger的使用和理解</a></li>
-</ul>
-</li>
-<li>ContentProvider(基于Binder)<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81123791" target="_blank" rel="noopener">Android进程间通信-ContentProvider内容提供者</a></li>
-</ul>
-</li>
-<li>Socket<ul>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81210979" target="_blank" rel="noopener">Android进程间通信-Socket的使用</a></li>
-</ul>
-</li>
-</ul>
-<p><img src="https://img-blog.csdn.net/20180729210742229?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
-<p>既然AIDL, Messenger, ContentProvider都是基于Binder的, 我们就首先来看下Binder的原理</p>
-<h2 id="Binder"><a href="#Binder" class="headerlink" title="Binder"></a>Binder</h2><p>Binder 是一种进程间通信机制，基于开源的 OpenBinder 实现. Android 应用程序是由 Activity、Service、Broadcast Receiver 和 Content Provide 四大组件中的一个或者多个组成的。有时这些组件运行在同一进程，有时运行在不同的进程。这些进程间的通信就依赖于 Binder IPC 机制。不仅如此，Android 系统对应用层提供的各种服务如：ActivityManagerService、PackageManagerService 等都是基于 Binder IPC 机制来实现的。Binder 机制在 Android 中的位置非常重要. </p>
-<h3 id="Why-Binder"><a href="#Why-Binder" class="headerlink" title="Why Binder"></a>Why Binder</h3><p>Android 系统是基于 Linux 内核的，Linux 已经提供了管道、消息队列、共享内存和 Socket 等 IPC 机制。那为什么 Android 还要提供 Binder 来实现 IPC 呢？主要是基于性能、稳定性和安全性几方面的原因。</p>
-<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>Socket 作为一款通用接口，其传输效率低，开销大，主要用在跨网络的进程间通信和本机上进程间的低速通信。消息队列和管道采用存储-转发方式，即数据先从发送方缓存区拷贝到内核开辟的缓存区中，然后再从内核缓存区拷贝到接收方缓存区，至少有两次拷贝过程。共享内存虽然无需拷贝，但控制复杂，难以使用。Binder 只需要一次数据拷贝，性能上仅次于共享内存。</p>
-<p>注：各种IPC方式数据拷贝次数，此表来源于<a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Funiversus%2Farticle%2Fdetails%2F6211589" target="_blank" rel="noopener">Android Binder 设计与实现 - 设计篇</a></p>
-<table>
-<thead>
-<tr>
-<th>IPC方式</th>
-<th>数据拷贝次数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>共享内存</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Binder</td>
-<td>1</td>
-</tr>
-<tr>
-<td>Socket/管道/消息队列</td>
-<td>2</td>
-</tr>
-</tbody></table>
-<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>Binder 基于 C/S 架构，客户端（Client）有什么需求就丢给服务端（Server）去完成，架构清晰、职责明确又相互独立，自然稳定性更好。共享内存虽然无需拷贝，但是控制复杂，难以使用。从稳定性的角度讲，Binder 机制是优于内存共享的。</p>
-<h3 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h3><p>另一方面就是安全性。Android 作为一个开放性的平台，市场上有各类海量的应用供用户选择安装，因此安全性对于 Android 平台而言极其重要。作为用户当然不希望我们下载的 APP 偷偷读取我的通信录，上传我的隐私数据，后台偷跑流量、消耗手机电量。传统的 IPC 没有任何安全措施，完全依赖上层协议来确保。首先传统的 IPC 接收方无法获得对方可靠的进程用户ID/进程ID（UID/PID），从而无法鉴别对方身份。Android 为每个安装好的 APP 分配了自己的 UID，故而进程的 UID 是鉴别进程身份的重要标志。传统的 IPC 只能由用户在数据包中填入 UID/PID，但这样不可靠，容易被恶意程序利用。可靠的身份标识只有由 IPC 机制在内核中添加。其次传统的 IPC 访问接入点是开放的，只要知道这些接入点的程序都可以和对端建立连接，不管怎样都无法阻止恶意程序通过猜测接收方地址获得连接。同时 Binder 既支持实名 Binder，又支持匿名 Binder，安全性高。<br>基于上述原因，Android 需要建立一套新的 IPC 机制来满足系统对稳定性、传输性能和安全性方面的要求，这就是 Binder。</p>
-<h2 id="Linux下传统的进程间通信的原理"><a href="#Linux下传统的进程间通信的原理" class="headerlink" title="Linux下传统的进程间通信的原理"></a>Linux下传统的进程间通信的原理</h2><p>了解 Linux IPC 相关的概念和原理有助于我们理解 Binder 通信原理。因此，在介绍 Binder 跨进程通信原理之前，我们先聊聊 Linux 系统下传统的进程间通信是如何实现。</p>
-<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a94f6af409?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>上图展示了Linux中跨进程通信涉及到的一些基本概念</p>
-<h4 id="进程隔离"><a href="#进程隔离" class="headerlink" title="进程隔离"></a>进程隔离</h4><p>简单的说就是操作系统中，进程与进程间内存是不共享的。两个进程就像两个平行的世界，A 进程没法直接访问 B 进程的数据，这就是进程隔离的通俗解释。A 进程和 B 进程之间要进行数据交互就得采用特殊的通信机制：进程间通信（IPC）。</p>
-<h4 id="进程空间划分-用户空间-UserSpace-内核空间-Kernel-Space"><a href="#进程空间划分-用户空间-UserSpace-内核空间-Kernel-Space" class="headerlink" title="进程空间划分: 用户空间(UserSpace)/内核空间(Kernel Space)"></a>进程空间划分: 用户空间(UserSpace)/内核空间(Kernel Space)</h4><p>现在操作系统都是采用的虚拟存储器，对于 32 位系统而言，它的寻址空间（虚拟存储空间）就是 2 的 32 次方，也就是 4GB。操作系统的核心是内核，独立于普通的应用程序，可以访问受保护的内存空间，也可以访问底层硬件设备的权限。为了保护用户进程不能直接操作内核，保证内核的安全，操作系统从逻辑上将虚拟空间划分为用户空间（User Space）和内核空间（Kernel Space）。针对 Linux 操作系统而言，将最高的 1GB 字节供内核使用，称为内核空间；较低的 3GB 字节供各进程使用，称为用户空间。</p>
-<p>简单的说就是，内核空间（Kernel）是系统内核运行的空间，用户空间（User Space）是用户程序运行的空间。为了保证安全性，它们之间是隔离的。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a94fa38f32?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="系统调用-用户态-内核态"><a href="#系统调用-用户态-内核态" class="headerlink" title="系统调用: 用户态/内核态"></a>系统调用: 用户态/内核态</h4><p>虽然从逻辑上进行了用户空间和内核空间的划分，但不可避免的用户空间需要访问内核资源，比如文件操作、访问网络等等。为了突破隔离限制，就需要借助系统调用来实现。系统调用是用户空间访问内核空间的唯一方式，保证了所有的资源访问都是在内核的控制下进行的，避免了用户程序对系统资源的越权访问，提升了系统安全性和稳定性。</p>
-<p>Linux 使用两级保护机制：0 级供系统内核使用，3 级供用户程序使用。</p>
-<p>当一个任务（进程）执行系统调用而陷入内核代码中执行时，称进程处于内核运行态（内核态）。此时处理器处于特权级最高的（0级）内核代码中执行。当进程处于内核态时，执行的内核代码会使用当前进程的内核栈。每个进程都有自己的内核栈。<br>当进程在执行用户自己的代码的时候，我们称其处于用户运行态（用户态）。此时处理器在特权级最低的（3级）用户代码中运行。<br>系统调用主要通过如下两个函数来实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">copy_from_user() //将数据从用户空间拷贝到内核空间</span><br><span class="line">copy_to_user() //将数据从内核空间拷贝到用户空间</span><br></pre></td></tr></table></figure>
-
-<h3 id="Linux下传统IPC通信原理"><a href="#Linux下传统IPC通信原理" class="headerlink" title="Linux下传统IPC通信原理"></a>Linux下传统IPC通信原理</h3><p>理解了上面的几个概念，我们再来看看传统的 IPC 方式中，进程之间是如何实现通信的。</p>
-<p>通常的做法是消息发送方将要发送的数据存放在内存缓存区中，通过系统调用进入内核态。然后内核程序在内核空间分配内存，开辟一块内核缓存区，调用 copy_from_user() 函数将数据从用户空间的内存缓存区拷贝到内核空间的内核缓存区中。同样的，接收方进程在接收数据时在自己的用户空间开辟一块内存缓存区，然后内核程序调用 copy_to_user() 函数将数据从内核缓存区拷贝到接收进程的内存缓存区。这样数据发送方进程和数据接收方进程就完成了一次数据传输，我们称完成了一次进程间通信。如下图：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a954b2c791?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>传统的IPC通信方式有2个问题:</p>
-<ol>
-<li>性能地下, 一次数据传输需要经历: 内存缓存区 -&gt; 内核缓存区 -&gt; 内存缓存区, 需要2次数据拷贝</li>
-<li>接受数据的缓存区由数据接收进程提供, 但是接收进程并不知道需要多大的空间来存放将要传递过来的数据，因此只能开辟尽可能大的内存空间或者先调用 API 接收消息头来获取消息体的大小，这两种做法不是浪费空间就是浪费时间。</li>
-</ol>
-<h3 id="Binder跨进程通信原理"><a href="#Binder跨进程通信原理" class="headerlink" title="Binder跨进程通信原理"></a>Binder跨进程通信原理</h3><p>理解了 Linux IPC 相关概念和通信原理，接下来我们正式介绍下 Binder IPC 的原理。</p>
-<h4 id="动态内核可加载模块-amp-amp-内存映射"><a href="#动态内核可加载模块-amp-amp-内存映射" class="headerlink" title="动态内核可加载模块 &amp;&amp; 内存映射"></a>动态内核可加载模块 &amp;&amp; 内存映射</h4><p>正如前文所说，跨进程通信需要内核空间做支持的。传统的IPC机制如管道, Socket都是内核的一部分，因此通过内核支持来实现进程间通信自然是没问题的。但是Binder并不是内核的一部分， 这就需要Linux的<code>动态内核可加载模块(Loadable Kernel Module, LKM)</code>机制，模块是具有独立功能的程序，可以单独编译，但不能独立运行。他在运行时被链接到内核作为内核的一部分运行. 这样，Android系统就可以通过动态添加一个内核模块运行在内核空间，用户进程之间通过这个内核模块作为桥梁来实现通信.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">在 Android 系统中，这个运行在内核空间，负责各个用户进程通过 Binder 实现通信的内核模块就叫 Binder 驱动（Binder Dirver）。</span><br></pre></td></tr></table></figure>
-
-<p>那么在 Android 系统中用户进程之间是如何通过这个内核模块（Binder 驱动）来实现通信的呢？难道是和前面说的传统 IPC 机制一样，先将数据从发送方进程拷贝到内核缓存区，然后再将数据从内核缓存区拷贝到接收方进程，通过两次拷贝来实现吗？显然不是，否则也不会有开篇所说的 Binder 在性能方面的优势了。</p>
-<p>这就不得不通道 Linux 下的另一个概念：<code>内存映射</code>:</p>
-<p>Binder IPC 机制中涉及到的内存映射通过 <code>mmap()</code> 来实现，mmap() 是操作系统中一种内存映射的方法。内存映射简单的讲就是将用户空间的一块内存区域映射到内核空间。映射关系建立后，用户对这块内存区域的修改可以直接反应到内核空间；反之内核空间对这段区域的修改也能直接反应到用户空间。</p>
-<p>内存映射能减少数据拷贝次数，实现用户空间和内核空间的高效互动。两个空间各自的修改能直接反映在映射的内存区域，从而被对方空间及时感知。也正因为如此，内存映射能够提供对进程间通信的支持。</p>
-<h4 id="Binder-IPC实现原理"><a href="#Binder-IPC实现原理" class="headerlink" title="Binder IPC实现原理"></a>Binder IPC实现原理</h4><p>Binder IPC 正是基于内存映射（mmap）来实现的，但是 mmap() 通常是用在有物理介质的文件系统上的。</p>
-<p>比如进程中的用户区域是不能直接和物理设备打交道的，如果想要把磁盘上的数据读取到进程的用户区域，需要两次拷贝（磁盘–&gt;内核空间–&gt;用户空间）；通常在这种场景下 mmap() 就能发挥作用，通过在物理介质和用户空间之间建立映射，减少数据的拷贝次数，用内存读写取代I/O读写，提高文件读取效率。</p>
-<p>而 Binder 并不存在物理介质，因此 Binder 驱动使用 mmap() 并不是为了在物理介质和用户空间之间建立映射，而是用来在内核空间创建数据接收的缓存空间。</p>
-<p>一次完整的 Binder IPC 通信过程通常是这样：</p>
-<ol>
-<li>首先Binder驱动在内核空间创建一个数据接收缓存区</li>
-<li>接着在内核空间开辟一块内核缓存区, 建立内核缓存区和内核中数据接收缓存区之间的映射关系，以及内核中数据接收缓存区和接受进程用户空间地址的映射关系</li>
-<li>发送方进程通过系统调用<code>copy_from_user()</code>将数据<code>copy</code>到内核中的内核缓存区, 由于内核缓存区和接收进程的用户空间存在内存映射, 因此也就相当于把数据发送到了接收进程的用户空间，这样便完成了一次进程间通信. </li>
-</ol>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a9557158d0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h3 id="Binder通信模型"><a href="#Binder通信模型" class="headerlink" title="Binder通信模型"></a>Binder通信模型</h3><p>介绍完 Binder IPC 的底层通信原理，接下来我们看看实现层面是如何设计的。</p>
-<p>一次完整的进程间通信必然至少包含两个进程，通常我们称通信的双方分别为客户端进程（Client）和服务端进程（Server），由于进程隔离机制的存在，通信双方必然需要借助 Binder 来实现。</p>
-<h4 id="Client-Server-ServiceManager-驱动"><a href="#Client-Server-ServiceManager-驱动" class="headerlink" title="Client/Server/ServiceManager/驱动"></a>Client/Server/ServiceManager/驱动</h4><p>前面我们介绍过，Binder 是基于 <code>C/S 架构</code>的。由一系列的组件组成，包括 Client、Server、ServiceManager、Binder 驱动。其中 Client、Server、Service Manager 运行在用户空间，Binder 驱动运行在内核空间。其中 Service Manager 和 Binder 驱动由系统提供，而 Client、Server 由应用程序来实现。Client、Server 和 ServiceManager 均是通过系统调用 open、mmap 和 ioctl 来访问设备文件 /dev/binder，从而实现与 Binder 驱动的交互来间接的实现跨进程通信。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a955f25e1c?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p>Client、Server、ServiceManager、Binder 驱动这几个组件在通信过程中扮演的角色就如同互联网中服务器（Server）、客户端（Client）、DNS域名服务器（ServiceManager）以及路由器（Binder 驱动）之前的关系。</p>
-<p>通常我们访问一个网页的步骤是这样的：首先在浏览器输入一个地址，如 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 然后按下回车键。但是并没有办法通过域名地址直接找到我们要访问的服务器，因此需要首先访问 DNS 域名服务器，域名服务器中保存了 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 对应的 ip 地址 10.249.23.13，然后通过这个 ip 地址才能放到到 <a href="http://www.google.com" target="_blank" rel="noopener">www.google.com</a> 对应的服务器。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a979646aee?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<p><a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Funiversus%2Farticle%2Fdetails%2F6211589" target="_blank" rel="noopener">Android Binder 设计与实现</a>一文中对 Client、Server、ServiceManager、Binder 驱动有很详细的描述，以下是部分摘录：</p>
-<p>Binder驱动:</p>
-<p>Binder驱动就如同路由器一样，使整个通信的核心; 驱动负责进程之间Binder通信的建立， Binder在进程之间的传递, Binder引用计数管理，数据包在进程之间的传递和交互等一系列底层支持。</p>
-<p>ServiceManager 与实名 Binder</p>
-<p>ServiceManager 和 DNS 类似，作用是将字符形式的 Binder 名字转化成 Client 中对该 Binder 的引用，使得 Client 能够通过 Binder 的名字获得对 Binder 实体的引用。注册了名字的 Binder 叫实名 Binder，就像网站一样除了除了有 IP 地址意外还有自己的网址。Server 创建了 Binder，并为它起一个字符形式，可读易记得名字，将这个 Binder 实体连同名字一起以数据包的形式通过 Binder 驱动发送给 ServiceManager ，通知 ServiceManager 注册一个名为“张三”的 Binder，它位于某个 Server 中。驱动为这个穿越进程边界的 Binder 创建位于内核中的实体节点以及 ServiceManager 对实体的引用，将名字以及新建的引用打包传给 ServiceManager。ServiceManger 收到数据后从中取出名字和引用填入查找表。</p>
-<p>细心的读者可能会发现，ServierManager 是一个进程，Server 是另一个进程，Server 向 ServiceManager 中注册 Binder 必然涉及到进程间通信。当前实现进程间通信又要用到进程间通信，这就好像蛋可以孵出鸡的前提却是要先找只鸡下蛋！Binder 的实现比较巧妙，就是预先创造一只鸡来下蛋。ServiceManager 和其他进程同样采用 Binder 通信，ServiceManager 是 Server 端，有自己的 Binder 实体，其他进程都是 Client，需要通过这个 Binder 的引用来实现 Binder 的注册，查询和获取。ServiceManager 提供的 Binder 比较特殊，它没有名字也不需要注册。当一个进程使用 BINDER_SET_CONTEXT_MGR 命令将自己注册成 ServiceManager 时 Binder 驱动会自动为它创建 Binder 实体（这就是那只预先造好的那只鸡）。其次这个 Binder 实体的引用在所有 Client 中都固定为 0 而无需通过其它手段获得。也就是说，一个 Server 想要向 ServiceManager 注册自己的 Binder 就必须通过这个 0 号引用和 ServiceManager 的 Binder 通信。类比互联网，0 号引用就好比是域名服务器的地址，你必须预先动态或者手工配置好。要注意的是，这里说的 Client 是相对于 ServiceManager 而言的，一个进程或者应用程序可能是提供服务的 Server，但对于 ServiceManager 来说它仍然是个 Client。</p>
-<p>Client 获得实名 Binder 的引用</p>
-<p>Server 向 ServiceManager 中注册了 Binder 以后， Client 就能通过名字获得 Binder 的引用了。Client 也利用保留的 0 号引用向 ServiceManager 请求访问某个 Binder: 我申请访问名字叫张三的 Binder 引用。ServiceManager 收到这个请求后从请求数据包中取出 Binder 名称，在查找表里找到对应的条目，取出对应的 Binder 引用作为回复发送给发起请求的 Client。从面向对象的角度看，Server 中的 Binder 实体现在有两个引用：一个位于 ServiceManager 中，一个位于发起请求的 Client 中。如果接下来有更多的 Client 请求该 Binder，系统中就会有更多的引用指向该 Binder ，就像 Java 中一个对象有多个引用一样。</p>
-<h4 id="Binder通信过程"><a href="#Binder通信过程" class="headerlink" title="Binder通信过程"></a>Binder通信过程</h4><ol>
-<li>首先，一个进程使用BINDER_SET_CONTEXT_MGR命令通过Binder驱动将自己注册为ServiceManager</li>
-<li>Server通过驱动向ServiceManager中注册Binder(Server中的Binder实体), 表明可以对外提供服务. 驱动为这个Binder创建位于内核中的实体节点以及ServiceManager对实体的引用, 将名字以及新建的引用打包传给 ServiceManager，ServiceManger 将其填入查找表。</li>
-<li>Client 通过名字，在 Binder 驱动的帮助下从 ServiceManager 中获取到对 Binder 实体的引用，通过这个引用就能实现和 Server 进程的通信。</li>
-</ol>
-<p>我们看到整个通信过程都需要 Binder 驱动的接入。下图能更加直观的展现整个通信过程(为了进一步抽象通信过程以及呈现上的方便，下图我们忽略了 Binder 实体及其引用的概念)：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a98173c4c4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="Binder通信中的代理模式"><a href="#Binder通信中的代理模式" class="headerlink" title="Binder通信中的代理模式"></a>Binder通信中的代理模式</h4><p>我们已经解释清楚 Client、Server 借助 Binder 驱动完成跨进程通信的实现机制了，但是还有个问题会让我们困惑。A 进程想要 B 进程中某个对象（object）是如何实现的呢？毕竟它们分属不同的进程，A 进程 没法直接使用 B 进程中的 object。</p>
-<p>前面我们介绍过跨进程通信的过程都有 Binder 驱动的参与，因此在数据流经 Binder 驱动的时候驱动会对数据做一层转换。当 A 进程想要获取 B 进程中的 object 时，驱动并不会真的把 object 返回给 A，而是返回了一个跟 object 看起来一模一样的代理对象 objectProxy，这个 objectProxy 具有和 object 一摸一样的方法，但是这些方法并没有 B 进程中 object 对象那些方法的能力，这些方法只需要把把请求参数交给驱动即可。对于 A 进程来说和直接调用 object 中的方法是一样的。</p>
-<p>当 Binder 驱动接收到 A 进程的消息后，发现这是个 objectProxy 就去查询自己维护的表单，一查发现这是 B 进程 object 的代理对象。于是就会去通知 B 进程调用 object 的方法，并要求 B 进程把返回结果发给自己。当驱动拿到 B 进程的返回结果后就会转发给 A 进程，一次通信就完成了。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162b00a98198b306?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt></p>
-<h4 id="Binder的完整定义"><a href="#Binder的完整定义" class="headerlink" title="Binder的完整定义"></a>Binder的完整定义</h4><p>现在我们可以对 Binder 做个更加全面的定义了：</p>
-<ul>
-<li>从进程间通信的角度来看, Binder是一种进程间通信的机制</li>
-<li>从Server进程的角度看, Binder指的是Server中的Binder实体对象</li>
-<li>从Server进程的角度看,  Binder指的是Binder代理对象，是Binder实体对象的一个远程代理</li>
-<li>从传输过程的角度来看, Binder是一个可以跨进程传输的对象; Binder 驱动会对这个跨越进程边界的对象对一点点特殊处理，自动完成代理对象和本地对象之间的转换。</li>
-</ul>
-<h3 id="手动编码实现跨进程调用"><a href="#手动编码实现跨进程调用" class="headerlink" title="手动编码实现跨进程调用"></a>手动编码实现跨进程调用</h3><ul>
-<li>IBinder : IBinder 是一个接口，代表了一种跨进程通信的能力。只要实现了这个借口，这个对象就能跨进程传输。</li>
-<li>IInterface : IInterface 代表的就是 Server 进程对象具备什么样的能力（能提供哪些方法，其实对应的就是 AIDL 文件中定义的接口）</li>
-<li>Binder : Java 层的 Binder 类，代表的其实就是 Binder 本地对象。BinderProxy 类是 Binder 类的一个内部类，它代表远程进程的 Binder 对象的本地代理；这两个类都继承自 IBinder, 因而都具有跨进程传输的能力；实际上，在跨越进程的时候，Binder 驱动会自动完成这两个对象的转换。</li>
-<li>Stub : AIDL 的时候，编译工具会给我们生成一个名为 Stub 的静态内部类；这个类继承了 Binder, 说明它是一个 Binder 本地对象，它实现了 IInterface 接口，表明它具有 Server 承诺给 Client 的能力；Stub 是一个抽象类，具体的 IInterface 的相关实现需要开发者自己实现。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.scions.cn/posts/1ada89fb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/1ada89fb/" itemprop="url">Android 无埋点监控</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T21:02:57+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/1ada89fb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1ada89fb/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0" target="_blank" rel="noopener">https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0</a><br><a href="https://blog.csdn.net/jhyshenyu/article/details/87633652" target="_blank" rel="noopener">https://blog.csdn.net/jhyshenyu/article/details/87633652</a><br><a href="https://blog.csdn.net/wangkai0681080/article/details/82659516" target="_blank" rel="noopener">https://blog.csdn.net/wangkai0681080/article/details/82659516</a><br><a href="https://blog.csdn.net/qian520ao/article/details/85308948" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/85308948</a><br><a href="https://juejin.im/post/5da6d99b6fb9a04e0855bfe3" target="_blank" rel="noopener">https://juejin.im/post/5da6d99b6fb9a04e0855bfe3</a><br><a href="https://mp.weixin.qq.com/s/GHr2vxDY3KAimx0jIygc_Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/GHr2vxDY3KAimx0jIygc_Q</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2056,7 +1972,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">235</span>
+                  <span class="site-state-item-count">239</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
