@@ -12,6 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
+<script data-ad-client="ca-pub-3610947468348159" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
 
@@ -87,7 +88,7 @@
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
 <meta property="og:description" content="观察Activity栈的脚本: 1adb shell dumpsys activity | sed -n -e &apos;/Stack #/p&apos; -e &apos;/Running activities/,/Run #0/p&apos;   Standard模式 SingleTop模式 栈顶复用 SingleTask模式 栈内复用 SingleInstance模式  Standard模式标准模式, 启动Activity的默认">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-30T07:54:10.756Z">
+<meta property="og:updated_time" content="2020-04-26T08:47:35.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android Activity栈和启动模式">
 <meta name="twitter:description" content="观察Activity栈的脚本: 1adb shell dumpsys activity | sed -n -e &apos;/Stack #/p&apos; -e &apos;/Running activities/,/Run #0/p&apos;   Standard模式 SingleTop模式 栈顶复用 SingleTask模式 栈内复用 SingleInstance模式  Standard模式标准模式, 启动Activity的默认">
@@ -465,6 +466,8 @@
 </ul>
 </li>
 </ul>
+<p>添加:</p>
+<p>如果一个Activity没有显式的指明该 Activity的taskAffinity，那么它的这个属性就等于Application指明的taskAffinity，如果 Application也没有指明，那么该taskAffinity的值就等于包名。而Task也有自己的affinity属性，它的值等于它的根 Activity的taskAffinity的值。</p>
 
       
     </div>
@@ -616,7 +619,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">239</span>
+                  <span class="site-state-item-count">246</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -638,7 +641,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
