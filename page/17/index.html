@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/afd7ba5c/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/a6096449/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/afd7ba5c/" itemprop="url">Algorithm LeetCode 290 Word Pattern</a></h1>
+                <a class="post-title-link" href="/posts/a6096449/" itemprop="url">Algorithm LeetCode 155 Min Stack</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-09T13:56:12+08:00">
-                2019-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T21:01:51+08:00">
+                2019-12-14
               </time>
             
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/afd7ba5c/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/afd7ba5c/" itemprop="commentCount"></span>
+                <a href="/posts/a6096449/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a6096449/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -411,410 +411,836 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a <code>pattern</code> and a string <code>str</code>, find if str follows the same pattern.</p>
-<p>Here follow means a full match, such that there is a bijection between a letter in <code>pattern</code> and a non-empty word in <code>str</code>.</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
+<p>push(x) – Push element x onto stack.<br>pop() – Removes the element on top of the stack.<br>top() – Get the top element.<br>getMin() – Retrieve the minimum element in the stack.</p>
+<p>Example:</p>
+<p>MinStack minStack = new MinStack();<br>minStack.push(-2);<br>minStack.push(0);<br>minStack.push(-3);<br>minStack.getMin();   –&gt; Returns -3.<br>minStack.pop();<br>minStack.top();      –&gt; Returns 0.<br>minStack.getMin();   –&gt; Returns -2.</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每次push的时候, 如果当前是最小值, 则把之前的min值放进去也就是把倒数第二min的值放进去<br>每次pop的时候，如果pop是最小值，min则指向之前记录的倒数第二值作为pop后的最小值<br>如果pop的时候，不是最小值，就直接pop</p>
+<p>也就是如果push的时候是最小值，就push 2次，push一个最小值，push一个倒数第二, 如果不是就push一次<br>pop的时候，如果是最小值，就pop 2次 min记录第二次pop的值作为后面的最小值, 如果不是,就pop一次</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 注意是 x &lt;= min, 否则pop时候判断会有问题</span></span><br><span class="line">        <span class="keyword">if</span>(x &lt;= min) &#123;</span><br><span class="line">            stack.push(min);</span><br><span class="line">            min = x;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(min == stack.pop()) &#123;</span><br><span class="line">            min = stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/4d5b7367/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/4d5b7367/" itemprop="url">Algorithm LeetCode 160 Intersection of Two LinkedList</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T20:26:37+08:00">
+                2019-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/4d5b7367/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4d5b7367/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>三种思路</p>
+<ol>
+<li>Stack</li>
+<li>找到长短直接的差距n, 然后长链表先走n步后，与短链表一起走</li>
+<li>巧妙的解法</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/5ac11b38/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/5ac11b38/" itemprop="url">Algorithm LeetCode 66 Plus One</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T19:25:37+08:00">
+                2019-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/5ac11b38/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5ac11b38/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</p>
+<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
+<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
 <p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "abba", str = "dog cat cat dog"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [1,2,3]</span><br><span class="line">Output: [1,2,4]</span><br><span class="line">Explanation: The array represents the integer 123.</span><br></pre></td></tr></table></figure>
 
 <p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input:pattern = "abba", str = "dog cat cat fish"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [4,3,2,1]</span><br><span class="line">Output: [4,3,2,2]</span><br><span class="line">Explanation: The array represents the integer 4321.</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>直观思路就是变成int 然后+1后转为array, 但是这里有个坑就是int溢出的问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="keyword">int</span> dig = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; digits.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> ten = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = digits.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            ten = ten * <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dig += (digits[i] * ten );</span><br><span class="line">    &#125;</span><br><span class="line">    String s = (dig + <span class="number">1</span>) + <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span>[] ret = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">        ret[i] = Integer.parseInt(s.charAt(i) + <span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>所以这种方式不能采用，而是只用array, 然后记录进位</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">int</span> tail = digits.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(digits[i]  + num &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">                digits[i] = digits[i] + num;</span><br><span class="line">                num = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                num = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(num != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] newCopy = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; newCopy.length; i++) &#123;</span><br><span class="line">                newCopy[i] = digits[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            newCopy[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> newCopy;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/e7c78f66/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/e7c78f66/" itemprop="url">Algorithm LeetCode 914 X of a Kind in a Deck of Cards</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T15:55:19+08:00">
+                2019-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/e7c78f66/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e7c78f66/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a deck of cards, each card has an integer written on it.</p>
+<p>Return true if and only if you can choose X &gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:</p>
+<p>Each group has exactly X cards.<br>All the cards in each group have the same integer.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,4,3,2,1]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Possible partition [1,1],[2,2],[3,3],[4,4]</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1,2,2,2,3,3]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: No possible partition.</span><br></pre></td></tr></table></figure>
 
 <p>Example 3:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "aaaa", str = "dog cat cat dog"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: No possible partition.</span><br></pre></td></tr></table></figure>
 
 <p>Example 4:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: pattern = "abba", str = "dog dog dog dog"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Possible partition [1,1]</span><br></pre></td></tr></table></figure>
 
-<p>Notes:<br>You may assume <code>pattern</code> contains only lowercase letters, and <code>str</code> contains lowercase letters that may be separated by a single space.</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>这题主要考察了 map.put(K, V)方法返回值的问题。</p>
-<p>对于一个map来说，<br>第一次put成功, map.put(k1, v1), 返回值是上次k1位置对应的value, 这儿因为是首次，所以返回null<br>第二次put成功, map.put(k1, v2), 返回值是上次k1位置对应的value, 这儿就会返回v1</p>
-<p>因此，设计一个map, key是patter中的char, 也是str中的strs[index]. 所以用Map<object>, value用index</object></p>
-<p>e.g </p>
-<p>这样对于pattern来说, e.g pattern 为 ‘aabb’</p>
-<p>map.put(a, 0); 返回null<br>map.put(a, 1); 返回0<br>map.put(b, 2); 返回null<br>map.put(b, 3); 返回2</p>
-<p>对于str来说, e.g str 为 “dog dog cat cat”<br>map.put(dog, 0); 返回null<br>map.put(dog, 1); 返回0<br>map.put(cat, 2); 返回null<br>map.put(cat, 3); 返回2</p>
-<p>发现他们返回值对得上，就可以认为是pattern的</p>
-<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>在写代码的时候发现如果开始把Map设计为Map&lt;Object, Integer&gt;的时候跑case会在这样的情况下失败</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String pattern = <span class="string">"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccdd"</span>;</span><br><span class="line">String str = <span class="string">"s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s s t t"</span>;</span><br></pre></td></tr></table></figure>
+<p>Example 5:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,2,2,2,2]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Possible partition [1,1],[2,2],[2,2]</span><br></pre></td></tr></table></figure>
 
-<p>也就是<br>pattern: map.put(d, 128) 返回Integer 128<br>str    : map.put(t, 128) 返回Integer 128<br>然后 Integer(128) != Integer(128)</p>
-<p>整理下</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Integer a = <span class="number">18</span>;</span><br><span class="line">Integer b = <span class="number">18</span>;</span><br><span class="line">a == b <span class="comment">// true</span></span><br><span class="line">Integer a1 = <span class="number">128</span>;</span><br><span class="line">Integer b1 = <span class="number">128</span>;</span><br><span class="line">a1 == b1 <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-
-<p>原因是:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer类内部 通过静态内部类提供了一个缓存池，范围在-128~127之间，如果超过这个范围 Integer 值都是new出来的对象 所以使用 == 比较会出错</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原因Integer缓存了-128~127之间的数，这是在类加载期间就完成的。以后需要的时候直接指向它就可以了，省去了构造对象的开支，提高了效率。</span></span><br><span class="line"><span class="comment">//同理, Long也一样, 所以在Map中使用Integer或者Long作为Value的时候需要注意</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntegerCache</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> low = -<span class="number">128</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> high;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">final</span> Integer cache[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="comment">// high value may be configured by property</span></span><br><span class="line">        <span class="keyword">int</span> h = <span class="number">127</span>;</span><br><span class="line">        String integerCacheHighPropValue =</span><br><span class="line">            sun.misc.VM.getSavedProperty(<span class="string">"java.lang.Integer.IntegerCache.high"</span>);</span><br><span class="line">        <span class="keyword">if</span> (integerCacheHighPropValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> i = parseInt(integerCacheHighPropValue);</span><br><span class="line">                i = Math.max(i, <span class="number">127</span>);</span><br><span class="line">                <span class="comment">// Maximum array size is Integer.MAX_VALUE</span></span><br><span class="line">                h = Math.min(i, Integer.MAX_VALUE - (-low) -<span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span>( NumberFormatException nfe) &#123;</span><br><span class="line">                <span class="comment">// If the property cannot be parsed into an int, ignore it.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        high = h;</span><br><span class="line"></span><br><span class="line">        cache = <span class="keyword">new</span> Integer[(high - low) + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">int</span> j = low;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; cache.length; k++)</span><br><span class="line">            cache[k] = <span class="keyword">new</span> Integer(j++);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// range [-128, 127] must be interned (JLS7 5.1.7)</span></span><br><span class="line">        <span class="keyword">assert</span> IntegerCache.high &gt;= <span class="number">127</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">IntegerCache</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">wordPattern</span><span class="params">(String pattern, String str)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == pattern || str == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        String[] strs = str.split(<span class="string">" "</span>);</span><br><span class="line">        <span class="keyword">if</span>(strs.length != pattern.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = pattern.charAt(i);</span><br><span class="line">            String s = strs[i];</span><br><span class="line"></span><br><span class="line">            Object l = map.put(c, i);</span><br><span class="line">            Object r = map.put(s, i);</span><br><span class="line">            <span class="keyword">int</span> left = <span class="keyword">null</span> == l ? -<span class="number">1</span> : (<span class="keyword">int</span>)l;</span><br><span class="line">            <span class="keyword">int</span> right = <span class="keyword">null</span> == r ? -<span class="number">1</span> : (<span class="keyword">int</span>)r;</span><br><span class="line">            <span class="keyword">if</span>(left != right) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/31ea19a6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/31ea19a6/" itemprop="url">Android 深入理解Scroller原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T10:01:25+08:00">
-                2019-12-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/31ea19a6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/31ea19a6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.jianshu.com/p/5629bee7718d" target="_blank" rel="noopener">https://www.jianshu.com/p/5629bee7718d</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/421312a6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/421312a6/" itemprop="url">Java-JVM相关</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T14:35:53+08:00">
-                2019-12-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/421312a6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/421312a6/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h2><p><img src="http://www.javainterviewpoint.com/wp-content/uploads/2016/01/JVM-Architecture.png" alt="JVM Architecture"></p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="java-file-gt-class"><a href="#java-file-gt-class" class="headerlink" title=".java file -&gt; .class"></a>.java file -&gt; .class</h3><p>通过<code>javac</code> 把<code>java</code>文件编译为<code>.class</code>文件</p>
-<h3 id="class-gt-JVM"><a href="#class-gt-JVM" class="headerlink" title=".class -&gt; JVM"></a>.class -&gt; JVM</h3><p>通过<code>类加载器</code>把<code>.class</code>文件加载进<code>运行时数据区</code></p>
-<h4 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h4><ul>
-<li>AppClassLoader</li>
-<li>ExtClassLoader</li>
-<li>RootClassLoader</li>
-</ul>
-<p>双亲委派机制, 主要是从安全角度考虑</p>
-<h3 id="JVM运行时数据区"><a href="#JVM运行时数据区" class="headerlink" title="JVM运行时数据区"></a>JVM运行时数据区</h3><h4 id="程序计数器-Program-Counter-Register"><a href="#程序计数器-Program-Counter-Register" class="headerlink" title="程序计数器 Program Counter Register"></a>程序计数器 Program Counter Register</h4><p>线程私有</p>
-<h4 id="本地方法栈-Native-Method-Stack"><a href="#本地方法栈-Native-Method-Stack" class="headerlink" title="本地方法栈 Native Method Stack"></a>本地方法栈 Native Method Stack</h4><p> 本地方法接口(JNI) -&gt; 本地方法库  本地方法栈里放的是 native方法</p>
-<h4 id="虚拟机栈-VM-Stack"><a href="#虚拟机栈-VM-Stack" class="headerlink" title="虚拟机栈 VM Stack"></a>虚拟机栈 VM Stack</h4><p>栈中存放：</p>
-<ol>
-<li>局部对象的引用</li>
-<li>实例方法，每个方法执行时都会创建一个栈帧，存储(局部变量表，操作数栈，动态链接，方法出口信息等)</li>
-<li>八种基本数据类型的局部变量</li>
-</ol>
-<p>弹栈</p>
-<p>栈的生命周期与线程同步，线程结束，栈结束</p>
-<p>e.g </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Student s = <span class="keyword">new</span> Student();</span><br><span class="line"><span class="comment">// s在栈中，指向heap里的实际的对象</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>所有线程共享</p>
-<p>存储: </p>
-<ol>
-<li>静态变量 静态常量</li>
-<li>常量池 <ol>
-<li>JDK 1.6 常量池在方法区中 </li>
-<li>JDK 1.7 常量池在堆中</li>
-<li>JDK 1.8 常量池在 metaspace里</li>
-</ol>
-</li>
-<li>类信息(构造方法， 接口定义) </li>
-<li>方法信息</li>
-<li>八大数据类型</li>
-</ol>
-<h4 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h4><p>堆中存放:</p>
-<ol>
-<li>由new关键字产生的所有对象</li>
-<li>实例变量(非static修饰的成员变量)</li>
-</ol>
-<p>Heap 线程共享</p>
-<p>一般说方法区也是在堆里。 垃圾回收只会发生在堆里</p>
-<p>一个JVM只有一个heap, 大小可以调节</p>
-<p>分为:</p>
+<p>Note:</p>
 <ul>
-<li>新生区   ——&gt; 轻GC<ul>
-<li>Eden 区</li>
-<li>Suvivor 0 区</li>
-<li>Survivor 1区</li>
+<li>1 &lt;= deck.length &lt;= 10000</li>
+<li>0 &lt;= deck[i] &lt; 10000</li>
 </ul>
-</li>
-<li>养老区 —–&gt; 满了触发Full GC</li>
-<li>永久区(1.8后叫metaspace) // 方法区也在这里</li>
-</ul>
-<p>永久区一般存储JDK自带的对象，不存在垃圾回收<br>其他2个区的垃圾回收算法:</p>
-<ul>
-<li>标记清除</li>
-<li>标记压缩</li>
-<li>复制算法</li>
-<li>引用计数算法</li>
-</ul>
-<h3 id="执行引擎"><a href="#执行引擎" class="headerlink" title="执行引擎"></a>执行引擎</h3><p>//TODO JIT<br>一些操作可以在这里处理, </p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span>  <span class="title">PersonDemo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;   <span class="comment">//局部变量p和形参args都在main方法的栈帧中</span></span><br><span class="line">        <span class="comment">//new Person()对象在堆中分配空间</span></span><br><span class="line">        Person p = <span class="keyword">new</span> Person();</span><br><span class="line">        <span class="comment">//sum在栈中，new int[10]在堆中分配空间</span></span><br><span class="line">        <span class="keyword">int</span>[] sum = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;   <span class="comment">//实例变量name和age在堆(Heap)中分配空间</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="comment">//类变量(引用类型)name1和"cn"都在方法区(Method Area)</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String name1 = <span class="string">"cn"</span>;</span><br><span class="line">    <span class="comment">//类变量(引用类型)name2在方法区(Method Area)</span></span><br><span class="line">    <span class="comment">//new String("cn")对象在堆(Heap)中分配空间</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String name2 = <span class="keyword">new</span> String(<span class="string">"cn"</span>);</span><br><span class="line">    <span class="comment">//num在堆中，new int[10]也在堆中</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] num = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    Person(String name,<span class="keyword">int</span> age)</span><br><span class="line">    &#123;   </span><br><span class="line">        <span class="comment">//this及形参name、age在构造方法被调用时</span></span><br><span class="line">        <span class="comment">//会在构造方法的栈帧中开辟空间</span></span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//setName()方法在方法区中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//speak()方法在方法区中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">speak</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.name+<span class="string">"..."</span>+<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//showCountry()方法在方法区中</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">showCountry</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"country="</span>+country);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>比较直观, 遍历从2到，最大次数，然后看是否都可以整除，如果有，就return true, 否则false</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasGroupsSizeX</span><span class="params">(<span class="keyword">int</span>[] deck)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; deck.length; i++) &#123;</span><br><span class="line">            map.put(deck[i], map.getOrDefault(deck[i], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Integer&gt; set = map.keySet();</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index : set) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = map.get(index);</span><br><span class="line">            <span class="keyword">if</span>(v &gt; max) &#123;</span><br><span class="line">                max = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= max; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(canDiv(set, i, map)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">canDiv</span><span class="params">(Set&lt;Integer&gt; set, <span class="keyword">int</span> i, HashMap&lt;Integer, Integer&gt; map)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index : set) &#123; </span><br><span class="line">            <span class="keyword">int</span> v = map.get(index);</span><br><span class="line">            <span class="keyword">if</span>(v % i != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
 
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html" target="_blank" rel="noopener">https://www.cnblogs.com/chanshuyi/p/jvm_serial_00_why_learn_jvm.html</a> </li>
-</ul>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b5448e67/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b5448e67/" itemprop="url">Algorithm LeetCode 374 Guess Number Higher or Lower</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T11:41:55+08:00">
+                2019-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b5448e67/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b5448e67/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>We are playing the Guess Game. The game is as follows:</p>
+<p>I pick a number from 1 to n. You have to guess which number I picked.</p>
+<p>Every time you guess wrong, I’ll tell you whether the number is higher or lower.</p>
+<p>You call a pre-defined API guess(int num) which returns 3 possible results (-1, 1, or 0):</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-1 : My number is lower</span><br><span class="line"> 1 : My number is higher</span><br><span class="line"> 0 : Congrats! You got it!</span><br></pre></td></tr></table></figure>
+
+<p>Example :</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 10, pick = 6</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>典型二分查找, 不过注意坑, 注意审题 <code>My Number</code> 知道谁大谁小</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> <span class="keyword">extends</span> <span class="title">GuessGame</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">guessNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> guessNumber(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">guessNumber</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == end) &#123;</span><br><span class="line">            <span class="keyword">return</span> start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(guess(mid) == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> guessNumber(mid + <span class="number">1</span>, end);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(guess(mid) == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> guessNumber(start, mid- <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b6f1cce9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/b6f1cce9/" itemprop="url">Algorithm LeetCode 242 valid-anagram</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T17:34:09+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/b6f1cce9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6f1cce9/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings s and t , write a function to determine if t is an anagram of s.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = "anagram", t = "nagaram"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = "rat", t = "car"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<p>You may assume the string contains only lowercase alphabets.</p>
+<p>Follow up:</p>
+<p>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”<br>所以考虑hashmap， 记录每个字符的出现的次数，看他们是否相同<br>Top Voted Solution 思路更好, 如下: </p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            arr[c - <span class="string">'a'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = t.charAt(i);</span><br><span class="line">            arr[c - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
           
         
@@ -863,7 +1289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/d27340ce/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/72ef869e/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -882,7 +1308,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/d27340ce/" itemprop="url">Android-Data Binding相关</a></h1>
+                <a class="post-title-link" href="/posts/72ef869e/" itemprop="url">Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</a></h1>
         
 
         <div class="post-meta">
@@ -894,8 +1320,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-06T13:27:29+08:00">
-                2019-12-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T15:55:14+08:00">
+                2019-12-13
               </time>
             
 
@@ -917,8 +1343,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -935,8 +1361,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/d27340ce/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/d27340ce/" itemprop="commentCount"></span>
+                <a href="/posts/72ef869e/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/72ef869e/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -966,8 +1392,13 @@
       
         
           
-            <p><a href="https://www.jianshu.com/p/b9af64c9fa04" target="_blank" rel="noopener">https://www.jianshu.com/p/b9af64c9fa04</a><br><a href="https://www.jianshu.com/p/e4c4a9aece40" target="_blank" rel="noopener">https://www.jianshu.com/p/e4c4a9aece40</a><br><a href="https://juejin.im/post/5b02cf8c6fb9a07aa632146d" target="_blank" rel="noopener">https://juejin.im/post/5b02cf8c6fb9a07aa632146d</a><br><a href="https://www.jianshu.com/p/2c4ac24761f5" target="_blank" rel="noopener">https://www.jianshu.com/p/2c4ac24761f5</a></p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
+<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<p>Example:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  Given the sorted array: [-10,-3,0,5,9],</span><br><span class="line"></span><br><span class="line">One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     / \</span><br><span class="line">   -3   9</span><br><span class="line">   /   /</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
 
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>balanced BST 最中间的一定是根结点</p>
+<h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">sortedArrayToBST</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> create(<span class="keyword">null</span>, <span class="number">0</span>, nums.length - <span class="number">1</span>, nums);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> TreeNode <span class="title">create</span><span class="params">(TreeNode node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(start &gt; end) &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> mid = (end + start) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>(<span class="keyword">null</span> == node) &#123;</span><br><span class="line">         node = <span class="keyword">new</span> TreeNode(arr[mid]);</span><br><span class="line">     &#125;</span><br><span class="line">     node.left = create(<span class="keyword">null</span>, start, mid - <span class="number">1</span>, arr);</span><br><span class="line">     node.right = create(<span class="keyword">null</span>, mid + <span class="number">1</span>, end, arr);</span><br><span class="line">     <span class="keyword">return</span> node;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1015,7 +1446,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/7ff436d6/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/100ad818/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1034,7 +1465,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/7ff436d6/" itemprop="url">Translation-Data Binding Library-Work with observable data objects</a></h1>
+                <a class="post-title-link" href="/posts/100ad818/" itemprop="url">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a></h1>
         
 
         <div class="post-meta">
@@ -1046,8 +1477,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T11:26:23+08:00">
-                2019-10-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T15:54:49+08:00">
+                2019-12-13
               </time>
             
 
@@ -1069,8 +1500,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -1087,8 +1518,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/7ff436d6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7ff436d6/" itemprop="commentCount"></span>
+                <a href="/posts/100ad818/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/100ad818/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1118,30 +1549,13 @@
       
         
           
-            <h1 id="Work-with-observable-data-objects"><a href="#Work-with-observable-data-objects" class="headerlink" title="Work with observable data objects"></a>Work with observable data objects</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">Reference</a></p>
-<p>Observability refers to the capability of an object to notify others about changes in its data. The Data Binding Library allows you to make objects, fields, or collections observable.</p>
-<p>Any plain-old object can be used for data binding, but modifying the object doesn’t automatically cause the UI to update. Data binding can be used to give your data objects the ability to notify other objects, known as listener, when its data changes. There are three different types of observable classes: <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_objects" target="_blank" rel="noopener">objects</a>, <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_fields" target="_blank" rel="noopener">fields</a>, and <a href="https://developer.android.com/topic/libraries/data-binding/observability#observable_collections" target="_blank" rel="noopener">collections</a>.</p>
-<p>When one of these observable data objects is bound to the UI and a property of the data object changes, the UI is updated automatically.</p>
-<h2 id="Observable-fields"><a href="#Observable-fields" class="headerlink" title="Observable fields"></a>Observable fields</h2><p>Some work is involved in creating classes that implement the <a href="https://developer.android.com/reference/androidx/databinding/Observable.html" target="_blank" rel="noopener">Observable</a> interface, which could not be worth the effort if your classes only have a few properties. In this case, you can use the generic <a href="https://developer.android.com/reference/androidx/databinding/Observable.html" target="_blank" rel="noopener">Observable</a> class and the following primitive-specific classes to make fields observable:</p>
-<ul>
-<li>ObservableBoolean</li>
-<li>ObservableByte</li>
-<li>ObservableChar</li>
-<li>ObservableShort</li>
-<li>ObservableInt</li>
-<li>ObservableLong</li>
-<li>ObservableFloat</li>
-<li>ObservableDouble</li>
-<li>ObservableParcelable</li>
-</ul>
-<p>Observable fields are self-contained observable objects that have a single field. The primaitive versions avoid boxing and unboxing during access operations. To use this mechanism, create a <code>public final</code> property in the Java programming language or a read-only property in Kotlin, as shown in the following example:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; firstName = <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableField&lt;String&gt; lastName = <span class="keyword">new</span> ObservableField&lt;&gt;();</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> ObservableInt age = <span class="keyword">new</span> ObservableInt();</span><br></pre></td></tr></table></figure>
-
-<p>To access the field value, use the <code>set()</code> and <code>get()</code> accessor methods, as follows:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user.firstName.set(<span class="string">"Google"</span>);</span><br><span class="line"><span class="keyword">int</span> age = user.age.get();</span><br></pre></td></tr></table></figure>
-
-<p>// TODO</p>
-
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right, level by level from leaf to root).</p>
+<p>For example:<br>Given binary tree [3,9,20,null,null,15,7],</p>
+<pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7</p>
+<p>return its bottom-up level order traversal as:</p>
+<p>[<br>  [15,7],<br>  [9,20],<br>  [3]<br>]</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遇到二叉树层序遍历，考虑Queue</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; retList = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> != root) &#123;</span><br><span class="line">        queue.add(root);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> retList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="comment">// 注意这里的size，需要使用前2行中获取到的，而不能在这里直接使用queue.size() </span></span><br><span class="line">        <span class="comment">// 因为queue.size()会动态的变化，如果直接使用queue.size()会死循环</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">          <span class="comment">// 这里node需要每次获取当前的，而不能放在for循环外面</span></span><br><span class="line">            TreeNode node = queue.peek();</span><br><span class="line">            list.add(node.val);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.left) &#123;</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.right) &#123;</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            queue.poll();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        retList.add(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 优化解法就是每次retList.add的时候，都是add在index = 0 的地方</span></span><br><span class="line">    <span class="comment">// retList.add(0, list);</span></span><br><span class="line">    <span class="comment">// 这样可以实现倒序，不用再reverse</span></span><br><span class="line">    Collections.reverse(retList);</span><br><span class="line">    <span class="keyword">return</span> retList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1189,7 +1603,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/605894bb/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/2198e368/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1208,7 +1622,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/605894bb/" itemprop="url">Translation-Data Binding Library-Layouts and binding expressions</a></h1>
+                <a class="post-title-link" href="/posts/2198e368/" itemprop="url">Algorithm LeetCode 28 Implement strStr()</a></h1>
         
 
         <div class="post-meta">
@@ -1220,8 +1634,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T10:37:57+08:00">
-                2019-10-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T13:36:25+08:00">
+                2019-12-13
               </time>
             
 
@@ -1243,8 +1657,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -1261,8 +1675,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/605894bb/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/605894bb/" itemprop="commentCount"></span>
+                <a href="/posts/2198e368/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2198e368/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1292,218 +1706,8 @@
       
         
           
-            <h1 id="Layouts-and-binding-expressions"><a href="#Layouts-and-binding-expressions" class="headerlink" title="Layouts and binding expressions"></a>Layouts and binding expressions</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions" target="_blank" rel="noopener">Reference</a></p>
-<p>The expression language allows you to write expressions that handle events dispatched by the views. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects.</p>
-<p>Data binding layout files are slightly different and start with a root tag of <code>layout</code> followed by a <code>data</code> element and a <code>view</code> root element. This view element is what your root would be in a non-binding layout file. The following code shows a sample layout file:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">LinearLayout</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:orientation</span>=<span class="string">"vertical"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">android:layout_height</span>=<span class="string">"match_parent"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName&#125;"</span>/&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">           <span class="attr">android:text</span>=<span class="string">"@&#123;user.lastName&#125;"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>The <code>user</code> variable within <code>data</code> describes a property that may be used within this layout.</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">variable</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">type</span>=<span class="string">"com.example.User"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Expressions within the layout are written in the attribute properties using the <code>&quot;@{}&quot;</code> syntax. Here, the TextView text is set to the <code>firstName</code> property of the <code>user</code> variable:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Data-object"><a href="#Data-object" class="headerlink" title="Data object"></a>Data object</h2><p>Let’s assume for now that you have a plain-old object to describe the <code>User</code> entity:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> String firstName;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> String lastName;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">      <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>This type of object has data that never changes. It is common in applications to have data that is read once and never changes thereafter. It is also possible to use an object that follows a set of conventions, such as the usage of accessor methods in Java, as shown in the following example:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String firstName;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String lastName;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">User</span><span class="params">(String firstName, String lastName)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.firstName = firstName;</span><br><span class="line">      <span class="keyword">this</span>.lastName = lastName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getFirstName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.firstName;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getLastName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.lastName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>From the perspective of data binding, these two classes are equivalent. The expression <code>@{user.firstName}</code> used for the <code>android:text</code> attribute accesses the <code>firstName</code> field in the former class and the <code>getFirstName()</code> method in the latter class. Alternatively, it is also resolved to <code>firstName()</code> if that method exists.</p>
-<h2 id="Binding-data"><a href="#Binding-data" class="headerlink" title="Binding data"></a>Binding data</h2><p>A binding class is generated for each layout file. By default, the name of the classes is based on the name of the layout file, converting it to Pascal case and adding the Binding suffix to it. The above layout file is <code>activity_main.xml</code> so the corresponding generated class is <code>ActivityMainBinding</code>. This class holds all the bindings from the layout properties(for example, the <code>user</code> variable) to the layout’s views and knows how to assign values for the binding expressions. The recommended method to create the bindings is to do it while inflating the layout, as shown in the following example:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">   ActivityMainBinding binding = DataBindingUtil.setContentView(<span class="keyword">this</span>, R.layout.activity_main);</span><br><span class="line">   User user = <span class="keyword">new</span> User(<span class="string">"Test"</span>, <span class="string">"User"</span>);</span><br><span class="line">   binding.setUser(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>At runtime, the app displays the <code>Test</code> user in the UI. Alternatively, you can get the view using a <code>LayoutInflater</code>, as shown in the following example:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());</span><br></pre></td></tr></table></figure>
-
-<p>If you are using data binding items inside a <code>Fragment</code>, <code>ListView</code> or <code>RecyclerView</code> adapter, you may prefer to use the <code>inflate()</code> methods of the bindings classes or the <code>DataBindingUtil</code> class, as shown in the follow code example: </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    ListItemBinding binding = ListItemBinding.inflate(layoutInflater, viewGroup, <span class="keyword">false</span>);</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line">ListItemBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.list_item, viewGroup, <span class="keyword">false</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Expression-language"><a href="#Expression-language" class="headerlink" title="Expression language"></a>Expression language</h2><p>TODO 暂时不需要看</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/14f1fbc2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/14f1fbc2/" itemprop="url">Translation-Data Binding Library-Get started</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T10:02:52+08:00">
-                2019-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/14f1fbc2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/14f1fbc2/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Get-started"><a href="#Get-started" class="headerlink" title="Get started"></a>Get started</h1><p><a href="https://developer.android.com/topic/libraries/data-binding/start" target="_blank" rel="noopener">Reference</a></p>
-<p>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</p>
-<p>The Data Binding Library offers both flexibility and broad compatibility-it’s a support library, so you can use it with devices running Android 4.0(API level 14) or higher.</p>
-<p>It’s recommended to use the latest Android Plugin for Gradle in your project. However, data binding is supported on version 1.5.0 and higher. For more information, see how to <a href="https://developer.android.com/studio/releases/gradle-plugin.html#updating-plugin" target="_blank" rel="noopener">update the Android Plugin for Gradle</a>.</p>
-<h2 id="Build-environment"><a href="#Build-environment" class="headerlink" title="Build environment"></a>Build environment</h2><p>To get started with data binding, download the library from the <code>Support Repository</code> in the Android SDK manager. For more information, see <a href="https://developer.android.com/studio/intro/update.html" target="_blank" rel="noopener">Update the IDE and SDK Tools</a>.</p>
-<p>To configure your app to use the data binding, add the <code>dataBinding</code> element to your <code>build.gradle</code> file in the app module, as shown in the following example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    android &#123;</span><br><span class="line">    ...</span><br><span class="line">    dataBinding &#123;</span><br><span class="line">        enabled = true</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Android-Studio-support-for-data-binding"><a href="#Android-Studio-support-for-data-binding" class="headerlink" title="Android Studio support for data binding"></a>Android Studio support for data binding</h2><p>Android Studio supports many of the editing features for data binding code. For example, it supports the following features for data binding expressions:</p>
-<ul>
-<li>Syntax highlighting</li>
-<li>Flagging of expression language syntax errors</li>
-<li>XML code completion</li>
-<li>References, including <a href="https://www.jetbrains.com/help/idea/2017.1/navigation-in-source-code.html" target="_blank" rel="noopener">navigation</a>(such as navigate to a declaration) and <a href="https://www.jetbrains.com/help/idea/2017.1/viewing-inline-documentation.html" target="_blank" rel="noopener">quick documentation</a></li>
-</ul>
-<p>The <code>Preview</code> pane in <code>Layout Editor</code> displays the default value of data binidng expressions, if provided. For example, the <code>Preview</code> pane displays the <code>my_default</code> value on the <code>TextView</code> widget declared in the following example:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span> <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag"><span class="attr">android:text</span>=<span class="string">"@&#123;user.firstName, default=my_default&#125;"</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>If you need to display a default value only during the design phase of your project, you can use <code>tools</code> attributes instead of default expression values, as described in <a href="https://developer.android.com/studio/write/tool-attributes.html" target="_blank" rel="noopener">Tools Attributes Reference</a>.</p>
-<h2 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h2><p>To learn more about data binding, consult the following additional resources.</p>
-<ul>
-<li>Sample<ul>
-<li><a href="https://github.com/googlesamples/android-databinding" target="_blank" rel="noopener">Android Data Binding Library samples</a></li>
-</ul>
-</li>
-<li>Codelabs<ul>
-<li><a href="https://codelabs.developers.google.com/codelabs/android-databinding" target="_blank" rel="noopener">Android Data Binding codelab</a></li>
-</ul>
-</li>
-<li>Blog posts<ul>
-<li><a href="https://medium.com/androiddevelopers/data-binding-lessons-learnt-4fd16576b719" target="_blank" rel="noopener">Data Binding - Lessons Learnt</a></li>
-</ul>
-</li>
+            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
+<li><a href="https://blog.csdn.net/f1033774377/article/details/82556438" target="_blank" rel="noopener">https://blog.csdn.net/f1033774377/article/details/82556438</a></li>
 </ul>
 
           
@@ -1553,7 +1757,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/1d9e584e/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b6a37ecd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1572,7 +1776,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/1d9e584e/" itemprop="url">Translation-Data Binding Library-Overview</a></h1>
+                <a class="post-title-link" href="/posts/b6a37ecd/" itemprop="url">Algorithm LeetCode 367 Valid Perfect Square</a></h1>
         
 
         <div class="post-meta">
@@ -1584,8 +1788,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T09:27:35+08:00">
-                2019-10-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T10:57:20+08:00">
+                2019-12-13
               </time>
             
 
@@ -1607,8 +1811,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -1625,8 +1829,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/1d9e584e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/1d9e584e/" itemprop="commentCount"></span>
+                <a href="/posts/b6a37ecd/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6a37ecd/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1656,466 +1860,15 @@
       
         
           
-            <h1 id="Data-Binding-Library"><a href="#Data-Binding-Library" class="headerlink" title="Data Binding Library"></a>Data Binding Library</h1><p><a href="https://developer.android.com/topic/libraries/data-binding" target="_blank" rel="noopener">Reference</a></p>
-<p>The Data Binding Library is a support library that allows you to bind UI components in your layouts to data sources in your app using a declarative format rather than programmatically.</p>
-<p>Layouts are often defined in activities with code that calls UI framework methods. For example, the code below calls <code>findViewById()</code> to find a <code>TextView</code> widget and bind it to the <code>username</code> property of the <code>viewModel</code> variable:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TextView textView = findViewById(R.id.sample_text);</span><br><span class="line">textView.setText(viewModel.getUserName());</span><br></pre></td></tr></table></figure>
-
-<p>The following examples shows how to use the Data Binding Library to assign text to the widget directly in the layout file. This removes the need to call any of the Java code shown above. Note the use of <code>@{}</code> syntax in the assignment expression:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;TextView</span><br><span class="line">android:text=<span class="string">"@&#123;viewmodel.userName&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Binding components in the layout file lets you remove many UI framework calls in your activities, making them simpler and easier to maintain. This can also improve your app’s performance and help prevent memory leaks and null pointer exceptions.</p>
-<h2 id="Using-the-Data-Binding-Library"><a href="#Using-the-Data-Binding-Library" class="headerlink" title="Using the Data Binding Library"></a>Using the Data Binding Library</h2><p>Use the following pages to learn how to use the Data Binding Library in your Android apps.</p>
-<p><a href="https://developer.android.com/topic/libraries/data-binding/start.html" target="_blank" rel="noopener">Get started</a></p>
-<pre><code>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions.html" target="_blank" rel="noopener">Layouts and binding expressions</a></p>
-<pre><code>The expression language allows you to write expressions that connecct variable to the views in the layout. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects. The library provides features such as imports, variable, and includes that you can use in your layout.
-
-These features of the library coexist seamlessly with your existing layouts. For example, the binding variables that can be used in expressions are defined inside a `data` element that is a sibling of the UI layout&apos;s root element. Both elements are wrapped in a `layout` tag, as shown in the following example:
-
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">layout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">"http://schemas.android.com/apk/res-auto"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">data</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">variable</span></span></span><br><span class="line"><span class="tag">            <span class="attr">name</span>=<span class="string">"viewmodel"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">type</span>=<span class="string">"com.myapp.data.ViewModel"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">data</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ConstraintLayout...</span> /&gt;</span> <span class="comment">&lt;!-- UI layout's root element --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/observability.html" target="_blank" rel="noopener">Work with observable data objects</a></p>
-<pre><code>The Data Binding Library provides classes and methods to easily observe data for changes. You don&apos;t have to worry about refreshing the UI when the underlying data source changes. You can make your variables or their properties observable. The library allows you to make objects, fields, or collections observable.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/generated-binding.html" target="_blank" rel="noopener">Generated binding classes</a></p>
-<pre><code>The Data Binding Library generates binding classes that are used to access the layout&apos;s variable and views. This page shows you how to use and customize generated binding classes.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/binding-adapters.html" target="_blank" rel="noopener">Binding adapters</a></p>
-<pre><code>For every layout expression, there is a binding adapter that makes the framework calls required to set the corresponding properties or listeners. For example, the binding adapter can take care of calling the `setText()` method to set the text property or call the `setOnClickListener()` method to add a listener to the click event. The most common binding adapters, such as the adapters for the `android:text` property used in the examples in this page, are available for you to use in the `android.databinding.adapters` pakage. For a list of the common binding adapters, see [adapters](https://android.googlesource.com/platform/frameworks/data-binding/+/refs/heads/studio-master-dev/extensions/baseAdapters/src/main/java/androidx/databinding/adapters). You can also create custom adapters, as shown in the following example:
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BindingAdapter</span>(<span class="string">"app:goneUnless"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">goneUnless</span><span class="params">(View view, Boolean visible)</span> </span>&#123;</span><br><span class="line">    view.visibility = visible ? View.VISIBLE : View.GONE;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/architecture.html" target="_blank" rel="noopener">Bind layout views to Architecture components</a></p>
-<pre><code>The Android Support Library includes the [Architecture Components](), which you can use to design rbust, testable, and maintainable apps. You can use the Architecture Components with the Data Binding Library to further simplify the development of your UI.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/two-way" target="_blank" rel="noopener">Two-way data binding</a></p>
-<pre><code>The Data Binding Library supports two-way data binding. The notation used for this type of binding supports the ability to receive data changes to a property and listen to user updates to that property at the same time.</code></pre><h2 id="Additional-resources"><a href="#Additional-resources" class="headerlink" title="Additional resources"></a>Additional resources</h2><p>To learn more about data binding, consult the following additional resources.</p>
-<ul>
-<li><p>Samples</p>
-<p>  <a href="https://github.com/googlesamples/android-databinding" target="_blank" rel="noopener">Android Data Binding Library saples</a></p>
-</li>
-<li><p>Codelabs</p>
-<p>  <a href="https://codelabs.developers.google.com/codelabs/android-databinding" target="_blank" rel="noopener">Android Data Binding codelab</a></p>
-</li>
-<li><p>Blog posts</p>
-<p>  <a href="https://medium.com/androiddevelopers/android-data-binding-library-from-observable-fields-to-livedata-in-two-steps-690a384218f2" target="_blank" rel="noopener">Android Data Binding Library — From Observable Fields to LiveData in two steps</a><br>  <a href="https://medium.com/androiddevelopers/data-binding-lessons-learnt-4fd16576b719" target="_blank" rel="noopener">Data Binding - Lessons learnt</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/5cbb013a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/5cbb013a/" itemprop="url">Translation-Manage your app's memory</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-17T20:33:14+08:00">
-                2019-10-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/5cbb013a/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5cbb013a/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developer.android.com/topic/performance/memory" target="_blank" rel="noopener">Reference</a></p>
-<p>Random-access memory (RAM) is a valuable resource in any software development environment, but it’s even more valuable on a mobile operating system where physical memory is often constrained. Although both the Android Runtime (ART) and Dalvik virtual machine perform routine garbage collection, this doesn’t  mean you can ignore when and where your app allocates and release memory. You still need to avoid introducing memory leaks, usually caused by holding onto object references in static member variables, and release any <a href="https://developer.android.com/reference/java/lang/ref/Reference.html" target="_blank" rel="noopener">Reference</a> objects at the appropriate time as defined by lifecycle callbacks.</p>
-<p>This page explains how you can proactively reduce memory usage within your app. For information about how the Android operating system manages memory, see the <a href="https://developer.android.com/topic/performance/memory-overview.html" target="_blank" rel="noopener">Overview of Android Memeory Management</a>.</p>
-<h2 id="Monitor-available-memory-and-memory-usage"><a href="#Monitor-available-memory-and-memory-usage" class="headerlink" title="Monitor available memory and memory usage"></a>Monitor available memory and memory usage</h2><p>Before you can fix the memory usage problems in your app, you first need to find them. The <a href="https://developer.android.com/studio/profile/memory-profiler.html" target="_blank" rel="noopener">Memory Profiler</a> in Android Studio helps you find and diagnose memory issues in the following ways.</p>
-<ol>
-<li>See how your app allocates memory over time. The Memory Profiler shows a realtime graph of how much memory your app is using, the number of allocated Java objects, and when garbage collection occurs.</li>
-<li>Initiate garbage $</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/5fec0e43/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/5fec0e43/" itemprop="url">Android-Build a Responsive UI with ConstraintLayout</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-14T20:43:32+08:00">
-                2019-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Translation/" itemprop="url" rel="index">
-                    <span itemprop="name">Translation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/5fec0e43/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5fec0e43/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://developer.android.com/training/constraint-layout" target="_blank" rel="noopener">Reference</a></p>
-<p><a href="https://developer.android.com/reference/androidx/constraintlayout/widget/ConstraintLayout.html" target="_blank" rel="noopener">ConstriaintLayout</a> allows you to create large and complex  layouts with a flat view hierarchy(no nested view groups). It’s similar to <code>RelativeLayout</code> in that all views are laid out according to relationships between sibling views and the parent layout, but it’s more flexible than <code>RelativeLayout</code> and easier to use with Android Studio’s Layout Editor.</p>
-<p>All the power of <code>ConstraintLayout</code> is available directly from the Layout Editor’s visual tools, because the layout API and the Layout Editor were specially built for each other. So you can build your layout with <code>ConstraintLayout</code> entirely by drag-and-dropping instead of editing the XML.</p>
-<p>This page provides a guide to build a layout with <code>ConstraintLayout</code> in Android Studio 3.0 or higher. If you’d like more information about the Layout Editor itself, see the Android Studio guide to <a href="https://developer.android.com/studio/write/layout-editor.html" target="_blank" rel="noopener">Build a UI with Layout Editor</a>.</p>
-<p>To see a variety of layouts you can create with <code>ConstraintLayout</code>, check out the <a href="https://github.com/android/views-widgets-samples/tree/master/ConstraintLayoutExamples" target="_blank" rel="noopener">Constraint Layout Examples project on Github</a>.</p>
-<h2 id="Constraints-overview"><a href="#Constraints-overview" class="headerlink" title="Constraints overview"></a>Constraints overview</h2><p>To define a view’s position in <code>ConstraintLayout</code>, you must add at least one horizontal and one vertical constraint for the view. Each constraint represents a connection or alignment to another view, the parent layout, or an invisible guideline. Each constraint defines the view’s position along either the vertical or horizontal axis; so each view must have a minimum of one constraint for each axis, but often more are necessary.</p>
-<p>When you drop a view into the Layout Editor, it stays where you leave it even if it has no constraints. However, this is only to make editing easier; if a view has no constraints when you run your layout on a device, it is drawn at position [0, 0] (the top-left corner).</p>
-<p>In figure 1, the layout looks good in the editor, but there’s no vertical constraint on view C. When this layout draws on a device, view C horizontally aligns with the left and right edges of view A, but appears at the top of the screen because it has no vertical constraint.</p>
-<p>Figure 1. The editor shows view C below A, but it has no vertical constraint<br><img src="https://developer.android.com/training/constraint-layout/images/constraint-fail_2x.png" alt></p>
-<p>Although a missing constraint won’t cause a compilation error, the Layout Editor indicates missing constraints as an error in the toolbar. To view the errors and other warnings, click <code>Show Warnings and Errors</code>. The help you avoid missing constraints, the Layout Editro can automatially add constraints for you with the <a href="https://developer.android.com/training/constraint-layout#use-autoconnect-and-infer-constraints" target="_blank" rel="noopener">Autoconnect and infer constraints</a> feature.</p>
-<h2 id="Add-ConstraintLayout-to-your-project"><a href="#Add-ConstraintLayout-to-your-project" class="headerlink" title="Add ConstraintLayout to your project"></a>Add ConstraintLayout to your project</h2><p>To use <code>ConstraintLayout</code> in your project, procceed as follows:</p>
-<ol>
-<li>Ensure you have the <code>maven.google.com</code> repository declared in your module-level <code>build.gradle</code> file:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repository &#123;</span><br><span class="line">    google()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>Add the library as a dependency in the same <code>build.gradle</code> file, as shown in the following example. Note that the latest version might be different than what is shown in the example:</li>
-</ol>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">    dependencies &#123;</span><br><span class="line">    implementation 'com.android.support.constraint:constraint-layout:1.1.2'</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>In the toolbar or sync notification, click <code>Sync Project with Gradle Files</code>.</li>
-</ol>
-<p>Now you’re ready to build your layout with <code>ConstraintLayout</code>.</p>
-<h3 id="Convert-a-layout"><a href="#Convert-a-layout" class="headerlink" title="Convert a layout"></a>Convert a layout</h3><p>To convert an existing layout to a constraint layout, follow these steps:</p>
-<ol>
-<li>Open your layout in Android Studio and click the <code>Design</code> tab at the bottom of the editor window.</li>
-<li>In the <code>Component Tree</code> window, right-click the layout and click <code>Convert layout to ConstraintLayout</code>.</li>
-</ol>
-<h3 id="Create-a-new-layout"><a href="#Create-a-new-layout" class="headerlink" title="Create a new layout"></a>Create a new layout</h3><p>To start a new constraint layout file, follow these steps:</p>
-<ol>
-<li>In the <code>Project</code> window, click the module folder and then select <code>File &gt; New &gt; XML &gt; Layout XML</code>.</li>
-<li>Enter a name for the layout file and enter “android.support.constraint.ConstraintLayout” for the <code>Root Tag</code>.</li>
-<li>Click <code>Finish</code>.</li>
-</ol>
-<h2 id="Add-or-remove-a-constraint"><a href="#Add-or-remove-a-constraint" class="headerlink" title="Add or remove a constraint"></a>Add or remove a constraint</h2><p>To add a constraint, do the following:</p>
-<ol>
-<li>Drag a view from the <code>Palette</code> window into the editor.</li>
-</ol>
-<p>When you add a view in a <code>ConstraintLayout</code>, it displays a bounding box with square resizing handles on each corner and circular constraint handles on each side.</p>
-<ol start="2">
-<li><p>Click the view to select it.</p>
-</li>
-<li><p>Do one of the following</p>
-<ul>
-<li><p>Click a constraint handle and drag it to an available anchor point. This point can be the edge of another view, the edge of the layout, or a guideline. NOtice that as you drag the constraint handle, the Layout Editor shows potential connection anchors and blue overlays.</p>
-</li>
-<li><p>Click one of the <code>Create a connection</code> buttons in the <code>Layout</code> section of the <code>Attributes</code> window, as shown in figure 4.</p>
-<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-create-constraint-2x.png" alt="Figure 4"></p>
-</li>
-</ul>
-</li>
-</ol>
-<p>When the constraint is created, the editor gives it a <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-margins" target="_blank" rel="noopener">default margin</a> to separate the two views.</p>
-<p>When creating constraints, remember the following rules:</p>
-<ul>
-<li>Every view must have at least two constraints: one horizontal and one vertical</li>
-<li>You can create constraints only between a constraint handle and an anchor point that share the same plane. So a vertical plane(the left and right sides) of a view can be constrainted only to another vertical plane; and baselines can constraint only to other baselines.(不太理解啥意思)</li>
-<li>Each constraint handle can be used for just one constraint, but you can create multiple constraints(from different views) to the same anchor point.</li>
-</ul>
-<p>You can delete a constraint by doing any of the following:</p>
-<ul>
-<li>Click on a constraint to select it, and then press <code>Delete</code></li>
-<li>Press and hold <code>Control</code>(<code>Command</code> on macOS), and then click on a constraint anchor. Noteh that the constraint turns red to indicate that you can click to delte it , as shown in figure 5.</li>
-</ul>
-<p><img src="https://developer.android.com/images/training/constraint-layout/constraint-layout-delete-1-2x.png" alt="Figure 5"></p>
-<ul>
-<li>In the <code>Layout</code> section of the <code>Attributes</code> window, click on a constraint anchor, as shown in figure 6.</li>
-</ul>
-<p>If you add opposing constraints on a view, the constraint lines become squiggly like a spring to indicate the opposing force, as shown in video 2. The effect is most visible when the view size is set to “fixed” or “wrap content”, in which case the view is centered between the constraints. If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switching the size to “match constraints”</a>; or if you want to keep the current size but move the view so that it is not centered, <a href="https://developer.android.com/training/constraint-layout#adjust-the-constraint-bias" target="_blank" rel="noopener">adjust the constraints bias</a>.</p>
-<p>You can use constraints to achieve different types of layout behavior, as described in the following sections.</p>
-<h3 id="Parent-position"><a href="#Parent-position" class="headerlink" title="Parent position"></a>Parent position</h3><p>Constrain the side of a view to the corresponding edge of the layout.</p>
-<p>In figure 7, the left side of the view is connected to the left edge of the parent layout. You can define the distance from the edge with margin.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/parent-constraint_2x.png" alt="Figure 7"></p>
-<h3 id="Order-position"><a href="#Order-position" class="headerlink" title="Order position"></a>Order position</h3><p>Define the order of appearance for two views, either vertically or horizontally.</p>
-<p>In figure 8, B is constrained to alwasys be to the right of A, and C is constrained below A. However, these constraints do not imply alignment, so B can still move up and down.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/position-constraint_2x.png" alt="Figure 8"></p>
-<h3 id="Alignment"><a href="#Alignment" class="headerlink" title="Alignment"></a>Alignment</h3><p>Align the edge of a view to the same edge of another view.</p>
-<p>In figure 9, the left side of B is aligned to the left side of A. If you want to align the view centers, create a constraint on both sides.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint_2x.png" alt="figure 9"></p>
-<p>You can offset the alignment by dragging the view inward from the constraint. For example, figure 10 shows B with a 24dp offset alignment. The offset is defined by the constrained view’s margin.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/alignment-constraint-offset_2x.png" alt="figure 10"></p>
-<p>You can also select all the views you want to align, and then click <code>Align</code> in the toolbar to select the alignment type.</p>
-<h3 id="Baseline-alignment"><a href="#Baseline-alignment" class="headerlink" title="Baseline alignment"></a>Baseline alignment</h3><p>Align the text baseline of a view to the text baseline of another view.</p>
-<p>In figure 11, the first line of B is aligned with the text in A.</p>
-<p>To create a baseline constraint, right-click the text view you want to constrain and then click <code>Show Baseline</code>. Then click on the text baseline and drag the line to another line.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/baseline-constraint_2x.png" alt="Figure 11"></p>
-<h3 id="Constrain-to-a-guideline"><a href="#Constrain-to-a-guideline" class="headerlink" title="Constrain to a guideline"></a>Constrain to a guideline</h3><p>You can add a vertical or horizontal guideline to which you can constrain views, and the guideline will be invisible to app users. You can position the guideline with the layout based on either up units or percent, relative to the layout’s edge.</p>
-<p>To create a guideline, click <code>Guidelines</code> in the toolbar, and then click either <code>Add Vertical Guideline</code> or <code>Add Horizontal Guideline</code>.</p>
-<p>Drag the dotted line to reposition it and click the circle at the edge of the guideline to toggle the measurement mode.</p>
-<p><img src="https://developer.android.com/training/constraint-layout/images/guideline-constraint_2x.png" alt="Figure 12"></p>
-<h3 id="Constrain-to-a-barrier"><a href="#Constrain-to-a-barrier" class="headerlink" title="Constrain to a barrier"></a>Constrain to a barrier</h3><p>Similar to a guideline, a barrier is an invisible line that you can constrain views to. Except a barrier does not define its own position; instead, the barrier position moves based on the position of views constrained within it.This is useful when you want to constrain a view to the a set of views rather than to one specific view.</p>
-<p>For example, figure 13 shows view C is constrained to the right side of a barrier. The barrier is set to the “end”(or the right side in a left-to-right layout) of both view A and view B. So the barrier moves depending on whether the right side of view A or View B is is farthest right.</p>
-<p>To create a barrier, follow these steps:</p>
-<ol>
-<li>Click <code>Guidelines</code> in the toolbar, and then click <code>Add Vertical Barrier</code> or <code>Add Horizontal Barrier</code></li>
-<li>In the <code>Component Tree</code> window, select the views you want inside the barrier and drag them into the barrier compoent</li>
-<li>Select the barrier from the <code>Component Tree</code>, open the <code>Attributes</code> window, and then set the <code>barrierDirection</code></li>
-</ol>
-<p>Now you can create a constraint from another view to the barrier.</p>
-<p>You can also constrain views that are inside the barrier to the barrier. This way, you can ensure that all views in the barrier always align to each other, even if you don’t know which view will be the longest or tallest.</p>
-<p>You can also include a guideline inside a barrier to ensure a “minimum” position for the barrier.</p>
-<h2 id="Adjust-the-constraint-bias"><a href="#Adjust-the-constraint-bias" class="headerlink" title="Adjust the constraint bias"></a>Adjust the constraint bias</h2><p>When you add a constraint to both side of a view( and the view size for the same dimension is either “fixed” or “wrap content”), the view becomes centered between the two constraints with a bias of 50% by default. You can adjust the bias by dragging the bias slider in the <code>Attributes</code> window or by dragging the view, as shown in video 3.</p>
-<p>If you instead want the view to stretch its size to meet the constraints, <a href="https://developer.android.com/training/constraint-layout#adjust-the-view-size" target="_blank" rel="noopener">switch the size to “match constratins”</a>.</p>
-<h2 id="Adjust-the-view-size"><a href="#Adjust-the-view-size" class="headerlink" title="Adjust the view size"></a>Adjust the view size</h2><p>You can use the corner handles to resize a view, but this hard codes the size so the view will not resize for different content or screen sizes. To select a different sizing mode, click a view and open the <code>Attributes</code> window on the right side of the editor.</p>
-<p>Near the top of the <code>Attributes</code> window is the view inspector, which includes controls for several layout attributes, as shown in figure 14(this is available only for views in a constraint layout).</p>
-<p>You can change the way the height and width are calculated by clicking the symbols indicated with callout 3 in figure 14. These symbols represent the size mode as follows(click the symbol to toggle between these settings):</p>
-<ul>
-<li><img src="https://developer.android.com/studio/images/buttons/layout-width-fixed.png" alt> Fixed: You specify a specific dimension in the text box below or by resizing the view in the editor.</li>
-<li><img src="https://developer.android.com/studio/images/buttons/layout-width-wrap.png" alt> Wrap Content: The view expands only as much as needed to fit its contents.</li>
-<li><img src="https://developer.android.com/studio/images/buttons/layout-width-match.png" alt> Match Constraints: The view expands as much as possible to meet the constraints on each side(after accounting for the view’s margins). However, you can modify that behavior with the following attributes and values(these attributes take effect only when you set the view width to match constraints):</li>
-</ul>
-<p>//// TODO….</p>
-
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
+<p>Note: Do not use any built-in library function such as sqrt.</p>
+<p>Example 1:</p>
+<p>``shell</p>
+<p>Input: 16<br>Output: true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">Input: 14</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断某个数是否是n^2, 遍历呗</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num / i; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * i == num) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -2154,7 +1907,7 @@ These features of the library coexist seamlessly with your existing layouts. For
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2200,7 +1953,7 @@ These features of the library coexist seamlessly with your existing layouts. For
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">246</span>
+                  <span class="site-state-item-count">258</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

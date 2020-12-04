@@ -1,6 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android NestedScrollView解析</title>
+    <url>/posts/56b4051b/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/lmj623565791/article/details/52204039" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/52204039</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android Tips</title>
+    <url>/posts/74f327d4/</url>
+    <content><![CDATA[<p><a href="https://stackoverflow.com/questions/60155905/how-do-i-get-the-versioncode-and-versionname-badging-of-an-android-aab-file" target="_blank" rel="noopener">https://stackoverflow.com/questions/60155905/how-do-i-get-the-versioncode-and-versionname-badging-of-an-android-aab-file</a></p>
+<p><a href="https://www.cnblogs.com/c-x-a/p/11201048.html" target="_blank" rel="noopener">https://www.cnblogs.com/c-x-a/p/11201048.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android setText导致界面重绘</title>
+    <url>/posts/f6d2121a/</url>
+    <content><![CDATA[<p><a href="https://juejin.cn/post/6844904085217345549" target="_blank" rel="noopener">https://juejin.cn/post/6844904085217345549</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android 单元测试相关</title>
+    <url>/posts/6cbb8d85/</url>
+    <content><![CDATA[<p><a href="https://www.javadoc.io/doc/org.mockito/mockito-core/2.23.4/org/mockito/Mockito.html" target="_blank" rel="noopener">https://www.javadoc.io/doc/org.mockito/mockito-core/2.23.4/org/mockito/Mockito.html</a></p>
+<p><a href="https://github.com/powermock/powermock/wiki" target="_blank" rel="noopener">https://github.com/powermock/powermock/wiki</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android 音频相关</title>
+    <url>/posts/5a0c5f46/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/yangwen123/article/details/39502689" target="_blank" rel="noopener">https://blog.csdn.net/yangwen123/article/details/39502689</a></p>
+<p><a href="https://blog.csdn.net/zyuanyun/article/details/60890534" target="_blank" rel="noopener">https://blog.csdn.net/zyuanyun/article/details/60890534</a></p>
+<p><a href="https://blog.csdn.net/shulianghan/article/details/103313117" target="_blank" rel="noopener">https://blog.csdn.net/shulianghan/article/details/103313117</a></p>
+<p><a href="https://blog.csdn.net/shulianghan/category_9489567.html" target="_blank" rel="noopener">https://blog.csdn.net/shulianghan/category_9489567.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android ViewModel原理</title>
+    <url>/posts/60a08187/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/35d143e84d42" target="_blank" rel="noopener">https://www.jianshu.com/p/35d143e84d42</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android LiveData</title>
+    <url>/posts/67ab8e0c/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/b04abbb766e0?utm_campaign=haruki" target="_blank" rel="noopener">https://www.jianshu.com/p/b04abbb766e0?utm_campaign=haruki</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android MVVM</title>
+    <url>/posts/746a03e3/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/0ae3c0d830e5" target="_blank" rel="noopener">https://www.jianshu.com/p/0ae3c0d830e5</a></p>
+<p><a href="http://www.cocoachina.com/articles/14911" target="_blank" rel="noopener">http://www.cocoachina.com/articles/14911</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android AOP编程</title>
+    <url>/posts/1662385f/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/b848f6aac2cb" target="_blank" rel="noopener">https://www.jianshu.com/p/b848f6aac2cb</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android-view.post原理解析</title>
+    <url>/posts/6d113f21/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/7d5808eae883" target="_blank" rel="noopener">https://www.jianshu.com/p/7d5808eae883</a></p>
+<p><a href="https://blog.csdn.net/javazejian/article/details/50839443" target="_blank" rel="noopener">https://blog.csdn.net/javazejian/article/details/50839443</a></p>
+<p><a href="https://www.jianshu.com/p/dfdd0079da72" target="_blank" rel="noopener">https://www.jianshu.com/p/dfdd0079da72</a></p>
+<p><a href="https://www.jianshu.com/p/c12769aae54d" target="_blank" rel="noopener">https://www.jianshu.com/p/c12769aae54d</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Android-makefile相关</title>
+    <url>/posts/1e704012/</url>
+    <content><![CDATA[<p>Android.mk<br>CMakeList</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java-JNI相关</title>
+    <url>/posts/19021c2b/</url>
+    <content><![CDATA[<p>而在Unicode标准中，我们目前使用的是UCS-4，即字符集中每一个字符的字符代码都是用4个字节来表示</p>
+<p>因此，如果仍然依旧采用字符代码和字符编码相一致的编码方式，那么英语字母、数字原本仅需一个字节编码，目前就需要4个字节进行编码，汉字原本仅需两个字节进行编码，目前也需要4个字节进行编码，这对于存储或传输资源而言是很不划算的。</p>
+<p>因此就需要在字符代码和字符编码间进行再编码，这样就引出了UTF-8、UTF-16等编码方式。</p>
+<p>基于上述需求，UTF-8就是针对位于不同范围的字符代码转化成不同长度的字符编码</p>
+<p>，同时这种编码方式是以字节为单位，并且完全兼容ASCII编码，即0X00-0X7F的字符代码和字符编码完全一致，也是用一个字节来编码ASCII字符集，而常用汉字在Unicode中的字符代码是4E00-9FA5，在文末的对应关系中我们看到是用三个字节来进行汉字字符的编码。UTF-16同理，就是以16位二进制数为基本单位对Unicode字符集中的字符代码进行再编码，原理和UTF-8一致。因此，我们可以看出，在目前全球互联的大背景下，Unicode字符集和编码方式解决了跨语言、跨平台的交流问题，同时UTF-8等编码方式又有效的节约了存储空间和传输带宽，因而受到了极大的推广应用。</p>
+<p>在计算机内存中，统一使用Unicode编码，当需要保存到硬盘或者需要传输的时候，就转换为UTF-8编码。</p>
+<p>1个中文字符经过UTF-8编码后通常会占用3个字节，而1个英文字符只占用1个字节</p>
+<ul>
+<li>java内部是使用16bit的unicode编码（UTF-16）来表示字符串的，无论中文英文都是2字节；</li>
+<li>jni内部是使用UTF-8编码来表示字符串的，UTF-8是变长编码的unicode，一般ascii字符是1字节，中文是3字节；</li>
+<li>c/c++使用的是原始数据，ascii就是一个字节了，中文一般是GB2312编码，用两个字节来表示一个汉字。</li>
+</ul>
+<p>“aaa”</p>
+<p>jchar*(2字节)~Unicode字符串</p>
+<p>char*(1字节)~UTF-8字符串</p>
+<p>(1)GetStringLength()是返回Unicode字符串”aaa”的字符数，</p>
+<p>就是把”aaa”当作Unicode字符串，那么一共3个字符，每个字符是jchar类型，共6个字节.</p>
+<p>(2)GetStringUTFLength()是返回UTF-8字符串”aaa”的字节数，</p>
+<p>就是把”aaa”当作UTF-8字符串，那么一共3个字符，每个字符是char类型，共3个字节.</p>
+<p> To find out how many bytes are needed to represent a jstring in the UTF-8 format, JNI programmers can either call the ANSI C function strlen on the result of GetStringUTFChars, or call the JNI function GetStringUTFLength on the jstring reference directly.</p>
+<p>   int[] iarr;<br>   float[] farr;<br>   Object[] oarr;<br>   int[][] arr2;<br>iarr and farr are primitive arrays, whereas oarr and arr2 are object arrays.</p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android-Gradle详解</title>
     <url>/posts/f4490c15/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/ccpat/article/details/89342198" target="_blank" rel="noopener">https://blog.csdn.net/ccpat/article/details/89342198</a><br><a href="https://docs.gradle.org/current/userguide/userguide.html" target="_blank" rel="noopener">https://docs.gradle.org/current/userguide/userguide.html</a></p>
@@ -15,7 +137,7 @@
   <entry>
     <title>Android-签名相关</title>
     <url>/posts/f04bc4e5/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/95096ca209e1" target="_blank" rel="noopener">https://www.jianshu.com/p/95096ca209e1</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="https://blog.csdn.net/myvest/article/details/53735967" target="_blank" rel="noopener">https://blog.csdn.net/myvest/article/details/53735967</a></p>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/95096ca209e1" target="_blank" rel="noopener">https://www.jianshu.com/p/95096ca209e1</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="https://blog.csdn.net/myvest/article/details/53735967" target="_blank" rel="noopener">https://blog.csdn.net/myvest/article/details/53735967</a><br><a href="https://juejin.im/post/5e807f606fb9a03c73796cd7" target="_blank" rel="noopener">https://juejin.im/post/5e807f606fb9a03c73796cd7</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -28,6 +150,9 @@
     <title>Android-混淆加密相关</title>
     <url>/posts/b0754762/</url>
     <content><![CDATA[<p><a href="https://segmentfault.com/a/1190000005128037" target="_blank" rel="noopener">https://segmentfault.com/a/1190000005128037</a><br><a href="https://www.jianshu.com/p/dd44dbcb5aea" target="_blank" rel="noopener">https://www.jianshu.com/p/dd44dbcb5aea</a><br><a href="https://www.jianshu.com/p/7436a1a32891" target="_blank" rel="noopener">https://www.jianshu.com/p/7436a1a32891</a><br><a href="https://zhuanlan.zhihu.com/p/35213105" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35213105</a><br><a href="https://yuweiguocn.github.io/understand-proguard-outputs/" target="_blank" rel="noopener">https://yuweiguocn.github.io/understand-proguard-outputs/</a><br><a href="https://blog.csdn.net/a2241076850/article/details/78391536?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1" target="_blank" rel="noopener">https://blog.csdn.net/a2241076850/article/details/78391536?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1</a></p>
+<p><a href="https://www.jianshu.com/p/dd44dbcb5aea" target="_blank" rel="noopener">https://www.jianshu.com/p/dd44dbcb5aea</a></p>
+<p>混淆需要注意：</p>
+<p>native方法 keep<br>C++ 调用的Java方法 keep<br>env-&gt;FindClass()</p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -756,7 +881,7 @@ public static Bitmap $thumbnail(String path, int maxWidth, int maxHeight, boolea
   <entry>
     <title>Google Protocol Buffer实战</title>
     <url>/posts/52567396/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/65d1c4b0ceff" target="_blank" rel="noopener">https://www.jianshu.com/p/65d1c4b0ceff</a></p>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/65d1c4b0ceff" target="_blank" rel="noopener">https://www.jianshu.com/p/65d1c4b0ceff</a><br><a href="https://developers.google.com/protocol-buffers/" target="_blank" rel="noopener">https://developers.google.com/protocol-buffers/</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -7417,6 +7542,8 @@ public Application makeApplication(boolean forceDefaultAppClass,
 </ol>
 <p>// TODO<br>MessageQueue.next()方法</p>
 <p><a href="https://blog.csdn.net/qq_21586317/article/details/88780077" target="_blank" rel="noopener">https://blog.csdn.net/qq_21586317/article/details/88780077</a><br><a href="https://www.jianshu.com/p/219701879fe4" target="_blank" rel="noopener">https://www.jianshu.com/p/219701879fe4</a></p>
+<p>View.post的用法，以及是否可以用new Handler().post()来实现view.post的效果<br><a href="https://stackoverflow.com/questions/22983776/androids-handler-post-what-happens-exactly" target="_blank" rel="noopener">https://stackoverflow.com/questions/22983776/androids-handler-post-what-happens-exactly</a></p>
+<p><a href="https://www.jianshu.com/p/85fc4decc947" target="_blank" rel="noopener">https://www.jianshu.com/p/85fc4decc947</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
