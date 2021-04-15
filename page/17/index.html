@@ -308,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/a6096449/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/fb8c3633/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -327,7 +327,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/a6096449/" itemprop="url">Algorithm LeetCode 155 Min Stack</a></h1>
+                <a class="post-title-link" href="/posts/fb8c3633/" itemprop="url">Algorithm LeetCode 1002 Find Common Characters</a></h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T21:01:51+08:00">
-                2019-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-19T10:05:14+08:00">
+                2019-12-19
               </time>
             
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/a6096449/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a6096449/" itemprop="commentCount"></span>
+                <a href="/posts/fb8c3633/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/fb8c3633/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -411,336 +411,13 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.</p>
-<p>push(x) – Push element x onto stack.<br>pop() – Removes the element on top of the stack.<br>top() – Get the top element.<br>getMin() – Retrieve the minimum element in the stack.</p>
-<p>Example:</p>
-<p>MinStack minStack = new MinStack();<br>minStack.push(-2);<br>minStack.push(0);<br>minStack.push(-3);<br>minStack.getMin();   –&gt; Returns -3.<br>minStack.pop();<br>minStack.top();      –&gt; Returns 0.<br>minStack.getMin();   –&gt; Returns -2.</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>每次push的时候, 如果当前是最小值, 则把之前的min值放进去也就是把倒数第二min的值放进去<br>每次pop的时候，如果pop是最小值，min则指向之前记录的倒数第二值作为pop后的最小值<br>如果pop的时候，不是最小值，就直接pop</p>
-<p>也就是如果push的时候是最小值，就push 2次，push一个最小值，push一个倒数第二, 如果不是就push一次<br>pop的时候，如果是最小值，就pop 2次 min记录第二次pop的值作为后面的最小值, 如果不是,就pop一次</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">    <span class="keyword">int</span> min = Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">      <span class="comment">// 注意是 x &lt;= min, 否则pop时候判断会有问题</span></span><br><span class="line">        <span class="keyword">if</span>(x &lt;= min) &#123;</span><br><span class="line">            stack.push(min);</span><br><span class="line">            min = x;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(x);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(min == stack.pop()) &#123;</span><br><span class="line">            min = stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/4d5b7367/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/4d5b7367/" itemprop="url">Algorithm LeetCode 160 Intersection of Two LinkedList</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T20:26:37+08:00">
-                2019-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/4d5b7367/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/4d5b7367/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>三种思路</p>
-<ol>
-<li>Stack</li>
-<li>找到长短直接的差距n, 然后长链表先走n步后，与短链表一起走</li>
-<li>巧妙的解法</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/5ac11b38/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/5ac11b38/" itemprop="url">Algorithm LeetCode 66 Plus One</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T19:25:37+08:00">
-                2019-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/5ac11b38/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/5ac11b38/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a non-empty array of digits representing a non-negative integer, plus one to the integer.</p>
-<p>The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.</p>
-<p>You may assume the integer does not contain any leading zero, except the number 0 itself.</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array A of strings made only from lowercase letters, return a list of all characters that show up in all strings within the list (including duplicates).  For example, if a character occurs 3 times in all strings but not 4 times, you need to include that character three times in the final answer.</p>
+<p>You may return the answer in any order.</p>
 <p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [1,2,3]</span><br><span class="line">Output: [1,2,4]</span><br><span class="line">Explanation: The array represents the integer 123.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: ["bella","label","roller"]</span><br><span class="line">Output: ["e","l","l"]</span><br></pre></td></tr></table></figure>
 
 <p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [4,3,2,1]</span><br><span class="line">Output: [4,3,2,2]</span><br><span class="line">Explanation: The array represents the integer 4321.</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>直观思路就是变成int 然后+1后转为array, 但是这里有个坑就是int溢出的问题</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">    <span class="keyword">int</span> dig = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; digits.length; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> ten = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = digits.length - <span class="number">1</span>; j &gt; i; j--) &#123;</span><br><span class="line">            ten = ten * <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        dig += (digits[i] * ten );</span><br><span class="line">    &#125;</span><br><span class="line">    String s = (dig + <span class="number">1</span>) + <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span>[] ret = <span class="keyword">new</span> <span class="keyword">int</span>[s.length()];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">        ret[i] = Integer.parseInt(s.charAt(i) + <span class="string">""</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>所以这种方式不能采用，而是只用array, 然后记录进位</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] plusOne(<span class="keyword">int</span>[] digits) &#123;</span><br><span class="line">        <span class="keyword">int</span> tail = digits.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = digits.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span>(digits[i]  + num &lt;= <span class="number">9</span>) &#123;</span><br><span class="line">                digits[i] = digits[i] + num;</span><br><span class="line">                num = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                digits[i] = <span class="number">0</span>;</span><br><span class="line">                num = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(num != <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span>[] newCopy = <span class="keyword">new</span> <span class="keyword">int</span>[digits.length + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; newCopy.length; i++) &#123;</span><br><span class="line">                newCopy[i] = digits[i - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            newCopy[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">return</span> newCopy;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> digits;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;cool&quot;,&quot;lock&quot;,&quot;cook&quot;]</span><br><span class="line">Output: [&quot;c&quot;,&quot;o&quot;]</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">Note:</span><br><span class="line"></span><br><span class="line">* 1 &lt;= A.length &lt;= 100</span><br><span class="line">* 1 &lt;= A[i].length &lt;= 100</span><br><span class="line">* A[i][j] is a lowercase letter</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 思路 ##</span><br><span class="line"></span><br><span class="line">对于第一个str1, 以hashmap存储, key 为character, value 为次数</span><br><span class="line"></span><br><span class="line">查找第二个str2, 如果map.containsKey(str2.charAt(index)) 则map更新为次数少的</span><br><span class="line"></span><br><span class="line">现在map保留了str1 和 str2中都有的字符串, 然后遍历剩下的，相同操作即可</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## AC代码 ##</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">    public List&lt;String&gt; commonChars(String[] A) &#123;</span><br><span class="line">        HashMap&lt;Character, Integer&gt; map  = new HashMap();</span><br><span class="line">        for(int i = 0; i &lt; A[0].length(); i++) &#123;</span><br><span class="line">            map.put(A[0].charAt(i), map.getOrDefault(A[0].charAt(i), 0) + 1);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int i = 1; i &lt; A.length; i++) &#123;</span><br><span class="line">            HashMap&lt;Character, Integer&gt; temp = new HashMap&lt;&gt;();</span><br><span class="line">            String str = A[i];</span><br><span class="line">            for(int j = 0; j &lt; str.length(); j++) &#123;</span><br><span class="line">                char c = str.charAt(j);</span><br><span class="line">                if(map.containsKey(c)) &#123;</span><br><span class="line">                    int val = Math.min(map.get(c), temp.getOrDefault(c, 0) + 1);</span><br><span class="line">                    temp.put(c, val);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            map = temp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Iterator iterator = map.keySet().iterator();</span><br><span class="line">        List&lt;String&gt; list = new ArrayList&lt;&gt;();</span><br><span class="line">        while (iterator.hasNext()) &#123;</span><br><span class="line">            char c = (char)iterator.next();</span><br><span class="line">            int val = map.get(c);</span><br><span class="line">            for(int i = 0; i &lt; val; i++) &#123;</span><br><span class="line">                list.add(String.valueOf(c));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -788,7 +465,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/e7c78f66/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b58ba739/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -807,7 +484,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/e7c78f66/" itemprop="url">Algorithm LeetCode 914 X of a Kind in a Deck of Cards</a></h1>
+                <a class="post-title-link" href="/posts/b58ba739/" itemprop="url">Algorithm LeetCode 594 Longest harmonious Subsequence</a></h1>
         
 
         <div class="post-meta">
@@ -819,8 +496,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T15:55:19+08:00">
-                2019-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T17:18:22+08:00">
+                2019-12-18
               </time>
             
 
@@ -860,8 +537,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/e7c78f66/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/e7c78f66/" itemprop="commentCount"></span>
+                <a href="/posts/b58ba739/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b58ba739/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -891,31 +568,522 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>In a deck of cards, each card has an integer written on it.</p>
-<p>Return true if and only if you can choose X &gt;= 2 such that it is possible to split the entire deck into 1 or more groups of cards, where:</p>
-<p>Each group has exactly X cards.<br>All the cards in each group have the same integer.</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>We define a harmounious array as an array where the difference between its maximum value and its minimum value is exactly 1.</p>
+<p>Now, given an integer array, you need to find the length of its longest harmonious subsequence among all its possible subsequences.</p>
 <p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3,4,4,3,2,1]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Possible partition [1,1],[2,2],[3,3],[4,4]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,2,2,5,2,3,7]</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: The longest harmonious subsequence is [3,2,2,2,3].</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>注意，对于这样的非正整数，不可以用数组来存数据<br>所以就用map来存，key为数字, value为次数</p>
+<p>然后，遍历吧</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findLHS</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">null</span> == nums || nums.length &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line"></span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            map.put(nums[i], map.getOrDefault(nums[i], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> key : map.keySet()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(map.containsKey(key + <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="keyword">int</span> total = map.get(key) + map.get(key + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(total &gt; max)&#123;</span><br><span class="line">                    max = total;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/a4f6abd9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/a4f6abd9/" itemprop="url">Algorithm LeetCode 942 DI String Match</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T16:02:53+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/a4f6abd9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/a4f6abd9/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a string S that only contains “I” (increase) or “D” (decrease), let N = S.length.</p>
+<p>Return any permutation A of [0, 1, …, N] such that for all i = 0, …, N-1:</p>
+<ul>
+<li>If S[i] == “I”, then A[i] &lt; A[i+1]</li>
+<li>If S[i] == “D”, then A[i] &gt; A[i+1]</li>
+</ul>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: "IDID"</span><br><span class="line">Output: [0,4,1,3,2]</span><br></pre></td></tr></table></figure>
 
 <p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,1,2,2,2,3,3]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: No possible partition.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: "III"</span><br><span class="line">Output: [0,1,2,3]</span><br></pre></td></tr></table></figure>
 
 <p>Example 3:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: No possible partition.</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: "DDI"</span><br><span class="line">Output: [3,2,0,1]</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>根据例子可以看到, 第一个D对应 input.size, 第二个D对应input.size - 1<br>同样，第一个I对应0, 第二个I对应1</p>
+<p>找到规律就好写代码了，不找到还是不好想的</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">    public int[] diStringMatch(String S) &#123;</span><br><span class="line">        int length = S.length();</span><br><span class="line">        int[] result = new int[length + 1];</span><br><span class="line">        int start = 0;</span><br><span class="line">        int end = length;</span><br><span class="line"></span><br><span class="line">        for(int i = 0; i &lt; length; i++) &#123;</span><br><span class="line">            if(S.charAt(i) == 'I') &#123;</span><br><span class="line">                result[i] = start++;</span><br><span class="line">            &#125; else if(S.charAt(i) == 'D') &#123;</span><br><span class="line">                result[i] = end--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result[length] = start;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/346cd301/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/346cd301/" itemprop="url">Algorithm LeetCode 989 Add To Array Form Of Integer</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T13:36:32+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/346cd301/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/346cd301/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>For a non-negative integer X, the array-form of X is an array of its digits in left to right order.  For example, if X = 1231, then the array form is [1,2,3,1].</p>
+<p>Given the array-form A of a non-negative integer X, return the array-form of the integer X+K.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [1,2,0,0], K = 34</span><br><span class="line">Output: [1,2,3,4]</span><br><span class="line">Explanation: 1200 + 34 = 1234</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [2,7,4], K = 181</span><br><span class="line">Output: [4,5,5]</span><br><span class="line">Explanation: 274 + 181 = 455</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [2,1,5], K = 806</span><br><span class="line">Output: [1,0,2,1]</span><br><span class="line">Explanation: 215 + 806 = 1021</span><br></pre></td></tr></table></figure>
 
 <p>Example 4:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Possible partition [1,1]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: A = [9,9,9,9,9,9,9,9,9,9], K = 1</span><br><span class="line">Output: [1,0,0,0,0,0,0,0,0,0,0]</span><br><span class="line">Explanation: 9999999999 + 1 = 10000000000</span><br></pre></td></tr></table></figure>
 
-<p>Example 5:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,2,2,2,2]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Possible partition [1,1],[2,2],[2,2]</span><br></pre></td></tr></table></figure>
+<p>Note：</p>
+<ul>
+<li>1 &lt;= A.length &lt;= 10000</li>
+<li>0 &lt;= A[i] &lt;= 9</li>
+<li>0 &lt;= K &lt;= 10000</li>
+<li>If A.length &gt; 1, then A[0] != 0</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>与前面某题类似(TODO), 考虑溢出问题，所以不可以直接转为int/long去计算, 其他思路都差不多</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">addToArrayForm</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">if</span>(K == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">                list.add(A[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> list;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(K &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> num = K  % <span class="number">10</span>;</span><br><span class="line">            K = K / <span class="number">10</span>;</span><br><span class="line">            list.add(num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> arrIndex = A.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">        List&lt;Integer&gt; returnList = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> listVal = index &gt; list.size() - <span class="number">1</span> ? <span class="number">0</span> : list.get(index++);</span><br><span class="line">            <span class="keyword">int</span> arrVal = arrIndex &lt; <span class="number">0</span> ? <span class="number">0</span> : A[arrIndex--];</span><br><span class="line">            <span class="keyword">int</span> count = listVal +  m + arrVal;</span><br><span class="line">            <span class="keyword">if</span>(count &gt; <span class="number">9</span>)&#123;</span><br><span class="line">                returnList.add(count - <span class="number">10</span>);</span><br><span class="line">                m = <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                returnList.add(count);</span><br><span class="line">                m = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(returnList.size() == Math.max(A.length, list.size())) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">1</span>) &#123;</span><br><span class="line">            returnList.add(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//其实这里可以每次returnList.add(0, val);来reverse，不用再reverse一次</span></span><br><span class="line">        </span><br><span class="line">        Collections.reverse(returnList);</span><br><span class="line">        <span class="keyword">return</span> returnList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/31c696da/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/31c696da/" itemprop="url">Algorithm LeetCode 949 Largest Time for Given Digits</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T10:59:26+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/31c696da/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/31c696da/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array of 4 digits, return the largest 24 hour time that can be made.</p>
+<p>The smallest 24 hour time is 00:00, and the largest is 23:59.  Starting from 00:00, a time is larger if more time has elapsed since midnight.</p>
+<p>Return the answer as a string of length 5.  If no valid time can be made, return an empty string.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [1,2,3,4]</span><br><span class="line">Output: "23:41"</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [5,5,5,5]</span><br><span class="line">Output: ""</span><br></pre></td></tr></table></figure>
 
 <p>Note:</p>
 <ul>
-<li>1 &lt;= deck.length &lt;= 10000</li>
-<li>0 &lt;= deck[i] &lt; 10000</li>
+<li>A.length == 4</li>
+<li>0 &lt;= A[i] &lt;= 9</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>比较直观, 遍历从2到，最大次数，然后看是否都可以整除，如果有，就return true, 否则false</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasGroupsSizeX</span><span class="params">(<span class="keyword">int</span>[] deck)</span> </span>&#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; deck.length; i++) &#123;</span><br><span class="line">            map.put(deck[i], map.getOrDefault(deck[i], <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Set&lt;Integer&gt; set = map.keySet();</span><br><span class="line">        <span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index : set) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = map.get(index);</span><br><span class="line">            <span class="keyword">if</span>(v &gt; max) &#123;</span><br><span class="line">                max = v;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= max; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(canDiv(set, i, map)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">canDiv</span><span class="params">(Set&lt;Integer&gt; set, <span class="keyword">int</span> i, HashMap&lt;Integer, Integer&gt; map)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> index : set) &#123; </span><br><span class="line">            <span class="keyword">int</span> v = map.get(index);</span><br><span class="line">            <span class="keyword">if</span>(v % i != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>因为4个数字的组合为0 - 9999. 大于 时间可能的组合 0 - 24 * 60 或者 0 - 2400<br>所以我们先遍历可能的时间，然后再查这个时间是否由给定的数字组成</p>
+<p>这个思路值得借鉴。在范围小的里面做循环，这样可以节省内存空间</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">largestTimeFromDigits</span><span class="params">(<span class="keyword">int</span>[] A)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2399</span>; i &gt;=<span class="number">0</span> ; i--) &#123;</span><br><span class="line">          <span class="comment">// 先遍历时间有哪些可能</span></span><br><span class="line">            <span class="keyword">if</span>(i % <span class="number">100</span> &lt; <span class="number">60</span>) &#123;</span><br><span class="line">              <span class="comment">//再判断时间是否由A组成</span></span><br><span class="line">                <span class="keyword">if</span>(isMadeOf(A, i)) &#123;</span><br><span class="line">                    <span class="keyword">int</span> hour = i / <span class="number">100</span>;</span><br><span class="line">                    <span class="keyword">int</span> min = i % <span class="number">100</span>;</span><br><span class="line">                    String h = hour+<span class="string">""</span>;</span><br><span class="line">                    String m = min+<span class="string">""</span>;</span><br><span class="line">                    <span class="keyword">if</span>(hour &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                        h = <span class="string">"0"</span>+hour;</span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="keyword">if</span>(min &lt; <span class="number">10</span>) &#123;</span><br><span class="line">                        m = <span class="string">"0"</span> + min;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">return</span> h + <span class="string">":"</span> + m;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isMadeOf</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] B = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">4</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> n  = num - (num / <span class="number">10</span>) * <span class="number">10</span>;</span><br><span class="line">            num = num / <span class="number">10</span>;</span><br><span class="line">            B[i] = n;</span><br><span class="line">        &#125;</span><br><span class="line">        Arrays.sort(A);</span><br><span class="line">        Arrays.sort(B);</span><br><span class="line">        <span class="keyword">if</span>(A.length != B.length) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(A[i] != B[i]) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -963,7 +1131,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b5448e67/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/3485dad9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -982,7 +1150,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/b5448e67/" itemprop="url">Algorithm LeetCode 374 Guess Number Higher or Lower</a></h1>
+                <a class="post-title-link" href="/posts/3485dad9/" itemprop="url">Algorithm LeetCode 970 Powerful Integers</a></h1>
         
 
         <div class="post-meta">
@@ -994,8 +1162,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-14T11:41:55+08:00">
-                2019-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T10:47:17+08:00">
+                2019-12-18
               </time>
             
 
@@ -1035,8 +1203,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/b5448e67/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b5448e67/" itemprop="commentCount"></span>
+                <a href="/posts/3485dad9/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/3485dad9/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1066,17 +1234,7 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>We are playing the Guess Game. The game is as follows:</p>
-<p>I pick a number from 1 to n. You have to guess which number I picked.</p>
-<p>Every time you guess wrong, I’ll tell you whether the number is higher or lower.</p>
-<p>You call a pre-defined API guess(int num) which returns 3 possible results (-1, 1, or 0):</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-1 : My number is lower</span><br><span class="line"> 1 : My number is higher</span><br><span class="line"> 0 : Congrats! You got it!</span><br></pre></td></tr></table></figure>
-
-<p>Example :</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 10, pick = 6</span><br><span class="line">Output: 6</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>典型二分查找, 不过注意坑, 注意审题 <code>My Number</code> 知道谁大谁小</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> <span class="keyword">extends</span> <span class="title">GuessGame</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">guessNumber</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> guessNumber(<span class="number">1</span>, n);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">guessNumber</span><span class="params">(<span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(start == end) &#123;</span><br><span class="line">            <span class="keyword">return</span> start;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = start + (end - start) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span>(guess(mid) == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> guessNumber(mid + <span class="number">1</span>, end);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(guess(mid) == -<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> guessNumber(start, mid- <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            
           
         
       
@@ -1124,7 +1282,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b6f1cce9/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/aeee22f2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1143,7 +1301,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/b6f1cce9/" itemprop="url">Algorithm LeetCode 242 valid-anagram</a></h1>
+                <a class="post-title-link" href="/posts/aeee22f2/" itemprop="url">Algorithm LeetCode 922 Sort Array By Parity 2</a></h1>
         
 
         <div class="post-meta">
@@ -1155,8 +1313,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T17:34:09+08:00">
-                2019-12-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-18T10:33:26+08:00">
+                2019-12-18
               </time>
             
 
@@ -1196,8 +1354,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/b6f1cce9/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6f1cce9/" itemprop="commentCount"></span>
+                <a href="/posts/aeee22f2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/aeee22f2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1227,489 +1385,20 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings s and t , write a function to determine if t is an anagram of s.</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even.</p>
+<p>Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i is even.</p>
+<p>You may return any answer array that satisfies this condition.</p>
 <p>Example 1:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = "anagram", t = "nagaram"</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-
-<p>Example 2:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = "rat", t = "car"</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Input: [4,2,5,7]</span><br><span class="line">Output: [4,5,2,7]</span><br><span class="line">Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.</span><br></pre></td></tr></table></figure>
 
 <p>Note:</p>
-<p>You may assume the string contains only lowercase alphabets.</p>
-<p>Follow up:</p>
-<p>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>最开始想法, 使用 ^ 发现无法处理 case: “aa”, “bb”<br>所以考虑hashmap， 记录每个字符的出现的次数，看他们是否相同<br>Top Voted Solution 思路更好, 如下: </p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = s.charAt(i);</span><br><span class="line">            arr[c - <span class="string">'a'</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> c = t.charAt(i);</span><br><span class="line">            arr[c - <span class="string">'a'</span>]--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/72ef869e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/72ef869e/" itemprop="url">Algorithm LeetCode 108 Convert Sorted Array to Binary Search Tree</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T15:55:14+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/72ef869e/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/72ef869e/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given an array where elements are sorted in ascending order, convert it to a height balanced BST.</p>
-<p>For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
-<p>Example:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  Given the sorted array: [-10,-3,0,5,9],</span><br><span class="line"></span><br><span class="line">One possible answer is: [0,-3,9,-10,null,5], which represents the following height balanced BST:</span><br><span class="line"></span><br><span class="line">      0</span><br><span class="line">     / \</span><br><span class="line">   -3   9</span><br><span class="line">   /   /</span><br><span class="line"> -10  5</span><br></pre></td></tr></table></figure>
-
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>balanced BST 最中间的一定是根结点</p>
-<h2 id="AC-代码"><a href="#AC-代码" class="headerlink" title="AC 代码"></a>AC 代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> TreeNode <span class="title">sortedArrayToBST</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> create(<span class="keyword">null</span>, <span class="number">0</span>, nums.length - <span class="number">1</span>, nums);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> TreeNode <span class="title">create</span><span class="params">(TreeNode node, <span class="keyword">int</span> start, <span class="keyword">int</span> end, <span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(start &gt; end) &#123;</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">int</span> mid = (end + start) / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">     <span class="keyword">if</span>(<span class="keyword">null</span> == node) &#123;</span><br><span class="line">         node = <span class="keyword">new</span> TreeNode(arr[mid]);</span><br><span class="line">     &#125;</span><br><span class="line">     node.left = create(<span class="keyword">null</span>, start, mid - <span class="number">1</span>, arr);</span><br><span class="line">     node.right = create(<span class="keyword">null</span>, mid + <span class="number">1</span>, end, arr);</span><br><span class="line">     <span class="keyword">return</span> node;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/100ad818/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/100ad818/" itemprop="url">Algorithm LeetCode 107 Binary Tree Level Order Traversal 2</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T15:54:49+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/100ad818/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/100ad818/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a binary tree, return the bottom-up level order traversal of its nodes’ values. (ie, from left to right, level by level from leaf to root).</p>
-<p>For example:<br>Given binary tree [3,9,20,null,null,15,7],</p>
-<pre><code>3</code></pre><p>   / <br>  9  20<br>    /  <br>   15   7</p>
-<p>return its bottom-up level order traversal as:</p>
-<p>[<br>  [15,7],<br>  [9,20],<br>  [3]<br>]</p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遇到二叉树层序遍历，考虑Queue</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; levelOrderBottom(TreeNode root) &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; retList = <span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> LinkedList();</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">null</span> != root) &#123;</span><br><span class="line">        queue.add(root);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> retList;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!queue.isEmpty()) &#123;</span><br><span class="line">        <span class="keyword">int</span> size = queue.size();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="comment">// 注意这里的size，需要使用前2行中获取到的，而不能在这里直接使用queue.size() </span></span><br><span class="line">        <span class="comment">// 因为queue.size()会动态的变化，如果直接使用queue.size()会死循环</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">          <span class="comment">// 这里node需要每次获取当前的，而不能放在for循环外面</span></span><br><span class="line">            TreeNode node = queue.peek();</span><br><span class="line">            list.add(node.val);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.left) &#123;</span><br><span class="line">                queue.add(node.left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != node.right) &#123;</span><br><span class="line">                queue.add(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            queue.poll();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        retList.add(list);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 优化解法就是每次retList.add的时候，都是add在index = 0 的地方</span></span><br><span class="line">    <span class="comment">// retList.add(0, list);</span></span><br><span class="line">    <span class="comment">// 这样可以实现倒序，不用再reverse</span></span><br><span class="line">    Collections.reverse(retList);</span><br><span class="line">    <span class="keyword">return</span> retList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/2198e368/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ScorpioNeal">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ScorpioNeal's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/posts/2198e368/" itemprop="url">Algorithm LeetCode 28 Implement strStr()</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T13:36:25+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/posts/2198e368/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/2198e368/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><ul>
-<li><a href="https://blog.csdn.net/f1033774377/article/details/82556438" target="_blank" rel="noopener">https://blog.csdn.net/f1033774377/article/details/82556438</a></li>
+<ul>
+<li>2 &lt;= A.length &lt;= 20000</li>
+<li>A.length % 2 == 0</li>
+<li>0 &lt;= A[i] &lt;= 1000</li>
 </ul>
-
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>2个指针，一个走偶数路，一个走奇数路，如果偶数index上的数不是偶数，记住index i, 如果奇数index上的数不是奇数，记住index j<br>然后swap</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] sortArrayByParityII(<span class="keyword">int</span>[] A) &#123;</span><br><span class="line">       <span class="keyword">int</span> even = <span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> odd = <span class="number">1</span>;</span><br><span class="line">       <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</span><br><span class="line">          <span class="keyword">while</span>(even &lt; A.length &amp;&amp; A[even] % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">              even += <span class="number">2</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">while</span>(odd &lt; A.length &amp;&amp; A[odd] % <span class="number">2</span> != <span class="number">0</span>) &#123;</span><br><span class="line">              odd += <span class="number">2</span>;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">if</span>(even &gt;= A.length || odd &gt;= A.length) &#123;</span><br><span class="line">              <span class="keyword">return</span> A;</span><br><span class="line">          &#125;</span><br><span class="line">          swap(A, even, odd);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] A, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = A[start];</span><br><span class="line">        A[start] = A[end];</span><br><span class="line">        A[end] = n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1757,7 +1446,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/b6a37ecd/">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/7b4a97c1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ScorpioNeal">
@@ -1776,7 +1465,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/posts/b6a37ecd/" itemprop="url">Algorithm LeetCode 367 Valid Perfect Square</a></h1>
+                <a class="post-title-link" href="/posts/7b4a97c1/" itemprop="url">Algorithm LeetCode 836 Rectangle Overlap</a></h1>
         
 
         <div class="post-meta">
@@ -1788,8 +1477,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-13T10:57:20+08:00">
-                2019-12-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-17T09:44:53+08:00">
+                2019-12-17
               </time>
             
 
@@ -1829,8 +1518,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/posts/b6a37ecd/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/posts/b6a37ecd/" itemprop="commentCount"></span>
+                <a href="/posts/7b4a97c1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/7b4a97c1/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1860,15 +1549,359 @@
       
         
           
-            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given a positive integer num, write a function which returns True if num is a perfect square else False.</p>
-<p>Note: Do not use any built-in library function such as sqrt.</p>
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>A rectangle is represented as a list [x1, y1, x2, y2], where (x1, y1) are the coordinates of its bottom-left corner, and (x2, y2) are the coordinates of its top-right corner.</p>
+<p>Two rectangles overlap if the area of their intersection is positive.  To be clear, two rectangles that only touch at the corner or edges do not overlap.</p>
+<p>Given two (axis-aligned) rectangles, return whether they overlap.</p>
 <p>Example 1:</p>
-<p>``shell</p>
-<p>Input: 16<br>Output: true</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">Input: 14</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: rec1 = [0,0,2,2], rec2 = [1,1,3,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
 
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>判断某个数是否是n^2, 遍历呗</p>
-<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPerfectSquare</span><span class="params">(<span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= num / i; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(i * i == num) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: rec1 = [0,0,1,1], rec2 = [1,0,2,1]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p>Notes:</p>
+<ul>
+<li>Both rectangles rec1 and rec2 are lists of 4 integers.</li>
+<li>All coordinates in rectangles will be between -10^9 and 10^9.</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>主要是要知道如何判断2个矩形相交, 见AC代码</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isRectangleOverlap</span><span class="params">(<span class="keyword">int</span>[] rec1, <span class="keyword">int</span>[] rec2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> b1 =  (Math.min(rec1[<span class="number">2</span>], rec2[<span class="number">2</span>]) - Math.max(rec1[<span class="number">0</span>], rec2[<span class="number">0</span>])) &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">boolean</span> b2 = (Math.min(rec1[<span class="number">3</span>], rec2[<span class="number">3</span>]) - Math.max(rec1[<span class="number">1</span>], rec2[<span class="number">1</span>])) &gt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> b1 &amp;&amp; b2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/503af792/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/503af792/" itemprop="url">Algorithm LeetCode 1122 Relative Sort Array</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-16T20:52:38+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/503af792/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/503af792/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two arrays arr1 and arr2, the elements of arr2 are distinct, and all elements in arr2 are also in arr1.</p>
+<p>Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2.  Elements that don’t appear in arr2 should be placed at the end of arr1 in ascending order.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: arr1 = [2,3,1,3,2,4,6,7,9,2,19], arr2 = [2,1,4,3,9,6]</span><br><span class="line">Output: [2,2,2,1,4,3,3,9,6,7,19]</span><br></pre></td></tr></table></figure>
+
+<p>Constraints:</p>
+<ul>
+<li>arr1.length, arr2.length &lt;= 1000</li>
+<li>0 &lt;= arr1[i], arr2[i] &lt;= 1000</li>
+<li>Each arr2[i] is distinct.</li>
+<li>Each arr2[i] is in arr1.</li>
+</ul>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>遇到数字的问题, 考虑把数字作为bucket<br>与map效果一样，但是数组[数字]++ 这样也可以</p>
+<p>这题思路还是很直观的</p>
+<h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] relativeSortArray(<span class="keyword">int</span>[] arr1, <span class="keyword">int</span>[] arr2) &#123;</span><br><span class="line">        HashMap&lt;Integer, Integer&gt; map  = <span class="keyword">new</span> HashMap();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr2.length; i++) &#123;</span><br><span class="line">            map.put(arr2[i], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[arr1.length];</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr1.length; i++) &#123;</span><br><span class="line">            Integer num = map.get(arr1[i]);</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">null</span> != num) &#123;</span><br><span class="line">                ++num;</span><br><span class="line">                map.put(arr1[i], num);</span><br><span class="line">            &#125;  <span class="keyword">else</span> &#123;</span><br><span class="line">                list.add(arr1[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr2.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> count = map.get(arr2[i]);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; count; j++) &#123;</span><br><span class="line">                arr[index] = arr2[i];</span><br><span class="line">                index++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.sort(list);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            arr[index + i] = list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> arr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.scions.cn/posts/9715d017/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ScorpioNeal">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ScorpioNeal's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/posts/9715d017/" itemprop="url">Algorithm LeetCode 844 Backspace String Compare</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-16T20:18:58+08:00">
+                2019-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/posts/9715d017/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/posts/9715d017/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>Given two strings S and T, return if they are equal when both are typed into empty text editors. # means a backspace character.</p>
+<p>Example 1:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "ab#c", T = "ad#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "ac".</span><br></pre></td></tr></table></figure>
+
+<p>Example 2:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "ab##", T = "c#d#"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "".</span><br></pre></td></tr></table></figure>
+
+<p>Example 3:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "a##c", T = "#a#c"</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Both S and T become "c".</span><br></pre></td></tr></table></figure>
+
+<p>Example 4:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: S = "a#c", T = "b"</span><br><span class="line">Output: false</span><br><span class="line">Explanation: S becomes "c" while T becomes "b".</span><br></pre></td></tr></table></figure>
+
+<p>Note:</p>
+<ul>
+<li>1 &lt;= S.length &lt;= 200</li>
+<li>1 &lt;= T.length &lt;= 200</li>
+<li>S and T only contain lowercase letters and ‘#’ characters.</li>
+</ul>
+<p>Follow up:</p>
+<p>Can you solve it in O(N) time and O(1) space?</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>这种弹栈的题最容易想到的就是stack来做。 Top Voted Solution这里介绍了StringBuilder的deleteCharAt()这个方法，也很好用。可以记一下</code></pre><h2 id="AC代码"><a href="#AC代码" class="headerlink" title="AC代码"></a>AC代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">backspaceCompare</span><span class="params">(String S, String T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getStr(S).equals(getStr(T));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> String <span class="title">getStr</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        StringBuilder build = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c : str.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span>(c == <span class="string">'#'</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span>(build.length() &gt; <span class="number">0</span>) build.deleteCharAt(build.length() - <span class="number">1</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                build.append(c);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> build.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1907,7 +1940,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1953,7 +1986,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">258</span>
+                  <span class="site-state-item-count">271</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1975,7 +2008,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -2012,7 +2045,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -1,6 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Android RecyclerView相关的一些东西</title>
+    <url>/posts/9d0f73f4/</url>
+    <content><![CDATA[<p>ItemTouchHelper源码解析</p>
+<p>自定义 ItemDecoration</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android Navigation研究</title>
+    <url>/posts/dee57a3a/</url>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/711dbba035f1" target="_blank" rel="noopener">https://www.jianshu.com/p/711dbba035f1</a></p>
+]]></content>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Base HTTP协议</title>
+    <url>/posts/d99ba69b/</url>
+    <content><![CDATA[<p><a href="https://mp.weixin.qq.com/s?__biz=MzU0OTk3ODQ3Ng==&amp;mid=2247493394&amp;idx=1&amp;sn=9b6ce31eb00d859320fdfe07fc783361&amp;chksm=fba50f11ccd286077fbdaa02697cedcb34363506c43f165cfed3fa163eb835d097cef9b30e21&amp;scene=0&amp;xtrack=1#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MzU0OTk3ODQ3Ng==&amp;mid=2247493394&amp;idx=1&amp;sn=9b6ce31eb00d859320fdfe07fc783361&amp;chksm=fba50f11ccd286077fbdaa02697cedcb34363506c43f165cfed3fa163eb835d097cef9b30e21&amp;scene=0&amp;xtrack=1#rd</a></p>
+]]></content>
+      <tags>
+        <tag>Base</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Promotion 个人知识体系构建</title>
+    <url>/posts/28a15963/</url>
+    <content><![CDATA[<p><a href="https://www.v2ex.com/t/745736#reply53" target="_blank" rel="noopener">https://www.v2ex.com/t/745736#reply53</a><br><a href="https://pythonhunter.org/" target="_blank" rel="noopener">https://pythonhunter.org/</a><br><a href="https://www.v2ex.com/t/748747#reply25" target="_blank" rel="noopener">https://www.v2ex.com/t/748747#reply25</a><br><a href="https://www.bmpi.dev/self/build-personal-knowledge-system/" target="_blank" rel="noopener">https://www.bmpi.dev/self/build-personal-knowledge-system/</a></p>
+]]></content>
+      <tags>
+        <tag>Promotion</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Base 补码基础</title>
+    <url>/posts/1e465bc/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>Base</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android RecyclerView源码解析</title>
+    <url>/posts/e4096139/</url>
+    <content><![CDATA[<p><a href="https://github.com/yangchong211/YCBlogs/blob/master/android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/04.RecyclerView%E7%94%A8%E6%B3%95%E5%92%8C%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md" target="_blank" rel="noopener">https://github.com/yangchong211/YCBlogs/blob/master/android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/04.RecyclerView%E7%94%A8%E6%B3%95%E5%92%8C%E6%BA%90%E7%A0%81%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90.md</a></p>
+<p><a href="https://blog.csdn.net/c10WTiybQ1Ye3/article/details/78098465" target="_blank" rel="noopener">https://blog.csdn.net/c10WTiybQ1Ye3/article/details/78098465</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/263841552" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/263841552</a></p>
+<p><a href="https://skyacer.github.io/2018/04/17/RecyclerView%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">https://skyacer.github.io/2018/04/17/RecyclerView%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</a></p>
+<p><a href="https://www.jianshu.com/p/c52b947fe064" target="_blank" rel="noopener">https://www.jianshu.com/p/c52b947fe064</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android-Lint实战</title>
+    <url>/posts/ab3c7cb1/</url>
+    <content><![CDATA[<p>Lint相关</p>
+<p><a href="https://tech.meituan.com/2018/04/13/waimai-android-lint.html" target="_blank" rel="noopener">https://tech.meituan.com/2018/04/13/waimai-android-lint.html</a><br><a href="https://tech.meituan.com/2016/03/21/android-custom-lint.html" target="_blank" rel="noopener">https://tech.meituan.com/2016/03/21/android-custom-lint.html</a><br><a href="https://zhuanlan.zhihu.com/p/307382854" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/307382854</a><br><a href="https://www.paincker.com/android-lint-2-implements" target="_blank" rel="noopener">https://www.paincker.com/android-lint-2-implements</a><br><a href="https://www.wanandroid.com/blog/show/2665" target="_blank" rel="noopener">https://www.wanandroid.com/blog/show/2665</a></p>
+<p>引申如何编写IntelliJ Plugin, PSI相关的研究<br><a href="https://blog.csdn.net/weixin_42312133/article/details/112201640" target="_blank" rel="noopener">https://blog.csdn.net/weixin_42312133/article/details/112201640</a></p>
+<p>IntelliJ Platform Plugin SDK<br><a href="https://plugins.jetbrains.com/docs/intellij/welcome.html" target="_blank" rel="noopener">https://plugins.jetbrains.com/docs/intellij/welcome.html</a></p>
+]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>AndroidOptimization</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android ClassNotFoundException 和 NoClassDefFoundError区别</title>
+    <url>/posts/290deb8/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/duke2016/p/9153241.html" target="_blank" rel="noopener">https://www.cnblogs.com/duke2016/p/9153241.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>iOS Code Sign 体系</title>
+    <url>/posts/29c3055/</url>
+    <content><![CDATA[<p><a href="https://juejin.cn/post/6844903902605737997" target="_blank" rel="noopener">https://juejin.cn/post/6844903902605737997</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Foundation 回车与换行</title>
+    <url>/posts/df019e10/</url>
+    <content><![CDATA[<p><a href="http://www.ruanyifeng.com/blog/2006/04/post_213.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2006/04/post_213.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>CPP 加载动态链接库 dlopen dlsym dlclose</title>
+    <url>/posts/4100c50/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/ZhaoxiCheung/p/9424930.html" target="_blank" rel="noopener">https://www.cnblogs.com/ZhaoxiCheung/p/9424930.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Foundation 静态库 动态库</title>
+    <url>/posts/d02cba0/</url>
+    <content><![CDATA[<p><a href="https://www.cnblogs.com/codingmengmeng/p/6046481.html" target="_blank" rel="noopener">https://www.cnblogs.com/codingmengmeng/p/6046481.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Foundation 字符串编码</title>
+    <url>/posts/3d0df702/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/u014465934/article/details/80941064" target="_blank" rel="noopener">https://blog.csdn.net/u014465934/article/details/80941064</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Android NestedScrollView解析</title>
     <url>/posts/56b4051b/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/lmj623565791/article/details/52204039" target="_blank" rel="noopener">https://blog.csdn.net/lmj623565791/article/details/52204039</a></p>
@@ -50,7 +153,7 @@
   <entry>
     <title>Android LiveData</title>
     <url>/posts/67ab8e0c/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/b04abbb766e0?utm_campaign=haruki" target="_blank" rel="noopener">https://www.jianshu.com/p/b04abbb766e0?utm_campaign=haruki</a></p>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/b04abbb766e0?utm_campaign=haruki" target="_blank" rel="noopener">https://www.jianshu.com/p/b04abbb766e0?utm_campaign=haruki</a><br><a href="https://www.jianshu.com/p/981a1df6d14e" target="_blank" rel="noopener">https://www.jianshu.com/p/981a1df6d14e</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -5766,6 +5869,7 @@ These features of the library coexist seamlessly with your existing layouts. For
 <li><a href="https://juejin.im/post/5acccf845188255c3201100f" target="_blank" rel="noopener">https://juejin.im/post/5acccf845188255c3201100f</a></li>
 <li><a href="https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ</a></li>
 </ul>
+<p><a href="https://www.jianshu.com/p/ed87b12dfe0d" target="_blank" rel="noopener">https://www.jianshu.com/p/ed87b12dfe0d</a></p>
 <h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><p><code>RPC(Remote Porcedure Call)</code> 远程过程调用, 是一种通过网络从远程计算机程序上请求服务，在不需要了解底层网络技术协议下，即可获取计算机进程中的数据。 RPC使得开发包括网络分布式多程序在内的应用程序更加容易。</p>
 <p>RPC在OSI网络通信7层模型中，位于<code>会话层</code>: </p>
 <p><img src="https://img-blog.csdn.net/2018072918504362?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
@@ -8818,7 +8922,7 @@ public Application makeApplication(boolean forceDefaultAppClass,
   <entry>
     <title>Android 性能优化</title>
     <url>/posts/dee8b541/</url>
-    <content><![CDATA[<h2 id="Android-性能优化"><a href="#Android-性能优化" class="headerlink" title="Android 性能优化"></a>Android 性能优化</h2><p><a href="https://mp.weixin.qq.com/s/dCVPB1hozlN_KIkv3zr_Nw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/dCVPB1hozlN_KIkv3zr_Nw</a><br><a href="https://mp.weixin.qq.com/s/Drmmx5JtjG3UtTFksL6Q8Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Drmmx5JtjG3UtTFksL6Q8Q</a><br><a href="https://mp.weixin.qq.com/s/0EprsJ7sXKmphghMsU3aGw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/0EprsJ7sXKmphghMsU3aGw</a><br><a href="https://www.jianshu.com/p/797395731747" target="_blank" rel="noopener">https://www.jianshu.com/p/797395731747</a><br><a href="https://juejin.im/post/5d95f4a4f265da5b8f10714b" target="_blank" rel="noopener">https://juejin.im/post/5d95f4a4f265da5b8f10714b</a><br><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="noopener">https://www.jianshu.com/p/7e9ca2c73c97</a><br><a href="https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26" target="_blank" rel="noopener">https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26</a><br><a href="https://juejin.im/post/5d4bdb23e51d453c2577b747" target="_blank" rel="noopener">https://juejin.im/post/5d4bdb23e51d453c2577b747</a><br><a href="https://juejin.im/post/5e6f18a951882549422ef333" target="_blank" rel="noopener">https://juejin.im/post/5e6f18a951882549422ef333</a></p>
+    <content><![CDATA[<h2 id="Android-性能优化"><a href="#Android-性能优化" class="headerlink" title="Android 性能优化"></a>Android 性能优化</h2><p><a href="https://mp.weixin.qq.com/s/dCVPB1hozlN_KIkv3zr_Nw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/dCVPB1hozlN_KIkv3zr_Nw</a><br><a href="https://mp.weixin.qq.com/s/Drmmx5JtjG3UtTFksL6Q8Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/Drmmx5JtjG3UtTFksL6Q8Q</a><br><a href="https://mp.weixin.qq.com/s/0EprsJ7sXKmphghMsU3aGw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/0EprsJ7sXKmphghMsU3aGw</a><br><a href="https://www.jianshu.com/p/797395731747" target="_blank" rel="noopener">https://www.jianshu.com/p/797395731747</a><br><a href="https://juejin.im/post/5d95f4a4f265da5b8f10714b" target="_blank" rel="noopener">https://juejin.im/post/5d95f4a4f265da5b8f10714b</a><br><a href="https://www.jianshu.com/p/7e9ca2c73c97" target="_blank" rel="noopener">https://www.jianshu.com/p/7e9ca2c73c97</a><br><a href="https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26" target="_blank" rel="noopener">https://juejin.im/post/5d837cd1e51d4561cb5ddf66#heading-26</a><br><a href="https://juejin.im/post/5d4bdb23e51d453c2577b747" target="_blank" rel="noopener">https://juejin.im/post/5d4bdb23e51d453c2577b747</a><br><a href="https://juejin.im/post/5e6f18a951882549422ef333" target="_blank" rel="noopener">https://juejin.im/post/5e6f18a951882549422ef333</a><br><a href="https://juejin.cn/post/6844903912206499853" target="_blank" rel="noopener">https://juejin.cn/post/6844903912206499853</a></p>
 <ul>
 <li>UI优化</li>
 <li>启动优化</li>
