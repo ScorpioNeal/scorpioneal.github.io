@@ -80,19 +80,19 @@
 
 
 
-<meta name="description" content="View的绘制流程是从ViewRootImpl.java中的performTraversales()函数开始的。 包括以下三个阶段  measure layout draw  onMeasure用于测量view的大小, View中的measure方法，接收2个参数, widthMeasureSpec和heightMeasureSpec MeasureSpec由specSize和specMode构成">
+<meta name="description" content="https://juejin.cn/post/6844903477005516808 TODO: top、left、right、bottom 和 translationX、translationY 和 scrollX,scrollY的区别https://blog.csdn.net/u011315960/article/details/71331031 https://blog.csdn.net/d">
 <meta name="keywords" content="AndroidView">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-View的绘制流程">
 <meta property="og:url" content="http://www.scions.cn/posts/5c71151a/index.html">
 <meta property="og:site_name" content="ScorpioNeal&#39;s Blog">
-<meta property="og:description" content="View的绘制流程是从ViewRootImpl.java中的performTraversales()函数开始的。 包括以下三个阶段  measure layout draw  onMeasure用于测量view的大小, View中的measure方法，接收2个参数, widthMeasureSpec和heightMeasureSpec MeasureSpec由specSize和specMode构成">
+<meta property="og:description" content="https://juejin.cn/post/6844903477005516808 TODO: top、left、right、bottom 和 translationX、translationY 和 scrollX,scrollY的区别https://blog.csdn.net/u011315960/article/details/71331031 https://blog.csdn.net/d">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://img-scions.test.upcdn.net/view.jpeg">
-<meta property="og:updated_time" content="2019-12-09T13:01:07.129Z">
+<meta property="og:updated_time" content="2022-01-18T01:42:33.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-View的绘制流程">
-<meta name="twitter:description" content="View的绘制流程是从ViewRootImpl.java中的performTraversales()函数开始的。 包括以下三个阶段  measure layout draw  onMeasure用于测量view的大小, View中的measure方法，接收2个参数, widthMeasureSpec和heightMeasureSpec MeasureSpec由specSize和specMode构成">
+<meta name="twitter:description" content="https://juejin.cn/post/6844903477005516808 TODO: top、left、right、bottom 和 translationX、translationY 和 scrollX,scrollY的区别https://blog.csdn.net/u011315960/article/details/71331031 https://blog.csdn.net/d">
 <meta name="twitter:image" content="http://img-scions.test.upcdn.net/view.jpeg">
 
 
@@ -415,7 +415,11 @@
       
 
       
-        <p>View的绘制流程是从<code>ViewRootImpl.java</code>中的<code>performTraversales()</code>函数开始的。</p>
+        <p><a href="https://juejin.cn/post/6844903477005516808" target="_blank" rel="noopener">https://juejin.cn/post/6844903477005516808</a></p>
+<p>TODO: top、left、right、bottom 和 translationX、translationY 和 scrollX,scrollY的区别<br><a href="https://blog.csdn.net/u011315960/article/details/71331031" target="_blank" rel="noopener">https://blog.csdn.net/u011315960/article/details/71331031</a></p>
+<p><a href="https://blog.csdn.net/diaoju3333/article/details/101992097" target="_blank" rel="noopener">https://blog.csdn.net/diaoju3333/article/details/101992097</a></p>
+<p>makeMeasureSpec API 17一下可能存在的溢出问题<br><a href="https://blog.csdn.net/lizhengwei1989/article/details/64456742" target="_blank" rel="noopener">https://blog.csdn.net/lizhengwei1989/article/details/64456742</a><br><a href="https://juejin.cn/post/6850418113331068935" target="_blank" rel="noopener">https://juejin.cn/post/6850418113331068935</a></p>
+<p>View的绘制流程是从<code>ViewRootImpl.java</code>中的<code>performTraversales()</code>函数开始的。</p>
 <p>包括以下三个阶段</p>
 <ul>
 <li>measure</li>
@@ -619,7 +623,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">271</span>
+                  <span class="site-state-item-count">279</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -694,7 +698,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

@@ -1,10 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java-Generic</title>
+    <url>/posts/26798088/</url>
+    <content><![CDATA[<p><a href="https://www.zhihu.com/question/20400700" target="_blank" rel="noopener">https://www.zhihu.com/question/20400700</a></p>
+<p>&lt; Thinking in Java &gt;</p>
+<p><a href="https://blog.csdn.net/s10461/article/details/53941091" target="_blank" rel="noopener">https://blog.csdn.net/s10461/article/details/53941091</a></p>
+<p><a href="https://ryan-8.gitbook.io/android-architecture-journey/utilities/parameterized_type" target="_blank" rel="noopener">https://ryan-8.gitbook.io/android-architecture-journey/utilities/parameterized_type</a></p>
+]]></content>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android Jetpack相关</title>
+    <url>/posts/db58c2b0/</url>
+    <content><![CDATA[<p>OnBackPressedDispatcher</p>
+<p><a href="https://juejin.cn/post/6967039557220958244" target="_blank" rel="noopener">https://juejin.cn/post/6967039557220958244</a></p>
+<p>Hilt</p>
+<p><a href="https://juejin.cn/post/6902009428633698312" target="_blank" rel="noopener">https://juejin.cn/post/6902009428633698312</a></p>
+<p>WorkManager</p>
+<p><a href="https://juejin.cn/post/6844903953570725896" target="_blank" rel="noopener">https://juejin.cn/post/6844903953570725896</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java String.trim()究竟去掉了什么</title>
+    <url>/posts/c364e6ec/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/leeqihe/article/details/81006611" target="_blank" rel="noopener">https://blog.csdn.net/leeqihe/article/details/81006611</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Java 单例模式</title>
+    <url>/posts/3d13a6a3/</url>
+    <content><![CDATA[<p>双重判断</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android ViewBinding在include, merge, viewstub情况下的使用</title>
+    <url>/posts/952c6e74/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/fly_with_24/article/details/104337067" target="_blank" rel="noopener">https://blog.csdn.net/fly_with_24/article/details/104337067</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android LinearLayout解析</title>
+    <url>/posts/897198b5/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Android CardView阴影实现原理</title>
+    <url>/posts/b4b91c7/</url>
+    <content><![CDATA[<p><a href="https://juejin.cn/post/6844903507749765134" target="_blank" rel="noopener">https://juejin.cn/post/6844903507749765134</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Android RecyclerView DiffUtil</title>
+    <url>/posts/c6a47168/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/zxt0601/article/details/52562770" target="_blank" rel="noopener">https://blog.csdn.net/zxt0601/article/details/52562770</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Android RecyclerView相关的一些东西</title>
     <url>/posts/9d0f73f4/</url>
     <content><![CDATA[<p>ItemTouchHelper源码解析</p>
 <p>自定义 ItemDecoration</p>
+<p>缓存分析: <a href="https://www.jianshu.com/p/c2ee3167a346" target="_blank" rel="noopener">https://www.jianshu.com/p/c2ee3167a346</a></p>
+<p>RecyclerView.State.isPreLayout <a href="https://www.jianshu.com/p/98fae5715023?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">https://www.jianshu.com/p/98fae5715023?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation</a></p>
+<p>DiffUtil relevant:</p>
+<p><a href="https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/733974/" target="_blank" rel="noopener">https://codertw.com/%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80/733974/</a></p>
+<p><a href="https://cloud.tencent.com/developer/article/1724031" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1724031</a></p>
+<p><a href="https://blog.csdn.net/zxt0601/article/details/52562770" target="_blank" rel="noopener">https://blog.csdn.net/zxt0601/article/details/52562770</a></p>
+<p><a href="https://github.com/huanzhiyazi/articles/issues/11" target="_blank" rel="noopener">https://github.com/huanzhiyazi/articles/issues/11</a></p>
+<p>LayoutManager</p>
+<p><a href="https://blog.csdn.net/huachao1001/article/details/51594004" target="_blank" rel="noopener">https://blog.csdn.net/huachao1001/article/details/51594004</a></p>
+<p><a href="https://juejin.cn/post/6844903448765267981#heading-18" target="_blank" rel="noopener">https://juejin.cn/post/6844903448765267981#heading-18</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -50,6 +118,7 @@
 <p><a href="https://zhuanlan.zhihu.com/p/263841552" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/263841552</a></p>
 <p><a href="https://skyacer.github.io/2018/04/17/RecyclerView%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/" target="_blank" rel="noopener">https://skyacer.github.io/2018/04/17/RecyclerView%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</a></p>
 <p><a href="https://www.jianshu.com/p/c52b947fe064" target="_blank" rel="noopener">https://www.jianshu.com/p/c52b947fe064</a></p>
+<p><a href="https://www.jianshu.com/p/66428fe8d467" target="_blank" rel="noopener">https://www.jianshu.com/p/66428fe8d467</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -145,6 +214,7 @@
     <title>Android ViewModel原理</title>
     <url>/posts/60a08187/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/35d143e84d42" target="_blank" rel="noopener">https://www.jianshu.com/p/35d143e84d42</a></p>
+<p><a href="https://juejin.cn/post/6985760224099434526" target="_blank" rel="noopener">https://juejin.cn/post/6985760224099434526</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -229,6 +299,7 @@
     <title>Android-Gradle详解</title>
     <url>/posts/f4490c15/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/ccpat/article/details/89342198" target="_blank" rel="noopener">https://blog.csdn.net/ccpat/article/details/89342198</a><br><a href="https://docs.gradle.org/current/userguide/userguide.html" target="_blank" rel="noopener">https://docs.gradle.org/current/userguide/userguide.html</a></p>
+<p><a href="https://juejin.cn/post/6986191903888769032#heading-6" target="_blank" rel="noopener">https://juejin.cn/post/6986191903888769032#heading-6</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -241,6 +312,7 @@
     <title>Android-签名相关</title>
     <url>/posts/f04bc4e5/</url>
     <content><![CDATA[<p><a href="https://www.jianshu.com/p/95096ca209e1" target="_blank" rel="noopener">https://www.jianshu.com/p/95096ca209e1</a><br><a href="http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2011/08/what_is_a_digital_signature.html</a><br><a href="https://blog.csdn.net/myvest/article/details/53735967" target="_blank" rel="noopener">https://blog.csdn.net/myvest/article/details/53735967</a><br><a href="https://juejin.im/post/5e807f606fb9a03c73796cd7" target="_blank" rel="noopener">https://juejin.im/post/5e807f606fb9a03c73796cd7</a></p>
+<p><a href="https://juejin.cn/post/6906882748909092871" target="_blank" rel="noopener">https://juejin.cn/post/6906882748909092871</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -991,6 +1063,7 @@ public static Bitmap $thumbnail(String path, int maxWidth, int maxHeight, boolea
     <title>Android SurfaceView机制</title>
     <url>/posts/4e76d615/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/5da721a6518825200b2d547e" target="_blank" rel="noopener">https://juejin.im/post/5da721a6518825200b2d547e</a></p>
+<p><a href="https://blog.csdn.net/u010126792/article/details/86249399" target="_blank" rel="noopener">https://blog.csdn.net/u010126792/article/details/86249399</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -2700,7 +2773,7 @@ private final ArraySet&lt;View&gt; mDyingViews = new ArraySet&lt;View&gt;();
 <li>S will be a string with length between 1 and 12.</li>
 <li>S will consist only of letters or digits.</li>
 </ul>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对于 ‘a1b2’</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>对于 <code>a1b2</code></p>
 <p>queue里先放’a’, ‘A’</p>
 <p>遍历queue. 放入第二个’1’<br>此时queue里’a1’, ‘A1’</p>
 <p>遍历queue放入第三个’b’<br>此时queue里’a1b’, ‘A1b’, ‘a1B’, ‘A1B’</p>
@@ -3948,7 +4021,9 @@ private final ArraySet&lt;View&gt; mDyingViews = new ArraySet&lt;View&gt;();
 <p>Binding components in the layout file lets you remove many UI framework calls in your activities, making them simpler and easier to maintain. This can also improve your app’s performance and help prevent memory leaks and null pointer exceptions.</p>
 <h2 id="Using-the-Data-Binding-Library"><a href="#Using-the-Data-Binding-Library" class="headerlink" title="Using the Data Binding Library"></a>Using the Data Binding Library</h2><p>Use the following pages to learn how to use the Data Binding Library in your Android apps.</p>
 <p><a href="https://developer.android.com/topic/libraries/data-binding/start.html" target="_blank" rel="noopener">Get started</a></p>
-<pre><code>Learn how to get your development environment ready to work with the Data Binding Library, including support for data binding code in Android Studio.</code></pre><p><a href="https://developer.android.com/topic/libraries/data-binding/expressions.html" target="_blank" rel="noopener">Layouts and binding expressions</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Learn how to get your development environment ready to work with the Data Binding Library, including support <span class="keyword">for</span> data binding code in Android Studio.</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.android.com/topic/libraries/data-binding/expressions.html" target="_blank" rel="noopener">Layouts and binding expressions</a></p>
 <pre><code>The expression language allows you to write expressions that connecct variable to the views in the layout. The Data Binding Library automatically generates the classes required to bind the views in the layout with your data objects. The library provides features such as imports, variable, and includes that you can use in your layout.
 
 These features of the library coexist seamlessly with your existing layouts. For example, the binding variables that can be used in expressions are defined inside a `data` element that is a sibling of the UI layout&apos;s root element. Both elements are wrapped in a `layout` tag, as shown in the following example:
@@ -5798,7 +5873,8 @@ These features of the library coexist seamlessly with your existing layouts. For
   <entry>
     <title>Android-Fragment原理</title>
     <url>/posts/4dd850/</url>
-    <content><![CDATA[<p><a href="https://www.jianshu.com/p/d0c7ed3d05e9" target="_blank" rel="noopener">https://www.jianshu.com/p/d0c7ed3d05e9</a><br><a href="https://www.jianshu.com/p/78136d0d3501" target="_blank" rel="noopener">https://www.jianshu.com/p/78136d0d3501</a><br><a href="https://www.jianshu.com/p/f50a1d7ab161" target="_blank" rel="noopener">https://www.jianshu.com/p/f50a1d7ab161</a><br><a href="https://blog.csdn.net/gaugamela/article/details/56280384" target="_blank" rel="noopener">https://blog.csdn.net/gaugamela/article/details/56280384</a></p>
+    <content><![CDATA[<p><a href="https://www.jianshu.com/p/d0c7ed3d05e9" target="_blank" rel="noopener">https://www.jianshu.com/p/d0c7ed3d05e9</a><br><a href="https://www.jianshu.com/p/78136d0d3501" target="_blank" rel="noopener">https://www.jianshu.com/p/78136d0d3501</a><br><a href="https://www.jianshu.com/p/f50a1d7ab161" target="_blank" rel="noopener">https://www.jianshu.com/p/f50a1d7ab161</a><br><a href="https://juejin.cn/post/6970998913754988552" target="_blank" rel="noopener">https://juejin.cn/post/6970998913754988552</a><br><a href="https://blog.csdn.net/gaugamela/article/details/56280384" target="_blank" rel="noopener">https://blog.csdn.net/gaugamela/article/details/56280384</a><br><a href="https://blog.csdn.net/airk000/article/details/38557605" target="_blank" rel="noopener">https://blog.csdn.net/airk000/article/details/38557605</a><br><a href="https://amorypepelu.github.io/2019/04/12/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-Activity%E8%A2%AB%E7%B3%BB%E7%BB%9F%E9%94%80%E6%AF%81%E5%90%8E%E9%87%8D%E5%BB%BAFragment%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%9D%E5%AD%98%E4%B8%8E%E6%81%A2%E5%A4%8D/" target="_blank" rel="noopener">https://amorypepelu.github.io/2019/04/12/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-Activity%E8%A2%AB%E7%B3%BB%E7%BB%9F%E9%94%80%E6%AF%81%E5%90%8E%E9%87%8D%E5%BB%BAFragment%E6%95%B0%E6%8D%AE%E7%9A%84%E4%BF%9D%E5%AD%98%E4%B8%8E%E6%81%A2%E5%A4%8D/</a></p>
+<p><a href="https://www.cnblogs.com/yongdaimi/p/12012011.html" target="_blank" rel="noopener">https://www.cnblogs.com/yongdaimi/p/12012011.html</a></p>
 <p>每次beginTransaction都是新建了一个回退栈记录</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FragmentTransaction <span class="title">beginTransaction</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> BackStackRecord(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -5864,12 +5940,22 @@ These features of the library coexist seamlessly with your existing layouts. For
     <url>/posts/4f81d6fa/</url>
     <content><![CDATA[<p>Reference: </p>
 <ul>
-<li><a href="https://blog.csdn.net/qian520ao/article/details/78089877" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78089877</a></li>
-<li><a href="https://blog.csdn.net/hzw2017/article/details/81275438" target="_blank" rel="noopener">https://blog.csdn.net/hzw2017/article/details/81275438</a></li>
-<li><a href="https://juejin.im/post/5acccf845188255c3201100f" target="_blank" rel="noopener">https://juejin.im/post/5acccf845188255c3201100f</a></li>
-<li><a href="https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ</a></li>
+<li><p><a href="https://blog.csdn.net/hzw2017/article/details/81275438" target="_blank" rel="noopener">https://blog.csdn.net/hzw2017/article/details/81275438</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/qian520ao/article/details/78089877" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/78089877</a></p>
+</li>
+<li><p><a href="https://blog.csdn.net/hzw2017/article/details/81275438" target="_blank" rel="noopener">https://blog.csdn.net/hzw2017/article/details/81275438</a></p>
+</li>
+<li><p><a href="https://juejin.im/post/5acccf845188255c3201100f" target="_blank" rel="noopener">https://juejin.im/post/5acccf845188255c3201100f</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/lRLFzASMwEPKvLTWPiCzdQ</a></p>
+</li>
 </ul>
 <p><a href="https://www.jianshu.com/p/ed87b12dfe0d" target="_blank" rel="noopener">https://www.jianshu.com/p/ed87b12dfe0d</a></p>
+<p>Ashmen原理:</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/d9bc9c668ba6" target="_blank" rel="noopener">https://www.jianshu.com/p/d9bc9c668ba6</a></li>
+</ul>
 <h2 id="RPC"><a href="#RPC" class="headerlink" title="RPC"></a>RPC</h2><p><code>RPC(Remote Porcedure Call)</code> 远程过程调用, 是一种通过网络从远程计算机程序上请求服务，在不需要了解底层网络技术协议下，即可获取计算机进程中的数据。 RPC使得开发包括网络分布式多程序在内的应用程序更加容易。</p>
 <p>RPC在OSI网络通信7层模型中，位于<code>会话层</code>: </p>
 <p><img src="https://img-blog.csdn.net/2018072918504362?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2h6dzIwMTc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt></p>
@@ -6026,6 +6112,7 @@ These features of the library coexist seamlessly with your existing layouts. For
     <title>Android 无埋点监控</title>
     <url>/posts/1ada89fb/</url>
     <content><![CDATA[<p><a href="https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0" target="_blank" rel="noopener">https://juejin.im/post/5aa0e7eff265da2395308f48#heading-0</a><br><a href="https://blog.csdn.net/jhyshenyu/article/details/87633652" target="_blank" rel="noopener">https://blog.csdn.net/jhyshenyu/article/details/87633652</a><br><a href="https://blog.csdn.net/wangkai0681080/article/details/82659516" target="_blank" rel="noopener">https://blog.csdn.net/wangkai0681080/article/details/82659516</a><br><a href="https://blog.csdn.net/qian520ao/article/details/85308948" target="_blank" rel="noopener">https://blog.csdn.net/qian520ao/article/details/85308948</a><br><a href="https://juejin.im/post/5da6d99b6fb9a04e0855bfe3" target="_blank" rel="noopener">https://juejin.im/post/5da6d99b6fb9a04e0855bfe3</a><br><a href="https://mp.weixin.qq.com/s/GHr2vxDY3KAimx0jIygc_Q" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/GHr2vxDY3KAimx0jIygc_Q</a></p>
+<p><a href="https://www.yuque.com/docs/share/7d6fef93-3c5a-4c90-9c5a-3eb8f9f6ea49?#" target="_blank" rel="noopener">https://www.yuque.com/docs/share/7d6fef93-3c5a-4c90-9c5a-3eb8f9f6ea49?#</a><br><a href="https://juejin.cn/post/6844904142016610311" target="_blank" rel="noopener">https://juejin.cn/post/6844904142016610311</a></p>
 ]]></content>
       <categories>
         <category>Android</category>
@@ -7946,7 +8033,11 @@ public Application makeApplication(boolean forceDefaultAppClass,
   <entry>
     <title>Android-View的绘制流程</title>
     <url>/posts/5c71151a/</url>
-    <content><![CDATA[<p>View的绘制流程是从<code>ViewRootImpl.java</code>中的<code>performTraversales()</code>函数开始的。</p>
+    <content><![CDATA[<p><a href="https://juejin.cn/post/6844903477005516808" target="_blank" rel="noopener">https://juejin.cn/post/6844903477005516808</a></p>
+<p>TODO: top、left、right、bottom 和 translationX、translationY 和 scrollX,scrollY的区别<br><a href="https://blog.csdn.net/u011315960/article/details/71331031" target="_blank" rel="noopener">https://blog.csdn.net/u011315960/article/details/71331031</a></p>
+<p><a href="https://blog.csdn.net/diaoju3333/article/details/101992097" target="_blank" rel="noopener">https://blog.csdn.net/diaoju3333/article/details/101992097</a></p>
+<p>makeMeasureSpec API 17一下可能存在的溢出问题<br><a href="https://blog.csdn.net/lizhengwei1989/article/details/64456742" target="_blank" rel="noopener">https://blog.csdn.net/lizhengwei1989/article/details/64456742</a><br><a href="https://juejin.cn/post/6850418113331068935" target="_blank" rel="noopener">https://juejin.cn/post/6850418113331068935</a></p>
+<p>View的绘制流程是从<code>ViewRootImpl.java</code>中的<code>performTraversales()</code>函数开始的。</p>
 <p>包括以下三个阶段</p>
 <ul>
 <li>measure</li>
